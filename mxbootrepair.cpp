@@ -86,6 +86,17 @@ void mxbootrepair::reinstallGRUB() {
     QString text = QString("GRUB is being installed on %1 device.").arg(location);
     ui->outputLabel->setText(text);
     setConnections(timer, proc);
+    QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
+    QString script = QString("bash -c \"mount /dev/%2 %1 && \n"
+                             "mount -o bind /dev %1/dev && \n"
+                             "mount -o bind /sys %1/sys && \n"
+                             "mount -o bind /proc %1/proc && \n"
+                             "chroot %1 grub-install --recheck --force /dev/%2 && \n"
+                             "umount %1/proc && \n"
+                             "umount %1/sys && \n"
+                             "umount %1/dev && \n"
+                             "umount %1 && \n"
+                             "rm -r %1\"").arg(path).arg(location);
     QString cmd = "grub-install --recheck --force /dev/" + location;
     proc->start(cmd);
 }
@@ -99,9 +110,7 @@ void mxbootrepair::repairGRUB() {
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     ui->outputLabel->setText("The GRUB configuration file (grub.cfg) is being rebuild.");
     setConnections(timer, proc);
-
     QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
-
     QString script = QString("bash -c \"mount /dev/%2 %1 && \n"
                              "mount -o bind /dev %1/dev && \n"
                              "mount -o bind /sys %1/sys && \n"

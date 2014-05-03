@@ -28,12 +28,16 @@
 #include <QWebView>
 #include <QFileDialog>
 
+QStringList LISTDISK;
+QStringList LISTPART;
+
 mxbootrepair::mxbootrepair(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::mxbootrepair)
 {
     ui->setupUi(this);
     refresh();
+    addDevToList();
 }
 
 mxbootrepair::~mxbootrepair()
@@ -67,41 +71,53 @@ void mxbootrepair::refresh() {
     ui->grubInsLabel->show();
     ui->grubRootButton->show();
     ui->grubMbrButton->show();
+    ui->rootLabel->hide();
+    ui->rootCombo->hide();
     ui->buttonOk->setText("Ok");
     ui->buttonOk->setIcon(QIcon("/usr/share/mx-bootrepair/icons/dialog-ok.png"));
     ui->buttonOk->setEnabled(true);
     ui->buttonCancel->setEnabled(true);
-    addDevToCombo();
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
 
 void mxbootrepair::reinstallGRUB() {
+    QString cmd;
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
     ui->buttonOk->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
+    QString root = QString(ui->rootCombo->currentText()).section(" ", 0, 0);
     QString text = QString("GRUB is being installed on %1 device.").arg(location);
     ui->outputLabel->setText(text);
     setConnections(timer, proc);
+    // create a temp folder and mount dev sys proc
     QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
-    QString script = QString("bash -c \"mount /dev/%2 %1 && \n"
-                             "mount -o bind /dev %1/dev && \n"
-                             "mount -o bind /sys %1/sys && \n"
-                             "mount -o bind /proc %1/proc && \n"
-                             "chroot %1 grub-install --recheck --force /dev/%2 && \n"
-                             "umount %1/proc && \n"
-                             "umount %1/sys && \n"
-                             "umount %1/dev && \n"
-                             "umount %1 && \n"
-                             "rm -r %1\"").arg(path).arg(location);
-    QString cmd = "grub-install --recheck --force /dev/" + location;
-    proc->start(cmd);
+    cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
+    if (system(cmd.toAscii()) == 0) {
+        QEventLoop loop;
+        connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
+        cmd = QString("bash -c \"chroot %1 grub-install --recheck --force /dev/%2\"").arg(path).arg(location);
+        proc->start(cmd);
+        loop.exec();
+    } else {
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+        setCursor(QCursor(Qt::ArrowCursor));
+        ui->buttonOk->setEnabled(true);
+        ui->buttonCancel->setEnabled(true);
+        ui->progressBar->hide();
+        ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+    }
+    // umount and clean temp folder
+    cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+    system(cmd.toAscii());
 }
 
 void mxbootrepair::repairGRUB() {
+    QString cmd;
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
@@ -110,18 +126,27 @@ void mxbootrepair::repairGRUB() {
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     ui->outputLabel->setText("The GRUB configuration file (grub.cfg) is being rebuild.");
     setConnections(timer, proc);
+    // create a temp folder and mount dev sys proc
     QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
-    QString script = QString("bash -c \"mount /dev/%2 %1 && \n"
-                             "mount -o bind /dev %1/dev && \n"
-                             "mount -o bind /sys %1/sys && \n"
-                             "mount -o bind /proc %1/proc && \n"
-                             "chroot %1 update-grub && \n"
-                             "umount %1/proc && \n"
-                             "umount %1/sys && \n"
-                             "umount %1/dev && \n"
-                             "umount %1 && \n"
-                             "rm -r %1\"").arg(path).arg(location);
-    proc->start(script);
+    cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(location).arg(path);
+    if (system(cmd.toAscii()) == 0) {
+        QEventLoop loop;
+        connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
+        cmd = QString("bash -c \"chroot %1 update-grub\"").arg(path);
+        proc->start(cmd);
+        loop.exec();
+    } else {
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+        setCursor(QCursor(Qt::ArrowCursor));
+        ui->buttonOk->setEnabled(true);
+        ui->buttonCancel->setEnabled(true);
+        ui->progressBar->hide();
+        ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+    }
+    // umount and clean temp folder
+    cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+    system(cmd.toAscii());
 }
 
 
@@ -211,20 +236,40 @@ void mxbootrepair::setConnections(QTimer* timer, QProcess* proc) {
 
 
 // add list of devices to grubBootCombo
-void mxbootrepair::addDevToCombo() {
-    QString cmd;
-    ui->grubBootCombo->clear();
-    // add only disks
-    if (ui->grubMbrButton->isChecked()) {
-        cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 | grep '^[h,s,v].[a-z]' | sort\"";
-    } else { // add partition
-        cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 | grep '[h,s,v].[a-z][0-9]' | sort\"";
-    }
+void mxbootrepair::addDevToList() {
+    QString cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 | grep '^[h,s,v].[a-z]' | sort\"";
     proc->start(cmd);
     proc->waitForFinished();
     QString out = proc->readAllStandardOutput();
-    QStringList list = out.split("\n", QString::SkipEmptyParts);
-    ui->grubBootCombo->addItems(list);
+    LISTDISK = out.split("\n", QString::SkipEmptyParts);
+
+    cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 | grep '[h,s,v].[a-z][0-9]' | sort\"";
+    proc->start(cmd);
+    proc->waitForFinished();
+    out = proc->readAllStandardOutput();
+    LISTPART = out.split("\n", QString::SkipEmptyParts);
+    ui->rootCombo->clear();
+    ui->rootCombo->addItems(LISTPART);
+
+    ui->grubBootCombo->clear();
+    // add only disks
+    if (ui->grubMbrButton->isChecked()) {
+        ui->grubBootCombo->addItems(LISTDISK);
+    } else { // add partition
+        ui->grubBootCombo->addItems(LISTPART);
+    }
+
+}
+
+void mxbootrepair::mbrOrRoot() {
+    ui->grubBootCombo->clear();
+    // add only disks
+    if (ui->grubMbrButton->isChecked()) {
+        ui->grubBootCombo->addItems(LISTDISK);
+    // add partitions
+    } else {
+        ui->grubBootCombo->addItems(LISTPART);
+    }
 }
 
 //// slots ////
@@ -237,7 +282,7 @@ void mxbootrepair::onStdoutAvailable() {
 
 // repopulate combo when grubRootButton is toggled
 void mxbootrepair::on_grubRootButton_toggled() {
-    addDevToCombo();
+    mbrOrRoot();
 }
 
 // OK button clicked
@@ -250,6 +295,8 @@ void mxbootrepair::on_buttonOk_clicked() {
             ui->bootMethodGroup->setTitle("Select Boot Method");
             ui->grubInsLabel->setText("Install on:");
             ui->grubRootButton->setText("root");
+            ui->rootLabel->show();
+            ui->rootCombo->show();
         // Repair button selected
         } else if (ui->repairRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
@@ -305,7 +352,7 @@ void mxbootrepair::on_buttonOk_clicked() {
 void mxbootrepair::on_buttonAbout_clicked() {
     QMessageBox msgBox(QMessageBox::NoIcon,
                        tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
-                       tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">MX14+git20140418</p><p align=\"center\"><h3>" +
+                       tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">MX14+git20140502</p><p align=\"center\"><h3>" +
                        tr("Simple boot repair program for antiX MX") + "</h3></p><p align=\"center\"><a href=\"http://www.mepiscommunity.org/mx\">http://www.mepiscommunity.org/mx</a><br /></p><p align=\"center\">" +
                        tr("Copyright (c) antiX") + "<br /><br /></p>", 0, this);
     msgBox.addButton(tr("License"), QMessageBox::AcceptRole);

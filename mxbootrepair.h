@@ -48,7 +48,8 @@ public:
     QString getCmdOut(QString cmd);
     void refresh();
     void displaySite(QString site);
-    void addDevToCombo();
+    void addDevToList();
+    void mbrOrRoot();
 
     void reinstallGRUB();
     void repairGRUB();

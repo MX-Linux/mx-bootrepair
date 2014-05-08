@@ -27,9 +27,7 @@
 
 #include <QWebView>
 #include <QFileDialog>
-
-QStringList LISTDISK;
-QStringList LISTPART;
+ 
 
 mxbootrepair::mxbootrepair(QWidget *parent) :
     QDialog(parent),

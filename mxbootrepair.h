@@ -41,6 +41,7 @@ protected:
     QProcess *proc;
     QTimer *timer;
 
+
 public:
     explicit mxbootrepair(QWidget *parent = 0);
     ~mxbootrepair();
@@ -72,6 +73,8 @@ public slots:
 
 private:
     Ui::mxbootrepair *ui;
+    QStringList LISTDISK;
+    QStringList LISTPART;
 
 };
 

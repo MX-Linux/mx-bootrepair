@@ -239,22 +239,22 @@ void mxbootrepair::addDevToList() {
     proc->start(cmd);
     proc->waitForFinished();
     QString out = proc->readAllStandardOutput();
-    LISTDISK = out.split("\n", QString::SkipEmptyParts);
+    ListDisk = out.split("\n", QString::SkipEmptyParts);
 
     cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 | grep '[h,s,v].[a-z][0-9]' | sort\"";
     proc->start(cmd);
     proc->waitForFinished();
     out = proc->readAllStandardOutput();
-    LISTPART = out.split("\n", QString::SkipEmptyParts);
+    ListPart = out.split("\n", QString::SkipEmptyParts);
     ui->rootCombo->clear();
-    ui->rootCombo->addItems(LISTPART);
+    ui->rootCombo->addItems(ListPart);
 
     ui->grubBootCombo->clear();
     // add only disks
     if (ui->grubMbrButton->isChecked()) {
-        ui->grubBootCombo->addItems(LISTDISK);
+        ui->grubBootCombo->addItems(ListDisk);
     } else { // add partition
-        ui->grubBootCombo->addItems(LISTPART);
+        ui->grubBootCombo->addItems(ListPart);
     }
 
 }
@@ -263,10 +263,10 @@ void mxbootrepair::mbrOrRoot() {
     ui->grubBootCombo->clear();
     // add only disks
     if (ui->grubMbrButton->isChecked()) {
-        ui->grubBootCombo->addItems(LISTDISK);
+        ui->grubBootCombo->addItems(ListDisk);
     // add partitions
     } else {
-        ui->grubBootCombo->addItems(LISTPART);
+        ui->grubBootCombo->addItems(ListPart);
     }
 }
 
@@ -350,7 +350,7 @@ void mxbootrepair::on_buttonOk_clicked() {
 void mxbootrepair::on_buttonAbout_clicked() {
     QMessageBox msgBox(QMessageBox::NoIcon,
                        tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
-                       tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">MX14+git20140502</p><p align=\"center\"><h3>" +
+                       tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">MX14+git20140601</p><p align=\"center\"><h3>" +
                        tr("Simple boot repair program for antiX MX") + "</h3></p><p align=\"center\"><a href=\"http://www.mepiscommunity.org/mx\">http://www.mepiscommunity.org/mx</a><br /></p><p align=\"center\">" +
                        tr("Copyright (c) antiX") + "<br /><br /></p>", 0, this);
     msgBox.addButton(tr("License"), QMessageBox::AcceptRole);

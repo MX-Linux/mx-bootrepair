@@ -24,10 +24,10 @@
 
 #include <QApplication>
 #include "mxbootrepair.h"
-#include <qtranslator.h>
-#include <qlocale.h>
-#include <unistd.h>
+#include <QTranslator>
+#include <QLocale>
 #include <QIcon>
+#include <unistd.h>
 
 int main(int argc, char *argv[])
 {

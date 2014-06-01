@@ -73,8 +73,8 @@ public slots:
 
 private:
     Ui::mxbootrepair *ui;
-    QStringList LISTDISK;
-    QStringList LISTPART;
+    QStringList ListDisk;
+    QStringList ListPart;
 
 };
 

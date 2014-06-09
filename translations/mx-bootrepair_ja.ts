@@ -1,222 +1,222 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ja_JP">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ja" version="2.0">
 <context>
     <name>QApplication</name>
     <message>
-        <location filename="../main.cpp" line="54"/>
+        <location filename="main.cpp" line="54"/>
         <source>You must run this program as root.</source>
-        <translation type="unfinished"></translation>
+        <translation>このプログラムは root で実行する必要があります。</translation>
     </message>
 </context>
 <context>
     <name>mxbootrepair</name>
     <message>
-        <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="299"/>
+        <location filename="mxbootrepair.ui" line="14"/>
+        <location filename="mxbootrepair.cpp" line="266"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>MX Boot Repair</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="43"/>
+        <location filename="mxbootrepair.ui" line="31"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR.</source>
-        <translation type="unfinished"></translation>
+        <translation>MX Boot Repair は、MBR(マスタブートレコード)またはルートパーティションへ GRUB ブートローダを再インストールを行う事ができるユーティリティです。GRUB 設定ファイルの再構築・バックアップ、バック・MBR または PBR の復旧機能の各オプションを提供します。</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="62"/>
+        <location filename="mxbootrepair.ui" line="50"/>
         <source>What would you like to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>どうしますか？</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="74"/>
+        <location filename="mxbootrepair.ui" line="62"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR・PBR のバックアップ (旧ブート形式のみ)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="81"/>
+        <location filename="mxbootrepair.ui" line="69"/>
         <source>Reinstall GRUB bootloader</source>
-        <translation type="unfinished"></translation>
+        <translation>GRUB ブートローダの再インストール</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="91"/>
+        <location filename="mxbootrepair.ui" line="79"/>
         <source>Repair GRUB configuration file</source>
-        <translation type="unfinished"></translation>
+        <translation>GRUB 設定ファイルの再構築</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="98"/>
+        <location filename="mxbootrepair.ui" line="86"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR・PBR をバックアップから復旧 (旧ブート形式のみ)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="118"/>
+        <location filename="mxbootrepair.ui" line="106"/>
         <source>Select Boot Method</source>
-        <translation type="unfinished"></translation>
+        <translation>起動処理の選択</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="171"/>
+        <location filename="mxbootrepair.ui" line="159"/>
         <source>Root (Partition Boot Record)</source>
-        <translation type="unfinished"></translation>
+        <translation>ルート (ブートレコードパーティション)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="174"/>
+        <location filename="mxbootrepair.ui" line="162"/>
         <source>root</source>
-        <translation type="unfinished"></translation>
+        <translation>root</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="196"/>
+        <location filename="mxbootrepair.ui" line="184"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR (マスターブートレコード)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="199"/>
+        <location filename="mxbootrepair.ui" line="187"/>
         <source>MBR</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="202"/>
-        <location filename="../mxbootrepair.ui" line="349"/>
+        <location filename="mxbootrepair.ui" line="190"/>
+        <location filename="mxbootrepair.ui" line="337"/>
         <source>Alt+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+B</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="221"/>
+        <location filename="mxbootrepair.ui" line="209"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>場所:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="243"/>
+        <location filename="mxbootrepair.ui" line="231"/>
         <source>Install on:</source>
-        <translation type="unfinished"></translation>
+        <translation>インストール:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="339"/>
+        <location filename="mxbootrepair.ui" line="327"/>
         <source>About this application</source>
-        <translation type="unfinished"></translation>
+        <translation>このアプリケーションについて</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="342"/>
+        <location filename="mxbootrepair.ui" line="330"/>
         <source>About...</source>
-        <translation type="unfinished"></translation>
+        <translation>About...</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="391"/>
+        <location filename="mxbootrepair.ui" line="379"/>
         <source>Display help </source>
-        <translation type="unfinished"></translation>
+        <translation>ヘルプ表示</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="394"/>
+        <location filename="mxbootrepair.ui" line="382"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>ヘルプ</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="401"/>
+        <location filename="mxbootrepair.ui" line="389"/>
         <source>Alt+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+H</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="414"/>
+        <location filename="mxbootrepair.ui" line="402"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"></translation>
+        <translation>変更を適用</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="417"/>
+        <location filename="mxbootrepair.ui" line="405"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="437"/>
+        <location filename="mxbootrepair.ui" line="425"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"></translation>
+        <translation>変更をキャンセルして終了</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="440"/>
+        <location filename="mxbootrepair.ui" line="428"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="447"/>
+        <location filename="mxbootrepair.ui" line="435"/>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+N</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="140"/>
+        <location filename="mxbootrepair.cpp" line="112"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>注意</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="141"/>
+        <location filename="mxbootrepair.cpp" line="113"/>
         <source>You are going to write the content of </source>
-        <translation type="unfinished"></translation>
+        <translation>コンテンツの書き込み内容:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="141"/>
+        <location filename="mxbootrepair.cpp" line="113"/>
         <source> to </source>
-        <translation type="unfinished"></translation>
+        <translation>→</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="141"/>
+        <location filename="mxbootrepair.cpp" line="113"/>
         <source>
 
 Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+よろしいですか？</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="175"/>
+        <location filename="mxbootrepair.cpp" line="147"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>完了</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="176"/>
+        <location filename="mxbootrepair.cpp" line="148"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>処理が完了しました。&lt;p&gt;&lt;b&gt;MX Boot Repair を終了してよろしいですか？&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="184"/>
-        <location filename="../mxbootrepair.cpp" line="272"/>
-        <location filename="../mxbootrepair.cpp" line="279"/>
+        <location filename="mxbootrepair.cpp" line="156"/>
+        <location filename="mxbootrepair.cpp" line="241"/>
+        <location filename="mxbootrepair.cpp" line="248"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>エラー</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="185"/>
+        <location filename="mxbootrepair.cpp" line="157"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>処理が完了しました。エラーが発生しています。</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="270"/>
+        <location filename="mxbootrepair.cpp" line="239"/>
         <source>Select backup file name</source>
-        <translation type="unfinished"></translation>
+        <translation>バックアップファイル名を選択</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="272"/>
-        <location filename="../mxbootrepair.cpp" line="279"/>
+        <location filename="mxbootrepair.cpp" line="241"/>
+        <location filename="mxbootrepair.cpp" line="248"/>
         <source>No file was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル選択なし</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="277"/>
+        <location filename="mxbootrepair.cpp" line="246"/>
         <source>Select MBR or PBR backup file</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR・PBR のバックアップファイルを選択</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="298"/>
+        <location filename="mxbootrepair.cpp" line="265"/>
         <source>About MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>MX Boot Repair について</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="300"/>
+        <location filename="mxbootrepair.cpp" line="267"/>
         <source>Simple boot repair program for antiX MX</source>
-        <translation type="unfinished"></translation>
+        <translation>antiX・MX のシンプル起動(ブート)修理プログラム</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="301"/>
+        <location filename="mxbootrepair.cpp" line="268"/>
         <source>Copyright (c) antiX</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (c) antiX</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="302"/>
+        <location filename="mxbootrepair.cpp" line="269"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>ライセンス</translation>
     </message>
 </context>
 </TS>

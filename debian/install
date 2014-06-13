@@ -1,5 +1,5 @@
 mx-bootrepair 		 usr/sbin
 mx-bootrepair.desktop	         usr/share/applications/mx
-translations/*.qm 	 usr/share/mx-bootrepair/locales
+translations/*.qm 	 usr/share/mx-bootrepair/locale
 mx-bootrepair.png	usr/share/pixmaps/mx
 icons/*                 usr/share/mx-bootrepair/icons

@@ -1,3 +1,9 @@
+mx-bootrepair (0.3mx140+3) mx; urgency=low
+
+  * update languages
+
+ -- Adrian <adrian@mxlinux.org>  Tue, 17 Jun 2014 13:40:20 -0400
+
 mx-bootrepair (0.3mx140+2) mx; urgency=low
 
   * update grub.cfg another partitions

@@ -1,3 +1,9 @@
+mx-bootrepair (0.14.1mx141+3) mx; urgency=low
+
+  * minor changes
+
+ -- Adrian <adrian@mxlinux.org>  Wed, 25 Jun 2014 10:10:58 -0400
+
 mx-bootrepair (0.14.1mx141+2) mx; urgency=low
 
   * update languages

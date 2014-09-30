@@ -10,6 +10,6 @@ Vcs-Git: git://github.com/AdrianTM/mx-bootrepair
 
 Package: mx-bootrepair
 Architecture: any
-Depends: ${misc:Depends}, ${shlib:Depends}, grub-pc
+Depends: ${misc:Depends}, ${shlibs:Depends}, grub-pc
 Description: MX program to help with repair of boot problems.
  MX-bootrepair helps with the repair of boot problems.

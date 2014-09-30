@@ -1,3 +1,9 @@
+mx-bootrepair (14.2+1) mx; urgency=medium
+
+  * fixed dependency typo, chaged version format
+
+ -- Adrian <adrian@mxlinux.org>  Tue, 30 Sep 2014 19:25:25 -0400
+
 mx-bootrepair (0.14.1mx141+3) mx; urgency=low
 
   * minor changes

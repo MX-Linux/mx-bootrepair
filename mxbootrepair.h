@@ -47,10 +47,12 @@ public:
     ~mxbootrepair();
 
     QString getCmdOut(QString cmd);
+    QString getVersion(QString name);
     void refresh();
     void displaySite(QString site);
     void addDevToList();
     void mbrOrRoot();
+
 
     void reinstallGRUB();
     void repairGRUB();

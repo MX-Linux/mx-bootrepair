@@ -361,13 +361,17 @@ void mxbootrepair::on_buttonAbout_clicked() {
                        tr("Copyright (c) antiX") + "<br /><br /></p>", 0, this);
     msgBox.addButton(tr("License"), QMessageBox::AcceptRole);
     msgBox.addButton(tr("Cancel"), QMessageBox::DestructiveRole);
-    if (msgBox.exec() == QMessageBox::AcceptRole)
-        system("mx-viewer file:///usr/local/share/doc/mx-bootrepair-license.html 'MX Boot Repair License'");
+    if (msgBox.exec() == QMessageBox::AcceptRole) {
+        QString cmd = QString("mx-viewer file:///usr/local/share/doc/mx-bootrepair-license.html %1").arg(tr("\'MX Boot Repair License\'"));
+        system(cmd.toAscii());
+      }
 }
 
 
 // Help button clicked
 void mxbootrepair::on_buttonHelp_clicked() {
-    system("mx-viewer file:///usr/local/share/doc/mxapps.html#bootrepair 'MX Boot Repair Help'");
+    QString cmd = QString("mx-viewer file:///usr/local/share/doc/mxapps.html#bootrepair %1").arg(tr("\'MX Boot Repair Help\'"));
+    system(cmd.toAscii());
 }
+
 

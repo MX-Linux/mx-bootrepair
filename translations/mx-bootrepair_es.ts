@@ -241,6 +241,16 @@ Please double-check the selected location.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../mxbootrepair.cpp" line="365"/>
+        <source>&apos;MX Boot Repair License&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.cpp" line="373"/>
+        <source>&apos;MX Boot Repair Help&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Simple boot repair program for antiX MX</source>
         <translation type="obsolete">Un programa sencillo para reparar inicialización</translation>
     </message>

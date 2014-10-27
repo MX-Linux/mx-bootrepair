@@ -49,7 +49,7 @@ QString mxbootrepair::getCmdOut(QString cmd) {
     proc->start(cmd);
     proc->setReadChannel(QProcess::StandardOutput);
     proc->setReadChannelMode(QProcess::MergedChannels);
-    proc->waitForFinished();
+    proc->waitForFinished(-1);
     return proc->readAllStandardOutput().trimmed();
 }
 

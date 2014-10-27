@@ -25,7 +25,6 @@
 #include "mxbootrepair.h"
 #include "ui_mxbootrepair.h"
 
-#include <QWebView>
 #include <QFileDialog>
  
 
@@ -363,22 +362,12 @@ void mxbootrepair::on_buttonAbout_clicked() {
     msgBox.addButton(tr("License"), QMessageBox::AcceptRole);
     msgBox.addButton(tr("Cancel"), QMessageBox::DestructiveRole);
     if (msgBox.exec() == QMessageBox::AcceptRole)
-        displaySite("file:///usr/local/share/doc/mx-bootrepair-license.html");
+        system("mx-viewer file:///usr/local/share/doc/mx-bootrepair-license.html 'MX Boot Repair License'");
 }
 
 
 // Help button clicked
 void mxbootrepair::on_buttonHelp_clicked() {
-    displaySite("file:///usr/local/share/doc/mxapps.html#bootrepair");
+    system("mx-viewer file:///usr/local/share/doc/mxapps.html#bootrepair 'MX Boot Repair Help'");
 }
 
-// pop up a window and display website
-void mxbootrepair::displaySite(QString site) {
-    QWidget *window = new QWidget(this, Qt::Dialog);
-    window->setWindowTitle(this->windowTitle());
-    window->resize(800, 500);
-    QWebView *webview = new QWebView(window);
-    webview->load(QUrl(site));
-    webview->show();
-    window->show();
-}

@@ -49,7 +49,6 @@ public:
     QString getCmdOut(QString cmd);
     QString getVersion(QString name);
     void refresh();
-    void displaySite(QString site);
     void addDevToList();
     void mbrOrRoot();
 

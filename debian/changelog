@@ -1,4 +1,10 @@
-mx-bootrepair (14.2+1) mx; urgency=medium
+mx-bootrepair (14.3+1) mx; urgency=low
+
+  * retranslated stings, ready for point release
+
+ -- Adrian <adrian@mxlinux.org>  Thu, 06 Nov 2014 00:43:31 -0500
+
+mx-bootrepair (14.2+1) mx; urgency=low
 
   * fixed dependency typo, chaged version format
 

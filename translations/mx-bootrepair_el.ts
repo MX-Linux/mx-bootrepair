@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="el">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="el" version="2.0">
 <context>
     <name>QApplication</name>
     <message>
         <location filename="../main.cpp" line="54"/>
         <source>You must run this program as root.</source>
-        <translation>Πρέπει να τρέξετε αυτή την εφασρμογή ως Root.</translation>
+        <translation>Πρέπει να τρέξετε αυτή την εφαρμογή ως Root.</translation>
     </message>
 </context>
 <context>
@@ -53,16 +51,6 @@
         <translation>Επιλεξτε Μέθοδο Εγκατάστασης </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="160"/>
-        <source>Root (Partition Boot Record)</source>
-        <translation>Root (Partition Boot Record) </translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.ui" line="163"/>
-        <source>root</source>
-        <translation>root</translation>
-    </message>
-    <message>
         <location filename="../mxbootrepair.ui" line="132"/>
         <source>Master Boot Record</source>
         <translation>Master Boot Record </translation>
@@ -79,9 +67,14 @@
         <translation>Alt+B</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="233"/>
-        <source>Location:</source>
-        <translation>Τοποθεσία: </translation>
+        <location filename="../mxbootrepair.ui" line="160"/>
+        <source>Root (Partition Boot Record)</source>
+        <translation>Root (Partition Boot Record) </translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.ui" line="163"/>
+        <source>root</source>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="214"/>
@@ -89,9 +82,14 @@
         <translation>Να γίνει εγκατάσταση στο:</translation>
     </message>
     <message>
+        <location filename="../mxbootrepair.ui" line="233"/>
+        <source>Location:</source>
+        <translation>Τοποθεσία: </translation>
+    </message>
+    <message>
         <location filename="../mxbootrepair.ui" line="255"/>
         <source>Select /boot location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε την τοποθεσία /boot:</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="367"/>
@@ -145,6 +143,23 @@
         <translation>Alt+N</translation>
     </message>
     <message>
+        <location filename="../mxbootrepair.cpp" line="109"/>
+        <location filename="../mxbootrepair.cpp" line="142"/>
+        <location filename="../mxbootrepair.cpp" line="221"/>
+        <location filename="../mxbootrepair.cpp" line="331"/>
+        <location filename="../mxbootrepair.cpp" line="338"/>
+        <source>Error</source>
+        <translation>Σφάλμα</translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.cpp" line="110"/>
+        <location filename="../mxbootrepair.cpp" line="143"/>
+        <source>Could not set up chroot environment.
+Please double-check the selected location.</source>
+        <translation>Δεν μπορούσε να δημιουργήσει το chroot.
+Ελέγξτε ξανά την επιλεγμένη τοποθεσία.</translation>
+    </message>
+    <message>
         <location filename="../mxbootrepair.cpp" line="177"/>
         <source>Warning</source>
         <translation>Προειδοποίηση </translation>
@@ -169,6 +184,18 @@ Are you sure?</source>
 </translation>
     </message>
     <message>
+        <location filename="../mxbootrepair.cpp" line="179"/>
+        <location filename="../mxbootrepair.cpp" line="214"/>
+        <source>Yes</source>
+        <translation>Ναι</translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.cpp" line="179"/>
+        <location filename="../mxbootrepair.cpp" line="214"/>
+        <source>No</source>
+        <translation>Όχι</translation>
+    </message>
+    <message>
         <location filename="../mxbootrepair.cpp" line="212"/>
         <source>Success</source>
         <translation>Επιτυχία!</translation>
@@ -177,34 +204,6 @@ Are you sure?</source>
         <location filename="../mxbootrepair.cpp" line="213"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation>Η διαδικασία τελείωσε με επιτυχία. &lt;p&gt;&lt;b&gt;Θέλετε να βγείτε;&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.cpp" line="109"/>
-        <location filename="../mxbootrepair.cpp" line="142"/>
-        <location filename="../mxbootrepair.cpp" line="221"/>
-        <location filename="../mxbootrepair.cpp" line="331"/>
-        <location filename="../mxbootrepair.cpp" line="338"/>
-        <source>Error</source>
-        <translation>Σφάλμα</translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.cpp" line="110"/>
-        <location filename="../mxbootrepair.cpp" line="143"/>
-        <source>Could not set up chroot environment.
-Please double-check the selected location.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.cpp" line="179"/>
-        <location filename="../mxbootrepair.cpp" line="214"/>
-        <source>Yes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.cpp" line="179"/>
-        <location filename="../mxbootrepair.cpp" line="214"/>
-        <source>No</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="222"/>
@@ -235,26 +234,12 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mxbootrepair.cpp" line="358"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>Έκδοση:</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="360"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.cpp" line="365"/>
-        <source>&apos;MX Boot Repair License&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.cpp" line="373"/>
-        <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Simple boot repair program for antiX MX</source>
-        <translation type="obsolete">Απλή Επισκευή Εκκίνησης</translation>
+        <translation>Απλή Επισκευή Εκκίνησης</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="361"/>
@@ -265,6 +250,16 @@ Please double-check the selected location.</source>
         <location filename="../mxbootrepair.cpp" line="362"/>
         <source>License</source>
         <translation>Άδεια</translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.cpp" line="365"/>
+        <source>&apos;MX Boot Repair License&apos;</source>
+        <translation>Αδεια Επισκευή Εκκίνησης του MX </translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.cpp" line="373"/>
+        <source>&apos;MX Boot Repair Help&apos;</source>
+        <translation>Βοήθεια Επισκευή Εκκίνησης του MX </translation>
     </message>
 </context>
 </TS>

@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=MX Boot Repair
+Name[ca]=MX Boot Repair
 Name[de]=MX Bootreparatur
 Name[el]=Επισκευή Εκκίνησης του MX
 Name[es]=MX Reparar Inicialización
@@ -9,6 +10,7 @@ Name[ja]=MX 起動処理の修正
 Name[nl]=MX Boot Reparatie
 Name[sv]=MX Boot-reparation
 Comment=Simple Boot Repair
+Comment[ca]=Reparació d'arrencada
 Comment[de]=einfache boot Reparatur
 Comment[el]=Απλή Επισκευή Εκκίνησης
 Comment[es]=Reparación de Inicialización

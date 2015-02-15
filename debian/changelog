@@ -1,4 +1,10 @@
-mx-bootrepair (15.1) UNRELEASED; urgency=medium
+mx-bootrepair (15.2) mx; urgency=medium
+
+  * added new help URL
+
+ -- Adrian <adrian@mxlinux.org>  Sun, 15 Feb 2015 10:24:40 -0500
+
+mx-bootrepair (15.1) mx; urgency=medium
 
   * added Japanese and Catalan to .desktop
 

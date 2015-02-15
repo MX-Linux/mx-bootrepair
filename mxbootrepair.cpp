@@ -26,7 +26,7 @@
 #include "ui_mxbootrepair.h"
 
 #include <QFileDialog>
- 
+
 
 mxbootrepair::mxbootrepair(QWidget *parent) :
     QDialog(parent),
@@ -370,7 +370,7 @@ void mxbootrepair::on_buttonAbout_clicked() {
 
 // Help button clicked
 void mxbootrepair::on_buttonHelp_clicked() {
-    QString cmd = QString("mx-viewer file:///usr/local/share/doc/mxapps.html#bootrepair %1").arg(tr("\'MX Boot Repair Help\'"));
+    QString cmd = QString("mx-viewer http://www.mepiscommunity.org/public_html/user_manual_mx15/mxum.html#bootrepair %1").arg(tr("\'MX Boot Repair Help\'"));
     system(cmd.toAscii());
 }
 

@@ -6,21 +6,19 @@
  * Authors: Adrian
  *          MEPIS Community <http://forum.mepiscommunity.org>
  *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
+ * MX Tools is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
- *****************************************************************************/
-
+ * You should have received a copy of the GNU General Public License
+ * along with MX Boot Repair.  If not, see <http://www.gnu.org/licenses/>.
+ **********************************************************************/
 
 #include "mxbootrepair.h"
 #include "ui_mxbootrepair.h"
@@ -41,7 +39,6 @@ mxbootrepair::~mxbootrepair()
 {
     delete ui;
 }
-
 
 // Util function
 QString mxbootrepair::getCmdOut(QString cmd) {
@@ -82,7 +79,6 @@ void mxbootrepair::refresh() {
     ui->buttonCancel->setEnabled(true);
     setCursor(QCursor(Qt::ArrowCursor));
 }
-
 
 void mxbootrepair::reinstallGRUB() {
     QString cmd;
@@ -237,7 +233,6 @@ void mxbootrepair::setConnections(QTimer* timer, QProcess* proc) {
     connect(proc, SIGNAL(readyReadStandardOutput()), this, SLOT(onStdoutAvailable()));
 }
 
-
 // add list of devices to grubBootCombo
 void mxbootrepair::addDevToList() {
     QString cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 | grep '^[h,s,v].[a-z]' | sort\"";
@@ -350,7 +345,6 @@ void mxbootrepair::on_buttonOk_clicked() {
     }
 }
 
-
 // About button clicked
 void mxbootrepair::on_buttonAbout_clicked() {
     QMessageBox msgBox(QMessageBox::NoIcon,
@@ -359,14 +353,13 @@ void mxbootrepair::on_buttonAbout_clicked() {
                        getVersion("mx-bootrepair") + "</p><p align=\"center\"><h3>" +
                        tr("Simple boot repair program for MX Linux") + "</h3></p><p align=\"center\"><a href=\"http://www.mepiscommunity.org/mx\">http://www.mepiscommunity.org/mx</a><br /></p><p align=\"center\">" +
                        tr("Copyright (c) antiX") + "<br /><br /></p>", 0, this);
-    msgBox.addButton(tr("License"), QMessageBox::AcceptRole);
-    msgBox.addButton(tr("Cancel"), QMessageBox::DestructiveRole);
-    if (msgBox.exec() == QMessageBox::AcceptRole) {
+    msgBox.addButton(tr("Cancel"), QMessageBox::AcceptRole); // because we want to display the buttons in reverse order we use counter-intuitive roles.
+    msgBox.addButton(tr("License"), QMessageBox::RejectRole);
+    if (msgBox.exec() == QMessageBox::RejectRole) {
         QString cmd = QString("mx-viewer file:///usr/local/share/doc/mx-bootrepair-license.html %1").arg(tr("\'MX Boot Repair License\'"));
         system(cmd.toAscii());
-      }
+    }
 }
-
 
 // Help button clicked
 void mxbootrepair::on_buttonHelp_clicked() {

@@ -15,14 +15,14 @@ Changes:
  .
    * changed help URL
 Checksums-Sha1: 
- 867c3dcffe8181d7b1ec4659814d0b34fef7ded5 650 mx-bootrepair_15.3mx14.dsc
- 6f4e4740f06a231672a7a6fe6b2465719713e918 24214 mx-bootrepair_15.3mx14.tar.gz
- 2707d13db10196ce2f4d7de069853688b94ba068 41040 mx-bootrepair_15.3mx14_i386.deb
+ 1e8287d5dc19d978303f2a7ca5e840ca08950a42 650 mx-bootrepair_15.3mx14.dsc
+ 53eb9120e326c1f70bbe563819bbd44aba8868e9 24346 mx-bootrepair_15.3mx14.tar.gz
+ a0a109b1683b4e927d22c779e2d445dbbbfea8f4 41042 mx-bootrepair_15.3mx14_i386.deb
 Checksums-Sha256: 
- 46322f645122fd5a2d1ff40660a481eccb2b993fdc3fa8cd612768dccd105c5c 650 mx-bootrepair_15.3mx14.dsc
- 8f902e12d624a7f5551b6a0614f00e0f20e10432f7cbf07b56ea8b6d0019c369 24214 mx-bootrepair_15.3mx14.tar.gz
- 140c160f22e59f7900f3a0998eb302760195d4a5e9ce61a05475d85cba6fe034 41040 mx-bootrepair_15.3mx14_i386.deb
+ d1092ada968b5ee952b1bde7788639b3b83e7862fea0e3da2a5fa1a936f5c1f8 650 mx-bootrepair_15.3mx14.dsc
+ 632d7ffea622f9543353263ed0f1b7f48e061265ff9842df7827f87d2b5bed4a 24346 mx-bootrepair_15.3mx14.tar.gz
+ b78c22a9ec7515ebc388d0f368ce29bfbda9cb9b9d6154776f2c2d58d9988459 41042 mx-bootrepair_15.3mx14_i386.deb
 Files: 
- d0a265a603d70e8ddac86431547278bd 650 admin optional mx-bootrepair_15.3mx14.dsc
- 3a676116afaa052502e4257f11092271 24214 admin optional mx-bootrepair_15.3mx14.tar.gz
- 2161d85487adcdabba361c486bc0354f 41040 admin optional mx-bootrepair_15.3mx14_i386.deb
+ 547aa543a8565361175284ab3add9c45 650 admin optional mx-bootrepair_15.3mx14.dsc
+ d5b74604fdfe5a8aadd0b946d9a69587 24346 admin optional mx-bootrepair_15.3mx14.tar.gz
+ 3c8b36292a95fdb320fc2bfa2524c4c1 41042 admin optional mx-bootrepair_15.3mx14_i386.deb

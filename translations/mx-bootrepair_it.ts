@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="it">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="it" version="2.0">
 <context>
     <name>QApplication</name>
     <message>
@@ -15,12 +13,12 @@
         <location filename="../mxbootrepair.ui" line="20"/>
         <location filename="../mxbootrepair.cpp" line="352"/>
         <source>MX Boot Repair</source>
-        <translation>MX Riparatore Boot</translation>
+        <translation>MX Ripara Boot</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR.</source>
-        <translation>MX Riparatore Boot è un utility che può essere usata per reinstallare GRUB sul Registro di Inizializzazione del Disco (MBR) o sul  Registro di Inizializzazione della Partizione di root o PBR. Permette di riscrivere il file di configurazione di GRUB e fare il back up e ripristinare MBR o PBR.</translation>
+        <translation>MX Ripara Boot è un utility che può servire per reinstallare GRUB sul Registro di Inizializzazione del Disco (MBR) o sul  Registro di Inizializzazione della Partizione root o PBR. Permette di riscrivere il file di configurazione di GRUB, fare il back up e ripristinare MBR o PBR.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="58"/>
@@ -35,7 +33,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="77"/>
         <source>Reinstall GRUB bootloader</source>
-        <translation>Reinstallare GRUB: il programma che gestisce l&apos;avvio del computer</translation>
+        <translation>Reinstallare GRUB (il programma che gestisce il boot del computer)</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="87"/>
@@ -55,7 +53,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="132"/>
         <source>Master Boot Record</source>
-        <translation>Master Boot Record cioè registro di inizializzazione del disco</translation>
+        <translation>Master Boot Record</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="135"/>
@@ -76,7 +74,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="163"/>
         <source>root</source>
-        <translation>amministratore</translation>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="214"/>
@@ -96,12 +94,12 @@
     <message>
         <location filename="../mxbootrepair.ui" line="367"/>
         <source>About this application</source>
-        <translation>Riguardo questa applicazione</translation>
+        <translation>Informazioni riguardo questa applicazione</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="370"/>
         <source>About...</source>
-        <translation>Riguardo..</translation>
+        <translation>Info..</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="419"/>
@@ -205,7 +203,7 @@ Sei sicuro?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="209"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Processo ultimato con successo.&lt;p&gt;&lt;b&gt;Vuoi uscire da MX Riparatore Boot?&lt;/b&gt;</translation>
+        <translation>Processo ultimato con successo.&lt;p&gt;&lt;b&gt;Vuoi uscire da MX Ripara Boot?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="218"/>
@@ -231,7 +229,7 @@ Sei sicuro?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="351"/>
         <source>About MX Boot Repair</source>
-        <translation>Riguardo MX Riparatore Boot</translation>
+        <translation>Informazioni su MX Boot Repair</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="352"/>
@@ -256,12 +254,12 @@ Sei sicuro?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="359"/>
         <source>&apos;MX Boot Repair License&apos;</source>
-        <translation>&apos;Licenza MX Riparatore Boot &apos;</translation>
+        <translation>&apos;Licenza MX Ripara Boot &apos;</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="366"/>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation>&apos;Aiuto su MX Riparatore Boot&apos;</translation>
+        <translation>&apos;Aiuto su MX Ripara Boot&apos;</translation>
     </message>
 </context>
 </TS>

@@ -1,10 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pl" version="2.0">
 <context>
     <name>QApplication</name>
     <message>
         <location filename="../main.cpp" line="53"/>
         <source>You must run this program as root.</source>
-        <translation>Diese Anwendung muss als Benutzer &quot;root&quot; ausgeführt werden.</translation>
+        <translation>Musisz uruchomić ten program jako administrator. </translation>
     </message>
 </context>
 <context>
@@ -13,42 +13,42 @@
         <location filename="../mxbootrepair.ui" line="20"/>
         <location filename="../mxbootrepair.cpp" line="352"/>
         <source>MX Boot Repair</source>
-        <translation>MX Boot-Reparatur</translation>
+        <translation>MX Naprawa Rozruchu</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR.</source>
-        <translation>MX Boot-Reparatur ist ein Dienstprogramm, das benutzt werden kann, um den GRUB-Bootloader in dem MBR (Master Boot Record) oder Bootsektor zu restaurieren. Es bietet die Möglichkeit, sowohl die GRUB-Konfigurationsdatei zu rekonstruieren als auch den MBR oder PBR zu sichern und restaurieren.</translation>
+        <translation>MX Naprawa Rozruchu to narzędzie, które możesz wykorzystać do reinstalacji menadżera rozruchu GRUB w sekcji MBR lub głównej partycji rozruchowej. Udostępnia opcję rekonstrukcji konfiguracji GRUB oraz wykonanie i przywrócenie kopii zapasowych sekcji MBR i PBR.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation>Was wollen Sie tun?</translation>
+        <translation>Co chciałbyś zrobić?</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="70"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation>MBR oder PBR sichern (nur Legacy-Boot)</translation>
+        <translation>Wykonaj kopię zapasową MBR lub PBR (tylko stare maszyny)</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="77"/>
         <source>Reinstall GRUB bootloader</source>
-        <translation>Bootloader GRUB neu installieren</translation>
+        <translation>Reinstalacja menadżera rozruchu GRUB</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="87"/>
         <source>Repair GRUB configuration file</source>
-        <translation>Konfigurationsdatei von GRUB reparieren</translation>
+        <translation>Naprawa konfiguracji GRUB</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="94"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation>MBR oder PBR aus Backup wieder herstellen (nur Legacy-Boot)</translation>
+        <translation>Przywróć backup MBR lub PBR</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="114"/>
         <source>Select Boot Method</source>
-        <translation>Boot-Methode auswählen</translation>
+        <translation>Wybierz metodę rozruchu</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="132"/>
@@ -69,47 +69,47 @@
     <message>
         <location filename="../mxbootrepair.ui" line="160"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Root (Bootsektor einer Partition)</translation>
+        <translation>Root (Partycja rozruchowa)</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="163"/>
         <source>root</source>
-        <translation>root</translation>
+        <translation>główna</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="214"/>
         <source>Install on:</source>
-        <translation>Installiere auf:</translation>
+        <translation>Zainstaluj na:</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="233"/>
         <source>Location:</source>
-        <translation>Einsatzort:</translation>
+        <translation>Lokalizacja:</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="255"/>
         <source>Select /boot location:</source>
-        <translation>Boot-Einsatzort auswählen</translation>
+        <translation>Wybierz lokalizację dla /boot:</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="367"/>
         <source>About this application</source>
-        <translation>Über diese Anwendung</translation>
+        <translation>O programie</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="370"/>
         <source>About...</source>
-        <translation>Impressum</translation>
+        <translation>O...</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="419"/>
         <source>Display help </source>
-        <translation>Hilfe anzeigen</translation>
+        <translation>Wyświetl pomoc</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="422"/>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Pomoc</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="429"/>
@@ -119,7 +119,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="442"/>
         <source>Apply any changes</source>
-        <translation>Alle Änderungen akzeptieren</translation>
+        <translation>Zastosuj zmiany</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="445"/>
@@ -129,13 +129,13 @@
     <message>
         <location filename="../mxbootrepair.ui" line="465"/>
         <source>Cancel any changes then quit</source>
-        <translation>Änderungen verwerfen und abbrechen</translation>
+        <translation>Cofnij wszelkie zmiany i wyjdź</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="468"/>
         <location filename="../mxbootrepair.cpp" line="356"/>
         <source>Cancel</source>
-        <translation>Abbrechen</translation>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="475"/>
@@ -149,30 +149,30 @@
         <location filename="../mxbootrepair.cpp" line="326"/>
         <location filename="../mxbootrepair.cpp" line="333"/>
         <source>Error</source>
-        <translation>Fehler</translation>
+        <translation>Błąd</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="106"/>
         <location filename="../mxbootrepair.cpp" line="139"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation>Die chroot-Umgebung konnte nicht eingerichtet werden.
-Bitte prüfen Sie nochmals den ausgewählten Einsatzort.</translation>
+        <translation>Błąd tworzenia środowiska chroot
+Proszę sprawdź wybraną lokalizację docelową.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="173"/>
         <source>Warning</source>
-        <translation>Warnung</translation>
+        <translation>Ostrzeżenie</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="174"/>
         <source>You are going to write the content of </source>
-        <translation>Sie werden den Inhalt der Datei schreiben</translation>
+        <translation>Za chwilę nastąpi zapisanie zawartości </translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="174"/>
         <source> to </source>
-        <translation>in diese Datei</translation>
+        <translation>do</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="174"/>
@@ -181,85 +181,85 @@ Bitte prüfen Sie nochmals den ausgewählten Einsatzort.</translation>
 Are you sure?</source>
         <translation>
 
-Sind Sie sicher?</translation>
+Jesteś pewien?</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="175"/>
         <location filename="../mxbootrepair.cpp" line="210"/>
         <source>Yes</source>
-        <translation>Ja</translation>
+        <translation>Tak</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="175"/>
         <location filename="../mxbootrepair.cpp" line="210"/>
         <source>No</source>
-        <translation>Nein</translation>
+        <translation>Nie</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="208"/>
         <source>Success</source>
-        <translation>Erfolg</translation>
+        <translation>Sukces </translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="209"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Prozess erfolgreich beendet. &lt;p&gt;&lt;b&gt;Wollen Sie MX Boot-Reparatur schliessen?&lt;/b&gt;</translation>
+        <translation>Proces zakończył się sukcesem. &lt;p&gt;Czy chcesz opuścić MX Naprawa rozruchu?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="218"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation>Prozess beendet. Es sind Fehler aufgetreten.</translation>
+        <translation>Proces zakończony z błędami.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="324"/>
         <source>Select backup file name</source>
-        <translation>Wählen Sie den Backup-Dateinamen</translation>
+        <translation>Wybierz plik kopii zapasowej</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="326"/>
         <location filename="../mxbootrepair.cpp" line="333"/>
         <source>No file was selected.</source>
-        <translation>Es wurde keine Datei ausgewählt.</translation>
+        <translation>Nie wybrano pliku.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="331"/>
         <source>Select MBR or PBR backup file</source>
-        <translation>Backup-Datei MBR oder PBR auswählen</translation>
+        <translation>Wybierz plik kopii zapasowej MBR lub PBR</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="351"/>
         <source>About MX Boot Repair</source>
-        <translation>Über MX Boot-Reparatur</translation>
+        <translation>O programie MX Naprawa rozruchu</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="352"/>
         <source>Version: </source>
-        <translation>Version</translation>
+        <translation>Wersja:</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="354"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>Einfaches Boot-Reparatur Program für MX Linux</translation>
+        <translation>Prosty program do naprawy rozruchu dla dystrybucji antiX MX</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="355"/>
         <source>Copyright (c) antiX</source>
-        <translation>Copyright (c) antiX&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</translation>
+        <translation>Copyright (c) antiX </translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="357"/>
         <source>License</source>
-        <translation>Lizenz</translation>
+        <translation>Licencja</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="359"/>
         <source>&apos;MX Boot Repair License&apos;</source>
-        <translation>Lizenz für MX Boot-Reparatur</translation>
+        <translation>&apos;Licencja MX Naprawa rozruchu&apos;</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="366"/>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation>Hilfe für MX Boot-Reparatur</translation>
+        <translation>&apos;Pomoc MX Naprawa rozruchu&apos;</translation>
     </message>
 </context>
 </TS>

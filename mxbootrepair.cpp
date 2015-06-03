@@ -363,7 +363,7 @@ void mxbootrepair::on_buttonAbout_clicked() {
 
 // Help button clicked
 void mxbootrepair::on_buttonHelp_clicked() {
-    QString cmd = QString("mx-viewer http://mepiscommunity.org/doc_mx/bootrepair.html %1").arg(tr("\'MX Boot Repair Help\'"));
+    QString cmd = QString("mx-viewer http://mepiscommunity.org/wiki/help-files/help-mx-boot-repair %1").arg(tr("\'MX Boot Repair Help\'"));
     system(cmd.toAscii());
 }
 

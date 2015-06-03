@@ -15,14 +15,14 @@ Changes:
  .
    * changed documentation URL
 Checksums-Sha1: 
- 43b252435c69a7256080c7e9bc48b5b8573b6c43 650 mx-bootrepair_15.6mx14.dsc
- 3c8bfa269251d89727f105058b5aab76080510a0 25220 mx-bootrepair_15.6mx14.tar.gz
- cc4a4590861bb3dea5b9ad660c6b83a3e116a9a7 41962 mx-bootrepair_15.6mx14_i386.deb
+ 10b7ad6655000b40dfbebf0deb64de3a5167d9a8 650 mx-bootrepair_15.6mx14.dsc
+ 1af7601b07363785c4175ba540df7a749b3a930f 25036 mx-bootrepair_15.6mx14.tar.gz
+ 2482f57d18d50a1c53f7fc94109e419bd93d8e61 41974 mx-bootrepair_15.6mx14_i386.deb
 Checksums-Sha256: 
- 64cd2f59c4634a03f22117e46c750167bb3213b0b1341143a0b43448547b1a80 650 mx-bootrepair_15.6mx14.dsc
- b87ff6dda6ef7e7fd924f2b047c513b224333ed8ebad9aec4b0a3ff635e14204 25220 mx-bootrepair_15.6mx14.tar.gz
- ffa265213070a1595ddfd4ce79604635c7e7d4e0bc6a606abdb2196a579adb90 41962 mx-bootrepair_15.6mx14_i386.deb
+ 1deeac7e9c67d775c48233863cabdb06a193e5f581847158035f0f20a0c81803 650 mx-bootrepair_15.6mx14.dsc
+ 08cace4a273c411afba20e24de1d50d0fa55dbfc2f1cf29afdc768892b29dd10 25036 mx-bootrepair_15.6mx14.tar.gz
+ 1cd885c376549b0d149f37feb95fd05b3f9d546964a9bfa77be3df9846791447 41974 mx-bootrepair_15.6mx14_i386.deb
 Files: 
- 101dcebb5bfca1eb2e49ca0f8b47bc1e 650 admin optional mx-bootrepair_15.6mx14.dsc
- f25076315cd1f5fcfaa40cc2891291c7 25220 admin optional mx-bootrepair_15.6mx14.tar.gz
- 919d878d66846140cb789de728b2ce7b 41962 admin optional mx-bootrepair_15.6mx14_i386.deb
+ fd3e5717ab81ba0738e03ae8f3b5f781 650 admin optional mx-bootrepair_15.6mx14.dsc
+ f44c7161c856d60d501f77b0c093fead 25036 admin optional mx-bootrepair_15.6mx14.tar.gz
+ 528af5052b761e081606dcd79625bdb0 41974 admin optional mx-bootrepair_15.6mx14_i386.deb

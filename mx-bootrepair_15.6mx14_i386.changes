@@ -1,0 +1,28 @@
+Format: 1.8
+Date: Wed, 03 Jun 2015 11:13:39 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source i386
+Version: 15.6mx14
+Distribution: mx
+Urgency: medium
+Maintainer: Steven Pusser (Stevo) <maintainer@mepiscommunity.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description: 
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes: 
+ mx-bootrepair (15.6mx14) mx; urgency=medium
+ .
+   * changed documentation URL
+Checksums-Sha1: 
+ 43b252435c69a7256080c7e9bc48b5b8573b6c43 650 mx-bootrepair_15.6mx14.dsc
+ 3c8bfa269251d89727f105058b5aab76080510a0 25220 mx-bootrepair_15.6mx14.tar.gz
+ cc4a4590861bb3dea5b9ad660c6b83a3e116a9a7 41962 mx-bootrepair_15.6mx14_i386.deb
+Checksums-Sha256: 
+ 64cd2f59c4634a03f22117e46c750167bb3213b0b1341143a0b43448547b1a80 650 mx-bootrepair_15.6mx14.dsc
+ b87ff6dda6ef7e7fd924f2b047c513b224333ed8ebad9aec4b0a3ff635e14204 25220 mx-bootrepair_15.6mx14.tar.gz
+ ffa265213070a1595ddfd4ce79604635c7e7d4e0bc6a606abdb2196a579adb90 41962 mx-bootrepair_15.6mx14_i386.deb
+Files: 
+ 101dcebb5bfca1eb2e49ca0f8b47bc1e 650 admin optional mx-bootrepair_15.6mx14.dsc
+ f25076315cd1f5fcfaa40cc2891291c7 25220 admin optional mx-bootrepair_15.6mx14.tar.gz
+ 919d878d66846140cb789de728b2ce7b 41962 admin optional mx-bootrepair_15.6mx14_i386.deb

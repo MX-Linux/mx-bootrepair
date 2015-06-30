@@ -15,14 +15,14 @@ Changes:
  .
    * changed to qt5
 Checksums-Sha1: 
- 6cc8c19af439746b1b071ee5d6c7af7782437201 650 mx-bootrepair_15.7mx14.dsc
- a09ee93c74add1adc34fe5daeaf5a233ef4b176d 25048 mx-bootrepair_15.7mx14.tar.gz
- 4b4c821ee32ee90558d3d969f4b95a4f1a24ceb3 45656 mx-bootrepair_15.7mx14_i386.deb
+ 4a2d21b1a2aa9dbe82df6ad986c40e0e30b1a436 650 mx-bootrepair_15.7mx14.dsc
+ 67dd4376b3c78e54c0d639b24e873ab9bac9c6f5 25272 mx-bootrepair_15.7mx14.tar.gz
+ 1e1a01292adc7559e22f08e229ce7efee333e5c0 45906 mx-bootrepair_15.7mx14_i386.deb
 Checksums-Sha256: 
- 13ffec54c05957ebc18c2d8febb438945ace2ddf9530dec68f9e08f7b8ee212a 650 mx-bootrepair_15.7mx14.dsc
- 994a81781509793219892fd7f5112d8cc84b70247cc133387f04c114aa1e778d 25048 mx-bootrepair_15.7mx14.tar.gz
- 039f69ed5544925789ea3ead09394150337c3c595a01a1c61b71b55c996448f4 45656 mx-bootrepair_15.7mx14_i386.deb
+ 8b9d5f6d3f4bf9014c027af4abfe2cbe61856d37b2e24fa11dccba14da05ac11 650 mx-bootrepair_15.7mx14.dsc
+ 7111764f10b125f08643f38037d6350a9581c193c06634a2a29acffa2d0f9e33 25272 mx-bootrepair_15.7mx14.tar.gz
+ 7624e3822aafe25d994d1f46a2bf5bb0986902940521ff98b594e659d7fbd4aa 45906 mx-bootrepair_15.7mx14_i386.deb
 Files: 
- 5127e990af909a090bc091ec554bdf27 650 admin optional mx-bootrepair_15.7mx14.dsc
- 0088d8c390f6bba1c043b02711424cf3 25048 admin optional mx-bootrepair_15.7mx14.tar.gz
- 0dbc923b46aebe5cb5265795e52ef3eb 45656 admin optional mx-bootrepair_15.7mx14_i386.deb
+ 17cc5f67837cdb2b40a3a19860c4534a 650 admin optional mx-bootrepair_15.7mx14.dsc
+ 9c8abba28d823c81f5867ab14b3d7c2c 25272 admin optional mx-bootrepair_15.7mx14.tar.gz
+ 591e743cc9b13ed111c41c0cd21754ff 45906 admin optional mx-bootrepair_15.7mx14_i386.deb

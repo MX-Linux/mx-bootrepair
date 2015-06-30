@@ -10,8 +10,8 @@ Build-Depends: qt4-qmake, debhelper (>= 7.0.50~), libqtwebkit-dev
 Package-List: 
  mx-bootrepair deb admin optional
 Checksums-Sha1: 
- ac7ab2e7dc5a71e76ca5e0410b977014a48b169a 36803 mx-bootrepair_15.7mx14.tar.gz
+ 4cea94c0b803e9a0db6906ea8fb3c03d785deb66 36908 mx-bootrepair_15.7mx14.tar.gz
 Checksums-Sha256: 
- f2bbadba48825a68269548a27a7c6bff0c21256ab0110ade03e6d227dde10573 36803 mx-bootrepair_15.7mx14.tar.gz
+ 425fe22856aa834ccbff4e08e083dbba664df1911cd48520faf1c339179beffd 36908 mx-bootrepair_15.7mx14.tar.gz
 Files: 
- 18f9909cf6e0f0aef803dc4b92d3a8ee 36803 mx-bootrepair_15.7mx14.tar.gz
+ c09b7c233d56ad5f197c900759b2597d 36908 mx-bootrepair_15.7mx14.tar.gz

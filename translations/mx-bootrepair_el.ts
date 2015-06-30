@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el">
+<TS version="2.1" language="el">
 <context>
     <name>QApplication</name>
     <message>
@@ -28,119 +28,119 @@
         <translation>Τι θέλατε να κάνετε;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="70"/>
+        <location filename="../mxbootrepair.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
         <translation>Αντίγραφο ασφαλείας MBR ή PBR (κληρονομιά εκκίνησης μόνο)  </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="77"/>
+        <location filename="../mxbootrepair.ui" line="86"/>
         <source>Reinstall GRUB bootloader</source>
         <translation>Επανεγκατάσταση του εκκινητή φόρτωσης GRUB </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="87"/>
+        <location filename="../mxbootrepair.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
         <translation>Επισκευή αρχείο ρυθμίσεων του GRUB </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="94"/>
+        <location filename="../mxbootrepair.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
         <translation>Επαναφορά MBR ή PBR από αντίγραφο ασφαλείας (κληρονομιά εκκίνησης μόνο) </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="114"/>
+        <location filename="../mxbootrepair.ui" line="123"/>
         <source>Select Boot Method</source>
         <translation>Επιλεξτε Μέθοδο Εγκατάστασης </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="132"/>
+        <location filename="../mxbootrepair.ui" line="141"/>
         <source>Master Boot Record</source>
         <translation>Master Boot Record </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="135"/>
+        <location filename="../mxbootrepair.ui" line="144"/>
         <source>MBR</source>
         <translation>MBR</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="138"/>
-        <location filename="../mxbootrepair.ui" line="377"/>
+        <location filename="../mxbootrepair.ui" line="147"/>
+        <location filename="../mxbootrepair.ui" line="401"/>
         <source>Alt+B</source>
         <translation>Alt+B</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="160"/>
+        <location filename="../mxbootrepair.ui" line="169"/>
         <source>Root (Partition Boot Record)</source>
         <translation>Root (Partition Boot Record) </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="163"/>
+        <location filename="../mxbootrepair.ui" line="172"/>
         <source>root</source>
         <translation>root</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="214"/>
+        <location filename="../mxbootrepair.ui" line="223"/>
         <source>Install on:</source>
         <translation>Να γίνει εγκατάσταση στο:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="233"/>
+        <location filename="../mxbootrepair.ui" line="242"/>
         <source>Location:</source>
         <translation>Τοποθεσία: </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="255"/>
+        <location filename="../mxbootrepair.ui" line="264"/>
         <source>Select /boot location:</source>
         <translation>Επιλέξτε την τοποθεσία /boot:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="367"/>
+        <location filename="../mxbootrepair.ui" line="391"/>
         <source>About this application</source>
         <translation>Περί εφαρμογής.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="370"/>
+        <location filename="../mxbootrepair.ui" line="394"/>
         <source>About...</source>
         <translation>Περί</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="419"/>
+        <location filename="../mxbootrepair.ui" line="443"/>
         <source>Display help </source>
         <translation>Δείτε Βοήθεια</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="422"/>
+        <location filename="../mxbootrepair.ui" line="446"/>
         <source>Help</source>
         <translation>Βοήθεια</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="429"/>
+        <location filename="../mxbootrepair.ui" line="453"/>
         <source>Alt+H</source>
         <translation>Alt+H </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="442"/>
+        <location filename="../mxbootrepair.ui" line="466"/>
         <source>Apply any changes</source>
         <translation>Εφαρμόστε τις αλλαγές </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="445"/>
+        <location filename="../mxbootrepair.ui" line="469"/>
         <source>OK</source>
         <translation>Εντάξει</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="465"/>
+        <location filename="../mxbootrepair.ui" line="495"/>
         <source>Cancel any changes then quit</source>
         <translation>Ακύρωση τις αλλαγές και μετά κλείστε</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="468"/>
+        <location filename="../mxbootrepair.ui" line="498"/>
         <location filename="../mxbootrepair.cpp" line="356"/>
         <source>Cancel</source>
         <translation>Ακύρωση</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="475"/>
+        <location filename="../mxbootrepair.ui" line="505"/>
         <source>Alt+N</source>
         <translation>Alt+N</translation>
     </message>

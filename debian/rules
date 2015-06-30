@@ -11,7 +11,7 @@ override_dh_auto_clean:
 	rm -f src/translations/*.qm
 
 override_dh_auto_build:
-	lrelease-qt4 mx-bootrepair.pro
+	lrelease mx-bootrepair.pro
 	dh_auto_build -- $(MAKE_OPTS)
 
 override_dh_auto_install:

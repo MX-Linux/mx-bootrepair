@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de">
+<TS version="2.1" language="de">
 <context>
     <name>QApplication</name>
     <message>
@@ -28,119 +28,119 @@
         <translation>Was wollen Sie tun?</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="70"/>
+        <location filename="../mxbootrepair.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
         <translation>MBR oder PBR sichern (nur Legacy-Boot)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="77"/>
+        <location filename="../mxbootrepair.ui" line="86"/>
         <source>Reinstall GRUB bootloader</source>
         <translation>Bootloader GRUB neu installieren</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="87"/>
+        <location filename="../mxbootrepair.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
         <translation>Konfigurationsdatei von GRUB reparieren</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="94"/>
+        <location filename="../mxbootrepair.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
         <translation>MBR oder PBR aus Backup wieder herstellen (nur Legacy-Boot)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="114"/>
+        <location filename="../mxbootrepair.ui" line="123"/>
         <source>Select Boot Method</source>
         <translation>Boot-Methode auswählen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="132"/>
+        <location filename="../mxbootrepair.ui" line="141"/>
         <source>Master Boot Record</source>
         <translation>Master Boot Record</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="135"/>
+        <location filename="../mxbootrepair.ui" line="144"/>
         <source>MBR</source>
         <translation>MBR</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="138"/>
-        <location filename="../mxbootrepair.ui" line="377"/>
+        <location filename="../mxbootrepair.ui" line="147"/>
+        <location filename="../mxbootrepair.ui" line="401"/>
         <source>Alt+B</source>
         <translation>Alt+B</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="160"/>
+        <location filename="../mxbootrepair.ui" line="169"/>
         <source>Root (Partition Boot Record)</source>
         <translation>Root (Bootsektor einer Partition)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="163"/>
+        <location filename="../mxbootrepair.ui" line="172"/>
         <source>root</source>
         <translation>root</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="214"/>
+        <location filename="../mxbootrepair.ui" line="223"/>
         <source>Install on:</source>
         <translation>Installiere auf:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="233"/>
+        <location filename="../mxbootrepair.ui" line="242"/>
         <source>Location:</source>
         <translation>Einsatzort:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="255"/>
+        <location filename="../mxbootrepair.ui" line="264"/>
         <source>Select /boot location:</source>
         <translation>Boot-Einsatzort auswählen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="367"/>
+        <location filename="../mxbootrepair.ui" line="391"/>
         <source>About this application</source>
         <translation>Über diese Anwendung</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="370"/>
+        <location filename="../mxbootrepair.ui" line="394"/>
         <source>About...</source>
         <translation>Impressum</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="419"/>
+        <location filename="../mxbootrepair.ui" line="443"/>
         <source>Display help </source>
         <translation>Hilfe anzeigen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="422"/>
+        <location filename="../mxbootrepair.ui" line="446"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="429"/>
+        <location filename="../mxbootrepair.ui" line="453"/>
         <source>Alt+H</source>
         <translation>Alt+H</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="442"/>
+        <location filename="../mxbootrepair.ui" line="466"/>
         <source>Apply any changes</source>
         <translation>Alle Änderungen akzeptieren</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="445"/>
+        <location filename="../mxbootrepair.ui" line="469"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="465"/>
+        <location filename="../mxbootrepair.ui" line="495"/>
         <source>Cancel any changes then quit</source>
         <translation>Änderungen verwerfen und abbrechen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="468"/>
+        <location filename="../mxbootrepair.ui" line="498"/>
         <location filename="../mxbootrepair.cpp" line="356"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="475"/>
+        <location filename="../mxbootrepair.ui" line="505"/>
         <source>Alt+N</source>
         <translation>Alt+N</translation>
     </message>

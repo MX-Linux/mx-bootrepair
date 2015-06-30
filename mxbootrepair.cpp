@@ -95,7 +95,7 @@ void mxbootrepair::reinstallGRUB() {
     // create a temp folder and mount dev sys proc
     QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
     cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
-    if (system(cmd.toAscii()) == 0) {
+    if (system(cmd.toUtf8()) == 0) {
         QEventLoop loop;
         connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
         cmd = QString("bash -c \"chroot %1 grub-install --recheck --force /dev/%2\"").arg(path).arg(location);
@@ -112,7 +112,7 @@ void mxbootrepair::reinstallGRUB() {
     }
     // umount and clean temp folder
     cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
-    system(cmd.toAscii());
+    system(cmd.toUtf8());
 }
 
 void mxbootrepair::repairGRUB() {
@@ -128,7 +128,7 @@ void mxbootrepair::repairGRUB() {
     // create a temp folder and mount dev sys proc
     QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
     cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(location).arg(path);
-    if (system(cmd.toAscii()) == 0) {
+    if (system(cmd.toUtf8()) == 0) {
         QEventLoop loop;
         connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
         cmd = QString("bash -c \"chroot %1 update-grub\"").arg(path);
@@ -145,7 +145,7 @@ void mxbootrepair::repairGRUB() {
     }
     // umount and clean temp folder
     cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
-    system(cmd.toAscii());
+    system(cmd.toUtf8());
 }
 
 
@@ -357,14 +357,14 @@ void mxbootrepair::on_buttonAbout_clicked() {
     msgBox.addButton(tr("License"), QMessageBox::RejectRole);
     if (msgBox.exec() == QMessageBox::RejectRole) {
         QString cmd = QString("mx-viewer file:///usr/local/share/doc/mx-bootrepair-license.html %1").arg(tr("\'MX Boot Repair License\'"));
-        system(cmd.toAscii());
+        system(cmd.toUtf8());
     }
 }
 
 // Help button clicked
 void mxbootrepair::on_buttonHelp_clicked() {
     QString cmd = QString("mx-viewer http://mepiscommunity.org/wiki/help-files/help-mx-boot-repair %1").arg(tr("\'MX Boot Repair Help\'"));
-    system(cmd.toAscii());
+    system(cmd.toUtf8());
 }
 
 

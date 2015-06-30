@@ -1,3 +1,9 @@
+mx-bootrepair (15.7mx14) mx; urgency=medium
+
+  * changed to qt5
+
+ -- Adrian <adrian@mxlinux.org>  Tue, 30 Jun 2015 12:15:47 -0400
+
 mx-bootrepair (15.6mx14) mx; urgency=medium
 
   * changed documentation URL

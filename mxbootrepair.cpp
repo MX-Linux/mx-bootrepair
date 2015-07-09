@@ -356,7 +356,7 @@ void mxbootrepair::on_buttonAbout_clicked() {
     msgBox.addButton(tr("Cancel"), QMessageBox::AcceptRole); // because we want to display the buttons in reverse order we use counter-intuitive roles.
     msgBox.addButton(tr("License"), QMessageBox::RejectRole);
     if (msgBox.exec() == QMessageBox::RejectRole) {
-        QString cmd = QString("mx-viewer file:///usr/local/share/doc/mx-bootrepair-license.html %1").arg(tr("\'MX Boot Repair License\'"));
+        QString cmd = QString("mx-viewer http://mepiscommunity.org/wiki/licenses/license-mx-boot-repair %1").arg(tr("\'MX Boot Repair License\'"));
         system(cmd.toUtf8());
     }
 }

@@ -10,8 +10,8 @@ Build-Depends: qt5-qmake, qt5-default, qttools5-dev-tools, debhelper (>= 7.0.50~
 Package-List:
  mx-bootrepair deb admin optional arch=any
 Checksums-Sha1:
- f5e1d90f128ab5fe8c4d4eb1ed60ab07e82eb472 55512 mx-bootrepair_15.7.1mx15.tar.xz
+ 3b6be633b5e613bc06ffe4b62fb7f13be84b74de 104872 mx-bootrepair_15.7.1mx15.tar.xz
 Checksums-Sha256:
- 6ad2da23030b5bf3991cda296c16185e7a10a79c8f26d6a5ed7dd4c14684902a 55512 mx-bootrepair_15.7.1mx15.tar.xz
+ e4f6b867b67d6eca76cfc2e8e45731cfa491da84271bf2be326a370772221fa6 104872 mx-bootrepair_15.7.1mx15.tar.xz
 Files:
- f1d235bb2cfe5aeae668de528430d8dc 55512 mx-bootrepair_15.7.1mx15.tar.xz
+ c7eb764cf62d4bfffb0efd22f78e4dcd 104872 mx-bootrepair_15.7.1mx15.tar.xz

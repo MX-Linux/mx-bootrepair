@@ -15,14 +15,14 @@ Changes:
  .
    * new URL for documentation
 Checksums-Sha1:
- dd9aa6ed2b6e8a41b320c50379b50559313135d7 682 mx-bootrepair_15.7.1mx15.dsc
- 3b6be633b5e613bc06ffe4b62fb7f13be84b74de 104872 mx-bootrepair_15.7.1mx15.tar.xz
- f192f2d2f31c70b3b600877da2949cbabd1d7784 46174 mx-bootrepair_15.7.1mx15_i386.deb
+ 2e7f867413c7e3df23026ef84e5feb3c4cc2dbe5 682 mx-bootrepair_15.7.1mx15.dsc
+ 1adc9192e6cb5f1e12ade2ca2fff93267ea9c083 153940 mx-bootrepair_15.7.1mx15.tar.xz
+ 1c6189753d518cc0da5e1d31e894429f22b41ae7 46186 mx-bootrepair_15.7.1mx15_i386.deb
 Checksums-Sha256:
- 2430d8394f6645bbb75d83dcb2e5e1c4b6ae669ce2efc3557db00d86a71574f9 682 mx-bootrepair_15.7.1mx15.dsc
- e4f6b867b67d6eca76cfc2e8e45731cfa491da84271bf2be326a370772221fa6 104872 mx-bootrepair_15.7.1mx15.tar.xz
- bd360b96d9a0ac1762d9a81b78c1516af53f82be26a2d868948bcdd016517560 46174 mx-bootrepair_15.7.1mx15_i386.deb
+ 17712ed599505f53436e1a10009c05a79510b0bb324c95cb5fde65c8c53977dc 682 mx-bootrepair_15.7.1mx15.dsc
+ c9e2f51a46ff6ee44184579a4562eeb05cedf7b5f1c533c794b7c5d6536a4ae5 153940 mx-bootrepair_15.7.1mx15.tar.xz
+ 01bfb7ba5e312631ca0faadb075b817e728329f6db866f3430b1a6eaa5f689cf 46186 mx-bootrepair_15.7.1mx15_i386.deb
 Files:
- 97b28673ac10532f333ef4c686818559 682 admin optional mx-bootrepair_15.7.1mx15.dsc
- c7eb764cf62d4bfffb0efd22f78e4dcd 104872 admin optional mx-bootrepair_15.7.1mx15.tar.xz
- 46dbc541615350ed728c0c9b6176a16c 46174 admin optional mx-bootrepair_15.7.1mx15_i386.deb
+ 207eb28c2341b4f66807d02457aeeda0 682 admin optional mx-bootrepair_15.7.1mx15.dsc
+ bbba814d9bfb6eb7830d31da6a6b6132 153940 admin optional mx-bootrepair_15.7.1mx15.tar.xz
+ 567fe207044750da2e8296265e754aec 46186 admin optional mx-bootrepair_15.7.1mx15_i386.deb

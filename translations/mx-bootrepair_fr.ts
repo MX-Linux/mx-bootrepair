@@ -135,7 +135,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="498"/>
-        <location filename="../mxbootrepair.cpp" line="356"/>
+        <location filename="../mxbootrepair.cpp" line="357"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
@@ -249,7 +249,7 @@ Etes-vous sûr?</translation>
         <translation>Copyright (c) antiX</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="357"/>
+        <location filename="../mxbootrepair.cpp" line="356"/>
         <source>License</source>
         <translation>License</translation>
     </message>

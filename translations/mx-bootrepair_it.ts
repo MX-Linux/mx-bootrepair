@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="it">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="it" version="2.0">
 <context>
     <name>QApplication</name>
     <message>
@@ -241,7 +239,7 @@ Sei sicuro?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="354"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>Semplice programma di riparazione del boot per MX Linux</translation>
+        <translation>Programma di MX Linux per la riparazione del boot, di facile uso</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="355"/>

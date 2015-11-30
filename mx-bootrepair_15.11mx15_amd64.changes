@@ -1,0 +1,43 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.8
+Date: Mon, 30 Nov 2015 09:28:23 -0500
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 15.11mx15
+Distribution: mx
+Urgency: medium
+Maintainer: Steven Pusser (Stevo) <maintainer@mepiscommunity.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (15.11mx15) mx; urgency=medium
+ .
+   * new translations
+Checksums-Sha1:
+ c2343370f3b99f9f0b9440e0460c5483ef64bb8b 1196 mx-bootrepair_15.11mx15.dsc
+ b5973a4dd8be728e3d322140715f2075e104e2fb 24560 mx-bootrepair_15.11mx15.tar.xz
+ aa75a3f0a5bc663e7f06ff720a494c0b3de94bbc 47058 mx-bootrepair_15.11mx15_amd64.deb
+Checksums-Sha256:
+ e80b3405b2a613d4dbba1cf004e7ff89c5bde252bcdcfa8d515825841664ad10 1196 mx-bootrepair_15.11mx15.dsc
+ b336685488db10b8c25b13eb4df97f4a52ee8eec94e96183bf365666e78a9149 24560 mx-bootrepair_15.11mx15.tar.xz
+ dc0ac3e9620e67d1c1da21254daf8b6bf56c17440a6f8aa37d8d47e2f970ca49 47058 mx-bootrepair_15.11mx15_amd64.deb
+Files:
+ a03844a48b3a6fe338761b9ba4a6de98 1196 admin optional mx-bootrepair_15.11mx15.dsc
+ f33cf40cc5b58f1bbdfb2ee7a24c3c8d 24560 admin optional mx-bootrepair_15.11mx15.tar.xz
+ 7d93f87307932635ad137b82aff75032 47058 admin optional mx-bootrepair_15.11mx15_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJWXNg8AAoJEHCTjHgGee6YRrwH/0guwMNXH0IeoB8T7SLv+jrj
+hnAy+DZ1MjOLoKKvPJiZ/NrFTXd/Ed03BOwWVIEJW7DrtkIW/GQXI6yLd68fUIL7
+vY/je/R6wU3bA68SDMjEaXs2ftwVrEaqW3pYXOFfalD6Iwmxz6Xs0tgx9MaezH5f
+rCbnZJMe5Auwk3C/4kUT0z9jYJ5S80YYsUiMobkQmprnCXCO4XbB/kulXvX88e5P
+iB+Qzkj/oiCJCOv+I5JhfnFUlna6Lb0takqpuQBEqJIMAcMrqyD/1FzpifNMCKvg
+go4J9rlGg60wUNUkjFvjVH5sO6cBY5Qeqd11psn9TaJJQovZc/9fOipqu5lkc/w=
+=q6dl
+-----END PGP SIGNATURE-----

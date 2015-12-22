@@ -13,7 +13,7 @@
     <name>mxbootrepair</name>
     <message>
         <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="352"/>
+        <location filename="../mxbootrepair.cpp" line="353"/>
         <source>MX Boot Repair</source>
         <translation>MX Naprawa Rozruchu</translation>
     </message>
@@ -135,7 +135,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="498"/>
-        <location filename="../mxbootrepair.cpp" line="357"/>
+        <location filename="../mxbootrepair.cpp" line="358"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
@@ -229,37 +229,37 @@ Jesteś pewien?</translation>
         <translation>Wybierz plik kopii zapasowej MBR lub PBR</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="351"/>
+        <location filename="../mxbootrepair.cpp" line="352"/>
         <source>About MX Boot Repair</source>
         <translation>O programie MX Naprawa rozruchu</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="352"/>
+        <location filename="../mxbootrepair.cpp" line="353"/>
         <source>Version: </source>
         <translation>Wersja:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="354"/>
+        <location filename="../mxbootrepair.cpp" line="355"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Prosty program do naprawy rozruchu dla dystrybucji antiX MX</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="355"/>
+        <location filename="../mxbootrepair.cpp" line="356"/>
         <source>Copyright (c) antiX</source>
         <translation>Copyright (c) antiX </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="356"/>
+        <location filename="../mxbootrepair.cpp" line="357"/>
         <source>License</source>
         <translation>Licencja</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="359"/>
+        <location filename="../mxbootrepair.cpp" line="360"/>
         <source>&apos;MX Boot Repair License&apos;</source>
         <translation>&apos;Licencja MX Naprawa rozruchu&apos;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="366"/>
+        <location filename="../mxbootrepair.cpp" line="369"/>
         <source>&apos;MX Boot Repair Help&apos;</source>
         <translation>&apos;Pomoc MX Naprawa rozruchu&apos;</translation>
     </message>

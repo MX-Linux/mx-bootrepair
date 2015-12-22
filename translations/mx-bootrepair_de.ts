@@ -13,7 +13,7 @@
     <name>mxbootrepair</name>
     <message>
         <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="352"/>
+        <location filename="../mxbootrepair.cpp" line="353"/>
         <source>MX Boot Repair</source>
         <translation>MX Boot-Reparatur</translation>
     </message>
@@ -135,7 +135,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="498"/>
-        <location filename="../mxbootrepair.cpp" line="357"/>
+        <location filename="../mxbootrepair.cpp" line="358"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
@@ -229,37 +229,37 @@ Sind Sie sicher?</translation>
         <translation>Backup-Datei MBR oder PBR auswählen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="351"/>
+        <location filename="../mxbootrepair.cpp" line="352"/>
         <source>About MX Boot Repair</source>
         <translation>Über MX Boot-Reparatur</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="352"/>
+        <location filename="../mxbootrepair.cpp" line="353"/>
         <source>Version: </source>
         <translation>Version</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="354"/>
+        <location filename="../mxbootrepair.cpp" line="355"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Einfaches Boot-Reparatur Program für MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="355"/>
+        <location filename="../mxbootrepair.cpp" line="356"/>
         <source>Copyright (c) antiX</source>
         <translation>Copyright (c) antiX&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="356"/>
+        <location filename="../mxbootrepair.cpp" line="357"/>
         <source>License</source>
         <translation>Lizenz</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="359"/>
+        <location filename="../mxbootrepair.cpp" line="360"/>
         <source>&apos;MX Boot Repair License&apos;</source>
         <translation>Lizenz für MX Boot-Reparatur</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="366"/>
+        <location filename="../mxbootrepair.cpp" line="369"/>
         <source>&apos;MX Boot Repair Help&apos;</source>
         <translation>Hilfe für MX Boot-Reparatur</translation>
     </message>

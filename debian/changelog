@@ -1,3 +1,9 @@
+mx-bootrepair (15.12mx15) mx; urgency=medium
+
+  * added --target=i386-pc
+
+ -- Adrian <adrian@mxlinux.org>  Tue, 22 Dec 2015 17:35:55 -0500
+
 mx-bootrepair (15.11mx15) mx; urgency=medium
 
   * new translations

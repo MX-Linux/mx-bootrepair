@@ -98,7 +98,7 @@ void mxbootrepair::reinstallGRUB() {
     if (system(cmd.toUtf8()) == 0) {
         QEventLoop loop;
         connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
-        cmd = QString("bash -c \"chroot %1 grub-install --recheck --force /dev/%2\"").arg(path).arg(location);
+        cmd = QString("bash -c \"chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2\"").arg(path).arg(location);
         proc->start(cmd);
         loop.exec();
     } else {
@@ -347,6 +347,7 @@ void mxbootrepair::on_buttonOk_clicked() {
 
 // About button clicked
 void mxbootrepair::on_buttonAbout_clicked() {
+    this->hide();
     QMessageBox msgBox(QMessageBox::NoIcon,
                        tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
                        tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">" + tr("Version: ") +
@@ -359,12 +360,15 @@ void mxbootrepair::on_buttonAbout_clicked() {
         QString cmd = QString("mx-viewer file:///usr/share/doc/mx-bootrepair/license.html %1").arg(tr("\'MX Boot Repair License\'"));
         system(cmd.toUtf8());
     }
+    this->show();
 }
 
 // Help button clicked
 void mxbootrepair::on_buttonHelp_clicked() {
+    this->hide();
     QString cmd = QString("mx-viewer http://mepiscommunity.org/wiki/help-files/help-mx-boot-repair %1").arg(tr("\'MX Boot Repair Help\'"));
     system(cmd.toUtf8());
+    this->show();
 }
 
 

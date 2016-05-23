@@ -1,3 +1,9 @@
+mx-bootrepair (16.5mx15) mx; urgency=medium
+
+  * new desktop file
+
+ -- dolphinoracle <dolphinoracle@gmail.com>  Sun, 22 May 2016 21:21:35 -0400
+
 mx-bootrepair (15.12mx15) mx; urgency=medium
 
   * added --target=i386-pc

@@ -1,0 +1,28 @@
+Format: 1.8
+Date: Sun, 22 May 2016 21:21:35 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source i386
+Version: 16.5mx15
+Distribution: mx
+Urgency: medium
+Maintainer: Steven Pusser (Stevo) <maintainer@mepiscommunity.org>
+Changed-By: dolphinoracle <dolphinoracle@gmail.com>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (16.5mx15) mx; urgency=medium
+ .
+   * new desktop file
+Checksums-Sha1:
+ a787ad3ae41e7ad891fdc2959f39d0d4e48ad690 674 mx-bootrepair_16.5mx15.dsc
+ bff7046a5d6a7872cec0b8f0e7a15c4808237179 172488 mx-bootrepair_16.5mx15.tar.xz
+ f9aa583a8e29d77016db9f8e300cb156a8ce14ff 47394 mx-bootrepair_16.5mx15_i386.deb
+Checksums-Sha256:
+ 82572e33919d3d2b95215ef0d63786892184bb6e11ca17150d598e7cf912706d 674 mx-bootrepair_16.5mx15.dsc
+ 643a967d5bb2c8c7ba917a3fb25fc97fa0caee7deb09c45864927402510ed25f 172488 mx-bootrepair_16.5mx15.tar.xz
+ d0ef473caa8fb9fbe7b58c4e5e62146fc5006e8d2e547de004635ab858ad5ec4 47394 mx-bootrepair_16.5mx15_i386.deb
+Files:
+ 6885efe08cc3fd7bafade24f75cdee3d 674 admin optional mx-bootrepair_16.5mx15.dsc
+ a36e2d87a484f87c35673d4c49a6bc1e 172488 admin optional mx-bootrepair_16.5mx15.tar.xz
+ c8cf5a3f0e0c96f251677a08e4598405 47394 admin optional mx-bootrepair_16.5mx15_i386.deb

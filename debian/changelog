@@ -1,3 +1,9 @@
+mx-bootrepair (16.6mx15) mx; urgency=medium
+
+  * minor fix
+
+ -- Adrian <adrian@mxlinux.org>  Mon, 06 Jun 2016 17:44:22 -0400
+
 mx-bootrepair (16.5mx15) mx; urgency=medium
 
   * new desktop file

@@ -245,8 +245,12 @@ Sind Sie sicher?</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="356"/>
+        <source>Copyright (c) MX Linux</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Copyright (c) antiX</source>
-        <translation>Copyright (c) antiX&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</translation>
+        <translation type="vanished">Copyright (c) antiX&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="357"/>

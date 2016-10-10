@@ -4,7 +4,7 @@
  * Copyright (C) 2014 MX Authors
  *
  * Authors: Adrian
- *          MEPIS Community <http://forum.mepiscommunity.org>
+ *          MX Linux <http://mxlinux.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -352,8 +352,8 @@ void mxbootrepair::on_buttonAbout_clicked() {
                        tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
                        tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">" + tr("Version: ") +
                        getVersion("mx-bootrepair") + "</p><p align=\"center\"><h3>" +
-                       tr("Simple boot repair program for MX Linux") + "</h3></p><p align=\"center\"><a href=\"http://www.mepiscommunity.org/mx\">http://www.mepiscommunity.org/mx</a><br /></p><p align=\"center\">" +
-                       tr("Copyright (c) antiX") + "<br /><br /></p>", 0, this);
+                       tr("Simple boot repair program for MX Linux") + "</h3></p><p align=\"center\"><a href=\"http://mxlinux.org\">http://mxlinux.org</a><br /></p><p align=\"center\">" +
+                       tr("Copyright (c) MX Linux") + "<br /><br /></p>", 0, this);
     msgBox.addButton(tr("License"), QMessageBox::AcceptRole);
     msgBox.addButton(tr("Cancel"), QMessageBox::RejectRole);
     if (msgBox.exec() == QMessageBox::AcceptRole) {
@@ -366,7 +366,7 @@ void mxbootrepair::on_buttonAbout_clicked() {
 // Help button clicked
 void mxbootrepair::on_buttonHelp_clicked() {
     this->hide();
-    QString cmd = QString("mx-viewer http://mepiscommunity.org/wiki/help-files/help-mx-boot-repair %1").arg(tr("\'MX Boot Repair Help\'"));
+    QString cmd = QString("mx-viewer https://mxlinux.org/wiki/help-files/help-mx-boot-repair %1").arg(tr("\'MX Boot Repair Help\'"));
     system(cmd.toUtf8());
     this->show();
 }

@@ -1,0 +1,40 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.8
+Date: Mon, 10 Oct 2016 10:30:14 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source
+Version: 16.10mx16
+Distribution: mx
+Urgency: medium
+Maintainer: Steven Pusser (Stevo) <maintainer@mepiscommunity.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (16.10mx16) mx; urgency=medium
+ .
+   * changed URLs
+Checksums-Sha1:
+ 669fd097da7879026044e63d58c8d1f43bdab988 1199 mx-bootrepair_16.10mx16.dsc
+ 1f3a55e227d965b87811cac0d10d4cf07cce0585 123852 mx-bootrepair_16.10mx16.tar.xz
+Checksums-Sha256:
+ 6dc3c614491416ef9ec492897420b8f7d93728937fd534ecdc75e9a0d35c05aa 1199 mx-bootrepair_16.10mx16.dsc
+ 3aab0812493d6dd3684561d4b310ffe8a3a8074c47bf4c3b58aefa217ec08715 123852 mx-bootrepair_16.10mx16.tar.xz
+Files:
+ 965be5da3f92109d7cd074df88cd1438 1199 admin optional mx-bootrepair_16.10mx16.dsc
+ b319d77f96a079bfcb314d7bfcb3b290 123852 admin optional mx-bootrepair_16.10mx16.tar.xz
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJX/N80AAoJEHCTjHgGee6YhE0IAJ4Gs7KevVZGxcIdHg3k/FN3
+0sAXxR2UZTIORd3hpoU4fdzDOKn/yMNSa0GAbgZH+zk4Irvhl+lX1ToQ8sXaB6ca
+y03ZaLe0hO1xf1yUC1rzghX83Q+KZEKGifQ/0oO2A7vWY5S96mj8Vpgj73hO03U2
+sAApj306ubheW119upKWMtugExiylI/DOXZ8RntMjcJoQARV3VQRFCtVuP2lo5ea
+R7mmkpKrYQa/w4U5o0e4kFKld0wfLvMOyCpyH2CJ1wxFBxLLszI5JdN3wBUkhzRJ
+dGwlAtElMIyeOj6iPcXz6dyTkyHgTh7NOiH5FhhHzxgqy2zNa7TJAKslizNl9sM=
+=YEPz
+-----END PGP SIGNATURE-----

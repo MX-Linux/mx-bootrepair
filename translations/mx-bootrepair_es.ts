@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
@@ -246,11 +244,7 @@ Are you sure?</source>
     <message>
         <location filename="../mxbootrepair.cpp" line="356"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copyright (c) antiX</source>
-        <translation type="vanished">Derechos de Autor (c) antiX</translation>
+        <translation>Derechos de Autor (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="357"/>

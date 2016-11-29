@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
         <location filename="../main.cpp" line="53"/>
         <source>You must run this program as root.</source>
-        <translation>Vous devez lancer cette application avec les droits root.</translation>
+        <translation>Vous devez lancer cette application avec les droits d&apos;administrateur</translation>
     </message>
 </context>
 <context>
@@ -15,12 +13,12 @@
         <location filename="../mxbootrepair.ui" line="20"/>
         <location filename="../mxbootrepair.cpp" line="353"/>
         <source>MX Boot Repair</source>
-        <translation>MX Boot réparation</translation>
+        <translation>MX Réparation d&apos;amorçage</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR.</source>
-        <translation>MX Boot réparation est un utilitaire qui peut être utilisé pour réinstaller GRUB chargeur d&apos;amorçage sur le MBR (Master Boot Record) ou partition racine. Il offre la possibilité de reconstruire le fichier de configuration de GRUB et de sauvegarder et restaurer le MBR ou PBR.</translation>
+        <translation>MX Réparation d&apos;amorçage est un utilitaire qui peut être utilisé pour réinstaller GRUB, chargeur d&apos;amorçage, sur le MBR (Master Boot Record) ou sur la partition racine. Il offre la possibilité de reconstruire le fichier de configuration de GRUB et de sauvegarder et restaurer le MBR ou PBR.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="58"/>
@@ -30,7 +28,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation>Sauvegarde MBR ou PBR (legacy boot only)</translation>
+        <translation>Sauvegarder le MBR ou PBR (démarrage en mode hérité/legacy uniquement)</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="86"/>
@@ -45,12 +43,12 @@
     <message>
         <location filename="../mxbootrepair.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation>Restaurer le MBR ou PBR de sauvegarde (legacy boot only)</translation>
+        <translation>Restaurer le MBR ou PBR de sauvegarde (démarrage en mode hérité/legacy uniquement)</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="123"/>
         <source>Select Boot Method</source>
-        <translation>Sélectionner une Méthode de Démarrage</translation>
+        <translation>Sélectionner la méthode d&apos;amorçage</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="141"/>
@@ -71,7 +69,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="169"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Root (Partition Boot Record)</translation>
+        <translation>Racine (Partition Boot Record)</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="172"/>
@@ -91,7 +89,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="264"/>
         <source>Select /boot location:</source>
-        <translation>Sélectionner l&apos;emplacement de boot</translation>
+        <translation>Sélectionner l&apos;emplacement de /boot</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="391"/>
@@ -131,7 +129,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="495"/>
         <source>Cancel any changes then quit</source>
-        <translation>Annuler toutes les modifications puis sortir</translation>
+        <translation>Annuler toutes les modifications puis quitter</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="498"/>
@@ -158,8 +156,8 @@
         <location filename="../mxbootrepair.cpp" line="139"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation>Il n&apos;était pas possible d&apos;établir l&apos;envioronment de chroot.
-Veuillez revérifier l&apos;emplacement selectioné</translation>
+        <translation>Impossible d&apos;établir l&apos;environnement chroot.
+Veuillez revérifier l&apos;emplacement sélectionné.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="173"/>
@@ -205,12 +203,12 @@ Etes-vous sûr?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="209"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Processus terminé avec succès. &lt;p&gt;&lt;b&gt; Voulez-vous quitter le MX Boot réparation?&lt;/b&gt;</translation>
+        <translation>Le processus s&apos;est achevé avec succès. &lt;p&gt;&lt;b&gt; Voulez-vous quitter MX Réparation d&apos;amorçage?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="218"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation>Processus terminé. Des erreurs sont survenues.</translation>
+        <translation>Processus terminé. Des erreurs se sont produites.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="324"/>
@@ -226,12 +224,12 @@ Etes-vous sûr?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="331"/>
         <source>Select MBR or PBR backup file</source>
-        <translation>Sélectionnez le fichier de sauvegarde MBR ou PBR</translation>
+        <translation>Sélectionnez le fichier de sauvegarde de MBR ou PBR</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="352"/>
         <source>About MX Boot Repair</source>
-        <translation>à propos de MX Boot Réparation</translation>
+        <translation>à propos de MX Réparation d&apos;amorçage</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="353"/>
@@ -241,7 +239,7 @@ Etes-vous sûr?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="355"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>Simple programme de réparation de boot pour MX Linux </translation>
+        <translation>Simple programme de réparation d&apos;amorçage pour MX Linux </translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="356"/>
@@ -251,17 +249,17 @@ Etes-vous sûr?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="357"/>
         <source>License</source>
-        <translation>License</translation>
+        <translation>Licence</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="360"/>
         <source>&apos;MX Boot Repair License&apos;</source>
-        <translation>Licence de MX Boot réparation</translation>
+        <translation>Licence de MX Réparation d&apos;amorçage</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="369"/>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation>Assistance de MX Boot  réparation</translation>
+        <translation>Assistance de MX Réparation d&apos;amorçage</translation>
     </message>
 </context>
 </TS>

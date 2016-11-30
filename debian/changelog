@@ -1,3 +1,9 @@
+mx-bootrepair (16.11mx16+1) mx; urgency=medium
+
+  * FR translations
+
+ -- Adrian <adrian@mxlinux.org>  Wed, 30 Nov 2016 10:31:08 -0500
+
 mx-bootrepair (16.11mx16) mx; urgency=medium
 
   * new translations

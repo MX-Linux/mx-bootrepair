@@ -42,12 +42,14 @@ HEADERS  += mxbootrepair.h
 FORMS    += mxbootrepair.ui
 
 TRANSLATIONS += translations/mx-bootrepair_ca.ts \
+                translations/mx-bootrepair_cs.ts \
                 translations/mx-bootrepair_de.ts \
                 translations/mx-bootrepair_el.ts \
                 translations/mx-bootrepair_es.ts \
                 translations/mx-bootrepair_fr.ts \
                 translations/mx-bootrepair_it.ts \
                 translations/mx-bootrepair_ja.ts \
+                translations/mx-bootrepair_lt.ts \
                 translations/mx-bootrepair_nl.ts \
                 translations/mx-bootrepair_pl.ts \
                 translations/mx-bootrepair_pt.ts \

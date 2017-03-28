@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="el">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="el" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
@@ -183,7 +181,7 @@ Please double-check the selected location.</source>
 Are you sure?</source>
         <translation>
 
-</translation>
+Είστε σίγουρος?</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="175"/>

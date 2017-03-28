@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
@@ -15,7 +13,7 @@
         <location filename="../mxbootrepair.ui" line="20"/>
         <location filename="../mxbootrepair.cpp" line="353"/>
         <source>MX Boot Repair</source>
-        <translation>MX Reparar Inicialización</translation>
+        <translation>MX Reparar Inicio</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="39"/>

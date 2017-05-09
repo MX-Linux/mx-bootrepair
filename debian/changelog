@@ -1,3 +1,9 @@
+mx-bootrepair (17.5mx16) mx; urgency=medium
+
+  * button icons follow theme choice
+
+ -- Adrian <adrian@mxlinux.org>  Tue, 09 May 2017 14:58:45 -0400
+
 mx-bootrepair (17.3mx16) mx; urgency=medium
 
   * new translations

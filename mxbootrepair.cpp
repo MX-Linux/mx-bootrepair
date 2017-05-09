@@ -25,7 +25,6 @@
 
 #include <QFileDialog>
 
-
 mxbootrepair::mxbootrepair(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::mxbootrepair)
@@ -74,7 +73,9 @@ void mxbootrepair::refresh() {
     ui->rootLabel->hide();
     ui->rootCombo->hide();
     ui->buttonOk->setText("Ok");
-    ui->buttonOk->setIcon(QIcon("/usr/share/mx-bootrepair/icons/dialog-ok.png"));
+    if (ui->buttonOk->icon().isNull()) {
+        ui->buttonOk->setIcon(QIcon(":/icons/dialog-ok.svg"));
+    }
     ui->buttonOk->setEnabled(true);
     ui->buttonCancel->setEnabled(true);
     setCursor(QCursor(Qt::ArrowCursor));

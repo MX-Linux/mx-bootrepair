@@ -1,0 +1,37 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.8
+Date: Tue, 09 May 2017 14:58:45 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: i386
+Version: 17.5mx16
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (17.5mx16) mx; urgency=medium
+ .
+   * button icons follow theme choice
+Checksums-Sha1:
+ 9cc6037dcfdf5eed7d69a68f6cfc293e0e60a7d6 48766 mx-bootrepair_17.5mx16_i386.deb
+Checksums-Sha256:
+ 76e8f2fce5ceb0548099b33f4a9f3ec70dfebd229f6d77dc42769ca289f97196 48766 mx-bootrepair_17.5mx16_i386.deb
+Files:
+ 0ff59e7f18c6dab3d7139978a9f683cf 48766 admin optional mx-bootrepair_17.5mx16_i386.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJZEiG3AAoJEHCTjHgGee6YicYH/jLUpmJ+IASecCaNg8m9Ye1g
+D3PKP+rxbW2sey6uDvUDdSq3O0GT6Pj14hA8HUqvDd0w/RslPoRVlLzj3opTVj+R
+I9dXSWBfcJSmnbH6d9qIXtSc6tDzk/3552sO3FKmISetbZbhIu7jwSLVb6Z8xBhl
+2iM9EKoGPUUVGzby6Ipw7MDJrJMluwg9N+wMgAuYqW8mpeX3Jbg5TT7tTk1KzyOA
+n4DBGCGwIFIHchJB1BQwAkGnuagy7JEBVdyIJYqxV9pKaNyXT4XccoZjvyiFeSb1
+8xXTuMjUFH/APVNN+t4njPy0z5FtNNxvUQRazX3DCzqkx17Xg6QSUaUHDWCpg4E=
+=b/KX
+-----END PGP SIGNATURE-----

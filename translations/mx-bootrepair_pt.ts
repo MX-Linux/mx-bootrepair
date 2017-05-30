@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
@@ -119,16 +117,6 @@
         <translation>Alt+H</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="515"/>
-        <source>Apply any changes</source>
-        <translation>Aplicar alterações</translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.ui" line="518"/>
-        <source>OK</source>
-        <translation>Aceitar</translation>
-    </message>
-    <message>
         <location filename="../mxbootrepair.ui" line="490"/>
         <source>Cancel any changes then quit</source>
         <translation>Cancelar alterações e sair</translation>
@@ -143,6 +131,16 @@
         <location filename="../mxbootrepair.ui" line="499"/>
         <source>Alt+N</source>
         <translation>Alt+N</translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.ui" line="515"/>
+        <source>Apply any changes</source>
+        <translation>Aplicar alterações</translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.ui" line="518"/>
+        <source>OK</source>
+        <translation>Aceitar</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="106"/>

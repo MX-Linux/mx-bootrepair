@@ -1,10 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ja" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sk" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
         <location filename="../main.cpp" line="53"/>
         <source>You must run this program as root.</source>
-        <translation>このプログラムは root で実行する必要があります。</translation>
+        <translation>Tento program musíte spustiť ako root užívateľ.</translation>
     </message>
 </context>
 <context>
@@ -13,47 +13,47 @@
         <location filename="../mxbootrepair.ui" line="20"/>
         <location filename="../mxbootrepair.cpp" line="354"/>
         <source>MX Boot Repair</source>
-        <translation>MX Boot Repair</translation>
+        <translation>MX Oprava zavádzača</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR.</source>
-        <translation>MX Boot Repair は、MBR(マスタブートレコード)またはルートパーティションへ GRUB ブートローダを再インストールを行う事ができるユーティリティです。GRUB 設定ファイルの再構築・バックアップ、バック・MBR または PBR の復旧機能の各オプションを提供します。</translation>
+        <translation>MX Oprava zavádzača je program, ktorý môže byť použitý na preinštalovanie GRUB zavádzača do MBR (Master Boot Record) alebo root oddielu. Tiež umožňuje voľbu opravy nastavení GRUBu a  zálohu a obnovenie MBR alebo PBR.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation>どうしますか？</translation>
+        <translation>Čo si prajete urobiť?</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation>MBR・PBR のバックアップ (旧ブート形式のみ)</translation>
+        <translation>Zálohovať MBR alebo PBR (iba legacy boot)</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="86"/>
         <source>Reinstall GRUB bootloader</source>
-        <translation>GRUB ブートローダの再インストール</translation>
+        <translation>Preinštalovať zavádzač GRUB</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
-        <translation>GRUB 設定ファイルの再構築</translation>
+        <translation>Opraviť konfiguračný súbor GRUBu</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation>MBR・PBR をバックアップから復旧 (旧ブート形式のみ)</translation>
+        <translation>Obnoviť MBR alebo PBR (iba legacy boot)</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="123"/>
         <source>Select Boot Method</source>
-        <translation>起動処理の選択</translation>
+        <translation>Vyberte mód štartu systému</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="141"/>
         <source>Master Boot Record</source>
-        <translation>MBR (マスターブートレコード)</translation>
+        <translation>Master Boot Record</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="144"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="169"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>ルート (ブートレコードパーティション)</translation>
+        <translation>Root (Partition Boot Record)</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="172"/>
@@ -79,37 +79,37 @@
     <message>
         <location filename="../mxbootrepair.ui" line="223"/>
         <source>Install on:</source>
-        <translation>インストール:</translation>
+        <translation>Inštalovať do:</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="242"/>
         <source>Location:</source>
-        <translation>場所:</translation>
+        <translation>Umiestnenie:</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="264"/>
         <source>Select /boot location:</source>
-        <translation>/boot の場所を選択:</translation>
+        <translation>Vyberte umiestnenie /boot:</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="391"/>
         <source>About this application</source>
-        <translation>このアプリケーションについて</translation>
+        <translation>O tejto aplikácii</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="394"/>
         <source>About...</source>
-        <translation>About...</translation>
+        <translation>O Programe</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="444"/>
         <source>Display help </source>
-        <translation>ヘルプ表示</translation>
+        <translation>Zobraziť nápovedu</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="447"/>
         <source>Help</source>
-        <translation>ヘルプ</translation>
+        <translation>Pomocník</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="455"/>
@@ -119,13 +119,13 @@
     <message>
         <location filename="../mxbootrepair.ui" line="490"/>
         <source>Cancel any changes then quit</source>
-        <translation>変更をキャンセルして終了</translation>
+        <translation>Zrušit všetky zmeny a ukončiť</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="493"/>
         <location filename="../mxbootrepair.cpp" line="359"/>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation>Zrušiť</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="499"/>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="515"/>
         <source>Apply any changes</source>
-        <translation>変更を適用</translation>
+        <translation>Použiť všetky zmeny</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="518"/>
@@ -149,30 +149,30 @@
         <location filename="../mxbootrepair.cpp" line="327"/>
         <location filename="../mxbootrepair.cpp" line="334"/>
         <source>Error</source>
-        <translation>エラー</translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="107"/>
         <location filename="../mxbootrepair.cpp" line="140"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation>chroot 環境を準備することができませんでした。
-ダブルクリックで場所を選択して下さい。</translation>
+        <translation>Nebolo možné nastaviť chroot environment.
+Prosím prekontrolujte zvolené umiestnenie.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="174"/>
         <source>Warning</source>
-        <translation>注意</translation>
+        <translation>Upozornenie</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="175"/>
         <source>You are going to write the content of </source>
-        <translation>コンテンツの書き込み内容:</translation>
+        <translation>Chystáte sa zapísať obsah</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="175"/>
         <source> to </source>
-        <translation>→</translation>
+        <translation>do</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="175"/>
@@ -181,65 +181,65 @@ Please double-check the selected location.</source>
 Are you sure?</source>
         <translation>
 
-よろしいですか？</translation>
+Určite?</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="176"/>
         <location filename="../mxbootrepair.cpp" line="211"/>
         <source>Yes</source>
-        <translation>はい</translation>
+        <translation>Ano</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="176"/>
         <location filename="../mxbootrepair.cpp" line="211"/>
         <source>No</source>
-        <translation>いいえ</translation>
+        <translation>Nie</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="209"/>
         <source>Success</source>
-        <translation>完了</translation>
+        <translation>Úspech</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="210"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>処理が完了しました。&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;MX Boot Repair を終了してよろしいですか？&amp;lt;/b&amp;gt;</translation>
+        <translation>Proces bol úspešne dokončený.&lt;p&gt;&lt;b&gt;Ukončiť MX Oprava zavádzača?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="219"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation>処理が完了しました。エラーが発生しています。</translation>
+        <translation>Proces dokončený. Objavili sa chyby.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="325"/>
         <source>Select backup file name</source>
-        <translation>バックアップファイル名を選択</translation>
+        <translation>Zvoľte názov záložného súboru</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="327"/>
         <location filename="../mxbootrepair.cpp" line="334"/>
         <source>No file was selected.</source>
-        <translation>ファイル選択なし</translation>
+        <translation>Nebol vybraný žiadny súbor.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="332"/>
         <source>Select MBR or PBR backup file</source>
-        <translation>MBR・PBR のバックアップファイルを選択</translation>
+        <translation>Zvoľte názov záložného súboru pre MBR alebo PBR</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="353"/>
         <source>About MX Boot Repair</source>
-        <translation>MX Boot Repair について</translation>
+        <translation>O programe MX Oprava zavádzača</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="354"/>
         <source>Version: </source>
-        <translation>Version: </translation>
+        <translation>Verzia:</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="356"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>MX Linux のシンプル起動(ブート)修理プログラム</translation>
+        <translation>Jednoduchá oprava zavádzača pre MX linux</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="357"/>
@@ -249,17 +249,17 @@ Are you sure?</source>
     <message>
         <location filename="../mxbootrepair.cpp" line="358"/>
         <source>License</source>
-        <translation>ライセンス</translation>
+        <translation>Licencia</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="361"/>
         <source>&apos;MX Boot Repair License&apos;</source>
-        <translation>&apos;MX Boot Repair ライセンス&apos;</translation>
+        <translation>&apos;Licencia MX Oprava zavádzača&apos;</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="370"/>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation>&apos;MX Boot Repair ヘルプ&apos;</translation>
+        <translation>&apos;Pomocník MX Oprava zavádzača&apos;</translation>
     </message>
 </context>
 </TS>

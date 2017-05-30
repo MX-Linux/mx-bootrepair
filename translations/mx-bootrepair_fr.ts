@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
@@ -35,7 +33,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="86"/>
         <source>Reinstall GRUB bootloader</source>
-        <translation>Réinstaller GRUB chargeur d&apos;amorçage</translation>
+        <translation>Réinstaller le chargeur d&apos;amorçage GRUB</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="96"/>
@@ -119,16 +117,6 @@
         <translation>Alt+H</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="515"/>
-        <source>Apply any changes</source>
-        <translation>Appliquer les changements</translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.ui" line="518"/>
-        <source>OK</source>
-        <translation>OK</translation>
-    </message>
-    <message>
         <location filename="../mxbootrepair.ui" line="490"/>
         <source>Cancel any changes then quit</source>
         <translation>Annuler toutes les modifications puis quitter</translation>
@@ -143,6 +131,16 @@
         <location filename="../mxbootrepair.ui" line="499"/>
         <source>Alt+N</source>
         <translation>Alt+N</translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.ui" line="515"/>
+        <source>Apply any changes</source>
+        <translation>Appliquer les changements</translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.ui" line="518"/>
+        <source>OK</source>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="106"/>

@@ -100,15 +100,15 @@ void mxbootrepair::installGRUB() {
     connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
 
     // create a temp folder and mount dev sys proc
-    QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
+    QString path = getCmdOut("mktemp -d --tmpdir -p /tmp");
     cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
     if (system(cmd.toUtf8()) == 0) {
-        cmd = QString("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2\"").arg(path).arg(location);
+        cmd = QString("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
         if (ui->grubEspButton->isChecked()) {
-            system("test -d /boot/efi || mkdir /boot/efi");
-            if (system("mount /dev/" + location.toUtf8()  + " /boot/efi") != 0) {
+            system("test -d " + path.toUtf8() + "/boot/efi || mkdir " + path.toUtf8()  + "/boot/efi");
+            if (system("mount /dev/" + location.toUtf8()  + " " + path.toUtf8() + "/boot/efi") != 0) {
                 QMessageBox::critical(this, tr("Error"),
-                                      tr("Cound not mount ") + root + tr(" on /boot/efi"));
+                                      tr("Cound not mount ") + location + tr(" on /boot/efi"));
                 setCursor(QCursor(Qt::ArrowCursor));
                 ui->buttonApply->setEnabled(true);
                 ui->buttonCancel->setEnabled(true);
@@ -121,14 +121,14 @@ void mxbootrepair::installGRUB() {
                 arch = "i386";
             }
             QString release = getCmdOut("lsb_release -r | cut -f2");
-            cmd = QString("grub-install --target=%1-efi --efi-directory=/boot/efi --bootloader-id=MX%2 --recheck\"").arg(arch).arg(release);
+            cmd = QString("grub-install --target=%1-efi --efi-directory=%2/boot/efi --bootloader-id=MX%3 --recheck\"").arg(arch).arg(path).arg(release);
         }
         proc->start(cmd);
         loop.exec();
         // umount and clean temp folder
+        system("mountpoint -q " + path.toUtf8() + "/boot/efi && umount " + path.toUtf8() + "/boot/efi");
         cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
         system(cmd.toUtf8());
-        system("mountpoint -q /boot/efi && umount /boot/efi");
     } else {
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not set up chroot environment.\nPlease double-check the selected location."));

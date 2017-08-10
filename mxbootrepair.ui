@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>515</width>
-    <height>318</height>
+    <height>320</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -29,7 +29,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="startPage">
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -268,8 +268,18 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="3" colspan="2">
-           <widget class="QComboBox" name="rootCombo">
+          <item row="0" column="5">
+           <widget class="QRadioButton" name="grubEspButton">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>ESP</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3" colspan="3">
+           <widget class="QComboBox" name="grubBootCombo">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -284,8 +294,8 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="3" colspan="2">
-           <widget class="QComboBox" name="grubBootCombo">
+          <item row="2" column="3" colspan="3">
+           <widget class="QComboBox" name="rootCombo">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -493,7 +503,9 @@
         <string>Cancel</string>
        </property>
        <property name="icon">
-        <iconset theme="window-close"/>
+        <iconset theme="window-close">
+         <normaloff/>
+        </iconset>
        </property>
        <property name="shortcut">
         <string>Alt+N</string>
@@ -504,7 +516,7 @@
       </widget>
      </item>
      <item row="0" column="6">
-      <widget class="QPushButton" name="buttonOk">
+      <widget class="QPushButton" name="buttonApply">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -515,12 +527,10 @@
         <string>Apply any changes</string>
        </property>
        <property name="text">
-        <string>OK</string>
+        <string>Apply</string>
        </property>
        <property name="icon">
-        <iconset theme="dialog-ok">
-         <normaloff/>
-        </iconset>
+        <iconset theme="dialog-ok"/>
        </property>
        <property name="shortcut">
         <string/>
@@ -553,6 +563,22 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>reinstallRadioButton</tabstop>
+  <tabstop>repairRadioButton</tabstop>
+  <tabstop>bakRadioButton</tabstop>
+  <tabstop>restoreBakRadioButton</tabstop>
+  <tabstop>buttonAbout</tabstop>
+  <tabstop>buttonHelp</tabstop>
+  <tabstop>buttonApply</tabstop>
+  <tabstop>buttonCancel</tabstop>
+  <tabstop>grubMbrButton</tabstop>
+  <tabstop>grubRootButton</tabstop>
+  <tabstop>grubEspButton</tabstop>
+  <tabstop>grubBootCombo</tabstop>
+  <tabstop>rootCombo</tabstop>
+  <tabstop>outputBox</tabstop>
+ </tabstops>
  <resources>
   <include location="images.qrc"/>
  </resources>

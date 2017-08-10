@@ -1,0 +1,43 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.8
+Date: Thu, 10 Aug 2017 01:12:45 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 17.8mx16
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (17.8mx16) mx; urgency=medium
+ .
+   * added ESP installation support
+Checksums-Sha1:
+ 670f0ecea01972c271702b43fd7dde4fe50567d5 1194 mx-bootrepair_17.8mx16.dsc
+ 3af447838ec124f998617148f0574379541d45c9 27140 mx-bootrepair_17.8mx16.tar.xz
+ fce4c514b2fa3641e596e2ccf7cf7b11887d8736 52466 mx-bootrepair_17.8mx16_amd64.deb
+Checksums-Sha256:
+ 7facb1e536679ac965626ffc0b11aac3d7e9779591cecd0f778c0e81ee08217e 1194 mx-bootrepair_17.8mx16.dsc
+ 69202b234c4aea446d8165adfe3c22fe84d31b94cbcf667759513f7e5157f0b9 27140 mx-bootrepair_17.8mx16.tar.xz
+ 49e4e12224fa1547a4733d3e4dcdde39bb544860b1d7bdce5563623ab73c0f1c 52466 mx-bootrepair_17.8mx16_amd64.deb
+Files:
+ 6c9717abb036625aaefbef7e22cf857d 1194 admin optional mx-bootrepair_17.8mx16.dsc
+ e4c5c7fc3680304e627992a5d085ea8e 27140 admin optional mx-bootrepair_17.8mx16.tar.xz
+ c55e28359d9bee7589032372e44e3570 52466 admin optional mx-bootrepair_17.8mx16_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJZi+uFAAoJEHCTjHgGee6YOiEIAMKQKiIimnNfjfzxO0j+qaO7
++kDx81weps0Er93ny8GzZbZWU+fRmxpvPv5OoJR/pLWSD9LuuHqQ/SHqijkMaun3
+G9v2MzITgiwhf3qd8p2NB0MTh8fa88kgx2WS/tknTYn+5JuY9BNDyejHTtxevet7
+JpnCJozpUo9qC6FYx6oMekOXW7/F2Vclg5JCqWGGqolF9aoOmKY5tt/SGkn9zFeX
+pGam4wq2iJpmWaKi6cN+IPeSD6Y3HRDVFPWceQqzbZpgnH94eUGh5zWqgs2tMdKu
+Jetv6bnykKcQ6RcY2cF6BsD2Wx829nJR5LiyiDvQ6yOLe6TD09SzSer6dSsXzgo=
+=FnCn
+-----END PGP SIGNATURE-----

@@ -1,3 +1,9 @@
+mx-bootrepair (17.8mx16) mx; urgency=medium
+
+  * added ESP installation support
+
+ -- Adrian <adrian@mxlinux.org>  Thu, 10 Aug 2017 01:12:45 -0400
+
 mx-bootrepair (17.6mx16) mx; urgency=medium
 
   * updated translations

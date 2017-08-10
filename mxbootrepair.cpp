@@ -24,6 +24,7 @@
 #include "ui_mxbootrepair.h"
 
 #include <QFileDialog>
+#include <QDebug>
 
 mxbootrepair::mxbootrepair(QWidget *parent) :
     QDialog(parent),
@@ -42,7 +43,7 @@ mxbootrepair::~mxbootrepair()
 // Util function
 QString mxbootrepair::getCmdOut(QString cmd) {
     QProcess *proc = new QProcess();
-    proc->start(cmd);
+    proc->start("/bin/bash", QStringList() << "-c" << cmd);
     proc->setReadChannel(QProcess::StandardOutput);
     proc->setReadChannelMode(QProcess::MergedChannels);
     proc->waitForFinished(-1);
@@ -51,7 +52,7 @@ QString mxbootrepair::getCmdOut(QString cmd) {
 
 // Get version of the program
 QString mxbootrepair::getVersion(QString name) {
-    QString cmd = QString("bash -c \"dpkg -l %1 | awk 'NR==6 {print $3}'\"").arg(name);
+    QString cmd = QString("dpkg -l %1 | awk 'NR==6 {print $3}'").arg(name);
     return getCmdOut(cmd);
 }
 
@@ -70,50 +71,76 @@ void mxbootrepair::refresh() {
     ui->grubInsLabel->show();
     ui->grubRootButton->show();
     ui->grubMbrButton->show();
+    ui->grubEspButton->show();
     ui->rootLabel->hide();
     ui->rootCombo->hide();
-    ui->buttonOk->setText("Ok");
-    if (ui->buttonOk->icon().isNull()) {
-        ui->buttonOk->setIcon(QIcon(":/icons/dialog-ok.svg"));
-    }
-    ui->buttonOk->setEnabled(true);
+    ui->buttonApply->setText(tr("Apply"));
+    ui->buttonApply->setIcon(QIcon::fromTheme("dialog-ok"));
+    ui->buttonApply->setEnabled(true);
     ui->buttonCancel->setEnabled(true);
+    ui->rootCombo->setDisabled(false);
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
-void mxbootrepair::reinstallGRUB() {
+void mxbootrepair::installGRUB() {
     QString cmd;
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
-    ui->buttonOk->setEnabled(false);
+    ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
+
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     QString root = QString(ui->rootCombo->currentText()).section(" ", 0, 0);
     QString text = QString("GRUB is being installed on %1 device.").arg(location);
     ui->outputLabel->setText(text);
+
     setConnections(timer, proc);
-    // create a temp folder and mount dev sys proc
-    QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
-    cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
-    if (system(cmd.toUtf8()) == 0) {
-        QEventLoop loop;
-        connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
-        cmd = QString("bash -c \"chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2\"").arg(path).arg(location);
+    QEventLoop loop;
+    connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
+
+    if (ui->grubEspButton->isChecked()) {
+        system("test -d /boot/efi || mkdir /boot/efi");
+        if (system("mount /dev/" + root.toUtf8()  + " /boot/efi") != 0) {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Cound not mount ") + root + tr(" on /boot/efi"));
+            setCursor(QCursor(Qt::ArrowCursor));
+            ui->buttonApply->setEnabled(true);
+            ui->buttonCancel->setEnabled(true);
+            ui->progressBar->hide();
+            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+            return;
+        }
+        QString arch = getCmdOut("arch");
+        if (arch == "i686") { // rename arch to match grub-install target
+            arch = "i386";
+        }
+        QString release = getCmdOut("lsb_release -r | cut -f2");
+        cmd = QString("grub-install --target=%1-efi --efi-directory=/boot/efi --bootloader-id=MX%2 --recheck\"").arg(arch).arg(release);
         proc->start(cmd);
         loop.exec();
-    } else {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
-        setCursor(QCursor(Qt::ArrowCursor));
-        ui->buttonOk->setEnabled(true);
-        ui->buttonCancel->setEnabled(true);
-        ui->progressBar->hide();
-        ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+        system("umount /boot/efi");
+    } else { // non-ESP
+        // create a temp folder and mount dev sys proc
+        QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
+        cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
+        if (system(cmd.toUtf8()) == 0) {
+            cmd = QString("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2\"").arg(path).arg(location);
+            proc->start(cmd);
+            loop.exec();
+            // umount and clean temp folder
+            cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+            system(cmd.toUtf8());
+        } else {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+            setCursor(QCursor(Qt::ArrowCursor));
+            ui->buttonApply->setEnabled(true);
+            ui->buttonCancel->setEnabled(true);
+            ui->progressBar->hide();
+            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+        }
     }
-    // umount and clean temp folder
-    cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
-    system(cmd.toUtf8());
 }
 
 void mxbootrepair::repairGRUB() {
@@ -121,7 +148,7 @@ void mxbootrepair::repairGRUB() {
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
-    ui->buttonOk->setEnabled(false);
+    ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     ui->outputLabel->setText("The GRUB configuration file (grub.cfg) is being rebuild.");
@@ -132,16 +159,17 @@ void mxbootrepair::repairGRUB() {
     if (system(cmd.toUtf8()) == 0) {
         QEventLoop loop;
         connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
-        cmd = QString("bash -c \"chroot %1 update-grub\"").arg(path);
+        cmd = QString("chroot %1 update-grub").arg(path);
         proc->start(cmd);
         loop.exec();
     } else {
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not set up chroot environment.\nPlease double-check the selected location."));
         setCursor(QCursor(Qt::ArrowCursor));
-        ui->buttonOk->setEnabled(true);
+        ui->buttonApply->setEnabled(true);
         ui->buttonCancel->setEnabled(true);
         ui->progressBar->hide();
+
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
     // umount and clean temp folder
@@ -154,7 +182,7 @@ void mxbootrepair::backupBR(QString filename) {
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
-    ui->buttonOk->setEnabled(false);
+    ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     QString text = QString("Backing up MBR or PBR from %1 device.").arg(location);
@@ -164,11 +192,36 @@ void mxbootrepair::backupBR(QString filename) {
     proc->start(cmd);
 }
 
+// try to guess partition to install GRUB
+void mxbootrepair::guessPartition()
+{
+    // find first disk with "Linux filesystem"
+    for (int index = 0; index < ui->grubBootCombo->count(); index++) {
+        QString drive = ui->grubBootCombo->itemText(index);
+        if (system("sgdisk -p /dev/" + drive.section(" ", 0 ,0).toUtf8() + " | grep -q 'Linux filesystem'") == 0) {
+            ui->grubBootCombo->setCurrentIndex(index);
+            break;
+        }
+    }
+    // find first Linux partition
+    for (int index = 0; index < ui->rootCombo->count(); index++) {
+        QString partition = ui->rootCombo->itemText(index);
+        if (system("file -sL /dev/" + partition.section(" ", 0 ,0).toUtf8() + " | grep -q 'Linux '") == 0) {
+            ui->rootCombo->setCurrentIndex(index);
+            break;
+        }
+    }
+    // select the same location by default for GRUB and /boot
+    if (ui->grubRootButton->isChecked()) {
+        ui->grubBootCombo->setCurrentIndex(ui->rootCombo->currentIndex());
+    }
+}
+
 void mxbootrepair::restoreBR(QString filename) {
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
-    ui->buttonOk->setEnabled(false);
+    ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     if (QMessageBox::warning(this, tr("Warning"),
@@ -182,6 +235,22 @@ void mxbootrepair::restoreBR(QString filename) {
     setConnections(timer, proc);
     QString cmd = "dd if=" + filename + " of=/dev/" + location + " bs=446 count=1";
     proc->start(cmd);
+}
+
+// select ESP GUI items
+void mxbootrepair::setEspDefaults()
+{
+    // remove drives that don't have an ESP
+    for (int index = 0; index < ui->grubBootCombo->count(); index++) {
+        QString drive = ui->grubBootCombo->itemText(index);
+        if (system("sgdisk -p /dev/" + drive.section(" ", 0 ,0).toUtf8() + " | grep -q ' EF00 '") != 0) {
+            ui->grubBootCombo->removeItem(index);
+        }
+    }
+    QString drv = "/dev/" + ui->grubBootCombo->currentText().section(" ", 0, 0);
+    ui->grubEspButton->setChecked(true);
+    ui->rootCombo->setCurrentIndex(ui->rootCombo->findText(getCmdOut("partition-info find-esp=" + drv), Qt::MatchContains));
+    ui->rootCombo->setDisabled(true);
 }
 
 
@@ -204,22 +273,19 @@ void mxbootrepair::procDone(int exitCode) {
     ui->progressBar->setValue(100);
     setCursor(QCursor(Qt::ArrowCursor));
     ui->buttonCancel->setEnabled(true);
-    ui->buttonOk->setEnabled(true);
+    ui->buttonApply->setEnabled(true);
     if (exitCode == 0) {
         if (QMessageBox::information(this, tr("Success"),
                                      tr("Process finished with success.<p><b>Do you want to exit MX Boot Repair?</b>"),
                                      tr("Yes"), tr("No")) == 0){
             qApp->exit(0);
-        } else {
-            ui->buttonOk->setText("< Back");
-            ui->buttonOk->setIcon(QIcon());
         }
     } else {
         QMessageBox::critical(this, tr("Error"),
                               tr("Process finished. Errors have occurred."));
-        ui->buttonOk->setText("< Back");
-        ui->buttonOk->setIcon(QIcon());
     }
+    ui->buttonApply->setText(tr("Back"));
+    ui->buttonApply->setIcon(QIcon::fromTheme("go-previous"));
 }
 
 // set proc and timer connections
@@ -260,18 +326,24 @@ void mxbootrepair::addDevToList() {
 
 }
 
-void mxbootrepair::mbrOrRoot() {
+// enabled/disable GUI elements depending on MBR, Root or ESP selection
+void mxbootrepair::targetSelection() {
     ui->grubBootCombo->clear();
+    ui->rootCombo->setEnabled(true);
     // add only disks
     if (ui->grubMbrButton->isChecked()) {
         ui->grubBootCombo->addItems(ListDisk);
-    // add partitions
-    } else {
+        guessPartition();
+    // add partitions if select root
+    } else if (ui->grubRootButton->isChecked()) {
         ui->grubBootCombo->addItems(ListPart);
+        guessPartition();
+    // if Esp is checked, add disks
+    } else {
+        ui->grubBootCombo->addItems(ListDisk);
+        setEspDefaults();
     }
 }
-
-//// slots ////
 
 // update output box on Stdout
 void mxbootrepair::onStdoutAvailable() {
@@ -279,13 +351,8 @@ void mxbootrepair::onStdoutAvailable() {
     ui->outputBox->setPlainText(out);
 }
 
-// repopulate combo when grubRootButton is toggled
-void mxbootrepair::on_grubRootButton_toggled() {
-    mbrOrRoot();
-}
-
-// OK button clicked
-void mxbootrepair::on_buttonOk_clicked() {
+// Apply button clicked
+void mxbootrepair::on_buttonApply_clicked() {
     // on first page
     if (ui->stackedWidget->currentIndex() == 0) {
         // Reinstall button selected
@@ -296,31 +363,38 @@ void mxbootrepair::on_buttonOk_clicked() {
             ui->grubRootButton->setText("root");
             ui->rootLabel->show();
             ui->rootCombo->show();
+
         // Repair button selected
         } else if (ui->repairRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle("Select GRUB location");
             ui->grubInsLabel->hide();
             ui->grubRootButton->hide();
-            ui->grubRootButton->setChecked(true);
             ui->grubMbrButton->hide();
+            ui->grubEspButton->hide();
+            ui->grubRootButton->setChecked(true);
+            on_grubRootButton_clicked();
+
         // Backup button selected
         } else if (ui->bakRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle("Select Item to Back Up");
             ui->grubInsLabel->setText("");
             ui->grubRootButton->setText("PBR");
+            ui->grubEspButton->hide();
         // Restore backup button selected
         } else if (ui->restoreBakRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle("Select Item to Restore");
             ui->grubInsLabel->setText("");
             ui->grubRootButton->setText("PBR");
+            ui->grubEspButton->hide();
         }
+
     // on selection page
     } else if (ui->stackedWidget->currentWidget() == ui->selectionPage) {
         if (ui->reinstallRadioButton->isChecked()) {
-            reinstallGRUB();
+            installGRUB();
         } else if (ui->bakRadioButton->isChecked()) {
             QString filename = QFileDialog::getSaveFileName(this, tr("Select backup file name"));
             if (filename == "") {
@@ -372,4 +446,20 @@ void mxbootrepair::on_buttonHelp_clicked() {
     this->show();
 }
 
+
+
+void mxbootrepair::on_grubMbrButton_clicked()
+{
+    targetSelection();
+}
+
+void mxbootrepair::on_grubRootButton_clicked()
+{
+    targetSelection();
+}
+
+void mxbootrepair::on_grubEspButton_clicked()
+{
+    targetSelection();
+}
 

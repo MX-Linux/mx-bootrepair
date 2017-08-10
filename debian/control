@@ -6,6 +6,8 @@ Build-Depends: qt5-qmake,
 	qt5-default,
 	qttools5-dev-tools,
 	debhelper (>=7.0.50~),
+	partition-info,
+	util-linux
 Standards-Version: 3.9.5
 Vcs-Git: git://github.com/AdrianTM/mx-bootrepair
 

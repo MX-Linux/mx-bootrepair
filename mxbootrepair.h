@@ -47,16 +47,16 @@ public:
 
     QString getCmdOut(QString cmd);
     QString getVersion(QString name);
-    void refresh();
+
     void addDevToList();
-    void mbrOrRoot();
-
-
-    void reinstallGRUB();
-    void repairGRUB();
     void backupBR(QString filename);
+    void guessPartition();
+    void refresh();
+    void installGRUB();
+    void repairGRUB();
     void restoreBR(QString filename);
-
+    void setEspDefaults();
+    void targetSelection();
 
 public slots:
     void procStart();
@@ -65,11 +65,15 @@ public slots:
     void setConnections(QTimer* timer, QProcess* proc);
     void onStdoutAvailable();
 
-    virtual void on_grubRootButton_toggled();
-    virtual void on_buttonOk_clicked();
+    virtual void on_buttonApply_clicked();
     virtual void on_buttonAbout_clicked();
     virtual void on_buttonHelp_clicked();
 
+
+private slots:
+    void on_grubMbrButton_clicked();
+    void on_grubRootButton_clicked();
+    void on_grubEspButton_clicked();
 
 private:
     Ui::mxbootrepair *ui;

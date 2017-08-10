@@ -1,0 +1,37 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.8
+Date: Thu, 10 Aug 2017 01:12:45 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: i386
+Version: 17.8mx16
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (17.8mx16) mx; urgency=medium
+ .
+   * added ESP installation support
+Checksums-Sha1:
+ 370ea83f2dae05be411b5e230cd331c588116880 53950 mx-bootrepair_17.8mx16_i386.deb
+Checksums-Sha256:
+ 36ecf74e2ab40d20670728ba323ac99f8df49cb3f4f9c55c9c191ed266bf4c24 53950 mx-bootrepair_17.8mx16_i386.deb
+Files:
+ e7e1e181cd2b344b6e89619eca3cfd7c 53950 admin optional mx-bootrepair_17.8mx16_i386.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJZjK1dAAoJEHCTjHgGee6Y2RYH/RNW+0sTEcKNZvEnpycDD1ql
+7dVuCddKRini4cwJ5qQexI84mKu2fk3StlLYpyk7l9W9SKtn1IvwjrU0j8fCDAdM
+IDC355j5Vu8E31wMD2hDhU+6ZzN6raMYg7zMbLpK8d0pQqGgvbtiRRTDWAxzctk/
+8s6i6+ofFgnWbWhKCWJ4BV2f5ASOpbFRQvrZPnt3bjUdWpXMtvA0HkmG0qFfbJNS
+GdX/n8U+ETICu55+vzLS1kl0zpluJMwnkxAD2zKgHhKZ+OjkhTHLfG7iWZTPWWQ6
+S2zZnEadV0EFY9mMgPfvYR1zAjHZgSz19IL5TpufBjpWEUTEgZy/dxzqiQG33WI=
+=+VEY
+-----END PGP SIGNATURE-----

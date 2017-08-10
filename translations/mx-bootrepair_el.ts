@@ -13,7 +13,7 @@
     <name>mxbootrepair</name>
     <message>
         <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="435"/>
+        <location filename="../mxbootrepair.cpp" line="446"/>
         <source>MX Boot Repair</source>
         <translation>Επισκευή Εκκίνησης του MX </translation>
     </message>
@@ -150,7 +150,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="506"/>
-        <location filename="../mxbootrepair.cpp" line="440"/>
+        <location filename="../mxbootrepair.cpp" line="451"/>
         <source>Cancel</source>
         <translation>Ακύρωση</translation>
     </message>
@@ -160,52 +160,52 @@
         <translation>Alt+N</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="105"/>
-        <location filename="../mxbootrepair.cpp" line="135"/>
-        <location filename="../mxbootrepair.cpp" line="166"/>
-        <location filename="../mxbootrepair.cpp" line="251"/>
-        <location filename="../mxbootrepair.cpp" line="289"/>
-        <location filename="../mxbootrepair.cpp" line="392"/>
-        <location filename="../mxbootrepair.cpp" line="408"/>
-        <location filename="../mxbootrepair.cpp" line="415"/>
+        <location filename="../mxbootrepair.cpp" line="110"/>
+        <location filename="../mxbootrepair.cpp" line="132"/>
+        <location filename="../mxbootrepair.cpp" line="162"/>
+        <location filename="../mxbootrepair.cpp" line="264"/>
+        <location filename="../mxbootrepair.cpp" line="298"/>
+        <location filename="../mxbootrepair.cpp" line="403"/>
+        <location filename="../mxbootrepair.cpp" line="419"/>
+        <location filename="../mxbootrepair.cpp" line="426"/>
         <source>Error</source>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="106"/>
+        <location filename="../mxbootrepair.cpp" line="111"/>
         <source>Cound not mount </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="106"/>
+        <location filename="../mxbootrepair.cpp" line="111"/>
         <source> on /boot/efi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="136"/>
-        <location filename="../mxbootrepair.cpp" line="167"/>
+        <location filename="../mxbootrepair.cpp" line="133"/>
+        <location filename="../mxbootrepair.cpp" line="163"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation>Δεν μπορούσε να δημιουργήσει το chroot.
 Ελέγξτε ξανά την επιλεγμένη τοποθεσία.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="227"/>
+        <location filename="../mxbootrepair.cpp" line="239"/>
         <source>Warning</source>
         <translation>Προειδοποίηση </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="228"/>
+        <location filename="../mxbootrepair.cpp" line="240"/>
         <source>You are going to write the content of </source>
         <translation>Θα γράψετε το περιεχόμενο της</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="228"/>
+        <location filename="../mxbootrepair.cpp" line="240"/>
         <source> to </source>
         <translation>σε </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="228"/>
+        <location filename="../mxbootrepair.cpp" line="240"/>
         <source>
 
 Are you sure?</source>
@@ -214,91 +214,91 @@ Are you sure?</source>
 Είστε σίγουρος?</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="229"/>
-        <location filename="../mxbootrepair.cpp" line="285"/>
+        <location filename="../mxbootrepair.cpp" line="241"/>
+        <location filename="../mxbootrepair.cpp" line="294"/>
         <source>Yes</source>
         <translation>Ναι</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="229"/>
-        <location filename="../mxbootrepair.cpp" line="285"/>
+        <location filename="../mxbootrepair.cpp" line="241"/>
+        <location filename="../mxbootrepair.cpp" line="294"/>
         <source>No</source>
         <translation>Όχι</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="252"/>
+        <location filename="../mxbootrepair.cpp" line="265"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="283"/>
+        <location filename="../mxbootrepair.cpp" line="292"/>
         <source>Success</source>
         <translation>Επιτυχία!</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="284"/>
+        <location filename="../mxbootrepair.cpp" line="293"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation>Η διαδικασία τελείωσε με επιτυχία. &lt;p&gt;&lt;b&gt;Θέλετε να βγείτε;&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="290"/>
-        <location filename="../mxbootrepair.cpp" line="393"/>
+        <location filename="../mxbootrepair.cpp" line="299"/>
+        <location filename="../mxbootrepair.cpp" line="404"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>Η διαδικασία τελείωσε με λάθη.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="292"/>
+        <location filename="../mxbootrepair.cpp" line="301"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="406"/>
+        <location filename="../mxbootrepair.cpp" line="417"/>
         <source>Select backup file name</source>
         <translation>Επιλέξτε το όνομα του αρχείου αντιγράφου ασφαλείας </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="408"/>
-        <location filename="../mxbootrepair.cpp" line="415"/>
+        <location filename="../mxbootrepair.cpp" line="419"/>
+        <location filename="../mxbootrepair.cpp" line="426"/>
         <source>No file was selected.</source>
         <translation>Δεν επελέγη αρχείο. </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="413"/>
+        <location filename="../mxbootrepair.cpp" line="424"/>
         <source>Select MBR or PBR backup file</source>
         <translation>Επιλέξτε MBR ή PBR αρχείο αντιγράφου ασφαλείας </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="434"/>
+        <location filename="../mxbootrepair.cpp" line="445"/>
         <source>About MX Boot Repair</source>
         <translation>Περί Επισκευή Εκκίνησης του MX </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="435"/>
+        <location filename="../mxbootrepair.cpp" line="446"/>
         <source>Version: </source>
         <translation>Έκδοση:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="437"/>
+        <location filename="../mxbootrepair.cpp" line="448"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Απλή Επισκευή Εκκίνησης</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="438"/>
+        <location filename="../mxbootrepair.cpp" line="449"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c)  MX Linux </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="439"/>
+        <location filename="../mxbootrepair.cpp" line="450"/>
         <source>License</source>
         <translation>Άδεια</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="442"/>
+        <location filename="../mxbootrepair.cpp" line="453"/>
         <source>&apos;MX Boot Repair License&apos;</source>
         <translation>Αδεια Επισκευή Εκκίνησης του MX </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="451"/>
+        <location filename="../mxbootrepair.cpp" line="462"/>
         <source>&apos;MX Boot Repair Help&apos;</source>
         <translation>Βοήθεια Επισκευή Εκκίνησης του MX </translation>
     </message>

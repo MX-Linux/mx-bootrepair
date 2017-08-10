@@ -9,24 +9,24 @@ Version: 17.8mx16
 Maintainer: Adrian <adrian@mxlinux.org>
 Standards-Version: 3.9.5
 Vcs-Git: git://github.com/AdrianTM/mx-bootrepair
-Build-Depends: qt5-qmake, qt5-default, qttools5-dev-tools, debhelper (>= 7.0.50~), partition-info, util-linux
+Build-Depends: qt5-qmake, qt5-default, qttools5-dev-tools, debhelper (>= 7.0.50~)
 Package-List:
  mx-bootrepair deb admin optional arch=any
 Checksums-Sha1:
- b95fcfd32c8bd81cd4c821aa835ae23b60fbc030 27256 mx-bootrepair_17.8mx16.tar.xz
+ be668f725876e8763b3de1cc18192d3cac7c7fe5 83460 mx-bootrepair_17.8mx16.tar.xz
 Checksums-Sha256:
- 1b95160f41141021758b650e0f1c5946a7c36913201b9fcfc357c8500016e8bc 27256 mx-bootrepair_17.8mx16.tar.xz
+ d9cfa122329f849a5b81be45a6ffa717bd0ddc31ea97fe68aad58f66a4fe3413 83460 mx-bootrepair_17.8mx16.tar.xz
 Files:
- 6c80bfb4f9304b747f5b6fb9ea554840 27256 mx-bootrepair_17.8mx16.tar.xz
+ 5b0f8b2d771484edc2c34f0edbd27e73 83460 mx-bootrepair_17.8mx16.tar.xz
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQEcBAEBAgAGBQJZi/7gAAoJEHCTjHgGee6YxZ4H/0JrY9u5YIsowC+zHmVDDOFU
-JBAGCkvzv8ueZZtqpJ7FpEEjl10T5h9foIj3H6//acng/F2pr4I2YP0uyfVrvm5N
-o7/sp/e/0GzUuIq4myagXLCrBgicfZY4pTTe+QlL4I1VD49KeIaf/IePnYJWS/l1
-h2zxnHc4iltAcIxEq7UN0XbQzVaehOvi2eSu/RdyqzVlMKhhMZ9MbQsK7Veeb1Mr
-eJdvFX/BXewsTQlFyAxMVNZvy54HedBmkCnqwojmLAEJNDc4mNRnJ/6ssNqkOtPb
-dYFytAMttjYm4EE2zTIMPWA+W4OkqoPjLMXjmqi9HVWd7kIzwA5dNNCjw1dX0/0=
-=yWOz
+iQEcBAEBAgAGBQJZjHVsAAoJEHCTjHgGee6YglcH/jJexnQhb/xDY7v/m17yKt4y
+0eHko0aAHnoCT7o3IU8c9NzsY8B/tZqn4V8n7xSDSeaesors77Jm7eDPjdvoeECv
+rG/juUey+qaoMk51brVQWn50RUiDGr4jMWZVQRK+zvXjt4P3WZ+IotcfDVifHWcI
+WuYCIo0OQGrtEZSrz+hrMCKapSxdDDjJnYqTElJxbmEqDwt/liXD/5aixBPKixp0
+ccOrs5NGzX1lGZYPmwNErctg+v8CfbYqbI2CTtHIHRIvVeqas7bGW18WtW/s5vZa
+lO+2Dc9RQ12vIYfkYWcm9iXmb0gYwwz7EYXGodNmT+59KLlZS6GeZRt16/JgZok=
+=A3Tn
 -----END PGP SIGNATURE-----

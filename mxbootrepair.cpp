@@ -99,47 +99,43 @@ void mxbootrepair::installGRUB() {
     QEventLoop loop;
     connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
 
-    if (ui->grubEspButton->isChecked()) {
-        system("test -d /boot/efi || mkdir /boot/efi");
-        if (system("mount /dev/" + root.toUtf8()  + " /boot/efi") != 0) {
-            QMessageBox::critical(this, tr("Error"),
-                                  tr("Cound not mount ") + root + tr(" on /boot/efi"));
-            setCursor(QCursor(Qt::ArrowCursor));
-            ui->buttonApply->setEnabled(true);
-            ui->buttonCancel->setEnabled(true);
-            ui->progressBar->hide();
-            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
-            return;
+    // create a temp folder and mount dev sys proc
+    QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
+    cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
+    if (system(cmd.toUtf8()) == 0) {
+        cmd = QString("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2\"").arg(path).arg(location);
+        if (ui->grubEspButton->isChecked()) {
+            system("test -d /boot/efi || mkdir /boot/efi");
+            if (system("mount /dev/" + location.toUtf8()  + " /boot/efi") != 0) {
+                QMessageBox::critical(this, tr("Error"),
+                                      tr("Cound not mount ") + root + tr(" on /boot/efi"));
+                setCursor(QCursor(Qt::ArrowCursor));
+                ui->buttonApply->setEnabled(true);
+                ui->buttonCancel->setEnabled(true);
+                ui->progressBar->hide();
+                ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+                return;
+            }
+            QString arch = getCmdOut("arch");
+            if (arch == "i686") { // rename arch to match grub-install target
+                arch = "i386";
+            }
+            QString release = getCmdOut("lsb_release -r | cut -f2");
+            cmd = QString("grub-install --target=%1-efi --efi-directory=/boot/efi --bootloader-id=MX%2 --recheck\"").arg(arch).arg(release);
         }
-        QString arch = getCmdOut("arch");
-        if (arch == "i686") { // rename arch to match grub-install target
-            arch = "i386";
-        }
-        QString release = getCmdOut("lsb_release -r | cut -f2");
-        cmd = QString("grub-install --target=%1-efi --efi-directory=/boot/efi --bootloader-id=MX%2 --recheck\"").arg(arch).arg(release);
         proc->start(cmd);
         loop.exec();
-        system("umount /boot/efi");
-    } else { // non-ESP
-        // create a temp folder and mount dev sys proc
-        QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
-        cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
-        if (system(cmd.toUtf8()) == 0) {
-            cmd = QString("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2\"").arg(path).arg(location);
-            proc->start(cmd);
-            loop.exec();
-            // umount and clean temp folder
-            cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
-            system(cmd.toUtf8());
-        } else {
-            QMessageBox::critical(this, tr("Error"),
-                                  tr("Could not set up chroot environment.\nPlease double-check the selected location."));
-            setCursor(QCursor(Qt::ArrowCursor));
-            ui->buttonApply->setEnabled(true);
-            ui->buttonCancel->setEnabled(true);
-            ui->progressBar->hide();
-            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
-        }
+        // umount and clean temp folder
+        cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1; umount /boot/efi").arg(path);
+        system(cmd.toUtf8());
+    } else {
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+        setCursor(QCursor(Qt::ArrowCursor));
+        ui->buttonApply->setEnabled(true);
+        ui->buttonCancel->setEnabled(true);
+        ui->progressBar->hide();
+        ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
 }
 
@@ -195,23 +191,39 @@ void mxbootrepair::backupBR(QString filename) {
 // try to guess partition to install GRUB
 void mxbootrepair::guessPartition()
 {
-    // find first disk with "Linux filesystem"
-    for (int index = 0; index < ui->grubBootCombo->count(); index++) {
-        QString drive = ui->grubBootCombo->itemText(index);
-        if (system("sgdisk -p /dev/" + drive.section(" ", 0 ,0).toUtf8() + " | grep -q 'Linux filesystem'") == 0) {
-            ui->grubBootCombo->setCurrentIndex(index);
-            break;
+    if (ui->grubMbrButton->isChecked()) {
+        // find first disk with Linux partitions
+        for (int index = 0; index < ui->grubBootCombo->count(); index++) {
+            QString drive = ui->grubBootCombo->itemText(index);
+            if (system("lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + "| grep -qE '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4\
+                       |44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
+                ui->grubBootCombo->setCurrentIndex(index);
+                break;
+            }
         }
     }
-    // find first Linux partition
+    // find first a partition with rootMX* label
     for (int index = 0; index < ui->rootCombo->count(); index++) {
-        QString partition = ui->rootCombo->itemText(index);
-        if (system("file -sL /dev/" + partition.section(" ", 0 ,0).toUtf8() + " | grep -q 'Linux '") == 0) {
+        QString part = ui->rootCombo->itemText(index);
+        if (system("lsblk -ln -o LABEL /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -q rootMX") == 0) {
+            ui->rootCombo->setCurrentIndex(index);
+            // select the same location by default for GRUB and /boot
+            if (ui->grubRootButton->isChecked()) {
+                ui->grubBootCombo->setCurrentIndex(ui->rootCombo->currentIndex());
+            }
+            return;
+        }
+    }
+    // it it cannot find rootMX*, look for Linux partitions
+    for (int index = 0; index < ui->rootCombo->count(); index++) {
+        QString part = ui->rootCombo->itemText(index);
+        if (system("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -qE '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4\
+                   |44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
             ui->rootCombo->setCurrentIndex(index);
             break;
         }
     }
-    // select the same location by default for GRUB and /boot
+    // use by default the same root and /boot partion for installing on root
     if (ui->grubRootButton->isChecked()) {
         ui->grubBootCombo->setCurrentIndex(ui->rootCombo->currentIndex());
     }
@@ -240,22 +252,19 @@ void mxbootrepair::restoreBR(QString filename) {
 // select ESP GUI items
 void mxbootrepair::setEspDefaults()
 {
-    // remove drives that don't have an ESP
+    // remove non-ESP partitions
     for (int index = 0; index < ui->grubBootCombo->count(); index++) {
-        QString drive = ui->grubBootCombo->itemText(index);
-        if (system("sgdisk -p /dev/" + drive.section(" ", 0 ,0).toUtf8() + " | grep -q ' EF00 '") != 0) {
+        QString part = ui->grubBootCombo->itemText(index);
+        if (system("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -q c12a7328-f81f-11d2-ba4b-00a0c93ec93b") != 0) {
             ui->grubBootCombo->removeItem(index);
+            index--;
         }
     }
     if (ui->grubBootCombo->count() == 0) {
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again."));
         ui->buttonApply->setDisabled(true);
-        return;
-    }
-    QString drv = "/dev/" + ui->grubBootCombo->currentText().section(" ", 0, 0);
-    ui->rootCombo->setCurrentIndex(ui->rootCombo->findText(getCmdOut("partition-info find-esp=" + drv), Qt::MatchContains));
-    ui->rootCombo->setDisabled(true);
+     }
 }
 
 
@@ -344,9 +353,10 @@ void mxbootrepair::targetSelection() {
     } else if (ui->grubRootButton->isChecked()) {
         ui->grubBootCombo->addItems(ListPart);
         guessPartition();
-    // if Esp is checked, add disks
+    // if Esp is checked, add partitions to Location combobox
     } else {
-        ui->grubBootCombo->addItems(ListDisk);
+        ui->grubBootCombo->addItems(ListPart);
+        guessPartition();
         setEspDefaults();
     }
 }
@@ -361,6 +371,7 @@ void mxbootrepair::onStdoutAvailable() {
 void mxbootrepair::on_buttonApply_clicked() {
     // on first page
     if (ui->stackedWidget->currentIndex() == 0) {
+        targetSelection();
         // Reinstall button selected
         if (ui->reinstallRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
@@ -452,8 +463,6 @@ void mxbootrepair::on_buttonHelp_clicked() {
     system(cmd.toUtf8());
     this->show();
 }
-
-
 
 void mxbootrepair::on_grubMbrButton_clicked()
 {

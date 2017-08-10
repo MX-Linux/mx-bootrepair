@@ -247,8 +247,13 @@ void mxbootrepair::setEspDefaults()
             ui->grubBootCombo->removeItem(index);
         }
     }
+    if (ui->grubBootCombo->count() == 0) {
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again."));
+        ui->buttonApply->setDisabled(true);
+        return;
+    }
     QString drv = "/dev/" + ui->grubBootCombo->currentText().section(" ", 0, 0);
-    ui->grubEspButton->setChecked(true);
     ui->rootCombo->setCurrentIndex(ui->rootCombo->findText(getCmdOut("partition-info find-esp=" + drv), Qt::MatchContains));
     ui->rootCombo->setDisabled(true);
 }
@@ -330,6 +335,7 @@ void mxbootrepair::addDevToList() {
 void mxbootrepair::targetSelection() {
     ui->grubBootCombo->clear();
     ui->rootCombo->setEnabled(true);
+    ui->buttonApply->setEnabled(true);
     // add only disks
     if (ui->grubMbrButton->isChecked()) {
         ui->grubBootCombo->addItems(ListDisk);
@@ -383,7 +389,8 @@ void mxbootrepair::on_buttonApply_clicked() {
             ui->grubRootButton->setText("PBR");
             ui->grubEspButton->hide();
         // Restore backup button selected
-        } else if (ui->restoreBakRadioButton->isChecked()) {
+        } else if (ui->restoreBakRadioButton->isChecked()) {        QMessageBox::critical(this, tr("Error"),
+                                                                                          tr("Process finished. Errors have occurred."));
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle("Select Item to Restore");
             ui->grubInsLabel->setText("");

@@ -121,7 +121,7 @@ void mxbootrepair::installGRUB() {
                 arch = "i386";
             }
             QString release = getCmdOut("lsb_release -r | cut -f2");
-            cmd = QString("grub-install --target=%1-efi --efi-directory=%2/boot/efi --bootloader-id=MX%3 --recheck\"").arg(arch).arg(path).arg(release);
+            cmd = QString("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck\"").arg(path).arg(arch).arg(release);
         }
         proc->start(cmd);
         loop.exec();

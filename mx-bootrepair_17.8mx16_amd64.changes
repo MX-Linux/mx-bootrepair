@@ -18,26 +18,26 @@ Changes:
  .
    * added ESP installation support
 Checksums-Sha1:
- 23dd45cc735e80c555b386ce6f92c5e7b766739d 1166 mx-bootrepair_17.8mx16.dsc
- 3b1c30bcb5662a8da9e0431ec8fee79775c9401c 27336 mx-bootrepair_17.8mx16.tar.xz
- 82239033e5b89736cd00011fdb7d96aed7ee26b1 53492 mx-bootrepair_17.8mx16_amd64.deb
+ d4294a419d4b916da77f1b109ab12b90ce98d1e5 1166 mx-bootrepair_17.8mx16.dsc
+ 13665500ff1397c86e852192f9d15108ff69682c 27340 mx-bootrepair_17.8mx16.tar.xz
+ 06d8325b709275107764759f004bb602b194874d 53414 mx-bootrepair_17.8mx16_amd64.deb
 Checksums-Sha256:
- efe1dfdabd2f3f0060a21d0ea344eb3517b989aa19a9701b4f1b1a551c1f8f43 1166 mx-bootrepair_17.8mx16.dsc
- 58ed1d6e1f267fc230b62426ed588ccbc0dc47255f77db5c5893185fd138d983 27336 mx-bootrepair_17.8mx16.tar.xz
- 7f088674a0e136294fb8a99da394613fde1220d6ce491c46f77a4e84a7d425a6 53492 mx-bootrepair_17.8mx16_amd64.deb
+ e6b46a2c7619f4d03798bb067af155fdee662bd19b67b607364e1d94a8fc92e9 1166 mx-bootrepair_17.8mx16.dsc
+ 812c2a5d6a0b240ff5214dc10625ef27ec79a6701300eedf7505c5c6cd5e9dd0 27340 mx-bootrepair_17.8mx16.tar.xz
+ 3736829c54d13fa44273982a4de4e1644c33fbacf04b096a4bcecba1123724d5 53414 mx-bootrepair_17.8mx16_amd64.deb
 Files:
- c6c9026e94de516b488b548aa30457c1 1166 admin optional mx-bootrepair_17.8mx16.dsc
- b4cb701001ac5d18abfea44304d195fd 27336 admin optional mx-bootrepair_17.8mx16.tar.xz
- 59433c1925c5654168b1a297f6777d47 53492 admin optional mx-bootrepair_17.8mx16_amd64.deb
+ 534336939430753b8b244182c9fd7b08 1166 admin optional mx-bootrepair_17.8mx16.dsc
+ 274cdebc014777aed77e645c90b9e150 27340 admin optional mx-bootrepair_17.8mx16.tar.xz
+ 16d182625eff3f839fce168eb559497b 53414 admin optional mx-bootrepair_17.8mx16_amd64.deb
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQEcBAEBAgAGBQJZjJcnAAoJEHCTjHgGee6Yf20H/0rs48M/yNO7ap9F9fDF2JYc
-vhWgKof+yzv4f5uTFhtCm1z9UPp2qo2ZMnkcDlw3aon8QD4Fd0e8LiEd3TKbKTtZ
-DOrZgi7+w9aFE6+m75Z7f0VZv2PtmwEyO2NA0IVlIeqXjzp1LTe8yA1vTaaWVfZd
-iFbwzIWcMllUVP1MSB2WP6Oqa7R9zrdLxdxxwx+FU5Rrw1r07e0DMznoialAcgMd
-tHT/HykrphcUsrkaXhXHfQIJOjejNYt6e4ykzOlvg0WQ9voWBbH8KSJTy1THipft
-c6NCBz3jCEdqRhMHMxDf+URSkvRAvJ3XKFlf7Th3pVB4efnUSBVR5DoHwtyTK34=
-=HnrR
+iQEcBAEBAgAGBQJZjJ3IAAoJEHCTjHgGee6YRucH/0Ed4GvZRSCEE3Khqp0FL4Tr
+L8ALCAoS+ntGhuA+TAhQLwbh/vK1rEwbGWLxm8mT5KkIxN00UTYItnll75WzZQVY
+HYTfD2mmPjqv+b3rYE6veYDySdOMUWu1tRhefrSistjE0jcI8VkgUe2sagU5Q73B
+TAEF45MS47YvVzesQHNGiLWSRDwr/hN+4HppMp06+U8A1CxUoji8i5tY9NzXftd4
+PKRBHRitVtzAM82Qu3Cry/36CkJtIoWNQHIH2XADQBMfT0/Dk60A/KV9Zmo74Bbc
+3RgdKF5WIWDDdzu/l18gZg3PTYo3dYjLwzw49DOmkLN3m2rBm6XsvPifBQrFKPw=
+=P8OJ
 -----END PGP SIGNATURE-----

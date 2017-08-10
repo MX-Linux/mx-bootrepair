@@ -126,8 +126,9 @@ void mxbootrepair::installGRUB() {
         proc->start(cmd);
         loop.exec();
         // umount and clean temp folder
-        cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1; umount /boot/efi").arg(path);
+        cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
         system(cmd.toUtf8());
+        system("mountpoint -q /boot/efi && umount /boot/efi");
     } else {
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not set up chroot environment.\nPlease double-check the selected location."));

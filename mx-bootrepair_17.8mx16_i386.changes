@@ -18,20 +18,20 @@ Changes:
  .
    * added ESP installation support
 Checksums-Sha1:
- de68df9c0d2f2f0af13ffea8ca3084bd8ecde4ed 52884 mx-bootrepair_17.8mx16_i386.deb
+ 1176297597ff44c31426c43a1083d9a4abfd4468 52980 mx-bootrepair_17.8mx16_i386.deb
 Checksums-Sha256:
- 4ae56632cf37260a93851b0ef68adcc9ab3c5e1ca6ec50d455ca6e1e8b1b7f93 52884 mx-bootrepair_17.8mx16_i386.deb
+ dc22566b8b53efb043bc9ff5861395937cad8dbadd2a6e82e5cddf92abfea624 52980 mx-bootrepair_17.8mx16_i386.deb
 Files:
- 50b4c8650434d8f0587fcbf8de6854a1 52884 admin optional mx-bootrepair_17.8mx16_i386.deb
+ 326ba25d1cac2708837e45c0ba21e283 52980 admin optional mx-bootrepair_17.8mx16_i386.deb
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQEcBAEBAgAGBQJZjHXWAAoJEHCTjHgGee6YpToH/AoC7efiQugvQn+qCVxb8TSJ
-PSQqJoUYgH7coTM++DLDVPClgO/gLrfV4JoDQ+STtywW+ZlJkG8xOMICDURxXApX
-0VALtLvboEy5xNrZS1t/hGLBxKcXOW38D0AFXzvbRnT/Qwnqk4i8eWUyjBZyvgeR
-3ISSsZOqxVFDC0BggN5gTWAM9zmDgaxKTuTrFfWRIlGMgSMlNRXAiit/lyK6jmDy
-ShvzeqRAedNjNrGuiGKM7G9+3zXdUehT0A4i8W3NqB8AbSQPqbU6aYMEJW/begyg
-r33bGIglxLq+4plY+g0dcgW686uIGTkJdf6brzce2a+0805gZV+aAnXkHGtDBWY=
-=X3K+
+iQEcBAEBAgAGBQJZjHgqAAoJEHCTjHgGee6Y0j0IAJqdwV+KCQuDXVmi7cA8a9AO
+lmqbuncNm3dEpm7IFo6506blWU5RP1FeOJZC0jBsEoSpSCn/GCUtLiPNyq0FcYjv
+vTV6pKvYO3Qa039RugPZykHzkOXzvJRtBLsIDSw91cRw9QYKrSJIKSruuovi6sD7
+mMSrqGbCJcx6+S94j1kw8cS5r2fkOfu2au77wJSFvd8COAUTpngNWoYYv8DXctvT
+e/Phsv7Zv+i7DeLh4z8GpsG47s3oXUbscjbeWn+Fg50irncJs3jMkMVK0a7NQMQf
+3AeLugAIgit59yKcssfw+nQUm8dh0MpUS1CsiT+dJfOgcIFabb1ZrO6a/YRucfA=
+=b3Ib
 -----END PGP SIGNATURE-----

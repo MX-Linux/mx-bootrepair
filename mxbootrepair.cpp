@@ -108,7 +108,7 @@ void mxbootrepair::installGRUB() {
             system("test -d " + path.toUtf8() + "/boot/efi || mkdir " + path.toUtf8()  + "/boot/efi");
             if (system("mount /dev/" + location.toUtf8()  + " " + path.toUtf8() + "/boot/efi") != 0) {
                 QMessageBox::critical(this, tr("Error"),
-                                      tr("Cound not mount ") + location + tr(" on /boot/efi"));
+                                      tr("Could not mount ") + location + tr(" on /boot/efi"));
                 setCursor(QCursor(Qt::ArrowCursor));
                 ui->buttonApply->setEnabled(true);
                 ui->buttonCancel->setEnabled(true);

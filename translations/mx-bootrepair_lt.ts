@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="lt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="lt" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
@@ -15,12 +13,12 @@
         <location filename="../mxbootrepair.ui" line="20"/>
         <location filename="../mxbootrepair.cpp" line="447"/>
         <source>MX Boot Repair</source>
-        <translation>MX Paleidimo taisymas</translation>
+        <translation>MX paleidimo taisymas</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="58"/>
@@ -30,7 +28,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="86"/>
@@ -45,17 +43,17 @@
     <message>
         <location filename="../mxbootrepair.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="123"/>
         <source>Select Boot Method</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="141"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="144"/>
@@ -71,7 +69,7 @@
     <message>
         <location filename="../mxbootrepair.ui" line="169"/>
         <source>Root (Partition Boot Record)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="172"/>
@@ -91,17 +89,17 @@
     <message>
         <location filename="../mxbootrepair.ui" line="264"/>
         <source>Select /boot location:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="277"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>EFI sistemos skaidinys</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="280"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="404"/>
@@ -129,21 +127,6 @@
         <translation>Alt+H</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="530"/>
-        <source>Apply any changes</source>
-        <translation>Taikyti bet kokius pakeitimus</translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.ui" line="533"/>
-        <location filename="../mxbootrepair.cpp" line="77"/>
-        <source>Apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="vanished">Gerai</translation>
-    </message>
-    <message>
         <location filename="../mxbootrepair.ui" line="503"/>
         <source>Cancel any changes then quit</source>
         <translation>Atsisakyti bet kokių pakeitimų, o tuomet išeiti</translation>
@@ -160,6 +143,17 @@
         <translation>Alt+N</translation>
     </message>
     <message>
+        <location filename="../mxbootrepair.ui" line="530"/>
+        <source>Apply any changes</source>
+        <translation>Taikyti bet kokius pakeitimus</translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.ui" line="533"/>
+        <location filename="../mxbootrepair.cpp" line="77"/>
+        <source>Apply</source>
+        <translation>Taikyti</translation>
+    </message>
+    <message>
         <location filename="../mxbootrepair.cpp" line="110"/>
         <location filename="../mxbootrepair.cpp" line="133"/>
         <location filename="../mxbootrepair.cpp" line="163"/>
@@ -173,20 +167,20 @@
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="111"/>
-        <source>Cound not mount </source>
-        <translation type="unfinished"></translation>
+        <source>Could not mount </source>
+        <translation>Nepavyko prijungti</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="111"/>
         <source> on /boot/efi</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="134"/>
         <location filename="../mxbootrepair.cpp" line="164"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="240"/>
@@ -196,12 +190,12 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mxbootrepair.cpp" line="241"/>
         <source>You are going to write the content of </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="241"/>
         <source> to </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="241"/>
@@ -227,7 +221,7 @@ Ar tikrai?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="266"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="293"/>
@@ -248,12 +242,12 @@ Ar tikrai?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="302"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Atgal</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="418"/>
         <source>Select backup file name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="420"/>
@@ -264,12 +258,12 @@ Ar tikrai?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="425"/>
         <source>Select MBR or PBR backup file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="446"/>
         <source>About MX Boot Repair</source>
-        <translation>Apie MX Paleidimo taisymas</translation>
+        <translation>Apie MX paleidimo taisymas</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="447"/>
@@ -294,12 +288,12 @@ Ar tikrai?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="454"/>
         <source>&apos;MX Boot Repair License&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="463"/>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

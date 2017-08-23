@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
@@ -96,12 +94,12 @@
     <message>
         <location filename="../mxbootrepair.ui" line="277"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Partition système EFI</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="280"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="404"/>
@@ -153,11 +151,7 @@
         <location filename="../mxbootrepair.ui" line="533"/>
         <location filename="../mxbootrepair.cpp" line="77"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>Appliquer</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="110"/>
@@ -173,13 +167,13 @@
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="111"/>
-        <source>Cound not mount </source>
-        <translation type="unfinished"></translation>
+        <source>Could not mount </source>
+        <translation>Montage impossible</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="111"/>
         <source> on /boot/efi</source>
-        <translation type="unfinished"></translation>
+        <translation>sur /boot/efi</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="134"/>
@@ -228,7 +222,7 @@ Etes-vous sûr?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="266"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>EFI system partition (ESP) introuvable sur les disques systèmes. Veuillez créer un ESP et réessayer.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="293"/>
@@ -249,7 +243,7 @@ Etes-vous sûr?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="302"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Précédent</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="418"/>

@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
@@ -96,12 +94,12 @@
     <message>
         <location filename="../mxbootrepair.ui" line="277"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>EFI Systeempartitie</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="280"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="404"/>
@@ -129,21 +127,6 @@
         <translation>Alt+H</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="530"/>
-        <source>Apply any changes</source>
-        <translation>Veranderingen toepassen</translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.ui" line="533"/>
-        <location filename="../mxbootrepair.cpp" line="77"/>
-        <source>Apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="vanished">OK</translation>
-    </message>
-    <message>
         <location filename="../mxbootrepair.ui" line="503"/>
         <source>Cancel any changes then quit</source>
         <translation>Iedere verandering ongedaan maken, dan afsluiten</translation>
@@ -160,6 +143,17 @@
         <translation>Alt+N</translation>
     </message>
     <message>
+        <location filename="../mxbootrepair.ui" line="530"/>
+        <source>Apply any changes</source>
+        <translation>Veranderingen toepassen</translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.ui" line="533"/>
+        <location filename="../mxbootrepair.cpp" line="77"/>
+        <source>Apply</source>
+        <translation>Toepassen</translation>
+    </message>
+    <message>
         <location filename="../mxbootrepair.cpp" line="110"/>
         <location filename="../mxbootrepair.cpp" line="133"/>
         <location filename="../mxbootrepair.cpp" line="163"/>
@@ -173,13 +167,13 @@
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="111"/>
-        <source>Cound not mount </source>
-        <translation type="unfinished"></translation>
+        <source>Could not mount </source>
+        <translation>Kon niet aankoppelen</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="111"/>
         <source> on /boot/efi</source>
-        <translation type="unfinished"></translation>
+        <translation>op /boot/efi</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="134"/>
@@ -228,7 +222,7 @@ Weet u het zeker?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="266"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kon EFI systeempartitie (ESP) niet vinden op geen enkele systeem schijf. Creëer aub een ESP en probeer opnieuw.</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="293"/>
@@ -249,7 +243,7 @@ Weet u het zeker?</translation>
     <message>
         <location filename="../mxbootrepair.cpp" line="302"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Terug</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="418"/>

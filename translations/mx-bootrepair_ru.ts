@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ru">
 <context>
     <name>QApplication</name>
     <message>
@@ -168,12 +170,12 @@
     <message>
         <location filename="../mxbootrepair.cpp" line="111"/>
         <source>Could not mount </source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="111"/>
         <source> on /boot/efi</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="134"/>
@@ -222,7 +224,7 @@ Are you sure?</source>
     <message>
         <location filename="../mxbootrepair.cpp" line="266"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="293"/>

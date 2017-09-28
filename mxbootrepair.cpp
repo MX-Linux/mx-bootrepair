@@ -120,7 +120,7 @@ void mxbootrepair::installGRUB() {
             if (arch == "i686") { // rename arch to match grub-install target
                 arch = "i386";
             }
-            QString release = getCmdOut("lsb_release -r | cut -f2");
+            QString release = getCmdOut("lsb_release -rs");
             cmd = QString("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck\"").arg(path).arg(arch).arg(release);
         }
         proc->start(cmd);

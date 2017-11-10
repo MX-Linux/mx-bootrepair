@@ -294,9 +294,13 @@ Sind Sie sicher?</translation>
         <translation>Lizenz für MX Boot-Reparatur</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="463"/>
+        <location filename="../mxbootrepair.cpp" line="472"/>
+        <source>MX Boot Repair Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation>Hilfe für MX Boot-Reparatur</translation>
+        <translation type="vanished">Hilfe für MX Boot-Reparatur</translation>
     </message>
 </context>
 </TS>

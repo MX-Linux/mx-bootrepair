@@ -1,3 +1,9 @@
+mx-bootrepair (17.11) mx; urgency=medium
+
+  * add FR help link
+
+ -- Adrian <adrian@mxlinux.org>  Fri, 10 Nov 2017 12:00:07 -0500
+
 mx-bootrepair (17.10) mx; urgency=medium
 
   * new icon

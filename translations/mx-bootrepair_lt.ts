@@ -293,8 +293,8 @@ Ar tikrai?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="463"/>
-        <source>&apos;MX Boot Repair Help&apos;</source>
+        <location filename="../mxbootrepair.cpp" line="472"/>
+        <source>MX Boot Repair Help</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

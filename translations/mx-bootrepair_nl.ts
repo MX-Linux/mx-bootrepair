@@ -294,9 +294,13 @@ Weet u het zeker?</translation>
         <translation>&apos;MX Boot Reparatie Licentie&apos;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="463"/>
+        <location filename="../mxbootrepair.cpp" line="472"/>
+        <source>MX Boot Repair Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation>&apos;MX Boot Reparatie Help&apos;</translation>
+        <translation type="vanished">&apos;MX Boot Reparatie Help&apos;</translation>
     </message>
 </context>
 </TS>

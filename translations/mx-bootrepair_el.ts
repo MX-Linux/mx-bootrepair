@@ -294,9 +294,13 @@ Are you sure?</source>
         <translation>Αδεια Επισκευή Εκκίνησης του MX </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="463"/>
+        <location filename="../mxbootrepair.cpp" line="472"/>
+        <source>MX Boot Repair Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation>Βοήθεια Επισκευή Εκκίνησης του MX </translation>
+        <translation type="vanished">Βοήθεια Επισκευή Εκκίνησης του MX </translation>
     </message>
 </context>
 </TS>

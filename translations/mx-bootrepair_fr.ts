@@ -294,9 +294,13 @@ Etes-vous sûr?</translation>
         <translation>Licence de MX Réparation d&apos;amorçage</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="463"/>
+        <location filename="../mxbootrepair.cpp" line="472"/>
+        <source>MX Boot Repair Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation>Assistance de MX Réparation d&apos;amorçage</translation>
+        <translation type="vanished">Assistance de MX Réparation d&apos;amorçage</translation>
     </message>
 </context>
 </TS>

@@ -294,9 +294,13 @@ Are you sure?</source>
         <translation>&apos;MX Licencia de Reparación de Arranque&apos;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="463"/>
+        <location filename="../mxbootrepair.cpp" line="472"/>
+        <source>MX Boot Repair Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation>&apos;MX Ayuda para la Reparación de Arranque&apos;</translation>
+        <translation type="vanished">&apos;MX Ayuda para la Reparación de Arranque&apos;</translation>
     </message>
 </context>
 </TS>

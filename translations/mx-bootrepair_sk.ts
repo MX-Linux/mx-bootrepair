@@ -294,9 +294,13 @@ Určite?</translation>
         <translation>&apos;Licencia MX Oprava zavádzača&apos;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="463"/>
+        <location filename="../mxbootrepair.cpp" line="472"/>
+        <source>MX Boot Repair Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&apos;MX Boot Repair Help&apos;</source>
-        <translation>&apos;Pomocník MX Oprava zavádzača&apos;</translation>
+        <translation type="vanished">&apos;Pomocník MX Oprava zavádzača&apos;</translation>
     </message>
 </context>
 </TS>

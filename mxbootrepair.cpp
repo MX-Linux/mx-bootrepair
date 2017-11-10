@@ -196,8 +196,8 @@ void mxbootrepair::guessPartition()
         // find first disk with Linux partitions
         for (int index = 0; index < ui->grubBootCombo->count(); index++) {
             QString drive = ui->grubBootCombo->itemText(index);
-            if (system("lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + "| grep -qE '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4\
-                       |44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
+            if (system("lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + \
+                       "| grep -qE '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
                 ui->grubBootCombo->setCurrentIndex(index);
                 break;
             }
@@ -218,8 +218,8 @@ void mxbootrepair::guessPartition()
     // it it cannot find rootMX*, look for Linux partitions
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
-        if (system("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -qE '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4\
-                   |44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
+        if (system("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + \
+                   "| grep -qE '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
             ui->rootCombo->setCurrentIndex(index);
             break;
         }
@@ -238,8 +238,8 @@ void mxbootrepair::restoreBR(QString filename) {
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     if (QMessageBox::warning(this, tr("Warning"),
-                              tr("You are going to write the content of ") + filename + tr(" to ") + location + tr("\n\nAre you sure?"),
-                                         tr("Yes"), tr("No")) == 1){
+                             tr("You are going to write the content of ") + filename + tr(" to ") + location + tr("\n\nAre you sure?"),
+                             tr("Yes"), tr("No")) == 1){
         refresh();
         return;
     }
@@ -265,7 +265,7 @@ void mxbootrepair::setEspDefaults()
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again."));
         ui->buttonApply->setDisabled(true);
-     }
+    }
 }
 
 
@@ -350,11 +350,11 @@ void mxbootrepair::targetSelection() {
     if (ui->grubMbrButton->isChecked()) {
         ui->grubBootCombo->addItems(ListDisk);
         guessPartition();
-    // add partitions if select root
+        // add partitions if select root
     } else if (ui->grubRootButton->isChecked()) {
         ui->grubBootCombo->addItems(ListPart);
         guessPartition();
-    // if Esp is checked, add partitions to Location combobox
+        // if Esp is checked, add partitions to Location combobox
     } else {
         ui->grubBootCombo->addItems(ListPart);
         guessPartition();
@@ -382,7 +382,7 @@ void mxbootrepair::on_buttonApply_clicked() {
             ui->rootLabel->show();
             ui->rootCombo->show();
 
-        // Repair button selected
+            // Repair button selected
         } else if (ui->repairRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle("Select GRUB location");
@@ -393,14 +393,14 @@ void mxbootrepair::on_buttonApply_clicked() {
             ui->grubRootButton->setChecked(true);
             on_grubRootButton_clicked();
 
-        // Backup button selected
+            // Backup button selected
         } else if (ui->bakRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle("Select Item to Back Up");
             ui->grubInsLabel->setText("");
             ui->grubRootButton->setText("PBR");
             ui->grubEspButton->hide();
-        // Restore backup button selected
+            // Restore backup button selected
         } else if (ui->restoreBakRadioButton->isChecked()) {        QMessageBox::critical(this, tr("Error"),
                                                                                           tr("Process finished. Errors have occurred."));
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
@@ -410,7 +410,7 @@ void mxbootrepair::on_buttonApply_clicked() {
             ui->grubEspButton->hide();
         }
 
-    // on selection page
+        // on selection page
     } else if (ui->stackedWidget->currentWidget() == ui->selectionPage) {
         if (ui->reinstallRadioButton->isChecked()) {
             installGRUB();
@@ -431,7 +431,7 @@ void mxbootrepair::on_buttonApply_clicked() {
         } else if (ui->repairRadioButton->isChecked()) {
             repairGRUB();
         }
-    // on output page
+        // on output page
     } else if (ui->stackedWidget->currentWidget() == ui->outputPage) {
         refresh();
     } else {
@@ -460,8 +460,18 @@ void mxbootrepair::on_buttonAbout_clicked() {
 // Help button clicked
 void mxbootrepair::on_buttonHelp_clicked() {
     this->hide();
-    QString cmd = QString("mx-viewer https://mxlinux.org/wiki/help-files/help-mx-boot-repair %1").arg(tr("\'MX Boot Repair Help\'"));
+
+    QLocale locale;
+    QString lang = locale.bcp47Name();
+
+    QString url = "https://mxlinux.org/wiki/help-files/help-mx-boot-repair";
+    if (lang == "fr") {
+        url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
+    }
+
+    QString cmd = QString("mx-viewer %1 '%2'").arg(url).arg(tr("MX Boot Repair Help"));
     system(cmd.toUtf8());
+
     this->show();
 }
 

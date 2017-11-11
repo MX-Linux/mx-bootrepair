@@ -465,7 +465,7 @@ void mxbootrepair::on_buttonHelp_clicked() {
     QString lang = locale.bcp47Name();
 
     QString url = "https://mxlinux.org/wiki/help-files/help-mx-boot-repair";
-    if (lang == "fr") {
+    if (lang.startsWith("fr")) {
         url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
     }
 

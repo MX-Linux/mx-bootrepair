@@ -18,20 +18,20 @@ Changes:
  .
    * display Help and GUI at the same time
 Checksums-Sha1:
- 3d0ece80d9adf66274ec438ef6b295c7e47b5d69 56252 mx-bootrepair_17.11+2_i386.deb
+ 5733c9fd4034a1d6f28d2664d9b2c98dd99e7f92 56346 mx-bootrepair_17.11+2_i386.deb
 Checksums-Sha256:
- 232a8679c229b5ad59d49fd8255aa6c2a3a5521658d30bbf91bb64851048cfb7 56252 mx-bootrepair_17.11+2_i386.deb
+ f51a0785e09e913843ff9b8a28e93eda31fd5456a6072ec5449c0e45973c6064 56346 mx-bootrepair_17.11+2_i386.deb
 Files:
- b427a788e50b238b11d0b5786260f8f8 56252 admin optional mx-bootrepair_17.11+2_i386.deb
+ b71d8c3a88f4fc26937218940fb057c3 56346 admin optional mx-bootrepair_17.11+2_i386.deb
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQEcBAEBAgAGBQJaIEyXAAoJEHCTjHgGee6Ypx4H/1rL7Mc6487VXp7dp2QjvDpq
-a038elz0AFgs9MffwKsanv9K7iKjsn5zk5qKbdET0/h+gIX0Dflq33P+q2yuBf1L
-ULVVbbcZLo13Nv+9IQXfBtRIdcWF5ESymFQn4Wl/01JZ26KZdL9zX/V85deRDReF
-FW6NpVBPOSTDFUgm6VW+OK/iVcoR/85vV/Ga+CP2Qe0cwTTW5YkOuZBVMrHeD/As
-7PzDz1Nd9XcpQl5V4mE9Id2M+PIG3XvHrWB1Mn17iERXauarXzefCq+YxqeJOPB8
-QRX8ahpwA6M9F6LwBSnO/FUh/a3RX4tT/uptBkNESucHq6vyX54P21RYkoTww0M=
-=5YR/
+iQEcBAEBAgAGBQJaIFm2AAoJEHCTjHgGee6YMZwH/33gjOyKhbiwqompsL9r29ry
+1EeWUoKmJgnQWixz2ALcqE3KSYTOMHAu3il0VJSkee/IrYlwa9ekhcV8o3RJ6Win
+uQ6uavZaO7P/2lSEdEn53SGu3fOzN4Ck9xcbYP4IRfSFeexoeIBPk40zTi7X1e8r
+Wcz/WtTzIkXD1DYlNKOh/f5ibmtKl8lymnCn6qiEtkybeJD2K8B0S/sjHOBX6lTN
+NXusC0ge7wCJW64s1Sy0OAcStKBBS2ZR2QY9zaFtwRtV80rGir0zBVEw8f2ndmD8
+gkSRcA707mhLy6e5MvMiOVYrcw/8KcVDx3qC+lYdMwAtFg/wz3nfZVBlFG9UKNk=
+=55xe
 -----END PGP SIGNATURE-----

@@ -64,7 +64,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="147"/>
-        <location filename="../mxbootrepair.ui" line="415"/>
+        <location filename="../mxbootrepair.ui" line="418"/>
         <source>Alt+B</source>
         <translation>Alt+B</translation>
     </message>
@@ -104,53 +104,53 @@
         <translation>ESP</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="404"/>
+        <location filename="../mxbootrepair.ui" line="407"/>
         <source>About this application</source>
         <translation>Περί εφαρμογής.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="407"/>
+        <location filename="../mxbootrepair.ui" line="410"/>
         <source>About...</source>
         <translation>Περί</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="457"/>
+        <location filename="../mxbootrepair.ui" line="460"/>
         <source>Display help </source>
         <translation>Δείτε Βοήθεια</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="460"/>
+        <location filename="../mxbootrepair.ui" line="463"/>
         <source>Help</source>
         <translation>Βοήθεια</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="468"/>
+        <location filename="../mxbootrepair.ui" line="471"/>
         <source>Alt+H</source>
         <translation>Alt+H </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="506"/>
+        <location filename="../mxbootrepair.ui" line="512"/>
         <source>Cancel any changes then quit</source>
         <translation>Ακύρωση τις αλλαγές και μετά κλείστε</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="509"/>
+        <location filename="../mxbootrepair.ui" line="515"/>
         <location filename="../mxbootrepair.cpp" line="452"/>
         <source>Cancel</source>
         <translation>Ακύρωση</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="517"/>
+        <location filename="../mxbootrepair.ui" line="523"/>
         <source>Alt+N</source>
         <translation>Alt+N</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="533"/>
+        <location filename="../mxbootrepair.ui" line="542"/>
         <source>Apply any changes</source>
         <translation>Εφαρμόστε τις αλλαγές </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="536"/>
+        <location filename="../mxbootrepair.ui" line="545"/>
         <location filename="../mxbootrepair.cpp" line="77"/>
         <source>Apply</source>
         <translation>Εφαρμογή</translation>

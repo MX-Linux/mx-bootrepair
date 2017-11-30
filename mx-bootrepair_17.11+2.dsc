@@ -13,20 +13,20 @@ Build-Depends: qt5-qmake, qt5-default, qttools5-dev-tools, debhelper (>= 7.0.50~
 Package-List:
  mx-bootrepair deb admin optional arch=any
 Checksums-Sha1:
- 03462339c372cbf51252ba649dbda24897c49882 29016 mx-bootrepair_17.11+2.tar.xz
+ cf8eec49cd9b281a1773181de411f03bc250e6c8 29056 mx-bootrepair_17.11+2.tar.xz
 Checksums-Sha256:
- cda02dbdddcbddb63f3566d1d9d3dca332eb7b89272b5b4f64cd4479c48abfde 29016 mx-bootrepair_17.11+2.tar.xz
+ 2f0ff24b2d57f4ef14dd896019e58908acf41171dedd7ab076973233f65a862c 29056 mx-bootrepair_17.11+2.tar.xz
 Files:
- 61672282ef14fff7baea059c10604504 29016 mx-bootrepair_17.11+2.tar.xz
+ a5fa0cce565bd2379fe6041e2965cab6 29056 mx-bootrepair_17.11+2.tar.xz
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQEcBAEBAgAGBQJaIEvzAAoJEHCTjHgGee6YQCMIAMKhl4MWwjSIb+K+tDFMPtL1
-tsYUvpjHFaT70ZUQ3yg2+HqN2R2YlhFVjNWXN3BgcTuhyA/oOgPYvArN7TZpsueo
-zt7UjKnSFvTf6wLSeJFB+hKg6jYzmlLKsFDbN2cLsbIX6My/WSODM9bVR9etlXuw
-qKB/UhY1yMV3jmoPlYEeMZOaipDbruSjq8vmO55OPti74b4cbgwH+TK9KHYd1Ye4
-JHhgd4mZiYHBdKVMRK+HsydWLQZm9dDhX/lcOqrPgu4W+kJnD4NFcWXH9g5JwO01
-lelPXru4oO/m3/dVxNn1zkD5a/GgJey6DuDnMUOhcK76h7abXYfWUD+OnBX0V34=
-=7PiP
+iQEcBAEBAgAGBQJaIFltAAoJEHCTjHgGee6YPwIH/2CQe/e3fIaxLK3ujpTxia0v
+Ome8cf4/GeIe3MtNn4D3v5GvhVQ5w41ndyVr5Z5tMKZTynB7E263/7SSe/rJRA16
+4QaWiujgh3We8GNcSQISta7pyZrQRWHNzFpICEFdncb1JsNR6DQXZ7zYWp0H0Mg0
+7uHYZQgtJ5JTPr6xst+OTta2X114oGtgw4sS95oJEZBfESL5NHoEYZe3MlZ9ZqfW
+PkSE8PKDoMatFcsRaWho9W2wqDgpoX4Nu18qg7LHT/sicdqdL6D5nsjmr0gtSiZV
+pYzx3jW1DDJUdKo7Lu6HWgqPutxenNNedD6JSXYnKsPC89APDz3ghqPJzXGpNmM=
+=/v1F
 -----END PGP SIGNATURE-----

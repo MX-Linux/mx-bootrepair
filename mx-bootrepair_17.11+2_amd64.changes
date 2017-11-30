@@ -1,0 +1,43 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.8
+Date: Thu, 30 Nov 2017 13:19:49 -0500
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 17.11+2
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (17.11+2) mx; urgency=medium
+ .
+   * display Help and GUI at the same time
+Checksums-Sha1:
+ 8c7c2b0494c4bccaffef782388bebf83e80699b1 1162 mx-bootrepair_17.11+2.dsc
+ 03462339c372cbf51252ba649dbda24897c49882 29016 mx-bootrepair_17.11+2.tar.xz
+ c80ae09a4e531ef78170fa07529a49742bd5a2b4 55820 mx-bootrepair_17.11+2_amd64.deb
+Checksums-Sha256:
+ 28c69b9a0b6425fede08150f7a57b0e547e8c02d81fcf2f09b3b32f819944a97 1162 mx-bootrepair_17.11+2.dsc
+ cda02dbdddcbddb63f3566d1d9d3dca332eb7b89272b5b4f64cd4479c48abfde 29016 mx-bootrepair_17.11+2.tar.xz
+ 1278bdfefe363be82733183f63f34f36a0e1310ab6f429ac2f94c9fd47eccb20 55820 mx-bootrepair_17.11+2_amd64.deb
+Files:
+ bd94a78dd488c27f25f8738fa7487bf7 1162 admin optional mx-bootrepair_17.11+2.dsc
+ 61672282ef14fff7baea059c10604504 29016 admin optional mx-bootrepair_17.11+2.tar.xz
+ 518f7c28452ea6512d3534bef6b7cee0 55820 admin optional mx-bootrepair_17.11+2_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJaIEwnAAoJEHCTjHgGee6YDkEH/0zKYWxgzSESBNS/KofQiLl9
+25KNAjtX8brkhb+Wp6HPUVK03jVgdl3QOtEbYmiaesQ1yUbSHmp3iJfCbFOOyQmh
+WMyotcB6nJfXwJlkkcX/HiO3ES5vmif2Sag010ylT+5Ff3c/5LHBRX5+wGHcadqS
+TeczYiRyKkqsxZpiQt138ry2zN+nlmVjUqaqdTqdBlbdoOEZX5BkGro1WEwalcf4
+Vq74cIIAHJh81Ni7u3D9BT/XSXu5FEyhNlYwy9595kvaQHH6pqEWyFaEQvG/cjOV
+Bd1Vm07ArblLC9QE/42aaxemTNN5/+79oHPQhoBaeWRcSt7YG0cEj1UNdis25LU=
+=d02d
+-----END PGP SIGNATURE-----

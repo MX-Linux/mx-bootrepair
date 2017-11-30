@@ -129,28 +129,28 @@
         <translation>Alt+H</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="503"/>
+        <location filename="../mxbootrepair.ui" line="506"/>
         <source>Cancel any changes then quit</source>
         <translation>Atsisakyti bet kokių pakeitimų, o tuomet išeiti</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="506"/>
+        <location filename="../mxbootrepair.ui" line="509"/>
         <location filename="../mxbootrepair.cpp" line="452"/>
         <source>Cancel</source>
         <translation>Atsisakyti</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="514"/>
+        <location filename="../mxbootrepair.ui" line="517"/>
         <source>Alt+N</source>
         <translation>Alt+N</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="530"/>
+        <location filename="../mxbootrepair.ui" line="533"/>
         <source>Apply any changes</source>
         <translation>Taikyti bet kokius pakeitimus</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="533"/>
+        <location filename="../mxbootrepair.ui" line="536"/>
         <location filename="../mxbootrepair.cpp" line="77"/>
         <source>Apply</source>
         <translation>Taikyti</translation>
@@ -293,7 +293,7 @@ Ar tikrai?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="472"/>
+        <location filename="../mxbootrepair.cpp" line="470"/>
         <source>MX Boot Repair Help</source>
         <translation type="unfinished"></translation>
     </message>

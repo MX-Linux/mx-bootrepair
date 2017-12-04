@@ -1,3 +1,9 @@
+mx-bootrepair (17.12) mx; urgency=medium
+
+  * new translations
+
+ -- Adrian <adrian@mxlinux.org>  Mon, 04 Dec 2017 14:26:35 -0500
+
 mx-bootrepair (17.11+2) mx; urgency=medium
 
   * display Help and GUI at the same time

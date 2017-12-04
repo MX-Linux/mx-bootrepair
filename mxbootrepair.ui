@@ -589,12 +589,12 @@
   <tabstop>buttonHelp</tabstop>
   <tabstop>buttonApply</tabstop>
   <tabstop>buttonCancel</tabstop>
-  <tabstop>grubMbrButton</tabstop>
-  <tabstop>grubRootButton</tabstop>
-  <tabstop>grubEspButton</tabstop>
   <tabstop>grubBootCombo</tabstop>
   <tabstop>rootCombo</tabstop>
+  <tabstop>grubRootButton</tabstop>
   <tabstop>outputBox</tabstop>
+  <tabstop>grubMbrButton</tabstop>
+  <tabstop>grubEspButton</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>
@@ -607,8 +607,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>455</x>
-     <y>273</y>
+     <x>504</x>
+     <y>309</y>
     </hint>
     <hint type="destinationlabel">
      <x>253</x>

@@ -467,7 +467,7 @@ void mxbootrepair::on_buttonHelp_clicked() {
         url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
     }
 
-    QString cmd = QString("mx-viewer %1 '%2'&").arg(url).arg(tr("MX Boot Repair Help"));
+    QString cmd = QString("mx-viewer " + url + " \"" + tr("MX Boot Repair Help")) + "\"";
     system(cmd.toUtf8());
 }
 

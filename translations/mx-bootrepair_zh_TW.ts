@@ -1,10 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="am" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_TW" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
         <location filename="main.cpp" line="53"/>
         <source>You must run this program as root.</source>
-        <translation>ይህን ፕሮግራም እንደ root ማስኬድ አለብዎት</translation>
+        <translation>本程式必須以 root 身份來執行。</translation>
     </message>
 </context>
 <context>
@@ -13,7 +13,7 @@
         <location filename="mxbootrepair.ui" line="20"/>
         <location filename="mxbootrepair.cpp" line="447"/>
         <source>MX Boot Repair</source>
-        <translation>MX ማስነሻ መጠገኛ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="39"/>
@@ -23,22 +23,22 @@
     <message>
         <location filename="mxbootrepair.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation>እርስዎ ምን መስራት ነው የሚፈልጉት?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation>Backup MBR or PBR (legacy boot only)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="86"/>
         <source>Reinstall GRUB bootloader</source>
-        <translation>እንደገና መግጠሚያ የ GRUB ማስነሻ መጫኛ </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
-        <translation>የ GRUB ማሰናጃ ፋይል መጠገኛ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="103"/>
@@ -48,17 +48,17 @@
     <message>
         <location filename="mxbootrepair.ui" line="123"/>
         <source>Select Boot Method</source>
-        <translation>የ ማስነሻ ዘዴ ይምረጡ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="141"/>
         <source>Master Boot Record</source>
-        <translation>ዋናው የ ማስነሻ መዝገብ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="144"/>
         <source>MBR</source>
-        <translation>MBR</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="147"/>
@@ -69,57 +69,57 @@
     <message>
         <location filename="mxbootrepair.ui" line="169"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Root (ክፍልፋይ የ ማስነሻ መዝገብ)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="172"/>
         <source>root</source>
-        <translation>root</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="223"/>
         <source>Install on:</source>
-        <translation>መግጠሚያ በ:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="242"/>
         <source>Location:</source>
-        <translation>አካባቢ:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="264"/>
         <source>Select /boot location:</source>
-        <translation>ይምረጡ /የ ማስነሻ አካባቢ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="277"/>
         <source>EFI System Partition</source>
-        <translation>EFI System Partition</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="280"/>
         <source>ESP</source>
-        <translation>ESP</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="407"/>
         <source>About this application</source>
-        <translation>ስለዚህ መተግበሪያ</translation>
+        <translation>關於本程式</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="410"/>
         <source>About...</source>
-        <translation>ስለ...</translation>
+        <translation>關於……</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="460"/>
         <source>Display help </source>
-        <translation>እርዳታ ማሳያ</translation>
+        <translation>顯示說明</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="463"/>
         <source>Help</source>
-        <translation>እርዳታ</translation>
+        <translation>說明</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="471"/>
@@ -129,13 +129,13 @@
     <message>
         <location filename="mxbootrepair.ui" line="512"/>
         <source>Cancel any changes then quit</source>
-        <translation>ማንኛውንም ለውጥ መሰረዣ እና ማጥፊያ</translation>
+        <translation>取消所有更動，然後退出</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="515"/>
         <location filename="mxbootrepair.cpp" line="452"/>
         <source>Cancel</source>
-        <translation>መሰረዣ</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="523"/>
@@ -145,13 +145,13 @@
     <message>
         <location filename="mxbootrepair.ui" line="542"/>
         <source>Apply any changes</source>
-        <translation>ማንኛውንም ለውጥ መፈጸሚያ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="545"/>
         <location filename="mxbootrepair.cpp" line="77"/>
         <source>Apply</source>
-        <translation>መፈጸሚያ</translation>
+        <translation>使用</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="110"/>
@@ -163,17 +163,17 @@
         <location filename="mxbootrepair.cpp" line="420"/>
         <location filename="mxbootrepair.cpp" line="427"/>
         <source>Error</source>
-        <translation>ስህተት</translation>
+        <translation>錯誤</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="111"/>
         <source>Could not mount </source>
-        <translation>መጫን አልተቻለም</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="111"/>
         <source> on /boot/efi</source>
-        <translation> on /boot/efi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="134"/>
@@ -185,7 +185,7 @@ Please double-check the selected location.</source>
     <message>
         <location filename="mxbootrepair.cpp" line="240"/>
         <source>Warning</source>
-        <translation>ማስጠንቀቂያ</translation>
+        <translation>注意</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="241"/>
@@ -195,28 +195,26 @@ Please double-check the selected location.</source>
     <message>
         <location filename="mxbootrepair.cpp" line="241"/>
         <source> to </source>
-        <translation>ለ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="241"/>
         <source>
 
 Are you sure?</source>
-        <translation>
-
-እርስዎ እርግጠኛ ነዎት?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="242"/>
         <location filename="mxbootrepair.cpp" line="295"/>
         <source>Yes</source>
-        <translation>አዎ</translation>
+        <translation>是</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="242"/>
         <location filename="mxbootrepair.cpp" line="295"/>
         <source>No</source>
-        <translation>አይ</translation>
+        <translation>否</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="266"/>
@@ -226,7 +224,7 @@ Are you sure?</source>
     <message>
         <location filename="mxbootrepair.cpp" line="293"/>
         <source>Success</source>
-        <translation>ተሳክቷል</translation>
+        <translation>成功</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="294"/>
@@ -242,18 +240,18 @@ Are you sure?</source>
     <message>
         <location filename="mxbootrepair.cpp" line="302"/>
         <source>Back</source>
-        <translation>ወደ ኋላ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="418"/>
         <source>Select backup file name</source>
-        <translation>የ ተተኪ ፋይል ስም ይምረጡ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="420"/>
         <location filename="mxbootrepair.cpp" line="427"/>
         <source>No file was selected.</source>
-        <translation>ምንም ፋይል አልተመረጠም:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="425"/>
@@ -268,7 +266,7 @@ Are you sure?</source>
     <message>
         <location filename="mxbootrepair.cpp" line="447"/>
         <source>Version: </source>
-        <translation>እትም</translation>
+        <translation>版本：</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="449"/>
@@ -278,12 +276,12 @@ Are you sure?</source>
     <message>
         <location filename="mxbootrepair.cpp" line="450"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>የ ቅጂ መብት (c) MX Linux</translation>
+        <translation>版權所有 (c) MX Linux</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="451"/>
         <source>License</source>
-        <translation>ፍቃድ</translation>
+        <translation>授權條款</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="454"/>

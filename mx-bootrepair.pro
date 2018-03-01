@@ -62,7 +62,8 @@ TRANSLATIONS += translations/mx-bootrepair_am.ts \
                 translations/mx-bootrepair_sk.ts \
                 translations/mx-bootrepair_sv.ts \
                 translations/mx-bootrepair_tr.ts \
-                translations/mx-bootrepair_uk.ts
+                translations/mx-bootrepair_uk.ts \
+                translations/mx-bootrepair_zh_TW.ts
 
 RESOURCES += \
     images.qrc

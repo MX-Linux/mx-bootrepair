@@ -18,20 +18,20 @@ Changes:
  .
    * new translations
 Checksums-Sha1:
- 421099fa8b304e0f961f7988f958a75521d55d61 58900 mx-bootrepair_18.3_i386.deb
+ 4af5a5ff97832b6e49c07c5ef2f8e71ab8840a6c 59368 mx-bootrepair_18.3_i386.deb
 Checksums-Sha256:
- f51e6a8ac716ada330b443f8efff90d55f729afd21be1fd04adde4bc2a67f28d 58900 mx-bootrepair_18.3_i386.deb
+ 8702f4c2d8f9db38930ef819e8745b33953daf4eabb1861ca0b68cb3ad2f4139 59368 mx-bootrepair_18.3_i386.deb
 Files:
- 72f52774b07524a60bfa8478da9e26b1 58900 admin optional mx-bootrepair_18.3_i386.deb
+ c2d9d18007ced8a54878417279581834 59368 admin optional mx-bootrepair_18.3_i386.deb
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQEcBAEBAgAGBQJamWqvAAoJEHCTjHgGee6YbyIH/1/o/vV2nQ0U0rsyCoyzIqZj
-Ne9KfYH0qenRItvTKkoUQYVKZiWJAQaNDujAsOfamYAAS92RTc8tLt1mqwMtYIui
-x0cOtXFPiZSraFWVjid1x6j1n6uV1xkLOGWYOwKqyxkvatczVLTWXCgGgMHQhXGa
-aBi3m4iyMt8vDg3mxlqVMWMR01+3ity5706ldDaQ1csP2jbzMwQxMboOMs2moTcq
-356xSCAh0vtAskrxCJIcjl0zsBlt2Eeg8SdTOfTnt+tPckWfRuax22pkqpyZ+O9r
-T+WoYVHhmrZ3TuRJdOPTz75TkxZc9VXzARRjzNjLKJdDkYbnwdsYkJzFkgoufuk=
-=4fBb
+iQEcBAEBAgAGBQJamXcWAAoJEHCTjHgGee6YJ2EH/2nDnHnR472LKEAkNq5F726C
+rR5wIJBfEKOvQz0/eoSEXE+5beTxpLfIQrpc9RExhmKVs85g9d2EDvUvc0ca1Rvu
+/xrDBJ971op8EedoMIAf0iFZsNsnIuN8ZAVhPc0GZivTxMAPL4qDF0IjiiTrIs9g
+zfs/c9OWyPHbbu/o/iCDSDNavkFqEJSE+jR7+6u1ye53eFJfxczWSGPJXQyQ1feY
+i9vV4miXUAsBoueG8+HO4YzMzqOXjKNVN90Llx+RtzxjvzRq/QYCku6L0XxCJr53
+LZtk4qUpRPEX22OFV+6IydKv5tJWY7TmCbUB0TdZSOWD4J0P6SyMcrDroS/OG78=
+=ESo6
 -----END PGP SIGNATURE-----

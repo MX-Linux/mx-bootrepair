@@ -42,12 +42,14 @@ mxbootrepair::~mxbootrepair()
 
 // Util function
 QString mxbootrepair::getCmdOut(QString cmd) {
-    QProcess *proc = new QProcess();
+    QProcess *proc = new QProcess(this);
     proc->start("/bin/bash", QStringList() << "-c" << cmd);
     proc->setReadChannel(QProcess::StandardOutput);
     proc->setReadChannelMode(QProcess::MergedChannels);
     proc->waitForFinished(-1);
-    return proc->readAllStandardOutput().trimmed();
+    QString out = proc->readAllStandardOutput().trimmed();
+    delete proc;
+    return out;
 }
 
 // Get version of the program
@@ -441,7 +443,6 @@ void mxbootrepair::on_buttonApply_clicked() {
 
 // About button clicked
 void mxbootrepair::on_buttonAbout_clicked() {
-    this->hide();
     QMessageBox msgBox(QMessageBox::NoIcon,
                        tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
                        tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">" + tr("Version: ") +
@@ -451,10 +452,14 @@ void mxbootrepair::on_buttonAbout_clicked() {
     msgBox.addButton(tr("License"), QMessageBox::AcceptRole);
     msgBox.addButton(tr("Cancel"), QMessageBox::NoRole);
     if (msgBox.exec() == QMessageBox::AcceptRole) {
-        QString cmd = QString("mx-viewer file:///usr/share/doc/mx-bootrepair/license.html %1").arg(tr("\'MX Boot Repair License\'"));
+        QString exec = "xdg-open";
+        QString user = getCmdOut("logname");
+        if (system("command -v mx-viewer") == 0) { // use mx-viewer if available
+            exec = "mx-viewer";
+        }
+        QString cmd = "su " + user + " -c \"" + exec + " file:///usr/share/doc/mx-bootrepair/license.html\"&";
         system(cmd.toUtf8());
     }
-    this->show();
 }
 
 // Help button clicked
@@ -467,7 +472,12 @@ void mxbootrepair::on_buttonHelp_clicked() {
         url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
     }
 
-    QString cmd = QString("mx-viewer " + url + " \"" + tr("MX Boot Repair Help")) + "\"";
+    QString exec = "xdg-open";
+    QString user = getCmdOut("logname");
+    if (system("command -v mx-viewer") == 0) { // use mx-viewer if available
+        exec = "mx-viewer";
+    }
+    QString cmd = "su " + user + " -c \"" + exec + " " + url + "\"&";
     system(cmd.toUtf8());
 }
 

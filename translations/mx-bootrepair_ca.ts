@@ -13,7 +13,7 @@
     <name>mxbootrepair</name>
     <message>
         <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="447"/>
+        <location filename="../mxbootrepair.cpp" line="448"/>
         <source>MX Boot Repair</source>
         <translation>MX Boot Repair</translation>
     </message>
@@ -135,7 +135,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="515"/>
-        <location filename="../mxbootrepair.cpp" line="452"/>
+        <location filename="../mxbootrepair.cpp" line="453"/>
         <source>Cancel</source>
         <translation>Cancel·la</translation>
     </message>
@@ -151,57 +151,57 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="545"/>
-        <location filename="../mxbootrepair.cpp" line="77"/>
+        <location filename="../mxbootrepair.cpp" line="79"/>
         <source>Apply</source>
         <translation>Aplica</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="110"/>
-        <location filename="../mxbootrepair.cpp" line="133"/>
-        <location filename="../mxbootrepair.cpp" line="163"/>
-        <location filename="../mxbootrepair.cpp" line="265"/>
-        <location filename="../mxbootrepair.cpp" line="299"/>
-        <location filename="../mxbootrepair.cpp" line="404"/>
-        <location filename="../mxbootrepair.cpp" line="420"/>
-        <location filename="../mxbootrepair.cpp" line="427"/>
+        <location filename="../mxbootrepair.cpp" line="112"/>
+        <location filename="../mxbootrepair.cpp" line="135"/>
+        <location filename="../mxbootrepair.cpp" line="165"/>
+        <location filename="../mxbootrepair.cpp" line="267"/>
+        <location filename="../mxbootrepair.cpp" line="301"/>
+        <location filename="../mxbootrepair.cpp" line="406"/>
+        <location filename="../mxbootrepair.cpp" line="422"/>
+        <location filename="../mxbootrepair.cpp" line="429"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="111"/>
+        <location filename="../mxbootrepair.cpp" line="113"/>
         <source>Could not mount </source>
         <translation>No es pot muntar </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="111"/>
+        <location filename="../mxbootrepair.cpp" line="113"/>
         <source> on /boot/efi</source>
         <translation>a /boot/efi</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="134"/>
-        <location filename="../mxbootrepair.cpp" line="164"/>
+        <location filename="../mxbootrepair.cpp" line="136"/>
+        <location filename="../mxbootrepair.cpp" line="166"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation>No es pot establir l&apos;entorn de chroot.
 Si us plau, verifiqueu la ubicació triada. </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="240"/>
+        <location filename="../mxbootrepair.cpp" line="242"/>
         <source>Warning</source>
         <translation>Atenció </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="241"/>
+        <location filename="../mxbootrepair.cpp" line="243"/>
         <source>You are going to write the content of </source>
         <translation>Ara s&apos;enregistrarà el contingut de </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="241"/>
+        <location filename="../mxbootrepair.cpp" line="243"/>
         <source> to </source>
         <translation>a</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="241"/>
+        <location filename="../mxbootrepair.cpp" line="243"/>
         <source>
 
 Are you sure?</source>
@@ -210,93 +210,91 @@ Are you sure?</source>
 N&apos;esteu segur? </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="242"/>
-        <location filename="../mxbootrepair.cpp" line="295"/>
+        <location filename="../mxbootrepair.cpp" line="244"/>
+        <location filename="../mxbootrepair.cpp" line="297"/>
         <source>Yes</source>
         <translation>Sí</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="242"/>
-        <location filename="../mxbootrepair.cpp" line="295"/>
+        <location filename="../mxbootrepair.cpp" line="244"/>
+        <location filename="../mxbootrepair.cpp" line="297"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="266"/>
+        <location filename="../mxbootrepair.cpp" line="268"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation>No trobo la partició EFI de sistema (ESP) a cap disc del sistema. Si us plau, creeu un ESP i torneu a provar-ho.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="293"/>
+        <location filename="../mxbootrepair.cpp" line="295"/>
         <source>Success</source>
         <translation>Èxit</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="294"/>
+        <location filename="../mxbootrepair.cpp" line="296"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation>S&apos;ha acabat el procés amb èxit. &lt;p&gt;&lt;b&gt;Voleu sortir de MX Boot Repair?&lt;/b&gt; </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="300"/>
-        <location filename="../mxbootrepair.cpp" line="405"/>
+        <location filename="../mxbootrepair.cpp" line="302"/>
+        <location filename="../mxbootrepair.cpp" line="407"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>El procés ha acabat. Hi ha hagut errors.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="302"/>
+        <location filename="../mxbootrepair.cpp" line="304"/>
         <source>Back</source>
         <translation>Enrere  </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="418"/>
+        <location filename="../mxbootrepair.cpp" line="420"/>
         <source>Select backup file name</source>
         <translation>Trieu el nom del fitxer de còpia de seguretat </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="420"/>
-        <location filename="../mxbootrepair.cpp" line="427"/>
+        <location filename="../mxbootrepair.cpp" line="422"/>
+        <location filename="../mxbootrepair.cpp" line="429"/>
         <source>No file was selected.</source>
         <translation>No s&apos;ha triat cap fitxer. </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="425"/>
+        <location filename="../mxbootrepair.cpp" line="427"/>
         <source>Select MBR or PBR backup file</source>
         <translation>Trieu un fitxer de còpia de seguretat de MBR o PBR </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="446"/>
+        <location filename="../mxbootrepair.cpp" line="447"/>
         <source>About MX Boot Repair</source>
         <translation>Quant a MX Boot Repair</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="447"/>
+        <location filename="../mxbootrepair.cpp" line="448"/>
         <source>Version: </source>
         <translation>Versió: </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="449"/>
+        <location filename="../mxbootrepair.cpp" line="450"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Programa senzill de reparació d&apos;arrencada per MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="450"/>
+        <location filename="../mxbootrepair.cpp" line="451"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="451"/>
+        <location filename="../mxbootrepair.cpp" line="452"/>
         <source>License</source>
         <translation>Llicència</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="454"/>
         <source>&apos;MX Boot Repair License&apos;</source>
-        <translation>&apos;Llicència de MX Boot Repair&apos;</translation>
+        <translation type="vanished">&apos;Llicència de MX Boot Repair&apos;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="470"/>
         <source>MX Boot Repair Help</source>
-        <translation>Ajuda de MX Boot Repair</translation>
+        <translation type="vanished">Ajuda de MX Boot Repair</translation>
     </message>
 </context>
 </TS>

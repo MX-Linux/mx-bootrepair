@@ -1,0 +1,37 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.8
+Date: Fri, 02 Mar 2018 09:16:48 -0500
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: i386
+Version: 18.3
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (18.3) mx; urgency=medium
+ .
+   * new translations
+Checksums-Sha1:
+ 4a0fcdcbf07ca17d01be624d109e50ebc1fc25b8 58856 mx-bootrepair_18.3_i386.deb
+Checksums-Sha256:
+ a7119d32dca993f03558924639164ca897a3dd70597bb0edd02ab2b889f1c8a2 58856 mx-bootrepair_18.3_i386.deb
+Files:
+ 1f885803b3c45ed05c9287321a8bfb0f 58856 admin optional mx-bootrepair_18.3_i386.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJamWc3AAoJEHCTjHgGee6YFmQH/iQynVVhJjweJursP+iFYrvT
+d5n+UCm4ydKpeSYnbsEe8O/WYm8SWNERh1TzOuD0Ou9jm20Ttd1X6Ed/C5jbvdt+
++c1Nzv/L9Zpyl0Qk742UeiqooxTnXe97+SehZQywr47c5yMnqBBdKidJcPcRC62W
+//znOTTeSzShj6uPFUahWBM0o1z/1JN+eJvelUbsVgnI/GLePVvdkNWYQ5z2JFOX
+QkBbrhRmY/6ymZWTuBJUqNIrZNzJQ1mnC7XXLcKmE4pkAs8ajQMCgHxHceYfLo1r
+CBKy7wUyEf0JzPnNpV5Boen7DMkCOq3IQbJkSSMGrDXMFKitxclddvt1Jv0ckK8=
+=0dhy
+-----END PGP SIGNATURE-----

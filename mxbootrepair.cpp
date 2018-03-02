@@ -443,6 +443,7 @@ void mxbootrepair::on_buttonApply_clicked() {
 
 // About button clicked
 void mxbootrepair::on_buttonAbout_clicked() {
+    this->hide();
     QMessageBox msgBox(QMessageBox::NoIcon,
                        tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
                        tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">" + tr("Version: ") +
@@ -460,6 +461,7 @@ void mxbootrepair::on_buttonAbout_clicked() {
         QString cmd = "su " + user + " -c \"" + exec + " file:///usr/share/doc/mx-bootrepair/license.html\"&";
         system(cmd.toUtf8());
     }
+    this->show();
 }
 
 // Help button clicked

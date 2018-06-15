@@ -1,59 +1,59 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="en" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="hr" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
         <location filename="main.cpp" line="53"/>
         <source>You must run this program as root.</source>
-        <translation>You must run this program as root.</translation>
+        <translation>Morate pokrenuti ovaj program kao root.</translation>
     </message>
 </context>
 <context>
     <name>mxbootrepair</name>
     <message>
         <location filename="mxbootrepair.ui" line="20"/>
-        <location filename="mxbootrepair.cpp" line="447"/>
+        <location filename="mxbootrepair.cpp" line="449"/>
         <source>MX Boot Repair</source>
-        <translation>MX Boot Repair</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR.</source>
-        <translation>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation>What would you like to do?</translation>
+        <translation>Što želite učiniti?</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation>Backup MBR or PBR (legacy boot only)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="86"/>
         <source>Reinstall GRUB bootloader</source>
-        <translation>Reinstall GRUB bootloader</translation>
+        <translation>Ponovno instalirati GRUB bootloader</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
-        <translation>Repair GRUB configuration file</translation>
+        <translation>Obnovi GRUB konfiguracijsku datoteku</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation>Restore MBR or PBR from backup (legacy boot only)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="123"/>
         <source>Select Boot Method</source>
-        <translation>Select Boot Method</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="141"/>
         <source>Master Boot Record</source>
-        <translation>Master Boot Record</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="144"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="mxbootrepair.ui" line="169"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Root (Partition Boot Record)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="172"/>
@@ -79,22 +79,22 @@
     <message>
         <location filename="mxbootrepair.ui" line="223"/>
         <source>Install on:</source>
-        <translation>Install on:</translation>
+        <translation>Instaliraj na:</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="242"/>
         <source>Location:</source>
-        <translation>Location:</translation>
+        <translation>Lokacija:</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="264"/>
         <source>Select /boot location:</source>
-        <translation>Select /boot location:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="277"/>
         <source>EFI System Partition</source>
-        <translation>EFI System Partition</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="280"/>
@@ -104,22 +104,22 @@
     <message>
         <location filename="mxbootrepair.ui" line="407"/>
         <source>About this application</source>
-        <translation>About this application</translation>
+        <translation>O ovoj aplikaciji</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="410"/>
         <source>About...</source>
-        <translation>About...</translation>
+        <translation>O programu...</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="460"/>
         <source>Display help </source>
-        <translation>Display help </translation>
+        <translation>Prikaži pomoć</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="463"/>
         <source>Help</source>
-        <translation>Help</translation>
+        <translation>Pomoć</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="471"/>
@@ -129,13 +129,13 @@
     <message>
         <location filename="mxbootrepair.ui" line="512"/>
         <source>Cancel any changes then quit</source>
-        <translation>Cancel any changes then quit</translation>
+        <translation>Otkaži promjene i izađi</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="515"/>
-        <location filename="mxbootrepair.cpp" line="452"/>
+        <location filename="mxbootrepair.cpp" line="454"/>
         <source>Cancel</source>
-        <translation>Cancel</translation>
+        <translation>Otkaži</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="523"/>
@@ -145,156 +145,145 @@
     <message>
         <location filename="mxbootrepair.ui" line="542"/>
         <source>Apply any changes</source>
-        <translation>Apply any changes</translation>
+        <translation>Primjeni izmjene</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="545"/>
-        <location filename="mxbootrepair.cpp" line="77"/>
+        <location filename="mxbootrepair.cpp" line="79"/>
         <source>Apply</source>
-        <translation>Apply</translation>
+        <translation>Primjeni</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="110"/>
-        <location filename="mxbootrepair.cpp" line="133"/>
-        <location filename="mxbootrepair.cpp" line="163"/>
-        <location filename="mxbootrepair.cpp" line="265"/>
-        <location filename="mxbootrepair.cpp" line="299"/>
-        <location filename="mxbootrepair.cpp" line="404"/>
-        <location filename="mxbootrepair.cpp" line="420"/>
-        <location filename="mxbootrepair.cpp" line="427"/>
+        <location filename="mxbootrepair.cpp" line="112"/>
+        <location filename="mxbootrepair.cpp" line="135"/>
+        <location filename="mxbootrepair.cpp" line="165"/>
+        <location filename="mxbootrepair.cpp" line="267"/>
+        <location filename="mxbootrepair.cpp" line="301"/>
+        <location filename="mxbootrepair.cpp" line="406"/>
+        <location filename="mxbootrepair.cpp" line="422"/>
+        <location filename="mxbootrepair.cpp" line="429"/>
         <source>Error</source>
-        <translation>Error</translation>
+        <translation>Greška</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="111"/>
+        <location filename="mxbootrepair.cpp" line="113"/>
         <source>Could not mount </source>
-        <translation>Could not mount </translation>
+        <translation>Ne mogu montirati</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="111"/>
+        <location filename="mxbootrepair.cpp" line="113"/>
         <source> on /boot/efi</source>
-        <translation> on /boot/efi</translation>
+        <translation>na /boot/efi</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="134"/>
-        <location filename="mxbootrepair.cpp" line="164"/>
+        <location filename="mxbootrepair.cpp" line="136"/>
+        <location filename="mxbootrepair.cpp" line="166"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation>Could not set up chroot environment.
-Please double-check the selected location.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="240"/>
+        <location filename="mxbootrepair.cpp" line="242"/>
         <source>Warning</source>
-        <translation>Warning</translation>
+        <translation>Upozorenje</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="241"/>
+        <location filename="mxbootrepair.cpp" line="243"/>
         <source>You are going to write the content of </source>
-        <translation>You are going to write the content of </translation>
+        <translation>Zapisati ćete sadržaj</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="241"/>
+        <location filename="mxbootrepair.cpp" line="243"/>
         <source> to </source>
-        <translation> to </translation>
+        <translation>na</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="241"/>
+        <location filename="mxbootrepair.cpp" line="243"/>
         <source>
 
 Are you sure?</source>
         <translation>
 
-Are you sure?</translation>
+Jeste li sigurni?</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="242"/>
-        <location filename="mxbootrepair.cpp" line="295"/>
+        <location filename="mxbootrepair.cpp" line="244"/>
+        <location filename="mxbootrepair.cpp" line="297"/>
         <source>Yes</source>
-        <translation>Yes</translation>
+        <translation>Da</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="242"/>
-        <location filename="mxbootrepair.cpp" line="295"/>
+        <location filename="mxbootrepair.cpp" line="244"/>
+        <location filename="mxbootrepair.cpp" line="297"/>
         <source>No</source>
-        <translation>No</translation>
+        <translation>Ne</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="266"/>
+        <location filename="mxbootrepair.cpp" line="268"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="293"/>
+        <location filename="mxbootrepair.cpp" line="295"/>
         <source>Success</source>
-        <translation>Success</translation>
+        <translation>Uspjeh</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="294"/>
+        <location filename="mxbootrepair.cpp" line="296"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="mxbootrepair.cpp" line="300"/>
-        <location filename="mxbootrepair.cpp" line="405"/>
-        <source>Process finished. Errors have occurred.</source>
-        <translation>Process finished. Errors have occurred.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="302"/>
-        <source>Back</source>
-        <translation>Back</translation>
+        <location filename="mxbootrepair.cpp" line="407"/>
+        <source>Process finished. Errors have occurred.</source>
+        <translation>Proces je završen. Pojavile su se greške.</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="418"/>
-        <source>Select backup file name</source>
-        <translation>Select backup file name</translation>
+        <location filename="mxbootrepair.cpp" line="304"/>
+        <source>Back</source>
+        <translation>Natrag</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="420"/>
-        <location filename="mxbootrepair.cpp" line="427"/>
+        <source>Select backup file name</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="mxbootrepair.cpp" line="422"/>
+        <location filename="mxbootrepair.cpp" line="429"/>
         <source>No file was selected.</source>
-        <translation>No file was selected.</translation>
+        <translation>Nijedna datoteka nije odabrana</translation>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="425"/>
+        <location filename="mxbootrepair.cpp" line="427"/>
         <source>Select MBR or PBR backup file</source>
-        <translation>Select MBR or PBR backup file</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mxbootrepair.cpp" line="446"/>
+        <location filename="mxbootrepair.cpp" line="448"/>
         <source>About MX Boot Repair</source>
-        <translation>About MX Boot Repair</translation>
-    </message>
-    <message>
-        <location filename="mxbootrepair.cpp" line="447"/>
-        <source>Version: </source>
-        <translation>Version: </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="449"/>
-        <source>Simple boot repair program for MX Linux</source>
-        <translation>Simple boot repair program for MX Linux</translation>
-    </message>
-    <message>
-        <location filename="mxbootrepair.cpp" line="450"/>
-        <source>Copyright (c) MX Linux</source>
-        <translation>Copyright (c) MX Linux</translation>
+        <source>Version: </source>
+        <translation>Inačica:</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="451"/>
+        <source>Simple boot repair program for MX Linux</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="mxbootrepair.cpp" line="452"/>
+        <source>Copyright (c) MX Linux</source>
+        <translation>Autorska prava (c) MX Linux</translation>
+    </message>
+    <message>
+        <location filename="mxbootrepair.cpp" line="453"/>
         <source>License</source>
-        <translation>License</translation>
-    </message>
-    <message>
-        <location filename="mxbootrepair.cpp" line="454"/>
-        <source>&apos;MX Boot Repair License&apos;</source>
-        <translation>&apos;MX Boot Repair License&apos;</translation>
-    </message>
-    <message>
-        <location filename="mxbootrepair.cpp" line="470"/>
-        <source>MX Boot Repair Help</source>
-        <translation>MX Boot Repair Help</translation>
+        <translation>Licenca</translation>
     </message>
 </context>
 </TS>

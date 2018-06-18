@@ -1,0 +1,46 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Mon, 18 Jun 2018 12:28:23 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 18.6
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (18.6) mx; urgency=medium
+ .
+   * new translations
+Checksums-Sha1:
+ 22c8d0e6bbeaecb30fd96b726e7fd1e029612705 1185 mx-bootrepair_18.6.dsc
+ 83ac00043d79adc6880a91a818ea51590d6697e0 33192 mx-bootrepair_18.6.tar.xz
+ b49c72cf2fd55e8053e04cead917b5e6a0451c0c 11188 mx-bootrepair_18.6_amd64.buildinfo
+ 0215b788f4781130daaa1f3b371cc0335231bbe6 61136 mx-bootrepair_18.6_amd64.deb
+Checksums-Sha256:
+ 994cd95df86c72732b05643e63a66e631572bffd95bfc7f6a0fc7a3b2da37060 1185 mx-bootrepair_18.6.dsc
+ 2cac479738df71f211bcca53757f7c452878bd9eafaca8edcffebd7285899759 33192 mx-bootrepair_18.6.tar.xz
+ f2da2ba5428ce8ccbe9d5a117849db9b82885a132b53959d0fc24c7c799e0121 11188 mx-bootrepair_18.6_amd64.buildinfo
+ 28ac595a58f43bb88c61cad58f3b9c0469160d82ba29fb72edd71e6cee4ee4e8 61136 mx-bootrepair_18.6_amd64.deb
+Files:
+ 689c6e8435122547c32fc82f563d2b11 1185 admin optional mx-bootrepair_18.6.dsc
+ d904368380461bca1b2a742d736a50fa 33192 admin optional mx-bootrepair_18.6.tar.xz
+ f9444f393c99ad50b5c6b7f2332ade53 11188 admin optional mx-bootrepair_18.6_amd64.buildinfo
+ 688f5b83480c377130962d1b4ef5edb5 61136 admin optional mx-bootrepair_18.6_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAlsn37MTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumIEpCACHNejpfRCE8/7TeCIPqp1imFo1FrHZ
+3378oMlz6jywrr0tLsrOfvP5LbgmJ5tFjfEruRv6EBDBrT4CnNmAlrO8Kru/DTAp
+iD0QBVFY9gP9L/aMtTOEHnbYzrEOM7RsfJ8Dh1LPpur3HVYqJxjxfJzrTQo4F0R1
+qnXe1FzRQJBYDtPDQNN+yF6NqSPWaBgKt1E9f122THMYNWutVOn6GGjXCjhRSVzK
+f/gRcIbfVt8SESXkUzSv0/HoefP4i0N5OYSmkhEiqusWQYge6BNwOXW7E6/peqnU
+eE3b4Elpv2nDwvWukeO7gPAxcOJO+BobjM+VqLG3x2f1kHB/CXk0VkYs
+=u03u
+-----END PGP SIGNATURE-----

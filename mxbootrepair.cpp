@@ -54,7 +54,7 @@ QString mxbootrepair::getCmdOut(QString cmd) {
 
 // Get version of the program
 QString mxbootrepair::getVersion(QString name) {
-    QString cmd = QString("dpkg -l %1 | awk 'NR==6 {print $3}'").arg(name);
+    QString cmd = QString("dpkg -l %1 | awk 'END {print $3}'").arg(name);
     return getCmdOut(cmd);
 }
 

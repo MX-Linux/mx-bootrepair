@@ -98,7 +98,7 @@ void mxbootrepair::installGRUB() {
 
     setConnections(timer, proc);
     QEventLoop loop;
-    connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
+    connect(proc, static_cast<void (QProcess::*)(int)>(&QProcess::finished), &loop, &QEventLoop::quit);
 
     // create a temp folder and mount dev sys proc
     QString path = getCmdOut("mktemp -d --tmpdir -p /tmp");
@@ -156,7 +156,7 @@ void mxbootrepair::repairGRUB() {
     cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(location).arg(path);
     if (system(cmd.toUtf8()) == 0) {
         QEventLoop loop;
-        connect(proc, SIGNAL(finished(int)), &loop, SLOT(quit()));
+        connect(proc, static_cast<void (QProcess::*)(int)>(&QProcess::finished), &loop, &QEventLoop::quit);
         cmd = QString("chroot %1 update-grub").arg(path);
         proc->start(cmd);
         loop.exec();
@@ -306,14 +306,12 @@ void mxbootrepair::procDone(int exitCode) {
 
 // set proc and timer connections
 void mxbootrepair::setConnections(QTimer* timer, QProcess* proc) {
-    disconnect(timer, SIGNAL(timeout()), 0, 0);
-    connect(timer, SIGNAL(timeout()), this, SLOT(procTime()));
-    disconnect(proc, SIGNAL(started()), 0, 0);
-    connect(proc, SIGNAL(started()), this, SLOT(procStart()));
-    disconnect(proc, SIGNAL(finished(int)), 0, 0);
-    connect(proc, SIGNAL(finished(int)), this, SLOT(procDone(int)));
-    disconnect(proc, SIGNAL(readyReadStandardOutput()), 0, 0);
-    connect(proc, SIGNAL(readyReadStandardOutput()), this, SLOT(onStdoutAvailable()));
+    timer->disconnect();
+    proc->disconnect();
+    connect(timer, &QTimer::timeout, this, &mxbootrepair::procTime);
+    connect(proc, &QProcess::started, this, &mxbootrepair::procStart);
+    connect(proc, static_cast<void (QProcess::*)(int)>(&QProcess::finished), this, &mxbootrepair::procDone);
+    connect(proc, &QProcess::readyReadStandardOutput, this, &mxbootrepair::onStdoutAvailable);
 }
 
 // add list of devices to grubBootCombo

@@ -13,7 +13,7 @@
     <name>mxbootrepair</name>
     <message>
         <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="449"/>
+        <location filename="../mxbootrepair.cpp" line="448"/>
         <source>MX Boot Repair</source>
         <translation>MX Oprava zavádzača</translation>
     </message>
@@ -135,7 +135,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="515"/>
-        <location filename="../mxbootrepair.cpp" line="454"/>
+        <location filename="../mxbootrepair.cpp" line="453"/>
         <source>Cancel</source>
         <translation>Zrušiť</translation>
     </message>
@@ -151,57 +151,57 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="545"/>
-        <location filename="../mxbootrepair.cpp" line="79"/>
+        <location filename="../mxbootrepair.cpp" line="78"/>
         <source>Apply</source>
         <translation>Použiť</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="112"/>
-        <location filename="../mxbootrepair.cpp" line="135"/>
-        <location filename="../mxbootrepair.cpp" line="165"/>
-        <location filename="../mxbootrepair.cpp" line="267"/>
-        <location filename="../mxbootrepair.cpp" line="301"/>
-        <location filename="../mxbootrepair.cpp" line="406"/>
-        <location filename="../mxbootrepair.cpp" line="422"/>
-        <location filename="../mxbootrepair.cpp" line="429"/>
+        <location filename="../mxbootrepair.cpp" line="111"/>
+        <location filename="../mxbootrepair.cpp" line="134"/>
+        <location filename="../mxbootrepair.cpp" line="164"/>
+        <location filename="../mxbootrepair.cpp" line="266"/>
+        <location filename="../mxbootrepair.cpp" line="300"/>
+        <location filename="../mxbootrepair.cpp" line="405"/>
+        <location filename="../mxbootrepair.cpp" line="421"/>
+        <location filename="../mxbootrepair.cpp" line="428"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="113"/>
+        <location filename="../mxbootrepair.cpp" line="112"/>
         <source>Could not mount </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="113"/>
+        <location filename="../mxbootrepair.cpp" line="112"/>
         <source> on /boot/efi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="136"/>
-        <location filename="../mxbootrepair.cpp" line="166"/>
+        <location filename="../mxbootrepair.cpp" line="135"/>
+        <location filename="../mxbootrepair.cpp" line="165"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation>Nebolo možné nastaviť chroot environment.
 Prosím prekontrolujte zvolené umiestnenie.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="242"/>
+        <location filename="../mxbootrepair.cpp" line="241"/>
         <source>Warning</source>
         <translation>Upozornenie</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="243"/>
+        <location filename="../mxbootrepair.cpp" line="242"/>
         <source>You are going to write the content of </source>
         <translation>Chystáte sa zapísať obsah</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="243"/>
+        <location filename="../mxbootrepair.cpp" line="242"/>
         <source> to </source>
         <translation>do</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="243"/>
+        <location filename="../mxbootrepair.cpp" line="242"/>
         <source>
 
 Are you sure?</source>
@@ -210,81 +210,81 @@ Are you sure?</source>
 Určite?</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="244"/>
-        <location filename="../mxbootrepair.cpp" line="297"/>
+        <location filename="../mxbootrepair.cpp" line="243"/>
+        <location filename="../mxbootrepair.cpp" line="296"/>
         <source>Yes</source>
         <translation>Ano</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="244"/>
-        <location filename="../mxbootrepair.cpp" line="297"/>
+        <location filename="../mxbootrepair.cpp" line="243"/>
+        <location filename="../mxbootrepair.cpp" line="296"/>
         <source>No</source>
         <translation>Nie</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="268"/>
+        <location filename="../mxbootrepair.cpp" line="267"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="295"/>
+        <location filename="../mxbootrepair.cpp" line="294"/>
         <source>Success</source>
         <translation>Úspech</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="296"/>
+        <location filename="../mxbootrepair.cpp" line="295"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation>Proces bol úspešne dokončený.&lt;p&gt;&lt;b&gt;Ukončiť MX Oprava zavádzača?&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="302"/>
-        <location filename="../mxbootrepair.cpp" line="407"/>
+        <location filename="../mxbootrepair.cpp" line="301"/>
+        <location filename="../mxbootrepair.cpp" line="406"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>Proces dokončený. Objavili sa chyby.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="304"/>
+        <location filename="../mxbootrepair.cpp" line="303"/>
         <source>Back</source>
         <translation>Naspäť</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="420"/>
+        <location filename="../mxbootrepair.cpp" line="419"/>
         <source>Select backup file name</source>
         <translation>Zvoľte názov záložného súboru</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="422"/>
-        <location filename="../mxbootrepair.cpp" line="429"/>
+        <location filename="../mxbootrepair.cpp" line="421"/>
+        <location filename="../mxbootrepair.cpp" line="428"/>
         <source>No file was selected.</source>
         <translation>Nebol vybraný žiadny súbor.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="427"/>
+        <location filename="../mxbootrepair.cpp" line="426"/>
         <source>Select MBR or PBR backup file</source>
         <translation>Zvoľte názov záložného súboru pre MBR alebo PBR</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="448"/>
+        <location filename="../mxbootrepair.cpp" line="447"/>
         <source>About MX Boot Repair</source>
         <translation>O programe MX Oprava zavádzača</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="449"/>
+        <location filename="../mxbootrepair.cpp" line="448"/>
         <source>Version: </source>
         <translation>Verzia:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="451"/>
+        <location filename="../mxbootrepair.cpp" line="450"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Jednoduchá oprava zavádzača pre MX linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="452"/>
+        <location filename="../mxbootrepair.cpp" line="451"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="453"/>
+        <location filename="../mxbootrepair.cpp" line="452"/>
         <source>License</source>
         <translation>Licencia</translation>
     </message>

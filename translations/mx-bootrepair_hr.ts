@@ -13,7 +13,7 @@
     <name>mxbootrepair</name>
     <message>
         <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="448"/>
+        <location filename="../mxbootrepair.cpp" line="446"/>
         <source>MX Boot Repair</source>
         <translation type="unfinished"></translation>
     </message>
@@ -135,7 +135,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="515"/>
-        <location filename="../mxbootrepair.cpp" line="453"/>
+        <location filename="../mxbootrepair.cpp" line="452"/>
         <source>Cancel</source>
         <translation>Otkaži</translation>
     </message>
@@ -161,9 +161,9 @@
         <location filename="../mxbootrepair.cpp" line="164"/>
         <location filename="../mxbootrepair.cpp" line="266"/>
         <location filename="../mxbootrepair.cpp" line="300"/>
-        <location filename="../mxbootrepair.cpp" line="405"/>
-        <location filename="../mxbootrepair.cpp" line="421"/>
-        <location filename="../mxbootrepair.cpp" line="428"/>
+        <location filename="../mxbootrepair.cpp" line="403"/>
+        <location filename="../mxbootrepair.cpp" line="419"/>
+        <location filename="../mxbootrepair.cpp" line="426"/>
         <source>Error</source>
         <translation>Greška</translation>
     </message>
@@ -237,7 +237,7 @@ Jeste li sigurni?</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.cpp" line="301"/>
-        <location filename="../mxbootrepair.cpp" line="406"/>
+        <location filename="../mxbootrepair.cpp" line="404"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>Proces je završen. Pojavile su se greške.</translation>
     </message>
@@ -247,45 +247,55 @@ Jeste li sigurni?</translation>
         <translation>Natrag</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="419"/>
+        <location filename="../mxbootrepair.cpp" line="417"/>
         <source>Select backup file name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="421"/>
-        <location filename="../mxbootrepair.cpp" line="428"/>
+        <location filename="../mxbootrepair.cpp" line="419"/>
+        <location filename="../mxbootrepair.cpp" line="426"/>
         <source>No file was selected.</source>
         <translation>Nijedna datoteka nije odabrana</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="426"/>
+        <location filename="../mxbootrepair.cpp" line="424"/>
         <source>Select MBR or PBR backup file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="447"/>
+        <location filename="../mxbootrepair.cpp" line="445"/>
         <source>About MX Boot Repair</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="448"/>
+        <location filename="../mxbootrepair.cpp" line="446"/>
         <source>Version: </source>
         <translation>Inačica:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="450"/>
+        <location filename="../mxbootrepair.cpp" line="448"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="451"/>
+        <location filename="../mxbootrepair.cpp" line="449"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Autorska prava (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="452"/>
+        <location filename="../mxbootrepair.cpp" line="450"/>
         <source>License</source>
         <translation>Licenca</translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.cpp" line="451"/>
+        <source>Changelog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mxbootrepair.cpp" line="473"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

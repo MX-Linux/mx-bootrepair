@@ -468,7 +468,7 @@ void mxbootrepair::on_buttonAbout_clicked() {
 
         QTextEdit *text = new QTextEdit;
         text->setReadOnly(true);
-        text->setText(getCmdOut("less /usr/share/doc/" + QFileInfo(QCoreApplication::applicationFilePath()).fileName()  + "/changelog.gz"));
+        text->setText(getCmdOut("zless /usr/share/doc/" + QFileInfo(QCoreApplication::applicationFilePath()).fileName()  + "/changelog.gz"));
 
         QPushButton *btnClose = new QPushButton(tr("&Close"));
         btnClose->setIcon(QIcon::fromTheme("window-close"));

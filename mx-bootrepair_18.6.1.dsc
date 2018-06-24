@@ -13,20 +13,20 @@ Build-Depends: qt5-qmake, qt5-default, qttools5-dev-tools, debhelper (>= 9)
 Package-List:
  mx-bootrepair deb admin optional arch=any
 Checksums-Sha1:
- b36544079be172415fd6e2002e136848672c12f7 33444 mx-bootrepair_18.6.1.tar.xz
+ c267235de448a48cbf6306deb6d6c0f218fa7590 33448 mx-bootrepair_18.6.1.tar.xz
 Checksums-Sha256:
- 73b849312a9efc7d7901eec58208adc19b4ab0c3587d220d4af36afcb55fc3f5 33444 mx-bootrepair_18.6.1.tar.xz
+ f6eb4db4f66e13f692576c924294d60fcf9e379494ac26e36578cc3e4df0600d 33448 mx-bootrepair_18.6.1.tar.xz
 Files:
- 14964f0e7ff64a91e02fbc4bd99ebd12 33444 mx-bootrepair_18.6.1.tar.xz
+ 6113bf3004ba2cbcf300e70c2b236a56 33448 mx-bootrepair_18.6.1.tar.xz
 
 -----BEGIN PGP SIGNATURE-----
 
-iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAlsuwpkTHGFkcmlhbkBt
-eGxpbnV4Lm9yZwAKCRBwk4x4BnnumCIGB/47aqOVO+QYnNlXlhM7zFpQyhoIWKol
-F9Dj0gXtwFIRz72hsed1NA1VKtRCr5s4rTzkxEpmTrTq6EubQSBixoYNL2Y9mrzb
-Tml2ZFwfNQFje9LhIWJNu+K4zy0/VmIAC2bOkJwPHpzVwclRYdBrcd3AimZhZtgF
-CtPmf+Npl3BLnxi88/FpQ2BTOCjWuP3Jx1lKCoHAzTBYhTHlxlWOuvIAuZp4csYs
-huJQGJrUH9Zo0064L/zIbmLWqvDgbh5+6EVo+vTbjrtuvWaQZcWUC2ya5uciocKu
-cv82b17f2H2CQILsR5fvY2zsSVBbk4bRjgKQkP99L2MdVSe1rCDMCFjU
-=gRMo
+iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAlsu+SQTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumF2tB/4/aYyx6DOJDVYXgFF3Z09JwLjVYyOD
+tEK8RrsGkOcGGHhHW6PLqPIqhv5SO1FN6hcvvIX+LeZE9z2fzB3EaYiztRMZHG7p
+J0L2bPCU1OABG3oS+btGJnhVCqs/QrXjeTwcDT2gDK4IdoCLYXg59I2JNruvLMkH
+F4SztBnv471bk/buh/jqmQL8sZoOf24yDH0781jjUV51hazUzTQuurnE38/sRd9L
+XazksVtXuavI/5PDJy2RNksZDGaNsmaqkRohfevqMkTVIVVGc4g9qEIy/a90VNK6
+rau68oV8CTRdUDpPrfTdvSqWMECbByLlS/mPuqLObXpz0SNADSTUw0ff
+=X1UJ
 -----END PGP SIGNATURE-----

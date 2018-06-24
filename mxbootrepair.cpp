@@ -464,7 +464,7 @@ void mxbootrepair::on_buttonAbout_clicked() {
         system(cmd.toUtf8());
     } else if (msgBox.clickedButton() == btnChangelog) {
         QDialog *changelog = new QDialog(this);
-        changelog->resize(600,800);
+        changelog->resize(600, 500);
 
         QTextEdit *text = new QTextEdit;
         text->setReadOnly(true);

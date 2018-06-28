@@ -400,8 +400,7 @@ void mxbootrepair::on_buttonApply_clicked() {
             ui->grubRootButton->setText("PBR");
             ui->grubEspButton->hide();
             // Restore backup button selected
-        } else if (ui->restoreBakRadioButton->isChecked()) {        QMessageBox::critical(this, tr("Error"),
-                                                                                          tr("Process finished. Errors have occurred."));
+        } else if (ui->restoreBakRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle("Select Item to Restore");
             ui->grubInsLabel->setText("");

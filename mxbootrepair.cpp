@@ -198,7 +198,7 @@ void mxbootrepair::guessPartition()
         for (int index = 0; index < ui->grubBootCombo->count(); index++) {
             QString drive = ui->grubBootCombo->itemText(index);
             if (system("lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + \
-                       "| grep -qE '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
+                       "| grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
                 ui->grubBootCombo->setCurrentIndex(index);
                 break;
             }
@@ -220,7 +220,7 @@ void mxbootrepair::guessPartition()
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
         if (system("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + \
-                   "| grep -qE '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
+                   "| grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
             ui->rootCombo->setCurrentIndex(index);
             break;
         }
@@ -257,7 +257,7 @@ void mxbootrepair::setEspDefaults()
     // remove non-ESP partitions
     for (int index = 0; index < ui->grubBootCombo->count(); index++) {
         QString part = ui->grubBootCombo->itemText(index);
-        if (system("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -q c12a7328-f81f-11d2-ba4b-00a0c93ec93b") != 0) {
+        if (system("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -qi c12a7328-f81f-11d2-ba4b-00a0c93ec93b") != 0) {
             ui->grubBootCombo->removeItem(index);
             index--;
         }

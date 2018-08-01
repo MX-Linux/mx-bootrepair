@@ -18,29 +18,29 @@ Changes:
  .
    * it should handly now nvme and mmcblk devices
 Checksums-Sha1:
- 7f6162288da2c5aff2e8de3621a8277e257a5143 1185 mx-bootrepair_18.8.dsc
- 85e354cf8972f07d54d37b2aa39cdeb6013d713b 33476 mx-bootrepair_18.8.tar.xz
- 825c454da02eae8b918ead22a0c520cb656e04ec 11188 mx-bootrepair_18.8_amd64.buildinfo
- 641f2aac3514a6fdac30c07c48488c241618fbd4 62330 mx-bootrepair_18.8_amd64.deb
+ 6458ef480a24570d3d84ec3095bb4b18c997067b 1185 mx-bootrepair_18.8.dsc
+ 92f23daff3dbf2f717616377b9f87ebc695c6404 33476 mx-bootrepair_18.8.tar.xz
+ 723ea775451ec87f4e9ac3f2b229875e8700e42e 11188 mx-bootrepair_18.8_amd64.buildinfo
+ eb8f14009555f42358c88f99b547763b0198e8b8 62372 mx-bootrepair_18.8_amd64.deb
 Checksums-Sha256:
- c233ca5325f6b0a21cacfface9968f62172987dee8be27c4b19481d321c9a528 1185 mx-bootrepair_18.8.dsc
- ffa748175180e41db2dc732f2f6534d1bdcf4ac2b47426e2f1d01aeb1d502527 33476 mx-bootrepair_18.8.tar.xz
- 920974a7189236b98283e92f07958a977886f5299d8710d482e3da441aa2ba57 11188 mx-bootrepair_18.8_amd64.buildinfo
- 8cd04a27598e09b30f99b9e8366984425c20d2ad621511dcf81a982f0198cb5d 62330 mx-bootrepair_18.8_amd64.deb
+ 873991be15743cc04bfb57928635e41b58a58249a9778094609611fe2efc21e9 1185 mx-bootrepair_18.8.dsc
+ d276fc1a5032d6d898d01b41f950bf0784ef7e3df0ff46642b62e8c7743b62f1 33476 mx-bootrepair_18.8.tar.xz
+ 326c6d043d13cc2b16cc6bccacd02df5aba214b973d3f53561df1809b816c8e9 11188 mx-bootrepair_18.8_amd64.buildinfo
+ 569523b3aadd67d19d857b0f311d06e1f70ce23606f322cf5817c5d5bb9e9e97 62372 mx-bootrepair_18.8_amd64.deb
 Files:
- 650ffd684d5dc63adb3d488111abe113 1185 admin optional mx-bootrepair_18.8.dsc
- eca00a630ac3d046651047cae407e060 33476 admin optional mx-bootrepair_18.8.tar.xz
- 00beb45d76d51e2980b9c34e769b8234 11188 admin optional mx-bootrepair_18.8_amd64.buildinfo
- f43bc83897a8cdd6b71e39766094e6ac 62330 admin optional mx-bootrepair_18.8_amd64.deb
+ dd8dd03c3d81c83a35c1d62c47c46dc7 1185 admin optional mx-bootrepair_18.8.dsc
+ 874b688265b975008ac14b40e31df2fd 33476 admin optional mx-bootrepair_18.8.tar.xz
+ b79b9ace47abfbc30116c15c8f5357d7 11188 admin optional mx-bootrepair_18.8_amd64.buildinfo
+ 58375d5bc267840df3c3bf143e38f42e 62372 admin optional mx-bootrepair_18.8_amd64.deb
 
 -----BEGIN PGP SIGNATURE-----
 
-iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAltiC4MTHGFkcmlhbkBt
-eGxpbnV4Lm9yZwAKCRBwk4x4BnnumNCUCACylx8kJPc85AFN6ucn+T16gjRVXIgI
-JZIm9DBoqWS368LvXUVivV061dygPv+ULY8qanE0dZGwprB06JcE+3VOIJef8o5I
-dyx1cKZGk2GXg7ZS4dzmLkvH4+uAMm/RCMP4gViN3RpXwio0dTrokXyHSuSKsEfh
-5mNJa39FFcvDLURWOwE1fnvGDG0xboRS37eHjoz9osFIdfDOif6scbFED65EY//T
-sphWIPXjkJk+/HLCMAkZ6mFi9N41FefuyjHcJi6MmIo0I+7K1r641wEIsPYfISzN
-03CC9EJ+7NWfXMhowYLDPoRx8yoREAmnRdL81Sl7cKxNt6Voh6T6wJNF
-=qvPA
+iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAltiGX8THGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumBtdCAC4lElOgifChvTVjv1bhAgFzci3PNSb
+D/e3PmgUmeYtIjWYi1s0IUC8XB0Br1tJUXzpfVxpFs/68/xRh9pMraEm969CpZ9b
+yD7akS1OwjNOB5q14Lzprk+Le2YisS/6DGV/1ler4hOQrZRunhSp7cN5BHOZTXZg
+fP+bzf3K08K+4/NMvBVyaD5sxmo6AafyotIH3WcC8YbfDNfn9L4zCawAU+EVdX5/
+uDSBFL2s8As19WwnFLdDnjZfo6rhoeeFpmLmepFMANTTwZU5pFrXeROWmLTLUYcq
+QrxCAHnDNYWMuO9POEGoswlvA+A/BTtgVBxbMGtWvv+tD+QH0SXE28+o
+=SEF4
 -----END PGP SIGNATURE-----

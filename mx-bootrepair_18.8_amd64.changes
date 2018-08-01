@@ -1,0 +1,46 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Wed, 01 Aug 2018 15:27:02 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 18.8
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (18.8) mx; urgency=medium
+ .
+   * it should handly now nvme and mmcblk devices
+Checksums-Sha1:
+ 7f6162288da2c5aff2e8de3621a8277e257a5143 1185 mx-bootrepair_18.8.dsc
+ 85e354cf8972f07d54d37b2aa39cdeb6013d713b 33476 mx-bootrepair_18.8.tar.xz
+ 825c454da02eae8b918ead22a0c520cb656e04ec 11188 mx-bootrepair_18.8_amd64.buildinfo
+ 641f2aac3514a6fdac30c07c48488c241618fbd4 62330 mx-bootrepair_18.8_amd64.deb
+Checksums-Sha256:
+ c233ca5325f6b0a21cacfface9968f62172987dee8be27c4b19481d321c9a528 1185 mx-bootrepair_18.8.dsc
+ ffa748175180e41db2dc732f2f6534d1bdcf4ac2b47426e2f1d01aeb1d502527 33476 mx-bootrepair_18.8.tar.xz
+ 920974a7189236b98283e92f07958a977886f5299d8710d482e3da441aa2ba57 11188 mx-bootrepair_18.8_amd64.buildinfo
+ 8cd04a27598e09b30f99b9e8366984425c20d2ad621511dcf81a982f0198cb5d 62330 mx-bootrepair_18.8_amd64.deb
+Files:
+ 650ffd684d5dc63adb3d488111abe113 1185 admin optional mx-bootrepair_18.8.dsc
+ eca00a630ac3d046651047cae407e060 33476 admin optional mx-bootrepair_18.8.tar.xz
+ 00beb45d76d51e2980b9c34e769b8234 11188 admin optional mx-bootrepair_18.8_amd64.buildinfo
+ f43bc83897a8cdd6b71e39766094e6ac 62330 admin optional mx-bootrepair_18.8_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAltiC4MTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumNCUCACylx8kJPc85AFN6ucn+T16gjRVXIgI
+JZIm9DBoqWS368LvXUVivV061dygPv+ULY8qanE0dZGwprB06JcE+3VOIJef8o5I
+dyx1cKZGk2GXg7ZS4dzmLkvH4+uAMm/RCMP4gViN3RpXwio0dTrokXyHSuSKsEfh
+5mNJa39FFcvDLURWOwE1fnvGDG0xboRS37eHjoz9osFIdfDOif6scbFED65EY//T
+sphWIPXjkJk+/HLCMAkZ6mFi9N41FefuyjHcJi6MmIo0I+7K1r641wEIsPYfISzN
+03CC9EJ+7NWfXMhowYLDPoRx8yoREAmnRdL81Sl7cKxNt6Voh6T6wJNF
+=qvPA
+-----END PGP SIGNATURE-----

@@ -316,13 +316,13 @@ void mxbootrepair::setConnections(QTimer* timer, QProcess* proc) {
 
 // add list of devices to grubBootCombo
 void mxbootrepair::addDevToList() {
-    QString cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 | grep '^[h,s,v].[a-z]' | sort\"";
+    QString cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 | grep '^[h,s,v].[a-z]\\|mmcblk[0-9]*\\|nvme[0-9]*' | sort\"";
     proc->start(cmd);
     proc->waitForFinished();
     QString out = proc->readAllStandardOutput();
     ListDisk = out.split("\n", QString::SkipEmptyParts);
 
-    cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 | grep '[h,s,v].[a-z][0-9]' | sort\"";
+    cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 | grep '^[h,s,v].[a-z][0-9]\\|mmcblk[0-9]*p\\|nvme[0-9]*p' | sort\"";
     proc->start(cmd);
     proc->waitForFinished();
     out = proc->readAllStandardOutput();

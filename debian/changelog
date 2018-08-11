@@ -1,6 +1,12 @@
+mx-bootrepair (18.8.1) mx; urgency=medium
+
+  * fix icons for other themes
+
+ -- Adrian <adrian@mxlinux.org>  Sat, 11 Aug 2018 15:58:52 -0400
+
 mx-bootrepair (18.8) mx; urgency=medium
 
-  * it should handly now nvme and mmcblk devices
+  * it should handle now nvme and mmcblk devices
 
  -- Adrian <adrian@mxlinux.org>  Wed, 01 Aug 2018 15:27:02 -0400
 

@@ -44,6 +44,7 @@ FORMS    += mxbootrepair.ui
 TRANSLATIONS += translations/mx-bootrepair_am.ts \
                 translations/mx-bootrepair_ca.ts \
                 translations/mx-bootrepair_cs.ts \
+                translations/mx-bootrepair_da.ts \
                 translations/mx-bootrepair_de.ts \
                 translations/mx-bootrepair_el.ts \
                 translations/mx-bootrepair_es.ts \

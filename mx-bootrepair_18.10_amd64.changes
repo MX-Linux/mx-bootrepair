@@ -1,0 +1,43 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Sun, 14 Oct 2018 18:25:57 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 18.10
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (18.10) mx; urgency=medium
+ .
+   * updated translations
+Checksums-Sha1:
+ d2455e156f220d3269610249c7e51ca810f2faa3 1189 mx-bootrepair_18.10.dsc
+ cc3f12583a7e7e6ca104cea5e4eee3007a31f279 34172 mx-bootrepair_18.10.tar.xz
+ 726c691e302392fffad37d9a464dacbbb551bd89 63434 mx-bootrepair_18.10_amd64.deb
+Checksums-Sha256:
+ 8c8a4350cb82ba1c0134e0c920fe6d7d7dbb08bbb4973761e02e48871990f6f3 1189 mx-bootrepair_18.10.dsc
+ 1f4633cbcba9380fa0701018c0085f65de128b3a6aa55b04e741bd17438b1efd 34172 mx-bootrepair_18.10.tar.xz
+ 7303474d6477ace8d661e9ed3c8af877e45f31c2b6974d9811c94a1d203bfa4a 63434 mx-bootrepair_18.10_amd64.deb
+Files:
+ 1d0b0f9daaa2a02e74f4e20c8c19c6b3 1189 admin optional mx-bootrepair_18.10.dsc
+ 57c8ba64396ea6d4e078a95a096df662 34172 admin optional mx-bootrepair_18.10.tar.xz
+ a13a05f73f5cc03fcb45e99b27ba43e8 63434 admin optional mx-bootrepair_18.10_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAlvDw2QTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumMsSB/4+397cN5vViznpDjoM7fNWrVi1/Ihi
+Jry+5ErTbNxEc7IkdcjpaVizu6OIcFOTxF8bdkAuoxwz3PCYwIYh3z/Dj9hAyRFa
+fMJchCpdiwH9XEM6JRO8zDxNmoYbtqN7TXJkuKohhlESvynSvwxhMBZFbHKj7Phy
+JbW7umHc0EU1vitIv8LwJBL7Dr98NT8NPcLS/7cXf2fi/YzxI1qw9/tnW7JzQ9Xa
+tCNsDXKGWkIbssBa3Vm3g/WDypq9R1qCEwS7r4UXEl1WyMyP0E+vQ4W3fpYnfk/B
+Mj1k+rQLQOdEIGW7eqTAr1I5Rpp8+/wkOTNWtDRCpFvJypLZyv7QdCVe
+=MOcv
+-----END PGP SIGNATURE-----

@@ -1,0 +1,46 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Fri, 30 Nov 2018 11:39:20 -0500
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 18.11
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (18.11) mx; urgency=medium
+ .
+   * updated translations
+Checksums-Sha1:
+ e035f5f35e87a923639a5d64e92150510246a04f 1189 mx-bootrepair_18.11.dsc
+ 999c5e88c756172b0c3513a56685bd372ed1692b 34996 mx-bootrepair_18.11.tar.xz
+ 8c0f699b9b3ead8ee2497d94740840911aa7445e 11196 mx-bootrepair_18.11_amd64.buildinfo
+ 4fdb9b72a7f49599d54b3b0b4f39fd2e3ccc8167 64270 mx-bootrepair_18.11_amd64.deb
+Checksums-Sha256:
+ c782de8e17fa8f1172644c7fb7994bd05bc063199a38823836ccc7e25ca314ca 1189 mx-bootrepair_18.11.dsc
+ 4cf256c2dee2c8dd0233e7e118155de9441fbd714ced20b0140e1e9175100552 34996 mx-bootrepair_18.11.tar.xz
+ e1df4f2f69a0b6a1cc65d4f8792d3762e22eaeeb6e7c2ac51cb5a3aa86e2ebfa 11196 mx-bootrepair_18.11_amd64.buildinfo
+ 191ce053377278038a0c584d334904fc51b91006e752130bc02e61ae0b2b4068 64270 mx-bootrepair_18.11_amd64.deb
+Files:
+ ba6cc80926d45907a8c0203bb09ee82f 1189 admin optional mx-bootrepair_18.11.dsc
+ 017b106a5d1f041355531775e3d45fff 34996 admin optional mx-bootrepair_18.11.tar.xz
+ d569b0ed1ce4adba38d9066044614d82 11196 admin optional mx-bootrepair_18.11_amd64.buildinfo
+ 4630560eff239902f2dfd912c550502d 64270 admin optional mx-bootrepair_18.11_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAlwBaGATHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumGh/B/917fG4ec/Sl2uFnS7OeZAWOPM0Pdf/
+XUEM3WEEAdqkSJ0Cuj/8BPwdr35bdsyOBnMnZakesqP2p3p2KQB3NjzbWPDlPXEZ
+uFaDNmEDGDpqumDzVVRusqQbyKGh+TI5lqFfocP6PSvNVGqBRr0QamIFS+vMfWkC
+QxbR1AkVly/sUUNENiQ+Kru8zCK+JAyiMIgw2N8nP++C4ISRD0hc3SCqb/p59eko
+klQq3ii+kENTa8+P2FonCjKPsrjnwhaTCc22x3HZhaoFtLR9OGl3dgnE2uV8b6Fy
+P1Klz6TpjJY8MiPQqU2yZeoAbgcTyZcYEF2mlAVX9JBuvHXFSRELO11c
+=YRn0
+-----END PGP SIGNATURE-----

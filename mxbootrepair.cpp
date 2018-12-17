@@ -93,7 +93,7 @@ void mxbootrepair::installGRUB() {
 
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     QString root = QString(ui->rootCombo->currentText()).section(" ", 0, 0);
-    QString text = QString("GRUB is being installed on %1 device.").arg(location);
+    QString text = QString(tr("GRUB is being installed on %1 device.")).arg(location);
     ui->outputLabel->setText(text);
 
     setConnections(timer, proc);
@@ -149,7 +149,7 @@ void mxbootrepair::repairGRUB() {
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
-    ui->outputLabel->setText("The GRUB configuration file (grub.cfg) is being rebuild.");
+    ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuild."));
     setConnections(timer, proc);
     // create a temp folder and mount dev sys proc
     QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
@@ -183,7 +183,7 @@ void mxbootrepair::backupBR(QString filename) {
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
-    QString text = QString("Backing up MBR or PBR from %1 device.").arg(location);
+    QString text = QString(tr("Backing up MBR or PBR from %1 device.")).arg(location);
     ui->outputLabel->setText(text);
     setConnections(timer, proc);
     QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
@@ -244,7 +244,7 @@ void mxbootrepair::restoreBR(QString filename) {
         refresh();
         return;
     }
-    QString text = QString("Restoring MBR/PBR from backup to %1 device.").arg(location);
+    QString text = QString(tr("Restoring MBR/PBR from backup to %1 device.")).arg(location);
     ui->outputLabel->setText(text);
     setConnections(timer, proc);
     QString cmd = "dd if=" + filename + " of=/dev/" + location + " bs=446 count=1";
@@ -375,16 +375,16 @@ void mxbootrepair::on_buttonApply_clicked() {
         // Reinstall button selected
         if (ui->reinstallRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
-            ui->bootMethodGroup->setTitle("Select Boot Method");
-            ui->grubInsLabel->setText("Install on:");
-            ui->grubRootButton->setText("root");
+            ui->bootMethodGroup->setTitle(tr("Select Boot Method"));
+            ui->grubInsLabel->setText(tr("Install on:"));
+            ui->grubRootButton->setText(tr("root"));
             ui->rootLabel->show();
             ui->rootCombo->show();
 
             // Repair button selected
         } else if (ui->repairRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
-            ui->bootMethodGroup->setTitle("Select GRUB location");
+            ui->bootMethodGroup->setTitle(tr("Select GRUB location"));
             ui->grubInsLabel->hide();
             ui->grubRootButton->hide();
             ui->grubMbrButton->hide();
@@ -395,14 +395,14 @@ void mxbootrepair::on_buttonApply_clicked() {
             // Backup button selected
         } else if (ui->bakRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
-            ui->bootMethodGroup->setTitle("Select Item to Back Up");
+            ui->bootMethodGroup->setTitle(tr("Select Item to Back Up"));
             ui->grubInsLabel->setText("");
             ui->grubRootButton->setText("PBR");
             ui->grubEspButton->hide();
             // Restore backup button selected
         } else if (ui->restoreBakRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
-            ui->bootMethodGroup->setTitle("Select Item to Restore");
+            ui->bootMethodGroup->setTitle(tr("Select Item to Restore"));
             ui->grubInsLabel->setText("");
             ui->grubRootButton->setText("PBR");
             ui->grubEspButton->hide();

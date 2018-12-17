@@ -149,7 +149,7 @@ void mxbootrepair::repairGRUB() {
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
-    ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuild."));
+    ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
     setConnections(timer, proc);
     // create a temp folder and mount dev sys proc
     QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");

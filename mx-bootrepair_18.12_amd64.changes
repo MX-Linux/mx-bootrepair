@@ -1,0 +1,28 @@
+Format: 1.8
+Date: Fri, 28 Dec 2018 11:34:18 -0500
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 18.12
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (18.12) mx; urgency=medium
+ .
+   * update translations
+Checksums-Sha1:
+ cb6f422efd60fd54b70a829bc91a23d1c6525643 627 mx-bootrepair_18.12.dsc
+ 856574020d0164a20a993526868d3343545c227e 36940 mx-bootrepair_18.12.tar.xz
+ da9a0673d0b8329cec25348395d591a4c91b2494 66176 mx-bootrepair_18.12_amd64.deb
+Checksums-Sha256:
+ 9f7a839dead0644856f31a89307ddf21145fcaaa3438a66514fecd50b5834cc5 627 mx-bootrepair_18.12.dsc
+ 54410d18133440f1c5358da6ea4ea60751d3b45484052984b74093c3a8517774 36940 mx-bootrepair_18.12.tar.xz
+ 5f00c6baadc16e1820bc7cfa28f096973a19f28ecf107387be02ad8fe83bbe0c 66176 mx-bootrepair_18.12_amd64.deb
+Files:
+ b3698eb1f3325280f96368bae6f8b806 627 admin optional mx-bootrepair_18.12.dsc
+ c832ac866d56183cf5edf34b71d806fc 36940 admin optional mx-bootrepair_18.12.tar.xz
+ 791b8147f939bc56b5b540c3979e476e 66176 admin optional mx-bootrepair_18.12_amd64.deb

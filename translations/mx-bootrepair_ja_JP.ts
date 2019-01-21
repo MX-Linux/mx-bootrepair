@@ -1,10 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pl" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ja_JP" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
         <location filename="main.cpp" line="53"/>
         <source>You must run this program as root.</source>
-        <translation>Musisz uruchomić ten program jako administrator. </translation>
+        <translation>このプログラムは root 権限で実行する必要があります。</translation>
     </message>
 </context>
 <context>
@@ -13,53 +13,53 @@
         <location filename="mxbootrepair.ui" line="20"/>
         <location filename="mxbootrepair.cpp" line="445"/>
         <source>MX Boot Repair</source>
-        <translation>MX Naprawa Rozruchu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR.</source>
-        <translation>MX Naprawa Rozruchu to narzędzie, które możesz wykorzystać do reinstalacji menadżera rozruchu GRUB w sekcji MBR lub głównej partycji rozruchowej. Udostępnia opcję rekonstrukcji konfiguracji GRUB oraz wykonanie i przywrócenie kopii zapasowych sekcji MBR i PBR.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation>Co chciałbyś zrobić?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation>Wykonaj kopię zapasową MBR lub PBR (tylko stare maszyny)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="86"/>
         <source>Reinstall GRUB bootloader</source>
-        <translation>Reinstalacja menadżera rozruchu GRUB</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
-        <translation>Naprawa konfiguracji GRUB</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation>Przywróć backup MBR lub PBR</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="123"/>
         <location filename="mxbootrepair.cpp" line="378"/>
         <source>Select Boot Method</source>
-        <translation>Wybierz metodę rozruchu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="141"/>
         <source>Master Boot Record</source>
-        <translation>Master Boot Record</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="144"/>
         <source>MBR</source>
-        <translation>MBR</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="147"/>
@@ -70,59 +70,59 @@
     <message>
         <location filename="mxbootrepair.ui" line="169"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Root (Partycja rozruchowa)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="172"/>
         <location filename="mxbootrepair.cpp" line="380"/>
         <source>root</source>
-        <translation>główna</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="223"/>
         <location filename="mxbootrepair.cpp" line="379"/>
         <source>Install on:</source>
-        <translation>Zainstaluj na:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="242"/>
         <source>Location:</source>
-        <translation>Lokalizacja:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="264"/>
         <source>Select /boot location:</source>
-        <translation>Wybierz lokalizację dla /boot:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="277"/>
         <source>EFI System Partition</source>
-        <translation>Partycja systemowa EFI</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="280"/>
         <source>ESP</source>
-        <translation>ESP</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="407"/>
         <source>About this application</source>
-        <translation>O programie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="410"/>
         <source>About...</source>
-        <translation>O...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="460"/>
         <source>Display help </source>
-        <translation>Wyświetl pomoc</translation>
+        <translation>ヘルプの表示</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="463"/>
         <source>Help</source>
-        <translation>Pomoc</translation>
+        <translation>ヘルプ</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="471"/>
@@ -132,13 +132,13 @@
     <message>
         <location filename="mxbootrepair.ui" line="512"/>
         <source>Cancel any changes then quit</source>
-        <translation>Cofnij wszelkie zmiany i wyjdź</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="515"/>
         <location filename="mxbootrepair.cpp" line="451"/>
         <source>Cancel</source>
-        <translation>Anuluj</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="523"/>
@@ -148,18 +148,18 @@
     <message>
         <location filename="mxbootrepair.ui" line="542"/>
         <source>Apply any changes</source>
-        <translation>Zastosuj zmiany</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="545"/>
         <location filename="mxbootrepair.cpp" line="78"/>
         <source>Apply</source>
-        <translation>Zastosuj</translation>
+        <translation>適用</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="96"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation>GRUB jest instalowany na urządzeniu %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="111"/>
@@ -170,167 +170,164 @@
         <location filename="mxbootrepair.cpp" line="418"/>
         <location filename="mxbootrepair.cpp" line="425"/>
         <source>Error</source>
-        <translation>Błąd</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="112"/>
         <source>Could not mount </source>
-        <translation>Nie mogę zamontować</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="112"/>
         <source> on /boot/efi</source>
-        <translation>na /boot/efi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="135"/>
         <location filename="mxbootrepair.cpp" line="165"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation>Błąd tworzenia środowiska chroot
-Proszę sprawdź wybraną lokalizację docelową.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="152"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation>Plik konfiguracyjny GRUB (grub.cfg) jest przebudowywany.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="186"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation>Tworzenie kopii zapasowej MBR lub PBR z urządzenia %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="241"/>
         <source>Warning</source>
-        <translation>Ostrzeżenie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="242"/>
         <source>You are going to write the content of </source>
-        <translation>Za chwilę nastąpi zapisanie zawartości </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="242"/>
         <source> to </source>
-        <translation>do</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="242"/>
         <source>
 
 Are you sure?</source>
-        <translation>
-
-Jesteś pewien?</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="243"/>
         <location filename="mxbootrepair.cpp" line="296"/>
         <source>Yes</source>
-        <translation>Tak</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="243"/>
         <location filename="mxbootrepair.cpp" line="296"/>
         <source>No</source>
-        <translation>Nie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="247"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation>Przywracanie MBR/PBR z kopii zapasowej na urządzenie %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="267"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation>Nie można znaleźć partycji systemowej EFI (ESP) na żadnym dysku systemowym. Utwórz ESP i spróbuj ponownie.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="294"/>
         <source>Success</source>
-        <translation>Sukces </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="295"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Proces zakończył się sukcesem. &lt;p&gt;Czy chcesz opuścić MX Naprawa rozruchu?&lt;/b&gt;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="301"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation>Proces zakończony z błędami.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="303"/>
         <source>Back</source>
-        <translation>Wstecz</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="387"/>
         <source>Select GRUB location</source>
-        <translation>Wybierz lokalizację GRUB</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="398"/>
         <source>Select Item to Back Up</source>
-        <translation>Wybierz element do utworzenia kopii zapasowej</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="405"/>
         <source>Select Item to Restore</source>
-        <translation>Wybierz element do przywrócenia</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="416"/>
         <source>Select backup file name</source>
-        <translation>Wybierz plik kopii zapasowej</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="418"/>
         <location filename="mxbootrepair.cpp" line="425"/>
         <source>No file was selected.</source>
-        <translation>Nie wybrano pliku.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="423"/>
         <source>Select MBR or PBR backup file</source>
-        <translation>Wybierz plik kopii zapasowej MBR lub PBR</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="444"/>
         <source>About MX Boot Repair</source>
-        <translation>O programie MX Naprawa rozruchu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="445"/>
         <source>Version: </source>
-        <translation>Wersja:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="447"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>Prosty program do naprawy rozruchu dla dystrybucji antiX MX</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="448"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>Copyright (c) MX Linux</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="449"/>
         <source>License</source>
-        <translation>Licencja</translation>
+        <translation>ライセンス</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="450"/>
         <source>Changelog</source>
-        <translation>Dziennik zmian</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="472"/>
         <source>&amp;Close</source>
-        <translation>&amp;Zamknij</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

@@ -1,3 +1,9 @@
+mx-bootrepair (19.1) mx; urgency=medium
+
+  * fix nvme partition selection
+
+ -- Adrian <adrian@mxlinux.org>  Sun, 27 Jan 2019 10:57:04 -0500
+
 mx-bootrepair (18.12) mx; urgency=medium
 
   * update translations

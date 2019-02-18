@@ -1,3 +1,6 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
 Format: 1.8
 Date: Sun, 17 Feb 2019 22:27:20 -0500
 Source: mx-bootrepair
@@ -15,14 +18,26 @@ Changes:
  .
    * updated translations
 Checksums-Sha1:
- 376820c9482893ab95c14eb3e51b414c3d264bbb 623 mx-bootrepair_19.2.dsc
- f0284e319bb69284f9cb5a2df5835289ac5364c1 39484 mx-bootrepair_19.2.tar.xz
- 79b9db81bd6758fde8f88fec2b2212531bf47ab1 66124 mx-bootrepair_19.2_amd64.deb
+ 1e6d5764e28ddf30b99686a0c735db180c9ff806 1185 mx-bootrepair_19.2.dsc
+ 464ffa17aafbbefd55556aa6b1e230973856ab7e 38812 mx-bootrepair_19.2.tar.xz
+ 0a59e60e59d78d82369419fa3175369b5a9bc08f 67670 mx-bootrepair_19.2_amd64.deb
 Checksums-Sha256:
- 35d4844df961e26e6f318b8f25e586ba80c0709ef9ca1c9742734abf391d4582 623 mx-bootrepair_19.2.dsc
- 9319a817d771707f410470a7214af8e2c03d954671e1ffa683d82333f0037f14 39484 mx-bootrepair_19.2.tar.xz
- 452bc9ac183cec8bed6e9f03ca39442847b91c82638a90c48f435308bab9dddc 66124 mx-bootrepair_19.2_amd64.deb
+ 363b7d87f9816869bb5928d1dd886a4c17d9843780fb7717fe7f26cd645cb048 1185 mx-bootrepair_19.2.dsc
+ 90e468e2d2782e264cf5cfdca34c386524a7aba3d6b5ba5d47da8ca6f5c3c7f7 38812 mx-bootrepair_19.2.tar.xz
+ da190109907249e2995f5e2425476a90d0df94dabc16e5f32b15c44851658b03 67670 mx-bootrepair_19.2_amd64.deb
 Files:
- fb089277bc600a4220a9c0a214c481cf 623 admin optional mx-bootrepair_19.2.dsc
- 5222f93d6d8d4d077078d798201c724b 39484 admin optional mx-bootrepair_19.2.tar.xz
- e41034cc0f17597edccd06805225199c 66124 admin optional mx-bootrepair_19.2_amd64.deb
+ 6d0e7cd538d6862294e4480899f48dbb 1185 admin optional mx-bootrepair_19.2.dsc
+ 61c33648dcb3e7dd2d945c4c65f0ee77 38812 admin optional mx-bootrepair_19.2.tar.xz
+ 4b03ac747ef66822aeeb2562c3f1c6e0 67670 admin optional mx-bootrepair_19.2_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFGBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAlxqKbkTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumALNB/Y0eie/wOf6lQQEDNCZaRTc2qIivERe
+8xWQTVrJwAiGuxcWY5KuORaUdlikpco1gRGQy0Kq8aqYy8PDhx9nTy3VMgSZU8D/
+03N7Ho/wHwC0AKsRttKmLYhbEcVzCBxnG57J5hp5vJWhFnBtCJbfMtUa92D0Qtcn
+NBlfdQ/OTuDyuD31sCwS98NfgRZFYIfe/qAYwJuSH2V1HXSrlvXH8aZUi8UvqDJd
+rLfp4+nODBOh97gaXlz5HxaeeRgpcBWjPUmIMxk4QYgJ9duiDkR6GcFvt7dD8gJu
+IQgMD+pnKac4MjVJ/6+mdu7S2xS+FActZiPaLzX5Zts1qS7vbh3eghU=
+=y4Ax
+-----END PGP SIGNATURE-----

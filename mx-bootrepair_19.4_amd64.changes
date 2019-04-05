@@ -1,0 +1,46 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Fri, 05 Apr 2019 11:22:23 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 19.4
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (19.4) mx; urgency=medium
+ .
+   * updated translations
+Checksums-Sha1:
+ 86793f26f47ebb48f1abfcf51355f56817e586f7 1185 mx-bootrepair_19.4.dsc
+ 66611ece69796b558c29998bd3d5dcbea0252251 38520 mx-bootrepair_19.4.tar.xz
+ 3e6f10f5c7820c5d6c2c18c2b45e58230abdbab1 11350 mx-bootrepair_19.4_amd64.buildinfo
+ 924e17bdd9d8363c81498dc6e907d76adc7e0e72 67860 mx-bootrepair_19.4_amd64.deb
+Checksums-Sha256:
+ baae402576008f2b23006e6c5fa5fc54c25e61f03ec87014d0143e4cae7a0673 1185 mx-bootrepair_19.4.dsc
+ 04d9e7d77705d9469938bf239bfb54881f9aaceca15e52dfc17498dca1a5458a 38520 mx-bootrepair_19.4.tar.xz
+ 7741edbb2098de723b75fe9e7dc6127a936ecac8c9aeeaf1477e61aef1bb32ca 11350 mx-bootrepair_19.4_amd64.buildinfo
+ d515e6cd5f999d8ed48a26eaa7be9889c70a9e6a6ea6f544012cf193b190c08b 67860 mx-bootrepair_19.4_amd64.deb
+Files:
+ cced6850c05f6c8f2d1c9fa6e3b37ea4 1185 admin optional mx-bootrepair_19.4.dsc
+ 7f701b0f76e470883347ddd982c27f22 38520 admin optional mx-bootrepair_19.4.tar.xz
+ dc24ea0f7a7eff5369a11bd57a6aa9d4 11350 admin optional mx-bootrepair_19.4_amd64.buildinfo
+ 1577c308f995707ce5683a0b3e5855e6 67860 admin optional mx-bootrepair_19.4_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAlyncvgTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumBWFB/4vuIUGSOy+CajtLbN2aLiBpR/EqwjV
+KTWqfJikwJSKpFotPQPzD5G/CN9raY2hIlI/Efk2i1qkVeJnMr7baC3jG3FnUesV
+qD7qIqARDF66CbZphciRUYsnaohjo7ssQb8SxHzm4kknDeQ6InGL1XHhpmRVe/RP
++5gjpAgTvnFINLl4esqSOkkkCWuQ5bo3aukEVc/1ZTcbmYw8OwexI3Q/exh7BUqd
+1JoVe0oOGu1zbASoP/YWJd1ega1Go+VNreBLYpm7eQPXOS9YSRJ0ZQaPXInXstqd
+L7LpXLPWe3hm77PtlOzFI1o9JM22HJ/ibIdBV9HpCsVoOcSZzXtcwmSG
+=Wyu0
+-----END PGP SIGNATURE-----

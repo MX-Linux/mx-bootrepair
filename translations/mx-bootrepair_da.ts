@@ -13,7 +13,7 @@
     <name>mxbootrepair</name>
     <message>
         <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="445"/>
+        <location filename="../mxbootrepair.cpp" line="442"/>
         <source>MX Boot Repair</source>
         <translation>MX Opstartsreparation</translation>
     </message>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="123"/>
-        <location filename="../mxbootrepair.cpp" line="378"/>
+        <location filename="../mxbootrepair.cpp" line="375"/>
         <source>Select Boot Method</source>
         <translation>Vælg opstartsmetode</translation>
     </message>
@@ -76,13 +76,13 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="172"/>
-        <location filename="../mxbootrepair.cpp" line="380"/>
+        <location filename="../mxbootrepair.cpp" line="377"/>
         <source>root</source>
         <translation>rod</translation>
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="223"/>
-        <location filename="../mxbootrepair.cpp" line="379"/>
+        <location filename="../mxbootrepair.cpp" line="376"/>
         <source>Install on:</source>
         <translation>Installer på:</translation>
     </message>
@@ -138,7 +138,7 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="513"/>
-        <location filename="../mxbootrepair.cpp" line="451"/>
+        <location filename="../mxbootrepair.cpp" line="448"/>
         <source>Cancel</source>
         <translation>Annuller</translation>
     </message>
@@ -154,71 +154,71 @@
     </message>
     <message>
         <location filename="../mxbootrepair.ui" line="542"/>
-        <location filename="../mxbootrepair.cpp" line="78"/>
+        <location filename="../mxbootrepair.cpp" line="75"/>
         <source>Apply</source>
         <translation>Anvend</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="96"/>
+        <location filename="../mxbootrepair.cpp" line="93"/>
         <source>GRUB is being installed on %1 device.</source>
         <translation>GRUB installeres på %1 enhed.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="111"/>
-        <location filename="../mxbootrepair.cpp" line="134"/>
-        <location filename="../mxbootrepair.cpp" line="164"/>
-        <location filename="../mxbootrepair.cpp" line="266"/>
-        <location filename="../mxbootrepair.cpp" line="300"/>
-        <location filename="../mxbootrepair.cpp" line="418"/>
-        <location filename="../mxbootrepair.cpp" line="425"/>
+        <location filename="../mxbootrepair.cpp" line="108"/>
+        <location filename="../mxbootrepair.cpp" line="131"/>
+        <location filename="../mxbootrepair.cpp" line="161"/>
+        <location filename="../mxbootrepair.cpp" line="263"/>
+        <location filename="../mxbootrepair.cpp" line="297"/>
+        <location filename="../mxbootrepair.cpp" line="415"/>
+        <location filename="../mxbootrepair.cpp" line="422"/>
         <source>Error</source>
         <translation>Fejl</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="112"/>
+        <location filename="../mxbootrepair.cpp" line="109"/>
         <source>Could not mount </source>
         <translation>Kunne ikke montere</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="112"/>
+        <location filename="../mxbootrepair.cpp" line="109"/>
         <source> on /boot/efi</source>
         <translation> på /boot/efi</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="135"/>
-        <location filename="../mxbootrepair.cpp" line="165"/>
+        <location filename="../mxbootrepair.cpp" line="132"/>
+        <location filename="../mxbootrepair.cpp" line="162"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation>Kunne ikke opsætte chroot-miljø.
 Dobbelttjek venligst den valgte placering.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="152"/>
+        <location filename="../mxbootrepair.cpp" line="149"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
         <translation>GRUB-konfigurationsfilen (grub.cfg) genbygges.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="186"/>
+        <location filename="../mxbootrepair.cpp" line="183"/>
         <source>Backing up MBR or PBR from %1 device.</source>
         <translation>Sikkerhedskopierer MBR eller PBR fra %1 enhed.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="241"/>
+        <location filename="../mxbootrepair.cpp" line="238"/>
         <source>Warning</source>
         <translation>Advarsel</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="242"/>
+        <location filename="../mxbootrepair.cpp" line="239"/>
         <source>You are going to write the content of </source>
         <translation>Du er ved at skrive indholdet af </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="242"/>
+        <location filename="../mxbootrepair.cpp" line="239"/>
         <source> to </source>
         <translation> til </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="242"/>
+        <location filename="../mxbootrepair.cpp" line="239"/>
         <source>
 
 Are you sure?</source>
@@ -227,110 +227,110 @@ Are you sure?</source>
 Er du sikker?</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="243"/>
-        <location filename="../mxbootrepair.cpp" line="296"/>
+        <location filename="../mxbootrepair.cpp" line="240"/>
+        <location filename="../mxbootrepair.cpp" line="293"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="243"/>
-        <location filename="../mxbootrepair.cpp" line="296"/>
+        <location filename="../mxbootrepair.cpp" line="240"/>
+        <location filename="../mxbootrepair.cpp" line="293"/>
         <source>No</source>
         <translation>Nej</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="247"/>
+        <location filename="../mxbootrepair.cpp" line="244"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
         <translation>Gendanner MBR/PBR fra sikkerhedskopiering til %1 enhed.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="267"/>
+        <location filename="../mxbootrepair.cpp" line="264"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation>Kunne ikke finde EFI-systempartition (ESP) på nogen systemdiske. Opret venligst en ESP og prøv igen.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="294"/>
+        <location filename="../mxbootrepair.cpp" line="291"/>
         <source>Success</source>
         <translation>Det lykkedes</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="295"/>
+        <location filename="../mxbootrepair.cpp" line="292"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation>Processen er færdig.&lt;p&gt;&lt;b&gt;Vil du afslutte MX Opstartsreparation?&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="301"/>
+        <location filename="../mxbootrepair.cpp" line="298"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>Processen er færdig. Der opstod fejl.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="303"/>
+        <location filename="../mxbootrepair.cpp" line="300"/>
         <source>Back</source>
         <translation>Tilbage</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="387"/>
+        <location filename="../mxbootrepair.cpp" line="384"/>
         <source>Select GRUB location</source>
         <translation>Vælg GRUB-placering</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="398"/>
+        <location filename="../mxbootrepair.cpp" line="395"/>
         <source>Select Item to Back Up</source>
         <translation>Vælg elementer som skal sikkerhedskopieres</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="405"/>
+        <location filename="../mxbootrepair.cpp" line="402"/>
         <source>Select Item to Restore</source>
         <translation>Vælg elementer som skal gendannes</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="416"/>
+        <location filename="../mxbootrepair.cpp" line="413"/>
         <source>Select backup file name</source>
         <translation>Vælg filnavn for sikkerhedskopiering</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="418"/>
-        <location filename="../mxbootrepair.cpp" line="425"/>
+        <location filename="../mxbootrepair.cpp" line="415"/>
+        <location filename="../mxbootrepair.cpp" line="422"/>
         <source>No file was selected.</source>
         <translation>Der blev ikke valgt nogen fil.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="423"/>
+        <location filename="../mxbootrepair.cpp" line="420"/>
         <source>Select MBR or PBR backup file</source>
         <translation>Vælg MBR- eller PBR-sikkerhedskopieringsfil</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="444"/>
+        <location filename="../mxbootrepair.cpp" line="441"/>
         <source>About MX Boot Repair</source>
         <translation>Om MX Opstartsreparation</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="445"/>
+        <location filename="../mxbootrepair.cpp" line="442"/>
         <source>Version: </source>
         <translation>Version: </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="447"/>
+        <location filename="../mxbootrepair.cpp" line="444"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Simpelt opstartsreparationsprogram til MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="448"/>
+        <location filename="../mxbootrepair.cpp" line="445"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Ophavsret (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="449"/>
+        <location filename="../mxbootrepair.cpp" line="446"/>
         <source>License</source>
         <translation>Licens</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="450"/>
+        <location filename="../mxbootrepair.cpp" line="447"/>
         <source>Changelog</source>
         <translation>Ændringslog</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="472"/>
+        <location filename="../mxbootrepair.cpp" line="469"/>
         <source>&amp;Close</source>
         <translation>&amp;Luk</translation>
     </message>

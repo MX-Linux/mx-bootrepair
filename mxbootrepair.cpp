@@ -22,6 +22,7 @@
 
 #include "mxbootrepair.h"
 #include "ui_mxbootrepair.h"
+#include "version.h"
 
 #include <QFileDialog>
 #include <QDebug>
@@ -30,6 +31,7 @@ mxbootrepair::mxbootrepair(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::mxbootrepair)
 {
+    qDebug() << "Program Version:" << VERSION;
     ui->setupUi(this);
     refresh();
     addDevToList();
@@ -50,11 +52,6 @@ QString mxbootrepair::getCmdOut(QString cmd) {
     QString out = proc->readAllStandardOutput().trimmed();
     delete proc;
     return out;
-}
-
-// Get version of the program
-QString mxbootrepair::getVersion(QString name) {
-    return getCmdOut("dpkg-query -f '${Version}' -W " + name);
 }
 
 void mxbootrepair::refresh() {
@@ -316,13 +313,13 @@ void mxbootrepair::setConnections(QTimer* timer, QProcess* proc) {
 
 // add list of devices to grubBootCombo
 void mxbootrepair::addDevToList() {
-    QString cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 | grep '^[h,s,v].[a-z]\\|^mmcblk[0-9]*\\|^nvme[0-9]*' | sort\"";
+    QString cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'\"";
     proc->start(cmd);
     proc->waitForFinished();
     QString out = proc->readAllStandardOutput();
     ListDisk = out.split("\n", QString::SkipEmptyParts);
 
-    cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 | grep '^[h,s,v].[a-z][0-9]\\|^mmcblk[0-9]*p\\|^nvme[0-9]*n[0-9]*p' | sort\"";
+    cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'\"";
     proc->start(cmd);
     proc->waitForFinished();
     out = proc->readAllStandardOutput();
@@ -443,7 +440,7 @@ void mxbootrepair::on_buttonAbout_clicked() {
     QMessageBox msgBox(QMessageBox::NoIcon,
                        tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
                        tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">" + tr("Version: ") +
-                       getVersion("mx-bootrepair") + "</p><p align=\"center\"><h3>" +
+                       VERSION + "</p><p align=\"center\"><h3>" +
                        tr("Simple boot repair program for MX Linux") + "</h3></p><p align=\"center\"><a href=\"http://mxlinux.org\">http://mxlinux.org</a><br /></p><p align=\"center\">" +
                        tr("Copyright (c) MX Linux") + "<br /><br /></p>", 0, this);
     QPushButton *btnLicense = msgBox.addButton(tr("License"), QMessageBox::HelpRole);

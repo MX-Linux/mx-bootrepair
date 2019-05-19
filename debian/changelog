@@ -1,3 +1,9 @@
+mx-bootrepair (19.5) mx; urgency=medium
+
+  * list paravirtualized (Xen) drives and partition
+
+ -- Adrian <adrian@mxlinux.org>  Sat, 18 May 2019 21:49:25 -0400
+
 mx-bootrepair (19.4) mx; urgency=medium
 
   * updated translations

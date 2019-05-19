@@ -46,7 +46,6 @@ public:
     ~mxbootrepair();
 
     QString getCmdOut(QString cmd);
-    QString getVersion(QString name);
 
     void addDevToList();
     void backupBR(QString filename);

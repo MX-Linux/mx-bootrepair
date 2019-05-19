@@ -37,7 +37,8 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mxbootrepair.cpp
 
-HEADERS  += mxbootrepair.h
+HEADERS  += mxbootrepair.h \
+    version.h
 
 FORMS    += mxbootrepair.ui
 

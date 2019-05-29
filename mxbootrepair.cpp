@@ -237,7 +237,7 @@ void mxbootrepair::restoreBR(QString filename) {
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     if (QMessageBox::warning(this, tr("Warning"),
                              tr("You are going to write the content of ") + filename + tr(" to ") + location + tr("\n\nAre you sure?"),
-                             tr("Yes"), tr("No")) == 1){
+                             QMessageBox::Yes, QMessageBox::No) != QMessageBox::Yes) {
         refresh();
         return;
     }
@@ -290,7 +290,7 @@ void mxbootrepair::procDone(int exitCode) {
     if (exitCode == 0) {
         if (QMessageBox::information(this, tr("Success"),
                                      tr("Process finished with success.<p><b>Do you want to exit MX Boot Repair?</b>"),
-                                     tr("Yes"), tr("No")) == 0){
+                                     QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes){
             qApp->exit(0);
         }
     } else {

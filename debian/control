@@ -2,15 +2,17 @@ Source: mx-bootrepair
 Section: admin
 Priority: optional
 Maintainer: Adrian <adrian@mxlinux.org>
-Build-Depends: qt5-qmake,
-	qt5-default,
-	qttools5-dev-tools,
-	debhelper (>=9),
+Build-Depends: debhelper (>=9), qt5-default, qt5-qmake, qttools5-dev-tools
 Standards-Version: 3.9.8
 Vcs-Git: git://github.com/AdrianTM/mx-bootrepair
 
 Package: mx-bootrepair
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, grub-pc, mx-viewer|xdg-utils, menu, gzip
+Depends: grub-pc,
+         gzip,
+         menu,
+         mx-viewer | xdg-utils,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: MX program to help with repair of boot problems.
  MX-bootrepair helps with the repair of boot problems.

@@ -33,6 +33,7 @@ mxbootrepair::mxbootrepair(QWidget *parent) :
 {
     qDebug() << "Program Version:" << VERSION;
     ui->setupUi(this);
+    setWindowFlags(Qt::Window); // for the close, min and max buttons
     refresh();
     addDevToList();
 }

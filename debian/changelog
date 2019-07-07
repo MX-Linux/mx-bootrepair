@@ -1,3 +1,9 @@
+mx-bootrepair (19.7) mx; urgency=medium
+
+  * fix window buttons for Buster
+
+ -- Adrian <adrian@mxlinux.org>  Sun, 07 Jul 2019 13:22:49 -0400
+
 mx-bootrepair (19.5) mx; urgency=medium
 
   * list paravirtualized (Xen) drives and partition

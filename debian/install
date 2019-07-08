@@ -1,6 +1,5 @@
 license.html		 usr/share/doc/mx-bootrepair
 mx-bootrepair		 usr/sbin
 mx-bootrepair.desktop    usr/share/applications
-mx-bootrepair.png	 usr/share/icons/hicolor/32x32/apps
-mx-bootrepair.png	 usr/share/pixmaps
+mx-bootrepair.png	 usr/share/icons/hicolor/256x256/apps
 translations/*.qm	 usr/share/mx-bootrepair/locale

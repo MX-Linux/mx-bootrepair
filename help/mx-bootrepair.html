@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>HELP: MX Boot Repair</title>
+</head>
+<body>
+<h1>HELP: MX Boot Repair</h1>
+<h2>Procedure</h2>
+<ul>
+	<li>Boot to the LiveMedium and click Start Menu ≻ System ≻ MX Boot Repair and select the appropriate option.</li>
+	<li> GRUB
+		<ul>
+			<li> Reinstall a new bootloader. (UEFI support except in MX14)</li>
+			<li> Repair the bootloader by regenerating the GRUB configuration file (grub.cfg). This is the most common use of this application, turned to when it is not possible to boot into any partition where the user could run:</li>
+			<li> update-grub</li>
+		</ul>
+	</li>
+	<li> Boot block: WARNING: for legacy boot systems that rely on Bios instead of UEFI only!
+		<ul>
+			<li> Backup the boot block, either master (MBR) or partition (PBR).</li>
+			<li> Restore a boot block previously backed up.</li>
+		</ul>
+	</li>
+</ul>
+
+<p>Development history: Adrian</p>
+
+<p>License: <a href="https://mxlinux.org/wiki/licenses/license-mx-boot-repair">here</a>.</p>
+
+<p>v. 20150603</p>
+</body>
+</html>

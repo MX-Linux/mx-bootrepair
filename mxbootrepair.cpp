@@ -31,7 +31,7 @@ mxbootrepair::mxbootrepair(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::mxbootrepair)
 {
-    qDebug() << "Program Version:" << VERSION;
+    qDebug().noquote() << QCoreApplication::applicationName() << "version:" << VERSION;
     ui->setupUi(this);
     setWindowFlags(Qt::Window); // for the close, min and max buttons
     refresh();
@@ -452,13 +452,15 @@ void mxbootrepair::on_buttonAbout_clicked() {
     msgBox.exec();
 
     if (msgBox.clickedButton() == btnLicense) {
+        QString url = "file:///usr/share/doc/mx-bootrepair/license.html";
         QString exec = "xdg-open";
         QString user = getCmdOut("logname");
-        if (system("command -v mx-viewer") == 0) { // use mx-viewer if available
-            exec = "mx-viewer";
+
+        if (system("command -v mx-viewer >/dev/null") == 0) {
+            system("mx-viewer " + url.toUtf8() + " \"" + tr("License").toUtf8() + "\"&");
+        } else {
+            system("su " + user.toUtf8() + " -c \"env XDG_RUNTIME_DIR=/run/user/$(id -u " + user.toUtf8() + ") xdg-open " + url.toUtf8() + "\"&");
         }
-        QString cmd = "su " + user + " -c \"" + exec + " file:///usr/share/doc/mx-bootrepair/license.html\"&";
-        system(cmd.toUtf8());
     } else if (msgBox.clickedButton() == btnChangelog) {
         QDialog *changelog = new QDialog(this);
         changelog->resize(600, 500);
@@ -484,19 +486,18 @@ void mxbootrepair::on_buttonAbout_clicked() {
 void mxbootrepair::on_buttonHelp_clicked() {
     QLocale locale;
     QString lang = locale.bcp47Name();
+    QString user = getCmdOut("logname");
 
     QString url = "/usr/share/doc/mx-bootrepair/help/mx-bootrepair.html";
     if (lang.startsWith("fr")) {
         url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
     }
 
-    QString exec = "xdg-open";
-    QString user = getCmdOut("logname");
-    if (system("command -v mx-viewer") == 0) { // use mx-viewer if available
-        exec = "mx-viewer";
+    if (system("command -v mx-viewer >/dev/null") == 0) {
+        system("mx-viewer " + url.toUtf8() + " \"" + tr("MX Cleanup").toUtf8() + "\"&");
+    } else {
+        system("su " + user.toUtf8() + " -c \"env XDG_RUNTIME_DIR=/run/user/$(id -u " + user.toUtf8() + ") xdg-open " + url.toUtf8() + "\"&");
     }
-    QString cmd = "su " + user + " -c \"" + exec + " " + url + "\"&";
-    system(cmd.toUtf8());
 }
 
 void mxbootrepair::on_grubMbrButton_clicked()

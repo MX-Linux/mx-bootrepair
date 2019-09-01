@@ -1,0 +1,49 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Sun, 01 Sep 2019 00:47:42 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 19.9
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (19.9) mx; urgency=medium
+ .
+   * new translations
+Checksums-Sha1:
+ fa437f1211f6c21a2a7e5b5174160d936f43793b 1185 mx-bootrepair_19.9.dsc
+ 21281eb121e8f485f17a509ee0cee5fa8d72a88d 46780 mx-bootrepair_19.9.tar.xz
+ e6f82b4aac7525c25f254277577908f172ef8ba0 483760 mx-bootrepair-dbgsym_19.9_amd64.deb
+ 3ebec8c92d8897e0f4b494b66749d7b6f996089c 11215 mx-bootrepair_19.9_amd64.buildinfo
+ 83adb590326592415b838ec18218442b44b67acc 71716 mx-bootrepair_19.9_amd64.deb
+Checksums-Sha256:
+ 87f5864c8cadf52be675ac5ad4259c0ee97556737978670b136d46f5d8d5e80a 1185 mx-bootrepair_19.9.dsc
+ c3fd1d6212ed6e3dd3f7862494c7cf2ed4aef146ba64f13cfdecd33ff7a327ed 46780 mx-bootrepair_19.9.tar.xz
+ 0325db483fba1d834841c73e6cd7d9c60e990af94ff5fef82a9b5c81b55e83b4 483760 mx-bootrepair-dbgsym_19.9_amd64.deb
+ 67f941943072b4743bc2cea2cc34f2f734ec541e0f5bf97a891a03de794a64fc 11215 mx-bootrepair_19.9_amd64.buildinfo
+ 434a9621b95a17b778b98df29f4d459dca4239b86669747e4a553aa164cf647b 71716 mx-bootrepair_19.9_amd64.deb
+Files:
+ c8b7117f91a8c41d4169c5e536106e2d 1185 admin optional mx-bootrepair_19.9.dsc
+ 475f5a0fa621941226875ef3e8b6e82a 46780 admin optional mx-bootrepair_19.9.tar.xz
+ 9e3f21739bb4eb26370b9989e5b3d0c3 483760 debug optional mx-bootrepair-dbgsym_19.9_amd64.deb
+ a07a4697953412b7a4f3048b7d8e8bdf 11215 admin optional mx-bootrepair_19.9_amd64.buildinfo
+ 8a4bc6be16ac4b8af416955290d61911 71716 admin optional mx-bootrepair_19.9_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAl1rTdQTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumDoNCACNEUU9PDRr0Hu6VlHoHjXESq6Tj02D
+Vk0eL2x4xULmmNdsMH9f8R3N+WHpVmmjPQ5KiN9ERL0Nc2reoTW7oSsTcX/vNv96
+8ALvYIybUfZylCBA357GyZpTgHkMbfzknUgxZPWFt18+WV7X+2FtauZDrRLZrmtI
+yIGPaLN8IbTf9N9MazaO2lUfGD8lvpAEQYTwXlau8czIa1p+LMPAUzaMnSpGZr6/
+dsH+G7yMbLvN77aCw6+t53HWL8ybACf+Qa5vGXG/Oc2rJvcTEq8SB9rqGN9vzDkK
+FdRe+3jKhDC2Lt/4GRajxL8sz9PG73SvtWq/jdTvz/jzQdUrElM/NDY+
+=vyjT
+-----END PGP SIGNATURE-----

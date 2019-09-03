@@ -2,7 +2,9 @@ Source: mx-bootrepair
 Section: admin
 Priority: optional
 Maintainer: Adrian <adrian@mxlinux.org>
-Build-Depends: debhelper (>=9), qt5-default, qt5-qmake, qttools5-dev-tools
+Build-Depends: debhelper (>=9), 
+	qtbase5-dev, 
+	qttools5-dev-tools
 Standards-Version: 3.9.8
 Vcs-Git: git://github.com/AdrianTM/mx-bootrepair
 

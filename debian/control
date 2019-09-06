@@ -11,7 +11,6 @@ Vcs-Git: git://github.com/AdrianTM/mx-bootrepair
 Package: mx-bootrepair
 Architecture: any
 Depends: grub-pc,
-         gzip,
          menu,
          mx-viewer | xdg-utils,
          ${misc:Depends},

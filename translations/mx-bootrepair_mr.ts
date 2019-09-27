@@ -1,10 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ar" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="mr" version="2.1">
 <context>
     <name>QApplication</name>
     <message>
         <location filename="main.cpp" line="53"/>
         <source>You must run this program as root.</source>
-        <translation type="unfinished"/>
+        <translation>आपण हा प्रोग्राम रूट म्हणूनच चालवावा.</translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
         <location filename="mxbootrepair.ui" line="147"/>
         <location filename="mxbootrepair.ui" line="417"/>
         <source>Alt+B</source>
-        <translation type="unfinished"/>
+        <translation>Alt+B</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="169"/>
@@ -107,43 +107,43 @@
     <message>
         <location filename="mxbootrepair.ui" line="407"/>
         <source>About this application</source>
-        <translation type="unfinished"/>
+        <translation>या अनुप्रयोगाबद्दल</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="410"/>
         <source>About...</source>
-        <translation type="unfinished"/>
+        <translation>विषयी</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="459"/>
         <source>Display help </source>
-        <translation type="unfinished"/>
+        <translation>मदत दाखवा</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="462"/>
         <source>Help</source>
-        <translation>تعليمات</translation>
+        <translation>मदत</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="469"/>
         <source>Alt+H</source>
-        <translation type="unfinished"/>
+        <translation>Alt+H</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="510"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"/>
+        <translation>सर्व बदल रद्द करा आणि बंद करा</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="513"/>
         <location filename="mxbootrepair.cpp" line="449"/>
         <source>Cancel</source>
-        <translation>إلغاء</translation>
+        <translation>रद्द करा</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="520"/>
         <source>Alt+N</source>
-        <translation type="unfinished"/>
+        <translation>Alt+N</translation>
     </message>
     <message>
         <location filename="mxbootrepair.ui" line="539"/>
@@ -170,7 +170,7 @@
         <location filename="mxbootrepair.cpp" line="416"/>
         <location filename="mxbootrepair.cpp" line="423"/>
         <source>Error</source>
-        <translation>خطأ</translation>
+        <translation>त्रुटी</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="110"/>
@@ -249,7 +249,7 @@ Are you sure?</source>
     <message>
         <location filename="mxbootrepair.cpp" line="301"/>
         <source>Back</source>
-        <translation>للخلف</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="385"/>
@@ -290,7 +290,7 @@ Are you sure?</source>
     <message>
         <location filename="mxbootrepair.cpp" line="443"/>
         <source>Version: </source>
-        <translation type="unfinished"/>
+        <translation>आवृत्ती</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="445"/>
@@ -300,22 +300,22 @@ Are you sure?</source>
     <message>
         <location filename="mxbootrepair.cpp" line="446"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"/>
+        <translation>कॉपीराइट (c) एमएक्स लिनक्स</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="447"/>
         <source>License</source>
-        <translation type="unfinished"/>
+        <translation>परवाना</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="448"/>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>बदल सूची</translation>
     </message>
     <message>
         <location filename="mxbootrepair.cpp" line="470"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"/>
+        <translation>बंद</translation>
     </message>
 </context>
 </TS>

@@ -1,5 +1,5 @@
 #/*****************************************************************************
-# * mx-bootrepair.pro
+# * mx-boot-repair.pro
 # *****************************************************************************
 # * Copyright (C) 2014 MX Authors
 # *
@@ -30,17 +30,19 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = mx-bootrepair
+TARGET = mx-boot-repair
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mxbootrepair.cpp
+SOURCES += main.cpp \
+    mainwindow.cpp
 
-HEADERS  += mxbootrepair.h \
-    version.h
+HEADERS  += \
+    version.h \
+    mainwindow.h
 
-FORMS    += mxbootrepair.ui
+FORMS    += \
+    mainwindow.ui
 
 TRANSLATIONS += translations/mx-bootrepair_am.ts \
                 translations/mx-bootrepair_ar.ts \

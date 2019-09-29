@@ -1,6 +1,6 @@
-help/*			usr/share/doc/mx-bootrepair/help
-license.html		usr/share/doc/mx-bootrepair
-mx-bootrepair		usr/sbin
-mx-bootrepair.desktop   usr/share/applications
-icons/mx-bootrepair.png	usr/share/icons/hicolor/256x256/apps
-translations/*.qm	usr/share/mx-bootrepair/locale
+help/*				usr/share/doc/mx-boot-repair/help
+license.html			usr/share/doc/mx-boot-repair
+mx-boot-repair			usr/sbin
+mx-boot-repair.desktop		usr/share/applications
+icons/mx-boot-repair.png	usr/share/icons/hicolor/256x256/apps
+translations/*.qm		usr/share/mx-boot-repair/locale

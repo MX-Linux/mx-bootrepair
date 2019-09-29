@@ -1,5 +1,5 @@
 /*****************************************************************************
- * mxbootrepair.h
+ * mainwindow.h
  *****************************************************************************
  * Copyright (C) 2014 MX Authors
  *
@@ -21,18 +21,18 @@
  **********************************************************************/
 
 
-#ifndef MXBOOTREPAIR_H
-#define MXBOOTREPAIR_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <QMessageBox>
 #include <QProcess>
 #include <QTimer>
 
 namespace Ui {
-class mxbootrepair;
+class MainWindow;
 }
 
-class mxbootrepair : public QDialog
+class MainWindow : public QDialog
 {
     Q_OBJECT
 
@@ -42,8 +42,8 @@ protected:
 
 
 public:
-    explicit mxbootrepair(QWidget *parent = 0);
-    ~mxbootrepair();
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
 
     QString getCmdOut(QString cmd);
 
@@ -75,10 +75,10 @@ private slots:
     void on_grubEspButton_clicked();
 
 private:
-    Ui::mxbootrepair *ui;
+    Ui::MainWindow *ui;
     QStringList ListDisk;
     QStringList ListPart;
 
 };
 
-#endif // MXBOOTREPAIR_H
+#endif // MAINWINDOW_H

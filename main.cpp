@@ -22,7 +22,7 @@
 
 
 #include <QApplication>
-#include "mxbootrepair.h"
+#include "mainwindow.h"
 #include <QTranslator>
 #include <QLocale>
 #include <QIcon>
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     a.installTranslator(&appTran);
 
     if (getuid() == 0) {
-        mxbootrepair w;
+        MainWindow w;
         w.show();
 
         return a.exec();

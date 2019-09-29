@@ -1,5 +1,5 @@
 /*****************************************************************************
- * mxbootrepair.cpp
+ * mainwindow.cpp
  *****************************************************************************
  * Copyright (C) 2014 MX Authors
  *
@@ -20,16 +20,16 @@
  * along with MX Boot Repair.  If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
 
-#include "mxbootrepair.h"
-#include "ui_mxbootrepair.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 #include "version.h"
 
 #include <QFileDialog>
 #include <QDebug>
 
-mxbootrepair::mxbootrepair(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::mxbootrepair)
+    ui(new Ui::MainWindow)
 {
     qDebug().noquote() << QCoreApplication::applicationName() << "version:" << VERSION;
     ui->setupUi(this);
@@ -38,13 +38,13 @@ mxbootrepair::mxbootrepair(QWidget *parent) :
     addDevToList();
 }
 
-mxbootrepair::~mxbootrepair()
+MainWindow::~MainWindow()
 {
     delete ui;
 }
 
 // Util function
-QString mxbootrepair::getCmdOut(QString cmd) {
+QString MainWindow::getCmdOut(QString cmd) {
     QProcess *proc = new QProcess(this);
     proc->start("/bin/bash", QStringList() << "-c" << cmd);
     proc->setReadChannel(QProcess::StandardOutput);
@@ -55,7 +55,7 @@ QString mxbootrepair::getCmdOut(QString cmd) {
     return out;
 }
 
-void mxbootrepair::refresh() {
+void MainWindow::refresh() {
     proc = new QProcess(this);
     timer = new QTimer(this);
     proc->setReadChannel(QProcess::StandardOutput);
@@ -81,7 +81,7 @@ void mxbootrepair::refresh() {
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
-void mxbootrepair::installGRUB() {
+void MainWindow::installGRUB() {
     QString cmd;
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
@@ -139,7 +139,7 @@ void mxbootrepair::installGRUB() {
     }
 }
 
-void mxbootrepair::repairGRUB() {
+void MainWindow::repairGRUB() {
     QString cmd;
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
@@ -174,7 +174,7 @@ void mxbootrepair::repairGRUB() {
 }
 
 
-void mxbootrepair::backupBR(QString filename) {
+void MainWindow::backupBR(QString filename) {
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
@@ -189,7 +189,7 @@ void mxbootrepair::backupBR(QString filename) {
 }
 
 // try to guess partition to install GRUB
-void mxbootrepair::guessPartition()
+void MainWindow::guessPartition()
 {
     if (ui->grubMbrButton->isChecked()) {
         // find first disk with Linux partitions
@@ -229,7 +229,7 @@ void mxbootrepair::guessPartition()
     }
 }
 
-void mxbootrepair::restoreBR(QString filename) {
+void MainWindow::restoreBR(QString filename) {
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
@@ -250,7 +250,7 @@ void mxbootrepair::restoreBR(QString filename) {
 }
 
 // select ESP GUI items
-void mxbootrepair::setEspDefaults()
+void MainWindow::setEspDefaults()
 {
     // remove non-ESP partitions
     for (int index = 0; index < ui->grubBootCombo->count(); index++) {
@@ -270,11 +270,11 @@ void mxbootrepair::setEspDefaults()
 
 //// sync process events ////
 
-void mxbootrepair::procStart() {
+void MainWindow::procStart() {
     timer->start(100);
 }
 
-void mxbootrepair::procTime() {
+void MainWindow::procTime() {
     int i = ui->progressBar->value() + 1;
     if (i > 100) {
         i = 0;
@@ -282,7 +282,7 @@ void mxbootrepair::procTime() {
     ui->progressBar->setValue(i);
 }
 
-void mxbootrepair::procDone(int exitCode) {
+void MainWindow::procDone(int exitCode) {
     timer->stop();
     ui->progressBar->setValue(100);
     setCursor(QCursor(Qt::ArrowCursor));
@@ -303,17 +303,17 @@ void mxbootrepair::procDone(int exitCode) {
 }
 
 // set proc and timer connections
-void mxbootrepair::setConnections(QTimer* timer, QProcess* proc) {
+void MainWindow::setConnections(QTimer* timer, QProcess* proc) {
     timer->disconnect();
     proc->disconnect();
-    connect(timer, &QTimer::timeout, this, &mxbootrepair::procTime);
-    connect(proc, &QProcess::started, this, &mxbootrepair::procStart);
-    connect(proc, static_cast<void (QProcess::*)(int)>(&QProcess::finished), this, &mxbootrepair::procDone);
-    connect(proc, &QProcess::readyReadStandardOutput, this, &mxbootrepair::onStdoutAvailable);
+    connect(timer, &QTimer::timeout, this, &MainWindow::procTime);
+    connect(proc, &QProcess::started, this, &MainWindow::procStart);
+    connect(proc, static_cast<void (QProcess::*)(int)>(&QProcess::finished), this, &MainWindow::procDone);
+    connect(proc, &QProcess::readyReadStandardOutput, this, &MainWindow::onStdoutAvailable);
 }
 
 // add list of devices to grubBootCombo
-void mxbootrepair::addDevToList() {
+void MainWindow::addDevToList() {
     QString cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'\"";
     proc->start(cmd);
     proc->waitForFinished();
@@ -339,7 +339,7 @@ void mxbootrepair::addDevToList() {
 }
 
 // enabled/disable GUI elements depending on MBR, Root or ESP selection
-void mxbootrepair::targetSelection() {
+void MainWindow::targetSelection() {
     ui->grubBootCombo->clear();
     ui->rootCombo->setEnabled(true);
     ui->buttonApply->setEnabled(true);
@@ -360,13 +360,13 @@ void mxbootrepair::targetSelection() {
 }
 
 // update output box on Stdout
-void mxbootrepair::onStdoutAvailable() {
+void MainWindow::onStdoutAvailable() {
     QString out = ui->outputBox->toPlainText() + proc->readAllStandardOutput();
     ui->outputBox->setPlainText(out);
 }
 
 // Apply button clicked
-void mxbootrepair::on_buttonApply_clicked() {
+void MainWindow::on_buttonApply_clicked() {
     // on first page
     if (ui->stackedWidget->currentIndex() == 0) {
         targetSelection();
@@ -436,7 +436,7 @@ void mxbootrepair::on_buttonApply_clicked() {
 }
 
 // About button clicked
-void mxbootrepair::on_buttonAbout_clicked() {
+void MainWindow::on_buttonAbout_clicked() {
     this->hide();
     QMessageBox msgBox(QMessageBox::NoIcon,
                        tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
@@ -483,7 +483,7 @@ void mxbootrepair::on_buttonAbout_clicked() {
 }
 
 // Help button clicked
-void mxbootrepair::on_buttonHelp_clicked() {
+void MainWindow::on_buttonHelp_clicked() {
     QLocale locale;
     QString lang = locale.bcp47Name();
     QString user = getCmdOut("logname");
@@ -500,17 +500,17 @@ void mxbootrepair::on_buttonHelp_clicked() {
     }
 }
 
-void mxbootrepair::on_grubMbrButton_clicked()
+void MainWindow::on_grubMbrButton_clicked()
 {
     targetSelection();
 }
 
-void mxbootrepair::on_grubRootButton_clicked()
+void MainWindow::on_grubRootButton_clicked()
 {
     targetSelection();
 }
 
-void mxbootrepair::on_grubEspButton_clicked()
+void MainWindow::on_grubEspButton_clicked()
 {
     targetSelection();
 }

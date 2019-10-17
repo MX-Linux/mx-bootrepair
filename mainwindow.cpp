@@ -20,12 +20,14 @@
  * along with MX Boot Repair.  If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
 
+#include "about.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "version.h"
 
-#include <QFileDialog>
 #include <QDebug>
+#include <QFileDialog>
+#include <QScrollBar>
 
 MainWindow::MainWindow(QWidget *parent) :
     QDialog(parent),
@@ -33,6 +35,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     qDebug().noquote() << QCoreApplication::applicationName() << "version:" << VERSION;
     ui->setupUi(this);
+    timer = new QTimer(this);
+    shell = new Cmd(this);
+
+    connect(shell, &Cmd::outputAvailable, [](const QString &out) {qDebug() << out.trimmed();});
+    connect(shell, &Cmd::errorAvailable, [](const QString &out) {qWarning() << out.trimmed();});
+
     setWindowFlags(Qt::Window); // for the close, min and max buttons
     refresh();
     addDevToList();
@@ -43,23 +51,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// Util function
-QString MainWindow::getCmdOut(QString cmd) {
-    QProcess *proc = new QProcess(this);
-    proc->start("/bin/bash", QStringList() << "-c" << cmd);
-    proc->setReadChannel(QProcess::StandardOutput);
-    proc->setReadChannelMode(QProcess::MergedChannels);
-    proc->waitForFinished(-1);
-    QString out = proc->readAllStandardOutput().trimmed();
-    delete proc;
-    return out;
-}
-
 void MainWindow::refresh() {
-    proc = new QProcess(this);
-    timer = new QTimer(this);
-    proc->setReadChannel(QProcess::StandardOutput);
-    proc->setReadChannelMode(QProcess::MergedChannels);
     ui->stackedWidget->setCurrentIndex(0);
     ui->reinstallRadioButton->setFocus();
     ui->reinstallRadioButton->setChecked(true);
@@ -94,18 +86,14 @@ void MainWindow::installGRUB() {
     QString text = QString(tr("GRUB is being installed on %1 device.")).arg(location);
     ui->outputLabel->setText(text);
 
-    setConnections(timer, proc);
-    QEventLoop loop;
-    connect(proc, static_cast<void (QProcess::*)(int)>(&QProcess::finished), &loop, &QEventLoop::quit);
-
     // create a temp folder and mount dev sys proc
-    QString path = getCmdOut("mktemp -d --tmpdir -p /tmp");
+    QString path = shell->getCmdOut("mktemp -d --tmpdir -p /tmp");
     cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
-    if (system(cmd.toUtf8()) == 0) {
+    if (shell->run(cmd)) {
         cmd = QString("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
         if (ui->grubEspButton->isChecked()) {
-            system("test -d " + path.toUtf8() + "/boot/efi || mkdir " + path.toUtf8()  + "/boot/efi");
-            if (system("mount /dev/" + location.toUtf8()  + " " + path.toUtf8() + "/boot/efi") != 0) {
+            shell->run("test -d " + path.toUtf8() + "/boot/efi || mkdir " + path.toUtf8()  + "/boot/efi");
+            if (!shell->run("mount /dev/" + location.toUtf8()  + " " + path.toUtf8() + "/boot/efi")) {
                 QMessageBox::critical(this, tr("Error"),
                                       tr("Could not mount ") + location + tr(" on /boot/efi"));
                 setCursor(QCursor(Qt::ArrowCursor));
@@ -115,19 +103,21 @@ void MainWindow::installGRUB() {
                 ui->stackedWidget->setCurrentWidget(ui->selectionPage);
                 return;
             }
-            QString arch = getCmdOut("arch");
+            QString arch = shell->getCmdOut("arch");
             if (arch == "i686") { // rename arch to match grub-install target
                 arch = "i386";
             }
-            QString release = getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
+            QString release = shell->getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
             cmd = QString("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck\"").arg(path).arg(arch).arg(release);
         }
-        proc->start(cmd);
-        loop.exec();
+        displayOutput();
+        shell->run(cmd);
+        disableOutput();
+
         // umount and clean temp folder
-        system("mountpoint -q " + path.toUtf8() + "/boot/efi && umount " + path.toUtf8() + "/boot/efi");
+        shell->run("mountpoint -q " + path.toUtf8() + "/boot/efi && umount " + path.toUtf8() + "/boot/efi");
         cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
-        system(cmd.toUtf8());
+        shell->run(cmd.toUtf8());
     } else {
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not set up chroot environment.\nPlease double-check the selected location."));
@@ -148,16 +138,15 @@ void MainWindow::repairGRUB() {
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
-    setConnections(timer, proc);
     // create a temp folder and mount dev sys proc
-    QString path = getCmdOut("mktemp -d --tmpdir -p /mnt");
+    QString path = shell->getCmdOut("mktemp -d --tmpdir -p /mnt");
     cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(location).arg(path);
-    if (system(cmd.toUtf8()) == 0) {
+    if (shell->run(cmd)) {
         QEventLoop loop;
-        connect(proc, static_cast<void (QProcess::*)(int)>(&QProcess::finished), &loop, &QEventLoop::quit);
         cmd = QString("chroot %1 update-grub").arg(path);
-        proc->start(cmd);
-        loop.exec();
+        displayOutput();
+        shell->run(cmd);
+        disableOutput();
     } else {
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not set up chroot environment.\nPlease double-check the selected location."));
@@ -170,7 +159,7 @@ void MainWindow::repairGRUB() {
     }
     // umount and clean temp folder
     cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
-    system(cmd.toUtf8());
+    shell->run(cmd);
 }
 
 
@@ -183,9 +172,10 @@ void MainWindow::backupBR(QString filename) {
     QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
     QString text = QString(tr("Backing up MBR or PBR from %1 device.")).arg(location);
     ui->outputLabel->setText(text);
-    setConnections(timer, proc);
     QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
-    proc->start(cmd);
+    displayOutput();
+    shell->run(cmd);
+    disableOutput();
 }
 
 // try to guess partition to install GRUB
@@ -195,8 +185,8 @@ void MainWindow::guessPartition()
         // find first disk with Linux partitions
         for (int index = 0; index < ui->grubBootCombo->count(); index++) {
             QString drive = ui->grubBootCombo->itemText(index);
-            if (system("lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + \
-                       "| grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
+            if (shell->run("lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + \
+                       "| grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
                 ui->grubBootCombo->setCurrentIndex(index);
                 break;
             }
@@ -205,7 +195,7 @@ void MainWindow::guessPartition()
     // find first a partition with rootMX* label
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
-        if (system("lsblk -ln -o LABEL /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -q rootMX") == 0) {
+        if (shell->run("lsblk -ln -o LABEL /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -q rootMX")) {
             ui->rootCombo->setCurrentIndex(index);
             // select the same location by default for GRUB and /boot
             if (ui->grubRootButton->isChecked()) {
@@ -217,8 +207,8 @@ void MainWindow::guessPartition()
     // it it cannot find rootMX*, look for Linux partitions
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
-        if (system("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + \
-                   "| grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'") == 0) {
+        if (shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + \
+                   "| grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
             ui->rootCombo->setCurrentIndex(index);
             break;
         }
@@ -244,9 +234,10 @@ void MainWindow::restoreBR(QString filename) {
     }
     QString text = QString(tr("Restoring MBR/PBR from backup to %1 device.")).arg(location);
     ui->outputLabel->setText(text);
-    setConnections(timer, proc);
     QString cmd = "dd if=" + filename + " of=/dev/" + location + " bs=446 count=1";
-    proc->start(cmd);
+    displayOutput();
+    shell->run(cmd);
+    disableOutput();
 }
 
 // select ESP GUI items
@@ -255,7 +246,7 @@ void MainWindow::setEspDefaults()
     // remove non-ESP partitions
     for (int index = 0; index < ui->grubBootCombo->count(); index++) {
         QString part = ui->grubBootCombo->itemText(index);
-        if (system("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -qi c12a7328-f81f-11d2-ba4b-00a0c93ec93b") != 0) {
+        if (!shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -qi c12a7328-f81f-11d2-ba4b-00a0c93ec93b")) {
             ui->grubBootCombo->removeItem(index);
             index--;
         }
@@ -267,32 +258,29 @@ void MainWindow::setEspDefaults()
     }
 }
 
-
-//// sync process events ////
-
 void MainWindow::procStart() {
     timer->start(100);
+    setCursor(QCursor(Qt::BusyCursor));
 }
 
-void MainWindow::procTime() {
-    int i = ui->progressBar->value() + 1;
-    if (i > 100) {
-        i = 0;
+void MainWindow::progress() {
+    if (ui->progressBar->value() == 100) {
+        ui->progressBar->reset();
     }
-    ui->progressBar->setValue(i);
+    ui->progressBar->setValue(ui->progressBar->value() + 1);
 }
 
-void MainWindow::procDone(int exitCode) {
+void MainWindow::procDone() {
     timer->stop();
     ui->progressBar->setValue(100);
     setCursor(QCursor(Qt::ArrowCursor));
     ui->buttonCancel->setEnabled(true);
     ui->buttonApply->setEnabled(true);
-    if (exitCode == 0) {
+    if (shell->exitStatus() == QProcess::NormalExit && shell->exitCode() == 0 ) {
         if (QMessageBox::information(this, tr("Success"),
                                      tr("Process finished with success.<p><b>Do you want to exit MX Boot Repair?</b>"),
                                      QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes){
-            qApp->exit(0);
+            qApp->exit(EXIT_SUCCESS);
         }
     } else {
         QMessageBox::critical(this, tr("Error"),
@@ -302,29 +290,32 @@ void MainWindow::procDone(int exitCode) {
     ui->buttonApply->setIcon(QIcon::fromTheme("go-previous"));
 }
 
-// set proc and timer connections
-void MainWindow::setConnections(QTimer* timer, QProcess* proc) {
-    timer->disconnect();
-    proc->disconnect();
-    connect(timer, &QTimer::timeout, this, &MainWindow::procTime);
-    connect(proc, &QProcess::started, this, &MainWindow::procStart);
-    connect(proc, static_cast<void (QProcess::*)(int)>(&QProcess::finished), this, &MainWindow::procDone);
-    connect(proc, &QProcess::readyReadStandardOutput, this, &MainWindow::onStdoutAvailable);
+void MainWindow::displayOutput()
+{
+    connect(timer, &QTimer::timeout, this, &MainWindow::progress);
+    connect(shell, &Cmd::started, this, &MainWindow::procStart);
+    connect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
+    connect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);
+    connect(shell, &Cmd::finished, this, &MainWindow::procDone);
 }
+
+void MainWindow::disableOutput()
+{
+    disconnect(timer, &QTimer::timeout, this, &MainWindow::progress);
+    disconnect(shell, &Cmd::started, this, &MainWindow::procStart);
+    disconnect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
+    disconnect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);
+    disconnect(shell, &Cmd::finished, this, &MainWindow::procDone);
+}
+
 
 // add list of devices to grubBootCombo
 void MainWindow::addDevToList() {
     QString cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'\"";
-    proc->start(cmd);
-    proc->waitForFinished();
-    QString out = proc->readAllStandardOutput();
-    ListDisk = out.split("\n", QString::SkipEmptyParts);
+    ListDisk = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
 
     cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'\"";
-    proc->start(cmd);
-    proc->waitForFinished();
-    out = proc->readAllStandardOutput();
-    ListPart = out.split("\n", QString::SkipEmptyParts);
+    ListPart = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
     ui->rootCombo->clear();
     ui->rootCombo->addItems(ListPart);
 
@@ -360,9 +351,14 @@ void MainWindow::targetSelection() {
 }
 
 // update output box on Stdout
-void MainWindow::onStdoutAvailable() {
-    QString out = ui->outputBox->toPlainText() + proc->readAllStandardOutput();
-    ui->outputBox->setPlainText(out);
+void MainWindow::outputAvailable(const QString &output)
+{
+    if (output.contains("\r")) {
+        ui->outputBox->moveCursor(QTextCursor::Up, QTextCursor::KeepAnchor);
+        ui->outputBox->moveCursor(QTextCursor::EndOfLine, QTextCursor::KeepAnchor);
+    }
+    ui->outputBox->insertPlainText(output);
+    ui->outputBox->verticalScrollBar()->setValue(ui->outputBox->verticalScrollBar()->maximum());
 }
 
 // Apply button clicked
@@ -431,54 +427,19 @@ void MainWindow::on_buttonApply_clicked() {
     } else if (ui->stackedWidget->currentWidget() == ui->outputPage) {
         refresh();
     } else {
-        qApp->exit(0);
+        qApp->exit(EXIT_SUCCESS);
     }
 }
 
 // About button clicked
 void MainWindow::on_buttonAbout_clicked() {
     this->hide();
-    QMessageBox msgBox(QMessageBox::NoIcon,
-                       tr("About MX Boot Repair"), "<p align=\"center\"><b><h2>" +
-                       tr("MX Boot Repair") + "</h2></b></p><p align=\"center\">" + tr("Version: ") +
-                       VERSION + "</p><p align=\"center\"><h3>" +
-                       tr("Simple boot repair program for MX Linux") + "</h3></p><p align=\"center\"><a href=\"http://mxlinux.org\">http://mxlinux.org</a><br /></p><p align=\"center\">" +
-                       tr("Copyright (c) MX Linux") + "<br /><br /></p>", 0, this);
-    QPushButton *btnLicense = msgBox.addButton(tr("License"), QMessageBox::HelpRole);
-    QPushButton *btnChangelog = msgBox.addButton(tr("Changelog"), QMessageBox::HelpRole);
-    QPushButton *btnCancel = msgBox.addButton(tr("Cancel"), QMessageBox::NoRole);
-    btnCancel->setIcon(QIcon::fromTheme("window-close"));
-
-    msgBox.exec();
-
-    if (msgBox.clickedButton() == btnLicense) {
-        QString url = "file:///usr/share/doc/mx-bootrepair/license.html";
-        QString exec = "xdg-open";
-        QString user = getCmdOut("logname");
-
-        if (system("command -v mx-viewer >/dev/null") == 0) {
-            system("mx-viewer " + url.toUtf8() + " \"" + tr("License").toUtf8() + "\"&");
-        } else {
-            system("su " + user.toUtf8() + " -c \"env XDG_RUNTIME_DIR=/run/user/$(id -u " + user.toUtf8() + ") xdg-open " + url.toUtf8() + "\"&");
-        }
-    } else if (msgBox.clickedButton() == btnChangelog) {
-        QDialog *changelog = new QDialog(this);
-        changelog->resize(600, 500);
-
-        QTextEdit *text = new QTextEdit;
-        text->setReadOnly(true);
-        text->setText(getCmdOut("zless /usr/share/doc/" + QFileInfo(QCoreApplication::applicationFilePath()).fileName()  + "/changelog.gz"));
-
-        QPushButton *btnClose = new QPushButton(tr("&Close"));
-        btnClose->setIcon(QIcon::fromTheme("window-close"));
-        connect(btnClose, &QPushButton::clicked, changelog, &QDialog::close);
-
-        QVBoxLayout *layout = new QVBoxLayout;
-        layout->addWidget(text);
-        layout->addWidget(btnClose);
-        changelog->setLayout(layout);
-        changelog->exec();
-    }
+    displayAboutMsgBox(tr("About %1").arg(this->windowTitle()), "<p align=\"center\"><b><h2>" + this->windowTitle() +"</h2></b></p><p align=\"center\">" +
+                       tr("Version: ") + VERSION + "</p><p align=\"center\"><h3>" +
+                       tr("Simple boot repair program for MX Linux") +
+                       "</h3></p><p align=\"center\"><a href=\"http://mxlinux.org\">http://mxlinux.org</a><br /></p><p align=\"center\">" +
+                       tr("Copyright (c) MX Linux") + "<br /><br /></p>",
+                       "/usr/share/doc/mx-bootrepair/license.html", tr("%1 License").arg(this->windowTitle()), true);
     this->show();
 }
 
@@ -486,18 +447,13 @@ void MainWindow::on_buttonAbout_clicked() {
 void MainWindow::on_buttonHelp_clicked() {
     QLocale locale;
     QString lang = locale.bcp47Name();
-    QString user = getCmdOut("logname");
+    QString user = shell->getCmdOut("logname");
 
     QString url = "/usr/share/doc/mx-bootrepair/help/mx-bootrepair.html";
     if (lang.startsWith("fr")) {
         url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
     }
-
-    if (system("command -v mx-viewer >/dev/null") == 0) {
-        system("mx-viewer " + url.toUtf8() + " \"" + tr("MX Boot Repair").toUtf8() + "\"&");
-    } else {
-        system("su " + user.toUtf8() + " -c \"env XDG_RUNTIME_DIR=/run/user/$(id -u " + user.toUtf8() + ") xdg-open " + url.toUtf8() + "\"&");
-    }
+    displayDoc(url, tr("%1 Help").arg(this->windowTitle()), true);
 }
 
 void MainWindow::on_grubMbrButton_clicked()

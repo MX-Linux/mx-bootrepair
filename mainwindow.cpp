@@ -360,10 +360,10 @@ void MainWindow::targetSelection() {
 // update output box on Stdout
 void MainWindow::outputAvailable(const QString &output)
 {
-    if (output.contains("\r")) {
-        ui->outputBox->moveCursor(QTextCursor::Up, QTextCursor::KeepAnchor);
-        ui->outputBox->moveCursor(QTextCursor::EndOfLine, QTextCursor::KeepAnchor);
-    }
+//    if (output.contains("\r")) {
+//        ui->outputBox->moveCursor(QTextCursor::Up, QTextCursor::KeepAnchor);
+//        ui->outputBox->moveCursor(QTextCursor::EndOfLine, QTextCursor::KeepAnchor);
+//    }
     ui->outputBox->insertPlainText(output);
     ui->outputBox->verticalScrollBar()->setValue(ui->outputBox->verticalScrollBar()->maximum());
 }

@@ -44,7 +44,6 @@ int main(int argc, char *argv[])
     logFile.data()->open(QFile::Append | QFile::Text);
     qInstallMessageHandler(messageHandler);
 
-
     QTranslator qtTran;
     qtTran.load(QString("qt_") + QLocale::system().name());
     a.installTranslator(&qtTran);

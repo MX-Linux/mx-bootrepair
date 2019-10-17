@@ -35,4 +35,5 @@ Makefile*
 *.qmlproject.user
 *.qmlproject.user.*
 
-mx-bootrepair
+mx-boot-repair
+

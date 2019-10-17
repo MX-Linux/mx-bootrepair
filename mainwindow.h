@@ -54,6 +54,7 @@ public:
 
 public slots:
     void displayOutput();
+    void displayResult(bool success);
     void disableOutput();
     void procStart();
     void progress();

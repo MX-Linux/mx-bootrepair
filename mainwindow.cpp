@@ -108,7 +108,7 @@ void MainWindow::installGRUB() {
                 arch = "i386";
             }
             QString release = shell->getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
-            cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck\"").arg(path).arg(arch).arg(release);
+            cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck").arg(path).arg(arch).arg(release);
         }
         displayOutput();
         bool success = shell->run(cmd);
@@ -318,10 +318,10 @@ void MainWindow::disableOutput()
 
 // add list of devices to grubBootCombo
 void MainWindow::addDevToList() {
-    QString cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'\"";
+    QString cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
     ListDisk = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
 
-    cmd = "/bin/bash -c \"lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'\"";
+    cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
     ListPart = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
     ui->rootCombo->clear();
     ui->rootCombo->addItems(ListPart);

@@ -24,6 +24,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "cmd.h"
+
 #include <QMessageBox>
 #include <QProcess>
 #include <QTimer>
@@ -36,16 +38,9 @@ class MainWindow : public QDialog
 {
     Q_OBJECT
 
-protected:
-    QProcess *proc;
-    QTimer *timer;
-
-
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
-    QString getCmdOut(QString cmd);
 
     void addDevToList();
     void backupBR(QString filename);
@@ -58,11 +53,12 @@ public:
     void targetSelection();
 
 public slots:
+    void displayOutput();
+    void disableOutput();
     void procStart();
-    void procTime();
-    void procDone(int exitCode);
-    void setConnections(QTimer* timer, QProcess* proc);
-    void onStdoutAvailable();
+    void progress();
+    void procDone();
+    void outputAvailable(const QString &output);
 
     virtual void on_buttonApply_clicked();
     virtual void on_buttonAbout_clicked();
@@ -75,9 +71,11 @@ private slots:
     void on_grubEspButton_clicked();
 
 private:
+    Cmd *shell;
     Ui::MainWindow *ui;
     QStringList ListDisk;
     QStringList ListPart;
+    QTimer *timer;
 
 };
 

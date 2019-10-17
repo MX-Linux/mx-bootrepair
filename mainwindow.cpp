@@ -52,6 +52,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::refresh() {
+    disableOutput();
     ui->stackedWidget->setCurrentIndex(0);
     ui->reinstallRadioButton->setFocus();
     ui->reinstallRadioButton->setChecked(true);
@@ -74,23 +75,22 @@ void MainWindow::refresh() {
 }
 
 void MainWindow::installGRUB() {
-    QString cmd;
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
 
-    QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
-    QString root = QString(ui->rootCombo->currentText()).section(" ", 0, 0);
-    QString text = QString(tr("GRUB is being installed on %1 device.")).arg(location);
+    QString location = ui->grubBootCombo->currentText().section(" ", 0, 0);
+    QString root = ui->rootCombo->currentText().section(" ", 0, 0);
+    QString text = tr("GRUB is being installed on %1 device.").arg(location);
     ui->outputLabel->setText(text);
 
     // create a temp folder and mount dev sys proc
     QString path = shell->getCmdOut("mktemp -d --tmpdir -p /tmp");
-    cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
+    QString cmd = QStringLiteral("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
     if (shell->run(cmd)) {
-        cmd = QString("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
+        cmd = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
         if (ui->grubEspButton->isChecked()) {
             shell->run("test -d " + path.toUtf8() + "/boot/efi || mkdir " + path.toUtf8()  + "/boot/efi");
             if (!shell->run("mount /dev/" + location.toUtf8()  + " " + path.toUtf8() + "/boot/efi")) {
@@ -108,16 +108,16 @@ void MainWindow::installGRUB() {
                 arch = "i386";
             }
             QString release = shell->getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
-            cmd = QString("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck\"").arg(path).arg(arch).arg(release);
+            cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck\"").arg(path).arg(arch).arg(release);
         }
         displayOutput();
-        shell->run(cmd);
+        bool success = shell->run(cmd);
         disableOutput();
-
-        // umount and clean temp folder
         shell->run("mountpoint -q " + path.toUtf8() + "/boot/efi && umount " + path.toUtf8() + "/boot/efi");
-        cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
-        shell->run(cmd.toUtf8());
+        cmd = QStringLiteral("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+        shell->run(cmd);
+        displayResult(success);
+        return;
     } else {
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not set up chroot environment.\nPlease double-check the selected location."));
@@ -127,26 +127,31 @@ void MainWindow::installGRUB() {
         ui->progressBar->hide();
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
+    cmd = QStringLiteral("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+    shell->run(cmd);
 }
 
 void MainWindow::repairGRUB() {
-    QString cmd;
     ui->progressBar->show();
     setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
+    QString location = ui->grubBootCombo->currentText().section(" ", 0, 0);
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
     // create a temp folder and mount dev sys proc
     QString path = shell->getCmdOut("mktemp -d --tmpdir -p /mnt");
-    cmd = QString("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(location).arg(path);
+    QString cmd = QStringLiteral("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(location).arg(path);
     if (shell->run(cmd)) {
         QEventLoop loop;
-        cmd = QString("chroot %1 update-grub").arg(path);
+        cmd = QStringLiteral("chroot %1 update-grub").arg(path);
         displayOutput();
-        shell->run(cmd);
+        bool success = shell->run(cmd);
         disableOutput();
+        cmd = QStringLiteral("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+        shell->run(cmd);
+        displayResult(success);
+        return;
     } else {
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not set up chroot environment.\nPlease double-check the selected location."));
@@ -158,7 +163,7 @@ void MainWindow::repairGRUB() {
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
     // umount and clean temp folder
-    cmd = QString("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+    cmd = QStringLiteral("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
     shell->run(cmd);
 }
 
@@ -169,13 +174,12 @@ void MainWindow::backupBR(QString filename) {
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
-    QString text = QString(tr("Backing up MBR or PBR from %1 device.")).arg(location);
+    QString location = ui->grubBootCombo->currentText().section(" ", 0, 0);
+    QString text = tr("Backing up MBR or PBR from %1 device.").arg(location);
     ui->outputLabel->setText(text);
     QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
     displayOutput();
-    shell->run(cmd);
-    disableOutput();
+    displayResult(shell->run(cmd));
 }
 
 // try to guess partition to install GRUB
@@ -225,19 +229,18 @@ void MainWindow::restoreBR(QString filename) {
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    QString location = QString(ui->grubBootCombo->currentText()).section(" ", 0, 0);
+    QString location = ui->grubBootCombo->currentText().section(" ", 0, 0);
     if (QMessageBox::warning(this, tr("Warning"),
                              tr("You are going to write the content of ") + filename + tr(" to ") + location + tr("\n\nAre you sure?"),
                              QMessageBox::Yes, QMessageBox::No) != QMessageBox::Yes) {
         refresh();
         return;
     }
-    QString text = QString(tr("Restoring MBR/PBR from backup to %1 device.")).arg(location);
+    QString text = tr("Restoring MBR/PBR from backup to %1 device.").arg(location);
     ui->outputLabel->setText(text);
     QString cmd = "dd if=" + filename + " of=/dev/" + location + " bs=446 count=1";
     displayOutput();
-    shell->run(cmd);
-    disableOutput();
+    displayResult(shell->run(cmd));
 }
 
 // select ESP GUI items
@@ -276,16 +279,6 @@ void MainWindow::procDone() {
     setCursor(QCursor(Qt::ArrowCursor));
     ui->buttonCancel->setEnabled(true);
     ui->buttonApply->setEnabled(true);
-    if (shell->exitStatus() == QProcess::NormalExit && shell->exitCode() == 0 ) {
-        if (QMessageBox::information(this, tr("Success"),
-                                     tr("Process finished with success.<p><b>Do you want to exit MX Boot Repair?</b>"),
-                                     QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes){
-            qApp->exit(EXIT_SUCCESS);
-        }
-    } else {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Process finished. Errors have occurred."));
-    }
     ui->buttonApply->setText(tr("Back"));
     ui->buttonApply->setIcon(QIcon::fromTheme("go-previous"));
 }
@@ -297,6 +290,20 @@ void MainWindow::displayOutput()
     connect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
     connect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);
     connect(shell, &Cmd::finished, this, &MainWindow::procDone);
+}
+
+void MainWindow::displayResult(bool success)
+{
+    if (success) {
+        if (QMessageBox::information(this, tr("Success"),
+                                     tr("Process finished with success.<p><b>Do you want to exit MX Boot Repair?</b>"),
+                                     QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes){
+            qApp->exit(EXIT_SUCCESS);
+        }
+    } else {
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Process finished. Errors have occurred."));
+    }
 }
 
 void MainWindow::disableOutput()

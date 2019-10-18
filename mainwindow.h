@@ -56,6 +56,7 @@ public slots:
     void displayOutput();
     void displayResult(bool success);
     void disableOutput();
+    bool openLuks(const QString part);
     void procStart();
     void progress();
     void procDone();

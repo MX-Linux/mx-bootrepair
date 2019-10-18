@@ -26,6 +26,7 @@
 #include "version.h"
 
 #include <QDebug>
+#include <QInputDialog>
 #include <QFileDialog>
 #include <QScrollBar>
 
@@ -82,18 +83,30 @@ void MainWindow::installGRUB() {
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
 
     QString location = ui->grubBootCombo->currentText().section(" ", 0, 0);
-    QString root = ui->rootCombo->currentText().section(" ", 0, 0);
+    QString root = "/dev/" + ui->rootCombo->currentText().section(" ", 0, 0);
     QString text = tr("GRUB is being installed on %1 device.").arg(location);
+
+    bool isLuks = shell->run("/sbin/cryptsetup isLuks " + root);
+    if (isLuks) {
+        if(!openLuks(root)) {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Sorry, could not open %1 LUKS container").arg(root));
+            refresh();
+            return;
+        }
+        root = "/dev/mapper/chrootfs";
+    }
+
     ui->outputLabel->setText(text);
 
     // create a temp folder and mount dev sys proc
-    QString path = shell->getCmdOut("mktemp -d --tmpdir -p /tmp");
-    QString cmd = QStringLiteral("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(path);
+    QString path = shell->getCmdOut("/bin/mktemp -d --tmpdir -p /tmp");
+    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(root).arg(path);
     if (shell->run(cmd)) {
-        cmd = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
+        cmd = QStringLiteral("/usr/sbin/chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
         if (ui->grubEspButton->isChecked()) {
-            shell->run("test -d " + path.toUtf8() + "/boot/efi || mkdir " + path.toUtf8()  + "/boot/efi");
-            if (!shell->run("mount /dev/" + location.toUtf8()  + " " + path.toUtf8() + "/boot/efi")) {
+            shell->run("/usr/bin/test -d " + path.toUtf8() + "/boot/efi || /bin/mkdir " + path.toUtf8()  + "/boot/efi");
+            if (!shell->run("/bin/mount /dev/" + location.toUtf8()  + " " + path.toUtf8() + "/boot/efi")) {
                 QMessageBox::critical(this, tr("Error"),
                                       tr("Could not mount ") + location + tr(" on /boot/efi"));
                 setCursor(QCursor(Qt::ArrowCursor));
@@ -108,14 +121,15 @@ void MainWindow::installGRUB() {
                 arch = "i386";
             }
             QString release = shell->getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
-            cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck").arg(path).arg(arch).arg(release);
+            cmd = QStringLiteral("/usr/sbin/chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck").arg(path).arg(arch).arg(release);
         }
         displayOutput();
         bool success = shell->run(cmd);
         disableOutput();
-        shell->run("mountpoint -q " + path.toUtf8() + "/boot/efi && umount " + path.toUtf8() + "/boot/efi");
-        cmd = QStringLiteral("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+        shell->run("/bin/mountpoint -q " + path.toUtf8() + "/boot/efi && /bin/umount " + path.toUtf8() + "/boot/efi");
+        cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount %1; rmdir %1").arg(path);
         shell->run(cmd);
+        if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
         displayResult(success);
         return;
     } else {
@@ -127,8 +141,9 @@ void MainWindow::installGRUB() {
         ui->progressBar->hide();
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
-    cmd = QStringLiteral("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+    cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount %1; rmdir %1").arg(path);
     shell->run(cmd);
+    if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
 }
 
 void MainWindow::repairGRUB() {
@@ -137,19 +152,30 @@ void MainWindow::repairGRUB() {
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    QString location = ui->grubBootCombo->currentText().section(" ", 0, 0);
+    QString part = "/dev/" + ui->grubBootCombo->currentText().section(" ", 0, 0);
+    bool isLuks = shell->run("/sbin/cryptsetup isLuks " + part);
+    if (isLuks) {
+        if(!openLuks(part)) {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Sorry, could not open %1 LUKS container").arg(part));
+            refresh();
+            return;
+        }
+        part = "/dev/mapper/chrootfs";
+    }
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
     // create a temp folder and mount dev sys proc
-    QString path = shell->getCmdOut("mktemp -d --tmpdir -p /mnt");
-    QString cmd = QStringLiteral("mount /dev/%1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(location).arg(path);
+    QString path = shell->getCmdOut("/bin/mktemp -d --tmpdir -p /mnt");
+    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(part).arg(path);
     if (shell->run(cmd)) {
         QEventLoop loop;
-        cmd = QStringLiteral("chroot %1 update-grub").arg(path);
+        cmd = QStringLiteral("/usr/sbin/chroot %1 update-grub").arg(path);
         displayOutput();
         bool success = shell->run(cmd);
         disableOutput();
-        cmd = QStringLiteral("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+        cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount %1; rmdir %1").arg(path);
         shell->run(cmd);
+        if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
         displayResult(success);
         return;
     } else {
@@ -163,8 +189,9 @@ void MainWindow::repairGRUB() {
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
     // umount and clean temp folder
-    cmd = QStringLiteral("umount %1/proc %1/sys %1/dev; umount %1; rmdir %1").arg(path);
+    cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount %1; rmdir %1").arg(path);
     shell->run(cmd);
+    if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
 }
 
 
@@ -177,7 +204,7 @@ void MainWindow::backupBR(QString filename) {
     QString location = ui->grubBootCombo->currentText().section(" ", 0, 0);
     QString text = tr("Backing up MBR or PBR from %1 device.").arg(location);
     ui->outputLabel->setText(text);
-    QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
+    QString cmd = "/bin/dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
     displayOutput();
     displayResult(shell->run(cmd));
 }
@@ -189,8 +216,8 @@ void MainWindow::guessPartition()
         // find first disk with Linux partitions
         for (int index = 0; index < ui->grubBootCombo->count(); index++) {
             QString drive = ui->grubBootCombo->itemText(index);
-            if (shell->run("lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + \
-                       "| grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
+            if (shell->run("/bin/lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + \
+                       "| /bin/grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
                 ui->grubBootCombo->setCurrentIndex(index);
                 break;
             }
@@ -199,7 +226,7 @@ void MainWindow::guessPartition()
     // find first a partition with rootMX* label
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
-        if (shell->run("lsblk -ln -o LABEL /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -q rootMX")) {
+        if (shell->run("/bin/lsblk -ln -o LABEL /dev/" + part.section(" ", 0 ,0).toUtf8() + "| /bin/grep -q rootMX")) {
             ui->rootCombo->setCurrentIndex(index);
             // select the same location by default for GRUB and /boot
             if (ui->grubRootButton->isChecked()) {
@@ -211,8 +238,8 @@ void MainWindow::guessPartition()
     // it it cannot find rootMX*, look for Linux partitions
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
-        if (shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + \
-                   "| grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
+        if (shell->run("/bin/lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + \
+                   "| /bin/grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
             ui->rootCombo->setCurrentIndex(index);
             break;
         }
@@ -238,7 +265,7 @@ void MainWindow::restoreBR(QString filename) {
     }
     QString text = tr("Restoring MBR/PBR from backup to %1 device.").arg(location);
     ui->outputLabel->setText(text);
-    QString cmd = "dd if=" + filename + " of=/dev/" + location + " bs=446 count=1";
+    QString cmd = "/bin/dd if=" + filename + " of=/dev/" + location + " bs=446 count=1";
     displayOutput();
     displayResult(shell->run(cmd));
 }
@@ -249,7 +276,7 @@ void MainWindow::setEspDefaults()
     // remove non-ESP partitions
     for (int index = 0; index < ui->grubBootCombo->count(); index++) {
         QString part = ui->grubBootCombo->itemText(index);
-        if (!shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -qi c12a7328-f81f-11d2-ba4b-00a0c93ec93b")) {
+        if (!shell->run("/bin/lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| /bin/grep -qi c12a7328-f81f-11d2-ba4b-00a0c93ec93b")) {
             ui->grubBootCombo->removeItem(index);
             index--;
         }
@@ -315,13 +342,27 @@ void MainWindow::disableOutput()
     disconnect(shell, &Cmd::finished, this, &MainWindow::procDone);
 }
 
+bool MainWindow::openLuks(const QString part)
+{
+    bool ok;
+    QString pass = QInputDialog::getText(this, this->windowTitle(),
+                                             tr("Enter password to unlock %1 encrypted partition:").arg(part), QLineEdit::Password, QString(), &ok);
+    if (ok && !pass.isEmpty()) {
+        QString cmd = "/bin/echo " + pass + "| /sbin/cryptsetup luksOpen " + part + " chrootfs -";
+        if (shell->run(cmd, true)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 // add list of devices to grubBootCombo
 void MainWindow::addDevToList() {
-    QString cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
+    QString cmd = QStringLiteral("/bin/lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | /bin/grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
     ListDisk = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
 
-    cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
+    cmd = QStringLiteral("/bin/lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | /bin/grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
     ListPart = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
     ui->rootCombo->clear();
     ui->rootCombo->addItems(ListPart);

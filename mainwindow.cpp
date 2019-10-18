@@ -77,7 +77,6 @@ void MainWindow::refresh() {
 
 void MainWindow::installGRUB() {
     ui->progressBar->show();
-    setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
@@ -148,7 +147,6 @@ void MainWindow::installGRUB() {
 
 void MainWindow::repairGRUB() {
     ui->progressBar->show();
-    setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
@@ -197,7 +195,6 @@ void MainWindow::repairGRUB() {
 
 void MainWindow::backupBR(QString filename) {
     ui->progressBar->show();
-    setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
@@ -252,7 +249,6 @@ void MainWindow::guessPartition()
 
 void MainWindow::restoreBR(QString filename) {
     ui->progressBar->show();
-    setCursor(QCursor(Qt::WaitCursor));
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);

@@ -42,16 +42,6 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void addDevToList();
-    void backupBR(QString filename);
-    void guessPartition();
-    void refresh();
-    void installGRUB();
-    void repairGRUB();
-    void restoreBR(QString filename);
-    void setEspDefaults();
-    void targetSelection();
-
 public slots:
     void displayOutput();
     void displayResult(bool success);
@@ -78,6 +68,18 @@ private:
     QStringList ListDisk;
     QStringList ListPart;
     QTimer *timer;
+
+    void addDevToList();
+    void backupBR(QString filename);
+    void cleanupMountPoints(const QString &path, bool isLuks);
+    void guessPartition();
+    void refresh();
+    void installGRUB();
+    void repairGRUB();
+    void restoreBR(QString filename);
+    void setEspDefaults();
+    void targetSelection();
+
 
 };
 

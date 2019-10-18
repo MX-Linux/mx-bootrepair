@@ -29,7 +29,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="startPage">
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -241,7 +241,7 @@
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLabel" name="grubBootDiskLabel">
+           <widget class="QLabel" name="locationLabel">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -260,7 +260,7 @@
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLabel" name="rootLabel">
+           <widget class="QLabel" name="bootLabel">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -295,7 +295,7 @@
            </widget>
           </item>
           <item row="1" column="3" colspan="3">
-           <widget class="QComboBox" name="grubBootCombo">
+           <widget class="QComboBox" name="locationCombo">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -311,7 +311,7 @@
            </widget>
           </item>
           <item row="2" column="3" colspan="3">
-           <widget class="QComboBox" name="rootCombo">
+           <widget class="QComboBox" name="bootCombo">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -598,8 +598,8 @@
   <tabstop>buttonHelp</tabstop>
   <tabstop>buttonApply</tabstop>
   <tabstop>buttonCancel</tabstop>
-  <tabstop>grubBootCombo</tabstop>
-  <tabstop>rootCombo</tabstop>
+  <tabstop>locationCombo</tabstop>
+  <tabstop>bootCombo</tabstop>
   <tabstop>grubRootButton</tabstop>
   <tabstop>outputBox</tabstop>
   <tabstop>grubMbrButton</tabstop>

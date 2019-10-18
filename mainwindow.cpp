@@ -65,13 +65,13 @@ void MainWindow::refresh() {
     ui->grubRootButton->show();
     ui->grubMbrButton->show();
     ui->grubEspButton->show();
-    ui->rootLabel->hide();
-    ui->rootCombo->hide();
+    ui->bootLabel->hide();
+    ui->bootCombo->hide();
     ui->buttonApply->setText(tr("Apply"));
     ui->buttonApply->setIcon(QIcon::fromTheme("dialog-ok"));
     ui->buttonApply->setEnabled(true);
     ui->buttonCancel->setEnabled(true);
-    ui->rootCombo->setDisabled(false);
+    ui->bootCombo->setDisabled(false);
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
@@ -81,8 +81,8 @@ void MainWindow::installGRUB() {
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
 
-    QString location = ui->grubBootCombo->currentText().section(" ", 0, 0);
-    QString root = "/dev/" + ui->rootCombo->currentText().section(" ", 0, 0);
+    QString location = ui->locationCombo->currentText().section(" ", 0, 0);
+    QString root = "/dev/" + ui->bootCombo->currentText().section(" ", 0, 0);
     QString text = tr("GRUB is being installed on %1 device.").arg(location);
 
     bool isLuks = shell->run("/sbin/cryptsetup isLuks " + root);
@@ -125,10 +125,7 @@ void MainWindow::installGRUB() {
         displayOutput();
         bool success = shell->run(cmd);
         disableOutput();
-        shell->run("/bin/mountpoint -q " + path.toUtf8() + "/boot/efi && /bin/umount " + path.toUtf8() + "/boot/efi");
-        cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount %1; rmdir %1").arg(path);
-        shell->run(cmd);
-        if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
+        cleanupMountPoints(path, isLuks);
         displayResult(success);
         return;
     } else {
@@ -140,9 +137,7 @@ void MainWindow::installGRUB() {
         ui->progressBar->hide();
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
-    cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount %1; rmdir %1").arg(path);
-    shell->run(cmd);
-    if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
+    cleanupMountPoints(path, isLuks);
 }
 
 void MainWindow::repairGRUB() {
@@ -150,30 +145,32 @@ void MainWindow::repairGRUB() {
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    QString part = "/dev/" + ui->grubBootCombo->currentText().section(" ", 0, 0);
+    QString part = "/dev/" + ui->locationCombo->currentText().section(" ", 0, 0);
+    QString boot = "/dev/" + ui->bootCombo->currentText().section(" ", 0, 0);
+    bool boot_on_root = (part == boot);
+
     bool isLuks = shell->run("/sbin/cryptsetup isLuks " + part);
     if (isLuks) {
         if(!openLuks(part)) {
-            QMessageBox::critical(this, tr("Error"),
-                                  tr("Sorry, could not open %1 LUKS container").arg(part));
             refresh();
             return;
         }
         part = "/dev/mapper/chrootfs";
     }
+
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
     // create a temp folder and mount dev sys proc
     QString path = shell->getCmdOut("/bin/mktemp -d --tmpdir -p /mnt");
     QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(part).arg(path);
     if (shell->run(cmd)) {
-        QEventLoop loop;
+        if (!boot_on_root) {
+            shell->run("/bin/mount " + boot + " " + path + "/boot");
+        }
         cmd = QStringLiteral("/usr/sbin/chroot %1 update-grub").arg(path);
         displayOutput();
         bool success = shell->run(cmd);
         disableOutput();
-        cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount %1; rmdir %1").arg(path);
-        shell->run(cmd);
-        if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
+        cleanupMountPoints(path, isLuks);
         displayResult(success);
         return;
     } else {
@@ -186,10 +183,7 @@ void MainWindow::repairGRUB() {
 
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
-    // umount and clean temp folder
-    cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount %1; rmdir %1").arg(path);
-    shell->run(cmd);
-    if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
+    cleanupMountPoints(path, isLuks);
 }
 
 
@@ -198,7 +192,7 @@ void MainWindow::backupBR(QString filename) {
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    QString location = ui->grubBootCombo->currentText().section(" ", 0, 0);
+    QString location = ui->locationCombo->currentText().section(" ", 0, 0);
     QString text = tr("Backing up MBR or PBR from %1 device.").arg(location);
     ui->outputLabel->setText(text);
     QString cmd = "/bin/dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
@@ -206,44 +200,54 @@ void MainWindow::backupBR(QString filename) {
     displayResult(shell->run(cmd));
 }
 
+// umount and clean temp folder
+void MainWindow::cleanupMountPoints(const QString &path, bool isLuks)
+{
+    shell->run("/bin/mountpoint -q " + path + "/boot/efi && /bin/umount " + path + "/boot/efi");
+    shell->run("/bin/mountpoint -q " + path + "/boot && /bin/umount " + path + "/boot");
+    QString cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount %1; rmdir %1").arg(path);
+    shell->run(cmd);
+    if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
+}
+
 // try to guess partition to install GRUB
 void MainWindow::guessPartition()
 {
     if (ui->grubMbrButton->isChecked()) {
         // find first disk with Linux partitions
-        for (int index = 0; index < ui->grubBootCombo->count(); index++) {
-            QString drive = ui->grubBootCombo->itemText(index);
+        for (int index = 0; index < ui->locationCombo->count(); index++) {
+            QString drive = ui->locationCombo->itemText(index);
             if (shell->run("/bin/lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + \
                        "| /bin/grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
-                ui->grubBootCombo->setCurrentIndex(index);
+                ui->locationCombo->setCurrentIndex(index);
                 break;
             }
         }
     }
     // find first a partition with rootMX* label
-    for (int index = 0; index < ui->rootCombo->count(); index++) {
-        QString part = ui->rootCombo->itemText(index);
+    for (int index = 0; index < ui->bootCombo->count(); index++) {
+        QString part = ui->bootCombo->itemText(index);
         if (shell->run("/bin/lsblk -ln -o LABEL /dev/" + part.section(" ", 0 ,0).toUtf8() + "| /bin/grep -q rootMX")) {
-            ui->rootCombo->setCurrentIndex(index);
+            ui->bootCombo->setCurrentIndex(index);
             // select the same location by default for GRUB and /boot
             if (ui->grubRootButton->isChecked()) {
-                ui->grubBootCombo->setCurrentIndex(ui->rootCombo->currentIndex());
+                ui->locationCombo->setCurrentIndex(ui->bootCombo->currentIndex());
             }
             return;
         }
     }
     // it it cannot find rootMX*, look for Linux partitions
-    for (int index = 0; index < ui->rootCombo->count(); index++) {
-        QString part = ui->rootCombo->itemText(index);
+    for (int index = 0; index < ui->bootCombo->count(); index++) {
+        QString part = ui->bootCombo->itemText(index);
         if (shell->run("/bin/lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + \
                    "| /bin/grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
-            ui->rootCombo->setCurrentIndex(index);
+            ui->bootCombo->setCurrentIndex(index);
             break;
         }
     }
     // use by default the same root and /boot partion for installing on root
     if (ui->grubRootButton->isChecked()) {
-        ui->grubBootCombo->setCurrentIndex(ui->rootCombo->currentIndex());
+        ui->locationCombo->setCurrentIndex(ui->bootCombo->currentIndex());
     }
 }
 
@@ -252,7 +256,7 @@ void MainWindow::restoreBR(QString filename) {
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    QString location = ui->grubBootCombo->currentText().section(" ", 0, 0);
+    QString location = ui->locationCombo->currentText().section(" ", 0, 0);
     if (QMessageBox::warning(this, tr("Warning"),
                              tr("You are going to write the content of ") + filename + tr(" to ") + location + tr("\n\nAre you sure?"),
                              QMessageBox::Yes, QMessageBox::No) != QMessageBox::Yes) {
@@ -270,14 +274,14 @@ void MainWindow::restoreBR(QString filename) {
 void MainWindow::setEspDefaults()
 {
     // remove non-ESP partitions
-    for (int index = 0; index < ui->grubBootCombo->count(); index++) {
-        QString part = ui->grubBootCombo->itemText(index);
+    for (int index = 0; index < ui->locationCombo->count(); index++) {
+        QString part = ui->locationCombo->itemText(index);
         if (!shell->run("/bin/lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| /bin/grep -qi c12a7328-f81f-11d2-ba4b-00a0c93ec93b")) {
-            ui->grubBootCombo->removeItem(index);
+            ui->locationCombo->removeItem(index);
             index--;
         }
     }
-    if (ui->grubBootCombo->count() == 0) {
+    if (ui->locationCombo->count() == 0) {
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again."));
         ui->buttonApply->setDisabled(true);
@@ -349,46 +353,48 @@ bool MainWindow::openLuks(const QString part)
             return true;
         }
     }
+    QMessageBox::critical(this, tr("Error"),
+                          tr("Sorry, could not open %1 LUKS container").arg(part));
     return false;
 }
 
 
-// add list of devices to grubBootCombo
+// add list of devices to locationCombo
 void MainWindow::addDevToList() {
     QString cmd = QStringLiteral("/bin/lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | /bin/grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
     ListDisk = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
 
     cmd = QStringLiteral("/bin/lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | /bin/grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
     ListPart = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
-    ui->rootCombo->clear();
-    ui->rootCombo->addItems(ListPart);
+    ui->bootCombo->clear();
+    ui->bootCombo->addItems(ListPart);
 
-    ui->grubBootCombo->clear();
+    ui->locationCombo->clear();
     // add only disks
     if (ui->grubMbrButton->isChecked()) {
-        ui->grubBootCombo->addItems(ListDisk);
+        ui->locationCombo->addItems(ListDisk);
     } else { // add partition
-        ui->grubBootCombo->addItems(ListPart);
+        ui->locationCombo->addItems(ListPart);
     }
 
 }
 
 // enabled/disable GUI elements depending on MBR, Root or ESP selection
 void MainWindow::targetSelection() {
-    ui->grubBootCombo->clear();
-    ui->rootCombo->setEnabled(true);
+    ui->locationCombo->clear();
+    ui->bootCombo->setEnabled(true);
     ui->buttonApply->setEnabled(true);
     // add only disks
     if (ui->grubMbrButton->isChecked()) {
-        ui->grubBootCombo->addItems(ListDisk);
+        ui->locationCombo->addItems(ListDisk);
         guessPartition();
         // add partitions if select root
     } else if (ui->grubRootButton->isChecked()) {
-        ui->grubBootCombo->addItems(ListPart);
+        ui->locationCombo->addItems(ListPart);
         guessPartition();
         // if Esp is checked, add partitions to Location combobox
     } else {
-        ui->grubBootCombo->addItems(ListPart);
+        ui->locationCombo->addItems(ListPart);
         guessPartition();
         setEspDefaults();
     }
@@ -416,8 +422,8 @@ void MainWindow::on_buttonApply_clicked() {
             ui->bootMethodGroup->setTitle(tr("Select Boot Method"));
             ui->grubInsLabel->setText(tr("Install on:"));
             ui->grubRootButton->setText(tr("root"));
-            ui->rootLabel->show();
-            ui->rootCombo->show();
+            ui->bootLabel->show();
+            ui->bootCombo->show();
 
             // Repair button selected
         } else if (ui->repairRadioButton->isChecked()) {
@@ -428,6 +434,8 @@ void MainWindow::on_buttonApply_clicked() {
             ui->grubMbrButton->hide();
             ui->grubEspButton->hide();
             ui->grubRootButton->setChecked(true);
+            ui->bootLabel->show();
+            ui->bootCombo->show();
             on_grubRootButton_clicked();
 
             // Backup button selected

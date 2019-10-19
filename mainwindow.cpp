@@ -85,6 +85,16 @@ void MainWindow::installGRUB() {
     QString root = "/dev/" + ui->rootCombo->currentText().section(" ", 0, 0);
     QString text = tr("GRUB is being installed on %1 device.").arg(location);
 
+    if (root == shell->getCmdOut("df / --output=source |sed -e 1d")) {
+        QString cmd = QStringLiteral("grub-install --target=i386-pc --recheck --force /dev/%1").arg(location);
+        displayOutput();
+        bool ok = shell->run(cmd);
+        disableOutput();
+        displayResult(ok);
+        refresh();
+        return;
+    }
+
     bool isLuks = shell->run("/sbin/cryptsetup isLuks " + root);
     if (isLuks) {
         if(!openLuks(root)) {
@@ -149,6 +159,15 @@ void MainWindow::repairGRUB() {
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString part = "/dev/" + ui->locationCombo->currentText().section(" ", 0, 0);
+
+    if (part == shell->getCmdOut("df / --output=source |sed -e 1d")) {
+        displayOutput();
+        bool ok = shell->run("update-grub");
+        disableOutput();
+        displayResult(ok);
+        refresh();
+        return;
+    }
 
     bool isLuks = shell->run("/sbin/cryptsetup isLuks " + part);
     if (isLuks) {

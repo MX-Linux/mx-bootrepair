@@ -2,327 +2,602 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ca">
 <context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="../mainwindow.ui" line="20"/>
+        <source>MX Boot Repair</source>
+        <translation type="unfinished">MX Boot Repair</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="39"/>
+        <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
+        <translation type="unfinished">MX Boot Repair és una utilitat que es pot usar per a reinstal·lar el carregador GRUB als sistemes ESP (EFI System Partition), MBR (Master Boot Record) o a la partició arrel. Dóna l&apos;opció de reconstruir el fitxer de configuració del GRUB i fer còpia de seguretat o restaurar el MBR o PBR (arrel).</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="58"/>
+        <source>What would you like to do?</source>
+        <translation type="unfinished">Què voldríeu fer?</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="79"/>
+        <source>Backup MBR or PBR (legacy boot only)</source>
+        <translation type="unfinished">Còpia de seguretat del MBR o PBR (només arrencada antiga)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="86"/>
+        <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
+        <translation type="unfinished">Reinstal·la el carregador GRUB en ESP, MBR o PBR (root)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="96"/>
+        <source>Repair GRUB configuration file</source>
+        <translation type="unfinished">Repara el fitxer de configuració del GRUB</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="103"/>
+        <source>Restore MBR or PBR from backup (legacy boot only)</source>
+        <translation type="unfinished">Restaura el MBR o PBR de la còpia de seguretat (només arrencada antiga)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="136"/>
+        <location filename="../mainwindow.cpp" line="459"/>
+        <source>Select Boot Method</source>
+        <translation type="unfinished">Trieu el mètode d&apos;arrencada</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="154"/>
+        <source>Master Boot Record</source>
+        <translation type="unfinished">Registre d&apos;Arrencada Principal</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="157"/>
+        <source>MBR</source>
+        <translation type="unfinished">MBR</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="160"/>
+        <location filename="../mainwindow.ui" line="430"/>
+        <source>Alt+B</source>
+        <translation type="unfinished">Alt+B</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="182"/>
+        <source>Root (Partition Boot Record)</source>
+        <translation type="unfinished">Arrel (Registre d&apos;Arrencada de Partició)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="185"/>
+        <location filename="../mainwindow.cpp" line="461"/>
+        <source>root</source>
+        <translation type="unfinished">arrel</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="236"/>
+        <location filename="../mainwindow.cpp" line="460"/>
+        <source>Install on:</source>
+        <translation type="unfinished">Instal·la a:</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="255"/>
+        <source>Location:</source>
+        <translation type="unfinished">Ubicació: </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="277"/>
+        <source>Select root location:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="290"/>
+        <source>EFI System Partition</source>
+        <translation type="unfinished">Partició de Sistema EFI </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="293"/>
+        <source>ESP</source>
+        <translation type="unfinished">ESP</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="420"/>
+        <source>About this application</source>
+        <translation type="unfinished">Quant a aquest programa</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="423"/>
+        <source>About...</source>
+        <translation type="unfinished">Quant a...</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="472"/>
+        <source>Display help </source>
+        <translation type="unfinished">Mostra l&apos;ajuda</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="475"/>
+        <source>Help</source>
+        <translation type="unfinished">Ajuda</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="482"/>
+        <source>Alt+H</source>
+        <translation type="unfinished">Alt+H</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="523"/>
+        <source>Cancel any changes then quit</source>
+        <translation type="unfinished">Cancel·la els canvis i surt</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="526"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel·la</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="533"/>
+        <source>Alt+N</source>
+        <translation type="unfinished">Alt+N</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="552"/>
+        <source>Apply any changes</source>
+        <translation type="unfinished">Aplica els canvis</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="555"/>
+        <location filename="../mainwindow.cpp" line="70"/>
+        <source>Apply</source>
+        <translation type="unfinished">Aplica</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="86"/>
+        <source>GRUB is being installed on %1 device.</source>
+        <translation type="unfinished">S&apos;està instal·lant GRUB al dispositiu %1 .</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="122"/>
+        <location filename="../mainwindow.cpp" line="145"/>
+        <location filename="../mainwindow.cpp" line="200"/>
+        <location filename="../mainwindow.cpp" line="308"/>
+        <location filename="../mainwindow.cpp" line="368"/>
+        <location filename="../mainwindow.cpp" line="393"/>
+        <location filename="../mainwindow.cpp" line="499"/>
+        <location filename="../mainwindow.cpp" line="506"/>
+        <location filename="../mainwindow.cpp" line="566"/>
+        <source>Error</source>
+        <translation type="unfinished">Error</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="123"/>
+        <source>Could not mount </source>
+        <translation type="unfinished">No es pot muntar </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="123"/>
+        <source> on /boot/efi</source>
+        <translation type="unfinished">a /boot/efi</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="146"/>
+        <location filename="../mainwindow.cpp" line="201"/>
+        <source>Could not set up chroot environment.
+Please double-check the selected location.</source>
+        <translation type="unfinished">No es pot establir l&apos;entorn de chroot.
+Si us plau, verifiqueu la ubicació triada. </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="181"/>
+        <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
+        <translation type="unfinished">S&apos;està reconstruint el fitxer de configuració del GRUB (grub.cfg).</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="219"/>
+        <source>Backing up MBR or PBR from %1 device.</source>
+        <translation type="unfinished">Fent còpia de seguretat del MBR o PBR del dispositiu %1 .</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="283"/>
+        <source>Warning</source>
+        <translation type="unfinished">Atenció </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="284"/>
+        <source>You are going to write the content of </source>
+        <translation type="unfinished">Ara s&apos;enregistrarà el contingut de </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="284"/>
+        <source> to </source>
+        <translation type="unfinished">a</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="284"/>
+        <source>
+
+Are you sure?</source>
+        <translation type="unfinished">
+
+N&apos;esteu segurs? </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="289"/>
+        <source>Restoring MBR/PBR from backup to %1 device.</source>
+        <translation type="unfinished">Restaurant el MBR/PBR de la còpia de seguretat al dispositiu %1 .</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="309"/>
+        <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
+        <translation type="unfinished">No trobo la partició EFI de sistema (ESP) a cap disc del sistema. Si us plau, creeu un ESP i torneu a provar-ho.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="322"/>
+        <source>Select /boot location:</source>
+        <translation type="unfinished">Trieu la ubicació de /boot: </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="346"/>
+        <source>Back</source>
+        <translation type="unfinished">Enrere  </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="362"/>
+        <source>Success</source>
+        <translation type="unfinished">Èxit</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="363"/>
+        <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
+        <translation type="unfinished">S&apos;ha acabat el procés amb èxit. &lt;p&gt;&lt;b&gt;Voleu sortir de MX Boot Repair?&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="369"/>
+        <source>Process finished. Errors have occurred.</source>
+        <translation type="unfinished">El procés ha acabat. Hi ha hagut errors.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="386"/>
+        <source>Enter password to unlock %1 encrypted partition:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="394"/>
+        <source>Sorry, could not open %1 LUKS container</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="468"/>
+        <source>Select GRUB location</source>
+        <translation type="unfinished">Trieu la ubicació de GRUB </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="479"/>
+        <source>Select Item to Back Up</source>
+        <translation type="unfinished">Trieu l&apos;element per fer còpia de seguretat</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="486"/>
+        <source>Select Item to Restore</source>
+        <translation type="unfinished">Trieu l&apos;element a restaurar</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="497"/>
+        <source>Select backup file name</source>
+        <translation type="unfinished">Trieu el nom del fitxer de còpia de seguretat </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="499"/>
+        <location filename="../mainwindow.cpp" line="506"/>
+        <source>No file was selected.</source>
+        <translation type="unfinished">No s&apos;ha triat cap fitxer. </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="504"/>
+        <source>Select MBR or PBR backup file</source>
+        <translation type="unfinished">Trieu un fitxer de còpia de seguretat de MBR o PBR </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="524"/>
+        <source>About %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="525"/>
+        <source>Version: </source>
+        <translation type="unfinished">Versió: </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="526"/>
+        <source>Simple boot repair program for MX Linux</source>
+        <translation type="unfinished">Programa senzill de reparació d&apos;arrencada per MX Linux</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="528"/>
+        <source>Copyright (c) MX Linux</source>
+        <translation type="unfinished">Copyright (c) MX Linux</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="529"/>
+        <source>%1 License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="543"/>
+        <source>%1 Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="567"/>
+        <source>Sorry, could not mount /boot partition</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QApplication</name>
     <message>
-        <location filename="../main.cpp" line="53"/>
+        <location filename="../main.cpp" line="64"/>
         <source>You must run this program as root.</source>
         <translation>Cal ser usuari principal per executar aquest programa</translation>
+    </message>
+    <message>
+        <location filename="../about.cpp" line="32"/>
+        <source>License</source>
+        <translation type="unfinished">Llicència</translation>
+    </message>
+    <message>
+        <location filename="../about.cpp" line="33"/>
+        <location filename="../about.cpp" line="43"/>
+        <source>Changelog</source>
+        <translation type="unfinished">Registre de canvis</translation>
+    </message>
+    <message>
+        <location filename="../about.cpp" line="34"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel·la</translation>
+    </message>
+    <message>
+        <location filename="../about.cpp" line="51"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished">Tan&amp;ca </translation>
     </message>
 </context>
 <context>
     <name>mxbootrepair</name>
     <message>
-        <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="443"/>
-        <location filename="../mxbootrepair.cpp" line="497"/>
         <source>MX Boot Repair</source>
-        <translation>MX Boot Repair</translation>
+        <translation type="vanished">MX Boot Repair</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>MX Boot Repair és una utilitat que es pot usar per a reinstal·lar el carregador GRUB als sistemes ESP (EFI System Partition), MBR (Master Boot Record) o a la partició arrel. Dóna l&apos;opció de reconstruir el fitxer de configuració del GRUB i fer còpia de seguretat o restaurar el MBR o PBR (arrel).</translation>
+        <translation type="vanished">MX Boot Repair és una utilitat que es pot usar per a reinstal·lar el carregador GRUB als sistemes ESP (EFI System Partition), MBR (Master Boot Record) o a la partició arrel. Dóna l&apos;opció de reconstruir el fitxer de configuració del GRUB i fer còpia de seguretat o restaurar el MBR o PBR (arrel).</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation>Què voldríeu fer?</translation>
+        <translation type="vanished">Què voldríeu fer?</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation>Còpia de seguretat del MBR o PBR (només arrencada antiga)</translation>
+        <translation type="vanished">Còpia de seguretat del MBR o PBR (només arrencada antiga)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation>Reinstal·la el carregador GRUB en ESP, MBR o PBR (root)</translation>
+        <translation type="vanished">Reinstal·la el carregador GRUB en ESP, MBR o PBR (root)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
-        <translation>Repara el fitxer de configuració del GRUB</translation>
+        <translation type="vanished">Repara el fitxer de configuració del GRUB</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation>Restaura el MBR o PBR de la còpia de seguretat (només arrencada antiga)</translation>
+        <translation type="vanished">Restaura el MBR o PBR de la còpia de seguretat (només arrencada antiga)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="136"/>
-        <location filename="../mxbootrepair.cpp" line="376"/>
         <source>Select Boot Method</source>
-        <translation>Trieu el mètode d&apos;arrencada</translation>
+        <translation type="vanished">Trieu el mètode d&apos;arrencada</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="154"/>
         <source>Master Boot Record</source>
-        <translation>Registre d&apos;Arrencada Principal</translation>
+        <translation type="vanished">Registre d&apos;Arrencada Principal</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="157"/>
         <source>MBR</source>
-        <translation>MBR</translation>
+        <translation type="vanished">MBR</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="160"/>
-        <location filename="../mxbootrepair.ui" line="430"/>
         <source>Alt+B</source>
-        <translation>Alt+B</translation>
+        <translation type="vanished">Alt+B</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="182"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Arrel (Registre d&apos;Arrencada de Partició)</translation>
+        <translation type="vanished">Arrel (Registre d&apos;Arrencada de Partició)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="185"/>
-        <location filename="../mxbootrepair.cpp" line="378"/>
         <source>root</source>
-        <translation>arrel</translation>
+        <translation type="vanished">arrel</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="236"/>
-        <location filename="../mxbootrepair.cpp" line="377"/>
         <source>Install on:</source>
-        <translation>Instal·la a:</translation>
+        <translation type="vanished">Instal·la a:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="255"/>
         <source>Location:</source>
-        <translation>Ubicació: </translation>
+        <translation type="vanished">Ubicació: </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="277"/>
         <source>Select /boot location:</source>
-        <translation>Trieu la ubicació de /boot: </translation>
+        <translation type="vanished">Trieu la ubicació de /boot: </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="290"/>
         <source>EFI System Partition</source>
-        <translation>Partició de Sistema EFI </translation>
+        <translation type="vanished">Partició de Sistema EFI </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="293"/>
         <source>ESP</source>
-        <translation>ESP</translation>
+        <translation type="vanished">ESP</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="420"/>
         <source>About this application</source>
-        <translation>Quant a aquest programa</translation>
+        <translation type="vanished">Quant a aquest programa</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="423"/>
         <source>About...</source>
-        <translation>Quant a...</translation>
+        <translation type="vanished">Quant a...</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="472"/>
         <source>Display help </source>
-        <translation>Mostra l&apos;ajuda</translation>
+        <translation type="vanished">Mostra l&apos;ajuda</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="475"/>
         <source>Help</source>
-        <translation>Ajuda</translation>
+        <translation type="vanished">Ajuda</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="482"/>
         <source>Alt+H</source>
-        <translation>Alt+H</translation>
+        <translation type="vanished">Alt+H</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="523"/>
         <source>Cancel any changes then quit</source>
-        <translation>Cancel·la els canvis i surt</translation>
+        <translation type="vanished">Cancel·la els canvis i surt</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="526"/>
-        <location filename="../mxbootrepair.cpp" line="449"/>
         <source>Cancel</source>
-        <translation>Cancel·la</translation>
+        <translation type="vanished">Cancel·la</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="533"/>
         <source>Alt+N</source>
-        <translation>Alt+N</translation>
+        <translation type="vanished">Alt+N</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="552"/>
         <source>Apply any changes</source>
-        <translation>Aplica els canvis</translation>
+        <translation type="vanished">Aplica els canvis</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="555"/>
-        <location filename="../mxbootrepair.cpp" line="76"/>
         <source>Apply</source>
-        <translation>Aplica</translation>
+        <translation type="vanished">Aplica</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="94"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation>S&apos;està instal·lant GRUB al dispositiu %1 .</translation>
+        <translation type="vanished">S&apos;està instal·lant GRUB al dispositiu %1 .</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="109"/>
-        <location filename="../mxbootrepair.cpp" line="132"/>
-        <location filename="../mxbootrepair.cpp" line="162"/>
-        <location filename="../mxbootrepair.cpp" line="264"/>
-        <location filename="../mxbootrepair.cpp" line="298"/>
-        <location filename="../mxbootrepair.cpp" line="416"/>
-        <location filename="../mxbootrepair.cpp" line="423"/>
         <source>Error</source>
-        <translation>Error</translation>
+        <translation type="vanished">Error</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="110"/>
         <source>Could not mount </source>
-        <translation>No es pot muntar </translation>
+        <translation type="vanished">No es pot muntar </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="110"/>
         <source> on /boot/efi</source>
-        <translation>a /boot/efi</translation>
+        <translation type="vanished">a /boot/efi</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="133"/>
-        <location filename="../mxbootrepair.cpp" line="163"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation>No es pot establir l&apos;entorn de chroot.
+        <translation type="vanished">No es pot establir l&apos;entorn de chroot.
 Si us plau, verifiqueu la ubicació triada. </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="150"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation>S&apos;està reconstruint el fitxer de configuració del GRUB (grub.cfg).</translation>
+        <translation type="vanished">S&apos;està reconstruint el fitxer de configuració del GRUB (grub.cfg).</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="184"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation>Fent còpia de seguretat del MBR o PBR del dispositiu %1 .</translation>
+        <translation type="vanished">Fent còpia de seguretat del MBR o PBR del dispositiu %1 .</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="239"/>
         <source>Warning</source>
-        <translation>Atenció </translation>
+        <translation type="vanished">Atenció </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="240"/>
         <source>You are going to write the content of </source>
-        <translation>Ara s&apos;enregistrarà el contingut de </translation>
+        <translation type="vanished">Ara s&apos;enregistrarà el contingut de </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="240"/>
         <source> to </source>
-        <translation>a</translation>
+        <translation type="vanished">a</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="240"/>
         <source>
 
 Are you sure?</source>
-        <translation>
+        <translation type="vanished">
 
 N&apos;esteu segurs? </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="245"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation>Restaurant el MBR/PBR de la còpia de seguretat al dispositiu %1 .</translation>
+        <translation type="vanished">Restaurant el MBR/PBR de la còpia de seguretat al dispositiu %1 .</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="265"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation>No trobo la partició EFI de sistema (ESP) a cap disc del sistema. Si us plau, creeu un ESP i torneu a provar-ho.</translation>
+        <translation type="vanished">No trobo la partició EFI de sistema (ESP) a cap disc del sistema. Si us plau, creeu un ESP i torneu a provar-ho.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="292"/>
         <source>Success</source>
-        <translation>Èxit</translation>
+        <translation type="vanished">Èxit</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="293"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>S&apos;ha acabat el procés amb èxit. &lt;p&gt;&lt;b&gt;Voleu sortir de MX Boot Repair?&lt;/b&gt; </translation>
+        <translation type="vanished">S&apos;ha acabat el procés amb èxit. &lt;p&gt;&lt;b&gt;Voleu sortir de MX Boot Repair?&lt;/b&gt; </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="299"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation>El procés ha acabat. Hi ha hagut errors.</translation>
+        <translation type="vanished">El procés ha acabat. Hi ha hagut errors.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="301"/>
         <source>Back</source>
-        <translation>Enrere  </translation>
+        <translation type="vanished">Enrere  </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="385"/>
         <source>Select GRUB location</source>
-        <translation>Trieu la ubicació de GRUB </translation>
+        <translation type="vanished">Trieu la ubicació de GRUB </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="396"/>
         <source>Select Item to Back Up</source>
-        <translation>Trieu l&apos;element per fer còpia de seguretat</translation>
+        <translation type="vanished">Trieu l&apos;element per fer còpia de seguretat</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="403"/>
         <source>Select Item to Restore</source>
-        <translation>Trieu l&apos;element a restaurar</translation>
+        <translation type="vanished">Trieu l&apos;element a restaurar</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="414"/>
         <source>Select backup file name</source>
-        <translation>Trieu el nom del fitxer de còpia de seguretat </translation>
+        <translation type="vanished">Trieu el nom del fitxer de còpia de seguretat </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="416"/>
-        <location filename="../mxbootrepair.cpp" line="423"/>
         <source>No file was selected.</source>
-        <translation>No s&apos;ha triat cap fitxer. </translation>
+        <translation type="vanished">No s&apos;ha triat cap fitxer. </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="421"/>
         <source>Select MBR or PBR backup file</source>
-        <translation>Trieu un fitxer de còpia de seguretat de MBR o PBR </translation>
+        <translation type="vanished">Trieu un fitxer de còpia de seguretat de MBR o PBR </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="442"/>
         <source>About MX Boot Repair</source>
-        <translation>Quant a MX Boot Repair</translation>
+        <translation type="vanished">Quant a MX Boot Repair</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="443"/>
         <source>Version: </source>
-        <translation>Versió: </translation>
+        <translation type="vanished">Versió: </translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="445"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>Programa senzill de reparació d&apos;arrencada per MX Linux</translation>
+        <translation type="vanished">Programa senzill de reparació d&apos;arrencada per MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="446"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>Copyright (c) MX Linux</translation>
+        <translation type="vanished">Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="447"/>
-        <location filename="../mxbootrepair.cpp" line="460"/>
         <source>License</source>
-        <translation>Llicència</translation>
+        <translation type="vanished">Llicència</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="448"/>
         <source>Changelog</source>
-        <translation>Registre de canvis</translation>
+        <translation type="vanished">Registre de canvis</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="472"/>
         <source>&amp;Close</source>
-        <translation>Tan&amp;ca </translation>
+        <translation type="vanished">Tan&amp;ca </translation>
     </message>
 </context>
 </TS>

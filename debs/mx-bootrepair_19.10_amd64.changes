@@ -1,0 +1,51 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Sat, 19 Oct 2019 19:30:22 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 19.10
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (19.10) mx; urgency=medium
+ .
+   * new feature: works on luks encrypted partitions
+   * fix: works when /boot not on root
+   * fix: works when targetting running root system
+Checksums-Sha1:
+ 28d375fd433dca9d290d0c835ec6356e850d0b62 1178 mx-bootrepair_19.10.dsc
+ 625155b423bcfaca7abbdf2cd8511548b5c8796d 61392 mx-bootrepair_19.10.tar.xz
+ d3a502d6c81d6e34caa4dc94234c81172159f92f 758784 mx-bootrepair-dbgsym_19.10_amd64.deb
+ a8d6933bcb6196dec4e2f8c264180382e8080cdc 11298 mx-bootrepair_19.10_amd64.buildinfo
+ 5d16c0758a7d1254574752906a45e152c25fc73a 79508 mx-bootrepair_19.10_amd64.deb
+Checksums-Sha256:
+ 2d1d5947f8e0fba1b8aa914c1765c2da4806057f34443548384f4ade8a38f734 1178 mx-bootrepair_19.10.dsc
+ c7c3d38d49efe05d32005f1de9510845996fc03fb0316df046e3a0de61d1720b 61392 mx-bootrepair_19.10.tar.xz
+ b0d0d870a564f60e807da7b0ca97ea2453cd14a6697952f0d53869ccc7c2d95b 758784 mx-bootrepair-dbgsym_19.10_amd64.deb
+ d953d2c0b8e722e1e23b5fee72d2c56a426f7fcc7e3e573d3f5041144a62a198 11298 mx-bootrepair_19.10_amd64.buildinfo
+ 21b2c863efa965ceeea1bb24c2fd9ebfb704b0bc96dee12e7565e51e42f72754 79508 mx-bootrepair_19.10_amd64.deb
+Files:
+ 15345bec8118459574307ced2d6c4285 1178 admin optional mx-bootrepair_19.10.dsc
+ 7c31033191fa37ff8429f8b0aa57e9e7 61392 admin optional mx-bootrepair_19.10.tar.xz
+ f4d3a7e562e111fa26fca42516a0ae6b 758784 debug optional mx-bootrepair-dbgsym_19.10_amd64.deb
+ 136a80eb796167e18d002514dfbb1b6f 11298 admin optional mx-bootrepair_19.10_amd64.buildinfo
+ a5f26ed172a8e988e922e194267853ee 79508 admin optional mx-bootrepair_19.10_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAl2rnXoTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumGO3CACKJakMMzJyJroCRDwJJHrocp8/b/YI
+UgyDBInbhtpGnpqRzrUVWgwaFlUqTPyvc32PMiILq6RMnZK/bYU+lCEDBIYb2lR5
+XczBJ2gQURGTXeHUqpUNjQsXq+7VZ8LvhUg7IPDzjGbVLIbcm0LX5Ig6AKGFX0EW
+bzJ6ViEOh9B9xTN3sssSPWKyTI/v72p8b7FvEuA8hAWBqYHDSWZkCC/qBJUA65PM
+vHfEzh/4OBp3KA/0lcA4A1kZf5nkx4gpUeYEpY0LaucHmvDdsQ+6fCLi70yTou+r
+S+3UjSp91+3AvIRkDoqpxGcVSXv98ZJxVVW623FP6/eNoA0qAqJ9LWWo
+=SXLS
+-----END PGP SIGNATURE-----

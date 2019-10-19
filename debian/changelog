@@ -1,3 +1,11 @@
+mx-bootrepair (19.10) mx; urgency=medium
+
+  * new feature: works on luks encrypted partitions
+  * fix: works when /boot not on root 
+  * fix: works when targetting running root system
+
+ -- Adrian <adrian@mxlinux.org>  Sat, 19 Oct 2019 19:30:22 -0400
+
 mx-bootrepair (19.9.01) mx; urgency=medium
 
   * new translations

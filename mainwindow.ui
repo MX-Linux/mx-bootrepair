@@ -260,7 +260,7 @@
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLabel" name="bootLabel">
+           <widget class="QLabel" name="rootLabel">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -274,7 +274,7 @@
              <string/>
             </property>
             <property name="text">
-             <string>Select /boot location:</string>
+             <string>Select root location:</string>
             </property>
             <property name="wordWrap">
              <bool>false</bool>
@@ -311,7 +311,7 @@
            </widget>
           </item>
           <item row="2" column="3" colspan="3">
-           <widget class="QComboBox" name="bootCombo">
+           <widget class="QComboBox" name="rootCombo">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -599,7 +599,7 @@
   <tabstop>buttonApply</tabstop>
   <tabstop>buttonCancel</tabstop>
   <tabstop>locationCombo</tabstop>
-  <tabstop>bootCombo</tabstop>
+  <tabstop>rootCombo</tabstop>
   <tabstop>grubRootButton</tabstop>
   <tabstop>outputBox</tabstop>
   <tabstop>grubMbrButton</tabstop>

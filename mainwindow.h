@@ -43,10 +43,10 @@ public:
     ~MainWindow();
 
 public slots:
+    bool openLuks(const QString part);
     void displayOutput();
     void displayResult(bool success);
     void disableOutput();
-    bool openLuks(const QString part);
     void procStart();
     void progress();
     void procDone();
@@ -69,6 +69,7 @@ private:
     QStringList ListPart;
     QTimer *timer;
 
+    bool checkAndMountBoot(const QString path);
     void addDevToList();
     void backupBR(QString filename);
     void cleanupMountPoints(const QString &path, bool isLuks);
@@ -79,6 +80,7 @@ private:
     void restoreBR(QString filename);
     void setEspDefaults();
     void targetSelection();
+    QString selectBootPart();
 
 
 };

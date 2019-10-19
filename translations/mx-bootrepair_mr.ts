@@ -2,324 +2,421 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="mr">
 <context>
-    <name>QApplication</name>
+    <name>MainWindow</name>
     <message>
-        <location filename="../main.cpp" line="53"/>
-        <source>You must run this program as root.</source>
-        <translation>आपण हा प्रोग्राम रूट म्हणूनच चालवावा.</translation>
-    </message>
-</context>
-<context>
-    <name>mxbootrepair</name>
-    <message>
-        <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="443"/>
-        <location filename="../mxbootrepair.cpp" line="497"/>
+        <location filename="../mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="39"/>
+        <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="58"/>
+        <location filename="../mainwindow.ui" line="58"/>
         <source>What would you like to do?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="79"/>
+        <location filename="../mainwindow.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="86"/>
+        <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="96"/>
+        <location filename="../mainwindow.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="103"/>
+        <location filename="../mainwindow.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="136"/>
-        <location filename="../mxbootrepair.cpp" line="376"/>
+        <location filename="../mainwindow.ui" line="136"/>
+        <location filename="../mainwindow.cpp" line="459"/>
         <source>Select Boot Method</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="154"/>
+        <location filename="../mainwindow.ui" line="154"/>
         <source>Master Boot Record</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="157"/>
+        <location filename="../mainwindow.ui" line="157"/>
         <source>MBR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="160"/>
-        <location filename="../mxbootrepair.ui" line="430"/>
+        <location filename="../mainwindow.ui" line="160"/>
+        <location filename="../mainwindow.ui" line="430"/>
         <source>Alt+B</source>
-        <translation>Alt+B</translation>
+        <translation type="unfinished">Alt+B</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="182"/>
+        <location filename="../mainwindow.ui" line="182"/>
         <source>Root (Partition Boot Record)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="185"/>
-        <location filename="../mxbootrepair.cpp" line="378"/>
+        <location filename="../mainwindow.ui" line="185"/>
+        <location filename="../mainwindow.cpp" line="461"/>
         <source>root</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="236"/>
-        <location filename="../mxbootrepair.cpp" line="377"/>
+        <location filename="../mainwindow.ui" line="236"/>
+        <location filename="../mainwindow.cpp" line="460"/>
         <source>Install on:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="255"/>
+        <location filename="../mainwindow.ui" line="255"/>
         <source>Location:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="277"/>
-        <source>Select /boot location:</source>
+        <location filename="../mainwindow.ui" line="277"/>
+        <source>Select root location:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="290"/>
+        <location filename="../mainwindow.ui" line="290"/>
         <source>EFI System Partition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="293"/>
+        <location filename="../mainwindow.ui" line="293"/>
         <source>ESP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="420"/>
+        <location filename="../mainwindow.ui" line="420"/>
         <source>About this application</source>
-        <translation>या अनुप्रयोगाबद्दल</translation>
+        <translation type="unfinished">या अनुप्रयोगाबद्दल</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="423"/>
+        <location filename="../mainwindow.ui" line="423"/>
         <source>About...</source>
-        <translation>विषयी</translation>
+        <translation type="unfinished">विषयी</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="472"/>
+        <location filename="../mainwindow.ui" line="472"/>
         <source>Display help </source>
-        <translation>मदत दाखवा</translation>
+        <translation type="unfinished">मदत दाखवा</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="475"/>
+        <location filename="../mainwindow.ui" line="475"/>
         <source>Help</source>
-        <translation>मदत</translation>
+        <translation type="unfinished">मदत</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="482"/>
+        <location filename="../mainwindow.ui" line="482"/>
         <source>Alt+H</source>
-        <translation>Alt+H</translation>
+        <translation type="unfinished">Alt+H</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="523"/>
+        <location filename="../mainwindow.ui" line="523"/>
         <source>Cancel any changes then quit</source>
-        <translation>सर्व बदल रद्द करा आणि बंद करा</translation>
+        <translation type="unfinished">सर्व बदल रद्द करा आणि बंद करा</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="526"/>
-        <location filename="../mxbootrepair.cpp" line="449"/>
+        <location filename="../mainwindow.ui" line="526"/>
         <source>Cancel</source>
-        <translation>रद्द करा</translation>
+        <translation type="unfinished">रद्द करा</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="533"/>
+        <location filename="../mainwindow.ui" line="533"/>
         <source>Alt+N</source>
-        <translation>Alt+N</translation>
+        <translation type="unfinished">Alt+N</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="552"/>
+        <location filename="../mainwindow.ui" line="552"/>
         <source>Apply any changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="555"/>
-        <location filename="../mxbootrepair.cpp" line="76"/>
+        <location filename="../mainwindow.ui" line="555"/>
+        <location filename="../mainwindow.cpp" line="70"/>
         <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="94"/>
+        <location filename="../mainwindow.cpp" line="86"/>
         <source>GRUB is being installed on %1 device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="109"/>
-        <location filename="../mxbootrepair.cpp" line="132"/>
-        <location filename="../mxbootrepair.cpp" line="162"/>
-        <location filename="../mxbootrepair.cpp" line="264"/>
-        <location filename="../mxbootrepair.cpp" line="298"/>
-        <location filename="../mxbootrepair.cpp" line="416"/>
-        <location filename="../mxbootrepair.cpp" line="423"/>
+        <location filename="../mainwindow.cpp" line="122"/>
+        <location filename="../mainwindow.cpp" line="145"/>
+        <location filename="../mainwindow.cpp" line="200"/>
+        <location filename="../mainwindow.cpp" line="308"/>
+        <location filename="../mainwindow.cpp" line="368"/>
+        <location filename="../mainwindow.cpp" line="393"/>
+        <location filename="../mainwindow.cpp" line="499"/>
+        <location filename="../mainwindow.cpp" line="506"/>
+        <location filename="../mainwindow.cpp" line="566"/>
         <source>Error</source>
-        <translation>त्रुटी</translation>
+        <translation type="unfinished">त्रुटी</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="110"/>
+        <location filename="../mainwindow.cpp" line="123"/>
         <source>Could not mount </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="110"/>
+        <location filename="../mainwindow.cpp" line="123"/>
         <source> on /boot/efi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="133"/>
-        <location filename="../mxbootrepair.cpp" line="163"/>
+        <location filename="../mainwindow.cpp" line="146"/>
+        <location filename="../mainwindow.cpp" line="201"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="150"/>
+        <location filename="../mainwindow.cpp" line="181"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="184"/>
+        <location filename="../mainwindow.cpp" line="219"/>
         <source>Backing up MBR or PBR from %1 device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="239"/>
+        <location filename="../mainwindow.cpp" line="283"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="240"/>
+        <location filename="../mainwindow.cpp" line="284"/>
         <source>You are going to write the content of </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="240"/>
+        <location filename="../mainwindow.cpp" line="284"/>
         <source> to </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="240"/>
+        <location filename="../mainwindow.cpp" line="284"/>
         <source>
 
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="245"/>
+        <location filename="../mainwindow.cpp" line="289"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="265"/>
+        <location filename="../mainwindow.cpp" line="309"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="292"/>
-        <source>Success</source>
+        <location filename="../mainwindow.cpp" line="322"/>
+        <source>Select /boot location:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="293"/>
-        <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.cpp" line="299"/>
-        <source>Process finished. Errors have occurred.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mxbootrepair.cpp" line="301"/>
+        <location filename="../mainwindow.cpp" line="346"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="385"/>
+        <location filename="../mainwindow.cpp" line="362"/>
+        <source>Success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="363"/>
+        <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="369"/>
+        <source>Process finished. Errors have occurred.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="386"/>
+        <source>Enter password to unlock %1 encrypted partition:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="394"/>
+        <source>Sorry, could not open %1 LUKS container</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="468"/>
         <source>Select GRUB location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="396"/>
+        <location filename="../mainwindow.cpp" line="479"/>
         <source>Select Item to Back Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="403"/>
+        <location filename="../mainwindow.cpp" line="486"/>
         <source>Select Item to Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="414"/>
+        <location filename="../mainwindow.cpp" line="497"/>
         <source>Select backup file name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="416"/>
-        <location filename="../mxbootrepair.cpp" line="423"/>
+        <location filename="../mainwindow.cpp" line="499"/>
+        <location filename="../mainwindow.cpp" line="506"/>
         <source>No file was selected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="504"/>
         <source>Select MBR or PBR backup file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="442"/>
-        <source>About MX Boot Repair</source>
+        <location filename="../mainwindow.cpp" line="524"/>
+        <source>About %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="443"/>
+        <location filename="../mainwindow.cpp" line="525"/>
         <source>Version: </source>
-        <translation>आवृत्ती</translation>
+        <translation type="unfinished">आवृत्ती</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="445"/>
+        <location filename="../mainwindow.cpp" line="526"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="446"/>
+        <location filename="../mainwindow.cpp" line="528"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>कॉपीराइट (c) एमएक्स लिनक्स</translation>
+        <translation type="unfinished">कॉपीराइट (c) एमएक्स लिनक्स</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="447"/>
-        <location filename="../mxbootrepair.cpp" line="460"/>
+        <location filename="../mainwindow.cpp" line="529"/>
+        <source>%1 License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="543"/>
+        <source>%1 Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="567"/>
+        <source>Sorry, could not mount /boot partition</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QApplication</name>
+    <message>
+        <location filename="../main.cpp" line="64"/>
+        <source>You must run this program as root.</source>
+        <translation>आपण हा प्रोग्राम रूट म्हणूनच चालवावा.</translation>
+    </message>
+    <message>
+        <location filename="../about.cpp" line="32"/>
         <source>License</source>
-        <translation>परवाना</translation>
+        <translation type="unfinished">परवाना</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="448"/>
+        <location filename="../about.cpp" line="33"/>
+        <location filename="../about.cpp" line="43"/>
         <source>Changelog</source>
-        <translation>बदल सूची</translation>
+        <translation type="unfinished">बदल सूची</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="472"/>
+        <location filename="../about.cpp" line="34"/>
+        <source>Cancel</source>
+        <translation type="unfinished">रद्द करा</translation>
+    </message>
+    <message>
+        <location filename="../about.cpp" line="51"/>
         <source>&amp;Close</source>
-        <translation>बंद</translation>
+        <translation type="unfinished">बंद</translation>
+    </message>
+</context>
+<context>
+    <name>mxbootrepair</name>
+    <message>
+        <source>Alt+B</source>
+        <translation type="vanished">Alt+B</translation>
+    </message>
+    <message>
+        <source>About this application</source>
+        <translation type="vanished">या अनुप्रयोगाबद्दल</translation>
+    </message>
+    <message>
+        <source>About...</source>
+        <translation type="vanished">विषयी</translation>
+    </message>
+    <message>
+        <source>Display help </source>
+        <translation type="vanished">मदत दाखवा</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="vanished">मदत</translation>
+    </message>
+    <message>
+        <source>Alt+H</source>
+        <translation type="vanished">Alt+H</translation>
+    </message>
+    <message>
+        <source>Cancel any changes then quit</source>
+        <translation type="vanished">सर्व बदल रद्द करा आणि बंद करा</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="vanished">रद्द करा</translation>
+    </message>
+    <message>
+        <source>Alt+N</source>
+        <translation type="vanished">Alt+N</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="vanished">त्रुटी</translation>
+    </message>
+    <message>
+        <source>Version: </source>
+        <translation type="vanished">आवृत्ती</translation>
+    </message>
+    <message>
+        <source>Copyright (c) MX Linux</source>
+        <translation type="vanished">कॉपीराइट (c) एमएक्स लिनक्स</translation>
+    </message>
+    <message>
+        <source>License</source>
+        <translation type="vanished">परवाना</translation>
+    </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="vanished">बदल सूची</translation>
+    </message>
+    <message>
+        <source>&amp;Close</source>
+        <translation type="vanished">बंद</translation>
     </message>
 </context>
 </TS>

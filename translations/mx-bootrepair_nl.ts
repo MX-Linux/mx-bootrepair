@@ -2,327 +2,602 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="nl">
 <context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="../mainwindow.ui" line="20"/>
+        <source>MX Boot Repair</source>
+        <translation type="unfinished">MX Boot Reparatie</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="39"/>
+        <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
+        <translation type="unfinished">MX Boot Reparatie is een hulpgereedschap dat gebruikt kan worden om de GRUB bootloader in de ESP (EFI Systeem Partitie), MBR (Master Boot Record) of root partitie te herinstalleren. Het voorziet in de optie om het GRUB configuratie bestand te reconstrueren en om een backup en herstel van de MBR of PBR (root) te maken.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="58"/>
+        <source>What would you like to do?</source>
+        <translation type="unfinished">Wat wilt u doen?</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="79"/>
+        <source>Backup MBR or PBR (legacy boot only)</source>
+        <translation type="unfinished">Backup MBR of PBR (enkel legacy boot)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="86"/>
+        <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
+        <translation type="unfinished">Herinstalleer GRUB bootlader in ESP, MBR of PBR (root)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="96"/>
+        <source>Repair GRUB configuration file</source>
+        <translation type="unfinished">Repareer GRUB configuratiebestand</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="103"/>
+        <source>Restore MBR or PBR from backup (legacy boot only)</source>
+        <translation type="unfinished">Herstel MBR of PBR van backup (enkel legacy boot)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="136"/>
+        <location filename="../mainwindow.cpp" line="459"/>
+        <source>Select Boot Method</source>
+        <translation type="unfinished">Selecteer Bootmethode</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="154"/>
+        <source>Master Boot Record</source>
+        <translation type="unfinished">Master Boot Record</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="157"/>
+        <source>MBR</source>
+        <translation type="unfinished">MBR</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="160"/>
+        <location filename="../mainwindow.ui" line="430"/>
+        <source>Alt+B</source>
+        <translation type="unfinished">Alt+B</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="182"/>
+        <source>Root (Partition Boot Record)</source>
+        <translation type="unfinished">Root (Partition Boot Record - PBR)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="185"/>
+        <location filename="../mainwindow.cpp" line="461"/>
+        <source>root</source>
+        <translation type="unfinished">root</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="236"/>
+        <location filename="../mainwindow.cpp" line="460"/>
+        <source>Install on:</source>
+        <translation type="unfinished">Installeer op:</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="255"/>
+        <source>Location:</source>
+        <translation type="unfinished">Locatie:</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="277"/>
+        <source>Select root location:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="290"/>
+        <source>EFI System Partition</source>
+        <translation type="unfinished">EFI Systeempartitie</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="293"/>
+        <source>ESP</source>
+        <translation type="unfinished">ESP</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="420"/>
+        <source>About this application</source>
+        <translation type="unfinished">Over deze toepassing</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="423"/>
+        <source>About...</source>
+        <translation type="unfinished">Over...</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="472"/>
+        <source>Display help </source>
+        <translation type="unfinished">Toon help</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="475"/>
+        <source>Help</source>
+        <translation type="unfinished">Help</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="482"/>
+        <source>Alt+H</source>
+        <translation type="unfinished">Alt+H</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="523"/>
+        <source>Cancel any changes then quit</source>
+        <translation type="unfinished">Iedere verandering ongedaan maken, dan afsluiten</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="526"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="533"/>
+        <source>Alt+N</source>
+        <translation type="unfinished">Alt+N</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="552"/>
+        <source>Apply any changes</source>
+        <translation type="unfinished">Veranderingen toepassen</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="555"/>
+        <location filename="../mainwindow.cpp" line="70"/>
+        <source>Apply</source>
+        <translation type="unfinished">Toepassen</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="86"/>
+        <source>GRUB is being installed on %1 device.</source>
+        <translation type="unfinished">Grub wordt geïnstalleerd op apparaat %1.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="122"/>
+        <location filename="../mainwindow.cpp" line="145"/>
+        <location filename="../mainwindow.cpp" line="200"/>
+        <location filename="../mainwindow.cpp" line="308"/>
+        <location filename="../mainwindow.cpp" line="368"/>
+        <location filename="../mainwindow.cpp" line="393"/>
+        <location filename="../mainwindow.cpp" line="499"/>
+        <location filename="../mainwindow.cpp" line="506"/>
+        <location filename="../mainwindow.cpp" line="566"/>
+        <source>Error</source>
+        <translation type="unfinished">Fout</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="123"/>
+        <source>Could not mount </source>
+        <translation type="unfinished">Kon niet aankoppelen</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="123"/>
+        <source> on /boot/efi</source>
+        <translation type="unfinished">op /boot/efi</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="146"/>
+        <location filename="../mainwindow.cpp" line="201"/>
+        <source>Could not set up chroot environment.
+Please double-check the selected location.</source>
+        <translation type="unfinished">Kan de chroot omgeving niet opzetten.
+Controleer alstublieft de geselecteerde locatie.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="181"/>
+        <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
+        <translation type="unfinished">Het GRUB configuratiebestand (grub.cfg) wordt opnieuw gebouwd.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="219"/>
+        <source>Backing up MBR or PBR from %1 device.</source>
+        <translation type="unfinished">Backup maken van MBR of PBR van apparaat %1 .</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="283"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="284"/>
+        <source>You are going to write the content of </source>
+        <translation type="unfinished">U gaat de inhoud beschrijven van</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="284"/>
+        <source> to </source>
+        <translation type="unfinished">naar</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="284"/>
+        <source>
+
+Are you sure?</source>
+        <translation type="unfinished">
+
+Weet u het zeker?</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="289"/>
+        <source>Restoring MBR/PBR from backup to %1 device.</source>
+        <translation type="unfinished">Herstellen MBR of PBR van backup naar %1 apparaat.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="309"/>
+        <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
+        <translation type="unfinished">Kon EFI systeempartitie (ESP) niet vinden op geen enkele systeem schijf. Creëer aub een ESP en probeer opnieuw.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="322"/>
+        <source>Select /boot location:</source>
+        <translation type="unfinished">Selecteer /boot locatie:</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="346"/>
+        <source>Back</source>
+        <translation type="unfinished">Terug</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="362"/>
+        <source>Success</source>
+        <translation type="unfinished">Gelukt</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="363"/>
+        <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
+        <translation type="unfinished">Proces is succesvol beëindigd..&lt;p&gt;&lt;b&gt;Wilt u MX Bootreparatie verlaten?&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="369"/>
+        <source>Process finished. Errors have occurred.</source>
+        <translation type="unfinished">Proces beëindigd. Er zijn fouten opgetreden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="386"/>
+        <source>Enter password to unlock %1 encrypted partition:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="394"/>
+        <source>Sorry, could not open %1 LUKS container</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="468"/>
+        <source>Select GRUB location</source>
+        <translation type="unfinished">Selecteer GRUB locatie</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="479"/>
+        <source>Select Item to Back Up</source>
+        <translation type="unfinished">Selecteer Item om te Backuppen</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="486"/>
+        <source>Select Item to Restore</source>
+        <translation type="unfinished">Selecteer Item om te Herstellen</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="497"/>
+        <source>Select backup file name</source>
+        <translation type="unfinished">Selecteer backup bestandsnaam</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="499"/>
+        <location filename="../mainwindow.cpp" line="506"/>
+        <source>No file was selected.</source>
+        <translation type="unfinished">Er was geen bestand geselecteerd.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="504"/>
+        <source>Select MBR or PBR backup file</source>
+        <translation type="unfinished">Selecteer MBR of PBR backupbestand</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="524"/>
+        <source>About %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="525"/>
+        <source>Version: </source>
+        <translation type="unfinished">Versie:</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="526"/>
+        <source>Simple boot repair program for MX Linux</source>
+        <translation type="unfinished">Eenvoudig bootreparatieprogramma voor MX Linux</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="528"/>
+        <source>Copyright (c) MX Linux</source>
+        <translation type="unfinished">Copyright (c) MX Linux</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="529"/>
+        <source>%1 License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="543"/>
+        <source>%1 Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="567"/>
+        <source>Sorry, could not mount /boot partition</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QApplication</name>
     <message>
-        <location filename="../main.cpp" line="53"/>
+        <location filename="../main.cpp" line="64"/>
         <source>You must run this program as root.</source>
         <translation>U dient deze toepassing als &apos;root&apos; uit te voeren.</translation>
+    </message>
+    <message>
+        <location filename="../about.cpp" line="32"/>
+        <source>License</source>
+        <translation type="unfinished">Licentie</translation>
+    </message>
+    <message>
+        <location filename="../about.cpp" line="33"/>
+        <location filename="../about.cpp" line="43"/>
+        <source>Changelog</source>
+        <translation type="unfinished">Changelog</translation>
+    </message>
+    <message>
+        <location filename="../about.cpp" line="34"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <location filename="../about.cpp" line="51"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished">&amp;Close</translation>
     </message>
 </context>
 <context>
     <name>mxbootrepair</name>
     <message>
-        <location filename="../mxbootrepair.ui" line="20"/>
-        <location filename="../mxbootrepair.cpp" line="443"/>
-        <location filename="../mxbootrepair.cpp" line="497"/>
         <source>MX Boot Repair</source>
-        <translation>MX Boot Reparatie</translation>
+        <translation type="vanished">MX Boot Reparatie</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>MX Boot Reparatie is een hulpgereedschap dat gebruikt kan worden om de GRUB bootloader in de ESP (EFI Systeem Partitie), MBR (Master Boot Record) of root partitie te herinstalleren. Het voorziet in de optie om het GRUB configuratie bestand te reconstrueren en om een backup en herstel van de MBR of PBR (root) te maken.</translation>
+        <translation type="vanished">MX Boot Reparatie is een hulpgereedschap dat gebruikt kan worden om de GRUB bootloader in de ESP (EFI Systeem Partitie), MBR (Master Boot Record) of root partitie te herinstalleren. Het voorziet in de optie om het GRUB configuratie bestand te reconstrueren en om een backup en herstel van de MBR of PBR (root) te maken.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation>Wat wilt u doen?</translation>
+        <translation type="vanished">Wat wilt u doen?</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation>Backup MBR of PBR (enkel legacy boot)</translation>
+        <translation type="vanished">Backup MBR of PBR (enkel legacy boot)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation>Herinstalleer GRUB bootlader in ESP, MBR of PBR (root)</translation>
+        <translation type="vanished">Herinstalleer GRUB bootlader in ESP, MBR of PBR (root)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
-        <translation>Repareer GRUB configuratiebestand</translation>
+        <translation type="vanished">Repareer GRUB configuratiebestand</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation>Herstel MBR of PBR van backup (enkel legacy boot)</translation>
+        <translation type="vanished">Herstel MBR of PBR van backup (enkel legacy boot)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="136"/>
-        <location filename="../mxbootrepair.cpp" line="376"/>
         <source>Select Boot Method</source>
-        <translation>Selecteer Bootmethode</translation>
+        <translation type="vanished">Selecteer Bootmethode</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="154"/>
         <source>Master Boot Record</source>
-        <translation>Master Boot Record</translation>
+        <translation type="vanished">Master Boot Record</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="157"/>
         <source>MBR</source>
-        <translation>MBR</translation>
+        <translation type="vanished">MBR</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="160"/>
-        <location filename="../mxbootrepair.ui" line="430"/>
         <source>Alt+B</source>
-        <translation>Alt+B</translation>
+        <translation type="vanished">Alt+B</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="182"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Root (Partition Boot Record - PBR)</translation>
+        <translation type="vanished">Root (Partition Boot Record - PBR)</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="185"/>
-        <location filename="../mxbootrepair.cpp" line="378"/>
         <source>root</source>
-        <translation>root</translation>
+        <translation type="vanished">root</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="236"/>
-        <location filename="../mxbootrepair.cpp" line="377"/>
         <source>Install on:</source>
-        <translation>Installeer op:</translation>
+        <translation type="vanished">Installeer op:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="255"/>
         <source>Location:</source>
-        <translation>Locatie:</translation>
+        <translation type="vanished">Locatie:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="277"/>
         <source>Select /boot location:</source>
-        <translation>Selecteer /boot locatie:</translation>
+        <translation type="vanished">Selecteer /boot locatie:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="290"/>
         <source>EFI System Partition</source>
-        <translation>EFI Systeempartitie</translation>
+        <translation type="vanished">EFI Systeempartitie</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="293"/>
         <source>ESP</source>
-        <translation>ESP</translation>
+        <translation type="vanished">ESP</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="420"/>
         <source>About this application</source>
-        <translation>Over deze toepassing</translation>
+        <translation type="vanished">Over deze toepassing</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="423"/>
         <source>About...</source>
-        <translation>Over...</translation>
+        <translation type="vanished">Over...</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="472"/>
         <source>Display help </source>
-        <translation>Toon help</translation>
+        <translation type="vanished">Toon help</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="475"/>
         <source>Help</source>
-        <translation>Help</translation>
+        <translation type="vanished">Help</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="482"/>
         <source>Alt+H</source>
-        <translation>Alt+H</translation>
+        <translation type="vanished">Alt+H</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="523"/>
         <source>Cancel any changes then quit</source>
-        <translation>Iedere verandering ongedaan maken, dan afsluiten</translation>
+        <translation type="vanished">Iedere verandering ongedaan maken, dan afsluiten</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="526"/>
-        <location filename="../mxbootrepair.cpp" line="449"/>
         <source>Cancel</source>
-        <translation>Cancel</translation>
+        <translation type="vanished">Cancel</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="533"/>
         <source>Alt+N</source>
-        <translation>Alt+N</translation>
+        <translation type="vanished">Alt+N</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="552"/>
         <source>Apply any changes</source>
-        <translation>Veranderingen toepassen</translation>
+        <translation type="vanished">Veranderingen toepassen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.ui" line="555"/>
-        <location filename="../mxbootrepair.cpp" line="76"/>
         <source>Apply</source>
-        <translation>Toepassen</translation>
+        <translation type="vanished">Toepassen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="94"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation>Grub wordt geïnstalleerd op apparaat %1.</translation>
+        <translation type="vanished">Grub wordt geïnstalleerd op apparaat %1.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="109"/>
-        <location filename="../mxbootrepair.cpp" line="132"/>
-        <location filename="../mxbootrepair.cpp" line="162"/>
-        <location filename="../mxbootrepair.cpp" line="264"/>
-        <location filename="../mxbootrepair.cpp" line="298"/>
-        <location filename="../mxbootrepair.cpp" line="416"/>
-        <location filename="../mxbootrepair.cpp" line="423"/>
         <source>Error</source>
-        <translation>Fout</translation>
+        <translation type="vanished">Fout</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="110"/>
         <source>Could not mount </source>
-        <translation>Kon niet aankoppelen</translation>
+        <translation type="vanished">Kon niet aankoppelen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="110"/>
         <source> on /boot/efi</source>
-        <translation>op /boot/efi</translation>
+        <translation type="vanished">op /boot/efi</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="133"/>
-        <location filename="../mxbootrepair.cpp" line="163"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation>Kan de chroot omgeving niet opzetten.
+        <translation type="vanished">Kan de chroot omgeving niet opzetten.
 Controleer alstublieft de geselecteerde locatie.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="150"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation>Het GRUB configuratiebestand (grub.cfg) wordt opnieuw gebouwd.</translation>
+        <translation type="vanished">Het GRUB configuratiebestand (grub.cfg) wordt opnieuw gebouwd.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="184"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation>Backup maken van MBR of PBR van apparaat %1 .</translation>
+        <translation type="vanished">Backup maken van MBR of PBR van apparaat %1 .</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="239"/>
         <source>Warning</source>
-        <translation>Waarschuwing</translation>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="240"/>
         <source>You are going to write the content of </source>
-        <translation>U gaat de inhoud beschrijven van</translation>
+        <translation type="vanished">U gaat de inhoud beschrijven van</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="240"/>
         <source> to </source>
-        <translation>naar</translation>
+        <translation type="vanished">naar</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="240"/>
         <source>
 
 Are you sure?</source>
-        <translation>
+        <translation type="vanished">
 
 Weet u het zeker?</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="245"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation>Herstellen MBR of PBR van backup naar %1 apparaat.</translation>
+        <translation type="vanished">Herstellen MBR of PBR van backup naar %1 apparaat.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="265"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation>Kon EFI systeempartitie (ESP) niet vinden op geen enkele systeem schijf. Creëer aub een ESP en probeer opnieuw.</translation>
+        <translation type="vanished">Kon EFI systeempartitie (ESP) niet vinden op geen enkele systeem schijf. Creëer aub een ESP en probeer opnieuw.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="292"/>
         <source>Success</source>
-        <translation>Gelukt</translation>
+        <translation type="vanished">Gelukt</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="293"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Proces is succesvol beëindigd..&lt;p&gt;&lt;b&gt;Wilt u MX Bootreparatie verlaten?&lt;/b&gt;</translation>
+        <translation type="vanished">Proces is succesvol beëindigd..&lt;p&gt;&lt;b&gt;Wilt u MX Bootreparatie verlaten?&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="299"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation>Proces beëindigd. Er zijn fouten opgetreden.</translation>
+        <translation type="vanished">Proces beëindigd. Er zijn fouten opgetreden.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="301"/>
         <source>Back</source>
-        <translation>Terug</translation>
+        <translation type="vanished">Terug</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="385"/>
         <source>Select GRUB location</source>
-        <translation>Selecteer GRUB locatie</translation>
+        <translation type="vanished">Selecteer GRUB locatie</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="396"/>
         <source>Select Item to Back Up</source>
-        <translation>Selecteer Item om te Backuppen</translation>
+        <translation type="vanished">Selecteer Item om te Backuppen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="403"/>
         <source>Select Item to Restore</source>
-        <translation>Selecteer Item om te Herstellen</translation>
+        <translation type="vanished">Selecteer Item om te Herstellen</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="414"/>
         <source>Select backup file name</source>
-        <translation>Selecteer backup bestandsnaam</translation>
+        <translation type="vanished">Selecteer backup bestandsnaam</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="416"/>
-        <location filename="../mxbootrepair.cpp" line="423"/>
         <source>No file was selected.</source>
-        <translation>Er was geen bestand geselecteerd.</translation>
+        <translation type="vanished">Er was geen bestand geselecteerd.</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="421"/>
         <source>Select MBR or PBR backup file</source>
-        <translation>Selecteer MBR of PBR backupbestand</translation>
+        <translation type="vanished">Selecteer MBR of PBR backupbestand</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="442"/>
         <source>About MX Boot Repair</source>
-        <translation>Over MX Bootreparatie</translation>
+        <translation type="vanished">Over MX Bootreparatie</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="443"/>
         <source>Version: </source>
-        <translation>Versie:</translation>
+        <translation type="vanished">Versie:</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="445"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>Eenvoudig bootreparatieprogramma voor MX Linux</translation>
+        <translation type="vanished">Eenvoudig bootreparatieprogramma voor MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="446"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>Copyright (c) MX Linux</translation>
+        <translation type="vanished">Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="447"/>
-        <location filename="../mxbootrepair.cpp" line="460"/>
         <source>License</source>
-        <translation>Licentie</translation>
+        <translation type="vanished">Licentie</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="448"/>
         <source>Changelog</source>
-        <translation>Changelog</translation>
+        <translation type="vanished">Changelog</translation>
     </message>
     <message>
-        <location filename="../mxbootrepair.cpp" line="472"/>
         <source>&amp;Close</source>
-        <translation>&amp;Close</translation>
+        <translation type="vanished">&amp;Close</translation>
     </message>
 </context>
 </TS>

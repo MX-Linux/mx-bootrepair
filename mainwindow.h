@@ -69,13 +69,14 @@ private:
     QStringList ListPart;
     QTimer *timer;
 
-    bool checkAndMountBoot(const QString path);
+    bool checkAndMountBoot(const QString &path);
     void addDevToList();
     void backupBR(QString filename);
     void cleanupMountPoints(const QString &path, bool isLuks);
     void guessPartition();
     void refresh();
     void installGRUB();
+    void installGRUB(const QString &location, const QString &path, bool isLuks);
     void repairGRUB();
     void restoreBR(QString filename);
     void setEspDefaults();

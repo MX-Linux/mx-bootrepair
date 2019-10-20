@@ -85,17 +85,14 @@ void MainWindow::installGRUB() {
     QString root = "/dev/" + ui->rootCombo->currentText().section(" ", 0, 0);
     QString text = tr("GRUB is being installed on %1 device.").arg(location);
 
+    bool isLuks = shell->run("/sbin/cryptsetup isLuks " + root);
+
     if (root == shell->getCmdOut("df / --output=source |sed -e 1d")) {
-        QString cmd = QStringLiteral("grub-install --target=i386-pc --recheck --force /dev/%1").arg(location);
-        displayOutput();
-        bool ok = shell->run(cmd);
-        disableOutput();
-        displayResult(ok);
-        refresh();
+        ui->outputLabel->setText(text);
+        installGRUB(location, "/", isLuks);
         return;
     }
 
-    bool isLuks = shell->run("/sbin/cryptsetup isLuks " + root);
     if (isLuks) {
         if(!openLuks(root)) {
             refresh();
@@ -105,7 +102,6 @@ void MainWindow::installGRUB() {
     }
 
     ui->outputLabel->setText(text);
-
     // create a temp folder and mount dev sys proc
     QString path = shell->getCmdOut("/bin/mktemp -d --tmpdir -p /tmp");
     QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(root).arg(path);
@@ -115,31 +111,7 @@ void MainWindow::installGRUB() {
             refresh();
             return;
         }
-        cmd = QStringLiteral("/usr/sbin/chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
-        if (ui->grubEspButton->isChecked()) {
-            shell->run("/usr/bin/test -d " + path.toUtf8() + "/boot/efi || /bin/mkdir " + path.toUtf8()  + "/boot/efi");
-            if (!shell->run("/bin/mount /dev/" + location.toUtf8()  + " " + path.toUtf8() + "/boot/efi")) {
-                QMessageBox::critical(this, tr("Error"),
-                                      tr("Could not mount ") + location + tr(" on /boot/efi"));
-                setCursor(QCursor(Qt::ArrowCursor));
-                ui->buttonApply->setEnabled(true);
-                ui->buttonCancel->setEnabled(true);
-                ui->progressBar->hide();
-                ui->stackedWidget->setCurrentWidget(ui->selectionPage);
-                return;
-            }
-            QString arch = shell->getCmdOut("arch");
-            if (arch == "i686") { // rename arch to match grub-install target
-                arch = "i386";
-            }
-            QString release = shell->getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
-            cmd = QStringLiteral("/usr/sbin/chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck").arg(path).arg(arch).arg(release);
-        }
-        displayOutput();
-        bool success = shell->run(cmd);
-        disableOutput();
-        cleanupMountPoints(path, isLuks);
-        displayResult(success);
+        installGRUB(location, path, isLuks);
         return;
     } else {
         QMessageBox::critical(this, tr("Error"),
@@ -151,6 +123,35 @@ void MainWindow::installGRUB() {
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
     cleanupMountPoints(path, isLuks);
+}
+
+void MainWindow::installGRUB(const QString& location, const QString& path, bool isLuks)
+{
+    QString cmd = QStringLiteral("/usr/sbin/chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
+    if (ui->grubEspButton->isChecked()) {
+        shell->run("/usr/bin/test -d " + path + "/boot/efi || /bin/mkdir " + path  + "/boot/efi");
+        if (!shell->run("[ -n \"$(ls -A " + path + "/boot/efi)\" ] || /bin/mount /dev/" + location  + " " + path + "/boot/efi")) {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Could not mount ") + location + tr(" on /boot/efi"));
+            setCursor(QCursor(Qt::ArrowCursor));
+            ui->buttonApply->setEnabled(true);
+            ui->buttonCancel->setEnabled(true);
+            ui->progressBar->hide();
+            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+            return;
+        }
+        QString arch = shell->getCmdOut("arch");
+        if (arch == "i686") { // rename arch to match grub-install target
+            arch = "i386";
+        }
+        QString release = shell->getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
+        cmd = QStringLiteral("/usr/sbin/chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck").arg(path).arg(arch).arg(release);
+    }
+    displayOutput();
+    bool success = shell->run(cmd);
+    disableOutput();
+    cleanupMountPoints(path, isLuks);
+    displayResult(success);
 }
 
 void MainWindow::repairGRUB() {
@@ -226,6 +227,7 @@ void MainWindow::backupBR(QString filename) {
 // umount and clean temp folder
 void MainWindow::cleanupMountPoints(const QString &path, bool isLuks)
 {
+    if (path == "/") return;
     shell->run("/bin/mountpoint -q " + path + "/boot/efi && /bin/umount " + path + "/boot/efi");
     shell->run("/bin/mountpoint -q " + path + "/boot && /bin/umount -R " + path + "/boot");
     QString cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount -R %1; rmdir %1").arg(path);
@@ -558,7 +560,7 @@ void MainWindow::on_grubEspButton_clicked()
     targetSelection();
 }
 
-bool MainWindow::checkAndMountBoot(const QString path)
+bool MainWindow::checkAndMountBoot(const QString& path)
 {
     if (!shell->run("[ -n \"$(ls -A " + path + "/boot)\" ]")) { // if boot not on root
         QString boot = selectBootPart();

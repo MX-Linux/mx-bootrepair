@@ -564,7 +564,7 @@ bool MainWindow::checkAndMountBoot(const QString& path)
 {
     if (!shell->run("[ -n \"$(ls -A " + path + "/boot)\" ]")) { // if boot not on root
         QString boot = selectBootPart();
-        if (!ListPart.contains(boot) || !shell->run("/bin/mount " + boot.section(" ", 0, 0) + " " + path + "/boot")) {
+        if (!ListPart.contains(boot) || !shell->run("/bin/mount /dev/" + boot.section(" ", 0, 0) + " " + path + "/boot")) {
             QMessageBox::critical(this, tr("Error"),
                                   tr("Sorry, could not mount /boot partition"));
             return false;

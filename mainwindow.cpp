@@ -87,7 +87,8 @@ void MainWindow::installGRUB() {
 
     bool isLuks = shell->run("/sbin/cryptsetup isLuks " + root);
 
-    if (root == shell->getCmdOut("df / --output=source |sed -e 1d")) {
+    QString rootOS = shell->getCmdOut("df / --output=source |sed -e 1d");
+    if (root == rootOS ||  rootOS == "/dev/mapper/rootfs") { // on current root
         ui->outputLabel->setText(text);
         installGRUB(location, "/", isLuks);
         return;
@@ -161,7 +162,8 @@ void MainWindow::repairGRUB() {
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString part = "/dev/" + ui->locationCombo->currentText().section(" ", 0, 0);
 
-    if (part == shell->getCmdOut("df / --output=source |sed -e 1d")) {
+    QString rootOS = shell->getCmdOut("df / --output=source |sed -e 1d");
+    if (part == rootOS ||  rootOS == "/dev/mapper/rootfs") { // on current root
         displayOutput();
         bool ok = shell->run("update-grub");
         disableOutput();

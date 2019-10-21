@@ -1,3 +1,10 @@
+mx-bootrepair (19.10.01) mx; urgency=medium
+
+  * fix window icon
+  * change wording for location when fixing grub.cfg
+
+ -- Adrian <adrian@mxlinux.org>  Mon, 21 Oct 2019 12:36:07 -0400
+
 mx-bootrepair (19.10) mx; urgency=medium
 
   * new feature: works on luks encrypted partitions

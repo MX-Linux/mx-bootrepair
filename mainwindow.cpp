@@ -187,7 +187,7 @@ void MainWindow::repairGRUB() {
             refresh();
             return;
         }
-        if (!checkAndMountPart(path, "/boot/efi")) {
+        if (QFile::exists(path + "/boot/efi") && !checkAndMountPart(path, "/boot/efi")) {
             cleanupMountPoints(path, isLuks);
             refresh();
             return;
@@ -590,7 +590,10 @@ bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoin
 {
     if (!shell->run("[ -n \"$(ls -A " + path + mountpoint + ")\" ]")) {
         QString part = selectPart(path, mountpoint);
-        if (!ListPart.contains(part) || !shell->run("/bin/mount /dev/" + part.section(" ", 0, 0) + " " + path + mountpoint)) {
+        if (!part.startsWith("UUID")) {
+            part = "/dev/" + part.section(" ", 0, 0);
+        }
+        if (!shell->run("/bin/mount " + part + " " + path + mountpoint)) {
             QMessageBox::critical(this, tr("Error"),
                                   tr("Sorry, could not mount %1 partition").arg(mountpoint));
             return false;

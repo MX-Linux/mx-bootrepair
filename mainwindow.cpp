@@ -107,7 +107,7 @@ void MainWindow::installGRUB() {
     QString path = shell->getCmdOut("/bin/mktemp -d --tmpdir -p /tmp");
     QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(root).arg(path);
     if (shell->run(cmd)) {
-        if (!checkAndMountBoot(path)) {
+        if (!checkAndMountPart(path, "/boot")) {
             cleanupMountPoints(path, isLuks);
             refresh();
             return;
@@ -187,7 +187,13 @@ void MainWindow::repairGRUB() {
     QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(part).arg(path);
 
     if (shell->run(cmd)) {
-        if (!checkAndMountBoot(path)) {
+        if (!checkAndMountPart(path, "/boot")) {
+            cleanupMountPoints(path, isLuks);
+            refresh();
+            return;
+        }
+        shell->run("/usr/bin/test -d " + path + "/boot/efi || /bin/mkdir " + path  + "/boot/efi");
+        if (!checkAndMountPart(path, "/boot/efi")) {
             cleanupMountPoints(path, isLuks);
             refresh();
             return;
@@ -315,15 +321,37 @@ void MainWindow::setEspDefaults()
     }
 }
 
-// select boot partition, remove root from possible choices
-QString MainWindow::selectBootPart()
+QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 {
-    qDebug() << "Select Boot Part";
+    // read /etc/fstab on mounted path
+    QFile file(path + "/etc/fstab");
+    if(!file.open(QIODevice::ReadOnly)) {
+        qDebug() << "Count not find /etc/fstab file on specified root partition";
+    }
+    QString file_content = file.readAll().trimmed();
+    file.close();
+
+    QStringList file_content_list = file_content.split("\n");
+
+    // remove commented out lines, split tokens
+    QList<QStringList> lines;
+    for (const QString &line : file_content_list) {
+        if (!line.startsWith("#")) {
+            lines << line.split(QRegExp("\\s+"), QString::SkipEmptyParts);
+        }
+    }
+
+    // return device for /boot mount point
+    for (const QStringList &line : lines) {
+        if (line.size() > 0 && line.at(1) == mountpoint) {
+            return line.at(0);
+        }
+    }
     QInputDialog dialog;
     QStringList partitions = ListPart;
     partitions.removeAll(ui->rootCombo->currentText());
     dialog.setComboBoxItems(partitions);
-    dialog.setLabelText(tr("Select /boot location:"));
+    dialog.setLabelText(tr("Select %1 location:").arg(mountpoint));
     dialog.setWindowTitle(this->windowTitle());
     if (dialog.exec()) return dialog.textValue();
     return QString();
@@ -564,13 +592,13 @@ void MainWindow::on_grubEspButton_clicked()
     targetSelection();
 }
 
-bool MainWindow::checkAndMountBoot(const QString& path)
+bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoint)
 {
-    if (!shell->run("[ -n \"$(ls -A " + path + "/boot)\" ]")) { // if boot not on root
-        QString boot = selectBootPart();
-        if (!ListPart.contains(boot) || !shell->run("/bin/mount /dev/" + boot.section(" ", 0, 0) + " " + path + "/boot")) {
+    if (!shell->run("[ -n \"$(ls -A " + path + mountpoint + "\" ]")) {
+        QString part = selectPart(path, mountpoint);
+        if (!ListPart.contains(part) || !shell->run("/bin/mount /dev/" + part.section(" ", 0, 0) + " " + path + mountpoint)) {
             QMessageBox::critical(this, tr("Error"),
-                                  tr("Sorry, could not mount /boot partition"));
+                                  tr("Sorry, could not mount %1 partition").arg(mountpoint));
             return false;
         }
     }

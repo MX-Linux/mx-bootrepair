@@ -69,7 +69,7 @@ private:
     QStringList ListPart;
     QTimer *timer;
 
-    bool checkAndMountBoot(const QString &path);
+    bool checkAndMountPart(const QString &path, const QString &mountpoint);
     void addDevToList();
     void backupBR(QString filename);
     void cleanupMountPoints(const QString &path, bool isLuks);
@@ -81,8 +81,7 @@ private:
     void restoreBR(QString filename);
     void setEspDefaults();
     void targetSelection();
-    QString selectBootPart();
-
+    QString selectPart(const QString &path, const QString &mountpoint);
 
 };
 

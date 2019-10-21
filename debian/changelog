@@ -1,3 +1,9 @@
+mx-bootrepair (19.10.02) mx; urgency=medium
+
+  * mount /boot/efi if on different partition when reparing grub.cfg
+
+ -- Adrian <adrian@mxlinux.org>  Mon, 21 Oct 2019 15:12:03 -0400
+
 mx-bootrepair (19.10.01) mx; urgency=medium
 
   * fix window icon

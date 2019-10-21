@@ -131,14 +131,9 @@ void MainWindow::installGRUB(const QString& location, const QString& path, bool 
     QString cmd = QStringLiteral("/usr/sbin/chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
     if (ui->grubEspButton->isChecked()) {
         shell->run("/usr/bin/test -d " + path + "/boot/efi || /bin/mkdir " + path  + "/boot/efi");
-        if (!shell->run("[ -n \"$(ls -A " + path + "/boot/efi)\" ] || /bin/mount /dev/" + location  + " " + path + "/boot/efi")) {
-            QMessageBox::critical(this, tr("Error"),
-                                  tr("Could not mount ") + location + tr(" on /boot/efi"));
-            setCursor(QCursor(Qt::ArrowCursor));
-            ui->buttonApply->setEnabled(true);
-            ui->buttonCancel->setEnabled(true);
-            ui->progressBar->hide();
-            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+        if (!checkAndMountPart(path, "/boot/efi")) {
+            cleanupMountPoints(path, isLuks);
+            refresh();
             return;
         }
         QString arch = shell->getCmdOut("arch");
@@ -192,7 +187,6 @@ void MainWindow::repairGRUB() {
             refresh();
             return;
         }
-        shell->run("/usr/bin/test -d " + path + "/boot/efi || /bin/mkdir " + path  + "/boot/efi");
         if (!checkAndMountPart(path, "/boot/efi")) {
             cleanupMountPoints(path, isLuks);
             refresh();
@@ -594,7 +588,7 @@ void MainWindow::on_grubEspButton_clicked()
 
 bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoint)
 {
-    if (!shell->run("[ -n \"$(ls -A " + path + mountpoint + "\" ]")) {
+    if (!shell->run("[ -n \"$(ls -A " + path + mountpoint + ")\" ]")) {
         QString part = selectPart(path, mountpoint);
         if (!ListPart.contains(part) || !shell->run("/bin/mount /dev/" + part.section(" ", 0, 0) + " " + path + mountpoint)) {
             QMessageBox::critical(this, tr("Error"),

@@ -1,0 +1,49 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Mon, 21 Oct 2019 15:12:03 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 19.10.02
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (19.10.02) mx; urgency=medium
+ .
+   * mount /boot/efi if on different partition when reparing grub.cfg
+Checksums-Sha1:
+ 021e86ce98f6cddae2802c49f4ce85a082616aee 1190 mx-bootrepair_19.10.02.dsc
+ cbb9892b1aace45d733ba074cdfb7839a32d9900 58992 mx-bootrepair_19.10.02.tar.xz
+ f4ccf3f3c0924916d57ec5408c54e10157272415 763632 mx-bootrepair-dbgsym_19.10.02_amd64.deb
+ ad8abe50874e243c40043c1e2869758999ed7c5f 10660 mx-bootrepair_19.10.02_amd64.buildinfo
+ 279840c23211201784e9529d01a866ae4a70b3b9 80412 mx-bootrepair_19.10.02_amd64.deb
+Checksums-Sha256:
+ ef24735d1290a3b8fed9b37f154e9c0e81222f3bc0446d3c85ebf313ae23c96b 1190 mx-bootrepair_19.10.02.dsc
+ 1d7ef7002b32d6577b1095631f120b2cf1794845603adcf87328f2acaa98a6f6 58992 mx-bootrepair_19.10.02.tar.xz
+ 274997ae59416ac394c17ba8f5a2f1b6e4e64d1779f6353a6e83480f5ecfad60 763632 mx-bootrepair-dbgsym_19.10.02_amd64.deb
+ 3528067dfaf8d7460052e145c38e0f3ca2fb6e101f720e1729095e6c2869f7c2 10660 mx-bootrepair_19.10.02_amd64.buildinfo
+ 2dc842e8f114cb8a18945ca1d80068156589003ccfeffff1d7b48fb11320294e 80412 mx-bootrepair_19.10.02_amd64.deb
+Files:
+ 79051e9debbb9fd8be8bf7e280f89091 1190 admin optional mx-bootrepair_19.10.02.dsc
+ b0329fdba435167fa58d8175139a155f 58992 admin optional mx-bootrepair_19.10.02.tar.xz
+ 11bef40e4511b2ae29f709071ddd6280 763632 debug extra mx-bootrepair-dbgsym_19.10.02_amd64.deb
+ a8727de5f25d50c078c08576ff05922f 10660 admin optional mx-bootrepair_19.10.02_amd64.buildinfo
+ 9105ffc6fe70094056764c2ef8a2ed6a 80412 admin optional mx-bootrepair_19.10.02_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAl2uA8MTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumNVjB/wLU3r8n39oartBBdn1lSjiUeA3+L/4
+yk/uayk5VZOxM9x43gqn9b51YYGWHFIJ0NXZyVtXXTyB3wdGZzMWc0Om/KpPlaSe
+PPbQAUi09atHw4CbL66xBjm9n0T1oFGkJ+9HzqN8BMRz8TxH6SspFS3mr4LTxKFL
+LceVnOk07QmDl1Yjij6laOQl1wNlc7zZrd+KLXU43Z3VLXaoGpp4NTKLPhpfuyP8
+gtCv8pQHWh1DuQBNVqVll65txpXH171znT4E2PBm4JV9/pNqfqYBkVYgCbcYV74R
+Uu0dW09sKG3y9pWz26xomLsp/fOh8OljtC76m/PZGuoG9mPfqqY9nef8
+=1RcO
+-----END PGP SIGNATURE-----

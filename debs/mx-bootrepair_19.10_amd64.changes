@@ -1,6 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA256
-
 Format: 1.8
 Date: Sat, 19 Oct 2019 19:30:22 -0400
 Source: mx-bootrepair
@@ -20,32 +17,20 @@ Changes:
    * fix: works when /boot not on root
    * fix: works when targetting running root system
 Checksums-Sha1:
- 42dc90cca91c492c61de70e15fd2c7805ebbb9e2 1178 mx-bootrepair_19.10.dsc
- d99bf131be006800d984cebe54181bcb0ef62e54 61460 mx-bootrepair_19.10.tar.xz
- 683e911dc030e7a6fa8e1185811540a8dd44ad65 758166 mx-bootrepair-dbgsym_19.10_amd64.deb
- d43b50aae92ac9f81f3d71002dd3e85aabdc817d 11298 mx-bootrepair_19.10_amd64.buildinfo
- f50f0f09c0cada65bcb65cbcfe627bae369e3f2f 79330 mx-bootrepair_19.10_amd64.deb
+ 63ce31992f9dd6ca98544491f0e3a4723f2081f1 616 mx-bootrepair_19.10.dsc
+ b68e53dd38266986edc1e9077c0da770d90866fe 58472 mx-bootrepair_19.10.tar.xz
+ 50a669bc8e3400939ebcd5201fc31005cc797883 758112 mx-bootrepair-dbgsym_19.10_amd64.deb
+ 4ce75f80504a83c6c2327df6796533b7d86af46a 10062 mx-bootrepair_19.10_amd64.buildinfo
+ f092c27fe3b2f4b25fd45f6e64cf51afa4bc6c49 79372 mx-bootrepair_19.10_amd64.deb
 Checksums-Sha256:
- bb624d15289a12e3ab55832a5e261666ec88f8cf3f1f3300894fa9d810d1ca23 1178 mx-bootrepair_19.10.dsc
- 50c73f131fd27175a78d7a073c134f13aeda65d015e386630430c93090061cb3 61460 mx-bootrepair_19.10.tar.xz
- 2a64c499c4de03155d797f8b2e38fe7208b10d8961a0e0b19b85580b7cd2c66c 758166 mx-bootrepair-dbgsym_19.10_amd64.deb
- 9200e9606834ab1d7883909c7e62225f5d0a40eeb868739368cfba14c3a986cb 11298 mx-bootrepair_19.10_amd64.buildinfo
- 04e3dde3e525db226a4c95fed7371ac0e11a37f62693ded733f22f4f1333481a 79330 mx-bootrepair_19.10_amd64.deb
+ daf07c2ddfe40762d20e3e41e4374f62f2600ab28183cee612e1617f1f9b9334 616 mx-bootrepair_19.10.dsc
+ 7176f5bfd8e79f4504b013fa4878171fef533cf9fe6daf0b1ecf014ace0fa3f8 58472 mx-bootrepair_19.10.tar.xz
+ 60c9363325950f6ba85a3ee78266dbb195fb1c778f0a2e1552e58dc333be0d94 758112 mx-bootrepair-dbgsym_19.10_amd64.deb
+ 13bdf37fd85bdb9a3b93664d6f2f888f348a36e58768e5651200888d4894f860 10062 mx-bootrepair_19.10_amd64.buildinfo
+ 437f19622b7bb241d66b4d8106e60923b7d1287fe13ff55b4274ba68c2c81774 79372 mx-bootrepair_19.10_amd64.deb
 Files:
- da0059b6f4a31a1692e759bfcabdaf19 1178 admin optional mx-bootrepair_19.10.dsc
- 24af297c043fde57575ef132c1363fc5 61460 admin optional mx-bootrepair_19.10.tar.xz
- cefb847b17b4b7e5d7fa91369035c666 758166 debug optional mx-bootrepair-dbgsym_19.10_amd64.deb
- df224154948f099d538b271b46b044d9 11298 admin optional mx-bootrepair_19.10_amd64.buildinfo
- 6feccdb18e2d3eb1d8222acd9fde2cde 79330 admin optional mx-bootrepair_19.10_amd64.deb
-
------BEGIN PGP SIGNATURE-----
-
-iQFHBAEBCAAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAl2tGqcTHGFkcmlhbkBt
-eGxpbnV4Lm9yZwAKCRBwk4x4BnnumLKlCAC/m2Vrsx4Ur+9NVYyna0ZsbUu3qKVy
-rL2tskvl7F+DaPlLStu97/FQX6CHIu1wo0ErDRQi+fPHC8SKp2vZfvCrtTz6frao
-dd7cnc6It0h1tdDqyMLvqGNJOdgh9FBKHCLVwRg9HCR2NUg8Wqe+pEy4g9Y4Q47x
-bSUVh1scJaTpzqtfLEqdhq7DmaHyx7NtFEist4weaEvcH75ma24xO2VxVU0+/8n6
-K+t877mNixtLGZABpDeJtnunMk7BaxTrtDCExBbUulZ6zE53nA8eExmPBuTtTmRI
-8IfJAQ/Q3JWT9zEuEamjq92kypvJKI1pIyBWXGLeZf1iWS1FyLYl7R/V
-=G+0E
------END PGP SIGNATURE-----
+ 0d39eec6296b4b11c4a87a3b6b50e232 616 admin optional mx-bootrepair_19.10.dsc
+ 8a891a9d30b323c9be80e0c8a3da8891 58472 admin optional mx-bootrepair_19.10.tar.xz
+ 6308bcf95d5afd9e38ebf36a883bb421 758112 debug extra mx-bootrepair-dbgsym_19.10_amd64.deb
+ 41f362e184f43d1a107b7c52de247e98 10062 admin optional mx-bootrepair_19.10_amd64.buildinfo
+ e53f8709f19e7deb2bf3962e681d80ab 79372 admin optional mx-bootrepair_19.10_amd64.deb

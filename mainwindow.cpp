@@ -461,6 +461,7 @@ void MainWindow::on_buttonApply_clicked() {
         if (ui->reinstallRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle(tr("Select Boot Method"));
+            ui->locationLabel->setText(tr("Location:"));
             ui->grubInsLabel->setText(tr("Install on:"));
             ui->grubRootButton->setText(tr("root"));
             ui->rootLabel->show();
@@ -470,6 +471,7 @@ void MainWindow::on_buttonApply_clicked() {
         } else if (ui->repairRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle(tr("Select GRUB location"));
+            ui->locationLabel->setText(tr("Select root location:"));
             ui->grubInsLabel->hide();
             ui->grubRootButton->hide();
             ui->grubMbrButton->hide();

@@ -67,23 +67,25 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
-        <location filename="../mainwindow.cpp" line="465"/>
+        <location filename="../mainwindow.cpp" line="466"/>
         <source>root</source>
         <translation type="unfinished">root</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
-        <location filename="../mainwindow.cpp" line="464"/>
+        <location filename="../mainwindow.cpp" line="465"/>
         <source>Install on:</source>
         <translation type="unfinished">Installer sur :</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="255"/>
+        <location filename="../mainwindow.cpp" line="464"/>
         <source>Location:</source>
         <translation type="unfinished">Emplacement:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="277"/>
+        <location filename="../mainwindow.cpp" line="474"/>
         <source>Select root location:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -160,9 +162,9 @@
         <location filename="../mainwindow.cpp" line="312"/>
         <location filename="../mainwindow.cpp" line="372"/>
         <location filename="../mainwindow.cpp" line="397"/>
-        <location filename="../mainwindow.cpp" line="503"/>
-        <location filename="../mainwindow.cpp" line="510"/>
-        <location filename="../mainwindow.cpp" line="570"/>
+        <location filename="../mainwindow.cpp" line="505"/>
+        <location filename="../mainwindow.cpp" line="512"/>
+        <location filename="../mainwindow.cpp" line="572"/>
         <source>Error</source>
         <translation type="unfinished">Erreur</translation>
     </message>
@@ -264,68 +266,68 @@ Etes-vous sûr?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="472"/>
+        <location filename="../mainwindow.cpp" line="473"/>
         <source>Select GRUB location</source>
         <translation type="unfinished">Sélectionner l&apos;emplacement de GRUB</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="483"/>
+        <location filename="../mainwindow.cpp" line="485"/>
         <source>Select Item to Back Up</source>
         <translation type="unfinished">Choisissez un élément à sauvegarder</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="490"/>
+        <location filename="../mainwindow.cpp" line="492"/>
         <source>Select Item to Restore</source>
         <translation type="unfinished">Choisissez un élément à restaurer</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="501"/>
+        <location filename="../mainwindow.cpp" line="503"/>
         <source>Select backup file name</source>
         <translation type="unfinished">Sélectionnez le nom du fichier de sauvegarde</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="503"/>
-        <location filename="../mainwindow.cpp" line="510"/>
+        <location filename="../mainwindow.cpp" line="505"/>
+        <location filename="../mainwindow.cpp" line="512"/>
         <source>No file was selected.</source>
         <translation type="unfinished">Aucun fichier n&apos;a été sélectionné.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="508"/>
+        <location filename="../mainwindow.cpp" line="510"/>
         <source>Select MBR or PBR backup file</source>
         <translation type="unfinished">Sélectionnez le fichier de sauvegarde de MBR ou PBR</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="528"/>
+        <location filename="../mainwindow.cpp" line="530"/>
         <source>About %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="529"/>
+        <location filename="../mainwindow.cpp" line="531"/>
         <source>Version: </source>
         <translation type="unfinished">Version:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="530"/>
+        <location filename="../mainwindow.cpp" line="532"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation type="unfinished">Simple programme de réparation d&apos;amorçage pour MX Linux </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="532"/>
+        <location filename="../mainwindow.cpp" line="534"/>
         <source>Copyright (c) MX Linux</source>
         <translation type="unfinished">Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="533"/>
+        <location filename="../mainwindow.cpp" line="535"/>
         <source>%1 License</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="547"/>
+        <location filename="../mainwindow.cpp" line="549"/>
         <source>%1 Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="571"/>
+        <location filename="../mainwindow.cpp" line="573"/>
         <source>Sorry, could not mount /boot partition</source>
         <translation type="unfinished"></translation>
     </message>

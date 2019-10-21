@@ -37,7 +37,7 @@ void messageHandler(QtMsgType type, const QMessageLogContext &context, const QSt
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    a.setWindowIcon(QIcon::fromTheme("mx-bootrepair"));
+    a.setWindowIcon(QIcon::fromTheme("mx-boot-repair"));
 
     QString log_name= "/var/log/" + QCoreApplication::applicationName() + ".log";
     logFile.reset(new QFile(log_name));

@@ -48,50 +48,50 @@ HEADERS  += \
 FORMS    += \
     mainwindow.ui
 
-TRANSLATIONS += translations/mx-bootrepair_am.ts \
-                translations/mx-bootrepair_ar.ts \
-                translations/mx-bootrepair_bg.ts \
-                translations/mx-bootrepair_ca.ts \
-                translations/mx-bootrepair_cs.ts \
-                translations/mx-bootrepair_da.ts \
-                translations/mx-bootrepair_de.ts \
-                translations/mx-bootrepair_el.ts \
-                translations/mx-bootrepair_es.ts \
-                translations/mx-bootrepair_et.ts \
-                translations/mx-bootrepair_eu.ts \
-                translations/mx-bootrepair_fa.ts \
-                translations/mx-bootrepair_fi.ts \
-                translations/mx-bootrepair_fr.ts \
-                translations/mx-bootrepair_he_IL.ts \
-                translations/mx-bootrepair_hi.ts \
-                translations/mx-bootrepair_hr.ts \
-                translations/mx-bootrepair_hu.ts \
-                translations/mx-bootrepair_id.ts \
-                translations/mx-bootrepair_is.ts \
-                translations/mx-bootrepair_it.ts \
-                translations/mx-bootrepair_ja.ts \
-                translations/mx-bootrepair_ja_JP.ts \
-                translations/mx-bootrepair_kk.ts \
-                translations/mx-bootrepair_ko.ts \
-                translations/mx-bootrepair_lt.ts \
-                translations/mx-bootrepair_mk.ts \
-                translations/mx-bootrepair_mr.ts \
-                translations/mx-bootrepair_nb.ts \
-                translations/mx-bootrepair_nl.ts \
-                translations/mx-bootrepair_pl.ts \
-                translations/mx-bootrepair_pt.ts \
-                translations/mx-bootrepair_pt_BR.ts \
-                translations/mx-bootrepair_ro.ts \
-                translations/mx-bootrepair_ru.ts \
-                translations/mx-bootrepair_sk.ts \
-                translations/mx-bootrepair_sl.ts \
-                translations/mx-bootrepair_sq.ts \
-                translations/mx-bootrepair_sr.ts \
-                translations/mx-bootrepair_sv.ts \
-                translations/mx-bootrepair_tr.ts \
-                translations/mx-bootrepair_uk.ts \
-                translations/mx-bootrepair_zh_CN.ts \
-                translations/mx-bootrepair_zh_TW.ts
+TRANSLATIONS += translations/mx-boot-repair_am.ts \
+                translations/mx-boot-repair_ar.ts \
+                translations/mx-boot-repair_bg.ts \
+                translations/mx-boot-repair_ca.ts \
+                translations/mx-boot-repair_cs.ts \
+                translations/mx-boot-repair_da.ts \
+                translations/mx-boot-repair_de.ts \
+                translations/mx-boot-repair_el.ts \
+                translations/mx-boot-repair_es.ts \
+                translations/mx-boot-repair_et.ts \
+                translations/mx-boot-repair_eu.ts \
+                translations/mx-boot-repair_fa.ts \
+                translations/mx-boot-repair_fi.ts \
+                translations/mx-boot-repair_fr.ts \
+                translations/mx-boot-repair_he_IL.ts \
+                translations/mx-boot-repair_hi.ts \
+                translations/mx-boot-repair_hr.ts \
+                translations/mx-boot-repair_hu.ts \
+                translations/mx-boot-repair_id.ts \
+                translations/mx-boot-repair_is.ts \
+                translations/mx-boot-repair_it.ts \
+                translations/mx-boot-repair_ja.ts \
+                translations/mx-boot-repair_ja_JP.ts \
+                translations/mx-boot-repair_kk.ts \
+                translations/mx-boot-repair_ko.ts \
+                translations/mx-boot-repair_lt.ts \
+                translations/mx-boot-repair_mk.ts \
+                translations/mx-boot-repair_mr.ts \
+                translations/mx-boot-repair_nb.ts \
+                translations/mx-boot-repair_nl.ts \
+                translations/mx-boot-repair_pl.ts \
+                translations/mx-boot-repair_pt.ts \
+                translations/mx-boot-repair_pt_BR.ts \
+                translations/mx-boot-repair_ro.ts \
+                translations/mx-boot-repair_ru.ts \
+                translations/mx-boot-repair_sk.ts \
+                translations/mx-boot-repair_sl.ts \
+                translations/mx-boot-repair_sq.ts \
+                translations/mx-boot-repair_sr.ts \
+                translations/mx-boot-repair_sv.ts \
+                translations/mx-boot-repair_tr.ts \
+                translations/mx-boot-repair_uk.ts \
+                translations/mx-boot-repair_zh_CN.ts \
+                translations/mx-boot-repair_zh_TW.ts
 
 RESOURCES += \
     images.qrc

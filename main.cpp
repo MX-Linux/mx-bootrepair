@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     a.installTranslator(&qtTran);
 
     QTranslator appTran;
-    appTran.load(QString("mx-bootrepair_") + QLocale::system().name(), "/usr/share/mx-bootrepair/locale");
+    appTran.load(QString("mx-boot-repair_") + QLocale::system().name(), "/usr/share/mx-boot-repair/locale");
     a.installTranslator(&appTran);
 
     if (getuid() == 0) {

@@ -554,7 +554,7 @@ void MainWindow::on_buttonAbout_clicked() {
                        tr("Simple boot repair program for MX Linux") +
                        "</h3></p><p align=\"center\"><a href=\"http://mxlinux.org\">http://mxlinux.org</a><br /></p><p align=\"center\">" +
                        tr("Copyright (c) MX Linux") + "<br /><br /></p>",
-                       "/usr/share/doc/mx-bootrepair/license.html", tr("%1 License").arg(this->windowTitle()), true);
+                       "/usr/share/doc/mx-boot-repair/license.html", tr("%1 License").arg(this->windowTitle()), true);
     this->show();
 }
 
@@ -564,7 +564,7 @@ void MainWindow::on_buttonHelp_clicked() {
     QString lang = locale.bcp47Name();
     QString user = shell->getCmdOut("logname");
 
-    QString url = "/usr/share/doc/mx-bootrepair/help/mx-bootrepair.html";
+    QString url = "/usr/share/doc/mx-boot-repair/help/mx-boot-repair.html";
     if (lang.startsWith("fr")) {
         url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
     }

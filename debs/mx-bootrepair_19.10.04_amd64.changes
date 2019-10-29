@@ -18,32 +18,32 @@ Changes:
  .
    * fix help link
 Checksums-Sha1:
- ef03d87b70ea36cbac5dce48ab5614334ca45369 1190 mx-bootrepair_19.10.04.dsc
- f3d05d6c7f31315152f35c60d4557a2d6cb9e9d2 58816 mx-bootrepair_19.10.04.tar.xz
+ 3cceff15be3a8e4973ee6fe1f7d5455db320a17d 1190 mx-bootrepair_19.10.04.dsc
+ ba91ba075cd5124c420ab2490bd99e552332125e 52944 mx-bootrepair_19.10.04.tar.xz
  5e649de0383948d49def40a7ad1ffb1823838fca 759140 mx-bootrepair-dbgsym_19.10.04_amd64.deb
- a6af00c50b7f0999eea99add3b1350955e77dd27 10701 mx-bootrepair_19.10.04_amd64.buildinfo
- db6ef43a500aa69c75f3adeadc37bc2197a704dc 79350 mx-bootrepair_19.10.04_amd64.deb
+ 3099d8c0ce2cf7961560db457573d35aeacb39b0 10701 mx-bootrepair_19.10.04_amd64.buildinfo
+ dc29d529be9584b8baa778524ad2c675458126b1 82400 mx-bootrepair_19.10.04_amd64.deb
 Checksums-Sha256:
- 7723407bc2bf3d83295fdb4be17ffa5acfca19a6e2ef1c22ecbdb9a34442df96 1190 mx-bootrepair_19.10.04.dsc
- bb74cb1a7a60fc1523cff1ebd91f24451d8cb169e25c7b37122269a93f3f2288 58816 mx-bootrepair_19.10.04.tar.xz
+ a2290f6449619b80cbde3d76bbd5741e3bf5fd6118c1f666f46c58c85e0b3a59 1190 mx-bootrepair_19.10.04.dsc
+ 0c75794a254bb81bdf8a94ca160cd3a883de1128d6efe57e3afc63157db57384 52944 mx-bootrepair_19.10.04.tar.xz
  9a1c280c33bd81298948c3d43dcc0f6d94dd5f34d30b35623799c60b1c4449e8 759140 mx-bootrepair-dbgsym_19.10.04_amd64.deb
- 3e8418180c4fc5682fd41e2d0d16f111744e804a8bcf7a44ad289b2783910e2f 10701 mx-bootrepair_19.10.04_amd64.buildinfo
- e158d26989e7de55e88feb04e2b545b555d2f2e59ca767c43f6a7ede20026a64 79350 mx-bootrepair_19.10.04_amd64.deb
+ 6325f0e39ac3e8260a00114d372fff97fcf1177452e75164d8cfa1598c29e6cc 10701 mx-bootrepair_19.10.04_amd64.buildinfo
+ ac25113f268842cd9fe1503f21a2c31aee7185372e007606f9d1d01f4acc18e0 82400 mx-bootrepair_19.10.04_amd64.deb
 Files:
- 1e9a2442245fb08ed3764076e670aff4 1190 admin optional mx-bootrepair_19.10.04.dsc
- b18e795df0d36f0c48187b9b4f288a0c 58816 admin optional mx-bootrepair_19.10.04.tar.xz
+ 42b4c10cc3a04ffa0dd87e554ecab64d 1190 admin optional mx-bootrepair_19.10.04.dsc
+ c9cb162a2e1562146a086b7cdce42752 52944 admin optional mx-bootrepair_19.10.04.tar.xz
  c0486aee17c35f68a1fcbe2918bf186c 759140 debug extra mx-bootrepair-dbgsym_19.10.04_amd64.deb
- c68bb86423f1af0a84e447c49b236f4f 10701 admin optional mx-bootrepair_19.10.04_amd64.buildinfo
- 1cf3192305e75bc31f67a6f331aa2a97 79350 admin optional mx-bootrepair_19.10.04_amd64.deb
+ 234b474dcdd1fd8eece45c4eb2bb3648 10701 admin optional mx-bootrepair_19.10.04_amd64.buildinfo
+ 088c84ffcc94cd6f026eebff56d4573f 82400 admin optional mx-bootrepair_19.10.04_amd64.deb
 
 -----BEGIN PGP SIGNATURE-----
 
-iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAl24g1YTHGFkcmlhbkBt
-eGxpbnV4Lm9yZwAKCRBwk4x4BnnumNYNB/93bVcNM+JgzcP1qCbfSVNcVeJN5EG9
-HL7EO0QS6x22fT4usEoOWBsGoEh7y68wPEri/vptTJrHfs/3PXN7E8MiFxhzhfQx
-GBHo5es+6pV/mQUX61Fqlx56MXqktb7QZkZRSgvv2Sz3wS7lu5tEUIeu3XyQ1eOt
-JDvF/gTTf4g73rPAm+pdiF5uR4whdjemQ0kSeYI1fqdHbbvHcz8d/7CMUSZTW0Og
-8X1emitj8+3/tBokGiLWpKQ9Qxn2mU2xP34ReR72h0m5AKS+EK22TXBI4/pvq7Cl
-O2vdIaXXMUQK79/o0V7My9SK4BoqsyZ7mdoYQcSQOh2MuLPgzKthRKSu
-=4k9h
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAl24hS4THGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumCjwCADEBFBM5pjurdHUpiJngi9wtTwTryVY
+ysKVMXsH08fg5Zaxe2qmlJ/74tTPGicB8gtikSi/GPZ9PeYJgelGoavsjKjtTMKY
+WR2eKp30uy9NUVjdrE1MLmh5TCWeDLE0RLBSppfdz17nKqerdapfmA9kvhbG+qY7
+xAulTiXzGWqE08NL/jEahF+WC8iOACRjEaQ1AQPDeKgJ5Nq6STdgSB9sofp6K4vr
+/+Vudvh519+tP42MNdYNvVrMFvSwN3iGOpFaWva7VAYcVE4/7XMd4MCF4bf5jO3L
+J2p6/bIJK1mKTvz2YfqxRJOEN6FS3jLPDqPKoBMDCkX+p9v+C6spo+Rm
+=03YU
 -----END PGP SIGNATURE-----

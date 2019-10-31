@@ -61,7 +61,8 @@ TRANSLATIONS += translations/mx-boot-repair_am.ts \
                 translations/mx-boot-repair_eu.ts \
                 translations/mx-boot-repair_fa.ts \
                 translations/mx-boot-repair_fi.ts \
-                translations/mx-boot-repair_fr.ts \
+                translations/mx-boot-repair_fil_PH.ts\
+		translations/mx-boot-repair_fr.ts \
                 translations/mx-boot-repair_he_IL.ts \
                 translations/mx-boot-repair_hi.ts \
                 translations/mx-boot-repair_hr.ts \

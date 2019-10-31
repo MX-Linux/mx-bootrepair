@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pt_BR">
 <context>
     <name>MainWindow</name>
     <message>
@@ -9,7 +11,7 @@
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -85,7 +87,7 @@
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="496"/>
         <source>Select root location:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -220,7 +222,7 @@ Tem a certeza?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="348"/>
         <source>Select %1 location:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="372"/>
@@ -245,7 +247,7 @@ Tem a certeza?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="412"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="420"/>
@@ -286,7 +288,7 @@ Tem a certeza?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="552"/>
         <source>About %1</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="553"/>
@@ -306,17 +308,17 @@ Tem a certeza?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="557"/>
         <source>%1 License</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="571"/>
         <source>%1 Help</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="598"/>
         <source>Sorry, could not mount %1 partition</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

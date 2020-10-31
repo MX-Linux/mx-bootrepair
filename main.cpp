@@ -59,10 +59,11 @@ int main(int argc, char *argv[])
         return a.exec();
 
     } else {
-        QApplication::beep();
-        QMessageBox::critical(nullptr, QString::null,
-                              QApplication::tr("You must run this program as root."));
-        return EXIT_FAILURE;
+        system("su-to-root -X -c " + QCoreApplication::applicationFilePath().toUtf8() + "&");
+//        QApplication::beep();
+//        QMessageBox::critical(nullptr, QString::null,
+//                              QApplication::tr("You must run this program as root."));
+//        return EXIT_FAILURE;
     }
 }
 

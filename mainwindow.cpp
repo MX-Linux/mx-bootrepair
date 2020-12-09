@@ -331,7 +331,7 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
     QList<QStringList> lines;
     for (const QString &line : file_content_list) {
         if (!line.startsWith("#")) {
-            lines << line.split(QRegExp("\\s+"), QString::SkipEmptyParts);
+            lines << line.split(QRegularExpression("\\s+"), QString::SkipEmptyParts);
         }
     }
 

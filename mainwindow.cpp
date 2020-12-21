@@ -564,7 +564,7 @@ void MainWindow::on_buttonHelp_clicked() {
     QString lang = locale.bcp47Name();
     QString user = shell->getCmdOut("logname");
 
-    QString url = "/usr/share/doc/mx-boot-repair/help/mx-boot-repair.html";
+    QString url = "/usr/share/doc/mx-boot-repair/mx-boot-repair.html";
     if (lang.startsWith("fr")) {
         url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
     }

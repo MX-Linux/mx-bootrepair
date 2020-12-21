@@ -1,5 +1,4 @@
-help/*				usr/share/doc/mx-boot-repair/help
-license.html			usr/share/doc/mx-boot-repair
+help				usr/share/doc/mx-boot-repair
 mx-boot-repair			usr/sbin
 mx-boot-repair.desktop		usr/share/applications
 icons/mx-boot-repair.png	usr/share/icons/hicolor/256x256/apps

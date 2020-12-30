@@ -104,16 +104,23 @@ void MainWindow::installGRUB() {
     }
 
     ui->outputLabel->setText(text);
+
     // create a temp folder and mount dev sys proc
-    QString path = shell->getCmdOut("/bin/mktemp -d --tmpdir -p /tmp");
-    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(root).arg(path);
+
+    if (!tmpdir.isValid()) {
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Could not create a temporary folder"));
+        return;
+    }
+
+    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(root).arg(tmpdir.path());
     if (shell->run(cmd)) {
-        if (!checkAndMountPart(path, "/boot")) {
-            cleanupMountPoints(path, isLuks);
+        if (!checkAndMountPart(tmpdir.path(), "/boot")) {
+            cleanupMountPoints(tmpdir.path(), isLuks);
             refresh();
             return;
         }
-        installGRUB(location, path, isLuks);
+        installGRUB(location, tmpdir.path(), isLuks);
         return;
     } else {
         QMessageBox::critical(this, tr("Error"),
@@ -124,7 +131,7 @@ void MainWindow::installGRUB() {
         ui->progressBar->hide();
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
-    cleanupMountPoints(path, isLuks);
+    cleanupMountPoints(tmpdir.path(), isLuks);
 }
 
 void MainWindow::installGRUB(const QString& location, const QString& path, bool isLuks)
@@ -179,25 +186,29 @@ void MainWindow::repairGRUB() {
 
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
     // create a temp folder and mount dev sys proc
-    QString path = shell->getCmdOut("/bin/mktemp -d --tmpdir -p /mnt");
-    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(part).arg(path);
+    if (!tmpdir.isValid()) {
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Could not create a temporary folder"));
+        return;
+    }
+    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(part).arg(tmpdir.path());
 
     if (shell->run(cmd)) {
-        if (!checkAndMountPart(path, "/boot")) {
-            cleanupMountPoints(path, isLuks);
+        if (!checkAndMountPart(tmpdir.path(), "/boot")) {
+            cleanupMountPoints(tmpdir.path(), isLuks);
             refresh();
             return;
         }
-        if (QFile::exists(path + "/boot/efi") && !checkAndMountPart(path, "/boot/efi")) {
-            cleanupMountPoints(path, isLuks);
+        if (QFile::exists(tmpdir.path() + "/boot/efi") && !checkAndMountPart(tmpdir.path(), "/boot/efi")) {
+            cleanupMountPoints(tmpdir.path(), isLuks);
             refresh();
             return;
         }
-        cmd = QStringLiteral("/usr/sbin/chroot %1 update-grub").arg(path);
+        cmd = QStringLiteral("/usr/sbin/chroot %1 update-grub").arg(tmpdir.path());
         displayOutput();
         bool success = shell->run(cmd);
         disableOutput();
-        cleanupMountPoints(path, isLuks);
+        cleanupMountPoints(tmpdir.path(), isLuks);
         displayResult(success);
         return;
     } else {
@@ -210,7 +221,7 @@ void MainWindow::repairGRUB() {
 
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
-    cleanupMountPoints(path, isLuks);
+    cleanupMountPoints(tmpdir.path(), isLuks);
 }
 
 
@@ -233,7 +244,7 @@ void MainWindow::cleanupMountPoints(const QString &path, bool isLuks)
     if (path == "/") return;
     shell->run("/bin/mountpoint -q " + path + "/boot/efi && /bin/umount " + path + "/boot/efi");
     shell->run("/bin/mountpoint -q " + path + "/boot && /bin/umount -R " + path + "/boot");
-    QString cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount -R %1; rmdir %1").arg(path);
+    QString cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount -R %1").arg(path);
     shell->run(cmd);
     if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
 }
@@ -358,10 +369,7 @@ void MainWindow::procStart() {
 }
 
 void MainWindow::progress() {
-    if (ui->progressBar->value() == 100) {
-        ui->progressBar->reset();
-    }
-    ui->progressBar->setValue(ui->progressBar->value() + 1);
+    ui->progressBar->setValue((ui->progressBar->value() + 1) % 100);
 }
 
 void MainWindow::procDone() {

@@ -20,7 +20,6 @@
  * along with MX Boot Repair.  If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
 
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -28,6 +27,7 @@
 
 #include <QMessageBox>
 #include <QProcess>
+#include <QTemporaryDir>
 #include <QTimer>
 
 namespace Ui {
@@ -68,6 +68,7 @@ private:
     QStringList ListDisk;
     QStringList ListPart;
     QTimer *timer;
+    QTemporaryDir tmpdir;
 
     bool checkAndMountPart(const QString &path, const QString &mountpoint);
     void addDevToList();

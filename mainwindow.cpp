@@ -20,15 +20,16 @@
  * along with MX Boot Repair.  If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
 
+#include <QDebug>
+#include <QFileDialog>
+#include <QInputDialog>
+#include <QScrollBar>
+
 #include "about.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "version.h"
 
-#include <QDebug>
-#include <QInputDialog>
-#include <QFileDialog>
-#include <QScrollBar>
 
 MainWindow::MainWindow(QWidget *parent) :
     QDialog(parent),

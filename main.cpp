@@ -20,76 +20,67 @@
  * along with MX Snapshot.  If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
 
-#include "mainwindow.h"
-#include <unistd.h>
-
 #include <QApplication>
-#include <QFile>
 #include <QDateTime>
+#include <QFile>
 #include <QIcon>
+#include <QLibraryInfo>
 #include <QLocale>
 #include <QScopedPointer>
 #include <QTranslator>
+
+#include "mainwindow.h"
+#include <unistd.h>
 
 static QScopedPointer<QFile> logFile;
 void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg);
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    a.setWindowIcon(QIcon::fromTheme("mx-boot-repair"));
+    QApplication app(argc, argv);
+    app.setWindowIcon(QIcon::fromTheme(app.applicationName()));
 
-    QString log_name= "/var/log/" + QCoreApplication::applicationName() + ".log";
+    QTranslator qtTran;
+    if (qtTran.load(QLocale::system(), "qt", "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+        app.installTranslator(&qtTran);
+
+    QTranslator qtBaseTran;
+    if (qtBaseTran.load("qtbase_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+        app.installTranslator(&qtBaseTran);
+
+    QTranslator appTran;
+    if (appTran.load(app.applicationName() + "_" + QLocale::system().name(), "/usr/share/" + app.applicationName() + "/locale"))
+        app.installTranslator(&appTran);
+
+    QString log_name= "/var/log/" + QApplication::applicationName() + ".log";
     logFile.reset(new QFile(log_name));
     logFile.data()->open(QFile::Append | QFile::Text);
     qInstallMessageHandler(messageHandler);
 
-    QTranslator qtTran;
-    qtTran.load(QString("qt_") + QLocale::system().name());
-    a.installTranslator(&qtTran);
-
-    QTranslator appTran;
-    appTran.load(QString("mx-boot-repair_") + QLocale::system().name(), "/usr/share/mx-boot-repair/locale");
-    a.installTranslator(&appTran);
-
     if (getuid() == 0) {
         MainWindow w;
         w.show();
-
-        return a.exec();
-
+        return app.exec();
     } else {
-        system("su-to-root -X -c " + QCoreApplication::applicationFilePath().toUtf8() + "&");
-//        QApplication::beep();
-//        QMessageBox::critical(nullptr, QString::null,
-//                              QApplication::tr("You must run this program as root."));
-//        return EXIT_FAILURE;
+        system("su-to-root -X -c " + QApplication::applicationFilePath().toUtf8() + "&");
     }
 }
 
 // The implementation of the handler
 void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
-    // Write to terminal
     QTextStream term_out(stdout);
-    term_out << msg << endl;
+    term_out << msg << QStringLiteral("\n");
 
-    // Open stream file writes
     QTextStream out(logFile.data());
-
-    // Write the date of recording
     out << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz ");
-    // By type determine to what level belongs message
     switch (type)
     {
-    case QtInfoMsg:     out << "INF "; break;
-    case QtDebugMsg:    out << "DBG "; break;
-    case QtWarningMsg:  out << "WRN "; break;
-    case QtCriticalMsg: out << "CRT "; break;
-    case QtFatalMsg:    out << "FTL "; break;
+    case QtInfoMsg:     out << QStringLiteral("INF "); break;
+    case QtDebugMsg:    out << QStringLiteral("DBG "); break;
+    case QtWarningMsg:  out << QStringLiteral("WRN "); break;
+    case QtCriticalMsg: out << QStringLiteral("CRT "); break;
+    case QtFatalMsg:    out << QStringLiteral("FTL "); break;
     }
-    // Write to the output category of the message and the message itself
-    out << context.category << ": "
-        << msg << endl;
-    out.flush();    // Clear the buffered data
+    out << context.category << QStringLiteral(": ") << msg << endl;
 }

@@ -1,7 +1,7 @@
-#include "cmd.h"
-
 #include <QDebug>
 #include <QEventLoop>
+
+#include "cmd.h"
 
 Cmd::Cmd(QObject *parent)
     : QProcess(parent)
@@ -41,7 +41,7 @@ QString Cmd::getCmdOut(const QString &cmd, bool quiet)
 bool Cmd::run(const QString &cmd, QByteArray &output, bool quiet)
 {
     out_buffer.clear();
-    connect(this, static_cast<void (QProcess::*)(int)>(&QProcess::finished), this, &Cmd::finished, Qt::UniqueConnection);
+    connect(this, QOverload<int>::of(&QProcess::finished), this, &Cmd::finished, Qt::UniqueConnection);
     if (this->state() != QProcess::NotRunning) {
         qDebug() << "Process already running:" << this->program() << this->arguments();
         return false;

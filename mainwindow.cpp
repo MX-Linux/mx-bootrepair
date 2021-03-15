@@ -163,7 +163,7 @@ void MainWindow::repairGRUB() {
     QString part = "/dev/" + ui->locationCombo->currentText().section(" ", 0, 0);
 
     QString rootOS = shell->getCmdOut("df / --output=source |sed -e 1d");
-    if (part == rootOS ||  rootOS == "/dev/mapper/rootfs") { // on current root
+    if (part == rootOS || rootOS == "/dev/mapper/rootfs") { // on current root
         displayOutput();
         bool ok = shell->run("update-grub");
         disableOutput();
@@ -196,6 +196,7 @@ void MainWindow::repairGRUB() {
             return;
         }
         if (QFile::exists(tmpdir.path() + "/boot/efi") && !checkAndMountPart(tmpdir.path(), "/boot/efi")) {
+            shell->run("grep -sq efivarfs /proc/self/mounts || test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars");
             cleanupMountPoints(tmpdir.path(), isLuks);
             refresh();
             return;
@@ -213,7 +214,6 @@ void MainWindow::repairGRUB() {
         ui->buttonApply->setEnabled(true);
         ui->buttonCancel->setEnabled(true);
         ui->progressBar->hide();
-
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
     cleanupMountPoints(tmpdir.path(), isLuks);
@@ -348,7 +348,8 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
     dialog.setComboBoxItems(partitions);
     dialog.setLabelText(tr("Select %1 location:").arg(mountpoint));
     dialog.setWindowTitle(this->windowTitle());
-    if (dialog.exec()) return dialog.textValue();
+    if (dialog.exec())
+        return dialog.textValue();
     return QString();
 }
 
@@ -580,7 +581,7 @@ void MainWindow::on_grubEspButton_clicked()
 
 bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoint)
 {
-    if (!shell->run("[ -n \"$(ls -A " + path + mountpoint + ")\" ]")) {
+    if (!shell->run("test -n \"$(ls -A " + path + mountpoint + ")\"")) {
         QString part = selectPart(path, mountpoint);
         if (!part.startsWith("UUID"))
             part = "/dev/" + part.section(" ", 0, 0);
@@ -588,7 +589,8 @@ bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoin
             QMessageBox::critical(this, tr("Error"), tr("Sorry, could not mount %1 partition").arg(mountpoint));
             return false;
         }
+        return true;
     }
-    return true;
+    return false;
 }
 

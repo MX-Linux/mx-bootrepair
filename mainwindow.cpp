@@ -145,9 +145,8 @@ void MainWindow::installGRUB(const QString& location, const QString& path, bool 
             return;
         }
         QString arch = shell->getCmdOut("arch");
-        if (arch == "i686") { // rename arch to match grub-install target
+        if (arch == "i686") // rename arch to match grub-install target
             arch = "i386";
-        }
         QString release = shell->getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
         cmd = QStringLiteral("/usr/sbin/chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck").arg(path).arg(arch).arg(release);
     }
@@ -241,7 +240,8 @@ void MainWindow::backupBR(QString filename) {
 // umount and clean temp folder
 void MainWindow::cleanupMountPoints(const QString &path, bool isLuks)
 {
-    if (path == "/") return;
+    if (path == "/")
+        return;
     shell->run("/bin/mountpoint -q " + path + "/boot/efi && /bin/umount " + path + "/boot/efi");
     shell->run("/bin/mountpoint -q " + path + "/boot && /bin/umount -R " + path + "/boot");
     QString cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount -R %1").arg(path);
@@ -269,9 +269,8 @@ void MainWindow::guessPartition()
         if (shell->run("/bin/lsblk -ln -o LABEL /dev/" + part.section(" ", 0 ,0).toUtf8() + "| /bin/grep -q rootMX")) {
             ui->rootCombo->setCurrentIndex(index);
             // select the same location by default for GRUB and /boot
-            if (ui->grubRootButton->isChecked()) {
+            if (ui->grubRootButton->isChecked())
                 ui->locationCombo->setCurrentIndex(ui->rootCombo->currentIndex());
-            }
             return;
         }
     }
@@ -285,9 +284,8 @@ void MainWindow::guessPartition()
         }
     }
     // use by default the same root and /boot partion for installing on root
-    if (ui->grubRootButton->isChecked()) {
+    if (ui->grubRootButton->isChecked())
         ui->locationCombo->setCurrentIndex(ui->rootCombo->currentIndex());
-    }
 }
 
 void MainWindow::restoreBR(QString filename) {
@@ -331,9 +329,8 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 {
     // read /etc/fstab on mounted path
     QFile file(path + "/etc/fstab");
-    if(!file.open(QIODevice::ReadOnly)) {
+    if(!file.open(QIODevice::ReadOnly))
         qDebug() << "Count not find /etc/fstab file on specified root partition";
-    }
     QString file_content = file.readAll().trimmed();
     file.close();
 
@@ -341,18 +338,15 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 
     // remove commented out lines, split tokens
     QList<QStringList> lines;
-    for (const QString &line : file_content_list) {
-        if (!line.startsWith("#")) {
+    for (const QString &line : file_content_list)
+        if (!line.startsWith("#"))
             lines << line.split(QRegularExpression("\\s+"), QString::SkipEmptyParts);
-        }
-    }
 
     // return device for /boot mount point
-    for (const QStringList &line : lines) {
-        if (line.size() > 0 && line.at(1) == mountpoint) {
+    for (const QStringList &line : lines)
+        if (line.size() > 0 && line.at(1) == mountpoint)
             return line.at(0);
-        }
-    }
+
     QInputDialog dialog;
     QStringList partitions = ListPart;
     partitions.removeAll(ui->rootCombo->currentText());
@@ -396,9 +390,8 @@ void MainWindow::displayResult(bool success)
     if (success) {
         if (QMessageBox::information(this, tr("Success"),
                                      tr("Process finished with success.<p><b>Do you want to exit MX Boot Repair?</b>"),
-                                     QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes){
+                                     QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes)
             qApp->exit(EXIT_SUCCESS);
-        }
     } else {
         QMessageBox::critical(this, tr("Error"),
                               tr("Process finished. Errors have occurred."));
@@ -421,12 +414,10 @@ bool MainWindow::openLuks(const QString part)
                                              tr("Enter password to unlock %1 encrypted partition:").arg(part), QLineEdit::Password, QString(), &ok);
     if (ok && !pass.isEmpty()) {
         QString cmd = "/bin/echo " + pass + "| /sbin/cryptsetup luksOpen " + part + " chrootfs -";
-        if (shell->run(cmd, true)) {
+        if (shell->run(cmd, true))
             return true;
-        }
     }
-    QMessageBox::critical(this, tr("Error"),
-                          tr("Sorry, could not open %1 LUKS container").arg(part));
+    QMessageBox::critical(this, tr("Error"), tr("Sorry, could not open %1 LUKS container").arg(part));
     return false;
 }
 
@@ -443,11 +434,10 @@ void MainWindow::addDevToList() {
 
     ui->locationCombo->clear();
     // add only disks
-    if (ui->grubMbrButton->isChecked()) {
+    if (ui->grubMbrButton->isChecked())
         ui->locationCombo->addItems(ListDisk);
-    } else { // add partition
+    else // add partition
         ui->locationCombo->addItems(ListPart);
-    }
 
 }
 
@@ -532,14 +522,14 @@ void MainWindow::on_buttonApply_clicked() {
             installGRUB();
         } else if (ui->bakRadioButton->isChecked()) {
             QString filename = QFileDialog::getSaveFileName(this, tr("Select backup file name"));
-            if (filename == "") {
+            if (filename.isEmpty()) {
                 QMessageBox::critical(this, tr("Error"), tr("No file was selected."));
                 return;
             }
             backupBR(filename);
         } else if (ui->restoreBakRadioButton->isChecked()) {
             QString filename = QFileDialog::getOpenFileName(this, tr("Select MBR or PBR backup file"));
-            if (filename == "") {
+            if (filename.isEmpty()) {
                 QMessageBox::critical(this, tr("Error"), tr("No file was selected."));
                 return;
             }
@@ -574,9 +564,8 @@ void MainWindow::on_buttonHelp_clicked() {
     QString user = shell->getCmdOut("logname");
 
     QString url = "/usr/share/doc/mx-boot-repair/mx-boot-repair.html";
-    if (lang.startsWith("fr")) {
+    if (lang.startsWith("fr"))
         url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
-    }
     displayDoc(url, tr("%1 Help").arg(this->windowTitle()), true);
 }
 
@@ -599,9 +588,8 @@ bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoin
 {
     if (!shell->run("[ -n \"$(ls -A " + path + mountpoint + ")\" ]")) {
         QString part = selectPart(path, mountpoint);
-        if (!part.startsWith("UUID")) {
+        if (!part.startsWith("UUID"))
             part = "/dev/" + part.section(" ", 0, 0);
-        }
         if (!shell->run("/bin/mount " + part + " " + path + mountpoint)) {
             QMessageBox::critical(this, tr("Error"),
                                   tr("Sorry, could not mount %1 partition").arg(mountpoint));

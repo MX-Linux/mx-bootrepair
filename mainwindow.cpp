@@ -108,8 +108,7 @@ void MainWindow::installGRUB() {
     // create a temp folder and mount dev sys proc
 
     if (!tmpdir.isValid()) {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Could not create a temporary folder"));
+        QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
         return;
     }
 
@@ -123,8 +122,7 @@ void MainWindow::installGRUB() {
         installGRUB(location, tmpdir.path(), isLuks);
         return;
     } else {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+        QMessageBox::critical(this, tr("Error"), tr("Could not set up chroot environment.\nPlease double-check the selected location."));
         setCursor(QCursor(Qt::ArrowCursor));
         ui->buttonApply->setEnabled(true);
         ui->buttonCancel->setEnabled(true);
@@ -186,8 +184,7 @@ void MainWindow::repairGRUB() {
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
     // create a temp folder and mount dev sys proc
     if (!tmpdir.isValid()) {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Could not create a temporary folder"));
+        QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
         return;
     }
     QString cmd = QStringLiteral("mount %1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(part).arg(tmpdir.path());
@@ -211,8 +208,7 @@ void MainWindow::repairGRUB() {
         displayResult(success);
         return;
     } else {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+        QMessageBox::critical(this, tr("Error"), tr("Could not set up chroot environment.\nPlease double-check the selected location."));
         setCursor(QCursor(Qt::ArrowCursor));
         ui->buttonApply->setEnabled(true);
         ui->buttonCancel->setEnabled(true);
@@ -319,8 +315,7 @@ void MainWindow::setEspDefaults()
         }
     }
     if (ui->locationCombo->count() == 0) {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again."));
+        QMessageBox::critical(this, tr("Error"), tr("Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again."));
         ui->buttonApply->setDisabled(true);
     }
 }
@@ -393,8 +388,7 @@ void MainWindow::displayResult(bool success)
                                      QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes)
             qApp->exit(EXIT_SUCCESS);
     } else {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Process finished. Errors have occurred."));
+        QMessageBox::critical(this, tr("Error"), tr("Process finished. Errors have occurred."));
     }
 }
 

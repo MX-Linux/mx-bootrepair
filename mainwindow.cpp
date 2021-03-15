@@ -589,8 +589,7 @@ bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoin
             QMessageBox::critical(this, tr("Error"), tr("Sorry, could not mount %1 partition").arg(mountpoint));
             return false;
         }
-        return true;
     }
-    return false;
+    return true;
 }
 

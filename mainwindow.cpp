@@ -96,7 +96,7 @@ void MainWindow::installGRUB() {
     }
 
     if (isLuks) {
-        if(!openLuks(root)) {
+        if (!openLuks(root)) {
             refresh();
             return;
         }
@@ -174,7 +174,7 @@ void MainWindow::repairGRUB() {
 
     bool isLuks = shell->run("cryptsetup isLuks " + part);
     if (isLuks) {
-        if(!openLuks(part)) {
+        if (!openLuks(part)) {
             refresh();
             return;
         }
@@ -324,7 +324,7 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 {
     // read /etc/fstab on mounted path
     QFile file(path + "/etc/fstab");
-    if(!file.open(QIODevice::ReadOnly))
+    if (!file.open(QIODevice::ReadOnly))
         qDebug() << "Count not find /etc/fstab file on specified root partition";
     QString file_content = file.readAll().trimmed();
     file.close();

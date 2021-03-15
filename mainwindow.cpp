@@ -86,7 +86,7 @@ void MainWindow::installGRUB() {
     QString root = "/dev/" + ui->rootCombo->currentText().section(" ", 0, 0);
     QString text = tr("GRUB is being installed on %1 device.").arg(location);
 
-    bool isLuks = shell->run("/sbin/cryptsetup isLuks " + root);
+    bool isLuks = shell->run("cryptsetup isLuks " + root);
 
     QString rootOS = shell->getCmdOut("df / --output=source |sed -e 1d");
     if (root == rootOS ||  rootOS == "/dev/mapper/rootfs") { // on current root
@@ -113,7 +113,7 @@ void MainWindow::installGRUB() {
         return;
     }
 
-    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(root).arg(tmpdir.path());
+    QString cmd = QStringLiteral("mount %1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(tmpdir.path());
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {
             cleanupMountPoints(tmpdir.path(), isLuks);
@@ -136,9 +136,9 @@ void MainWindow::installGRUB() {
 
 void MainWindow::installGRUB(const QString& location, const QString& path, bool isLuks)
 {
-    QString cmd = QStringLiteral("/usr/sbin/chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
+    QString cmd = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
     if (ui->grubEspButton->isChecked()) {
-        shell->run("/usr/bin/test -d " + path + "/boot/efi || /bin/mkdir " + path  + "/boot/efi");
+        shell->run("test -d " + path + "/boot/efi || mkdir " + path  + "/boot/efi");
         if (!checkAndMountPart(path, "/boot/efi")) {
             cleanupMountPoints(path, isLuks);
             refresh();
@@ -148,7 +148,7 @@ void MainWindow::installGRUB(const QString& location, const QString& path, bool 
         if (arch == "i686") // rename arch to match grub-install target
             arch = "i386";
         QString release = shell->getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
-        cmd = QStringLiteral("/usr/sbin/chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck").arg(path).arg(arch).arg(release);
+        cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck").arg(path).arg(arch).arg(release);
     }
     displayOutput();
     bool success = shell->run(cmd);
@@ -174,7 +174,7 @@ void MainWindow::repairGRUB() {
         return;
     }
 
-    bool isLuks = shell->run("/sbin/cryptsetup isLuks " + part);
+    bool isLuks = shell->run("cryptsetup isLuks " + part);
     if (isLuks) {
         if(!openLuks(part)) {
             refresh();
@@ -190,7 +190,7 @@ void MainWindow::repairGRUB() {
                               tr("Could not create a temporary folder"));
         return;
     }
-    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount -o bind /dev %2/dev && /bin/mount -o bind /sys %2/sys && /bin/mount -o bind /proc %2/proc").arg(part).arg(tmpdir.path());
+    QString cmd = QStringLiteral("mount %1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(part).arg(tmpdir.path());
 
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {
@@ -203,7 +203,7 @@ void MainWindow::repairGRUB() {
             refresh();
             return;
         }
-        cmd = QStringLiteral("/usr/sbin/chroot %1 update-grub").arg(tmpdir.path());
+        cmd = QStringLiteral("chroot %1 update-grub").arg(tmpdir.path());
         displayOutput();
         bool success = shell->run(cmd);
         disableOutput();
@@ -232,7 +232,7 @@ void MainWindow::backupBR(QString filename) {
     QString location = ui->locationCombo->currentText().section(" ", 0, 0);
     QString text = tr("Backing up MBR or PBR from %1 device.").arg(location);
     ui->outputLabel->setText(text);
-    QString cmd = "/bin/dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
+    QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
     displayOutput();
     displayResult(shell->run(cmd));
 }
@@ -242,11 +242,11 @@ void MainWindow::cleanupMountPoints(const QString &path, bool isLuks)
 {
     if (path == "/")
         return;
-    shell->run("/bin/mountpoint -q " + path + "/boot/efi && /bin/umount " + path + "/boot/efi");
-    shell->run("/bin/mountpoint -q " + path + "/boot && /bin/umount -R " + path + "/boot");
-    QString cmd = QStringLiteral("/bin/umount %1/proc %1/sys %1/dev; /bin/umount -R %1").arg(path);
+    shell->run("mountpoint -q " + path + "/boot/efi && umount " + path + "/boot/efi");
+    shell->run("mountpoint -q " + path + "/boot && umount -R " + path + "/boot");
+    QString cmd = QStringLiteral("umount %1/proc %1/sys %1/dev; umount -R %1").arg(path);
     shell->run(cmd);
-    if (isLuks) shell->run("/sbin/cryptsetup luksClose chrootfs");
+    if (isLuks) shell->run("cryptsetup luksClose chrootfs");
 }
 
 // try to guess partition to install GRUB
@@ -256,8 +256,8 @@ void MainWindow::guessPartition()
         // find first disk with Linux partitions
         for (int index = 0; index < ui->locationCombo->count(); index++) {
             QString drive = ui->locationCombo->itemText(index);
-            if (shell->run("/bin/lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + \
-                       "| /bin/grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
+            if (shell->run("lsblk -ln -o PARTTYPE /dev/" + drive.section(" ", 0 ,0).toUtf8() + \
+                       "| grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
                 ui->locationCombo->setCurrentIndex(index);
                 break;
             }
@@ -266,7 +266,7 @@ void MainWindow::guessPartition()
     // find first a partition with rootMX* label
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
-        if (shell->run("/bin/lsblk -ln -o LABEL /dev/" + part.section(" ", 0 ,0).toUtf8() + "| /bin/grep -q rootMX")) {
+        if (shell->run("lsblk -ln -o LABEL /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -q rootMX")) {
             ui->rootCombo->setCurrentIndex(index);
             // select the same location by default for GRUB and /boot
             if (ui->grubRootButton->isChecked())
@@ -277,8 +277,8 @@ void MainWindow::guessPartition()
     // it it cannot find rootMX*, look for Linux partitions
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
-        if (shell->run("/bin/lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + \
-                   "| /bin/grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
+        if (shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + \
+                   "| grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")) {
             ui->rootCombo->setCurrentIndex(index);
             break;
         }
@@ -302,7 +302,7 @@ void MainWindow::restoreBR(QString filename) {
     }
     QString text = tr("Restoring MBR/PBR from backup to %1 device.").arg(location);
     ui->outputLabel->setText(text);
-    QString cmd = "/bin/dd if=" + filename + " of=/dev/" + location + " bs=446 count=1";
+    QString cmd = "dd if=" + filename + " of=/dev/" + location + " bs=446 count=1";
     displayOutput();
     displayResult(shell->run(cmd));
 }
@@ -313,7 +313,7 @@ void MainWindow::setEspDefaults()
     // remove non-ESP partitions
     for (int index = 0; index < ui->locationCombo->count(); index++) {
         QString part = ui->locationCombo->itemText(index);
-        if (!shell->run("/bin/lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| /bin/grep -qi c12a7328-f81f-11d2-ba4b-00a0c93ec93b")) {
+        if (!shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(" ", 0 ,0).toUtf8() + "| grep -qi c12a7328-f81f-11d2-ba4b-00a0c93ec93b")) {
             ui->locationCombo->removeItem(index);
             index--;
         }
@@ -413,7 +413,7 @@ bool MainWindow::openLuks(const QString part)
     QString pass = QInputDialog::getText(this, this->windowTitle(),
                                              tr("Enter password to unlock %1 encrypted partition:").arg(part), QLineEdit::Password, QString(), &ok);
     if (ok && !pass.isEmpty()) {
-        QString cmd = "/bin/echo " + pass + "| /sbin/cryptsetup luksOpen " + part + " chrootfs -";
+        QString cmd = "echo " + pass + "| cryptsetup luksOpen " + part + " chrootfs -";
         if (shell->run(cmd, true))
             return true;
     }
@@ -424,10 +424,10 @@ bool MainWindow::openLuks(const QString part)
 
 // add list of devices to locationCombo
 void MainWindow::addDevToList() {
-    QString cmd = QStringLiteral("/bin/lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | /bin/grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
+    QString cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
     ListDisk = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
 
-    cmd = QStringLiteral("/bin/lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | /bin/grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
+    cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
     ListPart = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
     ui->rootCombo->clear();
     ui->rootCombo->addItems(ListPart);
@@ -590,7 +590,7 @@ bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoin
         QString part = selectPart(path, mountpoint);
         if (!part.startsWith("UUID"))
             part = "/dev/" + part.section(" ", 0, 0);
-        if (!shell->run("/bin/mount " + part + " " + path + mountpoint)) {
+        if (!shell->run("mount " + part + " " + path + mountpoint)) {
             QMessageBox::critical(this, tr("Error"),
                                   tr("Sorry, could not mount %1 partition").arg(mountpoint));
             return false;

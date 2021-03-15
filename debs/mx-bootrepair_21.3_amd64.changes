@@ -1,0 +1,46 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Mon, 15 Mar 2021 09:42:16 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 21.3
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (21.3) mx; urgency=medium
+ .
+   * mount efivars before installing GRUB
+Checksums-Sha1:
+ 0ce4864eac37c05732e9d93105b2d5a1e7740b51 1174 mx-bootrepair_21.3.dsc
+ 5462d1261078a155b6304c0ab759b50f75e5605a 63652 mx-bootrepair_21.3.tar.xz
+ c118c1ec5139122455d691e7865379298977ae24 10435 mx-bootrepair_21.3_amd64.buildinfo
+ 66b3df5c03ca1e48518897defb10c2fed24892db 83432 mx-bootrepair_21.3_amd64.deb
+Checksums-Sha256:
+ 0be58bd0418bf42bb0fb89e5a48b145458733380d104ba959784684335e3758c 1174 mx-bootrepair_21.3.dsc
+ afededa0f77b479d3fe99999ff8ca868bb65eb43f7f61268238628a526f931e5 63652 mx-bootrepair_21.3.tar.xz
+ 27990436310405f8cbdc0fe89d07cd0f309843de6c192378a6e8ede3bf8958c9 10435 mx-bootrepair_21.3_amd64.buildinfo
+ 1140d72ab8eb4eed27c7aa25d4285d3e57a42bfac550b7d0ab07e3b0196320b1 83432 mx-bootrepair_21.3_amd64.deb
+Files:
+ bb7c75f46a0a8ca09519bf02584538f0 1174 admin optional mx-bootrepair_21.3.dsc
+ ea036019cbc32c4795b6f1e5a0437419 63652 admin optional mx-bootrepair_21.3.tar.xz
+ 6944187bbb06a6f113f8b068878b2bbe 10435 admin optional mx-bootrepair_21.3_amd64.buildinfo
+ 0a020f768a1152b0227a5efb6aff97b2 83432 admin optional mx-bootrepair_21.3_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmBPhAwTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumLUeB/9orbWACECmoxLPZMdKfOa7XuvJmfJy
++t1xMYkO8WKLH5PdXErQrxolaBc2Ywh1FI9HC5x4KlYO+aJYm8LE8DJUq/I8SnTd
+kAMGRbRwc+qs48qoaZPvJ/MbVYVF3ul02w0OTBSDkI2RszGNCw7/c0rDLR8+rgUD
+n89tntGzDO4/JhN44N4MuSiQulYJE3DB3rqHx/PkCszw1qOsiQWnx4tA06Zc0GRG
+Ahhg3nKIcfV+gXs0XzvH7gmj0cmsjnpzTOh2goSxyxeMUiGuBXltZXnsKRkK+szP
+4kr2uwSRuGH2VT6P5sfXzhVP0Z2Nw7nlXno6EHsZoc35xlZLMDW8OGQj
+=+TNs
+-----END PGP SIGNATURE-----

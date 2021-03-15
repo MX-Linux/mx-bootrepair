@@ -1,0 +1,40 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Mon, 15 Mar 2021 09:42:16 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: i386
+Version: 21.3
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (21.3) mx; urgency=medium
+ .
+   * mount efivars before installing GRUB
+Checksums-Sha1:
+ c32e53557627e61c3656f1fc74cf52f444c15db3 10135 mx-bootrepair_21.3_i386.buildinfo
+ 36ce248af135a83ed747908e75a2fa6a2c55fe89 85808 mx-bootrepair_21.3_i386.deb
+Checksums-Sha256:
+ 924246bb73310d41f0debaec6dc973e6400f114c335923e701d6028f1c979ac5 10135 mx-bootrepair_21.3_i386.buildinfo
+ c87cb91aad640ae966f2e74b12982c77d386a251dd662f749f12e4a9d29f2edd 85808 mx-bootrepair_21.3_i386.deb
+Files:
+ b325792dc4923811cbf70be1c8d6940b 10135 admin optional mx-bootrepair_21.3_i386.buildinfo
+ 09d9f70c67fd14975644f225198b1a9d 85808 admin optional mx-bootrepair_21.3_i386.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmBPhAsTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumMFSB/0Xydvdo+Gr5NoXkwTQA0O4iGt1B85i
+PDeycuCgIDW5yPOHJH6DtUIq74hABg/LFrxUx5mFVX1eVJNw4uEbu7iG/mfrQdwN
+gS+WmFEfQ+x5+w7qYv71IYJ/RCOYQGBGlozuDvHeZTMuwNCcH/OmOw/Z5HRFug9A
+fpEPCqdjmwNOBp+XdBM1SjYs6vBgSSWnpCMIcp8UR3Ef9h6FOfotARKz0lMHpTWR
+1aUhVL9/B70pfiJeFQjhsYbPQKlK6HjrXWYXIgBTv6ZK+/yH0ppV+8C6MVo24IbT
+/ogOruOTD30kiplmlJT2AuHysE1FNfltd+fv5CeyLy/embJK0VbiOjQ7
+=9GQM
+-----END PGP SIGNATURE-----

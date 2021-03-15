@@ -18,23 +18,23 @@ Changes:
  .
    * mount efivars before installing GRUB
 Checksums-Sha1:
- c32e53557627e61c3656f1fc74cf52f444c15db3 10135 mx-bootrepair_21.3_i386.buildinfo
- 36ce248af135a83ed747908e75a2fa6a2c55fe89 85808 mx-bootrepair_21.3_i386.deb
+ c856a234ebab8ff9efb9a2e3790aeae1c5489378 10135 mx-bootrepair_21.3_i386.buildinfo
+ d597e156047fb3e564dd2d3dc0140931cb092f35 85856 mx-bootrepair_21.3_i386.deb
 Checksums-Sha256:
- 924246bb73310d41f0debaec6dc973e6400f114c335923e701d6028f1c979ac5 10135 mx-bootrepair_21.3_i386.buildinfo
- c87cb91aad640ae966f2e74b12982c77d386a251dd662f749f12e4a9d29f2edd 85808 mx-bootrepair_21.3_i386.deb
+ 7251f9e6ad08caaaf20d5c9c033600e4e9871ab032e11670918ceef01bd56512 10135 mx-bootrepair_21.3_i386.buildinfo
+ 687fb4e481282f7de20bb83dc65cf77130ed986e65f5f8ea23c37e6d39e3688d 85856 mx-bootrepair_21.3_i386.deb
 Files:
- b325792dc4923811cbf70be1c8d6940b 10135 admin optional mx-bootrepair_21.3_i386.buildinfo
- 09d9f70c67fd14975644f225198b1a9d 85808 admin optional mx-bootrepair_21.3_i386.deb
+ 822cad60ed9da9a1169c8186eccbb71d 10135 admin optional mx-bootrepair_21.3_i386.buildinfo
+ 916be2dfd8b40d9d3846be502376dcf6 85856 admin optional mx-bootrepair_21.3_i386.deb
 
 -----BEGIN PGP SIGNATURE-----
 
-iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmBPhAsTHGFkcmlhbkBt
-eGxpbnV4Lm9yZwAKCRBwk4x4BnnumMFSB/0Xydvdo+Gr5NoXkwTQA0O4iGt1B85i
-PDeycuCgIDW5yPOHJH6DtUIq74hABg/LFrxUx5mFVX1eVJNw4uEbu7iG/mfrQdwN
-gS+WmFEfQ+x5+w7qYv71IYJ/RCOYQGBGlozuDvHeZTMuwNCcH/OmOw/Z5HRFug9A
-fpEPCqdjmwNOBp+XdBM1SjYs6vBgSSWnpCMIcp8UR3Ef9h6FOfotARKz0lMHpTWR
-1aUhVL9/B70pfiJeFQjhsYbPQKlK6HjrXWYXIgBTv6ZK+/yH0ppV+8C6MVo24IbT
-/ogOruOTD30kiplmlJT2AuHysE1FNfltd+fv5CeyLy/embJK0VbiOjQ7
-=9GQM
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmBPh1ETHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumBvJCACE9azVN4u8icThaJsw/r/ASxqK1CH2
+RE8iVjWe5PpaqQBFpkA3EkUvwMzL1YQ1zaqlbO9g8nOiYrkYa6XXp/iBRyGZcYcv
+ezY2RNTT1fi1iQq9k1l2ACPMrk4UYNxfH7MiLAwGP/2gWqfSUJd0et+4bAPwFG1N
+tRHFDApwizLP3hfymFXTlSZpEcrQ1eSwXiG+lfRA6kbPmOUAolCZjGAlYbR8SzIw
+uxlR47WyuFgpR2ZHvPrVq/KSRkHa4ICHc9ovobRKKLzXiOEGPKIanKEwt0Rk1v8D
+AgGtsofqM7pobQ5U5V5pedJyCKe7UaI2MUeTdikoMHBRARKejyFGGgsk
+=el12
 -----END PGP SIGNATURE-----

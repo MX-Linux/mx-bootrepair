@@ -340,7 +340,7 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
     // return device for /boot mount point
     for (const QStringList &line : lines)
         if (line.size() > 0 && line.at(1) == mountpoint)
-            return line.at(0);
+            return line.at(0).trimmed();
 
     QInputDialog dialog;
     QStringList partitions = ListPart;

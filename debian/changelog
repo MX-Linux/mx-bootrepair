@@ -1,3 +1,9 @@
+mx-bootrepair (21.3.02) mx; urgency=medium
+
+  * fix: NVRAM access of grub-install within chroot
+
+ -- fehlix <fehlix@mxlinux.org>  Tue, 16 Mar 2021 10:12:45 -0400
+
 mx-bootrepair (21.3.01) mx; urgency=medium
 
   * fix: operator precedence

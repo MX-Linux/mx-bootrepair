@@ -1,3 +1,10 @@
+mx-bootrepair (21.3.01) mx; urgency=medium
+
+  * fix: operator precedence
+  * fix: device name if not UUID
+
+ -- Adrian <adrian@mxlinux.org>  Mon, 15 Mar 2021 22:54:38 -0400
+
 mx-bootrepair (21.3) mx; urgency=medium
 
   * mount efivars before installing GRUB

@@ -165,7 +165,7 @@
         <location filename="../mainwindow.cpp" line="415"/>
         <location filename="../mainwindow.cpp" line="521"/>
         <location filename="../mainwindow.cpp" line="528"/>
-        <location filename="../mainwindow.cpp" line="589"/>
+        <location filename="../mainwindow.cpp" line="587"/>
         <source>Error</source>
         <translation>Napaka</translation>
     </message>
@@ -324,7 +324,7 @@ Ali ste prepričani?</translation>
         <translation>%1 pomoč</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="589"/>
+        <location filename="../mainwindow.cpp" line="587"/>
         <source>Sorry, could not mount %1 partition</source>
         <translation>Oprostite, razdelka %1 ni bilo mogoče priklopiti</translation>
     </message>

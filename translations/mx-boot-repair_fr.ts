@@ -165,7 +165,7 @@
         <location filename="../mainwindow.cpp" line="415"/>
         <location filename="../mainwindow.cpp" line="521"/>
         <location filename="../mainwindow.cpp" line="528"/>
-        <location filename="../mainwindow.cpp" line="589"/>
+        <location filename="../mainwindow.cpp" line="587"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -324,7 +324,7 @@ Etes-vous sûr?</translation>
         <translation>%1 Aide</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="589"/>
+        <location filename="../mainwindow.cpp" line="587"/>
         <source>Sorry, could not mount %1 partition</source>
         <translation>Désolé, impossible de monter la partition %1</translation>
     </message>

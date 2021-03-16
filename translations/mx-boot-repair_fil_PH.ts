@@ -165,7 +165,7 @@
         <location filename="../mainwindow.cpp" line="415"/>
         <location filename="../mainwindow.cpp" line="521"/>
         <location filename="../mainwindow.cpp" line="528"/>
-        <location filename="../mainwindow.cpp" line="589"/>
+        <location filename="../mainwindow.cpp" line="587"/>
         <source>Error</source>
         <translation>May error</translation>
     </message>
@@ -324,7 +324,7 @@ Nakakatiyak ka ba?</translation>
         <translation>%1 Tulong</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="589"/>
+        <location filename="../mainwindow.cpp" line="587"/>
         <source>Sorry, could not mount %1 partition</source>
         <translation>Paumanhin, di maaring maimount ang partition na %1 </translation>
     </message>

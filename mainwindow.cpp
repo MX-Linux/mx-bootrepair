@@ -111,7 +111,13 @@ void MainWindow::installGRUB() {
         return;
     }
 
-    QString cmd = QStringLiteral("mount %1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(root).arg(tmpdir.path());
+    // for grub-install access UEFI NVRAM entries mount efivarfs if not already mounted 
+    if (ui->grubEspButton->isChecked()) {
+        shell->run("grep -sq ^efivarfs /proc/self/mounts || { test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }");
+    }
+
+    // create a temp folder and mount dev sys proc; mount run as tmpfs
+    QString cmd = QStringLiteral("mount %1 %2 && mount --rbind --make-rslave /dev %2/dev && mount --rbind --make-rslave /sys %2/sys && mount --rbind /proc %2/proc && mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run ").arg(root).arg(tmpdir.path());
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {
             cleanupMountPoints(tmpdir.path(), isLuks);
@@ -135,7 +141,6 @@ void MainWindow::installGRUB(const QString& location, const QString& path, bool 
 {
     QString cmd = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
     if (ui->grubEspButton->isChecked()) {
-        shell->run("grep -sq efivarfs /proc/self/mounts || { test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }");
         shell->run("test -d " + path + "/boot/efi || mkdir " + path  + "/boot/efi");
         if (!checkAndMountPart(path, "/boot/efi")) {
             cleanupMountPoints(path, isLuks);
@@ -182,12 +187,12 @@ void MainWindow::repairGRUB() {
     }
 
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
-    // create a temp folder and mount dev sys proc
+    // create a temp folder and mount dev sys proc; mount run as tmpfs
     if (!tmpdir.isValid()) {
         QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
         return;
     }
-    QString cmd = QStringLiteral("mount %1 %2 && mount -o bind /dev %2/dev && mount -o bind /sys %2/sys && mount -o bind /proc %2/proc").arg(part).arg(tmpdir.path());
+    QString cmd = QStringLiteral("mount %1 %2 && mount --rbind --make-rslave /dev %2/dev && mount --rbind --make-rslave /sys %2/sys && mount --rbind /proc %2/proc && mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run ").arg(part).arg(tmpdir.path());
 
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {
@@ -196,7 +201,6 @@ void MainWindow::repairGRUB() {
             return;
         }
         if (QFile::exists(tmpdir.path() + "/boot/efi") && !checkAndMountPart(tmpdir.path(), "/boot/efi")) {
-            shell->run("grep -sq efivarfs /proc/self/mounts || { test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }");
             cleanupMountPoints(tmpdir.path(), isLuks);
             refresh();
             return;
@@ -240,7 +244,7 @@ void MainWindow::cleanupMountPoints(const QString &path, bool isLuks)
         return;
     shell->run("mountpoint -q " + path + "/boot/efi && umount " + path + "/boot/efi");
     shell->run("mountpoint -q " + path + "/boot && umount -R " + path + "/boot");
-    QString cmd = QStringLiteral("umount %1/proc %1/sys %1/dev; umount -R %1").arg(path);
+    QString cmd = QStringLiteral("umount -R %1/run %1/proc %1/sys %1/dev; umount -R %1").arg(path);
     shell->run(cmd);
     if (isLuks) shell->run("cryptsetup luksClose chrootfs");
 }

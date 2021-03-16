@@ -135,7 +135,7 @@ void MainWindow::installGRUB(const QString& location, const QString& path, bool 
 {
     QString cmd = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
     if (ui->grubEspButton->isChecked()) {
-        shell->run("grep -sq efivarfs /proc/self/mounts || test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars");
+        shell->run("grep -sq efivarfs /proc/self/mounts || { test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }");
         shell->run("test -d " + path + "/boot/efi || mkdir " + path  + "/boot/efi");
         if (!checkAndMountPart(path, "/boot/efi")) {
             cleanupMountPoints(path, isLuks);
@@ -196,7 +196,7 @@ void MainWindow::repairGRUB() {
             return;
         }
         if (QFile::exists(tmpdir.path() + "/boot/efi") && !checkAndMountPart(tmpdir.path(), "/boot/efi")) {
-            shell->run("grep -sq efivarfs /proc/self/mounts || test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars");
+            shell->run("grep -sq efivarfs /proc/self/mounts || { test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }");
             cleanupMountPoints(tmpdir.path(), isLuks);
             refresh();
             return;
@@ -583,8 +583,6 @@ bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoin
 {
     if (!shell->run("test -n \"$(ls -A " + path + mountpoint + ")\"")) {
         QString part = selectPart(path, mountpoint);
-        if (!part.startsWith("UUID"))
-            part = "/dev/" + part.section(" ", 0, 0);
         if (!shell->run("mount " + part + " " + path + mountpoint)) {
             QMessageBox::critical(this, tr("Error"), tr("Sorry, could not mount %1 partition").arg(mountpoint));
             return false;

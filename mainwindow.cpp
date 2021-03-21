@@ -117,7 +117,7 @@ void MainWindow::installGRUB() {
     }
 
     // create a temp folder and mount dev sys proc; mount run as tmpfs
-    QString cmd = QStringLiteral("mount %1 %2 && mount --rbind --make-rslave /dev %2/dev && mount --rbind --make-rslave /sys %2/sys && mount --rbind /proc %2/proc && mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run ").arg(root).arg(tmpdir.path());
+    QString cmd = QStringLiteral("mount %1 %2 && mount --rbind --make-rslave /dev %2/dev && mount --rbind --make-rslave /sys %2/sys && mount --rbind /proc %2/proc && mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && mkdir -p %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev").arg(root).arg(tmpdir.path());
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {
             cleanupMountPoints(tmpdir.path(), isLuks);
@@ -192,7 +192,7 @@ void MainWindow::repairGRUB() {
         QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
         return;
     }
-    QString cmd = QStringLiteral("mount %1 %2 && mount --rbind --make-rslave /dev %2/dev && mount --rbind --make-rslave /sys %2/sys && mount --rbind /proc %2/proc && mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run ").arg(part).arg(tmpdir.path());
+    QString cmd = QStringLiteral("mount %1 %2 && mount --rbind --make-rslave /dev %2/dev && mount --rbind --make-rslave /sys %2/sys && mount --rbind /proc %2/proc && mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && mkdir -p %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev ").arg(part).arg(tmpdir.path());
 
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {

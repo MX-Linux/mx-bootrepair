@@ -1,0 +1,40 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Sat, 20 Mar 2021 18:17:45 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: i386
+Version: 21.3.03
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: fehlix <fehlix@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (21.3.03) mx; urgency=medium
+ .
+   * adjust /dev/udev in chroot to make update-grub work
+Checksums-Sha1:
+ e240a324c77fc1fc8051f0cdd662eb7cc09c40fa 10150 mx-bootrepair_21.3.03_i386.buildinfo
+ 1fb54d752847d14c10aeedb98deab74467c2029b 86032 mx-bootrepair_21.3.03_i386.deb
+Checksums-Sha256:
+ 3354f0cdec18a00f548a4984b1e81b4d25d08633c24589222d5ffba1e3e282ff 10150 mx-bootrepair_21.3.03_i386.buildinfo
+ bb87649d7afa6092edae83cedf1c7974a8cf4b6d78c96b84e1615633eb44ebdd 86032 mx-bootrepair_21.3.03_i386.deb
+Files:
+ a1f5596c21457328e0c27b2a0b06f51b 10150 admin optional mx-bootrepair_21.3.03_i386.buildinfo
+ 4b6a574e160456a342a6045e2e8fd3ea 86032 admin optional mx-bootrepair_21.3.03_i386.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmBXyHgTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumFjbCACChKstAhyjph9O/AROUxbE6xgDHozJ
+vLq9L6z7+aqcSIlfEWLsN11kpWFu7plQr1FGUN8RlKM4NSYflArv0vBdB5wq/o4Q
+vQJj3eMIJioaCEfzrtiKo1iLWBTRASH5jbi5bgIzOJet4OK9nyrHNnwHUc6RzQT4
+kfIDjy5hcA3KScBzANyH2g/AL5RY/kxh8DHKZmgXE+4QvHFgLo6DWXCOMM+SsRnN
+Y1RLREhANHAl+TCDNMgh+7C6HIpnE/nknJPETJfDbZFE5qdPNJ5HZBRaMafgC+ow
+yzzPwI03wAMdvtaVeEbgFXUzJXIb98jydUtiLChU6jyG6Gq12OtE+tVw
+=737Y
+-----END PGP SIGNATURE-----

@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
                               QObject::tr("You seem to be logged in as root, please log out and log in as normal user to use this program."));
         exit(EXIT_FAILURE);
     }
-    QString log_name= "/var/log/" + qApp->applicationName() + ".log";
+    QString log_name = "/var/log/" + qApp->applicationName() + ".log";
     if (QFileInfo::exists(log_name)) {
         QFile::remove(log_name + ".old");
         QFile::rename(log_name, log_name + ".old");

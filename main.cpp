@@ -26,7 +26,6 @@
 #include <QIcon>
 #include <QLibraryInfo>
 #include <QLocale>
-#include <QScopedPointer>
 #include <QTranslator>
 
 #include "mainwindow.h"

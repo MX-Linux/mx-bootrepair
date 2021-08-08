@@ -32,7 +32,7 @@
 #include "mainwindow.h"
 #include <unistd.h>
 
-static QScopedPointer<QFile> logFile;
+static QFile logFile;
 void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg);
 
 int main(int argc, char *argv[])
@@ -58,10 +58,13 @@ int main(int argc, char *argv[])
                               QObject::tr("You seem to be logged in as root, please log out and log in as normal user to use this program."));
         exit(EXIT_FAILURE);
     }
-
-    QString log_name= "/var/log/" + QApplication::applicationName() + ".log";
-    logFile.reset(new QFile(log_name));
-    logFile.data()->open(QFile::Append | QFile::Text);
+    QString log_name= "/var/log/" + qApp->applicationName() + ".log";
+    if (QFileInfo::exists(log_name)) {
+        QFile::remove(log_name + ".old");
+        QFile::rename(log_name, log_name + ".old");
+    }
+    logFile.setFileName(log_name);
+    logFile.open(QFile::Append | QFile::Text);
     qInstallMessageHandler(messageHandler);
 
     if (getuid() == 0) {
@@ -79,7 +82,7 @@ void messageHandler(QtMsgType type, const QMessageLogContext &context, const QSt
     QTextStream term_out(stdout);
     term_out << msg << QStringLiteral("\n");
 
-    QTextStream out(logFile.data());
+    QTextStream out(&logFile);
     out << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz ");
     switch (type)
     {

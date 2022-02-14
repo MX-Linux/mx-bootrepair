@@ -117,7 +117,7 @@ void MainWindow::installGRUB() {
     }
 
     // create a temp folder and mount dev sys proc; mount run as tmpfs
-    QString cmd = QStringLiteral("mount %1 %2 && mount --rbind --make-rslave /dev %2/dev && mount --rbind --make-rslave /sys %2/sys && mount --rbind /proc %2/proc && mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && mkdir -p %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev").arg(root).arg(tmpdir.path());
+    QString cmd = QStringLiteral("/bin/mount /dev/%1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && /bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && /bin/mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev").arg(root).arg(tmpdir.path());
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {
             cleanupMountPoints(tmpdir.path(), isLuks);
@@ -192,7 +192,7 @@ void MainWindow::repairGRUB() {
         QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
         return;
     }
-    QString cmd = QStringLiteral("mount %1 %2 && mount --rbind --make-rslave /dev %2/dev && mount --rbind --make-rslave /sys %2/sys && mount --rbind /proc %2/proc && mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && mkdir -p %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev ").arg(part).arg(tmpdir.path());
+    QString cmd = QStringLiteral("/bin/mount /dev/%1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && /bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && /bin/mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev").arg(part).arg(tmpdir.path());
 
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {
@@ -244,7 +244,7 @@ void MainWindow::cleanupMountPoints(const QString &path, bool isLuks)
         return;
     shell->run("mountpoint -q " + path + "/boot/efi && umount " + path + "/boot/efi");
     shell->run("mountpoint -q " + path + "/boot && umount -R " + path + "/boot");
-    QString cmd = QStringLiteral("umount -R %1/run %1/proc %1/sys %1/dev; umount -R %1").arg(path);
+    QString cmd = QStringLiteral("/bin/umount -R %1/run && /bin/umount -R %1/proc && /bin/umount -R %1/sys && /bin/umount -R %1/dev && umount %1 && rmdir %1").arg(path);
     shell->run(cmd);
     if (isLuks) shell->run("cryptsetup luksClose chrootfs");
 }

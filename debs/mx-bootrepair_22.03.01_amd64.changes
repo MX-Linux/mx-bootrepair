@@ -1,0 +1,55 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Mar 2022 20:40:08 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 22.03.01
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: fehlix <fehlix@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (22.03.01) mx; urgency=medium
+ .
+   * adjust mount/umount for chroot
+   * add detection of invalid entries in fstab
+   * fix device selection
+   * add fallback efi to grub-install
+Checksums-Sha1:
+ c9ac46d8ed8bda776b4d076b9d714a3af7bea7fb 1541 mx-bootrepair_22.03.01.dsc
+ 44974ced08f7cdc28adfb00259c4eff31e88b3bb 93612 mx-bootrepair_22.03.01.tar.xz
+ 70fce06da1cb3a377f8bed6566f82add0a74fec4 11087 mx-bootrepair_22.03.01_amd64.buildinfo
+ 8179865d88a9d1df5400199a59f7b50716a2a89a 83844 mx-bootrepair_22.03.01_amd64.deb
+Checksums-Sha256:
+ 340ebe9412a24f479de73a1672437de58876ca351172843b38da541b4a93ac0d 1541 mx-bootrepair_22.03.01.dsc
+ 9657e0029b2c5175d047f48455879dd7016fcf78311702be5a94837a49139448 93612 mx-bootrepair_22.03.01.tar.xz
+ f8da035232a979052d5b2d523f5c9e69ff650d74124ab328bd5293e46f27ffb2 11087 mx-bootrepair_22.03.01_amd64.buildinfo
+ a56b3091a0d5dfe24def1dbe4ba6888442a4e574db6effb4a8aa9d81116c7e73 83844 mx-bootrepair_22.03.01_amd64.deb
+Files:
+ d9b8acf6a94190ce502af3b287ce7d7a 1541 admin optional mx-bootrepair_22.03.01.dsc
+ 356585f3516bb15f7b62ca276366da17 93612 admin optional mx-bootrepair_22.03.01.tar.xz
+ 2c3e4310105f00335ad93a5512dee9cb 11087 admin optional mx-bootrepair_22.03.01_amd64.buildinfo
+ 2e535cc86af5fc6943c60b5a3683dd41 83844 admin optional mx-bootrepair_22.03.01_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEgRnC8/wKXRM2S0xLL1ePG6ydm+kFAmIqoWkTHGZlaGxpeEBt
+eGxpbnV4Lm9yZwAKCRAvV48brJ2b6XL4D/9+RyWcVvABQekjzFdagTz4PS4PeE5F
+9yCzDcz2fmFNeUfvYhBBYvg/W1Kj+rgO7EagJCWyi7rBDxjaskMSkusGTZ2EwG0Y
++er1jvK0fZNOzWzAuZPDrIpjTMdpQ40Be6ylZDRsHpQtAmklvLmuIiVh+tE6cOli
+4+IXz+zP4dK+gu0G9LESMrcPUn8fNySRU9PQ3raRZRILNJ2tCpGKMSsjPYPLgQLA
+ry+jB9tvUEXkZndEk6caiNAWNUlJnA+QKjeLy2BnC4/g/9vKk6tXj7XTS8yPS9gD
+suDNq/AsmQ+WwumfjkOON3MGTYYJJ3zmbsvIve3Ey4TxwL8SUUNul94MwR2jkJLO
+mNMDUyxmKwzXVO8XbDc4RNmnzqxpYQMMub3NJwvQ8dUqFSJu4OPwFttxpXqj38Zi
+Dy/tQR/x5ghWXAni2J6jCoHFpMg34inN4rah8WgM/UXwvys9mgKdZawj+CqJ+/d8
+s9PZeVTwwhKR3zfZ45xc3o9H6yqeX8VIDgPzT8JauVsjSMGVctcgDhq3eHkcARdi
+RHvOYwyCr5nKw6sL9QtK99ok3J8blPD2MmZJ1mZOC4avJ46kzcLeX23fw8Pu/1mT
+9i/OmMNOoH4OGkKy9ehTZIXkkYauYeQ84/zZkwEMQJ92mFKkmlccpW0Cp9pCNy35
+2LkwEIz0oUkAsA==
+=VUX+
+-----END PGP SIGNATURE-----

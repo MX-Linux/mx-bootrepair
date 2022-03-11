@@ -1,11 +1,11 @@
-mx-bootrepair (22.03.01) mx; urgency=medium
+mx-bootrepair (22.3.04) mx; urgency=medium
 
   * adjust mount/umount for chroot
   * add detection of invalid entries in fstab
   * fix device selection
   * add fallback efi to grub-install
 
- -- fehlix <fehlix@mxlinux.org>  Thu, 10 Mar 2022 20:40:08 -0400
+ -- Adrian <adrian@mxlinux.org>  Thu, 10 Mar 2022 21:58:08 -0500
 
 mx-bootrepair (21.3.03) mx; urgency=medium
 

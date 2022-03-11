@@ -1,0 +1,49 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Mar 2022 21:58:08 -0500
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 22.3.04
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (22.3.04) mx; urgency=medium
+ .
+   * adjust mount/umount for chroot
+   * add detection of invalid entries in fstab
+   * fix device selection
+   * add fallback efi to grub-install
+Checksums-Sha1:
+ ed8e772a692b860dcb01a3f8f35bb01f476bee49 1187 mx-bootrepair_22.3.04.dsc
+ bbf988f3ad22b17ea8d5a0c18e17dc5d2e0063d1 64160 mx-bootrepair_22.3.04.tar.xz
+ e85697be7bdf0a151bb31a6d6861db7c03afa101 10770 mx-bootrepair_22.3.04_amd64.buildinfo
+ d43ed769fe07edd608c1584cb858cccf43557099 85448 mx-bootrepair_22.3.04_amd64.deb
+Checksums-Sha256:
+ 0949fe9d4e2e5a2b9c11896b29334a2c1459341e81d1c1f15aff5c57088ed3b6 1187 mx-bootrepair_22.3.04.dsc
+ cdd754fdd95f23327f8d40f67baf16ee1678d222c7b89cc757dca0b80c9743ec 64160 mx-bootrepair_22.3.04.tar.xz
+ 68062c069e6db93934964a11636e2783fde047bc69cec81861f5582be4c1239d 10770 mx-bootrepair_22.3.04_amd64.buildinfo
+ d8ab8923f4f59272550c7986593bc219e5ff9fc0843770b476949891caf62c4b 85448 mx-bootrepair_22.3.04_amd64.deb
+Files:
+ 97317de9f9da304eac22d10c15e74c5a 1187 admin optional mx-bootrepair_22.3.04.dsc
+ 526530c3593cae62a8ee58a47ff7b996 64160 admin optional mx-bootrepair_22.3.04.tar.xz
+ 13031749750777862b289617d734c068 10770 admin optional mx-bootrepair_22.3.04_amd64.buildinfo
+ 7bf4941305770c6777ee4a4a1f565a86 85448 admin optional mx-bootrepair_22.3.04_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmIquy4THGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumNuOB/412D9eR06zmE3dlgE5s+vcv/q+PONW
+hcqR1+YiolEsL/jqdxqUDHDccV4zPZnm/anUm152I0v9aFwreauUGVuQlwWt6l7n
+/vVB/QUphZ3kmMnCv/PIr2an2q2I8CV8C1C7T7HNyZGerpbhcL2uwBVUgPBqbISI
+NcNOfBjSFkm5PK3KBbBfItVye/eyjEAlKiWwpLIus2sSZjnxSG4Io6Wd/RHBOPLC
+1uhb/2ZpkGNl95FbApk5WNF5s3vol8Xo4hTq+Qa8MLxiCUlZsaNKiKlJMDFP+eKO
+eO2ifpa+ykDTmkCavV6V2p9oKr4X0muXc/4pCDkco4jTP2P8SZDFUV3T
+=5Utp
+-----END PGP SIGNATURE-----

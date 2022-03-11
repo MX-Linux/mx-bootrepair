@@ -111,12 +111,17 @@ void MainWindow::installGRUB() {
         return;
     }
 
-    // for grub-install access UEFI NVRAM entries mount efivarfs if not already mounted 
+    // for grub-install access UEFI NVRAM entries mount efivarfs if not already mounted
     if (ui->grubEspButton->isChecked()) {
         shell->run("grep -sq ^efivarfs /proc/self/mounts || { test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }");
     }
 
     // create a temp folder and mount dev sys proc; mount run as tmpfs
+    if (!QFile::exists(tmpdir.path())) {
+        QString cmd = QStringLiteral("mkdir -p %1").arg(tmpdir.path());
+        bool success = shell->run(cmd);
+    }
+
     QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && /bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && /bin/mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev").arg(root).arg(tmpdir.path());
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {
@@ -151,7 +156,7 @@ void MainWindow::installGRUB(const QString& location, const QString& path, bool 
         if (arch == "i686") // rename arch to match grub-install target
             arch = "i386";
         QString release = shell->getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
-        cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --recheck").arg(path).arg(arch).arg(release);
+        cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --force-extra-removable --recheck").arg(path).arg(arch).arg(release);
     }
     displayOutput();
     bool success = shell->run(cmd);
@@ -191,6 +196,10 @@ void MainWindow::repairGRUB() {
     if (!tmpdir.isValid()) {
         QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
         return;
+    }
+    if (!QFile::exists(tmpdir.path())) {
+        QString cmd = QStringLiteral("mkdir -p %1").arg(tmpdir.path());
+        bool success = shell->run(cmd);
     }
     QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && /bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && /bin/mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev").arg(part).arg(tmpdir.path());
 
@@ -326,6 +335,7 @@ void MainWindow::setEspDefaults()
 
 QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 {
+
     // read /etc/fstab on mounted path
     QFile file(path + "/etc/fstab");
     if (!file.open(QIODevice::ReadOnly))
@@ -343,8 +353,16 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 
     // return device for /boot mount point
     for (const QStringList &line : lines)
-        if (line.size() > 0 && line.at(1) == mountpoint)
-            return line.at(0).trimmed();
+        if (line.size() > 0 && line.at(1) == mountpoint) {
+            QString device = line.at(0).trimmed();
+            QString cmd = "readlink -e \"$(echo " + device + " | sed -r 's:((PART)?(UUID|LABEL))=:\\L/dev/disk/by-\\1/:g; s:[\\\"]::g;')\"";
+            if (shell->run(cmd)) {
+                qDebug() << "Found partition:" << device;
+                return device;
+            } else {
+                qDebug() << "Unknown partition:" << device;
+            }
+        }
 
     QInputDialog dialog;
     QStringList partitions = ListPart;
@@ -352,8 +370,18 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
     dialog.setComboBoxItems(partitions);
     dialog.setLabelText(tr("Select %1 location:").arg(mountpoint));
     dialog.setWindowTitle(this->windowTitle());
-    if (dialog.exec())
-        return dialog.textValue();
+
+    QString selected;
+    QStringList selectedList;
+    QString partition;
+    if (dialog.exec()) {
+        selected = dialog.textValue();
+        qDebug() << "Selected entry: " << selected;
+        selectedList = selected.split(QRegularExpression("\\s+"), QString::SkipEmptyParts);
+        partition = "/dev/" + selectedList.at(0).trimmed();
+        qDebug() << "Selected partition: " << partition;
+        return partition;
+    }
     return QString();
 }
 

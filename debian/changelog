@@ -1,8 +1,10 @@
-mx-bootrepair (22.02.01) mx; urgency=medium
+mx-bootrepair (22.03.01) mx; urgency=medium
 
   * adjust mount/umount for chroot
+  * add detection of invalid entries in fstab
+  * fix device selection
 
- -- fehlix <fehlix@mxlinux.org>  Mon, 14 Feb 2022 18:21:40 -0400
+ -- fehlix <fehlix@mxlinux.org>  Thu, 10 Mar 2022 20:40:08 -0400
 
 mx-bootrepair (21.3.03) mx; urgency=medium
 

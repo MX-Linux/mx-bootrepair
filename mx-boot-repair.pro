@@ -26,13 +26,11 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core gui widgets
+CONFIG   += c++17
 
 TARGET = mx-boot-repair
 TEMPLATE = app
-
 
 SOURCES += main.cpp \
     mainwindow.cpp \
@@ -62,7 +60,7 @@ TRANSLATIONS += translations/mx-boot-repair_am.ts \
                 translations/mx-boot-repair_fa.ts \
                 translations/mx-boot-repair_fi.ts \
                 translations/mx-boot-repair_fil_PH.ts\
-		translations/mx-boot-repair_fr.ts \
+                translations/mx-boot-repair_fr.ts \
                 translations/mx-boot-repair_he_IL.ts \
                 translations/mx-boot-repair_hi.ts \
                 translations/mx-boot-repair_hr.ts \

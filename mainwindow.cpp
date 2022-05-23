@@ -119,10 +119,10 @@ void MainWindow::installGRUB() {
     // create a temp folder and mount dev sys proc; mount run as tmpfs
     if (!QFile::exists(tmpdir.path())) {
         QString cmd = QStringLiteral("mkdir -p %1").arg(tmpdir.path());
-        bool success = shell->run(cmd);
+        shell->run(cmd);
     }
 
-    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && /bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && /bin/mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev").arg(root).arg(tmpdir.path());
+    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && /bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && /bin/mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev").arg(root, tmpdir.path());
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {
             cleanupMountPoints(tmpdir.path(), isLuks);
@@ -144,7 +144,7 @@ void MainWindow::installGRUB() {
 
 void MainWindow::installGRUB(const QString& location, const QString& path, bool isLuks)
 {
-    QString cmd = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path).arg(location);
+    QString cmd = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path, location);
     if (ui->grubEspButton->isChecked()) {
         shell->run("test -d " + path + "/boot/efi || mkdir " + path  + "/boot/efi");
         if (!checkAndMountPart(path, "/boot/efi")) {
@@ -156,7 +156,7 @@ void MainWindow::installGRUB(const QString& location, const QString& path, bool 
         if (arch == "i686") // rename arch to match grub-install target
             arch = "i386";
         QString release = shell->getCmdOut("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
-        cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --force-extra-removable --recheck").arg(path).arg(arch).arg(release);
+        cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --force-extra-removable --recheck").arg(path, arch, release);
     }
     displayOutput();
     bool success = shell->run(cmd);
@@ -199,9 +199,9 @@ void MainWindow::repairGRUB() {
     }
     if (!QFile::exists(tmpdir.path())) {
         QString cmd = QStringLiteral("mkdir -p %1").arg(tmpdir.path());
-        bool success = shell->run(cmd);
+        shell->run(cmd);
     }
-    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && /bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && /bin/mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev").arg(part).arg(tmpdir.path());
+    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && /bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && /bin/mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && /bin/mount --rbind /run/udev %2/run/udev").arg(part, tmpdir.path());
 
     if (shell->run(cmd)) {
         if (!checkAndMountPart(tmpdir.path(), "/boot")) {
@@ -352,7 +352,7 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
             lines << line.split(QRegularExpression("\\s+"), QString::SkipEmptyParts);
 
     // return device for /boot mount point
-    for (const QStringList &line : lines)
+    for (const QStringList &line : qAsConst(lines))
         if (line.size() > 0 && line.at(1) == mountpoint) {
             QString device = line.at(0).trimmed();
             QString cmd = "readlink -e \"$(echo " + device + " | sed -r 's:((PART)?(UUID|LABEL))=:\\L/dev/disk/by-\\1/:g; s:[\\\"]::g;')\"";
@@ -588,7 +588,6 @@ void MainWindow::on_buttonAbout_clicked() {
 void MainWindow::on_buttonHelp_clicked() {
     QLocale locale;
     QString lang = locale.bcp47Name();
-    QString user = shell->getCmdOut("logname");
 
     QString url = "/usr/share/doc/mx-boot-repair/mx-boot-repair.html";
     if (lang.startsWith("fr"))

@@ -91,5 +91,5 @@ void messageHandler(QtMsgType type, const QMessageLogContext &context, const QSt
     case QtCriticalMsg: out << QStringLiteral("CRT "); break;
     case QtFatalMsg:    out << QStringLiteral("FTL "); break;
     }
-    out << context.category << QStringLiteral(": ") << msg << endl;
+    out << context.category << QStringLiteral(": ") << msg << QStringLiteral("\n");
 }

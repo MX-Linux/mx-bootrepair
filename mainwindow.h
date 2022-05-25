@@ -44,23 +44,21 @@ public:
 
 public slots:
     bool openLuks(const QString part);
+    void disableOutput();
     void displayOutput();
     void displayResult(bool success);
-    void disableOutput();
+    void outputAvailable(const QString &output);
+    void procDone();
     void procStart();
     void progress();
-    void procDone();
-    void outputAvailable(const QString &output);
-
-    virtual void on_buttonApply_clicked();
-    virtual void on_buttonAbout_clicked();
-    virtual void on_buttonHelp_clicked();
-
 
 private slots:
-    void on_grubMbrButton_clicked();
-    void on_grubRootButton_clicked();
-    void on_grubEspButton_clicked();
+    void buttonAbout_clicked();
+    void buttonApply_clicked();
+    void buttonHelp_clicked();
+    void grubEspButton_clicked();
+    void grubMbrButton_clicked();
+    void grubRootButton_clicked();
 
 private:
     Cmd *shell;
@@ -70,19 +68,19 @@ private:
     QTimer *timer;
     QTemporaryDir tmpdir;
 
+    QString selectPart(const QString &path, const QString &mountpoint);
     bool checkAndMountPart(const QString &path, const QString &mountpoint);
     void addDevToList();
     void backupBR(QString filename);
     void cleanupMountPoints(const QString &path, bool isLuks);
     void guessPartition();
-    void refresh();
     void installGRUB();
     void installGRUB(const QString &location, const QString &path, bool isLuks);
+    void refresh();
     void repairGRUB();
     void restoreBR(QString filename);
     void setEspDefaults();
     void targetSelection();
-    QString selectPart(const QString &path, const QString &mountpoint);
 
 };
 

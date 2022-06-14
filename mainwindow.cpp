@@ -33,7 +33,6 @@
 
 using namespace std::chrono_literals;
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::MainWindow)

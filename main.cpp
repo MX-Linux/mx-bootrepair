@@ -26,13 +26,16 @@
 #include <QIcon>
 #include <QLibraryInfo>
 #include <QLocale>
+#include <QTextStream>
 #include <QTranslator>
 
 #include "mainwindow.h"
 #include <unistd.h>
 
 static QFile logFile;
-void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg);
+QString starting_home = qEnvironmentVariable("HOME");
+
+void messageHandler(QtMsgType /*type*/, const QMessageLogContext& /*context*/, const QString& /*msg*/);
 
 int main(int argc, char *argv[])
 {
@@ -43,7 +46,7 @@ int main(int argc, char *argv[])
     app.setWindowIcon(QIcon::fromTheme(app.applicationName()));
 
     QTranslator qtTran;
-    if (qtTran.load(QLocale::system(), "qt", "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (qtTran.load(QLocale::system(), QStringLiteral("qt_"), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         app.installTranslator(&qtTran);
 
     QTranslator qtBaseTran;
@@ -55,7 +58,7 @@ int main(int argc, char *argv[])
         app.installTranslator(&appTran);
 
     // root guard
-    if (system("logname |grep -q ^root$") == 0) {
+    if (QProcess::execute(QStringLiteral("/bin/bash"), {"-c", "logname |grep -q ^root$"}) == 0) {
         QMessageBox::critical(nullptr, QObject::tr("Error"),
                               QObject::tr("You seem to be logged in as root, please log out and log in as normal user to use this program."));
         exit(EXIT_FAILURE);
@@ -74,7 +77,7 @@ int main(int argc, char *argv[])
         w.show();
         return app.exec();
     } else {
-        system("su-to-root -X -c " + QApplication::applicationFilePath().toUtf8() + "&");
+        QProcess::startDetached(QStringLiteral("/usr/bin/mxbr-launcher"), {});
     }
 }
 
@@ -85,7 +88,7 @@ void messageHandler(QtMsgType type, const QMessageLogContext &context, const QSt
     term_out << msg << QStringLiteral("\n");
 
     QTextStream out(&logFile);
-    out << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz ");
+    out << QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd hh:mm:ss.zzz "));
     switch (type)
     {
     case QtInfoMsg:     out << QStringLiteral("INF "); break;

@@ -358,7 +358,7 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
     QList<QStringList> lines;
     for (const QString &line : file_content_list)
         if (!line.startsWith("#"))
-            lines << line.split(QRegularExpression("\\s+"), Qt::SkipEmptyParts);
+            lines << line.split(QRegularExpression("\\s+"), QString::SkipEmptyParts);
 
     // return device for /boot mount point
     for (const QStringList &line : qAsConst(lines))
@@ -386,7 +386,7 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
     if (dialog.exec()) {
         selected = dialog.textValue();
         qDebug() << "Selected entry: " << selected;
-        selectedList = selected.split(QRegularExpression("\\s+"), Qt::SkipEmptyParts);
+        selectedList = selected.split(QRegularExpression("\\s+"), QString::SkipEmptyParts);
         partition = "/dev/" + selectedList.at(0).trimmed();
         qDebug() << "Selected partition: " << partition;
         return partition;
@@ -461,10 +461,10 @@ bool MainWindow::openLuks(const QString part)
 // add list of devices to locationCombo
 void MainWindow::addDevToList() {
     QString cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
-    ListDisk = shell->getCmdOut(cmd).split("\n", Qt::SkipEmptyParts);
+    ListDisk = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
 
     cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
-    ListPart = shell->getCmdOut(cmd).split("\n", Qt::SkipEmptyParts);
+    ListPart = shell->getCmdOut(cmd).split("\n", QString::SkipEmptyParts);
     ui->rootCombo->clear();
     ui->rootCombo->addItems(ListPart);
 

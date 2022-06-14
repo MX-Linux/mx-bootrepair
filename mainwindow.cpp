@@ -46,7 +46,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->buttonAbout, &QPushButton::clicked, this, &MainWindow::buttonAbout_clicked);
     connect(ui->buttonApply, &QPushButton::clicked, this, &MainWindow::buttonApply_clicked);
     connect(ui->buttonHelp, &QPushButton::clicked, this, &MainWindow::buttonHelp_clicked);
-    connect(ui->buttonAbout, &QPushButton::clicked, this, &MainWindow::buttonAbout_clicked);
     connect(ui->grubEspButton, &QPushButton::clicked, this, &MainWindow::grubEspButton_clicked);
     connect(ui->grubMbrButton, &QPushButton::clicked, this, &MainWindow::grubMbrButton_clicked);
     connect(ui->grubRootButton, &QPushButton::clicked, this, &MainWindow::grubRootButton_clicked);
@@ -605,7 +604,7 @@ void MainWindow::buttonAbout_clicked() {
                        tr("Simple boot repair program for MX Linux") +
                        R"(</h3></p><p align="center"><a href="http://mxlinux.org">http://mxlinux.org</a><br /></p><p align="center">)" +
                        tr("Copyright (c) MX Linux") + "<br /><br /></p>",
-                       QStringLiteral("/usr/share/doc/mx-boot-repair/license.html"), tr("%1 License").arg(this->windowTitle()), true);
+                       QStringLiteral("/usr/share/doc/mx-bootrepair/license.html"), tr("%1 License").arg(this->windowTitle()), true);
     this->show();
 }
 
@@ -613,7 +612,7 @@ void MainWindow::buttonHelp_clicked() {
     QLocale locale;
     const QString lang = locale.bcp47Name();
 
-    QString url = QStringLiteral("/usr/share/doc/mx-boot-repair/mx-boot-repair.html");
+    QString url = QStringLiteral("/usr/share/doc/mx-bootrepair/mx-boot-repair.html");
     if (lang.startsWith(QLatin1String("fr")))
         url = QStringLiteral("https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age");
     displayDoc(url, tr("%1 Help").arg(this->windowTitle()), true);

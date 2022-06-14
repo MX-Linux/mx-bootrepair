@@ -1,3 +1,10 @@
+mx-bootrepair (22.6) mx; urgency=medium
+
+  * Preserve user theme when launching program as root
+  * Make sure HOME and XDG_RUNTIME_DIR are correct when launching as root
+
+ -- Adrian <adrian@mxlinux.org>  Tue, 14 Jun 2022 01:00:46 -0400
+
 mx-bootrepair (22.3.04) mx; urgency=medium
 
   * adjust mount/umount for chroot

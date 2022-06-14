@@ -1,7 +1,7 @@
-help/*				usr/share/doc/mx-boot-repair
+help/*				usr/share/doc/mx-bootrepair
 mx-boot-repair			usr/bin
 mx-boot-repair.desktop		usr/share/applications
 icons/mx-boot-repair.png	usr/share/icons/hicolor/256x256/apps
-translations/*.qm		usr/share/mx-boot-repair/locale
+translations/*.qm		usr/share/mx-bootrepair/locale
 scripts/mxbr-launcher		usr/bin
 scripts/org.mxlinux.pkexec.mxbr-launcher.policy	usr/share/polkit-1/actions

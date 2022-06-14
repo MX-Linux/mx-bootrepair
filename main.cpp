@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
         app.installTranslator(&qtBaseTran);
 
     QTranslator appTran;
-    if (appTran.load(app.applicationName() + "_" + QLocale::system().name(), "/usr/share/" + app.applicationName() + "/locale"))
+    if (appTran.load(app.applicationName() + "_" + QLocale::system().name(), "/usr/share/mx-bootrepair/locale"))
         app.installTranslator(&appTran);
 
     // root guard

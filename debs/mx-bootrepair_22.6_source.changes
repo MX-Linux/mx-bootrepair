@@ -1,0 +1,26 @@
+Format: 1.8
+Date: Tue, 14 Jun 2022 01:00:46 -0400
+Source: mx-bootrepair
+Architecture: source
+Version: 22.6
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Changes:
+ mx-bootrepair (22.6) mx; urgency=medium
+ .
+   * Preserve user theme when launching program as root
+   * Make sure HOME and XDG_RUNTIME_DIR are correct when launching as root
+Checksums-Sha1:
+ 77702f6e652f4aaf01c3109f543335c8d7894fa0 613 mx-bootrepair_22.6.dsc
+ d4527d1f383afb84da236a76dcbefdd2367e32d3 65816 mx-bootrepair_22.6.tar.xz
+ 39ba445f9594bd1e592a52e3b86db24403408b4e 10042 mx-bootrepair_22.6_i386.buildinfo
+Checksums-Sha256:
+ a6f34a66e503babbd28556c708e604fdc346406793bc6eb8c6f7784051ea8cd6 613 mx-bootrepair_22.6.dsc
+ b4c81c195772f2a4d9c2fdf13b6bf265c045508752cc79b4a4365e09b3403c23 65816 mx-bootrepair_22.6.tar.xz
+ fdaf5949b20ca50007130535a84f4684677d799e14321ad75f68e1cbe688f887 10042 mx-bootrepair_22.6_i386.buildinfo
+Files:
+ cb319f2b4b6a1ac24f3f3abdc04f56b2 613 admin optional mx-bootrepair_22.6.dsc
+ ebd67069d15a570acb315f06800ca84e 65816 admin optional mx-bootrepair_22.6.tar.xz
+ e197443161c0a082ad79c4690e282ffd 10042 admin optional mx-bootrepair_22.6_i386.buildinfo

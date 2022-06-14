@@ -43,7 +43,7 @@ public:
     ~MainWindow();
 
 public slots:
-    bool openLuks(const QString part);
+    bool openLuks(const QString &part);
     void disableOutput();
     void displayOutput();
     void displayResult(bool success);
@@ -71,14 +71,14 @@ private:
     QString selectPart(const QString &path, const QString &mountpoint);
     bool checkAndMountPart(const QString &path, const QString &mountpoint);
     void addDevToList();
-    void backupBR(QString filename);
+    void backupBR(const QString &filename);
     void cleanupMountPoints(const QString &path, bool isLuks);
     void guessPartition();
     void installGRUB();
     void installGRUB(const QString &location, const QString &path, bool isLuks);
     void refresh();
     void repairGRUB();
-    void restoreBR(QString filename);
+    void restoreBR(const QString &filename);
     void setEspDefaults();
     void targetSelection();
 

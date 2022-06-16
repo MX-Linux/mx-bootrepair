@@ -444,7 +444,7 @@ void MainWindow::displayResult(bool success)
         if (QMessageBox::Yes == QMessageBox::information(this, tr("Success"),
                                      tr("Process finished with success.<p><b>Do you want to exit MX Boot Repair?</b>"),
                                      QMessageBox::Yes, QMessageBox::No))
-            qApp->exit(EXIT_SUCCESS);
+            QApplication::exit(EXIT_SUCCESS);
     } else {
         QMessageBox::critical(this, tr("Error"), tr("Process finished. Errors have occurred."));
     }
@@ -593,7 +593,7 @@ void MainWindow::buttonApply_clicked() {
     } else if (ui->stackedWidget->currentWidget() == ui->outputPage) {
         refresh();
     } else {
-        qApp->exit(EXIT_SUCCESS);
+        QApplication::exit(EXIT_SUCCESS);
     }
 }
 

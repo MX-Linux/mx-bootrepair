@@ -33,7 +33,7 @@
 #include <unistd.h>
 
 static QFile logFile;
-QString starting_home = qEnvironmentVariable("HOME");
+extern const QString starting_home = qEnvironmentVariable("HOME");
 
 void messageHandler(QtMsgType /*type*/, const QMessageLogContext& /*context*/, const QString& /*msg*/);
 
@@ -43,19 +43,19 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     qputenv("HOME", "/root");
 
-    app.setWindowIcon(QIcon::fromTheme(app.applicationName()));
+    QApplication::setWindowIcon(QIcon::fromTheme(QApplication::applicationName()));
 
     QTranslator qtTran;
     if (qtTran.load(QLocale(), QStringLiteral("qt"), QStringLiteral("_"), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-        app.installTranslator(&qtTran);
+        QApplication::installTranslator(&qtTran);
 
     QTranslator qtBaseTran;
     if (qtBaseTran.load("qtbase_" + QLocale().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-        app.installTranslator(&qtBaseTran);
+        QApplication::installTranslator(&qtBaseTran);
 
     QTranslator appTran;
-    if (appTran.load(app.applicationName() + "_" + QLocale().name(), "/usr/share/mx-bootrepair/locale"))
-        app.installTranslator(&appTran);
+    if (appTran.load(QApplication::applicationName() + "_" + QLocale().name(), QStringLiteral("/usr/share/mx-bootrepair/locale")))
+        QApplication::installTranslator(&appTran);
 
     // root guard
     if (QProcess::execute(QStringLiteral("/bin/bash"), {"-c", "logname |grep -q ^root$"}) == 0) {
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
                               QObject::tr("You seem to be logged in as root, please log out and log in as normal user to use this program."));
         exit(EXIT_FAILURE);
     }
-    QString log_name = "/var/log/" + qApp->applicationName() + ".log";
+    QString log_name = "/var/log/" + QApplication::applicationName() + ".log";
     if (QFileInfo::exists(log_name)) {
         QFile::remove(log_name + ".old");
         QFile::rename(log_name, log_name + ".old");
@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
     if (getuid() == 0) {
         MainWindow w;
         w.show();
-        return app.exec();
+        return QApplication::exec();
     } else {
         QProcess::startDetached(QStringLiteral("/usr/bin/mxbr-launcher"), {});
     }

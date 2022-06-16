@@ -1,0 +1,46 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Wed, 15 Jun 2022 22:28:55 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 22.76.01
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (22.76.01) mx; urgency=medium
+ .
+   * Fix: add alternative for LUKS detection
+Checksums-Sha1:
+ 56a80add1185bddfabe49614c79268669b6bb0f2 1191 mx-bootrepair_22.76.01.dsc
+ d6ec099201a9e017e2f77f8436392f6ed6d8bad6 65784 mx-bootrepair_22.76.01.tar.xz
+ 464d3dcbc45577fa95ae6fe896051f5855434500 10922 mx-bootrepair_22.76.01_amd64.buildinfo
+ 6c14a97e559be9abb8b110aac75b752fdb2c1b1c 87040 mx-bootrepair_22.76.01_amd64.deb
+Checksums-Sha256:
+ 874690e9561e6059f1f988680971f0811d9f4cfc7e167870c0304111729355f6 1191 mx-bootrepair_22.76.01.dsc
+ 3a54972afd09ab9daf27d7e6dad39784576405cf2825a79dfb36e7714963671b 65784 mx-bootrepair_22.76.01.tar.xz
+ b6c732ad5acc18eedf203bc12fe20f992d46f2cfd5c7bed447cb236e899e98f0 10922 mx-bootrepair_22.76.01_amd64.buildinfo
+ 9ec4ab5355540504988d77f551016632eb53f73fc818bfb05561754a7748503c 87040 mx-bootrepair_22.76.01_amd64.deb
+Files:
+ 5a1e193e42dc6e6d8501ef56890f4239 1191 admin optional mx-bootrepair_22.76.01.dsc
+ 3c55fb45d82ff32698cb9b78b5c6de8d 65784 admin optional mx-bootrepair_22.76.01.tar.xz
+ 9446ce4f06c26750de65a601df099278 10922 admin optional mx-bootrepair_22.76.01_amd64.buildinfo
+ 9d69c01166267aab99609c89645ceba4 87040 admin optional mx-bootrepair_22.76.01_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmKqln0THGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumFjuB/sE14lCyn3IYlcEA2c8umzOes8WraDl
+p/8mp2Zh1DcigoS6TH0BMMdc/11wWPuC9EWqqkGOSWl356Ct6yUHkjxm58AYPwkx
+NtlQlpv/jxaBf1093f4n6/nda86ZWQqduF5SMviESqgqMvSkunbajbmxJ+BuBnon
+vRtUpg+qm8pqPGw4v4fc5YpwnPDxsiEkrk6MfsLbT8yb9avJ8dTCAnAhAqHLT9qL
+I5g7LSASbRSTwrdYgrBtH/SK+nSVhUKAdPFOnKH9B8EodypfoKoriL80QDP2YCsN
+NDrNKICRYU83zcElX+GYpABzgsFwR26bZg+oXcKspoZZaGIw+PEN3M+S
+=d7I+
+-----END PGP SIGNATURE-----

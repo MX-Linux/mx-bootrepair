@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Wed, 15 Jun 2022 22:28:55 -0400
+Source: mx-bootrepair
+Architecture: source
+Version: 22.76.01
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Changes:
+ mx-bootrepair (22.76.01) mx; urgency=medium
+ .
+   * Fix: add alternative for LUKS detection
+Checksums-Sha1:
+ 42abc853a5328bb448379f183ad6ad911aabdd78 629 mx-bootrepair_22.76.01.dsc
+ 9e7784973d4473ac13c12d62c927e87314c41013 65812 mx-bootrepair_22.76.01.tar.xz
+ 616f5e69340b088631ca660ca0a0f2ab0850e34a 10062 mx-bootrepair_22.76.01_i386.buildinfo
+Checksums-Sha256:
+ 667614ab865966bdfb5cb82b191a912df65de0478ccc33fa8711de366aa4d075 629 mx-bootrepair_22.76.01.dsc
+ bbfecebe56e74ae972441ce443fa31331794f587c2b0ba391e76f161c169dee9 65812 mx-bootrepair_22.76.01.tar.xz
+ 8fcf1a992f91e734f3aafb18712b176cea9615b5d60e1b93d874bb90b3421326 10062 mx-bootrepair_22.76.01_i386.buildinfo
+Files:
+ 1d003e778f242aa5884275e82a49e48b 629 admin optional mx-bootrepair_22.76.01.dsc
+ 9b6d6526ef60f884f73b4d1d3cbd8a31 65812 admin optional mx-bootrepair_22.76.01.tar.xz
+ 6f17c562b9dec4ae6c1c44b725337035 10062 admin optional mx-bootrepair_22.76.01_i386.buildinfo

@@ -97,7 +97,8 @@ void MainWindow::installGRUB() {
     const bool isLuks = shell->run("cryptsetup isLuks " + root);
 
     QString rootOS = shell->getCmdOut(QStringLiteral("df / --output=source |sed -e 1d"));
-    if (root == rootOS ||  rootOS == QLatin1String("/dev/mapper/rootfs")) { // on current root
+    if (root == rootOS ||  rootOS == QLatin1String("/dev/mapper/rootfs") ||
+            rootOS == QLatin1String("/dev/mapper/root.fsm")) { // on current root
         ui->outputLabel->setText(text);
         installGRUB(location, QStringLiteral("/"), isLuks);
         return;
@@ -187,7 +188,8 @@ void MainWindow::repairGRUB() {
     QString part = "/dev/" + ui->locationCombo->currentText().section(QStringLiteral(" "), 0, 0);
 
     const QString rootOS = shell->getCmdOut(QStringLiteral("df / --output=source |sed -e 1d"));
-    if (part == rootOS || rootOS == QLatin1String("/dev/mapper/rootfs")) { // on current root
+    if (part == rootOS || rootOS == QLatin1String("/dev/mapper/rootfs") ||
+            rootOS == QLatin1String("/dev/mapper/root.fsm")) { // on current root
         displayOutput();
         bool ok = shell->run(QStringLiteral("update-grub"));
         disableOutput();

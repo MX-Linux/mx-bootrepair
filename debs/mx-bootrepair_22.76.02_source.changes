@@ -1,0 +1,42 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Mon, 04 Jul 2022 17:35:09 -0400
+Source: mx-bootrepair
+Architecture: source
+Version: 22.76.02
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: fehlix <fehlix@mxlinux.org>
+Changes:
+ mx-bootrepair (22.76.02) mx; urgency=medium
+ .
+   * Remove not needed --qtenv annotation pkexec policy
+   * Adjust pkexec/sudo environment parameter
+   * Fix EFI System Partition detection on dos/mbr partition table
+Checksums-Sha1:
+ 5a868587573af54e7d5dedef0a467e30031e39d4 1191 mx-bootrepair_22.76.02.dsc
+ 738d98a8d9455b9daaa16cac9cb603ea89381e27 66832 mx-bootrepair_22.76.02.tar.xz
+ a8eb5d12e6efe73b1269780f8eaee6e8941e6796 10778 mx-bootrepair_22.76.02_amd64.buildinfo
+Checksums-Sha256:
+ 23d36301291a5196353ab9074077819c0ae65aac9ff8c408a11fbc861db9907f 1191 mx-bootrepair_22.76.02.dsc
+ 0a944e626d3e6c3f6eb5020568fc38b157c195f370e5dc59887d95cd95a52f5b 66832 mx-bootrepair_22.76.02.tar.xz
+ c35269b35163178157e4eaa578d097272e25325b9c08002f9130d3f1d683fbcb 10778 mx-bootrepair_22.76.02_amd64.buildinfo
+Files:
+ d1d637f037a24bb8a9979a78a031a1f8 1191 admin optional mx-bootrepair_22.76.02.dsc
+ 822a134424a6f65ffec92fce4a1679c7 66832 admin optional mx-bootrepair_22.76.02.tar.xz
+ c3b50d658887101b905eb679655a575c 10778 admin optional mx-bootrepair_22.76.02_amd64.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmLDYrYTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumHGWB/wOfcYSqMExl7ulIQaCHosBPoOWJSXI
+vqgj3OuY8CLiP/Huqk/TbCAZTNQ9LAsyw64Wvx8c/VgtKtTMalUOYBwGD2yxwm7Q
+27X/bqNpwvrZt9QnJd4rg7TSeEveYjyz3L4W9uCJvgtIpX6skozKLDr8r5wK5kYt
+A9WHxdJhoVEbC/FLZaNzQgl+PHRy6v7gtTgCDx40/Yio/xusks0KhO6JzHMxNu6H
+VQFJrckhXxCwraT82BsFhbmoZL7PPhkydS6fyJdBiTsqgob4OYMjwmLQZ/yTDE9n
+iIQV8PTd85DEB5Dp1Hy3VV6qMcCfmFeunQ3vg9/GTGE3KfwPML5Az9ev
+=afiN
+-----END PGP SIGNATURE-----

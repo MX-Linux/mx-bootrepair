@@ -345,7 +345,7 @@ void MainWindow::setEspDefaults()
     for (int index = 0; index < ui->locationCombo->count(); index++) {
         const QString part = ui->locationCombo->itemText(index);
         if (!shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(QStringLiteral(" "), 0 ,0).toUtf8()
-                        + "| grep -qi c12a7328-f81f-11d2-ba4b-00a0c93ec93b")) {
+                        + "| grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")) {
             ui->locationCombo->removeItem(index);
             index--;
         }

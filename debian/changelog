@@ -1,3 +1,11 @@
+mx-bootrepair (22.76.02) mx; urgency=medium
+
+  * Remove not needed --qtenv annotation pkexec policy
+  * Adjust pkexec/sudo environment parameter
+  * Fix EFI System Partition detection on dos/mbr partition table
+
+ -- fehlix <fehlix@mxlinux.org>  Mon, 04 Jul 2022 17:35:09 -0400
+
 mx-bootrepair (22.76.01) mx; urgency=medium
 
   * Fix: add alternative for LUKS detection

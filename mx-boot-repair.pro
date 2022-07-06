@@ -60,6 +60,7 @@ TRANSLATIONS += translations/mx-boot-repair_am.ts \
                 translations/mx-boot-repair_da.ts \
                 translations/mx-boot-repair_de.ts \
                 translations/mx-boot-repair_el.ts \
+                translations/mx-boot-repair_en.ts \
                 translations/mx-boot-repair_es.ts \
                 translations/mx-boot-repair_et.ts \
                 translations/mx-boot-repair_eu.ts \

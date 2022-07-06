@@ -355,12 +355,12 @@ Tem a certeza?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="62"/>
+        <location filename="../main.cpp" line="65"/>
         <source>Error</source>
         <translation type="unfinished">Erro</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="63"/>
+        <location filename="../main.cpp" line="66"/>
         <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
         <translation type="unfinished"></translation>
     </message>

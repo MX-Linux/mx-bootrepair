@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="mr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="th">
 <context>
     <name>MainWindow</name>
     <message>
@@ -19,17 +19,17 @@
     <message>
         <location filename="../mainwindow.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation type="unfinished"/>
+        <translation>สำรองข้อมูล MBR หรือ PBR (บูตแบบ legacy เท่านั้น)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation type="unfinished"/>
+        <translation>ติดตั้ง GRUB bootloader ใหม่บน ESP, MBR หรือ PBR (root)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
-        <translation type="unfinished"/>
+        <translation>ซ่อมแซมไฟล์การตั้งค่า GRUB</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="103"/>
@@ -40,17 +40,17 @@
         <location filename="../mainwindow.ui" line="136"/>
         <location filename="../mainwindow.cpp" line="536"/>
         <source>Select Boot Method</source>
-        <translation type="unfinished"/>
+        <translation>เลือกวิธีการบูต</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="154"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"/>
+        <translation>Master Boot Record</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="157"/>
         <source>MBR</source>
-        <translation type="unfinished"/>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="160"/>
@@ -67,7 +67,7 @@
         <location filename="../mainwindow.ui" line="185"/>
         <location filename="../mainwindow.cpp" line="539"/>
         <source>root</source>
-        <translation type="unfinished"/>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
@@ -90,32 +90,32 @@
     <message>
         <location filename="../mainwindow.ui" line="290"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"/>
+        <translation>พาร์ติชันระบบ EFI</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="293"/>
         <source>ESP</source>
-        <translation type="unfinished"/>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="420"/>
         <source>About this application</source>
-        <translation>या अनुप्रयोगाबद्दल</translation>
+        <translation>เกี่ยวกับแอปพลิเคชันนี้</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="423"/>
         <source>About...</source>
-        <translation>विषयी</translation>
+        <translation>เกี่ยวกับ...</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="472"/>
         <source>Display help </source>
-        <translation>मदत दाखवा</translation>
+        <translation>แสดงหน้าช่วยเหลือ</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="475"/>
         <source>Help</source>
-        <translation>मदत</translation>
+        <translation>ช่วยเหลือ</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="482"/>
@@ -125,12 +125,12 @@
     <message>
         <location filename="../mainwindow.ui" line="523"/>
         <source>Cancel any changes then quit</source>
-        <translation>सर्व बदल रद्द करा आणि बंद करा</translation>
+        <translation>ยกเลิกการเปลี่ยนแปลงทั้งหมดและออก</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="526"/>
         <source>Cancel</source>
-        <translation>रद्द करा</translation>
+        <translation>ยกเลิก</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="533"/>
@@ -146,7 +146,7 @@
         <location filename="../mainwindow.ui" line="555"/>
         <location filename="../mainwindow.cpp" line="79"/>
         <source>Apply</source>
-        <translation type="unfinished"/>
+        <translation>นำไปใช้</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
@@ -165,7 +165,7 @@
         <location filename="../mainwindow.cpp" line="585"/>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Error</source>
-        <translation>त्रुटी</translation>
+        <translation>ข้อผิดพลาด</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="119"/>
@@ -193,7 +193,7 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="327"/>
         <source>Warning</source>
-        <translation type="unfinished"/>
+        <translation>คำเตือน</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="328"/>
@@ -210,7 +210,9 @@ Please double-check the selected location.</source>
         <source>
 
 Are you sure?</source>
-        <translation type="unfinished"/>
+        <translation>
+
+คุณแน่ใจหรือไม่?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="334"/>
@@ -230,12 +232,12 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>ย้อนกลับ</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="444"/>
         <source>Success</source>
-        <translation type="unfinished"/>
+        <translation>สำเร็จ</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="445"/>
@@ -291,12 +293,12 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>About %1</source>
-        <translation type="unfinished"/>
+        <translation>เกี่ยวกับ %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="604"/>
         <source>Version: </source>
-        <translation>आवृत्ती:</translation>
+        <translation>เวอร์ชัน:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="605"/>
@@ -306,7 +308,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>कॉपीराइट (c) एमएक्स लिनक्स</translation>
+        <translation>สงวนลิขสิทธิ์ (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
@@ -329,7 +331,7 @@ Are you sure?</source>
     <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation>परवाना</translation>
+        <translation>สัญญาอนุญาต</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
@@ -345,7 +347,7 @@ Are you sure?</source>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation>बंद</translation>
+        <translation>&amp;ปิด</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="65"/>

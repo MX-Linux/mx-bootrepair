@@ -1,56 +1,56 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="mr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es_ES">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"/>
+        <translation>MX Reparar Arranque</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation type="unfinished"/>
+        <translation>MX Reparar Arranque es una utilidad que se puede usar para reinstalar el cargador de arranque GRUB en ESP (Partición del sistema EFI), MBR (Registro de arranque maestro) o partición raíz. Proporciona la opción de reconstruir el archivo de configuración de GRUB y hacer una copia de seguridad y restaurar MBR o PBR (raíz).</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation type="unfinished"/>
+        <translation>¿Qué desea hacer?</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation type="unfinished"/>
+        <translation>Respaldo de MBR o PBR (solo arranque heredado)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation type="unfinished"/>
+        <translation>Reinstalar el cargador de arranque GRUB en ESP, MBR o PBR (root)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
-        <translation type="unfinished"/>
+        <translation>Reparar archivo de configuración de GRUB</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation type="unfinished"/>
+        <translation>Restaurar MBR o PBR desde la copia de seguridad (solo arranque heredado)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="136"/>
         <location filename="../mainwindow.cpp" line="536"/>
         <source>Select Boot Method</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar metodo de arranque</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="154"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"/>
+        <translation>Registro de arranque principal</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="157"/>
         <source>MBR</source>
-        <translation type="unfinished"/>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="160"/>
@@ -61,61 +61,61 @@
     <message>
         <location filename="../mainwindow.ui" line="182"/>
         <source>Root (Partition Boot Record)</source>
-        <translation type="unfinished"/>
+        <translation>Root (Registro de partición de arranque)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
         <location filename="../mainwindow.cpp" line="539"/>
         <source>root</source>
-        <translation type="unfinished"/>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
         <location filename="../mainwindow.cpp" line="538"/>
         <source>Install on:</source>
-        <translation type="unfinished"/>
+        <translation>Instalar en:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="255"/>
         <location filename="../mainwindow.cpp" line="537"/>
         <source>Location:</source>
-        <translation type="unfinished"/>
+        <translation>Ubicación:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="547"/>
         <source>Select root location:</source>
-        <translation type="unfinished"/>
+        <translation>Seleccione la ubicación de root:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"/>
+        <translation>Particion del sistema EFI</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="293"/>
         <source>ESP</source>
-        <translation type="unfinished"/>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="420"/>
         <source>About this application</source>
-        <translation>या अनुप्रयोगाबद्दल</translation>
+        <translation>Acerca de esta aplicación</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="423"/>
         <source>About...</source>
-        <translation>विषयी</translation>
+        <translation>Acerca de...</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="472"/>
         <source>Display help </source>
-        <translation>मदत दाखवा</translation>
+        <translation>Mostrar la ayuda</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="475"/>
         <source>Help</source>
-        <translation>मदत</translation>
+        <translation>Ayuda</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="482"/>
@@ -125,12 +125,12 @@
     <message>
         <location filename="../mainwindow.ui" line="523"/>
         <source>Cancel any changes then quit</source>
-        <translation>सर्व बदल रद्द करा आणि बंद करा</translation>
+        <translation>Cancelar los cambios y luego salir</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="526"/>
         <source>Cancel</source>
-        <translation>रद्द करा</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="533"/>
@@ -140,18 +140,18 @@
     <message>
         <location filename="../mainwindow.ui" line="552"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"/>
+        <translation>Aplicar los cambios</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="555"/>
         <location filename="../mainwindow.cpp" line="79"/>
         <source>Apply</source>
-        <translation type="unfinished"/>
+        <translation>Aplicar</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation type="unfinished"/>
+        <translation>GRUB está siendo instalado en el dispositivo %1.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="119"/>
@@ -165,163 +165,166 @@
         <location filename="../mainwindow.cpp" line="585"/>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Error</source>
-        <translation>त्रुटी</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="119"/>
         <location filename="../mainwindow.cpp" line="213"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"/>
+        <translation>No se pudo crear una carpeta temporal</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
         <location filename="../mainwindow.cpp" line="245"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation type="unfinished"/>
+        <translation>No se pudo configurar el entorno chroot.
+Vuelva a comprobar la ubicación seleccionada.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="210"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation type="unfinished"/>
+        <translation>El archivo de configuración de GRUB (grub.cfg) esta siendo reconstruido.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="261"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation type="unfinished"/>
+        <translation>Respaldando MBR o PBR desde el dispositivo %1.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="327"/>
         <source>Warning</source>
-        <translation type="unfinished"/>
+        <translation>Advertencia</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="328"/>
         <source>You are going to write the content of </source>
-        <translation type="unfinished"/>
+        <translation>Va a escribir el contenido de </translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
         <source> to </source>
-        <translation type="unfinished"/>
+        <translation> a </translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
         <source>
 
 Are you sure?</source>
-        <translation type="unfinished"/>
+        <translation>
+
+¿Está seguro?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="334"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation type="unfinished"/>
+        <translation>Restaurando MBR/PBR desde una copia de seguridad al dispositivo %1.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="354"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"/>
+        <translation>No se pudo encontrar la partición de sistema EFI (ESP) en ningún disco del sistema. Por favor crear un ESP e intentar de nuevo.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="396"/>
         <source>Select %1 location:</source>
-        <translation type="unfinished"/>
+        <translation>Seleccione la ubicación de %1:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Atras</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="444"/>
         <source>Success</source>
-        <translation type="unfinished"/>
+        <translation>Exito</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="445"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation type="unfinished"/>
+        <translation>El Proceso terminó con exito.&lt;p&gt;&lt;b&gt;¿Desea salir de MX Reparar Arranque?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="449"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation type="unfinished"/>
+        <translation>Proceso finalizado. Ocurrieron errores.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="466"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation type="unfinished"/>
+        <translation>Introduzca la contraseña para desbloquear la partición cifrada %1:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="473"/>
         <source>Sorry, could not open %1 LUKS container</source>
-        <translation type="unfinished"/>
+        <translation>Lo sentimos, no se pudo abrir el contenedor %1 LUKS</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="546"/>
         <source>Select GRUB location</source>
-        <translation type="unfinished"/>
+        <translation>Seleccione la ubicación de GRUB</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="558"/>
         <source>Select Item to Back Up</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar elemento a Respaldar</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="565"/>
         <source>Select Item to Restore</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar elemento a Restaurar</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="576"/>
         <source>Select backup file name</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar nombre del archivo de respaldo</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="578"/>
         <location filename="../mainwindow.cpp" line="585"/>
         <source>No file was selected.</source>
-        <translation type="unfinished"/>
+        <translation>Ningún archivo fue seleccionado.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="583"/>
         <source>Select MBR or PBR backup file</source>
-        <translation type="unfinished"/>
+        <translation>Elegir archivo de respaldo de MBR o PBR</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>About %1</source>
-        <translation type="unfinished"/>
+        <translation>Acerca de %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="604"/>
         <source>Version: </source>
-        <translation>आवृत्ती:</translation>
+        <translation>Versión: </translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="605"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation type="unfinished"/>
+        <translation>Programa de reparación de arranque simple para MX Linux</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>कॉपीराइट (c) एमएक्स लिनक्स</translation>
+        <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
         <source>%1 License</source>
-        <translation type="unfinished"/>
+        <translation>%1 Licencia</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="619"/>
         <source>%1 Help</source>
-        <translation type="unfinished"/>
+        <translation>%1 Ayuda</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Sorry, could not mount %1 partition</source>
-        <translation type="unfinished"/>
+        <translation>Lo sentimos, no se pudo montar la partición %1</translation>
     </message>
 </context>
 <context>
@@ -329,7 +332,7 @@ Are you sure?</source>
     <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation>परवाना</translation>
+        <translation>Licencia</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
@@ -345,7 +348,7 @@ Are you sure?</source>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation>बंद</translation>
+        <translation>&amp;Cerrar</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="65"/>

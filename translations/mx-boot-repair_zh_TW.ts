@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_TW">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_TW">
 <context>
     <name>MainWindow</name>
     <message>
@@ -11,7 +9,7 @@
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -26,7 +24,7 @@
     <message>
         <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="96"/>
@@ -87,7 +85,7 @@
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="547"/>
         <source>Select root location:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -153,7 +151,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="119"/>
@@ -173,7 +171,7 @@
         <location filename="../mainwindow.cpp" line="119"/>
         <location filename="../mainwindow.cpp" line="213"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
@@ -186,12 +184,12 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="210"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="261"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="327"/>
@@ -220,7 +218,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="334"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="354"/>
@@ -230,7 +228,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="396"/>
         <source>Select %1 location:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
@@ -255,27 +253,27 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="466"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="473"/>
         <source>Sorry, could not open %1 LUKS container</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="546"/>
         <source>Select GRUB location</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="558"/>
         <source>Select Item to Back Up</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="565"/>
         <source>Select Item to Restore</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="576"/>
@@ -296,7 +294,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>About %1</source>
-        <translation type="unfinished"></translation>
+        <translation>大約 %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="604"/>
@@ -316,70 +314,51 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
         <source>%1 License</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 許可</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="619"/>
         <source>%1 Help</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 幫助</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Sorry, could not mount %1 partition</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QApplication</name>
-    <message>
-        <source>License</source>
-        <translation type="vanished">授權條款</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">取消</translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation type="vanished">關閉（&amp;C）</translation>
-    </message>
-    <message>
-        <source>You must run this program as root.</source>
-        <translation type="vanished">本程式必須以 root 身份來執行。</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="65"/>
-        <source>Error</source>
-        <translation type="unfinished">錯誤</translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="66"/>
-        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation type="unfinished">授權條款</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">關閉（&amp;C）</translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="65"/>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="66"/>
+        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

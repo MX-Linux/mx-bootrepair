@@ -1,113 +1,111 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nb">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nb">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>MX Oppstartsreparasjon</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation type="unfinished"></translation>
+        <translation>MX Oppstartsreparasjon kan brukes til å ominstallere oppstartslasteren GRUB på ESP (EFI systempartisjon), MBR (hovedpartisjonssektor) eller rotpartisjonen. Verktøyet kan rekonstruere oppsettsfila til GRUB, og reservekopiere og gjenopprette MBR eller PBR (rot).</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>Hva vil du gjøre?</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>Reservekopiere MBR eller PBR (kun gammel type oppstart)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ominstallere GRUB på ESP, MBR eller PBR (rot)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
-        <translation type="unfinished"></translation>
+        <translation>Reparere oppsettsfila til GRUB</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gjenopprette MBR eller PBR fra reservekopi (kun gammel type oppstart)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="136"/>
         <location filename="../mainwindow.cpp" line="536"/>
         <source>Select Boot Method</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg oppstartsmetode</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="154"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"></translation>
+        <translation>Hovedpartisjonssektor</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="157"/>
         <source>MBR</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="160"/>
         <location filename="../mainwindow.ui" line="430"/>
         <source>Alt+B</source>
-        <translation>Alt+B</translation>
+        <translation>Alt + B</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="182"/>
         <source>Root (Partition Boot Record)</source>
-        <translation type="unfinished"></translation>
+        <translation>Rot (partisjonssektor)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
         <location filename="../mainwindow.cpp" line="539"/>
         <source>root</source>
-        <translation type="unfinished"></translation>
+        <translation>rot</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
         <location filename="../mainwindow.cpp" line="538"/>
         <source>Install on:</source>
-        <translation type="unfinished"></translation>
+        <translation>Installer til:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="255"/>
         <location filename="../mainwindow.cpp" line="537"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Plassering:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="547"/>
         <source>Select root location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg rotplassering:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>EFI-systempartisjon</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="293"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="420"/>
         <source>About this application</source>
-        <translation>Om applikasjonen</translation>
+        <translation>Om programmet</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="423"/>
         <source>About...</source>
-        <translation>Om...</translation>
+        <translation>Om …</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="472"/>
@@ -122,7 +120,7 @@
     <message>
         <location filename="../mainwindow.ui" line="482"/>
         <source>Alt+H</source>
-        <translation>Alt+H</translation>
+        <translation>Alt + H</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="523"/>
@@ -137,12 +135,12 @@
     <message>
         <location filename="../mainwindow.ui" line="533"/>
         <source>Alt+N</source>
-        <translation>Alt+N</translation>
+        <translation>Alt + N</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="552"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta i bruk endringene</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="555"/>
@@ -153,7 +151,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation>GRUB installeres nå på enheten %1.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="119"/>
@@ -173,24 +171,25 @@
         <location filename="../mainwindow.cpp" line="119"/>
         <location filename="../mainwindow.cpp" line="213"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Klarte ikke å opprette midlertidig mappe</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
         <location filename="../mainwindow.cpp" line="245"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klarte ikke sette opp chroot-miljø.
+Dobbeltsjekk valgt plassering.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="210"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gjenoppbygger oppsettsfila til GRUB (grub.cfg).</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="261"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Reservekopierer MBR eller PBR fra enheten %1.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="327"/>
@@ -200,34 +199,36 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="328"/>
         <source>You are going to write the content of </source>
-        <translation type="unfinished"></translation>
+        <translation>Nå skal innholdet i</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
         <source> to </source>
-        <translation type="unfinished"></translation>
+        <translation>skrives til</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
         <source>
 
 Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Er du sikker?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="334"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gjenoppretter MBR/PBR fra reservekopi til enheten %1.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="354"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fant ikke EFI systempartisjon (ESP) på noen systemdisker. Opprett en ESP og forsøk igjen.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="396"/>
         <source>Select %1 location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg plasseringen til %1:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
@@ -237,63 +238,63 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="444"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>Vellykket</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="445"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Fullført uten feil. &lt;p&gt;&lt;b&gt;Vil du avslutte MX Oppstartsreparasjon?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="449"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosessen er fullført. Det oppstod feil.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="466"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation type="unfinished"></translation>
+        <translation>Angi passord for å låse opp den krypterte partisjonen %1:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="473"/>
         <source>Sorry, could not open %1 LUKS container</source>
-        <translation type="unfinished"></translation>
+        <translation>Klarte ikke åpne LUKS-partisjonen %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="546"/>
         <source>Select GRUB location</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg GRUB-plassering</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="558"/>
         <source>Select Item to Back Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg et element som skal reservekopieres</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="565"/>
         <source>Select Item to Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg et element som skal gjenopprettes</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="576"/>
         <source>Select backup file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg filnavn til reservekopien</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="578"/>
         <location filename="../mainwindow.cpp" line="585"/>
         <source>No file was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen fil ble valgt.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="583"/>
         <source>Select MBR or PBR backup file</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg fil med MBR/PBR-reservekopi</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>About %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Om %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="604"/>
@@ -303,84 +304,61 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="605"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation type="unfinished"></translation>
+        <translation>Oppstartsreparasjon for MX Linux</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>Copyright (c) MX Linux</translation>
+        <translation>Opphavsrett (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
         <source>%1 License</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisens for %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="619"/>
         <source>%1 Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Hjelpetekst for %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Sorry, could not mount %1 partition</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QApplication</name>
-    <message>
-        <source>License</source>
-        <translation type="vanished">Lisens</translation>
-    </message>
-    <message>
-        <source>Changelog</source>
-        <translation type="vanished">Changelog</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">Avbryt</translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation type="vanished">&amp;Lukk</translation>
-    </message>
-    <message>
-        <source>You must run this program as root.</source>
-        <translation type="vanished">Du må kjøre dette programmet som root.</translation>
+        <translation>Klarte ikke montere partisjonen %1</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="65"/>
-        <source>Error</source>
-        <translation type="unfinished">Feil</translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="66"/>
-        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation type="unfinished">Lisens</translation>
+        <translation>Lisens</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
         <source>Changelog</source>
-        <translation type="unfinished">Changelog</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished">Avbryt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Lukk</translation>
+        <translation>&amp;Lukk</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="65"/>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="66"/>
+        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

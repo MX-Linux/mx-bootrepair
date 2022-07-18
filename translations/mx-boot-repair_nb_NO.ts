@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="mr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nb_NO">
 <context>
     <name>MainWindow</name>
     <message>
@@ -100,22 +100,22 @@
     <message>
         <location filename="../mainwindow.ui" line="420"/>
         <source>About this application</source>
-        <translation>या अनुप्रयोगाबद्दल</translation>
+        <translation>Om denne applikasjonen</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="423"/>
         <source>About...</source>
-        <translation>विषयी</translation>
+        <translation>Om...</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="472"/>
         <source>Display help </source>
-        <translation>मदत दाखवा</translation>
+        <translation>Vis hjelp</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="475"/>
         <source>Help</source>
-        <translation>मदत</translation>
+        <translation>Hjelp</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="482"/>
@@ -125,12 +125,12 @@
     <message>
         <location filename="../mainwindow.ui" line="523"/>
         <source>Cancel any changes then quit</source>
-        <translation>सर्व बदल रद्द करा आणि बंद करा</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="526"/>
         <source>Cancel</source>
-        <translation>रद्द करा</translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="533"/>
@@ -146,7 +146,7 @@
         <location filename="../mainwindow.ui" line="555"/>
         <location filename="../mainwindow.cpp" line="79"/>
         <source>Apply</source>
-        <translation type="unfinished"/>
+        <translation>Bruk</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
@@ -165,7 +165,7 @@
         <location filename="../mainwindow.cpp" line="585"/>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Error</source>
-        <translation>त्रुटी</translation>
+        <translation>Feil</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="119"/>
@@ -193,7 +193,7 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="327"/>
         <source>Warning</source>
-        <translation type="unfinished"/>
+        <translation>Advarsel</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="328"/>
@@ -291,12 +291,12 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>About %1</source>
-        <translation type="unfinished"/>
+        <translation>Om %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="604"/>
         <source>Version: </source>
-        <translation>आवृत्ती:</translation>
+        <translation>Versjon:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="605"/>
@@ -306,7 +306,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>कॉपीराइट (c) एमएक्स लिनक्स</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
@@ -316,7 +316,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="619"/>
         <source>%1 Help</source>
-        <translation type="unfinished"/>
+        <translation>%1 Hjelp</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
@@ -329,7 +329,7 @@ Are you sure?</source>
     <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation>परवाना</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
@@ -345,7 +345,7 @@ Are you sure?</source>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation>बंद</translation>
+        <translation>&amp;Lukk</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="65"/>

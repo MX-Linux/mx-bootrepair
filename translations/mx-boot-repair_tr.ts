@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="tr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="tr">
 <context>
     <name>MainWindow</name>
     <message>
@@ -21,7 +19,7 @@
     <message>
         <location filename="../mainwindow.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>Yedek MBR veya PBR (yalnızca eski önyükleme)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="86"/>
@@ -36,7 +34,7 @@
     <message>
         <location filename="../mainwindow.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR veya PBR&apos;yi yedekten geri yükle (yalnızca eski önyükleme)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="136"/>
@@ -173,14 +171,15 @@
         <location filename="../mainwindow.cpp" line="119"/>
         <location filename="../mainwindow.cpp" line="213"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçici klasör oluşturulamadı</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
         <location filename="../mainwindow.cpp" line="245"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chroot ortamı ayarlanamadı.
+Lütfen seçilen yeri tekrar kontrol edin.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="210"/>
@@ -224,7 +223,7 @@ Emin misiniz?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="354"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiçbir sistem diskinde EFI sistem bölümü (ESP) bulunamadı. Lütfen bir ESP oluşturun ve tekrar deneyin.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="396"/>
@@ -259,7 +258,7 @@ Emin misiniz?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="473"/>
         <source>Sorry, could not open %1 LUKS container</source>
-        <translation type="unfinished"></translation>
+        <translation>Üzgünüz, %1 LUKS kapsayıcı açılamadı</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="546"/>
@@ -329,60 +328,37 @@ Emin misiniz?</translation>
     </message>
 </context>
 <context>
-    <name>QApplication</name>
-    <message>
-        <source>License</source>
-        <translation type="vanished">Ruhsat</translation>
-    </message>
-    <message>
-        <source>Changelog</source>
-        <translation type="vanished">Değişim günlüğü</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">İptal</translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation type="vanished">&amp;Kapat</translation>
-    </message>
-    <message>
-        <source>You must run this program as root.</source>
-        <translation type="vanished">Bu programı root olarak çalıştırmalısınız.</translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
-    <message>
-        <location filename="../main.cpp" line="65"/>
-        <source>Error</source>
-        <translation type="unfinished">Hata</translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="66"/>
-        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation type="unfinished">Ruhsat</translation>
+        <translation>Ruhsat</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
         <source>Changelog</source>
-        <translation type="unfinished">Değişim günlüğü</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished">İptal</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Kapat</translation>
+        <translation>&amp;Kapat</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="65"/>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="66"/>
+        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

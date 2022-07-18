@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pl">
 <context>
     <name>MainWindow</name>
     <message>
@@ -87,7 +85,7 @@
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="547"/>
         <source>Select root location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz lokalizację katalogu głównego root:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -173,7 +171,7 @@
         <location filename="../mainwindow.cpp" line="119"/>
         <location filename="../mainwindow.cpp" line="213"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie można utworzyć folderu tymczasowego</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
@@ -230,7 +228,7 @@ Jesteś pewien?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="396"/>
         <source>Select %1 location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz lokalizację %1 :</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
@@ -255,7 +253,7 @@ Jesteś pewien?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="466"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź hasło, aby odblokować zaszyfrowaną partycję %1 :</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="473"/>
@@ -326,64 +324,41 @@ Jesteś pewien?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Sorry, could not mount %1 partition</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QApplication</name>
-    <message>
-        <source>License</source>
-        <translation type="vanished">Licencja</translation>
-    </message>
-    <message>
-        <source>Changelog</source>
-        <translation type="vanished">Dziennik zmian</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">Anuluj</translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation type="vanished">&amp;Zamknij</translation>
-    </message>
-    <message>
-        <source>You must run this program as root.</source>
-        <translation type="vanished">Musisz uruchomić ten program jako administrator. </translation>
+        <translation>Niestety, nie można zamontować partycji %1</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="65"/>
-        <source>Error</source>
-        <translation type="unfinished">Błąd</translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="66"/>
-        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation type="unfinished">Licencja</translation>
+        <translation>Licencja</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
         <source>Changelog</source>
-        <translation type="unfinished">Dziennik zmian</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished">Anuluj</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Zamknij</translation>
+        <translation>&amp;Zamknij</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="65"/>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="66"/>
+        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

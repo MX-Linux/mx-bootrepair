@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation>MX-Reparador do Arranque</translation>
+        <translation>MX Reparador do Arranque</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>O MX-Reparador do Arranque é um utilitário que pode ser usado para reinstalar o carregador do arranque GRUB na ESP (Partição do Sistema EFI), no MBR (Master Boot Record) ou na partição root. Ele fornece a opção de reconstruir o ficheiro de configuração do GRUB e fazer cópia de segurança e restaurar o MBR ou o PBR (root).</translation>
+        <translation>O MX Reparador do Arranque é um utilitário que pode ser usado para reinstalar o carregador do arranque GRUB na ESP (EFI Sistema Partition), no MBR (Master Boot Record) do disco ou no PBR (Partition Boot Record) da partição raiz ( / , root), para reconstruir o ficheiro de configuração do GRUB, para fazer cópias de segurança do MBR ou do PBR, ou para restaurar o MBR ou o PBR.</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -42,7 +40,7 @@
         <location filename="../mainwindow.ui" line="136"/>
         <location filename="../mainwindow.cpp" line="536"/>
         <source>Select Boot Method</source>
-        <translation>Seleccionar método de arranque</translation>
+        <translation>Dados para instalação do Arranque</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="154"/>
@@ -69,7 +67,7 @@
         <location filename="../mainwindow.ui" line="185"/>
         <location filename="../mainwindow.cpp" line="539"/>
         <source>root</source>
-        <translation>raíz (PBR)</translation>
+        <translation>PBR (da partição raíz)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
@@ -87,7 +85,7 @@
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="547"/>
         <source>Select root location:</source>
-        <translation>Seleccionar a localização de root (raíz):</translation>
+        <translation>Seleccionar a localização da raiz ( / , root):</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -112,7 +110,7 @@
     <message>
         <location filename="../mainwindow.ui" line="472"/>
         <source>Display help </source>
-        <translation>Exibir ajuda</translation>
+        <translation>Mostrar ajuda</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="475"/>
@@ -173,7 +171,7 @@
         <location filename="../mainwindow.cpp" line="119"/>
         <location filename="../mainwindow.cpp" line="213"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível criar uma pasta temporária</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
@@ -181,12 +179,12 @@
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation>Não foi possível definir o ambiente chroot.
-Verificar novamente a localização selecionada.</translation>
+Verificar novamente a localização seleccionada.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="210"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation>O ficheiro de configuração do GRUB (grub.cfg) está a ser refeito</translation>
+        <translation>O ficheiro de configuração do GRUB (grub.cfg) está a ser refeito.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="261"/>
@@ -201,7 +199,7 @@ Verificar novamente a localização selecionada.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="328"/>
         <source>You are going to write the content of </source>
-        <translation>Vai escrever o conteúdo de </translation>
+        <translation>Vai ser escrito o conteúdo de </translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
@@ -215,17 +213,17 @@ Verificar novamente a localização selecionada.</translation>
 Are you sure?</source>
         <translation>
     
-Tem a certeza?</translation>
+Seguramente?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="334"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation>A restaurar MBR/PBR em %1 a partir da cópia.</translation>
+        <translation>A restaurar o MBR/PBR em %1 a partir da cópia.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="354"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation>Não foi encontrada a ESP (EFI System Partition) em qualquer dos discos do sistema. Criar uma ESP e voltar a tentar.</translation>
+        <translation>Não foi encontrada qualquer ESP (EFI System Partition). Criar uma partição ESP e voltar a tentar.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="396"/>
@@ -235,7 +233,7 @@ Tem a certeza?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
         <source>Back</source>
-        <translation>Voltar</translation>
+        <translation>Voltar atrás</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="444"/>
@@ -245,7 +243,7 @@ Tem a certeza?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="445"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>O processo terminou com êxito.&lt;p&gt;&lt;b&gt;Sair do MX-Reparador do Arranque?&lt;/b&gt;</translation>
+        <translation>O processo terminou com êxito.&lt;p&gt;&lt;b&gt;Sair do MX Reparador do Arranque?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="449"/>
@@ -270,12 +268,12 @@ Tem a certeza?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="558"/>
         <source>Select Item to Back Up</source>
-        <translation>Seleccionar o item a copiar para segurança</translation>
+        <translation>Seleccionar o item a Copiar para Segurança</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="565"/>
         <source>Select Item to Restore</source>
-        <translation>Seleccionar o item a restaurar</translation>
+        <translation>Seleccionar o item a Restaurar</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="576"/>
@@ -296,7 +294,7 @@ Tem a certeza?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>About %1</source>
-        <translation>Sobre %1</translation>
+        <translation>Sobre o %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="604"/>
@@ -316,12 +314,12 @@ Tem a certeza?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
         <source>%1 License</source>
-        <translation>%1 Licença</translation>
+        <translation>Licença do %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="619"/>
         <source>%1 Help</source>
-        <translation>%1 Ajuda</translation>
+        <translation>Ajuda do %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
@@ -330,60 +328,37 @@ Tem a certeza?</translation>
     </message>
 </context>
 <context>
-    <name>QApplication</name>
-    <message>
-        <source>License</source>
-        <translation type="vanished">Licença</translation>
-    </message>
-    <message>
-        <source>Changelog</source>
-        <translation type="vanished">Registo de alterações</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">Cancelar</translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation type="vanished">&amp;Fechar</translation>
-    </message>
-    <message>
-        <source>You must run this program as root.</source>
-        <translation type="vanished">Este programa tem que ser executado como root.</translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
-    <message>
-        <location filename="../main.cpp" line="65"/>
-        <source>Error</source>
-        <translation type="unfinished">Erro</translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="66"/>
-        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation type="unfinished">Licença</translation>
+        <translation>Licença</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
         <source>Changelog</source>
-        <translation type="unfinished">Registo de alterações</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancelar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Fechar</translation>
+        <translation>&amp;Fechar</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="65"/>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="66"/>
+        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

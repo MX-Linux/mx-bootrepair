@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ja">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ja">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation>MX Boot Repair</translation>
+        <translation>MX ブートリペア</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation type="unfinished"></translation>
+        <translation>MX ブートリペアは ESP (EFI システムパーティション)、MBR (マスターブートレコード)、またはルートパーティションに GRUB ブートローダを再インストールするために使用できるユーティリティです。GRUB 設定ファイルを再構築したり、MBR または PBR (root) をバックアップして復元したりするオプションを提供します。</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -26,7 +24,7 @@
     <message>
         <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation type="unfinished"></translation>
+        <translation>GRUB ブートローダーを ESP、MBR または PBR (root)へ再インストール</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="96"/>
@@ -87,7 +85,7 @@
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="547"/>
         <source>Select root location:</source>
-        <translation type="unfinished"></translation>
+        <translation>root の場所を選択:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -107,7 +105,7 @@
     <message>
         <location filename="../mainwindow.ui" line="423"/>
         <source>About...</source>
-        <translation>About...</translation>
+        <translation>情報...</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="472"/>
@@ -153,7 +151,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation>GRUB は %1 デバイスへインストール中です。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="119"/>
@@ -173,7 +171,7 @@
         <location filename="../mainwindow.cpp" line="119"/>
         <location filename="../mainwindow.cpp" line="213"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"></translation>
+        <translation>一時フォルダを作成できませんでした</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
@@ -186,22 +184,22 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="210"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation type="unfinished"></translation>
+        <translation>GRUB 設定ファイル (grub.cfg) は再構築中です。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="261"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 デバイスから MBR または PBR をバックアップ中です。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="327"/>
         <source>Warning</source>
-        <translation>注意</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="328"/>
         <source>You are going to write the content of </source>
-        <translation>コンテンツの書き込み内容:</translation>
+        <translation>の内容がこれから書き込まれます:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
@@ -220,17 +218,17 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="334"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR / PBR をバックアップから %1 デバイスに復元中です。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="354"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>EFI システムパーティション (ESP) がシステムディスクのどこにも見つかりません。ESP を作成しもう一度試してください。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="396"/>
         <source>Select %1 location:</source>
-        <translation type="unfinished"></translation>
+        <translation> %1 の場所を選んでください:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
@@ -240,42 +238,42 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="444"/>
         <source>Success</source>
-        <translation>完了</translation>
+        <translation>成功</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="445"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>処理が完了しました。&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;MX Boot Repair を終了してよろしいですか？&amp;lt;/b&amp;gt;</translation>
+        <translation>処理が成功しました。&lt;p&gt;&lt;b&gt;MX ブートリペアを終了しますか？&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="449"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation>処理が完了しました。エラーが発生しています。</translation>
+        <translation>処理が終了しました。エラーが発生しています。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="466"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation type="unfinished"></translation>
+        <translation>パスワードを入力し、暗号化された %1 パーティションのロックを解除してください : </translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="473"/>
         <source>Sorry, could not open %1 LUKS container</source>
-        <translation type="unfinished"></translation>
+        <translation>申しわけありませんが、 %1 LUKS コンテナを開くことができません</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="546"/>
         <source>Select GRUB location</source>
-        <translation type="unfinished"></translation>
+        <translation>GRUB の場所を選んでください</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="558"/>
         <source>Select Item to Back Up</source>
-        <translation type="unfinished"></translation>
+        <translation>バックアップするアイテムを選択</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="565"/>
         <source>Select Item to Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>復元するアイテムを選択</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="576"/>
@@ -296,17 +294,17 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>About %1</source>
-        <translation type="unfinished"></translation>
+        <translation> %1について</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="604"/>
         <source>Version: </source>
-        <translation>Version: </translation>
+        <translation>バージョン: </translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="605"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>MX Linux のシンプル起動(ブート)修理プログラム</translation>
+        <translation>MX Linux 用の簡単な起動修復プログラム</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
@@ -316,70 +314,51 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
         <source>%1 License</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ライセンス</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="619"/>
         <source>%1 Help</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 のヘルプ</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Sorry, could not mount %1 partition</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QApplication</name>
-    <message>
-        <source>License</source>
-        <translation type="vanished">ライセンス</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">キャンセル</translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation type="vanished">閉じる(&amp;C)</translation>
-    </message>
-    <message>
-        <source>You must run this program as root.</source>
-        <translation type="vanished">このプログラムは root で実行する必要があります。</translation>
+        <translation>申しわけありませんが、 %1 パーティションをマウントできません</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="65"/>
-        <source>Error</source>
-        <translation type="unfinished">エラー</translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="66"/>
-        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation type="unfinished">ライセンス</translation>
+        <translation>ライセンス</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished">キャンセル</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">閉じる(&amp;C)</translation>
+        <translation>&amp;閉じる</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="65"/>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="66"/>
+        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

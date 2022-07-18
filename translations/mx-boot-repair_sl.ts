@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sl">
 <context>
     <name>MainWindow</name>
     <message>
@@ -11,7 +9,7 @@
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>MX popravljanje zagona je orodje za ponovno namestitev GRUB zaganjalnika na ESP (EFI sistemski razdelek), MBR (MAster Boot Record) ali root razdelek. Ponuja možnost rekonstrukcije GRUB konfiguracijske datoteke in ustvarjanja varnostne kopije MBR ali PBR (root) ali obnovo iz le-te.</translation>
+        <translation>MX popravljanje zagona je orodje za ponovno namestitev GRUB zaganjalnika na ESP (EFI sistemski razdelek), MBR (MAster Boot Record) ali korenski razdelek. Ponuja možnost rekonstrukcije GRUB konfiguracijske datoteke in ustvarjanja varnostne kopije MBR ali PBR (koren) ali obnovo iz nje.</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -26,7 +24,7 @@
     <message>
         <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation>Ponovno namesti GRUB zaganjalnik na ESP, MPR ali PBR (root)</translation>
+        <translation>Ponovno namesti GRUB zaganjalnik na ESP, MPR ali PBR (koren)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="96"/>
@@ -63,7 +61,7 @@
     <message>
         <location filename="../mainwindow.ui" line="182"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Root (Partition Boot Record)</translation>
+        <translation>Koren (Partition Boot Record)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
@@ -87,7 +85,7 @@
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="547"/>
         <source>Select root location:</source>
-        <translation>Izberite lokacijo za root:</translation>
+        <translation>Izberite lokacijo za koren:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -173,7 +171,7 @@
         <location filename="../mainwindow.cpp" line="119"/>
         <location filename="../mainwindow.cpp" line="213"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Začasne mape ni bilo mogoče ustvariti.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
@@ -330,60 +328,37 @@ Ali ste prepričani?</translation>
     </message>
 </context>
 <context>
-    <name>QApplication</name>
-    <message>
-        <source>License</source>
-        <translation type="vanished">Licenca</translation>
-    </message>
-    <message>
-        <source>Changelog</source>
-        <translation type="vanished">Dnevnik sprememb</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">Prekliči</translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation type="vanished">&amp;Zapri</translation>
-    </message>
-    <message>
-        <source>You must run this program as root.</source>
-        <translation type="vanished">Ta program morate zagnati kot root</translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
-    <message>
-        <location filename="../main.cpp" line="65"/>
-        <source>Error</source>
-        <translation type="unfinished">Napaka</translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="66"/>
-        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation type="unfinished">Licenca</translation>
+        <translation>Licenca</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
         <source>Changelog</source>
-        <translation type="unfinished">Dnevnik sprememb</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished">Prekliči</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Zapri</translation>
+        <translation>&amp;Zapri</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="65"/>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="66"/>
+        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

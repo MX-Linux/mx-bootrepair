@@ -1,0 +1,224 @@
+ dpkg-buildpackage -us -uc -ui
+dpkg-buildpackage: info: source package mx-bootrepair
+dpkg-buildpackage: info: source version 22.76.03
+dpkg-buildpackage: info: source distribution mx
+dpkg-buildpackage: info: source changed by Dolphin Oracle <dolphinoracle@gmail.com>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh clean --no-automatic-dbgsym --parallel 
+   debian/rules override_dh_auto_clean
+make[1]: Entering directory '/media/demo/dataext/development/working/mx-bootrepair/64'
+dh_auto_clean
+rm -f src/translations/*.qm
+make[1]: Leaving directory '/media/demo/dataext/development/working/mx-bootrepair/64'
+   dh_autoreconf_clean -O--no-automatic-dbgsym -O--parallel
+   dh_clean -O--no-automatic-dbgsym -O--parallel
+ dpkg-source -b .
+dpkg-source: info: using source format '3.0 (native)'
+dpkg-source: info: building mx-bootrepair in mx-bootrepair_22.76.03.tar.xz
+dpkg-source: info: building mx-bootrepair in mx-bootrepair_22.76.03.dsc
+ debian/rules build
+dh build --no-automatic-dbgsym --parallel 
+   dh_update_autotools_config -O--no-automatic-dbgsym -O--parallel
+   dh_autoreconf -O--no-automatic-dbgsym -O--parallel
+   dh_auto_configure -O--no-automatic-dbgsym -O--parallel
+	qmake -makefile "QMAKE_CFLAGS_RELEASE=-g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2" "QMAKE_CFLAGS_DEBUG=-g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2" "QMAKE_CXXFLAGS_RELEASE=-g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2" "QMAKE_CXXFLAGS_DEBUG=-g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2" QMAKE_LFLAGS_RELEASE=-Wl,-z,relro QMAKE_LFLAGS_DEBUG=-Wl,-z,relro QMAKE_STRIP=: PREFIX=/usr
+Info: creating stash file /media/demo/dataext/development/working/mx-bootrepair/64/.qmake.stash
+   debian/rules override_dh_auto_build
+make[1]: Entering directory '/media/demo/dataext/development/working/mx-bootrepair/64'
+lrelease *.pro
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_am.qm'...
+    Generated 39 translation(s) (39 finished and 0 unfinished)
+    Ignored 27 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_ar.qm'...
+    Generated 14 translation(s) (14 finished and 0 unfinished)
+    Ignored 52 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_bg.qm'...
+    Generated 14 translation(s) (14 finished and 0 unfinished)
+    Ignored 52 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_ca.qm'...
+    Generated 60 translation(s) (60 finished and 0 unfinished)
+    Ignored 6 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_cs.qm'...
+    Generated 60 translation(s) (60 finished and 0 unfinished)
+    Ignored 6 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_da.qm'...
+    Generated 59 translation(s) (59 finished and 0 unfinished)
+    Ignored 7 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_de.qm'...
+    Generated 61 translation(s) (61 finished and 0 unfinished)
+    Ignored 5 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_el.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_en.qm'...
+    Generated 66 translation(s) (66 finished and 0 unfinished)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_es.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_et.qm'...
+    Generated 2 translation(s) (2 finished and 0 unfinished)
+    Ignored 64 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_eu.qm'...
+    Generated 1 translation(s) (1 finished and 0 unfinished)
+    Ignored 65 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_fa.qm'...
+    Generated 18 translation(s) (18 finished and 0 unfinished)
+    Ignored 48 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_fi.qm'...
+    Generated 61 translation(s) (61 finished and 0 unfinished)
+    Ignored 5 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_fil_PH.qm'...
+    Generated 56 translation(s) (56 finished and 0 unfinished)
+    Ignored 10 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_fr.qm'...
+    Generated 61 translation(s) (61 finished and 0 unfinished)
+    Ignored 5 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_he_IL.qm'...
+    Generated 41 translation(s) (41 finished and 0 unfinished)
+    Ignored 25 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_hi.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_hr.qm'...
+    Generated 32 translation(s) (32 finished and 0 unfinished)
+    Ignored 34 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_hu.qm'...
+    Generated 20 translation(s) (20 finished and 0 unfinished)
+    Ignored 46 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_id.qm'...
+    Generated 15 translation(s) (15 finished and 0 unfinished)
+    Ignored 51 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_is.qm'...
+    Generated 15 translation(s) (15 finished and 0 unfinished)
+    Ignored 51 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_it.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_ja.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_kk.qm'...
+    Generated 14 translation(s) (14 finished and 0 unfinished)
+    Ignored 52 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_ko.qm'...
+    Generated 3 translation(s) (3 finished and 0 unfinished)
+    Ignored 63 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_lt.qm'...
+    Generated 40 translation(s) (40 finished and 0 unfinished)
+    Ignored 26 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_mk.qm'...
+    Generated 2 translation(s) (2 finished and 0 unfinished)
+    Ignored 64 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_mr.qm'...
+    Generated 14 translation(s) (14 finished and 0 unfinished)
+    Ignored 52 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_nb.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_nl.qm'...
+    Generated 60 translation(s) (60 finished and 0 unfinished)
+    Ignored 6 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_pl.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_pt.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_pt_BR.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_ro.qm'...
+    Generated 32 translation(s) (32 finished and 0 unfinished)
+    Ignored 34 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_ru.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_sk.qm'...
+    Generated 47 translation(s) (47 finished and 0 unfinished)
+    Ignored 19 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_sl.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_sq.qm'...
+    Generated 60 translation(s) (60 finished and 0 unfinished)
+    Ignored 6 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_sr.qm'...
+    Generated 5 translation(s) (5 finished and 0 unfinished)
+    Ignored 61 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_sv.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_tr.qm'...
+    Generated 62 translation(s) (62 finished and 0 unfinished)
+    Ignored 4 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_uk.qm'...
+    Generated 20 translation(s) (20 finished and 0 unfinished)
+    Ignored 46 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_zh_CN.qm'...
+    Generated 35 translation(s) (35 finished and 0 unfinished)
+    Ignored 31 untranslated source text(s)
+Updating '/media/demo/dataext/development/working/mx-bootrepair/64/translations/mx-boot-repair_zh_TW.qm'...
+    Generated 45 translation(s) (45 finished and 0 unfinished)
+    Ignored 21 untranslated source text(s)
+head -n1 debian/changelog | sed -e "s/.*(\([^(]*\)).*/#define VERSION \"\1\"/" > version.h
+dh_auto_build -- QMAKE=qmake-qt5 LRELEASE=lrelease-qt5 QMAKE_OPTS="DEFINES+=NO_DEBUG_ON_CONSOLE"
+	make -j4 QMAKE=qmake-qt5 LRELEASE=lrelease-qt5 QMAKE_OPTS=DEFINES\+=NO_DEBUG_ON_CONSOLE
+make[2]: Entering directory '/media/demo/dataext/development/working/mx-bootrepair/64'
+/usr/lib/qt5/bin/uic mainwindow.ui -o ui_mainwindow.h
+g++ -c -pipe -g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -std=gnu++1z -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o main.o main.cpp
+g++ -c -pipe -g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -std=gnu++1z -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o about.o about.cpp
+g++ -c -pipe -g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -std=gnu++1z -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o cmd.o cmd.cpp
+/usr/lib/qt5/bin/rcc -name images images.qrc -o qrc_images.cpp
+g++ -pipe -g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -std=gnu++1z -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
+g++ -c -pipe -g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -std=gnu++1z -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o mainwindow.o mainwindow.cpp
+g++ -c -pipe -g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -std=gnu++1z -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o qrc_images.o qrc_images.cpp
+/usr/lib/qt5/bin/moc -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB --include /media/demo/dataext/development/working/mx-bootrepair/64/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/media/demo/dataext/development/working/mx-bootrepair/64 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+/usr/lib/qt5/bin/moc -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB --include /media/demo/dataext/development/working/mx-bootrepair/64/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/media/demo/dataext/development/working/mx-bootrepair/64 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include cmd.h -o moc_cmd.cpp
+g++ -c -pipe -g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -std=gnu++1z -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o moc_mainwindow.o moc_mainwindow.cpp
+g++ -c -pipe -g -O2 -fdebug-prefix-map=/media/demo/dataext/development/working/mx-bootrepair/64=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -std=gnu++1z -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o moc_cmd.o moc_cmd.cpp
+g++ -Wl,-z,relro -o mx-boot-repair main.o mainwindow.o about.o cmd.o qrc_images.o moc_mainwindow.o moc_cmd.o   -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+make[2]: Leaving directory '/media/demo/dataext/development/working/mx-bootrepair/64'
+make[1]: Leaving directory '/media/demo/dataext/development/working/mx-bootrepair/64'
+   dh_auto_test -O--no-automatic-dbgsym -O--parallel
+   create-stamp debian/debhelper-build-stamp
+ fakeroot debian/rules binary
+dh binary --no-automatic-dbgsym --parallel 
+   dh_testroot -O--no-automatic-dbgsym -O--parallel
+   dh_prep -O--no-automatic-dbgsym -O--parallel
+   debian/rules override_dh_auto_install
+make[1]: Entering directory '/media/demo/dataext/development/working/mx-bootrepair/64'
+dh_auto_install -- QMAKE=qmake-qt5 LRELEASE=lrelease-qt5 QMAKE_OPTS="DEFINES+=NO_DEBUG_ON_CONSOLE"
+make[1]: Leaving directory '/media/demo/dataext/development/working/mx-bootrepair/64'
+   dh_install -O--no-automatic-dbgsym -O--parallel
+   dh_installdocs -O--no-automatic-dbgsym -O--parallel
+   dh_installchangelogs -O--no-automatic-dbgsym -O--parallel
+   dh_systemd_enable -O--no-automatic-dbgsym -O--parallel
+   dh_installinit -O--no-automatic-dbgsym -O--parallel
+   dh_systemd_start -O--no-automatic-dbgsym -O--parallel
+   dh_icons -O--no-automatic-dbgsym -O--parallel
+   dh_perl -O--no-automatic-dbgsym -O--parallel
+   dh_link -O--no-automatic-dbgsym -O--parallel
+   dh_strip_nondeterminism -O--no-automatic-dbgsym -O--parallel
+   dh_compress -O--no-automatic-dbgsym -O--parallel
+   dh_fixperms -O--no-automatic-dbgsym -O--parallel
+   dh_missing -O--no-automatic-dbgsym -O--parallel
+   dh_strip -O--no-automatic-dbgsym -O--parallel
+   dh_makeshlibs -O--no-automatic-dbgsym -O--parallel
+   debian/rules override_dh_shlibdeps
+make[1]: Entering directory '/media/demo/dataext/development/working/mx-bootrepair/64'
+dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/mx-bootrepair/usr/bin/mx-boot-repair was not linked against libGL.so.1 (it uses none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/mx-bootrepair/usr/bin/mx-boot-repair was not linked against libpthread.so.0 (it uses none of the library's symbols)
+make[1]: Leaving directory '/media/demo/dataext/development/working/mx-bootrepair/64'
+   dh_installdeb -O--no-automatic-dbgsym -O--parallel
+   dh_gencontrol -O--no-automatic-dbgsym -O--parallel
+   dh_md5sums -O--no-automatic-dbgsym -O--parallel
+   dh_builddeb -O--no-automatic-dbgsym -O--parallel
+dpkg-deb: building package 'mx-bootrepair' in '../mx-bootrepair_22.76.03_amd64.deb'.
+ dpkg-genbuildinfo
+ dpkg-genchanges  >../mx-bootrepair_22.76.03_amd64.changes
+dpkg-genchanges: info: including full source code in upload
+ dpkg-source --after-build .
+dpkg-buildpackage: info: full upload; Debian-native package (full source is included)

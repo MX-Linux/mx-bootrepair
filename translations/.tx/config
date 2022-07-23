@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[antix-development.mx-boot-repair]
+file_filter = ./mx-boot-repair_<lang>.ts
+source_file = mx-boot-repair_en.ts
+source_lang = en
+type = ts

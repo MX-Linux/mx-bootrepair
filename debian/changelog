@@ -1,3 +1,9 @@
+mx-bootrepair (22.80) mx; urgency=medium
+
+  * Fix: launching Firefox from Help
+
+ -- Adrian <adrian@mxlinux.org>  Wed, 17 Aug 2022 21:40:03 -0400
+
 mx-bootrepair (22.76.03) mx; urgency=medium
 
   * translation refresh

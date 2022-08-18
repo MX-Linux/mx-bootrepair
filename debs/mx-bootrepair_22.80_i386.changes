@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Wed, 17 Aug 2022 21:40:03 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: i386
+Version: 22.80
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (22.80) mx; urgency=medium
+ .
+   * Fix: launching Firefox from Help
+Checksums-Sha1:
+ 8ecb2373a7e7ac10140fdfc3a4c47897d932eb7c 10047 mx-bootrepair_22.80_i386.buildinfo
+ cf1e45985a5789412cedcb9c21e0c38f1dd70999 96028 mx-bootrepair_22.80_i386.deb
+Checksums-Sha256:
+ 19884800a84b928c40b5a2059a1267c4a4971ed037e122bec49077ab1b33f136 10047 mx-bootrepair_22.80_i386.buildinfo
+ f6a7ac18c125fd0eaa377d300d9837662035251affdff78aa4b47f482bc19717 96028 mx-bootrepair_22.80_i386.deb
+Files:
+ 98fc075e9106dc7078ce23e16195ec04 10047 admin optional mx-bootrepair_22.80_i386.buildinfo
+ 05b7e309ccaab20910c7b82592003aef 96028 admin optional mx-bootrepair_22.80_i386.deb

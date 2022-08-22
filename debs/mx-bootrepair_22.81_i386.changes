@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Mon, 22 Aug 2022 19:13:01 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: i386
+Version: 22.81
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (22.81) mx; urgency=medium
+ .
+   * Fix: launching documents from Help (fixes a problem in Plasma)
+Checksums-Sha1:
+ fe078f21b6b9ef9206b631d7424dc42065da121b 10047 mx-bootrepair_22.81_i386.buildinfo
+ 3b00a86cae0fcfffa753d5965d4ad9469f3e467a 96800 mx-bootrepair_22.81_i386.deb
+Checksums-Sha256:
+ fc3a74092745ab694ed10f0f39abf922c2e861dc635abf4a5bce372c6614f517 10047 mx-bootrepair_22.81_i386.buildinfo
+ 4002b70750ca9caaf77b677218740e667959d1bc9a195d3fa02f11d9fb92fd06 96800 mx-bootrepair_22.81_i386.deb
+Files:
+ 5f95cbae759df7d68ae59544ed7a00a4 10047 admin optional mx-bootrepair_22.81_i386.buildinfo
+ 81906d3446399f77f47906a38d12e9be 96800 admin optional mx-bootrepair_22.81_i386.deb

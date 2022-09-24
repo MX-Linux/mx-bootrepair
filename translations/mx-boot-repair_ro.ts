@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ro">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ro">
 <context>
     <name>MainWindow</name>
     <message>
@@ -9,7 +11,7 @@
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -19,12 +21,12 @@
     <message>
         <location filename="../mainwindow.ui" line="79"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="96"/>
@@ -34,7 +36,7 @@
     <message>
         <location filename="../mainwindow.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="136"/>
@@ -45,7 +47,7 @@
     <message>
         <location filename="../mainwindow.ui" line="154"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="157"/>
@@ -61,7 +63,7 @@
     <message>
         <location filename="../mainwindow.ui" line="182"/>
         <source>Root (Partition Boot Record)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
@@ -85,7 +87,7 @@
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="547"/>
         <source>Select root location:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -151,7 +153,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="119"/>
@@ -171,24 +173,24 @@
         <location filename="../mainwindow.cpp" line="119"/>
         <location filename="../mainwindow.cpp" line="213"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
         <location filename="../mainwindow.cpp" line="245"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="210"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="261"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="327"/>
@@ -198,34 +200,34 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="328"/>
         <source>You are going to write the content of </source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
         <source> to </source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
         <source>
 
 Are you sure?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="334"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="354"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="396"/>
         <source>Select %1 location:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
@@ -250,7 +252,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="466"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="473"/>
@@ -260,38 +262,38 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="546"/>
         <source>Select GRUB location</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="558"/>
         <source>Select Item to Back Up</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="565"/>
         <source>Select Item to Restore</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="576"/>
         <source>Select backup file name</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="578"/>
         <location filename="../mainwindow.cpp" line="585"/>
         <source>No file was selected.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="583"/>
         <source>Select MBR or PBR backup file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>About %1</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="604"/>
@@ -301,7 +303,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="605"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
@@ -311,51 +313,51 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
         <source>%1 License</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="619"/>
         <source>%1 Help</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Sorry, could not mount %1 partition</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../about.cpp" line="41"/>
+        <location filename="../about.cpp" line="50"/>
         <source>License</source>
         <translation>Licență</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
+        <location filename="../about.cpp" line="60"/>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="43"/>
+        <location filename="../about.cpp" line="52"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Anulează</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="61"/>
+        <location filename="../about.cpp" line="70"/>
         <source>&amp;Close</source>
         <translation>&amp;Închide</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="65"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Eroare</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="66"/>
         <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

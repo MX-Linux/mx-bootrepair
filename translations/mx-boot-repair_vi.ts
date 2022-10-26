@@ -335,12 +335,12 @@ Are you sure?</source>
         <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Nhật kí thay đổi</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Hủy bỏ</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
@@ -350,7 +350,7 @@ Are you sure?</source>
     <message>
         <location filename="../main.cpp" line="65"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Lỗi</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="66"/>

@@ -340,7 +340,7 @@ Are you sure?</source>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
@@ -350,7 +350,7 @@ Are you sure?</source>
     <message>
         <location filename="../main.cpp" line="65"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Feil</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="66"/>

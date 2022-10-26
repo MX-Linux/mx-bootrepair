@@ -50,13 +50,13 @@
     <message>
         <location filename="../mainwindow.ui" line="157"/>
         <source>MBR</source>
-        <translation type="unfinished"/>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="160"/>
         <location filename="../mainwindow.ui" line="430"/>
         <source>Alt+B</source>
-        <translation type="unfinished"/>
+        <translation>Alt+B</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="182"/>
@@ -67,25 +67,25 @@
         <location filename="../mainwindow.ui" line="185"/>
         <location filename="../mainwindow.cpp" line="539"/>
         <source>root</source>
-        <translation type="unfinished"/>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
         <location filename="../mainwindow.cpp" line="538"/>
         <source>Install on:</source>
-        <translation type="unfinished"/>
+        <translation>Installeer op</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="255"/>
         <location filename="../mainwindow.cpp" line="537"/>
         <source>Location:</source>
-        <translation type="unfinished"/>
+        <translation>Locatie:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="547"/>
         <source>Select root location:</source>
-        <translation type="unfinished"/>
+        <translation>Selecteer root locatie:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -100,17 +100,17 @@
     <message>
         <location filename="../mainwindow.ui" line="420"/>
         <source>About this application</source>
-        <translation type="unfinished"/>
+        <translation>Over deze applicatie</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="423"/>
         <source>About...</source>
-        <translation type="unfinished"/>
+        <translation>Over...</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="472"/>
         <source>Display help </source>
-        <translation type="unfinished"/>
+        <translation>Toon help</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="475"/>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../mainwindow.ui" line="482"/>
         <source>Alt+H</source>
-        <translation type="unfinished"/>
+        <translation>Alt+H</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="523"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"/>
+        <translation>Iedere verandering ongedaan maken, dan afsluiten</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="526"/>
@@ -135,18 +135,18 @@
     <message>
         <location filename="../mainwindow.ui" line="533"/>
         <source>Alt+N</source>
-        <translation type="unfinished"/>
+        <translation>Alt+N</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="552"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"/>
+        <translation>Veranderingen toepassen</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="555"/>
         <location filename="../mainwindow.cpp" line="79"/>
         <source>Apply</source>
-        <translation type="unfinished"/>
+        <translation>Toepassen</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
@@ -165,7 +165,7 @@
         <location filename="../mainwindow.cpp" line="585"/>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Foutmelding</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="119"/>
@@ -193,7 +193,7 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="327"/>
         <source>Warning</source>
-        <translation type="unfinished"/>
+        <translation>Waarschuwing</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="328"/>
@@ -230,12 +230,12 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Terug</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="444"/>
         <source>Success</source>
-        <translation type="unfinished"/>
+        <translation>Gelukt</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="445"/>
@@ -291,12 +291,12 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>About %1</source>
-        <translation type="unfinished"/>
+        <translation>Over %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="604"/>
         <source>Version: </source>
-        <translation type="unfinished"/>
+        <translation>Versie:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="605"/>
@@ -306,17 +306,17 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"/>
+        <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
         <source>%1 License</source>
-        <translation type="unfinished"/>
+        <translation>%1 Licentie</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="619"/>
         <source>%1 Help</source>
-        <translation type="unfinished"/>
+        <translation>%1 Help</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
@@ -329,33 +329,33 @@ Are you sure?</source>
     <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation type="unfinished"/>
+        <translation>Licentie</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Changelog</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Sluiten</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="65"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Foutmelding</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="66"/>
         <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"/>
+        <translation>U lijkt ingelogd te zijn als root, gelieve uit te loggen en in te loggen als normale gebruiker om dit programma te gebruiken.</translation>
     </message>
 </context>
 </TS>

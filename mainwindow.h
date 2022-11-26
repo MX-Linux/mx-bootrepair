@@ -30,7 +30,8 @@
 #include <QTemporaryDir>
 #include <QTimer>
 
-namespace Ui {
+namespace Ui
+{
 class MainWindow;
 }
 
@@ -81,7 +82,6 @@ private:
     void restoreBR(const QString &filename);
     void setEspDefaults();
     void targetSelection();
-
 };
 
 #endif // MAINWINDOW_H

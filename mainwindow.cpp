@@ -628,12 +628,13 @@ void MainWindow::buttonAbout_clicked()
 {
     this->hide();
     displayAboutMsgBox(
-        tr("About %1").arg(this->windowTitle()),
-        "<p align=\"center\"><b><h2>" + this->windowTitle() + "</h2></b></p><p align=\"center\">" + tr("Version: ")
-            + VERSION + "</p><p align=\"center\"><h3>" + tr("Simple boot repair program for MX Linux")
+        tr("About %1").arg(QApplication::applicationDisplayName()),
+        "<p align=\"center\"><b><h2>" + QApplication::applicationDisplayName() + "</h2></b></p><p align=\"center\">"
+            + tr("Version: ") + VERSION + "</p><p align=\"center\"><h3>" + tr("Simple boot repair program for MX Linux")
             + R"(</h3></p><p align="center"><a href="http://mxlinux.org">http://mxlinux.org</a><br /></p><p align="center">)"
             + tr("Copyright (c) MX Linux") + "<br /><br /></p>",
-        QStringLiteral("/usr/share/doc/mx-bootrepair/license.html"), tr("%1 License").arg(this->windowTitle()));
+        QStringLiteral("/usr/share/doc/mx-bootrepair/license.html"),
+        tr("%1 License").arg(QApplication::applicationDisplayName()));
     this->show();
 }
 

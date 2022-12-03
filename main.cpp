@@ -48,6 +48,7 @@ int main(int argc, char *argv[])
         qputenv("HOME", "/root");
 
     QApplication::setWindowIcon(QIcon::fromTheme(QApplication::applicationName()));
+    QApplication::setApplicationDisplayName(QObject::tr("MX Boot Repair"));
 
     QTranslator qtTran;
     if (qtTran.load(QLocale(), QStringLiteral("qt"), QStringLiteral("_"),

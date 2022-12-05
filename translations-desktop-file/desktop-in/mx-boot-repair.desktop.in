@@ -1,0 +1,10 @@
+[Desktop Entry]
+# The desktop entry name will be displayed within the menu.
+Name=MX Boot Repair
+# # The desktop entry comment will be shown within the menu.
+Comment=Simple Boot Repair
+Exec=mxbr-launcher
+Icon=mx-boot-repair
+NoDisplay=false
+Categories=System;MX-Maintenance;
+Type=Application

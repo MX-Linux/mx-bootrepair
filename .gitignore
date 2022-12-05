@@ -35,5 +35,8 @@ Makefile*
 *.qmlproject.user
 *.qmlproject.user.*
 
+# Transifex ignore
+.tx/
+
 mx-boot-repair
 

@@ -108,7 +108,7 @@ void MainWindow::installGRUB()
             refresh();
             return;
         }
-        root = QStringLiteral("/dev/mapper/chrootfs");
+        root = QStringLiteral("/dev/mapper/root.fsm");
     }
 
     ui->outputLabel->setText(text);
@@ -210,7 +210,7 @@ void MainWindow::repairGRUB()
             refresh();
             return;
         }
-        part = QStringLiteral("/dev/mapper/chrootfs");
+        part = QStringLiteral("/dev/mapper/root.fsm");
     }
 
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
@@ -288,7 +288,7 @@ void MainWindow::cleanupMountPoints(const QString &path, bool isLuks)
               .arg(path);
     shell->run(cmd);
     if (isLuks)
-        shell->run(QStringLiteral("cryptsetup luksClose chrootfs"));
+        shell->run(QStringLiteral("cryptsetup luksClose root.fsm"));
 }
 
 // try to guess partition to install GRUB
@@ -491,7 +491,7 @@ bool MainWindow::openLuks(const QString &part)
                                                tr("Enter password to unlock %1 encrypted partition:").arg(part),
                                                QLineEdit::Password, QString(), &ok);
     if (ok && !pass.isEmpty()) {
-        QString cmd = "echo " + pass + "| cryptsetup luksOpen " + part + " chrootfs -";
+        QString cmd = "echo " + pass + "| cryptsetup luksOpen " + part + " root.fsm -";
         if (shell->run(cmd, true))
             return true;
     }

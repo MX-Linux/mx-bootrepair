@@ -56,7 +56,7 @@
         <location filename="../mainwindow.ui" line="160"/>
         <location filename="../mainwindow.ui" line="430"/>
         <source>Alt+B</source>
-        <translation type="unfinished"/>
+        <translation>Alt+B</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="182"/>
@@ -100,42 +100,42 @@
     <message>
         <location filename="../mainwindow.ui" line="420"/>
         <source>About this application</source>
-        <translation type="unfinished"/>
+        <translation>關於本程式</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="423"/>
         <source>About...</source>
-        <translation type="unfinished"/>
+        <translation>關於……</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="472"/>
         <source>Display help </source>
-        <translation type="unfinished"/>
+        <translation>顯示說明</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="475"/>
         <source>Help</source>
-        <translation type="unfinished"/>
+        <translation>說明</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="482"/>
         <source>Alt+H</source>
-        <translation type="unfinished"/>
+        <translation>Alt+H</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="523"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"/>
+        <translation>取消所有變更，然後退出</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="526"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="533"/>
         <source>Alt+N</source>
-        <translation type="unfinished"/>
+        <translation>Alt+N</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="552"/>
@@ -165,7 +165,7 @@
         <location filename="../mainwindow.cpp" line="585"/>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>錯誤</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="119"/>
@@ -296,7 +296,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="604"/>
         <source>Version: </source>
-        <translation type="unfinished"/>
+        <translation>版本：</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="605"/>
@@ -306,7 +306,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"/>
+        <translation>MX Linux 版權所有 (c)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
@@ -329,28 +329,28 @@ Are you sure?</source>
     <message>
         <location filename="../about.cpp" line="41"/>
         <source>License</source>
-        <translation type="unfinished"/>
+        <translation>授權條款</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="42"/>
         <location filename="../about.cpp" line="51"/>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>變更紀錄</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="61"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"/>
+        <translation>關閉（&amp;C）</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="65"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>錯誤</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="66"/>

@@ -1,0 +1,40 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Tue, 13 Dec 2022 20:53:51 -0500
+Source: mx-bootrepair
+Architecture: source
+Version: 22.83
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Changes:
+ mx-bootrepair (22.83) mx; urgency=medium
+ .
+   * Use root.fsm instead of chrootfs for luks name
+Checksums-Sha1:
+ 1396448ec64f5b35addb51c8a0d1f729e23b9daf 1179 mx-bootrepair_22.83.dsc
+ c2a453c6eba4cc9c1724bf5f281fbddd0a2b88fa 85704 mx-bootrepair_22.83.tar.xz
+ bfaac59655504cc2bfafd6fe33099db8b49847d4 10754 mx-bootrepair_22.83_amd64.buildinfo
+Checksums-Sha256:
+ 8bf98d7967c41942c501c254ab82f8ecb9bbe07f9ff0271a02592fe43f94581f 1179 mx-bootrepair_22.83.dsc
+ 7aab67bebc24f0af90e776cff098645fbdd21e5c627496c44f798f03be65c6e5 85704 mx-bootrepair_22.83.tar.xz
+ e36ecfb30c1b9d09057128860df819503297e24e64e6b4a193f00b9a8dfdd74d 10754 mx-bootrepair_22.83_amd64.buildinfo
+Files:
+ 60a216306c08f8705f0f7acb21c6e733 1179 admin optional mx-bootrepair_22.83.dsc
+ 8e6d98df010d1c7e6d79d41e17eab1fb 85704 admin optional mx-bootrepair_22.83.tar.xz
+ 71f0421205a5939c447315a6e27a04e1 10754 admin optional mx-bootrepair_22.83_amd64.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmOZNGgTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumFEHB/0YxLMIWwo+zBBRVllDCOPLyYvmzw0C
+XSovTzQ06V+MeCbbp8CzhCt60lqK6mWE9hU+dEvqET4DRfKNshCQ06rTbfFjWyc1
+on3sz2bZrWALL2KNUpTxzkMwKHlqLQTmkgIWq9PJvLgolenWadUdAzWhnyzNHtW5
+ohZ8Cl+PdTF6uILql5UQPFRXR1G6BWMGuY+WbQzxgoVelYn0lhrBp11urRSGe+2B
+8e4EdlrWayaPOFrl2L2UY8mkGwhsJ/BX0xNlrh6+6HpuhouKJXdImSvGdqBQA1jR
+bZ8YaXKt9SPxJWKgc0h2wyN3kPmRSVI+7YhkJMpdb6U3TIFhqtvOEj5F
+=H9aw
+-----END PGP SIGNATURE-----

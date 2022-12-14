@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sl">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sl">
 <context>
     <name>MainWindow</name>
     <message>
@@ -38,7 +40,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="136"/>
-        <location filename="../mainwindow.cpp" line="536"/>
+        <location filename="../mainwindow.cpp" line="563"/>
         <source>Select Boot Method</source>
         <translation>Določi zagonski način</translation>
     </message>
@@ -65,25 +67,25 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
-        <location filename="../mainwindow.cpp" line="539"/>
+        <location filename="../mainwindow.cpp" line="566"/>
         <source>root</source>
         <translation>koren</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="565"/>
         <source>Install on:</source>
         <translation>Namesti na:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="255"/>
-        <location filename="../mainwindow.cpp" line="537"/>
+        <location filename="../mainwindow.cpp" line="564"/>
         <source>Location:</source>
         <translation>Lokacija:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="277"/>
-        <location filename="../mainwindow.cpp" line="547"/>
+        <location filename="../mainwindow.cpp" line="574"/>
         <source>Select root location:</source>
         <translation>Izberite lokacijo za koren:</translation>
     </message>
@@ -144,70 +146,70 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="555"/>
-        <location filename="../mainwindow.cpp" line="79"/>
+        <location filename="../mainwindow.cpp" line="77"/>
         <source>Apply</source>
         <translation>Potrdi</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="94"/>
+        <location filename="../mainwindow.cpp" line="93"/>
         <source>GRUB is being installed on %1 device.</source>
         <translation>GRUB se namešča na napravo %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="119"/>
-        <location filename="../mainwindow.cpp" line="148"/>
-        <location filename="../mainwindow.cpp" line="213"/>
-        <location filename="../mainwindow.cpp" line="245"/>
-        <location filename="../mainwindow.cpp" line="354"/>
-        <location filename="../mainwindow.cpp" line="449"/>
-        <location filename="../mainwindow.cpp" line="473"/>
-        <location filename="../mainwindow.cpp" line="578"/>
-        <location filename="../mainwindow.cpp" line="585"/>
-        <location filename="../mainwindow.cpp" line="642"/>
+        <location filename="../mainwindow.cpp" line="118"/>
+        <location filename="../mainwindow.cpp" line="150"/>
+        <location filename="../mainwindow.cpp" line="219"/>
+        <location filename="../mainwindow.cpp" line="253"/>
+        <location filename="../mainwindow.cpp" line="373"/>
+        <location filename="../mainwindow.cpp" line="474"/>
+        <location filename="../mainwindow.cpp" line="498"/>
+        <location filename="../mainwindow.cpp" line="605"/>
+        <location filename="../mainwindow.cpp" line="612"/>
+        <location filename="../mainwindow.cpp" line="663"/>
         <source>Error</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="119"/>
-        <location filename="../mainwindow.cpp" line="213"/>
+        <location filename="../mainwindow.cpp" line="118"/>
+        <location filename="../mainwindow.cpp" line="219"/>
         <source>Could not create a temporary folder</source>
         <translation>Začasne mape ni bilo mogoče ustvariti.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="148"/>
-        <location filename="../mainwindow.cpp" line="245"/>
+        <location filename="../mainwindow.cpp" line="151"/>
+        <location filename="../mainwindow.cpp" line="254"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation>Ustvarjanje chroot okolja ni uspelo.
 Prosimo, da še enkrat preverite izbrano lokacijo.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="210"/>
+        <location filename="../mainwindow.cpp" line="216"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
         <translation>Konfiguracijska datoteka za GRUB (grub.cfg) se ponovno gradi.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="261"/>
+        <location filename="../mainwindow.cpp" line="271"/>
         <source>Backing up MBR or PBR from %1 device.</source>
         <translation>Varnostno kopiranje MBR ali PBR iz naprave %1.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="327"/>
+        <location filename="../mainwindow.cpp" line="345"/>
         <source>Warning</source>
         <translation>Opozorilo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="328"/>
+        <location filename="../mainwindow.cpp" line="346"/>
         <source>You are going to write the content of </source>
         <translation>Zapisali boste vsebino iz </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="329"/>
+        <location filename="../mainwindow.cpp" line="346"/>
         <source> to </source>
         <translation>na</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="329"/>
+        <location filename="../mainwindow.cpp" line="347"/>
         <source>
 
 Are you sure?</source>
@@ -216,113 +218,113 @@ Are you sure?</source>
 Ali ste prepričani?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="334"/>
+        <location filename="../mainwindow.cpp" line="353"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
         <translation>Obnova MBR/PBR iz varnostne kopije na napravo %1.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="354"/>
+        <location filename="../mainwindow.cpp" line="374"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation>Nisem uspel najti EFI sistemskega razdelka (ESP) ali drug sistemski disk. Prosimo, ustvarite ESP in poskusite znova. </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="396"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>Select %1 location:</source>
         <translation>Izberite lokacijo %1:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>Back</source>
         <translation>Nazaj</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="470"/>
         <source>Success</source>
         <translation>Uspešno</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="445"/>
+        <location filename="../mainwindow.cpp" line="470"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation>Proces se je uspešno zaključil.&lt;p&gt;&lt;b&gt;Ali želite zapustiti MX popravljanje zagona?&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="449"/>
+        <location filename="../mainwindow.cpp" line="474"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>Postopek je končan. Pojavile so se napake.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="466"/>
+        <location filename="../mainwindow.cpp" line="491"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
         <translation>Vnesite geslo za odklep šifriranega razdelka %1:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="473"/>
+        <location filename="../mainwindow.cpp" line="498"/>
         <source>Sorry, could not open %1 LUKS container</source>
         <translation>Oprostite, LUKS zabojnika %1 ni bilo mogoče odpreti</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="546"/>
+        <location filename="../mainwindow.cpp" line="573"/>
         <source>Select GRUB location</source>
         <translation>Določi lokacijo za GRUB</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="558"/>
+        <location filename="../mainwindow.cpp" line="585"/>
         <source>Select Item to Back Up</source>
         <translation>Izberite predmet za varnostno kopiranje</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="565"/>
+        <location filename="../mainwindow.cpp" line="592"/>
         <source>Select Item to Restore</source>
         <translation>Izberite predmet, ki naj se obnovi</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="576"/>
+        <location filename="../mainwindow.cpp" line="603"/>
         <source>Select backup file name</source>
         <translation>Določite ime varostne kopije</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="578"/>
-        <location filename="../mainwindow.cpp" line="585"/>
+        <location filename="../mainwindow.cpp" line="605"/>
+        <location filename="../mainwindow.cpp" line="612"/>
         <source>No file was selected.</source>
         <translation>Nobena datoteka ni bila izbrana.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="583"/>
+        <location filename="../mainwindow.cpp" line="610"/>
         <source>Select MBR or PBR backup file</source>
         <translation>Izberite MBR ali PBR varnostno kopijo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="602"/>
+        <location filename="../mainwindow.cpp" line="631"/>
         <source>About %1</source>
         <translation>O %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="604"/>
+        <location filename="../mainwindow.cpp" line="633"/>
         <source>Version: </source>
         <translation>Različica:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="605"/>
+        <location filename="../mainwindow.cpp" line="633"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Preprost program za popravljanje zagona v MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="607"/>
+        <location filename="../mainwindow.cpp" line="635"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="608"/>
+        <location filename="../mainwindow.cpp" line="637"/>
         <source>%1 License</source>
         <translation>%1 licenca</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="619"/>
+        <location filename="../mainwindow.cpp" line="649"/>
         <source>%1 Help</source>
         <translation>%1 pomoč</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="642"/>
+        <location filename="../mainwindow.cpp" line="663"/>
         <source>Sorry, could not mount %1 partition</source>
         <translation>Oprostite, razdelka %1 ni bilo mogoče priklopiti</translation>
     </message>
@@ -330,33 +332,38 @@ Ali ste prepričani?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../about.cpp" line="41"/>
+        <location filename="../about.cpp" line="52"/>
         <source>License</source>
         <translation>Licenca</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="42"/>
-        <location filename="../about.cpp" line="51"/>
+        <location filename="../about.cpp" line="53"/>
+        <location filename="../about.cpp" line="62"/>
         <source>Changelog</source>
         <translation>Dnevnik sprememb</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="43"/>
+        <location filename="../about.cpp" line="54"/>
         <source>Cancel</source>
         <translation>Prekliči</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="61"/>
+        <location filename="../about.cpp" line="74"/>
         <source>&amp;Close</source>
         <translation>&amp;Zapri</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="65"/>
+        <location filename="../main.cpp" line="51"/>
+        <source>MX Boot Repair</source>
+        <translation type="unfinished">MX Popravljanje zagona</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="70"/>
         <source>Error</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="66"/>
+        <location filename="../main.cpp" line="71"/>
         <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
         <translation>Prijevljeni ste kot korenski uporabnik. Izpišite se in se ponovno prijavite kot običajen uporabnik, če želite uporabljati ta program.</translation>
     </message>

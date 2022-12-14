@@ -1,3 +1,9 @@
+mx-bootrepair (22.83) mx; urgency=medium
+
+  * Use root.fsm instead of chrootfs for luks name
+
+ -- Adrian <adrian@mxlinux.org>  Tue, 13 Dec 2022 20:53:51 -0500
+
 mx-bootrepair (22.82) mx; urgency=medium
 
   * update translations 

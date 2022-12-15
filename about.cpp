@@ -65,9 +65,7 @@ void displayAboutMsgBox(const QString &title, const QString &message, const QStr
         auto *text = new QTextEdit(changelog);
         text->setReadOnly(true);
         QProcess proc;
-        proc.start(
-            QStringLiteral("zless"),
-            {"/usr/share/doc/" + QFileInfo(QCoreApplication::applicationFilePath()).fileName() + "/changelog.gz"});
+        proc.start(QStringLiteral("zless"), {"/usr/share/doc/mx-bootrepair/changelog.gz"});
         proc.waitForFinished();
         text->setText(QString::fromLatin1(proc.readAllStandardOutput()));
 

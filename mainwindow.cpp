@@ -598,6 +598,15 @@ void MainWindow::buttonApply_clicked()
         // on selection page
     } else if (ui->stackedWidget->currentWidget() == ui->selectionPage) {
         if (ui->reinstallRadioButton->isChecked()) {
+            if (ui->locationCombo->currentText().isEmpty()) {
+                QMessageBox::critical(this, tr("Error"), tr("No location was selected."));
+                return;
+            }
+            if (ui->rootCombo->currentText().isEmpty()) {
+                QMessageBox::critical(this, tr("Error"),
+                                      tr("Please select the root partition of the system you want to fix."));
+                return;
+            }
             installGRUB();
         } else if (ui->bakRadioButton->isChecked()) {
             QString filename = QFileDialog::getSaveFileName(this, tr("Select backup file name"));
@@ -614,6 +623,10 @@ void MainWindow::buttonApply_clicked()
             }
             restoreBR(filename);
         } else if (ui->repairRadioButton->isChecked()) {
+            if (ui->locationCombo->currentText().isEmpty()) {
+                QMessageBox::critical(this, tr("Error"), tr("No location was selected."));
+                return;
+            }
             repairGRUB();
         }
         // on output page

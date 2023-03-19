@@ -1,3 +1,10 @@
+mx-bootrepair (23.3) mx; urgency=medium
+
+  * Added checks to make sure install location and root are selected
+  * Update translations
+
+ -- Adrian <adrian@mxlinux.org>  Sun, 19 Mar 2023 09:41:58 -0400
+
 mx-bootrepair (22.83) mx; urgency=medium
 
   * Use root.fsm instead of chrootfs for luks name

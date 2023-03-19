@@ -6,12 +6,12 @@
     <message>
         <location filename="../mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation>MX 起動修復ツール</translation>
+        <translation>MX ブートリペア</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>MX 起動修復ツールは ESP (EFI システムパーティション)、MBR (マスターブートレコード)、またはルートパーティションに GRUB ブートローダを再インストールするために使用できるユーティリティです。GRUB 設定ファイルを再構築したり、MBR または PBR (root) をバックアップして復元したりするオプションを提供します。</translation>
+        <translation>MX ブートリペアは ESP (EFI システムパーティション)、MBR (マスターブートレコード)、またはルートパーティションに GRUB ブートローダを再インストールするために使用できるユーティリティです。GRUB 設定ファイルを再構築したり、MBR または PBR (root) をバックアップして復元したりするオプションを提供します。</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -42,7 +42,7 @@
         <location filename="../mainwindow.ui" line="136"/>
         <location filename="../mainwindow.cpp" line="563"/>
         <source>Select Boot Method</source>
-        <translation>起動処理の選択</translation>
+        <translation>起動方法の選択</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="154"/>
@@ -163,9 +163,12 @@
         <location filename="../mainwindow.cpp" line="373"/>
         <location filename="../mainwindow.cpp" line="474"/>
         <location filename="../mainwindow.cpp" line="498"/>
-        <location filename="../mainwindow.cpp" line="605"/>
-        <location filename="../mainwindow.cpp" line="612"/>
-        <location filename="../mainwindow.cpp" line="663"/>
+        <location filename="../mainwindow.cpp" line="602"/>
+        <location filename="../mainwindow.cpp" line="606"/>
+        <location filename="../mainwindow.cpp" line="614"/>
+        <location filename="../mainwindow.cpp" line="621"/>
+        <location filename="../mainwindow.cpp" line="627"/>
+        <location filename="../mainwindow.cpp" line="676"/>
         <source>Error</source>
         <translation>エラー</translation>
     </message>
@@ -278,53 +281,64 @@ Are you sure?</source>
         <translation>復元するアイテムを選択</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="603"/>
+        <location filename="../mainwindow.cpp" line="602"/>
+        <location filename="../mainwindow.cpp" line="627"/>
+        <source>No location was selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="607"/>
+        <source>Please select the root partition of the system you want to fix.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="612"/>
         <source>Select backup file name</source>
         <translation>バックアップファイル名を選択</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="605"/>
-        <location filename="../mainwindow.cpp" line="612"/>
+        <location filename="../mainwindow.cpp" line="614"/>
+        <location filename="../mainwindow.cpp" line="621"/>
         <source>No file was selected.</source>
         <translation>ファイル選択なし</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="610"/>
+        <location filename="../mainwindow.cpp" line="619"/>
         <source>Select MBR or PBR backup file</source>
         <translation>MBR・PBR のバックアップファイルを選択</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="631"/>
+        <location filename="../mainwindow.cpp" line="644"/>
         <source>About %1</source>
         <translation> %1について</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="633"/>
+        <location filename="../mainwindow.cpp" line="646"/>
         <source>Version: </source>
         <translation>バージョン: </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="633"/>
+        <location filename="../mainwindow.cpp" line="646"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>MX Linux 用の簡単な起動修復プログラム</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="635"/>
+        <location filename="../mainwindow.cpp" line="648"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="637"/>
+        <location filename="../mainwindow.cpp" line="650"/>
         <source>%1 License</source>
         <translation>%1 ライセンス</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="649"/>
+        <location filename="../mainwindow.cpp" line="662"/>
         <source>%1 Help</source>
         <translation>%1 のヘルプ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="663"/>
+        <location filename="../mainwindow.cpp" line="676"/>
         <source>Sorry, could not mount %1 partition</source>
         <translation>申しわけありませんが、 %1 パーティションをマウントできません</translation>
     </message>
@@ -348,14 +362,14 @@ Are you sure?</source>
         <translation>キャンセル</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="74"/>
+        <location filename="../about.cpp" line="72"/>
         <source>&amp;Close</source>
         <translation>閉じる(&amp;C)</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="51"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished">MX 起動修復ツール</translation>
+        <translation>MX ブートリペア</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="70"/>

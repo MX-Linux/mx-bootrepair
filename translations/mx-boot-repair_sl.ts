@@ -163,9 +163,12 @@
         <location filename="../mainwindow.cpp" line="373"/>
         <location filename="../mainwindow.cpp" line="474"/>
         <location filename="../mainwindow.cpp" line="498"/>
-        <location filename="../mainwindow.cpp" line="605"/>
-        <location filename="../mainwindow.cpp" line="612"/>
-        <location filename="../mainwindow.cpp" line="663"/>
+        <location filename="../mainwindow.cpp" line="602"/>
+        <location filename="../mainwindow.cpp" line="606"/>
+        <location filename="../mainwindow.cpp" line="614"/>
+        <location filename="../mainwindow.cpp" line="621"/>
+        <location filename="../mainwindow.cpp" line="627"/>
+        <location filename="../mainwindow.cpp" line="676"/>
         <source>Error</source>
         <translation>Napaka</translation>
     </message>
@@ -278,53 +281,64 @@ Ali ste prepričani?</translation>
         <translation>Izberite predmet, ki naj se obnovi</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="603"/>
+        <location filename="../mainwindow.cpp" line="602"/>
+        <location filename="../mainwindow.cpp" line="627"/>
+        <source>No location was selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="607"/>
+        <source>Please select the root partition of the system you want to fix.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="612"/>
         <source>Select backup file name</source>
         <translation>Določite ime varostne kopije</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="605"/>
-        <location filename="../mainwindow.cpp" line="612"/>
+        <location filename="../mainwindow.cpp" line="614"/>
+        <location filename="../mainwindow.cpp" line="621"/>
         <source>No file was selected.</source>
         <translation>Nobena datoteka ni bila izbrana.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="610"/>
+        <location filename="../mainwindow.cpp" line="619"/>
         <source>Select MBR or PBR backup file</source>
         <translation>Izberite MBR ali PBR varnostno kopijo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="631"/>
+        <location filename="../mainwindow.cpp" line="644"/>
         <source>About %1</source>
         <translation>O %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="633"/>
+        <location filename="../mainwindow.cpp" line="646"/>
         <source>Version: </source>
         <translation>Različica:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="633"/>
+        <location filename="../mainwindow.cpp" line="646"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Preprost program za popravljanje zagona v MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="635"/>
+        <location filename="../mainwindow.cpp" line="648"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="637"/>
+        <location filename="../mainwindow.cpp" line="650"/>
         <source>%1 License</source>
         <translation>%1 licenca</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="649"/>
+        <location filename="../mainwindow.cpp" line="662"/>
         <source>%1 Help</source>
         <translation>%1 pomoč</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="663"/>
+        <location filename="../mainwindow.cpp" line="676"/>
         <source>Sorry, could not mount %1 partition</source>
         <translation>Oprostite, razdelka %1 ni bilo mogoče priklopiti</translation>
     </message>
@@ -348,14 +362,14 @@ Ali ste prepričani?</translation>
         <translation>Prekliči</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="74"/>
+        <location filename="../about.cpp" line="72"/>
         <source>&amp;Close</source>
         <translation>&amp;Zapri</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="51"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished">MX Popravljanje zagona</translation>
+        <translation>Popravljanje zagona</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="70"/>

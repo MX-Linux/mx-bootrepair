@@ -11,12 +11,12 @@
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation type="unfinished"></translation>
+        <translation>MX 启动修复工具是一个实用程序，可用于在 ESP（EFI 系统分区）、MBR（主引导记录）或根分区上重新安装 GRUB 引导加载程序。它提供了重建 GRUB 配置文件以及备份和恢复 MBR 或 PBR（根目录）的选项。</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation>拟想要做什么？</translation>
+        <translation>你想要做什么？</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="79"/>
@@ -163,9 +163,12 @@
         <location filename="../mainwindow.cpp" line="373"/>
         <location filename="../mainwindow.cpp" line="474"/>
         <location filename="../mainwindow.cpp" line="498"/>
-        <location filename="../mainwindow.cpp" line="605"/>
-        <location filename="../mainwindow.cpp" line="612"/>
-        <location filename="../mainwindow.cpp" line="663"/>
+        <location filename="../mainwindow.cpp" line="602"/>
+        <location filename="../mainwindow.cpp" line="606"/>
+        <location filename="../mainwindow.cpp" line="614"/>
+        <location filename="../mainwindow.cpp" line="621"/>
+        <location filename="../mainwindow.cpp" line="627"/>
+        <location filename="../mainwindow.cpp" line="676"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -214,7 +217,7 @@ Please double-check the selected location.</source>
 Are you sure?</source>
         <translation>
 
-你确定?</translation>
+你确定吗?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="353"/>
@@ -277,53 +280,64 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="603"/>
+        <location filename="../mainwindow.cpp" line="602"/>
+        <location filename="../mainwindow.cpp" line="627"/>
+        <source>No location was selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="607"/>
+        <source>Please select the root partition of the system you want to fix.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="612"/>
         <source>Select backup file name</source>
         <translation>选择备份文件名称</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="605"/>
-        <location filename="../mainwindow.cpp" line="612"/>
+        <location filename="../mainwindow.cpp" line="614"/>
+        <location filename="../mainwindow.cpp" line="621"/>
         <source>No file was selected.</source>
         <translation>没有选中的文件</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="610"/>
+        <location filename="../mainwindow.cpp" line="619"/>
         <source>Select MBR or PBR backup file</source>
         <translation>选择MBR/PBR备份文件</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="631"/>
+        <location filename="../mainwindow.cpp" line="644"/>
         <source>About %1</source>
         <translation>关于 %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="633"/>
+        <location filename="../mainwindow.cpp" line="646"/>
         <source>Version: </source>
         <translation>版本:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="633"/>
+        <location filename="../mainwindow.cpp" line="646"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="635"/>
+        <location filename="../mainwindow.cpp" line="648"/>
         <source>Copyright (c) MX Linux</source>
         <translation>版权所有(c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="637"/>
+        <location filename="../mainwindow.cpp" line="650"/>
         <source>%1 License</source>
         <translation>%1 许可证</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="649"/>
+        <location filename="../mainwindow.cpp" line="662"/>
         <source>%1 Help</source>
         <translation>%1 帮助</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="663"/>
+        <location filename="../mainwindow.cpp" line="676"/>
         <source>Sorry, could not mount %1 partition</source>
         <translation type="unfinished"></translation>
     </message>
@@ -347,14 +361,14 @@ Are you sure?</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="74"/>
+        <location filename="../about.cpp" line="72"/>
         <source>&amp;Close</source>
         <translation>关闭(&amp;C)</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="51"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished">MX 启动修复工具</translation>
+        <translation>MX 启动修复工具</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="70"/>
@@ -364,7 +378,7 @@ Are you sure?</source>
     <message>
         <location filename="../main.cpp" line="71"/>
         <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"></translation>
+        <translation>您似乎是以 root 身份登录的，请注销并以普通用户身份登录以使用该程序。</translation>
     </message>
 </context>
 </TS>

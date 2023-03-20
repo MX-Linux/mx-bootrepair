@@ -339,7 +339,7 @@ Ar tikrai?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="676"/>
         <source>Sorry, could not mount %1 partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Atleiskite, nepavyko prijungti %1 skaidinio</translation>
     </message>
 </context>
 <context>

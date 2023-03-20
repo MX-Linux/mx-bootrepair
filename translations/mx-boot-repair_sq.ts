@@ -284,12 +284,12 @@ Jeni i sigurt?</translation>
         <location filename="../mainwindow.cpp" line="602"/>
         <location filename="../mainwindow.cpp" line="627"/>
         <source>No location was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>S’u përzgjodh vendndodhje.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ju lutemi, përzgjidhni pjesën rrënjë të sistemit që doni të ndreqet.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="612"/>

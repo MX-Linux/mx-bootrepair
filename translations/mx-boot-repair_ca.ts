@@ -284,12 +284,12 @@ N&apos;esteu segurs? </translation>
         <location filename="../mainwindow.cpp" line="602"/>
         <location filename="../mainwindow.cpp" line="627"/>
         <source>No location was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;ha seleccionat cap ubicació.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation type="unfinished"></translation>
+        <translation>Si us plau, seleccioneu la partició arrel que voleu esmenar.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="612"/>

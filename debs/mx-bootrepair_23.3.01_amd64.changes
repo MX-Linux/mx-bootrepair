@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Mon, 20 Mar 2023 00:36:20 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 23.3.01
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (23.3.01) mx; urgency=medium
+ .
+   * Update help info.
+   * Make sure GUI is still active while displaying help info.
+Checksums-Sha1:
+ e858122c7da0d4088e82fc93659cc0d7dddb1ca3 1187 mx-bootrepair_23.3.01.dsc
+ b711ea2d048adafd6da2b70ac2792cac96d75dba 81352 mx-bootrepair_23.3.01.tar.xz
+ 1850a122a522448ca679d6aa4e3baaa4ee80a2b6 10773 mx-bootrepair_23.3.01_amd64.buildinfo
+ 8d06d596bbe4544a850628d134f3d3f8e566f1f8 100716 mx-bootrepair_23.3.01_amd64.deb
+Checksums-Sha256:
+ 2595ba32decaff90941dd2d0fa56ebd1654df30be84ab85aeafe103c78cbb81e 1187 mx-bootrepair_23.3.01.dsc
+ 7ba59d9c2f193de7a596e2378bfb65dd9851163970cf04f95cc9b8890c12a3ae 81352 mx-bootrepair_23.3.01.tar.xz
+ 53c795ca5dde1bcc959e86836c46511098b02e07f2157735cc0d669f5dd2a351 10773 mx-bootrepair_23.3.01_amd64.buildinfo
+ 5c2d69cdbc25e2969780163b4985326c6f15c01ed106bb55430f664fee184946 100716 mx-bootrepair_23.3.01_amd64.deb
+Files:
+ 3ea47d8a4fb57b9b5ced6defa258916a 1187 admin optional mx-bootrepair_23.3.01.dsc
+ 31b4932de4cdd78ab08b8c80d51d4512 81352 admin optional mx-bootrepair_23.3.01.tar.xz
+ 0dcbedf59e58338dd3441014090bab4a 10773 admin optional mx-bootrepair_23.3.01_amd64.buildinfo
+ 077ff2f75b5529be793fb21f91fb5958 100716 admin optional mx-bootrepair_23.3.01_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmQX47ATHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumO/YCADUQURg+REWMYqKGYWkRVABl+i+0z10
+7w6zJXfXfEsYuYWTtZMqFITbtwHaqaNO4qZvMlVM1UdpW/Mnz4bSqH4k5n3EdwWx
+mBIAgu/ZuzAfYcJ3R8hkFN2sO7rR0ef0K1UAiQBcN87nB4NWcq9CRPVOZyQi7dfQ
+Y2o/QEYTyn6NyrkBg/7tOQtbri3z4QWInVg+1mfTmQj0qbS7KjLtsrM/xflpBO13
+t8v+uHMhhSU5awpsdhpC5okUwpobIaYNh+714mMFexKp/H1Ld5ezPp5zB4NpT/FN
+XRqqSlarFq/5RJI3ZYVNxGeqM76VkQn/V20lI1dqFvQIAd1o0v1SUO4r
+=/pP1
+-----END PGP SIGNATURE-----

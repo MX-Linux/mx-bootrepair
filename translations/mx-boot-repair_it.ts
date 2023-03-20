@@ -284,12 +284,12 @@ Sei sicuro?</translation>
         <location filename="../mainwindow.cpp" line="602"/>
         <location filename="../mainwindow.cpp" line="627"/>
         <source>No location was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Non è stata selezionata nessuna posizione.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleziona la partizione di root del sistema che vuoi correggere.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="612"/>

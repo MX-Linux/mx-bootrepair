@@ -1,3 +1,10 @@
+mx-bootrepair (23.3.01) mx; urgency=medium
+
+  * Update help info.
+  * Make sure GUI is still active while displaying help info.
+
+ -- Adrian <adrian@mxlinux.org>  Mon, 20 Mar 2023 00:36:20 -0400
+
 mx-bootrepair (23.3) mx; urgency=medium
 
   * Added checks to make sure install location and root are selected

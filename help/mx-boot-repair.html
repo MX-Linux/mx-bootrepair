@@ -1,34 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>HELP: MX Boot Repair</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>HELP: MX Boot Repair</title>
 </head>
 <body>
 <h1>HELP: MX Boot Repair</h1>
 <h2>Procedure</h2>
 <ul>
-	<li>Boot to the LiveMedium and click Start Menu ≻ System ≻ MX Boot Repair and select the appropriate option.</li>
-	<li> GRUB
-		<ul>
-			<li> Reinstall a new bootloader. (UEFI support except in MX14)</li>
-			<li> Repair the bootloader by regenerating the GRUB configuration file (grub.cfg). This is the most common use of this application, turned to when it is not possible to boot into any partition where the user could run:</li>
-			<li> update-grub</li>
-		</ul>
-	</li>
-	<li> Boot block: WARNING: for legacy boot systems that rely on Bios instead of UEFI only!
-		<ul>
-			<li> Backup the boot block, either master (MBR) or partition (PBR).</li>
-			<li> Restore a boot block previously backed up.</li>
-		</ul>
-	</li>
+        <li>Boot to the LiveMedium and click Start Menu ≻ System ≻ MX Boot Repair and select the appropriate option.</li>
+        <li> GRUB
+                <ul>
+                        <li> Reinstall a new bootloader.</li>
+                        <li> Repair the bootloader by regenerating the GRUB configuration file (grub.cfg). This is the most common use of this application, turned to when it is not possible to boot into any partition where the user could run:</li>
+                        <li> update-grub</li>
+                </ul>
+        </li>
+        <li> Boot block: WARNING: for legacy boot systems that rely on Bios instead of UEFI only!
+                <ul>
+                        <li> Backup the boot block, either master (MBR) or partition (PBR).</li>
+                        <li> Restore a boot block previously backed up.</li>
+                </ul>
+        </li>
+</ul>
+
+<h2>Notes</h2>
+<ul>
+        <li><b>Installed on</b> refers to the “type” of bootloader:
+                <ul>
+                            <li> BIOS (legacy) boot mode will “boot from” MBR (Master Boot Record)</li>
+                            <li> “Root” will install GRUB to the root partition instead of the MBR or ESP and it will boot from there <b>only if you chainload it from another bootloader</b>. Don't use this option unless you know what it means.</li>
+                            <li> UEFI-boot mode will “boot from” ESP (EFI System Partition)</li>
+                </ul>
+        </li>
+        <li> <b>Location</b> refers to the “point” the first part of the bootloader is located on:
+                <ul>
+                            <li> Either the boot-drive where the MBR is loaded</li>
+                            <li> Or the partition where the ESP is setup. Note you can have multiple ESP’s on a drive not only one.</li>
+                </ul>
+        </li>
+        <li><b>Select root location</b> refers to the partition which contains the “/” (root filesystem).</li>
 </ul>
 
 <p>Development history: Adrian</p>
 
 <p>License: <a href="https://mxlinux.org/wiki/licenses/license-mx-boot-repair">here</a>.</p>
 
-<p>v. 20150603</p>
+<p>v. 20230320</p>
 </body>
 </html>

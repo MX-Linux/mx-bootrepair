@@ -44,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->buttonAbout, &QPushButton::clicked, this, &MainWindow::buttonAbout_clicked);
     connect(ui->buttonApply, &QPushButton::clicked, this, &MainWindow::buttonApply_clicked);
+    connect(ui->buttonCancel, &QPushButton::clicked, this, &MainWindow::reject);
     connect(ui->buttonHelp, &QPushButton::clicked, this, &MainWindow::buttonHelp_clicked);
     connect(ui->grubEspButton, &QPushButton::clicked, this, &MainWindow::grubEspButton_clicked);
     connect(ui->grubMbrButton, &QPushButton::clicked, this, &MainWindow::grubMbrButton_clicked);
@@ -113,32 +114,13 @@ void MainWindow::installGRUB()
 
     ui->outputLabel->setText(text);
 
-    // create a temp folder and mount dev sys proc
-    if (!tmpdir.isValid()) {
-        QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
-        return;
-    }
-
     // for grub-install access UEFI NVRAM entries mount efivarfs if not already mounted
     if (ui->grubEspButton->isChecked()) {
         shell->run(QStringLiteral(
             "grep -sq ^efivarfs /proc/self/mounts || "
             "{ test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }"));
     }
-
-    // create a temp folder and mount dev sys proc; mount run as tmpfs
-    if (!QFile::exists(tmpdir.path())) {
-        QString cmd = QStringLiteral("mkdir -p %1").arg(tmpdir.path());
-        shell->run(cmd);
-    }
-
-    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && "
-                                 "/bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && "
-                                 "/bin/mount -t tmpfs -o "
-                                 "size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && "
-                                 "/bin/mount --rbind /run/udev %2/run/udev")
-                      .arg(root, tmpdir.path());
-    if (shell->run(cmd)) {
+    if (mountChrootEnv(root)) {
         if (!checkAndMountPart(tmpdir.path(), QStringLiteral("/boot"))) {
             cleanupMountPoints(tmpdir.path(), isLuks);
             refresh();
@@ -214,23 +196,7 @@ void MainWindow::repairGRUB()
     }
 
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
-    // create a temp folder and mount dev sys proc; mount run as tmpfs
-    if (!tmpdir.isValid()) {
-        QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
-        return;
-    }
-    if (!QFile::exists(tmpdir.path())) {
-        QString cmd = QStringLiteral("mkdir -p %1").arg(tmpdir.path());
-        shell->run(cmd);
-    }
-    QString cmd
-        = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev &&"
-                         " /bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && "
-                         "/bin/mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && "
-                         "/bin/mount --rbind /run/udev %2/run/udev")
-              .arg(part, tmpdir.path());
-
-    if (shell->run(cmd)) {
+    if (mountChrootEnv(part)) {
         if (!checkAndMountPart(tmpdir.path(), QStringLiteral("/boot"))) {
             cleanupMountPoints(tmpdir.path(), isLuks);
             refresh();
@@ -242,9 +208,8 @@ void MainWindow::repairGRUB()
             refresh();
             return;
         }
-        cmd = QStringLiteral("chroot %1 update-grub").arg(tmpdir.path());
         displayOutput();
-        bool success = shell->run(cmd);
+        bool success = shell->run(QStringLiteral("chroot %1 update-grub").arg(tmpdir.path()));
         disableOutput();
         cleanupMountPoints(tmpdir.path(), isLuks);
         displayResult(success);
@@ -678,4 +643,26 @@ bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoin
         }
     }
     return true;
+}
+
+bool MainWindow::mountChrootEnv(const QString &path)
+{
+    // create a temp folder and mount dev sys proc
+    if (!tmpdir.isValid()) {
+        QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
+        return false;
+    }
+    // create a temp folder and mount dev sys proc; mount run as tmpfs
+    if (!QFile::exists(tmpdir.path())) {
+        QString cmd = QStringLiteral("mkdir -p %1").arg(tmpdir.path());
+        shell->run(cmd);
+    }
+
+    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && "
+                                 "/bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && "
+                                 "/bin/mount -t tmpfs -o "
+                                 "size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && "
+                                 "/bin/mount --rbind /run/udev %2/run/udev")
+                      .arg(path, tmpdir.path());
+    return shell->run(cmd);
 }

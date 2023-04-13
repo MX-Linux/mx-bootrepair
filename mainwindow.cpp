@@ -67,8 +67,8 @@ void MainWindow::refresh()
     ui->reinstallRadioButton->setChecked(true);
     ui->progressBar->hide();
     ui->progressBar->setValue(0);
-    ui->outputBox->setPlainText(QLatin1String(""));
-    ui->outputLabel->setText(QLatin1String(""));
+    ui->outputBox->clear();
+    ui->outputLabel->clear();
     ui->grubInsLabel->show();
     ui->grubRootButton->show();
     ui->grubMbrButton->show();
@@ -653,10 +653,8 @@ bool MainWindow::mountChrootEnv(const QString &path)
         return false;
     }
     // create a temp folder and mount dev sys proc; mount run as tmpfs
-    if (!QFile::exists(tmpdir.path())) {
-        QString cmd = QStringLiteral("mkdir -p %1").arg(tmpdir.path());
-        shell->run(cmd);
-    }
+    if (!QFile::exists(tmpdir.path()))
+        shell->run(QStringLiteral("mkdir -p %1").arg(tmpdir.path()));
 
     QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && "
                                  "/bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && "

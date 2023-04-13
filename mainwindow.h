@@ -71,6 +71,7 @@ private:
 
     QString selectPart(const QString &path, const QString &mountpoint);
     bool checkAndMountPart(const QString &path, const QString &mountpoint);
+    bool mountChrootEnv(const QString &path);
     void addDevToList();
     void backupBR(const QString &filename);
     void cleanupMountPoints(const QString &path, bool isLuks);

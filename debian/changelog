@@ -1,3 +1,10 @@
+mx-bootrepair (23.4) mx; urgency=medium
+
+  * Update icon
+  * Uptate translations
+
+ -- Adrian <adrian@mxlinux.org>  Thu, 13 Apr 2023 22:17:35 -0400
+
 mx-bootrepair (23.3.01) mx; urgency=medium
 
   * Update help info.

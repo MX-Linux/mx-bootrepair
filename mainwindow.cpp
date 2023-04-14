@@ -28,7 +28,6 @@
 #include <QScrollBar>
 
 #include "about.h"
-#include "version.h"
 #include <chrono>
 
 using namespace std::chrono_literals;
@@ -37,7 +36,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::MainWindow)
 {
-    qDebug().noquote() << QCoreApplication::applicationName() << "version:" << VERSION;
+    qDebug().noquote() << QCoreApplication::applicationName() << "version:" << QCoreApplication::applicationVersion();
+    ;
     ui->setupUi(this);
     timer = new QTimer(this);
     shell = new Cmd(this);
@@ -608,7 +608,8 @@ void MainWindow::buttonAbout_clicked()
     displayAboutMsgBox(
         tr("About %1").arg(QApplication::applicationDisplayName()),
         "<p align=\"center\"><b><h2>" + QApplication::applicationDisplayName() + "</h2></b></p><p align=\"center\">"
-            + tr("Version: ") + VERSION + "</p><p align=\"center\"><h3>" + tr("Simple boot repair program for MX Linux")
+            + tr("Version: ") + QCoreApplication::applicationVersion() + "</p><p align=\"center\"><h3>"
+            + tr("Simple boot repair program for MX Linux")
             + R"(</h3></p><p align="center"><a href="http://mxlinux.org">http://mxlinux.org</a><br /></p><p align="center">)"
             + tr("Copyright (c) MX Linux") + "<br /><br /></p>",
         QStringLiteral("/usr/share/doc/mx-bootrepair/license.html"),

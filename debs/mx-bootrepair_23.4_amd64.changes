@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 13 Apr 2023 22:17:35 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 23.4
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (23.4) mx; urgency=medium
+ .
+   * Update icon
+   * Uptate translations
+Checksums-Sha1:
+ d1c8e0a507ca01bbf8a49f3a5b0604f5e638a7e0 1175 mx-bootrepair_23.4.dsc
+ 5eab58dd01502b5892af3fc43ca214480f8c3b1a 84840 mx-bootrepair_23.4.tar.xz
+ 1de137dfe5fb2157d4aeedb9a99f086eb0e661f5 10746 mx-bootrepair_23.4_amd64.buildinfo
+ 2bb6a291ad231ae020921de3de8904c8e66c0ef1 97136 mx-bootrepair_23.4_amd64.deb
+Checksums-Sha256:
+ 1b985f2244f0c098a32da795051c0d5d779db527f75adf9ae618c279270cb27c 1175 mx-bootrepair_23.4.dsc
+ f5f0d2a89418c70ae365330fe508994a22a00e06b1e33b4b578f04757da7efc4 84840 mx-bootrepair_23.4.tar.xz
+ e8b610d3cf70c66dd24caf3c3a739f824c6cf68b33dce3b4c2c317df82617629 10746 mx-bootrepair_23.4_amd64.buildinfo
+ 12d1c4063fbcf1349567f9861f4564ea0c68576f67e158fe555a1a9ad6e31fa4 97136 mx-bootrepair_23.4_amd64.deb
+Files:
+ 53689519a96ff8f3c1d756d9cf401f43 1175 admin optional mx-bootrepair_23.4.dsc
+ 98de316cc473863de78943e44f082560 84840 admin optional mx-bootrepair_23.4.tar.xz
+ 44a55d33dd0b8be2d7db8fafa3a89966 10746 admin optional mx-bootrepair_23.4_amd64.buildinfo
+ 04433faff08caa7dd5aef6ea5729ee03 97136 admin optional mx-bootrepair_23.4_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmQ40loTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumDHxB/sEZPKkFSlJI+7bI1XL6CRFg0vIEJtT
+5egbVzUTacCTk+nNtofasPQLc0KgspzTD13Ajk9grytaaSBFBQkSRyaaU3H+tREy
+b1hU+I+Ax6ZNgbofWsRh7STBDhF+o7uO9O/oU/OgNTnFAU62NExnwKzOQ6uey9kq
+txoy/HwtNlL7D/AKSVqq+pZ+3LItFXHDCBebYulbXt/NuuutXZ3aX/tmzYsoDdFN
+2fOgGzkKx+22K9jJ0U6LsJZ2JyF/o6t00K7T+rMR4nWxwqF64RZ0Bc1R31GyLa+D
+sQqHMnrc17zb54kDO3FEH88eXTIPGJfi20SOcMop3wesSUS5Bcj2zj/q
+=ZRNi
+-----END PGP SIGNATURE-----

@@ -26,7 +26,6 @@
 #include "cmd.h"
 
 #include <QMessageBox>
-#include <QProcess>
 #include <QTemporaryDir>
 #include <QTimer>
 

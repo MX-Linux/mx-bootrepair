@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     qDebug().noquote() << QCoreApplication::applicationName() << "version:" << QCoreApplication::applicationVersion();
-    ;
+
     ui->setupUi(this);
     timer = new QTimer(this);
     shell = new Cmd(this);
@@ -155,7 +155,8 @@ void MainWindow::installGRUB(const QString &location, const QString &path, bool 
         QString arch = shell->getCmdOut(QStringLiteral("arch"));
         if (arch == QLatin1String("i686")) // rename arch to match grub-install target
             arch = QStringLiteral("i386");
-        QString release = shell->getCmdOut(QStringLiteral("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release"));
+        QString release
+            = shell->getCmdOut(QStringLiteral("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release")).left(2);
         cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi "
                              "--bootloader-id=MX%3 --force-extra-removable --recheck")
                   .arg(path, arch, release);

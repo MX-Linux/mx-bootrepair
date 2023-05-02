@@ -40,7 +40,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="136"/>
-        <location filename="../mainwindow.cpp" line="528"/>
+        <location filename="../mainwindow.cpp" line="529"/>
         <source>Select Boot Method</source>
         <translation>起動方法の選択</translation>
     </message>
@@ -67,25 +67,25 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
-        <location filename="../mainwindow.cpp" line="531"/>
+        <location filename="../mainwindow.cpp" line="532"/>
         <source>root</source>
         <translation>root</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
-        <location filename="../mainwindow.cpp" line="530"/>
+        <location filename="../mainwindow.cpp" line="531"/>
         <source>Install on:</source>
         <translation>インストール:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="255"/>
-        <location filename="../mainwindow.cpp" line="529"/>
+        <location filename="../mainwindow.cpp" line="530"/>
         <source>Location:</source>
         <translation>場所:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="277"/>
-        <location filename="../mainwindow.cpp" line="539"/>
+        <location filename="../mainwindow.cpp" line="540"/>
         <source>Select root location:</source>
         <translation>root の場所を選択:</translation>
     </message>
@@ -157,60 +157,55 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="132"/>
-        <location filename="../mainwindow.cpp" line="218"/>
-        <location filename="../mainwindow.cpp" line="338"/>
-        <location filename="../mainwindow.cpp" line="439"/>
-        <location filename="../mainwindow.cpp" line="463"/>
-        <location filename="../mainwindow.cpp" line="567"/>
-        <location filename="../mainwindow.cpp" line="571"/>
-        <location filename="../mainwindow.cpp" line="579"/>
-        <location filename="../mainwindow.cpp" line="586"/>
-        <location filename="../mainwindow.cpp" line="592"/>
-        <location filename="../mainwindow.cpp" line="642"/>
-        <location filename="../mainwindow.cpp" line="653"/>
+        <location filename="../mainwindow.cpp" line="219"/>
+        <location filename="../mainwindow.cpp" line="339"/>
+        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="464"/>
+        <location filename="../mainwindow.cpp" line="568"/>
+        <location filename="../mainwindow.cpp" line="572"/>
+        <location filename="../mainwindow.cpp" line="580"/>
+        <location filename="../mainwindow.cpp" line="587"/>
+        <location filename="../mainwindow.cpp" line="593"/>
+        <location filename="../mainwindow.cpp" line="643"/>
+        <location filename="../mainwindow.cpp" line="654"/>
         <source>Error</source>
         <translation>エラー</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="653"/>
-        <source>Could not create a temporary folder</source>
-        <translation>一時フォルダを作成できませんでした</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="133"/>
-        <location filename="../mainwindow.cpp" line="219"/>
+        <location filename="../mainwindow.cpp" line="220"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation>chroot 環境を準備することができませんでした。
 ダブルクリックで場所を選択して下さい。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="198"/>
+        <location filename="../mainwindow.cpp" line="199"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
         <translation>GRUB 設定ファイル (grub.cfg) は再構築中です。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="236"/>
+        <location filename="../mainwindow.cpp" line="237"/>
         <source>Backing up MBR or PBR from %1 device.</source>
         <translation>%1 デバイスから MBR または PBR をバックアップ中です。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="310"/>
+        <location filename="../mainwindow.cpp" line="311"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="311"/>
+        <location filename="../mainwindow.cpp" line="312"/>
         <source>You are going to write the content of </source>
         <translation>の内容がこれから書き込まれます:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="311"/>
+        <location filename="../mainwindow.cpp" line="312"/>
         <source> to </source>
         <translation>→</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="312"/>
+        <location filename="../mainwindow.cpp" line="313"/>
         <source>
 
 Are you sure?</source>
@@ -219,126 +214,131 @@ Are you sure?</source>
 よろしいですか？</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="318"/>
+        <location filename="../mainwindow.cpp" line="319"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
         <translation>MBR / PBR をバックアップから %1 デバイスに復元中です。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="339"/>
+        <location filename="../mainwindow.cpp" line="340"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation>EFI システムパーティション (ESP) がシステムディスクのどこにも見つかりません。ESP を作成しもう一度試してください。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="385"/>
+        <location filename="../mainwindow.cpp" line="386"/>
         <source>Select %1 location:</source>
         <translation> %1 の場所を選んでください:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>Back</source>
         <translation>戻る</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="435"/>
+        <location filename="../mainwindow.cpp" line="436"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="435"/>
+        <location filename="../mainwindow.cpp" line="436"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>処理が成功しました。&lt;p&gt;&lt;b&gt;MX 起動修復ツールを終了しますか？&lt;/b&gt;</translation>
+        <translation>処理が無事終了しました。&lt;p&gt;&lt;b&gt;MX ブートリペアを終了しますか？&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="439"/>
+        <location filename="../mainwindow.cpp" line="440"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>処理が終了しました。エラーが発生しています。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="456"/>
+        <location filename="../mainwindow.cpp" line="457"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
         <translation>パスワードを入力し、暗号化された %1 パーティションのロックを解除してください : </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="464"/>
         <source>Sorry, could not open %1 LUKS container</source>
         <translation>申しわけありませんが、 %1 LUKS コンテナを開くことができません</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="539"/>
         <source>Select GRUB location</source>
         <translation>GRUB の場所を選んでください</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="550"/>
+        <location filename="../mainwindow.cpp" line="551"/>
         <source>Select Item to Back Up</source>
         <translation>バックアップするアイテムを選択</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="557"/>
+        <location filename="../mainwindow.cpp" line="558"/>
         <source>Select Item to Restore</source>
         <translation>復元するアイテムを選択</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="567"/>
-        <location filename="../mainwindow.cpp" line="592"/>
+        <location filename="../mainwindow.cpp" line="568"/>
+        <location filename="../mainwindow.cpp" line="593"/>
         <source>No location was selected.</source>
         <translation>場所を選択していません。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="572"/>
+        <location filename="../mainwindow.cpp" line="573"/>
         <source>Please select the root partition of the system you want to fix.</source>
         <translation>これから修正しようとする root パーティションを選択してください。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="577"/>
+        <location filename="../mainwindow.cpp" line="578"/>
         <source>Select backup file name</source>
         <translation>バックアップファイル名を選択</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="579"/>
-        <location filename="../mainwindow.cpp" line="586"/>
+        <location filename="../mainwindow.cpp" line="580"/>
+        <location filename="../mainwindow.cpp" line="587"/>
         <source>No file was selected.</source>
         <translation>ファイルを選択していません。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="584"/>
+        <location filename="../mainwindow.cpp" line="585"/>
         <source>Select MBR or PBR backup file</source>
         <translation>MBR・PBR のバックアップファイルを選択</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="609"/>
+        <location filename="../mainwindow.cpp" line="610"/>
         <source>About %1</source>
         <translation> %1について</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="611"/>
+        <location filename="../mainwindow.cpp" line="612"/>
         <source>Version: </source>
         <translation>バージョン: </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="612"/>
+        <location filename="../mainwindow.cpp" line="613"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>MX Linux 用のシンプルな起動修復プログラム</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="614"/>
+        <location filename="../mainwindow.cpp" line="615"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="616"/>
+        <location filename="../mainwindow.cpp" line="617"/>
         <source>%1 License</source>
         <translation>%1 ライセンス</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="628"/>
+        <location filename="../mainwindow.cpp" line="629"/>
         <source>%1 Help</source>
         <translation>%1 のヘルプ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="642"/>
+        <location filename="../mainwindow.cpp" line="643"/>
         <source>Sorry, could not mount %1 partition</source>
         <translation>申しわけありませんが、 %1 パーティションをマウントできません</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="654"/>
+        <source>Could not create a temporary folder</source>
+        <translation>一時フォルダを作成できませんでした</translation>
     </message>
 </context>
 <context>
@@ -368,14 +368,6 @@ Are you sure?</source>
         <location filename="../main.cpp" line="52"/>
         <source>MX Boot Repair</source>
         <translation>MX ブートリペア</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation type="vanished">エラー</translation>
-    </message>
-    <message>
-        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="vanished">rootとしてログインしているようです。このプログラムを使用するには、一度ログアウトして通常のユーザーとしてログインしてください。</translation>
     </message>
 </context>
 </TS>

@@ -1,0 +1,40 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Mon, 01 May 2023 20:56:14 -0400
+Source: mx-bootrepair
+Architecture: source
+Version: 23.5
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Changes:
+ mx-bootrepair (23.5) mx; urgency=medium
+ .
+   * Use major release number for the UEFI entry (just like the installer)
+Checksums-Sha1:
+ d1cc4916439c67d4eba624dd9bff3eaae63b512a 1175 mx-bootrepair_23.5.dsc
+ c27dad7a11c704534b57053c9b6062936287de30 82840 mx-bootrepair_23.5.tar.xz
+ 7f6e6e78a66ecf0af48c4e884aa4e697e7721ccc 10746 mx-bootrepair_23.5_amd64.buildinfo
+Checksums-Sha256:
+ 8ab6d79b2f9ce9631d7a90f0af878760ca76a890ba25d4f47e533e5a5de2100e 1175 mx-bootrepair_23.5.dsc
+ d8cb6d9690ee929a27e0085941edd166686907938208cf63fc4986e097bc8385 82840 mx-bootrepair_23.5.tar.xz
+ 80fe7ffaa5dbace67caf32cce6709677e82422240569e7ca4486a0b76b48c1a0 10746 mx-bootrepair_23.5_amd64.buildinfo
+Files:
+ ab24024b21741b3512931ec2f77c4678 1175 admin optional mx-bootrepair_23.5.dsc
+ b82711cf37cf37b4c2f28e95e59a8e82 82840 admin optional mx-bootrepair_23.5.tar.xz
+ 77cd25b56a82fa456cfabc4a825b0a67 10746 admin optional mx-bootrepair_23.5_amd64.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmRQYIQTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumA/eCAChw3hCdqE9K/+NqP14jlFevCnrJqG3
+hONYN2f30oPTbt21e1+83BhKvuxPoLU/AVoqa0+SgV8GkOAHFkVz+9O8xod4z/9J
+Dy53+B3vxiKHKtk+VRfrp4lZ4wqvJb8Serk87xhl68ldOfmxcUQw+x7jS+nCU2xA
+A8VzP1/ZgxuHPuALPCC6Z3nvRqKqI2KGRSTJS74yqaHVWCan4aiXTa2Us8voCRWP
+qqhG7CLeDO4bWZCYjbY2nwI+gZyyj/hAu64/tHd601V1wq2wdi7f4sFrxJTr3aFc
+1MW9ABupb2XIGcgK+HrQhX4nTgFxKM285N9djX2FoH/JF5Is2kXVwwRO
+=fpg+
+-----END PGP SIGNATURE-----

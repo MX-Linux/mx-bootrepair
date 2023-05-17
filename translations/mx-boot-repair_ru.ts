@@ -11,7 +11,7 @@
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>MX Ремонт Загрузки - это утилита позволяющая переустановить загрузчик GRUB в ESP (системный раздел EFI), MBR (главная загрузочная запись) или корневой раздел. Она имеет опцию пересоздания конфигурационного файла GRUB и сохранения копии или восстановления MBR или PBR (корневой).</translation>
+        <translation>MX Ремонт Загрузки — это средство, позволяющее переустановить загрузчик GRUB в ESP (системный раздел EFI), MBR (главная загрузочная запись) или корневой раздел. Оно имеет опцию пересоздания конфигурационного файла GRUB и сохранения копии или восстановления MBR или PBR (корневой).</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>

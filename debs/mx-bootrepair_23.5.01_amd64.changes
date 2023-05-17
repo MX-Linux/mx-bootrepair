@@ -1,0 +1,46 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Wed, 17 May 2023 18:21:22 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 23.5.01
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (23.5.01) mx; urgency=medium
+ .
+   * Update logo
+Checksums-Sha1:
+ dc381e4059144780861222eda72ec1b19aefa649 1187 mx-bootrepair_23.5.01.dsc
+ daf2cc76161932cbe82007501e108a71df07d08c 83508 mx-bootrepair_23.5.01.tar.xz
+ 41e34144838505d64cf6ef7cb744a7258f5baec8 10770 mx-bootrepair_23.5.01_amd64.buildinfo
+ 9367f18586ecab90b7a58b7ff7831b9f4672b3c1 97668 mx-bootrepair_23.5.01_amd64.deb
+Checksums-Sha256:
+ 6f2fa221e57f835757636a3402c592f8ffb4f2d1f061ee27956fe220ab7b8bb1 1187 mx-bootrepair_23.5.01.dsc
+ 7d2db22c17181130557db8dd838fda80829b77c6b4f1108bec7ef46f6ffec780 83508 mx-bootrepair_23.5.01.tar.xz
+ 7b651940532f6c859825b8cc625509def3a4fa1ede59ebc0d6ba095b5caa89d9 10770 mx-bootrepair_23.5.01_amd64.buildinfo
+ 7454eeb6d14d11772f4bfac28248049a3aae73f688370f264649134315d23877 97668 mx-bootrepair_23.5.01_amd64.deb
+Files:
+ d5b266d22a74bef38acf62ba5c1bb09b 1187 admin optional mx-bootrepair_23.5.01.dsc
+ 0897940a3c4f6a471ac7517b0086bc91 83508 admin optional mx-bootrepair_23.5.01.tar.xz
+ 12977400d811ba0b4a690c8850ed4147 10770 admin optional mx-bootrepair_23.5.01_amd64.buildinfo
+ 9d85e3b3d99c30197bdd95d5fe2fa480 97668 admin optional mx-bootrepair_23.5.01_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmRlU+sTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumHGNCAC5eg65j/e/bs+kzEBik4TF3Dnsbu//
+ASy/gwxL4a7Enkp+tGIEAYKK7GHuC/IsucLue0P+LdesfHvA3elmeiWzdOrGA/J7
+yygGX45ZoTw3wc62mlEzBLb4m4WGzMHX5pgxGHJe/NsdFXL6BAhNVdgGgs06HoKX
+GtQqgmuPPzjanx4+Y12w8JcpPuq/8x5YwQXU3sTZCkmt/pLmhbiMDIuknzKCD80o
+3kYwmLtaQelI3/5kO45NsiTJwcvmup5iDHzponsCGaLrqDPbeNP7lrYngcM1FInP
+cwOX7JBx0vmUfG87cEyiQCkxgD6e8F5IXEzcFvKFJWVQ3kSJV7ntM4fp
+=1k02
+-----END PGP SIGNATURE-----

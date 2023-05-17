@@ -1,3 +1,9 @@
+mx-bootrepair (23.5.01) mx; urgency=medium
+
+  * Update logo 
+
+ -- Adrian <adrian@mxlinux.org>  Wed, 17 May 2023 18:21:22 -0400
+
 mx-bootrepair (23.5) mx; urgency=medium
 
   * Use major release number for the UEFI entry (just like the installer)

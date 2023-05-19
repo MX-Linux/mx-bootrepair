@@ -30,6 +30,7 @@
 #include <QTranslator>
 
 #include "mainwindow.h"
+#include "version.h"
 #include <unistd.h>
 
 static QFile logFile;
@@ -49,10 +50,12 @@ int main(int argc, char *argv[])
 
     QApplication::setWindowIcon(QIcon::fromTheme(QApplication::applicationName()));
     QApplication::setApplicationDisplayName(QObject::tr("MX Boot Repair"));
+    QApplication::setOrganizationName(QStringLiteral("MX-Linux"));
+    QApplication::setApplicationVersion(VERSION);
+
 
     QTranslator qtTran;
-    if (qtTran.load(QLocale(), QStringLiteral("qt"), QStringLiteral("_"),
-                    QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (qtTran.load("qt_" + QLocale().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         QApplication::installTranslator(&qtTran);
 
     QTranslator qtBaseTran;
@@ -64,14 +67,6 @@ int main(int argc, char *argv[])
                      QStringLiteral("/usr/share/mx-bootrepair/locale")))
         QApplication::installTranslator(&appTran);
 
-    // root guard
-    if (QProcess::execute(QStringLiteral("/bin/bash"), {"-c", "logname |grep -q ^root$"}) == 0) {
-        QMessageBox::critical(
-            nullptr, QObject::tr("Error"),
-            QObject::tr(
-                "You seem to be logged in as root, please log out and log in as normal user to use this program."));
-        exit(EXIT_FAILURE);
-    }
     QString log_name = "/var/log/" + QApplication::applicationName() + ".log";
     if (QFileInfo::exists(log_name)) {
         QFile::remove(log_name + ".old");

@@ -28,7 +28,6 @@
 #include <QScrollBar>
 
 #include "about.h"
-#include "version.h"
 #include <chrono>
 
 using namespace std::chrono_literals;
@@ -37,13 +36,15 @@ MainWindow::MainWindow(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::MainWindow)
 {
-    qDebug().noquote() << QCoreApplication::applicationName() << "version:" << VERSION;
+    qDebug().noquote() << QCoreApplication::applicationName() << "version:" << QCoreApplication::applicationVersion();
+
     ui->setupUi(this);
     timer = new QTimer(this);
     shell = new Cmd(this);
 
     connect(ui->buttonAbout, &QPushButton::clicked, this, &MainWindow::buttonAbout_clicked);
     connect(ui->buttonApply, &QPushButton::clicked, this, &MainWindow::buttonApply_clicked);
+    connect(ui->buttonCancel, &QPushButton::clicked, this, &MainWindow::reject);
     connect(ui->buttonHelp, &QPushButton::clicked, this, &MainWindow::buttonHelp_clicked);
     connect(ui->grubEspButton, &QPushButton::clicked, this, &MainWindow::grubEspButton_clicked);
     connect(ui->grubMbrButton, &QPushButton::clicked, this, &MainWindow::grubMbrButton_clicked);
@@ -66,8 +67,8 @@ void MainWindow::refresh()
     ui->reinstallRadioButton->setChecked(true);
     ui->progressBar->hide();
     ui->progressBar->setValue(0);
-    ui->outputBox->setPlainText(QLatin1String(""));
-    ui->outputLabel->setText(QLatin1String(""));
+    ui->outputBox->clear();
+    ui->outputLabel->clear();
     ui->grubInsLabel->show();
     ui->grubRootButton->show();
     ui->grubMbrButton->show();
@@ -113,32 +114,13 @@ void MainWindow::installGRUB()
 
     ui->outputLabel->setText(text);
 
-    // create a temp folder and mount dev sys proc
-    if (!tmpdir.isValid()) {
-        QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
-        return;
-    }
-
     // for grub-install access UEFI NVRAM entries mount efivarfs if not already mounted
     if (ui->grubEspButton->isChecked()) {
         shell->run(QStringLiteral(
             "grep -sq ^efivarfs /proc/self/mounts || "
             "{ test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }"));
     }
-
-    // create a temp folder and mount dev sys proc; mount run as tmpfs
-    if (!QFile::exists(tmpdir.path())) {
-        QString cmd = QStringLiteral("mkdir -p %1").arg(tmpdir.path());
-        shell->run(cmd);
-    }
-
-    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && "
-                                 "/bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && "
-                                 "/bin/mount -t tmpfs -o "
-                                 "size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && "
-                                 "/bin/mount --rbind /run/udev %2/run/udev")
-                      .arg(root, tmpdir.path());
-    if (shell->run(cmd)) {
+    if (mountChrootEnv(root)) {
         if (!checkAndMountPart(tmpdir.path(), QStringLiteral("/boot"))) {
             cleanupMountPoints(tmpdir.path(), isLuks);
             refresh();
@@ -173,7 +155,8 @@ void MainWindow::installGRUB(const QString &location, const QString &path, bool 
         QString arch = shell->getCmdOut(QStringLiteral("arch"));
         if (arch == QLatin1String("i686")) // rename arch to match grub-install target
             arch = QStringLiteral("i386");
-        QString release = shell->getCmdOut(QStringLiteral("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release"));
+        QString release
+            = shell->getCmdOut(QStringLiteral("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release")).left(2);
         cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi "
                              "--bootloader-id=MX%3 --force-extra-removable --recheck")
                   .arg(path, arch, release);
@@ -214,23 +197,7 @@ void MainWindow::repairGRUB()
     }
 
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
-    // create a temp folder and mount dev sys proc; mount run as tmpfs
-    if (!tmpdir.isValid()) {
-        QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
-        return;
-    }
-    if (!QFile::exists(tmpdir.path())) {
-        QString cmd = QStringLiteral("mkdir -p %1").arg(tmpdir.path());
-        shell->run(cmd);
-    }
-    QString cmd
-        = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev &&"
-                         " /bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && "
-                         "/bin/mount -t tmpfs -o size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && "
-                         "/bin/mount --rbind /run/udev %2/run/udev")
-              .arg(part, tmpdir.path());
-
-    if (shell->run(cmd)) {
+    if (mountChrootEnv(part)) {
         if (!checkAndMountPart(tmpdir.path(), QStringLiteral("/boot"))) {
             cleanupMountPoints(tmpdir.path(), isLuks);
             refresh();
@@ -242,9 +209,8 @@ void MainWindow::repairGRUB()
             refresh();
             return;
         }
-        cmd = QStringLiteral("chroot %1 update-grub").arg(tmpdir.path());
         displayOutput();
-        bool success = shell->run(cmd);
+        bool success = shell->run(QStringLiteral("chroot %1 update-grub").arg(tmpdir.path()));
         disableOutput();
         cleanupMountPoints(tmpdir.path(), isLuks);
         displayResult(success);
@@ -598,6 +564,15 @@ void MainWindow::buttonApply_clicked()
         // on selection page
     } else if (ui->stackedWidget->currentWidget() == ui->selectionPage) {
         if (ui->reinstallRadioButton->isChecked()) {
+            if (ui->locationCombo->currentText().isEmpty()) {
+                QMessageBox::critical(this, tr("Error"), tr("No location was selected."));
+                return;
+            }
+            if (ui->rootCombo->currentText().isEmpty()) {
+                QMessageBox::critical(this, tr("Error"),
+                                      tr("Please select the root partition of the system you want to fix."));
+                return;
+            }
             installGRUB();
         } else if (ui->bakRadioButton->isChecked()) {
             QString filename = QFileDialog::getSaveFileName(this, tr("Select backup file name"));
@@ -614,6 +589,10 @@ void MainWindow::buttonApply_clicked()
             }
             restoreBR(filename);
         } else if (ui->repairRadioButton->isChecked()) {
+            if (ui->locationCombo->currentText().isEmpty()) {
+                QMessageBox::critical(this, tr("Error"), tr("No location was selected."));
+                return;
+            }
             repairGRUB();
         }
         // on output page
@@ -630,7 +609,8 @@ void MainWindow::buttonAbout_clicked()
     displayAboutMsgBox(
         tr("About %1").arg(QApplication::applicationDisplayName()),
         "<p align=\"center\"><b><h2>" + QApplication::applicationDisplayName() + "</h2></b></p><p align=\"center\">"
-            + tr("Version: ") + VERSION + "</p><p align=\"center\"><h3>" + tr("Simple boot repair program for MX Linux")
+            + tr("Version: ") + QCoreApplication::applicationVersion() + "</p><p align=\"center\"><h3>"
+            + tr("Simple boot repair program for MX Linux")
             + R"(</h3></p><p align="center"><a href="http://mxlinux.org">http://mxlinux.org</a><br /></p><p align="center">)"
             + tr("Copyright (c) MX Linux") + "<br /><br /></p>",
         QStringLiteral("/usr/share/doc/mx-bootrepair/license.html"),
@@ -665,4 +645,24 @@ bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoin
         }
     }
     return true;
+}
+
+bool MainWindow::mountChrootEnv(const QString &path)
+{
+    // create a temp folder and mount dev sys proc
+    if (!tmpdir.isValid()) {
+        QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
+        return false;
+    }
+    // create a temp folder and mount dev sys proc; mount run as tmpfs
+    if (!QFile::exists(tmpdir.path()))
+        shell->run(QStringLiteral("mkdir -p %1").arg(tmpdir.path()));
+
+    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && "
+                                 "/bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && "
+                                 "/bin/mount -t tmpfs -o "
+                                 "size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && "
+                                 "/bin/mount --rbind /run/udev %2/run/udev")
+                      .arg(path, tmpdir.path());
+    return shell->run(cmd);
 }

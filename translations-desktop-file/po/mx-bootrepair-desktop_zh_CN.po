@@ -5,6 +5,7 @@
 # 
 # Translators:
 # EldersJavas <eldersjavas@gmail.com>, 2022
+# Xie Yanbo <xieyanbo@gmail.com>, 2023
 # 
 #, fuzzy
 msgid ""
@@ -13,8 +14,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-08 22:04-0500\n"
 "PO-Revision-Date: 2022-12-09 03:06+0000\n"
-"Last-Translator: EldersJavas <eldersjavas@gmail.com>, 2022\n"
-"Language-Team: Chinese (China) (https://www.transifex.com/anticapitalista/teams/10162/zh_CN/)\n"
+"Last-Translator: Xie Yanbo <xieyanbo@gmail.com>, 2023\n"
+"Language-Team: Chinese (China) (https://app.transifex.com/anticapitalista/teams/10162/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,4 +30,4 @@ msgstr "MX 启动修复工具"
 #. # The desktop entry comment will be shown within the menu.
 #: desktop-in/mx-boot-repair.desktop.in:6
 msgid "Simple Boot Repair"
-msgstr ""
+msgstr "简单的启动修复工具"

@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Panwar108 <caspian7pena@gmail.com>, 2022
+# Robin, 2023
 # 
 #, fuzzy
 msgid ""
@@ -13,8 +14,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-08 22:04-0500\n"
 "PO-Revision-Date: 2022-12-09 03:06+0000\n"
-"Last-Translator: Panwar108 <caspian7pena@gmail.com>, 2022\n"
-"Language-Team: Hindi (https://www.transifex.com/anticapitalista/teams/10162/hi/)\n"
+"Last-Translator: Robin, 2023\n"
+"Language-Team: Hindi (https://app.transifex.com/anticapitalista/teams/10162/hi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,4 +30,4 @@ msgstr "एमएक्स बूट सुधार"
 #. # The desktop entry comment will be shown within the menu.
 #: desktop-in/mx-boot-repair.desktop.in:6
 msgid "Simple Boot Repair"
-msgstr ""
+msgstr "साधारण बूट मरम्मत"

@@ -1,15 +1,17 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr_BE">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fr_BE">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation>MX Réparation d&apos;amorçage</translation>
+        <translation>MX Réparation d’amorçage - MX Boot Repair</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>MX Réparation d&apos;amorçage est un utilitaire qui peut être utilisé pour réinstaller GRUB, chargeur d&apos;amorçage, sur l&apos;ESP (EFI Système Partition), le MBR (Master Boot Record) ou sur la partition racine. Il offre la possibilité de reconstruire le fichier de configuration de GRUB et de sauvegarder et restaurer le MBR ou PBR (root).</translation>
+        <translation>MX Réparation d’amorçage est un utilitaire qui peut être utilisé pour réinstaller GRUB, chargeur d’amorçage, sur l’ESP (EFI Système Partition), le MBR (Master Boot Record) ou sur la partition racine. Il offre la possibilité de reconstruire le fichier de configuration de GRUB et de sauvegarder et restaurer le MBR ou PBR (root).</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -24,7 +26,7 @@
     <message>
         <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation>Réinstaller le chargeur d&apos;amorçage GRUB sur ESP, MBR ou PRB (root)</translation>
+        <translation>Réinstaller le chargeur d’amorçage GRUB sur ESP, MBR ou PRB (root)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="96"/>
@@ -38,9 +40,9 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="136"/>
-        <location filename="../mainwindow.cpp" line="536"/>
+        <location filename="../mainwindow.cpp" line="529"/>
         <source>Select Boot Method</source>
-        <translation>Sélectionner la méthode d&apos;amorçage</translation>
+        <translation>Sélectionner la méthode d’amorçage</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="154"/>
@@ -65,27 +67,27 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
-        <location filename="../mainwindow.cpp" line="539"/>
+        <location filename="../mainwindow.cpp" line="532"/>
         <source>root</source>
         <translation>/ racine</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="531"/>
         <source>Install on:</source>
-        <translation>Installer dans :</translation>
+        <translation>Installer dans:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="255"/>
-        <location filename="../mainwindow.cpp" line="537"/>
+        <location filename="../mainwindow.cpp" line="530"/>
         <source>Location:</source>
         <translation>Emplacement:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="277"/>
-        <location filename="../mainwindow.cpp" line="547"/>
+        <location filename="../mainwindow.cpp" line="540"/>
         <source>Select root location:</source>
-        <translation>Sélectionner l&apos;emplacement de la racine :</translation>
+        <translation>Sélectionner l’emplacement de la racine:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -105,12 +107,12 @@
     <message>
         <location filename="../mainwindow.ui" line="423"/>
         <source>About...</source>
-        <translation>À propos...</translation>
+        <translation>À propos ...</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="472"/>
         <source>Display help </source>
-        <translation>Afficher l&apos;aide</translation>
+        <translation>Afficher l’aide </translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="475"/>
@@ -144,70 +146,66 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="555"/>
-        <location filename="../mainwindow.cpp" line="79"/>
+        <location filename="../mainwindow.cpp" line="78"/>
         <source>Apply</source>
         <translation>Appliquer</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation>GRUB est en cours d&apos;installation sur le périphérique %1.</translation>
+        <translation>GRUB est en cours d’installation sur le périphérique %1.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="119"/>
-        <location filename="../mainwindow.cpp" line="148"/>
-        <location filename="../mainwindow.cpp" line="213"/>
-        <location filename="../mainwindow.cpp" line="245"/>
-        <location filename="../mainwindow.cpp" line="354"/>
-        <location filename="../mainwindow.cpp" line="449"/>
-        <location filename="../mainwindow.cpp" line="473"/>
-        <location filename="../mainwindow.cpp" line="578"/>
-        <location filename="../mainwindow.cpp" line="585"/>
-        <location filename="../mainwindow.cpp" line="642"/>
+        <location filename="../mainwindow.cpp" line="132"/>
+        <location filename="../mainwindow.cpp" line="219"/>
+        <location filename="../mainwindow.cpp" line="339"/>
+        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="464"/>
+        <location filename="../mainwindow.cpp" line="568"/>
+        <location filename="../mainwindow.cpp" line="572"/>
+        <location filename="../mainwindow.cpp" line="580"/>
+        <location filename="../mainwindow.cpp" line="587"/>
+        <location filename="../mainwindow.cpp" line="593"/>
+        <location filename="../mainwindow.cpp" line="643"/>
+        <location filename="../mainwindow.cpp" line="654"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="119"/>
-        <location filename="../mainwindow.cpp" line="213"/>
-        <source>Could not create a temporary folder</source>
-        <translation>Impossible de créer un dossier temporaire</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="148"/>
-        <location filename="../mainwindow.cpp" line="245"/>
+        <location filename="../mainwindow.cpp" line="133"/>
+        <location filename="../mainwindow.cpp" line="220"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation>Impossible d&apos;établir l&apos;environnement chroot.
-Veuillez revérifier l&apos;emplacement sélectionné.</translation>
+        <translation>Impossible d’établir l’environnement chroot.
+Veuillez revérifier l’emplacement sélectionné.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="210"/>
+        <location filename="../mainwindow.cpp" line="199"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
         <translation>Le fichier de configuration de GRUB (grub.cfg) est en cours de reconstruction.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="261"/>
+        <location filename="../mainwindow.cpp" line="237"/>
         <source>Backing up MBR or PBR from %1 device.</source>
         <translation>Sauvegarde du MBR ou PBR à partir du périphérique %1.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="327"/>
+        <location filename="../mainwindow.cpp" line="311"/>
         <source>Warning</source>
         <translation>Attention</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="328"/>
+        <location filename="../mainwindow.cpp" line="312"/>
         <source>You are going to write the content of </source>
         <translation>Vous allez écrire le contenu de</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="329"/>
+        <location filename="../mainwindow.cpp" line="312"/>
         <source> to </source>
         <translation>à</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="329"/>
+        <location filename="../mainwindow.cpp" line="313"/>
         <source>
 
 Are you sure?</source>
@@ -216,149 +214,160 @@ Are you sure?</source>
 Etes-vous sûr?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="334"/>
+        <location filename="../mainwindow.cpp" line="319"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
         <translation>Restauration du MBR/PBR à partir de la sauvegarde du périphérique %1.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="354"/>
+        <location filename="../mainwindow.cpp" line="340"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation>EFI system partition (ESP) introuvable sur les disques systèmes. Veuillez créer un ESP et réessayer.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="396"/>
+        <location filename="../mainwindow.cpp" line="386"/>
         <source>Select %1 location:</source>
-        <translation>Sélectionner l&apos;emplacement de %1 :</translation>
+        <translation>Sélectionner l’emplacement de %1:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>Back</source>
         <translation>Retour</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="436"/>
         <source>Success</source>
-        <translation>Réussite de l&apos;installation</translation>
+        <translation>Installation réussie</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="445"/>
+        <location filename="../mainwindow.cpp" line="436"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Le processus s&apos;est achevé avec succès. &lt;p&gt;&lt;b&gt; Voulez-vous quitter MX Réparation d&apos;amorçage?&lt;/b&gt;</translation>
+        <translation>Le processus s’est achevé avec succès. &lt;p&gt;&lt;b&gt; Voulez-vous quitter MX Réparation d’amorçage?&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="449"/>
+        <location filename="../mainwindow.cpp" line="440"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>Processus terminé. Des erreurs se sont produites.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="466"/>
+        <location filename="../mainwindow.cpp" line="457"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation>Entrer le mot de passe pour déverrouiller la partition chiffrée %1 :</translation>
+        <translation>Entrer le mot de passe pour déverrouiller la partition chiffrée %1:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="473"/>
+        <location filename="../mainwindow.cpp" line="464"/>
         <source>Sorry, could not open %1 LUKS container</source>
-        <translation>Désolé, impossible d&apos;ouvrir le conteneur% 1 LUKS</translation>
+        <translation>Désolé, impossible d’ouvrir le conteneur %1 LUKS</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="546"/>
+        <location filename="../mainwindow.cpp" line="539"/>
         <source>Select GRUB location</source>
-        <translation>Sélectionner l&apos;emplacement de GRUB</translation>
+        <translation>Sélectionner l’emplacement du GRUB</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="558"/>
+        <location filename="../mainwindow.cpp" line="551"/>
         <source>Select Item to Back Up</source>
         <translation>Choisissez un élément à sauvegarder</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="565"/>
+        <location filename="../mainwindow.cpp" line="558"/>
         <source>Select Item to Restore</source>
         <translation>Choisissez un élément à restaurer</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="576"/>
+        <location filename="../mainwindow.cpp" line="568"/>
+        <location filename="../mainwindow.cpp" line="593"/>
+        <source>No location was selected.</source>
+        <translation>Aucun emplacement sélectionné.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="573"/>
+        <source>Please select the root partition of the system you want to fix.</source>
+        <translation>Veuillez sélectionner la partition racine « root » du système que vous souhaitez réparer.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="578"/>
         <source>Select backup file name</source>
         <translation>Sélectionnez le nom du fichier de sauvegarde</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="578"/>
-        <location filename="../mainwindow.cpp" line="585"/>
+        <location filename="../mainwindow.cpp" line="580"/>
+        <location filename="../mainwindow.cpp" line="587"/>
         <source>No file was selected.</source>
-        <translation>Aucun fichier n&apos;a été sélectionné.</translation>
+        <translation>Aucun fichier n’a été sélectionné.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="583"/>
+        <location filename="../mainwindow.cpp" line="585"/>
         <source>Select MBR or PBR backup file</source>
         <translation>Sélectionnez le fichier de sauvegarde de MBR ou PBR</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="602"/>
+        <location filename="../mainwindow.cpp" line="610"/>
         <source>About %1</source>
         <translation>À propos %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="604"/>
+        <location filename="../mainwindow.cpp" line="612"/>
         <source>Version: </source>
         <translation>Version: </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="605"/>
+        <location filename="../mainwindow.cpp" line="613"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>Simple programme de réparation d&apos;amorçage pour MX Linux </translation>
+        <translation>Simple programme de réparation d’amorçage pour MX Linux </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="607"/>
+        <location filename="../mainwindow.cpp" line="615"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="608"/>
+        <location filename="../mainwindow.cpp" line="617"/>
         <source>%1 License</source>
         <translation>%1 Licence</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="619"/>
+        <location filename="../mainwindow.cpp" line="629"/>
         <source>%1 Help</source>
         <translation>%1 Aide</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="642"/>
+        <location filename="../mainwindow.cpp" line="643"/>
         <source>Sorry, could not mount %1 partition</source>
         <translation>Désolé, impossible de monter la partition %1</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="654"/>
+        <source>Could not create a temporary folder</source>
+        <translation>Impossible de créer un dossier temporaire</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../about.cpp" line="41"/>
+        <location filename="../about.cpp" line="52"/>
         <source>License</source>
         <translation>Licence</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="42"/>
-        <location filename="../about.cpp" line="51"/>
+        <location filename="../about.cpp" line="53"/>
+        <location filename="../about.cpp" line="62"/>
         <source>Changelog</source>
         <translation>Journal des modifications</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="43"/>
+        <location filename="../about.cpp" line="54"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="61"/>
+        <location filename="../about.cpp" line="72"/>
         <source>&amp;Close</source>
-        <translation>&amp;Fermer</translation>
+        <translation>&amp;Quitter</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="65"/>
-        <source>Error</source>
-        <translation>Erreur</translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="66"/>
-        <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation>Vous semblez être connecté en tant que root, veuillez vous déconnecter et vous connecter en tant qu&apos;utilisateur normal pour utiliser ce programme.</translation>
+        <location filename="../main.cpp" line="52"/>
+        <source>MX Boot Repair</source>
+        <translation>MX Réparation d’amorçage - MX Boot Repair</translation>
     </message>
 </context>
 </TS>

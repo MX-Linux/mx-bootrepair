@@ -1,3 +1,42 @@
+mx-bootrepair (23.5.01) mx; urgency=medium
+
+  * Update logo 
+
+ -- Adrian <adrian@mxlinux.org>  Wed, 17 May 2023 18:21:22 -0400
+
+mx-bootrepair (23.5) mx; urgency=medium
+
+  * Use major release number for the UEFI entry (just like the installer)
+
+ -- Adrian <adrian@mxlinux.org>  Mon, 01 May 2023 20:56:14 -0400
+
+mx-bootrepair (23.4) mx; urgency=medium
+
+  * Update icon
+  * Uptate translations
+
+ -- Adrian <adrian@mxlinux.org>  Thu, 13 Apr 2023 22:17:35 -0400
+
+mx-bootrepair (23.3.01) mx; urgency=medium
+
+  * Update help info.
+  * Make sure GUI is still active while displaying help info.
+
+ -- Adrian <adrian@mxlinux.org>  Mon, 20 Mar 2023 00:36:20 -0400
+
+mx-bootrepair (23.3) mx; urgency=medium
+
+  * Added checks to make sure install location and root are selected
+  * Update translations
+
+ -- Adrian <adrian@mxlinux.org>  Sun, 19 Mar 2023 09:41:58 -0400
+
+mx-bootrepair (22.83) mx; urgency=medium
+
+  * Use root.fsm instead of chrootfs for luks name
+
+ -- Adrian <adrian@mxlinux.org>  Tue, 13 Dec 2022 20:53:51 -0500
+
 mx-bootrepair (22.82) mx; urgency=medium
 
   * update translations 

@@ -40,7 +40,7 @@ class MainWindow : public QDialog
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() override;
 
 public slots:
     bool openLuks(const QString &part);

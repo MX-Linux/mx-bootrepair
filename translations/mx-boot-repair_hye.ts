@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ur">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="hye">
 <context>
     <name>MainWindow</name>
     <message>
@@ -115,7 +115,7 @@
     <message>
         <location filename="../mainwindow.ui" line="475"/>
         <source>Help</source>
-        <translation type="unfinished"/>
+        <translation>Աջակցութիւն</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="482"/>

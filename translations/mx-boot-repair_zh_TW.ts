@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_TW">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_TW">
 <context>
     <name>MainWindow</name>
     <message>
@@ -11,7 +9,7 @@
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -26,7 +24,7 @@
     <message>
         <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="96"/>
@@ -87,7 +85,7 @@
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="540"/>
         <source>Select root location:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -153,7 +151,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="132"/>
@@ -182,12 +180,12 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="199"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="237"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="311"/>
@@ -216,7 +214,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="319"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="340"/>
@@ -226,7 +224,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="386"/>
         <source>Select %1 location:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="418"/>
@@ -251,38 +249,38 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="457"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="464"/>
         <source>Sorry, could not open %1 LUKS container</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="539"/>
         <source>Select GRUB location</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="551"/>
         <source>Select Item to Back Up</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="558"/>
         <source>Select Item to Restore</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="568"/>
         <location filename="../mainwindow.cpp" line="593"/>
         <source>No location was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="573"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="578"/>
@@ -333,12 +331,12 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="643"/>
         <source>Sorry, could not mount %1 partition</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="654"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -1,0 +1,40 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 20 Jul 2023 16:16:16 -0400
+Source: mx-bootrepair
+Architecture: source
+Version: 23.7
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Changes:
+ mx-bootrepair (23.7) mx; urgency=medium
+ .
+   * Update translations
+Checksums-Sha1:
+ 826d7299f8e44142b6de98e8fd684bec7f627ad1 1175 mx-bootrepair_23.7.dsc
+ 5c23bb8b8941505009aa00b2a933543cb2c5f3d9 84876 mx-bootrepair_23.7.tar.xz
+ 7a2188a454945e08e66d2d0fac5eb9a24bcaeb89 10746 mx-bootrepair_23.7_amd64.buildinfo
+Checksums-Sha256:
+ db80ed4765b8838cc1ff6e8be8f93782633b857656552f70a5d4b9f71ad7037b 1175 mx-bootrepair_23.7.dsc
+ 2ea6b97f5783b067f0e7b84e18ca8d85d2cfbbf3c3e394226574751ee427851b 84876 mx-bootrepair_23.7.tar.xz
+ 530170ebb221e87c05eaf19455ca369b9eb4f1a9c3eb6d8eed38242d4332964e 10746 mx-bootrepair_23.7_amd64.buildinfo
+Files:
+ 33cf835066ac36c6b22b28c52fe480ca 1175 admin optional mx-bootrepair_23.7.dsc
+ e3c8513ab4a04dc05b54e7b7c690d173 84876 admin optional mx-bootrepair_23.7.tar.xz
+ ffc5ae99b22ea9b0964d9ae910363f17 10746 admin optional mx-bootrepair_23.7_amd64.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmS5lwoTHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumJmpCADRKkUXqymWTzMQ/Dgg7rj9fGVJgi7m
+aIU4diM4mE4+fVXkobi2VnoAJt4004kAjM7QFhDy+BGmgBrZ1Eq/g90uOnDc+kOx
+qTRvGmtCo/wUfvrl680+IQtW1u7zkPHXfuMyNOTJIXdl8FjhzP1YngvgAwJRgXAR
+K6z6PoTrumWy8Lpau0fvucpwoYecf35uR+HEjInnoTY+BuCiILWyDiN+l6GtRt69
+PWpP5TzS7lPX/rmttTWEVK3jlLy+Swcbe90ZMmNSXQ5P7cE6gucGOQsdNlnwjRu+
+OshNdP3CCey1w3YIFTYr1fxwuIGdXOagrFH/oI8BF4hX4QsZJiDyQ7bW
+=IIIO
+-----END PGP SIGNATURE-----

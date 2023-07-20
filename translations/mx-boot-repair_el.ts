@@ -6,12 +6,12 @@
     <message>
         <location filename="../mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation>Επισκευή εκκίνησης του MX</translation>
+        <translation>MX Επισκευή φορτωτή εκκίνησης</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>Η επισκευή εκκίνησης του MX είναι βοηθητικό πρόγραμμα που χρησιμοποιείται για την επανεγκατάσταση του φορτωτή εκκίνησης GRUB στο ESP (EFI System Partition), στο MBR (Master Boot Record) ή στο διαμέρισμα root. Παρέχει τη δυνατότητα ανακατασκευής του αρχείου ρυθμίσεων GRUB καθώς και τη δημιουργία αντιγράφων ασφαλείας και επαναφοράς του MBR ή του PBR (root).</translation>
+        <translation>Η επισκευή του φορτωτή εκκίνησης του MX, είναι ένα βοηθητικό πρόγραμμα  για την επανεγκατάσταση του φορτωτή εκκίνησης GRUB στο ESP (EFI System Partition), στο MBR (Master Boot Record) ή στη κατάτμηση root. Παρέχει τη δυνατότητα ανακατασκευής του αρχείου ρυθμίσεων GRUB καθώς και τη δημιουργία αντιγράφων ασφαλείας και επαναφοράς του MBR ή του PBR (root).</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -42,7 +42,7 @@
         <location filename="../mainwindow.ui" line="136"/>
         <location filename="../mainwindow.cpp" line="529"/>
         <source>Select Boot Method</source>
-        <translation>Επιλέξτε μέθοδο boot</translation>
+        <translation>Επιλογή μεθόδου εκκίνησης</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="154"/>
@@ -87,12 +87,12 @@
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="540"/>
         <source>Select root location:</source>
-        <translation>Επιλέξτε τη τοποθεσία του root:</translation>
+        <translation>Επιλογή τοποθεσίας του root:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
         <source>EFI System Partition</source>
-        <translation>Διαμέρισμα συστήματος EFI</translation>
+        <translation>Κατάτμηση συστήματος EFI</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="293"/>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../mainwindow.ui" line="526"/>
         <source>Cancel</source>
-        <translation>Ακύρωση</translation>
+        <translation>Άκυρο</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="533"/>
@@ -182,7 +182,7 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="199"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation>Το αρχείο διαμόρφωσης GRUB (grub.cfg) ανοικοδομείται.</translation>
+        <translation>Το αρχείο διαμόρφωσης GRUB (grub.cfg) ανακασκευάζεται.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="237"/>
@@ -192,7 +192,7 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="311"/>
         <source>Warning</source>
-        <translation>Προειδοποίηση</translation>
+        <translation>Προσοχή</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="312"/>
@@ -221,7 +221,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="340"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation>Δεν βρέθηκε διαμέρισμα EFI (ESP) σε οποιονδήποτε δίσκο του συστήματος. Παρακαλώ δημιουργήστε ESP και δοκιμάστε ξανά.</translation>
+        <translation>Δεν βρέθηκε κατάτμηση EFI (ESP) σε οποιονδήποτε δίσκο του συστήματος. Παρακαλώ δημιουργήστε ESP και δοκιμάστε ξανά.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="386"/>
@@ -241,7 +241,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="436"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Η διαδικασία τελείωσε με επιτυχία.&lt;p&gt;&lt;b&gt;Θέλετε να κλείσετε το Επισκευή εκκίνησης του MX;&lt;/b&gt;</translation>
+        <translation>Η διαδικασία τελείωσε με επιτυχία.&lt;p&gt;&lt;b&gt;Θέλετε να κλείσετε το MX Επισκευή φορτωτή εκκίνησης;&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="440"/>
@@ -261,7 +261,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="539"/>
         <source>Select GRUB location</source>
-        <translation>Επιλέξτε την τοποθεσία GRUB</translation>
+        <translation>Επιλέξτε τη τοποθεσία του GRUB</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="551"/>
@@ -277,12 +277,12 @@ Are you sure?</source>
         <location filename="../mainwindow.cpp" line="568"/>
         <location filename="../mainwindow.cpp" line="593"/>
         <source>No location was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν επιλέχτηκε τοποθεσία.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="573"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation type="unfinished"></translation>
+        <translation>Παρακαλώ επιλέξτε τη κατάτμηση root, του συστήματος που θέλετε να επιδιορθώσετε.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="578"/>
@@ -357,7 +357,7 @@ Are you sure?</source>
     <message>
         <location filename="../about.cpp" line="54"/>
         <source>Cancel</source>
-        <translation>Ακύρωση</translation>
+        <translation>Άκυρο</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="72"/>
@@ -367,7 +367,7 @@ Are you sure?</source>
     <message>
         <location filename="../main.cpp" line="52"/>
         <source>MX Boot Repair</source>
-        <translation>Επισκευή Εκκίνησης του MX</translation>
+        <translation>MX Επισκευή φορτωτή εκκίνησης</translation>
     </message>
 </context>
 </TS>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="ie">
 <context>
     <name>MainWindow</name>
     <message>
@@ -117,7 +117,7 @@
     <message>
         <location filename="../mainwindow.ui" line="475"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Auxilie</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="482"/>

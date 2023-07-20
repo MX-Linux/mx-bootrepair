@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_CN">
 <context>
     <name>MainWindow</name>
     <message>
@@ -63,36 +61,36 @@
     <message>
         <location filename="../mainwindow.ui" line="182"/>
         <source>Root (Partition Boot Record)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
         <location filename="../mainwindow.cpp" line="532"/>
         <source>root</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
         <location filename="../mainwindow.cpp" line="531"/>
         <source>Install on:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="255"/>
         <location filename="../mainwindow.cpp" line="530"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="540"/>
         <source>Select root location:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="293"/>
@@ -153,7 +151,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="132"/>
@@ -176,17 +174,17 @@
         <location filename="../mainwindow.cpp" line="220"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="199"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="237"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="311"/>
@@ -196,12 +194,12 @@ Please double-check the selected location.</source>
     <message>
         <location filename="../mainwindow.cpp" line="312"/>
         <source>You are going to write the content of </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="312"/>
         <source> to </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="313"/>
@@ -215,17 +213,17 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="319"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="340"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="386"/>
         <source>Select %1 location:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="418"/>
@@ -240,22 +238,22 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="436"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="440"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="457"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="464"/>
         <source>Sorry, could not open %1 LUKS container</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="539"/>
@@ -265,23 +263,23 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="551"/>
         <source>Select Item to Back Up</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="558"/>
         <source>Select Item to Restore</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="568"/>
         <location filename="../mainwindow.cpp" line="593"/>
         <source>No location was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="573"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="578"/>
@@ -312,7 +310,7 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="613"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="615"/>
@@ -332,12 +330,12 @@ Are you sure?</source>
     <message>
         <location filename="../mainwindow.cpp" line="643"/>
         <source>Sorry, could not mount %1 partition</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="654"/>
         <source>Could not create a temporary folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

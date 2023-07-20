@@ -117,7 +117,7 @@
     <message>
         <location filename="../mainwindow.ui" line="475"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Помощь</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="482"/>
@@ -148,7 +148,7 @@
         <location filename="../mainwindow.ui" line="555"/>
         <location filename="../mainwindow.cpp" line="78"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Применить</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
@@ -169,7 +169,7 @@
         <location filename="../mainwindow.cpp" line="643"/>
         <location filename="../mainwindow.cpp" line="654"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="133"/>

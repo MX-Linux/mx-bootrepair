@@ -24,9 +24,9 @@ msgstr ""
 #. The desktop entry name will be displayed within the menu.
 #: desktop-in/mx-boot-repair.desktop.in:4
 msgid "MX Boot Repair"
-msgstr "Επισκευή εκκίνησης του MX"
+msgstr "MX Επισκευή φορτωτή εκκίνησης"
 
 #. # The desktop entry comment will be shown within the menu.
 #: desktop-in/mx-boot-repair.desktop.in:6
 msgid "Simple Boot Repair"
-msgstr "Απλή επισκευή εκκίνησης"
+msgstr "Απλή επισκευή φορτωτή εκκίνησης"

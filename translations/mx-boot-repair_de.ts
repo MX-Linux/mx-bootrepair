@@ -16,7 +16,7 @@
     <message>
         <location filename="../mainwindow.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation>Was wollen Sie tun?</translation>
+        <translation>Was wollen sie tun?</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="79"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../mainwindow.ui" line="96"/>
         <source>Repair GRUB configuration file</source>
-        <translation>Konfigurationsdatei von GRUB reparieren</translation>
+        <translation>Die GRUB-Konfigurationsdatei reparieren</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="103"/>
@@ -63,7 +63,7 @@
     <message>
         <location filename="../mainwindow.ui" line="182"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Root (Bootsektor einer Partition)</translation>
+        <translation>root (Bootsektor einer Partition)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
@@ -81,13 +81,13 @@
         <location filename="../mainwindow.ui" line="255"/>
         <location filename="../mainwindow.cpp" line="530"/>
         <source>Location:</source>
-        <translation>Einsatzort:</translation>
+        <translation>Ort:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="277"/>
         <location filename="../mainwindow.cpp" line="540"/>
         <source>Select root location:</source>
-        <translation>Root-Einsatzort auswählen</translation>
+        <translation>root-Speicherort auswählen</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="290"/>
@@ -142,13 +142,13 @@
     <message>
         <location filename="../mainwindow.ui" line="552"/>
         <source>Apply any changes</source>
-        <translation>Alle Änderungen akzeptieren</translation>
+        <translation>Alle Änderungen übernehmen</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="555"/>
         <location filename="../mainwindow.cpp" line="78"/>
         <source>Apply</source>
-        <translation>Anwenden</translation>
+        <translation>Übernehmen</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
@@ -177,12 +177,12 @@
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation>Die chroot-Umgebung konnte nicht eingerichtet werden.
-Bitte prüfen Sie nochmals den ausgewählten Einsatzort.</translation>
+Bitte nochmals den ausgewählten Ort prüfen.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="199"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation>Die Konfigurationsdatei (grub.conf) von GRUB wird erneuert.</translation>
+        <translation>Die  GRUB-Konfigurationsdatei (grub.cfg) wird erneuert.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="237"/>
@@ -197,12 +197,12 @@ Bitte prüfen Sie nochmals den ausgewählten Einsatzort.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="312"/>
         <source>You are going to write the content of </source>
-        <translation>Sie werden den Inhalt der Datei schreiben</translation>
+        <translation>Sie werden den Inhalt</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="312"/>
         <source> to </source>
-        <translation>in diese Datei</translation>
+        <translation>in diese Datei schreiben</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="313"/>
@@ -211,7 +211,7 @@ Bitte prüfen Sie nochmals den ausgewählten Einsatzort.</translation>
 Are you sure?</source>
         <translation>
 
-Sind Sie sicher?</translation>
+Sind sie sicher?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="319"/>
@@ -221,12 +221,12 @@ Sind Sie sicher?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="340"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation>Konnte keine EFI-Systempartition (ESP) auf irgendeinem Laufwerk finden. Bitte erstellen Sie eine ESP und versuchen Sie es erneut.</translation>
+        <translation>Konnte keine EFI-Systempartition (ESP) auf irgendeinem Laufwerk finden. Bitte erstellen sie eine ESP und versuchen sie es erneut.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="386"/>
         <source>Select %1 location:</source>
-        <translation>%1 Einsatzort auswählen :</translation>
+        <translation>%1 Ort auswählen :</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="418"/>
@@ -241,7 +241,7 @@ Sind Sie sicher?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="436"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Prozess erfolgreich beendet. &lt;p&gt;&lt;b&gt;Wollen Sie MX Boot-Reparatur schliessen?&lt;/b&gt;</translation>
+        <translation>Prozess erfolgreich beendet. &lt;p&gt;&lt;b&gt;Die MX-Boot-Reparatur schliessen?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="440"/>
@@ -261,7 +261,7 @@ Sind Sie sicher?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="539"/>
         <source>Select GRUB location</source>
-        <translation>Auswahl des Ziels für GRUB</translation>
+        <translation>GRUB-Speicherort</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="551"/>
@@ -277,17 +277,17 @@ Sind Sie sicher?</translation>
         <location filename="../mainwindow.cpp" line="568"/>
         <location filename="../mainwindow.cpp" line="593"/>
         <source>No location was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Es wurde kein Speicherort ausgewählt.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="573"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte die root-Partition des Systems auswählen, das sie reparieren möchten.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="578"/>
         <source>Select backup file name</source>
-        <translation>Wählen Sie den Backup-Dateinamen</translation>
+        <translation>Den Backup-Dateinamen auswählen</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="580"/>
@@ -367,7 +367,7 @@ Sind Sie sicher?</translation>
     <message>
         <location filename="../main.cpp" line="52"/>
         <source>MX Boot Repair</source>
-        <translation>MX Bootreparatur</translation>
+        <translation>MX-Bootreparatur</translation>
     </message>
 </context>
 </TS>

@@ -11,7 +11,7 @@
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>MX Önyükleme Onarımı, GRUB önyükleyicisini ESP&apos;ye (EFI Sistem Bölümü), MBR&apos;ye (Ana Önyükleme Kaydı) veya kök bölüme yeniden yüklemek için kullanılabilecek bir programdır. GRUB yapılandırma dosyasını yeniden oluşturma ve MBR&apos;yi veya PBR&apos;yi (kök) yedekleme ve geri yükleme seçeneği sunar.</translation>
+        <translation>MX Önyükleme Onarımı, GRUB önyükleyicisini ESP’ye (EFI Sistem Bölümü), MBR’ye (Ana Önyükleme Kaydı) veya kök bölüme yeniden yüklemek için kullanılabilecek bir programdır. GRUB yapılandırma dosyasını yeniden oluşturma ve MBR’yi veya PBR’yi (kök) yedekleme ve geri yükleme seçeneği sunar.</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../mainwindow.ui" line="86"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation>GRUB önyükleyiciyi ESP, MBR veya PBR&apos;ye (root) yeniden kur</translation>
+        <translation>GRUB önyükleyiciyi ESP, MBR veya PBR’ye (root) yeniden kur</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="96"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../mainwindow.ui" line="103"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation>MBR veya PBR&apos;yi yedekten geri yükle (yalnızca eski önyükleme)</translation>
+        <translation>MBR veya PBR’yi yedekten geri yükle (yalnızca eski önyükleme)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="136"/>
@@ -197,12 +197,12 @@ Lütfen seçilen yeri tekrar kontrol edin.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="312"/>
         <source>You are going to write the content of </source>
-        <translation>...&apos;ın içeriğini yazacaksınız</translation>
+        <translation>Şunun içeriğini yazacaksınız</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="312"/>
         <source> to </source>
-        <translation>&apos;e</translation>
+        <translation>’e</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="313"/>
@@ -241,7 +241,7 @@ Emin misiniz?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="436"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>İşlem başarıyla sona erdi. &lt;p&gt;&lt;b&gt;MX Önyükleme Onarımı&apos;ndan çıkmak ister misiniz?&lt;/b&gt;</translation>
+        <translation>İşlem başarıyla sona erdi. &lt;p&gt;&lt;b&gt;MX Önyükleme Onarımı’ndan çıkmak ister misiniz?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="440"/>
@@ -277,12 +277,12 @@ Emin misiniz?</translation>
         <location filename="../mainwindow.cpp" line="568"/>
         <location filename="../mainwindow.cpp" line="593"/>
         <source>No location was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Konum seçilmedi.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="573"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lütfen düzeltmek istediğiniz sistemin kök bölümünü seçin.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="578"/>

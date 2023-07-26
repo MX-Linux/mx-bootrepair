@@ -397,7 +397,7 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
         qDebug() << "Selected partition: " << partition;
         return partition;
     }
-    return QString();
+    return {};
 }
 
 void MainWindow::procStart()

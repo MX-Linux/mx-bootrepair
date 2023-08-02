@@ -448,13 +448,13 @@ void MainWindow::disableOutput()
 bool MainWindow::openLuks(const QString &part)
 {
     bool ok = false;
-    const QString pass = QInputDialog::getText(this, this->windowTitle(),
+    QByteArray &&pass = QInputDialog::getText(this, this->windowTitle(),
         tr("Enter password to unlock %1 encrypted partition:").arg(part),
-        QLineEdit::Password, QString(), &ok);
+        QLineEdit::Password, QString(), &ok).toUtf8();
     if (ok && !pass.isEmpty()) {
-        QString cmd = "echo " + pass + "| cryptsetup luksOpen " + part + " root.fsm -";
-        if (shell->run(cmd, true))
-            return true;
+        ok = shell->proc("cryptsetup", {"luksOpen", part, "root.fsm", "-"}, nullptr, &pass);
+        pass.fill(0xA5);
+        if (ok) return true;
     }
     QMessageBox::critical(this, tr("Error"), tr("Sorry, could not open %1 LUKS container").arg(part));
     return false;

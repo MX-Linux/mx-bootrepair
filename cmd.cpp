@@ -12,20 +12,14 @@ Cmd::Cmd(QObject *parent)
     connect(this, &Cmd::errorAvailable, [this](const QString &out) { out_buffer += out; });
 }
 
-bool Cmd::run(const QString &cmd, bool quiet)
-{
-    QString output;
-    return run(cmd, &output, quiet);
-}
-
 QString Cmd::getCmdOut(const QString &cmd, bool quiet)
 {
     QString output;
-    run(cmd, &output, quiet);
+    run(cmd, &output, nullptr, quiet);
     return output;
 }
 
-bool Cmd::run(const QString &cmd, QString *output, bool quiet)
+bool Cmd::proc(const QString &cmd, const QStringList &args, QString *output, const QByteArray *input, bool quiet)
 {
     out_buffer.clear();
     connect(this, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &Cmd::finished);
@@ -33,12 +27,18 @@ bool Cmd::run(const QString &cmd, QString *output, bool quiet)
         qDebug() << "Process already running:" << this->program() << this->arguments();
         return false;
     }
-    if (!quiet)
-        qDebug().noquote() << cmd;
+    if (!quiet) qDebug() << cmd << args;
     QEventLoop loop;
     connect(this, &Cmd::finished, &loop, &QEventLoop::quit);
-    start(QStringLiteral("/bin/bash"), {QStringLiteral("-c"), cmd});
+    start(cmd, args);
+    if (input) write(*input);
+    closeWriteChannel();
     loop.exec();
-    *output = out_buffer.trimmed();
+    if (output) *output = out_buffer.trimmed();
     return (exitStatus() == QProcess::NormalExit && exitCode() == 0);
+}
+bool Cmd::run(const QString &cmd, QString *output, const QByteArray *input, bool quiet)
+{
+    if (!quiet) qDebug().noquote() << cmd;
+    return proc("/bin/bash", {"-c", cmd}, output, input, true);
 }

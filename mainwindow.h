@@ -43,7 +43,6 @@ public:
     ~MainWindow() override;
 
 public slots:
-    bool openLuks(const QString &part);
     void disableOutput();
     void displayOutput();
     void displayResult(bool success);
@@ -65,15 +64,18 @@ private:
     QTimer *timer;
     QTemporaryDir tmpdir;
 
+    QString luksMapper(const QString &part);
+    bool openLuks(const QString &part, const QString &mapper);
     QString selectPart(const QString &path, const QString &mountpoint);
+    bool isMountedTo(const QString &volume, const QString &mount);
     bool checkAndMountPart(const QString &path, const QString &mountpoint);
     bool mountChrootEnv(const QString &path);
     void addDevToList();
     void backupBR(const QString &filename);
-    void cleanupMountPoints(const QString &path, bool isLuks);
+    void cleanupMountPoints(const QString &path, const QString &luks);
     void guessPartition();
     void installGRUB();
-    void installGRUB(const QString &location, const QString &path, bool isLuks);
+    void installGRUB(const QString &location, const QString &path, const QString &luks);
     void refresh();
     void repairGRUB();
     void restoreBR(const QString &filename);

@@ -30,6 +30,12 @@
 #include "about.h"
 #include <chrono>
 
+#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+#define SKIPEMPTYPARTS QString::SkipEmptyParts
+#else
+#define SKIPEMPTYPARTS Qt::SkipEmptyParts
+#endif
+
 using namespace std::chrono_literals;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -94,21 +100,20 @@ void MainWindow::installGRUB()
     const QString text = tr("GRUB is being installed on %1 device.").arg(location);
     QString root = "/dev/" + ui->rootCombo->currentText().section(QStringLiteral(" "), 0, 0);
 
-    const bool isLuks = shell->run("cryptsetup isLuks " + root);
+    const QString &luks = luksMapper(root);
 
-    QString rootOS = shell->getCmdOut(QStringLiteral("df / --output=source |sed -e 1d"));
-    if (root == rootOS || rootOS == "/dev/mapper/rootfs" || rootOS == "/dev/mapper/root.fsm") { // on current root
+    if (isMountedTo(root, "/")) { // on current root
         ui->outputLabel->setText(text);
-        installGRUB(location, QStringLiteral("/"), isLuks);
+        installGRUB(location, "/", luks);
         return;
     }
 
-    if (isLuks) {
-        if (!openLuks(root)) {
+    if (!luks.isEmpty()) {
+        if (!openLuks(root, luks)) {
             refresh();
             return;
         }
-        root = QStringLiteral("/dev/mapper/root.fsm");
+        root = "/dev/mapper/" + luks;
     }
 
     ui->outputLabel->setText(text);
@@ -121,11 +126,11 @@ void MainWindow::installGRUB()
     }
     if (mountChrootEnv(root)) {
         if (!checkAndMountPart(tmpdir.path(), QStringLiteral("/boot"))) {
-            cleanupMountPoints(tmpdir.path(), isLuks);
+            cleanupMountPoints(tmpdir.path(), luks);
             refresh();
             return;
         }
-        installGRUB(location, tmpdir.path(), isLuks);
+        installGRUB(location, tmpdir.path(), luks);
         return;
     } else {
         QMessageBox::critical(this, tr("Error"),
@@ -137,17 +142,17 @@ void MainWindow::installGRUB()
         ui->progressBar->hide();
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
-    cleanupMountPoints(tmpdir.path(), isLuks);
+    cleanupMountPoints(tmpdir.path(), luks);
 }
 
-void MainWindow::installGRUB(const QString &location, const QString &path, bool isLuks)
+void MainWindow::installGRUB(const QString &location, const QString &path, const QString &luks)
 {
     QString cmd
         = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path, location);
     if (ui->grubEspButton->isChecked()) {
         shell->run("test -d " + path + "/boot/efi || mkdir " + path + "/boot/efi");
         if (!checkAndMountPart(path, QStringLiteral("/boot/efi"))) {
-            cleanupMountPoints(path, isLuks);
+            cleanupMountPoints(path, luks);
             refresh();
             return;
         }
@@ -164,7 +169,7 @@ void MainWindow::installGRUB(const QString &location, const QString &path, bool 
     displayOutput();
     bool success = shell->run(cmd);
     disableOutput();
-    cleanupMountPoints(path, isLuks);
+    cleanupMountPoints(path, luks);
     displayResult(success);
 }
 
@@ -176,8 +181,7 @@ void MainWindow::repairGRUB()
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     QString part = "/dev/" + ui->locationCombo->currentText().section(QStringLiteral(" "), 0, 0);
 
-    const QString rootOS = shell->getCmdOut(QStringLiteral("df / --output=source |sed -e 1d"));
-    if (part == rootOS || rootOS == "/dev/mapper/rootfs" || rootOS == "/dev/mapper/root.fsm") { // on current root
+    if (isMountedTo(part, "/")) { // on current root
         displayOutput();
         bool ok = shell->run(QStringLiteral("update-grub"));
         disableOutput();
@@ -186,32 +190,32 @@ void MainWindow::repairGRUB()
         return;
     }
 
-    bool isLuks = shell->run("cryptsetup isLuks " + part);
-    if (isLuks) {
-        if (!openLuks(part)) {
+    const QString &luks = luksMapper(part);
+    if (!luks.isEmpty()) {
+        if (!openLuks(part, luks)) {
             refresh();
             return;
         }
-        part = QStringLiteral("/dev/mapper/root.fsm");
+        part = "/dev/mapper/" + luks;
     }
 
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
     if (mountChrootEnv(part)) {
         if (!checkAndMountPart(tmpdir.path(), QStringLiteral("/boot"))) {
-            cleanupMountPoints(tmpdir.path(), isLuks);
+            cleanupMountPoints(tmpdir.path(), luks);
             refresh();
             return;
         }
         if (QFile::exists(tmpdir.path() + "/boot/efi")
             && !checkAndMountPart(tmpdir.path(), QStringLiteral("/boot/efi"))) {
-            cleanupMountPoints(tmpdir.path(), isLuks);
+            cleanupMountPoints(tmpdir.path(), luks);
             refresh();
             return;
         }
         displayOutput();
         bool success = shell->run(QStringLiteral("chroot %1 update-grub").arg(tmpdir.path()));
         disableOutput();
-        cleanupMountPoints(tmpdir.path(), isLuks);
+        cleanupMountPoints(tmpdir.path(), luks);
         displayResult(success);
         return;
     } else {
@@ -223,7 +227,7 @@ void MainWindow::repairGRUB()
         ui->progressBar->hide();
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
-    cleanupMountPoints(tmpdir.path(), isLuks);
+    cleanupMountPoints(tmpdir.path(), luks);
 }
 
 void MainWindow::backupBR(const QString &filename)
@@ -241,7 +245,7 @@ void MainWindow::backupBR(const QString &filename)
 }
 
 // umount and clean temp folder
-void MainWindow::cleanupMountPoints(const QString &path, bool isLuks)
+void MainWindow::cleanupMountPoints(const QString &path, const QString &luks)
 {
     if (path == QLatin1String("/"))
         return;
@@ -252,8 +256,7 @@ void MainWindow::cleanupMountPoints(const QString &path, bool isLuks)
                          " %1/proc && /bin/umount -R %1/sys && /bin/umount -R %1/dev && umount %1 && rmdir %1")
               .arg(path);
     shell->run(cmd);
-    if (isLuks)
-        shell->run(QStringLiteral("cryptsetup luksClose root.fsm"));
+    if (!luks.isEmpty()) shell->proc("cryptsetup", {"luksClose", luks});
 }
 
 // try to guess partition to install GRUB
@@ -439,29 +442,32 @@ void MainWindow::disableOutput()
     disconnect(shell, &Cmd::finished, this, &MainWindow::procDone);
 }
 
-bool MainWindow::openLuks(const QString &part)
+QString MainWindow::luksMapper(const QString &part)
+{
+    QString mapper;
+    if (!shell->proc("cryptsetup", {"isLuks", part})) return {};
+    if (!shell->proc("cryptsetup", {"luksUUID", part}, &mapper)) return {};
+    return "luks-" + mapper;
+}
+bool MainWindow::openLuks(const QString &part, const QString &mapper)
 {
     bool ok = false;
     QByteArray &&pass = QInputDialog::getText(this, this->windowTitle(),
         tr("Enter password to unlock %1 encrypted partition:").arg(part),
         QLineEdit::Password, QString(), &ok).toUtf8();
-    if (ok && !pass.isEmpty()) {
-        ok = shell->proc("cryptsetup", {"luksOpen", part, "root.fsm", "-"}, nullptr, &pass);
-        pass.fill(0xA5);
-        if (ok) return true;
+    if (ok) ok = !pass.isEmpty();
+    if (ok) ok = shell->proc("cryptsetup", {"luksOpen", part, mapper, "-"}, nullptr, &pass);
+    pass.fill(0xA5);
+    if (!ok) {
+        QMessageBox::critical(this, tr("Error"),
+            tr("Sorry, could not open %1 LUKS container").arg(part));
     }
-    QMessageBox::critical(this, tr("Error"), tr("Sorry, could not open %1 LUKS container").arg(part));
-    return false;
+    return ok;
 }
 
 // add list of devices to locationCombo
 void MainWindow::addDevToList()
 {
-#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
-#define SKIPEMPTYPARTS QString::SkipEmptyParts
-#else
-#define SKIPEMPTYPARTS Qt::SkipEmptyParts
-#endif
     QString cmd("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
     ListDisk = shell->getCmdOut(cmd).split(QStringLiteral("\n"), SKIPEMPTYPARTS);
 
@@ -621,6 +627,13 @@ void MainWindow::buttonHelp_clicked()
         url = QStringLiteral("https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age");
     }
     displayDoc(url, tr("%1 Help").arg(this->windowTitle()));
+}
+
+bool MainWindow::isMountedTo(const QString &volume, const QString &mount)
+{
+    QString points;
+    shell->proc("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points);
+    return points.split('\n', SKIPEMPTYPARTS).contains(mount);
 }
 
 bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoint)

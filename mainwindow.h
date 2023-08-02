@@ -56,9 +56,6 @@ private slots:
     void buttonAbout_clicked();
     void buttonApply_clicked();
     void buttonHelp_clicked();
-    void grubEspButton_clicked();
-    void grubMbrButton_clicked();
-    void grubRootButton_clicked();
 
 private:
     Cmd *shell;

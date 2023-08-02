@@ -46,9 +46,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->buttonApply, &QPushButton::clicked, this, &MainWindow::buttonApply_clicked);
     connect(ui->buttonCancel, &QPushButton::clicked, this, &MainWindow::reject);
     connect(ui->buttonHelp, &QPushButton::clicked, this, &MainWindow::buttonHelp_clicked);
-    connect(ui->grubEspButton, &QPushButton::clicked, this, &MainWindow::grubEspButton_clicked);
-    connect(ui->grubMbrButton, &QPushButton::clicked, this, &MainWindow::grubMbrButton_clicked);
-    connect(ui->grubRootButton, &QPushButton::clicked, this, &MainWindow::grubRootButton_clicked);
+    connect(ui->grubEspButton, &QPushButton::clicked, this, &MainWindow::targetSelection);
+    connect(ui->grubMbrButton, &QPushButton::clicked, this, &MainWindow::targetSelection);
+    connect(ui->grubRootButton, &QPushButton::clicked, this, &MainWindow::targetSelection);
     connect(shell, &Cmd::outputAvailable, [](const QString &out) { qDebug() << out.trimmed(); });
     connect(shell, &Cmd::errorAvailable, [](const QString &out) { qWarning() << out.trimmed(); });
 
@@ -542,7 +542,7 @@ void MainWindow::buttonApply_clicked()
             ui->grubMbrButton->hide();
             ui->grubEspButton->hide();
             ui->grubRootButton->setChecked(true);
-            grubRootButton_clicked();
+            targetSelection();
 
             // Backup button selected
         } else if (ui->bakRadioButton->isChecked()) {
@@ -628,12 +628,6 @@ void MainWindow::buttonHelp_clicked()
     }
     displayDoc(url, tr("%1 Help").arg(this->windowTitle()));
 }
-
-void MainWindow::grubMbrButton_clicked() { targetSelection(); }
-
-void MainWindow::grubRootButton_clicked() { targetSelection(); }
-
-void MainWindow::grubEspButton_clicked() { targetSelection(); }
 
 bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoint)
 {

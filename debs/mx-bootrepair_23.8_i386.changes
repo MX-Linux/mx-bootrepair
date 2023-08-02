@@ -1,0 +1,27 @@
+Format: 1.8
+Date: Wed, 02 Aug 2023 11:45:28 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: i386
+Version: 23.8
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (23.8) mx; urgency=medium
+ .
+   * Security Fix: LUKS password can end up on the console.
+   * Allow repair with current root on LUKS volume mapped to any name.
+   * Open the LUKS root with luks-<UUID> form if not the current root.
+Checksums-Sha1:
+ 5e6e7550bb44ac05842a99daa501003b8d7a1361 10075 mx-bootrepair_23.8_i386.buildinfo
+ a653f150785e1561d76b6dec561139add29cc9b3 96236 mx-bootrepair_23.8_i386.deb
+Checksums-Sha256:
+ 53ccb44be683fead072fa7189f067cc8397db7659ea93fe5749f249645bdb81a 10075 mx-bootrepair_23.8_i386.buildinfo
+ 10f8a910576cee73135a8c605a148efc251e4df08589aa668f855dd6109e6d92 96236 mx-bootrepair_23.8_i386.deb
+Files:
+ 06b3f6073484e76ec7a1f8f2e20dbc09 10075 admin optional mx-bootrepair_23.8_i386.buildinfo
+ 1c848eca123962b15f62e6827eb52dfc 96236 admin optional mx-bootrepair_23.8_i386.deb

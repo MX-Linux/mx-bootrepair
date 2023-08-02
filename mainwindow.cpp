@@ -152,7 +152,7 @@ void MainWindow::installGRUB(const QString &location, const QString &path, bool 
             return;
         }
         QString arch = shell->getCmdOut(QStringLiteral("arch"));
-        if (arch == QLatin1String("i686")) { // rename arch to match grub-install target
+        if (arch == "i686") { // rename arch to match grub-install target
             arch = QStringLiteral("i386");
         }
         QString release
@@ -348,24 +348,16 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
     if (!file.open(QIODevice::ReadOnly)) {
         qDebug() << "Count not find /etc/fstab file on specified root partition";
     }
-    QString file_content = file.readAll().trimmed();
-    file.close();
 
-    QStringList file_content_list = file_content.split(QStringLiteral("\n"));
+    while (!file.atEnd()) {
+        const QString &line = file.readLine().simplified();
+        if (line.isEmpty() || line.startsWith('#')) continue; // Empty line or comment
 
-    // remove commented out lines, split tokens
-    QList<QStringList> lines;
-    for (const QString &line : file_content_list) {
-        const QString &sline = line.simplified();
-        if (!sline.startsWith('#')) {
-            lines << sline.split(' ');
-        }
-    }
-
-    // return device for /boot mount point
-    for (const QStringList &line : qAsConst(lines))
-        if (!line.empty() && line.at(1) == mountpoint) {
-            QString device = line.at(0).trimmed();
+        const QStringList &fields = line.split(' ');
+        if (fields.count() < 2) continue;
+        // return device for /boot mount point
+        if (fields.at(1) == mountpoint) {
+            const QString &device = fields.at(0);
             QString cmd = "readlink -e \"$(echo " + device
                           + " | sed -r 's:((PART)?(UUID|LABEL))=:\\L/dev/disk/by-\\1/:g; s:[\\\"]::g;')\"";
             if (shell->run(cmd)) {
@@ -375,6 +367,8 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
                 qDebug() << "Unknown partition:" << device;
             }
         }
+    }
+    file.close();
 
     QInputDialog dialog;
     QStringList partitions = ListPart;

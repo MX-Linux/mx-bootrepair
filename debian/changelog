@@ -1,3 +1,11 @@
+mx-bootrepair (23.8) mx; urgency=medium
+
+  * Security Fix: LUKS password can end up on the console.
+  * Allow repair with current root on LUKS volume mapped to any name.
+  * Open the LUKS root with luks-<UUID> form if not the current root.
+
+ -- Adrian <adrian@mxlinux.org>  Wed, 02 Aug 2023 11:45:28 -0400
+
 mx-bootrepair (23.7) mx; urgency=medium
 
   * Update translations

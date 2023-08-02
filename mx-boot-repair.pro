@@ -27,7 +27,7 @@
 #-------------------------------------------------
 
 QT       += widgets
-CONFIG   += debug_and_release warn_on strict_c++ c++17
+CONFIG   += debug_and_release warn_on strict_c++ c++1z
 CONFIG(release, debug|release) {
     DEFINES += NDEBUG
     QMAKE_CXXFLAGS += -flto=auto

@@ -468,8 +468,7 @@ bool MainWindow::openLuks(const QString &part)
 // add list of devices to locationCombo
 void MainWindow::addDevToList()
 {
-    QString cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | "
-                                 "grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
+    QString cmd("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
     ListDisk = shell->getCmdOut(cmd).split(QStringLiteral("\n"), SKIPEMPTYPARTS);
 
     cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | "
@@ -623,7 +622,7 @@ void MainWindow::buttonHelp_clicked()
     QLocale locale;
     const QString lang = locale.bcp47Name();
 
-    QString url = QStringLiteral("/usr/share/doc/mx-bootrepair/mx-boot-repair.html");
+    QString url("/usr/share/doc/mx-bootrepair/mx-boot-repair.html");
     if (lang.startsWith(QLatin1String("fr")))
         url = QStringLiteral("https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age");
     displayDoc(url, tr("%1 Help").arg(this->windowTitle()));

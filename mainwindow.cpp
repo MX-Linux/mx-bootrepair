@@ -353,16 +353,12 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 
     QStringList file_content_list = file_content.split(QStringLiteral("\n"));
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
-#define SKIPEMPTYPARTS QString::SkipEmptyParts
-#else
-#define SKIPEMPTYPARTS Qt::SkipEmptyParts
-#endif
     // remove commented out lines, split tokens
     QList<QStringList> lines;
     for (const QString &line : file_content_list) {
-        if (!line.startsWith(QLatin1String("#"))) {
-            lines << line.split(QRegularExpression(QStringLiteral("\\s+")), SKIPEMPTYPARTS);
+        const QString &sline = line.simplified();
+        if (!sline.startsWith('#')) {
+            lines << sline.split(' ');
         }
     }
 
@@ -387,14 +383,10 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
     dialog.setLabelText(tr("Select %1 location:").arg(mountpoint));
     dialog.setWindowTitle(this->windowTitle());
 
-    QString selected;
-    QStringList selectedList;
-    QString partition;
     if (dialog.exec() == QDialog::Accepted) {
-        selected = dialog.textValue();
+        const QString &selected = dialog.textValue().simplified();
         qDebug() << "Selected entry: " << selected;
-        selectedList = selected.split(QRegularExpression(QStringLiteral("\\s+")), SKIPEMPTYPARTS);
-        partition = "/dev/" + selectedList.at(0).trimmed();
+        const QString partition = "/dev/" + selected.split(' ').at(0);
         qDebug() << "Selected partition: " << partition;
         return partition;
     }
@@ -471,6 +463,11 @@ bool MainWindow::openLuks(const QString &part)
 // add list of devices to locationCombo
 void MainWindow::addDevToList()
 {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+#define SKIPEMPTYPARTS QString::SkipEmptyParts
+#else
+#define SKIPEMPTYPARTS Qt::SkipEmptyParts
+#endif
     QString cmd("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
     ListDisk = shell->getCmdOut(cmd).split(QStringLiteral("\n"), SKIPEMPTYPARTS);
 

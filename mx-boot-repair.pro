@@ -27,7 +27,12 @@
 #-------------------------------------------------
 
 QT       += widgets
-CONFIG   += c++1z warn_on
+CONFIG   += debug_and_release warn_on strict_c++ c++17
+CONFIG(release, debug|release) {
+    DEFINES += NDEBUG
+    QMAKE_CXXFLAGS += -flto=auto
+    QMAKE_LFLAGS += -flto=auto
+}
 
 # The following define makes your compiler warn you if you use any
 # feature of Qt which has been marked as deprecated (the exact warnings

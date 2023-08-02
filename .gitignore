@@ -13,6 +13,8 @@
 *.so
 *.dll
 *.dylib
+debug/
+release/
 
 # Qt-es
 

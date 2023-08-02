@@ -53,19 +53,23 @@ int main(int argc, char *argv[])
     QApplication::setOrganizationName(QStringLiteral("MX-Linux"));
     QApplication::setApplicationVersion(VERSION);
 
-
+#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+    const QString &transpath = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+#else
+    const QString &transpath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+#endif
     QTranslator qtTran;
-    if (qtTran.load("qt_" + QLocale().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (qtTran.load(QLocale::system(), "qt", "_", transpath)) {
         QApplication::installTranslator(&qtTran);
-
+    }
     QTranslator qtBaseTran;
-    if (qtBaseTran.load("qtbase_" + QLocale().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (qtBaseTran.load(QLocale::system(), "qtbase", "_", transpath)) {
         QApplication::installTranslator(&qtBaseTran);
-
+    }
     QTranslator appTran;
-    if (appTran.load(QApplication::applicationName() + "_" + QLocale().name(),
-                     QStringLiteral("/usr/share/mx-bootrepair/locale")))
+    if (appTran.load(QLocale::system(), QApplication::applicationName(), "_", "/usr/share/mx-bootrepair/locale")) {
         QApplication::installTranslator(&appTran);
+    }
 
     QString log_name = "/var/log/" + QApplication::applicationName() + ".log";
     if (QFileInfo::exists(log_name)) {

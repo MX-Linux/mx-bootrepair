@@ -27,18 +27,26 @@ bool Cmd::proc(const QString &cmd, const QStringList &args, QString *output, con
         qDebug() << "Process already running:" << this->program() << this->arguments();
         return false;
     }
-    if (!quiet) qDebug() << cmd << args;
+    if (!quiet) {
+        qDebug() << cmd << args;
+    }
     QEventLoop loop;
     connect(this, &Cmd::finished, &loop, &QEventLoop::quit);
     start(cmd, args);
-    if (input) write(*input);
+    if (input) {
+        write(*input);
+    }
     closeWriteChannel();
     loop.exec();
-    if (output) *output = out_buffer.trimmed();
+    if (output) {
+        *output = out_buffer.trimmed();
+    }
     return (exitStatus() == QProcess::NormalExit && exitCode() == 0);
 }
 bool Cmd::run(const QString &cmd, QString *output, const QByteArray *input, bool quiet)
 {
-    if (!quiet) qDebug().noquote() << cmd;
+    if (!quiet) {
+        qDebug().noquote() << cmd;
+    }
     return proc("/bin/bash", {"-c", cmd}, output, input, true);
 }

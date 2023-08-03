@@ -45,15 +45,16 @@ int main(int argc, char *argv[])
         qunsetenv("SESSION_MANAGER");
     }
     QApplication app(argc, argv);
-    if (getuid() == 0)
+    if (getuid() == 0) {
         qputenv("HOME", "/root");
+    }
 
     QApplication::setWindowIcon(QIcon::fromTheme(QApplication::applicationName()));
     QApplication::setApplicationDisplayName(QObject::tr("MX Boot Repair"));
     QApplication::setOrganizationName(QStringLiteral("MX-Linux"));
     QApplication::setApplicationVersion(VERSION);
 
-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     const QString &transpath = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
 #else
     const QString &transpath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);

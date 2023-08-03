@@ -63,7 +63,10 @@ MainWindow::MainWindow(QWidget *parent)
     addDevToList();
 }
 
-MainWindow::~MainWindow() { delete ui; }
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
 
 void MainWindow::refresh()
 {
@@ -134,8 +137,8 @@ void MainWindow::installGRUB()
         return;
     } else {
         QMessageBox::critical(this, tr("Error"),
-            tr("Could not set up chroot environment.\n"
-                "Please double-check the selected location."));
+                              tr("Could not set up chroot environment.\n"
+                                 "Please double-check the selected location."));
         setCursor(QCursor(Qt::ArrowCursor));
         ui->buttonApply->setEnabled(true);
         ui->buttonCancel->setEnabled(true);
@@ -220,7 +223,7 @@ void MainWindow::repairGRUB()
         return;
     } else {
         QMessageBox::critical(this, tr("Error"),
-            tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
         setCursor(QCursor(Qt::ArrowCursor));
         ui->buttonApply->setEnabled(true);
         ui->buttonCancel->setEnabled(true);
@@ -247,8 +250,9 @@ void MainWindow::backupBR(const QString &filename)
 // umount and clean temp folder
 void MainWindow::cleanupMountPoints(const QString &path, const QString &luks)
 {
-    if (path == QLatin1String("/"))
+    if (path == QLatin1String("/")) {
         return;
+    }
     shell->run("mountpoint -q " + path + "/boot/efi && umount " + path + "/boot/efi");
     shell->run("mountpoint -q " + path + "/boot && umount -R " + path + "/boot");
     const QString cmd
@@ -256,7 +260,9 @@ void MainWindow::cleanupMountPoints(const QString &path, const QString &luks)
                          " %1/proc && /bin/umount -R %1/sys && /bin/umount -R %1/dev && umount %1 && rmdir %1")
               .arg(path);
     shell->run(cmd);
-    if (!luks.isEmpty()) shell->proc("cryptsetup", {"luksClose", luks});
+    if (!luks.isEmpty()) {
+        shell->proc("cryptsetup", {"luksClose", luks});
+    }
 }
 
 // try to guess partition to install GRUB
@@ -278,12 +284,12 @@ void MainWindow::guessPartition()
     // find first a partition with rootMX* label
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
-        if (shell->run("lsblk -ln -o LABEL /dev/" + part.section(QStringLiteral(" "), 0, 0)
-                       + "| grep -q rootMX")) {
+        if (shell->run("lsblk -ln -o LABEL /dev/" + part.section(QStringLiteral(" "), 0, 0) + "| grep -q rootMX")) {
             ui->rootCombo->setCurrentIndex(index);
             // select the same location by default for GRUB and /boot
-            if (ui->grubRootButton->isChecked())
+            if (ui->grubRootButton->isChecked()) {
                 ui->locationCombo->setCurrentIndex(ui->rootCombo->currentIndex());
+            }
             return;
         }
     }
@@ -299,8 +305,9 @@ void MainWindow::guessPartition()
         }
     }
     // use by default the same root and /boot partion for installing on root
-    if (ui->grubRootButton->isChecked())
+    if (ui->grubRootButton->isChecked()) {
         ui->locationCombo->setCurrentIndex(ui->rootCombo->currentIndex());
+    }
 }
 
 void MainWindow::restoreBR(const QString &filename)
@@ -311,8 +318,9 @@ void MainWindow::restoreBR(const QString &filename)
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
     const QString location = ui->locationCombo->currentText().section(QStringLiteral(" "), 0, 0);
     const auto ans = QMessageBox::warning(this, tr("Warning"),
-        tr("You are going to write the content of ") + filename + tr(" to ") + location + tr("\n\nAre you sure?"),
-        QMessageBox::Yes, QMessageBox::No);
+                                          tr("You are going to write the content of ") + filename + tr(" to ")
+                                              + location + tr("\n\nAre you sure?"),
+                                          QMessageBox::Yes, QMessageBox::No);
     if (ans != QMessageBox::Yes) {
         refresh();
         return;
@@ -331,15 +339,15 @@ void MainWindow::setEspDefaults()
     for (int index = 0; index < ui->locationCombo->count(); index++) {
         const QString part = ui->locationCombo->itemText(index);
         if (!shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(QStringLiteral(" "), 0, 0)
-            + "| grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")) {
+                        + "| grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")) {
             ui->locationCombo->removeItem(index);
             index--;
         }
     }
     if (ui->locationCombo->count() == 0) {
         QMessageBox::critical(this, tr("Error"),
-            tr("Could not find EFI system partition (ESP) "
-                "on any system disks. Please create an ESP and try again."));
+                              tr("Could not find EFI system partition (ESP) "
+                                 "on any system disks. Please create an ESP and try again."));
         ui->buttonApply->setDisabled(true);
     }
 }
@@ -354,10 +362,14 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 
     while (!file.atEnd()) {
         const QString &line = file.readLine().simplified();
-        if (line.isEmpty() || line.startsWith('#')) continue; // Empty line or comment
+        if (line.isEmpty() || line.startsWith('#')) {
+            continue; // Empty line or comment
+        }
 
         const QStringList &fields = line.split(' ');
-        if (fields.count() < 2) continue;
+        if (fields.count() < 2) {
+            continue;
+        }
         // return device for /boot mount point
         if (fields.at(1) == mountpoint) {
             const QString &device = fields.at(0);
@@ -424,10 +436,12 @@ void MainWindow::displayOutput()
 void MainWindow::displayResult(bool success)
 {
     if (success) {
-        const auto ans = QMessageBox::information(this, tr("Success"),
-            tr("Process finished with success.<p><b>Do you want to exit MX Boot Repair?</b>"),
+        const auto ans = QMessageBox::information(
+            this, tr("Success"), tr("Process finished with success.<p><b>Do you want to exit MX Boot Repair?</b>"),
             QMessageBox::Yes, QMessageBox::No);
-        if (ans == QMessageBox::Yes) QApplication::exit(EXIT_SUCCESS);
+        if (ans == QMessageBox::Yes) {
+            QApplication::exit(EXIT_SUCCESS);
+        }
     } else {
         QMessageBox::critical(this, tr("Error"), tr("Process finished. Errors have occurred."));
     }
@@ -445,22 +459,30 @@ void MainWindow::disableOutput()
 QString MainWindow::luksMapper(const QString &part)
 {
     QString mapper;
-    if (!shell->proc("cryptsetup", {"isLuks", part})) return {};
-    if (!shell->proc("cryptsetup", {"luksUUID", part}, &mapper)) return {};
+    if (!shell->proc("cryptsetup", {"isLuks", part})) {
+        return {};
+    }
+    if (!shell->proc("cryptsetup", {"luksUUID", part}, &mapper)) {
+        return {};
+    }
     return "luks-" + mapper;
 }
 bool MainWindow::openLuks(const QString &part, const QString &mapper)
 {
     bool ok = false;
     QByteArray &&pass = QInputDialog::getText(this, this->windowTitle(),
-        tr("Enter password to unlock %1 encrypted partition:").arg(part),
-        QLineEdit::Password, QString(), &ok).toUtf8();
-    if (ok) ok = !pass.isEmpty();
-    if (ok) ok = shell->proc("cryptsetup", {"luksOpen", part, mapper, "-"}, nullptr, &pass);
+                                              tr("Enter password to unlock %1 encrypted partition:").arg(part),
+                                              QLineEdit::Password, QString(), &ok)
+                            .toUtf8();
+    if (ok) {
+        ok = !pass.isEmpty();
+    }
+    if (ok) {
+        ok = shell->proc("cryptsetup", {"luksOpen", part, mapper, "-"}, nullptr, &pass);
+    }
     pass.fill(0xA5);
     if (!ok) {
-        QMessageBox::critical(this, tr("Error"),
-            tr("Sorry, could not open %1 LUKS container").arg(part));
+        QMessageBox::critical(this, tr("Error"), tr("Sorry, could not open %1 LUKS container").arg(part));
     }
     return ok;
 }
@@ -472,17 +494,18 @@ void MainWindow::addDevToList()
     ListDisk = shell->getCmdOut(cmd).split(QStringLiteral("\n"), SKIPEMPTYPARTS);
 
     cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | "
-        "grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
+                         "grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
     ListPart = shell->getCmdOut(cmd).split(QStringLiteral("\n"), SKIPEMPTYPARTS);
     ui->rootCombo->clear();
     ui->rootCombo->addItems(ListPart);
 
     ui->locationCombo->clear();
     // add only disks
-    if (ui->grubMbrButton->isChecked())
+    if (ui->grubMbrButton->isChecked()) {
         ui->locationCombo->addItems(ListDisk);
-    else // add partition
+    } else { // add partition
         ui->locationCombo->addItems(ListPart);
+    }
 }
 
 // enabled/disable GUI elements depending on MBR, Root or ESP selection

@@ -40,7 +40,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="136"/>
-        <location filename="../mainwindow.cpp" line="528"/>
+        <location filename="../mainwindow.cpp" line="555"/>
         <source>Select Boot Method</source>
         <translation>बूट विधि चयन</translation>
     </message>
@@ -67,25 +67,25 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
-        <location filename="../mainwindow.cpp" line="531"/>
+        <location filename="../mainwindow.cpp" line="558"/>
         <source>root</source>
         <translation>रुट</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="236"/>
-        <location filename="../mainwindow.cpp" line="530"/>
+        <location filename="../mainwindow.cpp" line="557"/>
         <source>Install on:</source>
         <translation>यहाँ इंस्टॉल करें :</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="255"/>
-        <location filename="../mainwindow.cpp" line="529"/>
+        <location filename="../mainwindow.cpp" line="556"/>
         <source>Location:</source>
         <translation>स्थान :</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="277"/>
-        <location filename="../mainwindow.cpp" line="539"/>
+        <location filename="../mainwindow.cpp" line="566"/>
         <source>Select root location:</source>
         <translation>रुट स्थान चयन :</translation>
     </message>
@@ -146,66 +146,66 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="555"/>
-        <location filename="../mainwindow.cpp" line="84"/>
+        <location filename="../mainwindow.cpp" line="87"/>
         <source>Apply</source>
         <translation>लागू करें</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="100"/>
+        <location filename="../mainwindow.cpp" line="103"/>
         <source>GRUB is being installed on %1 device.</source>
         <translation>%1 उपकरण पर GRUB इंस्टॉल प्रक्रिया जारी।</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="136"/>
-        <location filename="../mainwindow.cpp" line="222"/>
-        <location filename="../mainwindow.cpp" line="340"/>
-        <location filename="../mainwindow.cpp" line="432"/>
-        <location filename="../mainwindow.cpp" line="462"/>
-        <location filename="../mainwindow.cpp" line="567"/>
-        <location filename="../mainwindow.cpp" line="571"/>
-        <location filename="../mainwindow.cpp" line="579"/>
-        <location filename="../mainwindow.cpp" line="586"/>
-        <location filename="../mainwindow.cpp" line="592"/>
-        <location filename="../mainwindow.cpp" line="644"/>
-        <location filename="../mainwindow.cpp" line="655"/>
+        <location filename="../mainwindow.cpp" line="143"/>
+        <location filename="../mainwindow.cpp" line="229"/>
+        <location filename="../mainwindow.cpp" line="352"/>
+        <location filename="../mainwindow.cpp" line="450"/>
+        <location filename="../mainwindow.cpp" line="489"/>
+        <location filename="../mainwindow.cpp" line="594"/>
+        <location filename="../mainwindow.cpp" line="598"/>
+        <location filename="../mainwindow.cpp" line="606"/>
+        <location filename="../mainwindow.cpp" line="613"/>
+        <location filename="../mainwindow.cpp" line="619"/>
+        <location filename="../mainwindow.cpp" line="671"/>
+        <location filename="../mainwindow.cpp" line="682"/>
         <source>Error</source>
         <translation>त्रुटि</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="137"/>
-        <location filename="../mainwindow.cpp" line="223"/>
+        <location filename="../mainwindow.cpp" line="144"/>
+        <location filename="../mainwindow.cpp" line="230"/>
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation>Chroot वातावरण सेट करना विफल।
 कृपया चयनित स्थान पुनः जाँचें।</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="202"/>
+        <location filename="../mainwindow.cpp" line="209"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
         <translation>GRUB विन्यास फाइल (grub.cfg) का पुनः सृजन जारी।</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="240"/>
+        <location filename="../mainwindow.cpp" line="247"/>
         <source>Backing up MBR or PBR from %1 device.</source>
         <translation>%1 उपकरण से MBR या PBR का बैकअप जारी।</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="313"/>
+        <location filename="../mainwindow.cpp" line="324"/>
         <source>Warning</source>
         <translation>चेतावनी</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="314"/>
+        <location filename="../mainwindow.cpp" line="325"/>
         <source>You are going to write the content of </source>
         <translation>आप द्वारा यह सामग्री राइट होगी</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="314"/>
+        <location filename="../mainwindow.cpp" line="325"/>
         <source> to </source>
         <translation>यहाँ पर</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="314"/>
+        <location filename="../mainwindow.cpp" line="326"/>
         <source>
 
 Are you sure?</source>
@@ -214,129 +214,129 @@ Are you sure?</source>
 क्या आप निश्चित हैं?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="332"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
         <translation>%1 उपकरण से MBR/PBR की पुनः स्थापना जारी।</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="341"/>
+        <location filename="../mainwindow.cpp" line="353"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation>सिस्टम डिस्क पर ESI सिस्टम विभाजन (ESP) हेतु खोज विफल। कृपया ESP सृजन कर पुनः प्रयास करें।</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="396"/>
         <source>Select %1 location:</source>
         <translation>%1 स्थान चुनें :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.cpp" line="427"/>
         <source>Back</source>
         <translation>पीछे</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="427"/>
+        <location filename="../mainwindow.cpp" line="444"/>
         <source>Success</source>
         <translation>सफलता</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="444"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation>प्रक्रिया सफलतापूर्वक पूर्ण। &lt;p&gt;&lt;b&gt;क्या आप एमएक्स बूट सुधार बंद करना चाहते हैं?&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="450"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>प्रक्रिया पूर्ण। त्रुटियाँ हुई हैं।</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="456"/>
+        <location filename="../mainwindow.cpp" line="478"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
         <translation>%1 एन्क्रिप्टेड विभाजन अभिगम हेतु कूटशब्द दर्ज करें :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="489"/>
         <source>Sorry, could not open %1 LUKS container</source>
         <translation>क्षमा करें, %1 LUKS कंटेनर खोलना विफल</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="565"/>
         <source>Select GRUB location</source>
         <translation>GRUB स्थान चयन</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="550"/>
+        <location filename="../mainwindow.cpp" line="577"/>
         <source>Select Item to Back Up</source>
         <translation>बैकअप हेतु वस्तु चयन</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="557"/>
+        <location filename="../mainwindow.cpp" line="584"/>
         <source>Select Item to Restore</source>
         <translation>पुनः स्थापना हेतु वस्तु चयन</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="567"/>
-        <location filename="../mainwindow.cpp" line="592"/>
+        <location filename="../mainwindow.cpp" line="594"/>
+        <location filename="../mainwindow.cpp" line="619"/>
         <source>No location was selected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="572"/>
+        <location filename="../mainwindow.cpp" line="599"/>
         <source>Please select the root partition of the system you want to fix.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="577"/>
+        <location filename="../mainwindow.cpp" line="604"/>
         <source>Select backup file name</source>
         <translation>बैकअप फाइल हेतु नाम चयन</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="579"/>
-        <location filename="../mainwindow.cpp" line="586"/>
+        <location filename="../mainwindow.cpp" line="606"/>
+        <location filename="../mainwindow.cpp" line="613"/>
         <source>No file was selected.</source>
         <translation>कोई फाइल चयनित नहीं है।</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="584"/>
+        <location filename="../mainwindow.cpp" line="611"/>
         <source>Select MBR or PBR backup file</source>
         <translation>MBR या PBR बैकअप फाइल चयन</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="609"/>
+        <location filename="../mainwindow.cpp" line="636"/>
         <source>About %1</source>
         <translation>%1 के बारे में</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="611"/>
+        <location filename="../mainwindow.cpp" line="638"/>
         <source>Version: </source>
         <translation>संस्करण :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="612"/>
+        <location filename="../mainwindow.cpp" line="639"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>एमएक्स लिनक्स हेतु सरल बूट सुधार प्रोग्राम</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="614"/>
+        <location filename="../mainwindow.cpp" line="641"/>
         <source>Copyright (c) MX Linux</source>
         <translation>कॉपीराइट (c) एमएक्स लिनक्स</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="616"/>
+        <location filename="../mainwindow.cpp" line="643"/>
         <source>%1 License</source>
         <translation>%1 लाइसेंस</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="629"/>
+        <location filename="../mainwindow.cpp" line="656"/>
         <source>%1 Help</source>
         <translation>%1 सहायता</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="644"/>
+        <location filename="../mainwindow.cpp" line="671"/>
         <source>Sorry, could not mount %1 partition</source>
         <translation>क्षमा करें, %1 विभाजन माउंट करना विफल</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="655"/>
+        <location filename="../mainwindow.cpp" line="682"/>
         <source>Could not create a temporary folder</source>
         <translation>अस्थायी फोल्डर बनाना विफल</translation>
     </message>
@@ -365,7 +365,7 @@ Are you sure?</source>
         <translation>बंद करें (&amp;C)</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="52"/>
+        <location filename="../main.cpp" line="53"/>
         <source>MX Boot Repair</source>
         <translation>एमएक्स बूट सुधार</translation>
     </message>

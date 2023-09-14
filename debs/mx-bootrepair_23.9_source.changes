@@ -1,0 +1,41 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Wed, 13 Sep 2023 17:05:38 -0400
+Source: mx-bootrepair
+Architecture: source
+Version: 23.9
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: fehlix <fehlix@mxlinux.org>
+Changes:
+ mx-bootrepair (23.9) mx; urgency=medium
+ .
+   * Remove efivar dump-entries to avoid "No space left on device" error.
+   * Adjust version.h in debian rules
+Checksums-Sha1:
+ 0314db7f09d5342a819c19c0f8854436bb73d6f7 1175 mx-bootrepair_23.9.dsc
+ ce44dba89c5fb79b271f80efcdaa4f14f4b0d7c5 95068 mx-bootrepair_23.9.tar.xz
+ 9ad7b7022ce8536567111453d943673e5901f317 10922 mx-bootrepair_23.9_amd64.buildinfo
+Checksums-Sha256:
+ 33c4563486301aeaedbf130c12b619556349f8141f1a79a4dda9c841bb764722 1175 mx-bootrepair_23.9.dsc
+ b2f7da62591d56be58ecde01324a2ffb99ef3e468612218091ac91f45195996d 95068 mx-bootrepair_23.9.tar.xz
+ 9c3ec1182c545a56723934225133f057c9c6448aaf2f58382fc64a9c9050adc3 10922 mx-bootrepair_23.9_amd64.buildinfo
+Files:
+ 781108f681f171d17b6053260bd7f0d2 1175 admin optional mx-bootrepair_23.9.dsc
+ 9cfe0662725664e7994be8e97ecbb6bb 95068 admin optional mx-bootrepair_23.9.tar.xz
+ 9fe3ce5741784b1ce0397432cdd61300 10922 admin optional mx-bootrepair_23.9_amd64.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmUCYEETHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumPkYCACeFEICIydHm9RbfXFkG/Mgf4sfwfjr
+3wDqUyZOHmjfRmuSwi9mR56TwDfi49rBXIHkKv1TGsx83fYFKbM8RzZTDFwI0HnN
+BdudEz52JHd50N2U2URQOEPPsyWSOL0+QtcXKgl5FMF01EkvnLEhMawsowT4F2bY
+S0uSvIOpRqA91XnWTmOcnq42b5Gnh1d0UVNtonF3OcBkc+LLg6Op7PJH/g0yUTG2
+OpHqKVma2GDyUicdR8FgbwNbWlKldJuLrIRMctdwXHSz4JNHBp3ApKDTG4tFdz/x
+7W981QTClgAuAP223Hm4p640fOr5p0ISA6pJfkfpZdaad2426dPF0uvj
+=SKX2
+-----END PGP SIGNATURE-----

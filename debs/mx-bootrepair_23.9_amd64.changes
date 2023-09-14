@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Wed, 13 Sep 2023 17:05:38 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 23.9
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: fehlix <fehlix@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (23.9) mx; urgency=medium
+ .
+   * Remove efivar dump-entries to avoid "No space left on device" error.
+   * Adjust version.h in debian rules
+Checksums-Sha1:
+ 0314db7f09d5342a819c19c0f8854436bb73d6f7 1175 mx-bootrepair_23.9.dsc
+ ce44dba89c5fb79b271f80efcdaa4f14f4b0d7c5 95068 mx-bootrepair_23.9.tar.xz
+ 9ad7b7022ce8536567111453d943673e5901f317 10922 mx-bootrepair_23.9_amd64.buildinfo
+ 97f6c84c18dad40f05b3f4e516a3ae27f9a60fae 93664 mx-bootrepair_23.9_amd64.deb
+Checksums-Sha256:
+ 33c4563486301aeaedbf130c12b619556349f8141f1a79a4dda9c841bb764722 1175 mx-bootrepair_23.9.dsc
+ b2f7da62591d56be58ecde01324a2ffb99ef3e468612218091ac91f45195996d 95068 mx-bootrepair_23.9.tar.xz
+ 9c3ec1182c545a56723934225133f057c9c6448aaf2f58382fc64a9c9050adc3 10922 mx-bootrepair_23.9_amd64.buildinfo
+ 755c3974f78854224e85dc6fb753e51f778748993c8da8310001139317319542 93664 mx-bootrepair_23.9_amd64.deb
+Files:
+ 781108f681f171d17b6053260bd7f0d2 1175 admin optional mx-bootrepair_23.9.dsc
+ 9cfe0662725664e7994be8e97ecbb6bb 95068 admin optional mx-bootrepair_23.9.tar.xz
+ 9fe3ce5741784b1ce0397432cdd61300 10922 admin optional mx-bootrepair_23.9_amd64.buildinfo
+ 9211da613da9ccebae3aac74a8b74b7d 93664 admin optional mx-bootrepair_23.9_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmUCYEETHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumI+sCACHPYRDc4blkTMy4WHvP5i2MQzNp004
+NxTKfl7so/Nal2jHRNkC2T7zgbM8tz2R6+K958COZ/hw5N5giqBCxH8575KX4W4e
+b1HBgqWLP/93fkJcTUMURFSKec7MLMKqlKACXKzEpC397XOGeu1GM5uwR+UD3/tb
+fAyP7I9fm6NQd++as5UJI2tkneMEPKuzPXwjsMTOsejrOlCmv42ZFo9xEFdmM3uQ
+nqNTCJ4LAeucxDkM5D6GaXD+Pl7g5h6KeXdAYlpnclxBpZhtBM1Z2xspZZ/Vdhxm
+URglqFTqcUsGeoOND364HdRVKbCix6OvlCr707iuSMN8Tw9nhb9z/4L7
+=j2d4
+-----END PGP SIGNATURE-----

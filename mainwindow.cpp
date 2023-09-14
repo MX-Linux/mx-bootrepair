@@ -659,7 +659,9 @@ void MainWindow::buttonHelp_clicked()
 bool MainWindow::isMountedTo(const QString &volume, const QString &mount)
 {
     QString points;
-    shell->proc("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points);
+    if (!shell->proc("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points)) {
+        shell->proc("lsblk", {"-nro", "MOUNTPOINT", volume}, &points);
+    }
     return points.split('\n', SKIPEMPTYPARTS).contains(mount);
 }
 

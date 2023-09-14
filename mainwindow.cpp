@@ -121,11 +121,15 @@ void MainWindow::installGRUB()
 
     ui->outputLabel->setText(text);
 
-    // for grub-install access UEFI NVRAM entries mount efivarfs if not already mounted
+    // for grub-install access UEFI NVRAM entries
     if (ui->grubEspButton->isChecked()) {
+        // ... mount efivarfs if not already mounted
         shell->run(QStringLiteral(
             "grep -sq ^efivarfs /proc/self/mounts || "
             "{ test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }"));
+        // ...  remove dump-entries if exist to avoid "No space left on device" error
+        shell->run(QStringLiteral(
+            "ls -1 /sys/firmware/efi/efivars | grep -sq ^dump && rm /sys/firmware/efi/efivars/dump*"));
     }
     if (mountChrootEnv(root)) {
         if (!checkAndMountPart(tmpdir.path(), QStringLiteral("/boot"))) {

@@ -1,3 +1,10 @@
+mx-bootrepair (23.9) mx; urgency=medium
+
+  * Remove efivar dump-entries to avoid "No space left on device" error.
+  * Adjust version.h in debian rules
+
+ -- fehlix <fehlix@mxlinux.org>  Wed, 13 Sep 2023 17:05:38 -0400
+
 mx-bootrepair (23.8) mx; urgency=medium
 
   * Security Fix: LUKS password can end up on the console.

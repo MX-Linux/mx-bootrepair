@@ -3,7 +3,7 @@
 Name=MX Boot Repair
 # # The desktop entry comment will be shown within the menu.
 Comment=Simple Boot Repair
-Exec=mxbr-launcher
+Exec=mx-boot-repair
 Icon=mx-boot-repair
 NoDisplay=false
 Categories=System;MX-Maintenance;

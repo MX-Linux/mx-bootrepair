@@ -1,3 +1,9 @@
+mx-bootrepair (23.11) mx; urgency=medium
+
+  * Run program as normal user and elevate only when needed
+
+ -- Adrian <adrian@mxlinux.org>  Fri, 10 Nov 2023 12:48:08 -0500
+
 mx-bootrepair (23.9) mx; urgency=medium
 
   * Remove efivar dump-entries to avoid "No space left on device" error.

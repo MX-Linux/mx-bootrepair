@@ -12,9 +12,14 @@ class Cmd : public QProcess
 public:
     explicit Cmd(QObject *parent = nullptr);
     bool proc(const QString &cmd, const QStringList &args = {}, QString *output = nullptr,
-              const QByteArray *input = nullptr, bool quiet = false);
-    bool run(const QString &cmd, QString *output = nullptr, const QByteArray *input = nullptr, bool quiet = false);
-    [[nodiscard]] QString getCmdOut(const QString &cmd, bool quiet = false);
+              const QByteArray *input = nullptr, bool quiet = false, bool elevate = false);
+    bool procAsRoot(const QString &cmd, const QStringList &args = {}, QString *output = nullptr,
+                    const QByteArray *input = nullptr, bool quiet = false);
+    bool run(const QString &cmd, QString *output = nullptr, const QByteArray *input = nullptr, bool quiet = false,
+             bool elevate = false);
+    bool runAsRoot(const QString &cmd, QString *output = nullptr, const QByteArray *input = nullptr,
+                   bool quiet = false);
+    [[nodiscard]] QString getCmdOut(const QString &cmd, bool quiet = false, bool elevate = false);
 
 signals:
     void finished();
@@ -23,6 +28,8 @@ signals:
 
 private:
     QString out_buffer;
+    QString asRoot;
+    QString helper;
 };
 
 #endif // CMD_H

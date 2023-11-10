@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
         QApplication::installTranslator(&appTran);
     }
 
-    QString log_name = "/var/log/" + QApplication::applicationName() + ".log";
+    QString log_name = "/tmp/" + QApplication::applicationName() + ".log";
     if (QFileInfo::exists(log_name)) {
         QFile::remove(log_name + ".old");
         QFile::rename(log_name, log_name + ".old");
@@ -81,13 +81,16 @@ int main(int argc, char *argv[])
     logFile.open(QFile::Append | QFile::Text);
     qInstallMessageHandler(messageHandler);
 
-    if (getuid() == 0) {
-        MainWindow w;
-        w.show();
-        return QApplication::exec();
-    } else {
-        QProcess::startDetached(QStringLiteral("/usr/bin/mxbr-launcher"), {});
+    if (getuid() != 0) {
+        if (!QFile::exists("/usr/bin/pkexec") && !QFile::exists("/usr/bin/gksu")) {
+            QMessageBox::critical(nullptr, QObject::tr("Error"),
+                                  QObject::tr("You must run this program with admin access."));
+            exit(EXIT_FAILURE);
+        }
     }
+    MainWindow w;
+    w.show();
+    return QApplication::exec();
 }
 
 // The implementation of the handler

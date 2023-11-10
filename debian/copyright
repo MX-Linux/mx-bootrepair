@@ -4,10 +4,10 @@ Source: git://github.com/AdrianTM/mx-bootrepair
 
 #----------------------------------------------------------------------------
 Copyright: 2014 MX Authors
-Files: ./mxbootrepair.cpp
-	./mxbootrepair.h
+Files: ./mainwindow.cpp
+	./mainwindow.h
 	./main.cpp
-# licensecheck(1): ./mxbootrepair.cpp: LGPL (v3 or later)
+# licensecheck(1): ./mainwindow.cpp: LGPL (v3 or later)
 License:
   Authors: Adrian
  MX Linux <http://mxlinux.org>

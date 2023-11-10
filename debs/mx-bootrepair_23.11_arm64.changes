@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Fri, 10 Nov 2023 12:48:08 -0500
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: arm64
+Version: 23.11
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (23.11) mx; urgency=medium
+ .
+   * Run program as normal user and elevate only when needed
+Checksums-Sha1:
+ 962d1b02bef6683ac806f8a733617ae0ccaaadd6 10121 mx-bootrepair_23.11_arm64.buildinfo
+ 55622415027689e104c542b91b49332c95aecc6a 90016 mx-bootrepair_23.11_arm64.deb
+Checksums-Sha256:
+ 2034216ee99deb9e5b12c7fd3e33c22b2ac4ddae6f61bd906c2d864c47317eb3 10121 mx-bootrepair_23.11_arm64.buildinfo
+ 9f8ef57de4df1a01544343ea8aa909b29ebe936271c03f9a90f9ee06afd67733 90016 mx-bootrepair_23.11_arm64.deb
+Files:
+ 933f318c14965b5e801dfba5cd750e2c 10121 admin optional mx-bootrepair_23.11_arm64.buildinfo
+ 6679203f0378830983f8ec75841ee28f 90016 admin optional mx-bootrepair_23.11_arm64.deb

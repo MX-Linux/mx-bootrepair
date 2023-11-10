@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Fri, 10 Nov 2023 12:48:08 -0500
+Source: mx-bootrepair
+Architecture: source
+Version: 23.11
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Changes:
+ mx-bootrepair (23.11) mx; urgency=medium
+ .
+   * Run program as normal user and elevate only when needed
+Checksums-Sha1:
+ 9406f472937b556fd0e8da8f5e1b0aeca55c6c58 623 mx-bootrepair_23.11.dsc
+ 91e65951d805de6aba2d30d30a5773356a914ad1 1437596 mx-bootrepair_23.11.tar.xz
+ 962d1b02bef6683ac806f8a733617ae0ccaaadd6 10121 mx-bootrepair_23.11_arm64.buildinfo
+Checksums-Sha256:
+ 9802bae8f673179f09cb7fb59053960d7fe8574ae87ba664b13f01eb5ac2b698 623 mx-bootrepair_23.11.dsc
+ 97f5581b8f79920e492fea7400775da2439920320ed41839813389dbf2c87a13 1437596 mx-bootrepair_23.11.tar.xz
+ 2034216ee99deb9e5b12c7fd3e33c22b2ac4ddae6f61bd906c2d864c47317eb3 10121 mx-bootrepair_23.11_arm64.buildinfo
+Files:
+ f5f5ec01348bda79b88c10110750c1dd 623 admin optional mx-bootrepair_23.11.dsc
+ cbe485903548d3ff712a8bec9955622d 1437596 admin optional mx-bootrepair_23.11.tar.xz
+ 933f318c14965b5e801dfba5cd750e2c 10121 admin optional mx-bootrepair_23.11_arm64.buildinfo

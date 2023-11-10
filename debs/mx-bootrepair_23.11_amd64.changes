@@ -1,0 +1,46 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Fri, 10 Nov 2023 12:48:08 -0500
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 23.11
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - MX program to help with repair of boot problems.
+Changes:
+ mx-bootrepair (23.11) mx; urgency=medium
+ .
+   * Run program as normal user and elevate only when needed
+Checksums-Sha1:
+ 3f0f7653c28113fa1dc0b2b55d0ed3034ab8f2e5 1185 mx-bootrepair_23.11.dsc
+ e2589588a90d2d48c477a1ec658c3d2fac86445d 1436188 mx-bootrepair_23.11.tar.xz
+ c93edacd577cf4e7315dfc8cf5e4d89d39b3fb56 10930 mx-bootrepair_23.11_amd64.buildinfo
+ 0eb451c7678c9a8b6ecaaa2944df8a90a7be82e6 94688 mx-bootrepair_23.11_amd64.deb
+Checksums-Sha256:
+ 9bc6a1d7bcbf3f12f17a37516275b0bdc2231bbfa4a97e943c4058c4c2d677b3 1185 mx-bootrepair_23.11.dsc
+ 4a91899573145d74fe00abce9d27658e2d336946f7e2817863dab95a3a4ed234 1436188 mx-bootrepair_23.11.tar.xz
+ 67a747f885aaf3449a0164afdc927a4a56a96a839a4c7fb37da86f34a717c232 10930 mx-bootrepair_23.11_amd64.buildinfo
+ 221af91dba11e5003ee4327f42e6bbe5505742f956d45b645a5aa84a3b89dd80 94688 mx-bootrepair_23.11_amd64.deb
+Files:
+ 81b45b824755cedc67cf4fb97f08df85 1185 admin optional mx-bootrepair_23.11.dsc
+ 3c3a599d2fc203a4ed742aa137d9408a 1436188 admin optional mx-bootrepair_23.11.tar.xz
+ 771821fd1c5694c8e2d3475b4e3de0dd 10930 admin optional mx-bootrepair_23.11_amd64.buildinfo
+ 6fb02cb45bc204bb28bc8f0cfc18c997 94688 admin optional mx-bootrepair_23.11_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmVOsYITHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumFOpB/953j+s4R701actL8kd1KjzEFlGZQWJ
+Kg0nf4ki4tZs+lT+1m5SA8wyvzI1ZKPG2pGRVPSBsDUrFNwE92tlKLCtB4S+Kulh
+ur+DY+8uMQ+nPH7KLFqcWCJR+MBW5OXKLeJBucXg42sxvPjomjyTmPbw8E5MHHQn
+RKZ+QY7AOXyIkzYnKTtvPZcsM6WwvPvfvTcUfr5BmczqnM6ClwjR2ScN3FRMx5hX
+GxqXq5tvebzl1HdM/kQFWNitOYwz3AiumedQBO5N8RUbQW7u+QPGy5eWZ2i+mOIW
+qwBUk5Iboq36qKR69CCZy7I9vXxkB6BaAS38cyeURzRGDCnpEu6Ji4Lz
+=KyMu
+-----END PGP SIGNATURE-----

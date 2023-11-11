@@ -66,12 +66,10 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     QString tmpLog = "/tmp/" + QApplication::applicationName() + ".log";
-    if (Cmd().getCmdOut("wc -l " + tmpLog + "| cut -f1 -d' '").toInt() > 5) { // only if log is large enough
+    if (Cmd().getCmdOut("wc -l " + tmpLog + "| cut -f1 -d' '", true).toInt() > 7) { // only if log is large enough
         QString log = "/var/log/" + QApplication::applicationName() + ".log";
-        if (QFileInfo::exists(log)) {
-            shell->runAsRoot("mv --backup=numbered " + log + " " + log + ".old", nullptr, nullptr, true);
-        }
-        shell->runAsRoot("cp " + tmpLog + " " + log, nullptr, nullptr, true);
+        shell->runAsRoot("mv --backup=numbered " + log + " " + log + ".old; cp " + tmpLog + " " + log, nullptr, nullptr,
+                         true);
     }
     delete ui;
 }

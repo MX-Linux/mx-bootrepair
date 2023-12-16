@@ -29,12 +29,12 @@
 #include <QTextStream>
 #include <QTranslator>
 
+#include "common.h"
 #include "mainwindow.h"
 #include "version.h"
 #include <unistd.h>
 
 static QFile logFile;
-extern const QString starting_home = qEnvironmentVariable("HOME");
 
 void messageHandler(QtMsgType /*type*/, const QMessageLogContext & /*context*/, const QString & /*msg*/);
 

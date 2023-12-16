@@ -443,7 +443,7 @@ void MainWindow::displayOutput()
     connect(shell, &Cmd::started, this, &MainWindow::procStart);
     connect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
     connect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);
-    connect(shell, &Cmd::finished, this, &MainWindow::procDone);
+    connect(shell, &Cmd::done, this, &MainWindow::procDone);
 }
 
 void MainWindow::displayResult(bool success)
@@ -466,7 +466,7 @@ void MainWindow::disableOutput()
     disconnect(shell, &Cmd::started, this, &MainWindow::procStart);
     disconnect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
     disconnect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);
-    disconnect(shell, &Cmd::finished, this, &MainWindow::procDone);
+    disconnect(shell, &Cmd::done, this, &MainWindow::procDone);
 }
 
 QString MainWindow::luksMapper(const QString &part)

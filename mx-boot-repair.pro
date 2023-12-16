@@ -20,12 +20,6 @@
 # * along with MX Boot Repair.  If not, see <http://www.gnu.org/licenses/>.
 # **********************************************************************/
 
-#-------------------------------------------------
-#
-# Project created by QtCreator 2014-04-02T18:30:18
-#
-#-------------------------------------------------
-
 QT       += widgets
 CONFIG   += debug_and_release warn_on strict_c++ c++1z
 CONFIG(release, debug|release) {
@@ -50,7 +44,7 @@ SOURCES += \
     cmd.cpp
 
 HEADERS  += \
-    version.h \
+    common.h \
     mainwindow.h \
     about.h \
     cmd.h

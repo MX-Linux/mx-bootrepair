@@ -29,7 +29,7 @@ bool Cmd::proc(const QString &cmd, const QStringList &args, QString *output, con
                bool elevate)
 {
     out_buffer.clear();
-    connect(this, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &Cmd::finished);
+    connect(this, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &Cmd::done);
     if (this->state() != QProcess::NotRunning) {
         qDebug() << "Process already running:" << this->program() << this->arguments();
         return false;
@@ -38,7 +38,7 @@ bool Cmd::proc(const QString &cmd, const QStringList &args, QString *output, con
         qDebug() << cmd << args;
     }
     QEventLoop loop;
-    connect(this, &Cmd::finished, &loop, &QEventLoop::quit);
+    connect(this, &Cmd::done, &loop, &QEventLoop::quit);
     if (elevate && getuid() != 0) {
         QStringList cmdAndArgs = QStringList() << helper << cmd << args;
         start(asRoot, {cmdAndArgs});

@@ -9,6 +9,7 @@
 #include <QTextEdit>
 #include <QVBoxLayout>
 
+#include "common.h"
 #include <unistd.h>
 
 extern const QString starting_home;

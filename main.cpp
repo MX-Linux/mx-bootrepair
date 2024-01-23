@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 
     QApplication::setWindowIcon(QIcon::fromTheme(QApplication::applicationName()));
     QApplication::setApplicationDisplayName(QObject::tr("MX Boot Repair"));
-    QApplication::setOrganizationName(QStringLiteral("MX-Linux"));
+    QApplication::setOrganizationName("MX-Linux");
     QApplication::setApplicationVersion(VERSION);
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)

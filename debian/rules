@@ -26,4 +26,4 @@ execute_after_dh_builddeb:
 	mv version.h~ version.h
 
 %:
-	dh $@ --no-automatic-dbgsym --parallel 
+	dh $@ --no-automatic-dbgsym --parallel

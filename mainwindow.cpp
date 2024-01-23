@@ -81,7 +81,7 @@ void MainWindow::refresh()
     ui->reinstallRadioButton->setFocus();
     ui->reinstallRadioButton->setChecked(true);
     ui->progressBar->hide();
-    ui->progressBar->setRange(0, 0);
+    ui->progressBar->setValue(0);
     ui->outputBox->clear();
     ui->outputLabel->clear();
     ui->grubInsLabel->show();
@@ -91,7 +91,7 @@ void MainWindow::refresh()
     ui->rootLabel->hide();
     ui->rootCombo->hide();
     ui->buttonApply->setText(tr("Apply"));
-    ui->buttonApply->setIcon(QIcon::fromTheme("dialog-ok"));
+    ui->buttonApply->setIcon(QIcon::fromTheme(QStringLiteral("dialog-ok")));
     ui->buttonApply->setEnabled(true);
     ui->buttonCancel->setEnabled(true);
     ui->rootCombo->setDisabled(false);
@@ -105,9 +105,9 @@ void MainWindow::installGRUB()
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
 
-    const QString location = ui->locationCombo->currentText().section(' ', 0, 0);
+    const QString location = ui->locationCombo->currentText().section(QStringLiteral(" "), 0, 0);
     const QString text = tr("GRUB is being installed on %1 device.").arg(location);
-    QString root = "/dev/" + ui->rootCombo->currentText().section(' ', 0, 0);
+    QString root = "/dev/" + ui->rootCombo->currentText().section(QStringLiteral(" "), 0, 0);
 
     const QString &luks = luksMapper(root);
 
@@ -130,14 +130,15 @@ void MainWindow::installGRUB()
     // for grub-install access UEFI NVRAM entries
     if (ui->grubEspButton->isChecked()) {
         // ... mount efivarfs if not already mounted
-        shell->runAsRoot(
+        shell->runAsRoot(QStringLiteral(
             "grep -sq ^efivarfs /proc/self/mounts || "
-            "{ test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }");
+            "{ test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }"));
         // ...  remove dump-entries if exist to avoid "No space left on device" error
-        shell->runAsRoot("ls -1 /sys/firmware/efi/efivars | grep -sq ^dump && rm /sys/firmware/efi/efivars/dump*");
+        shell->runAsRoot(
+            QStringLiteral("ls -1 /sys/firmware/efi/efivars | grep -sq ^dump && rm /sys/firmware/efi/efivars/dump*"));
     }
     if (mountChrootEnv(root)) {
-        if (!checkAndMountPart(tmpdir.path(), "/boot")) {
+        if (!checkAndMountPart(tmpdir.path(), QStringLiteral("/boot"))) {
             cleanupMountPoints(tmpdir.path(), luks);
             refresh();
             return;
@@ -163,14 +164,14 @@ void MainWindow::installGRUB(const QString &location, const QString &path, const
         = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path, location);
     if (ui->grubEspButton->isChecked()) {
         shell->runAsRoot("test -d " + path + "/boot/efi || mkdir " + path + "/boot/efi");
-        if (!checkAndMountPart(path, "/boot/efi")) {
+        if (!checkAndMountPart(path, QStringLiteral("/boot/efi"))) {
             cleanupMountPoints(path, luks);
             refresh();
             return;
         }
-        QString arch = shell->getCmdOut("arch");
+        QString arch = shell->getCmdOut(QStringLiteral("arch"));
         if (arch == "i686") { // rename arch to match grub-install target
-            arch = "i386";
+            arch = QStringLiteral("i386");
         }
         QString release
             = shell->getCmdOut(QStringLiteral("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release")).left(2);
@@ -191,11 +192,11 @@ void MainWindow::repairGRUB()
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    QString part = "/dev/" + ui->locationCombo->currentText().section(' ', 0, 0);
+    QString part = "/dev/" + ui->locationCombo->currentText().section(QStringLiteral(" "), 0, 0);
 
     if (isMountedTo(part, "/")) { // on current root
         displayOutput();
-        bool ok = shell->runAsRoot("update-grub");
+        bool ok = shell->runAsRoot(QStringLiteral("update-grub"));
         disableOutput();
         displayResult(ok);
         refresh();
@@ -213,12 +214,13 @@ void MainWindow::repairGRUB()
 
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
     if (mountChrootEnv(part)) {
-        if (!checkAndMountPart(tmpdir.path(), "/boot")) {
+        if (!checkAndMountPart(tmpdir.path(), QStringLiteral("/boot"))) {
             cleanupMountPoints(tmpdir.path(), luks);
             refresh();
             return;
         }
-        if (QFile::exists(tmpdir.path() + "/boot/efi") && !checkAndMountPart(tmpdir.path(), "/boot/efi")) {
+        if (QFile::exists(tmpdir.path() + "/boot/efi")
+            && !checkAndMountPart(tmpdir.path(), QStringLiteral("/boot/efi"))) {
             cleanupMountPoints(tmpdir.path(), luks);
             refresh();
             return;
@@ -247,7 +249,7 @@ void MainWindow::backupBR(const QString &filename)
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    const QString location = ui->locationCombo->currentText().section(' ', 0, 0);
+    const QString location = ui->locationCombo->currentText().section(QStringLiteral(" "), 0, 0);
     const QString text = tr("Backing up MBR or PBR from %1 device.").arg(location);
     ui->outputLabel->setText(text);
     const QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
@@ -258,7 +260,7 @@ void MainWindow::backupBR(const QString &filename)
 // umount and clean temp folder
 void MainWindow::cleanupMountPoints(const QString &path, const QString &luks)
 {
-    if (path == '/') {
+    if (path == QLatin1String("/")) {
         return;
     }
     shell->runAsRoot("mountpoint -q " + path + "/boot/efi && umount " + path + "/boot/efi");
@@ -281,7 +283,7 @@ void MainWindow::guessPartition()
         for (int index = 0; index < ui->locationCombo->count(); index++) {
             QString drive = ui->locationCombo->itemText(index);
             if (shell->runAsRoot(
-                    "lsblk -ln -o PARTTYPE /dev/" + drive.section(' ', 0, 0)
+                    "lsblk -ln -o PARTTYPE /dev/" + drive.section(QStringLiteral(" "), 0, 0)
                     + "| grep -qEi "
                       "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
                       "E8CD-4DB1-96E7-FBCAF984B709'")) {
@@ -293,7 +295,8 @@ void MainWindow::guessPartition()
     // find first a partition with rootMX* label
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
-        if (shell->runAsRoot("lsblk -ln -o LABEL /dev/" + part.section(' ', 0, 0) + "| grep -q rootMX")) {
+        if (shell->runAsRoot("lsblk -ln -o LABEL /dev/" + part.section(QStringLiteral(" "), 0, 0)
+                             + "| grep -q rootMX")) {
             ui->rootCombo->setCurrentIndex(index);
             // select the same location by default for GRUB and /boot
             if (ui->grubRootButton->isChecked()) {
@@ -306,7 +309,7 @@ void MainWindow::guessPartition()
     for (int index = 0; index < ui->rootCombo->count(); index++) {
         QString part = ui->rootCombo->itemText(index);
         if (shell->runAsRoot(
-                "lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
+                "lsblk -ln -o PARTTYPE /dev/" + part.section(QStringLiteral(" "), 0, 0)
                 + "| grep -qEi "
                   "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
                   "E8CD-4DB1-96E7-FBCAF984B709'")) {
@@ -326,7 +329,7 @@ void MainWindow::restoreBR(const QString &filename)
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    const QString location = ui->locationCombo->currentText().section(' ', 0, 0);
+    const QString location = ui->locationCombo->currentText().section(QStringLiteral(" "), 0, 0);
     const auto ans = QMessageBox::warning(this, tr("Warning"),
                                           tr("You are going to write the content of ") + filename + tr(" to ")
                                               + location + tr("\n\nAre you sure?"),
@@ -348,7 +351,7 @@ void MainWindow::setEspDefaults()
     // remove non-ESP partitions
     for (int index = 0; index < ui->locationCombo->count(); index++) {
         const QString part = ui->locationCombo->itemText(index);
-        if (!shell->runAsRoot("lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
+        if (!shell->runAsRoot("lsblk -ln -o PARTTYPE /dev/" + part.section(QStringLiteral(" "), 0, 0)
                               + "| grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")) {
             ui->locationCombo->removeItem(index);
             index--;
@@ -418,19 +421,25 @@ void MainWindow::procStart()
     setCursor(QCursor(Qt::BusyCursor));
 }
 
+void MainWindow::progress()
+{
+    ui->progressBar->setValue((ui->progressBar->value() + 1) % ui->progressBar->maximum());
+}
+
 void MainWindow::procDone()
 {
     timer->stop();
-    ui->progressBar->hide();
+    ui->progressBar->setValue(ui->progressBar->maximum());
     setCursor(QCursor(Qt::ArrowCursor));
     ui->buttonCancel->setEnabled(true);
     ui->buttonApply->setEnabled(true);
     ui->buttonApply->setText(tr("Back"));
-    ui->buttonApply->setIcon(QIcon::fromTheme("go-previous"));
+    ui->buttonApply->setIcon(QIcon::fromTheme(QStringLiteral("go-previous")));
 }
 
 void MainWindow::displayOutput()
 {
+    connect(timer, &QTimer::timeout, this, &MainWindow::progress);
     connect(shell, &Cmd::started, this, &MainWindow::procStart);
     connect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
     connect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);
@@ -453,6 +462,7 @@ void MainWindow::displayResult(bool success)
 
 void MainWindow::disableOutput()
 {
+    disconnect(timer, &QTimer::timeout, this, &MainWindow::progress);
     disconnect(shell, &Cmd::started, this, &MainWindow::procStart);
     disconnect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
     disconnect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);
@@ -494,11 +504,11 @@ bool MainWindow::openLuks(const QString &part, const QString &mapper)
 void MainWindow::addDevToList()
 {
     QString cmd("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
-    ListDisk = shell->getCmdOut(cmd).split('\n', SKIPEMPTYPARTS);
+    ListDisk = shell->getCmdOut(cmd).split(QStringLiteral("\n"), SKIPEMPTYPARTS);
 
     cmd = QStringLiteral("lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | "
                          "grep -E '^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
-    ListPart = shell->getCmdOut(cmd).split('\n', SKIPEMPTYPARTS);
+    ListPart = shell->getCmdOut(cmd).split(QStringLiteral("\n"), SKIPEMPTYPARTS);
     ui->rootCombo->clear();
     ui->rootCombo->addItems(ListPart);
 
@@ -574,15 +584,15 @@ void MainWindow::buttonApply_clicked()
         } else if (ui->bakRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle(tr("Select Item to Back Up"));
-            ui->grubInsLabel->clear();
-            ui->grubRootButton->setText("PBR");
+            ui->grubInsLabel->setText(QLatin1String(""));
+            ui->grubRootButton->setText(QStringLiteral("PBR"));
             ui->grubEspButton->hide();
             // Restore backup button selected
         } else if (ui->restoreBakRadioButton->isChecked()) {
             ui->stackedWidget->setCurrentWidget(ui->selectionPage);
             ui->bootMethodGroup->setTitle(tr("Select Item to Restore"));
-            ui->grubInsLabel->clear();
-            ui->grubRootButton->setText("PBR");
+            ui->grubInsLabel->setText(QLatin1String(""));
+            ui->grubRootButton->setText(QStringLiteral("PBR"));
             ui->grubEspButton->hide();
         }
 
@@ -638,7 +648,8 @@ void MainWindow::buttonAbout_clicked()
             + tr("Simple boot repair program for MX Linux")
             + R"(</h3></p><p align="center"><a href="http://mxlinux.org">http://mxlinux.org</a><br /></p><p align="center">)"
             + tr("Copyright (c) MX Linux") + "<br /><br /></p>",
-        "/usr/share/doc/mx-bootrepair/license.html", tr("%1 License").arg(QApplication::applicationDisplayName()));
+        QStringLiteral("/usr/share/doc/mx-bootrepair/license.html"),
+        tr("%1 License").arg(QApplication::applicationDisplayName()));
     this->show();
 }
 
@@ -649,7 +660,7 @@ void MainWindow::buttonHelp_clicked()
 
     QString url("/usr/share/doc/mx-bootrepair/mx-boot-repair.html");
     if (lang.startsWith(QLatin1String("fr"))) {
-        url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
+        url = QStringLiteral("https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age");
     }
     displayDoc(url, tr("%1 Help").arg(this->windowTitle()));
 }

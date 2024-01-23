@@ -47,6 +47,7 @@ public slots:
     void outputAvailable(const QString &output);
     void procDone();
     void procStart();
+    void progress();
 
 private slots:
     void buttonAbout_clicked();

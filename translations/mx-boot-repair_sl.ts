@@ -6,12 +6,12 @@
     <message>
         <location filename="../mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation>MX Popravljanje zagona</translation>
+        <translation>MX popravljanje zagona</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="39"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>MX popravljanje zagona je orodje za ponovno namestitev GRUB zaganjalnika na ESP (EFI sistemski razdelek), MBR (MAster Boot Record) ali korenski razdelek. Ponuja možnost rekonstrukcije GRUB konfiguracijske datoteke in ustvarjanja varnostne kopije MBR ali PBR (koren) ali obnovo iz nje.</translation>
+        <translation>MX popravljanje zagona je orodje za ponovno namestitev GRUB zaganjalnika na ESP (EFI sistemski razdelek), MBR (MAster Boot Record) ali korenski razdelek. Ponuja možnost rekonstrukcije GRUB konfiguracijske datoteke in ustvarjanja varnostne kopije MBR ali PBR (koren) ali obnovitev z nje.</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
@@ -142,13 +142,13 @@
     <message>
         <location filename="../mainwindow.ui" line="552"/>
         <source>Apply any changes</source>
-        <translation>Potrdi vse spremembe</translation>
+        <translation>Uveljavi vse spremembe</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="555"/>
         <location filename="../mainwindow.cpp" line="93"/>
         <source>Apply</source>
-        <translation>Potrdi</translation>
+        <translation>Uveljavi</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="109"/>
@@ -344,40 +344,40 @@ Ali ste prepričani?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../about.cpp" line="51"/>
+        <location filename="../about.cpp" line="52"/>
         <source>License</source>
         <translation>Licenca</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="52"/>
-        <location filename="../about.cpp" line="62"/>
+        <location filename="../about.cpp" line="53"/>
+        <location filename="../about.cpp" line="63"/>
         <source>Changelog</source>
         <translation>Dnevnik sprememb</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="53"/>
+        <location filename="../about.cpp" line="54"/>
         <source>Cancel</source>
         <translation>Prekliči</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="72"/>
+        <location filename="../about.cpp" line="73"/>
         <source>&amp;Close</source>
         <translation>&amp;Zapri</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="53"/>
         <source>MX Boot Repair</source>
-        <translation>Popravljanje zagona</translation>
+        <translation>MX popravljanje zagona</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="86"/>
         <source>Error</source>
-        <translation type="unfinished">Napaka</translation>
+        <translation>Napaka</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="87"/>
         <source>You must run this program with admin access.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta program je potrebno zagnati s skrbniškim dostopom</translation>
     </message>
 </context>
 </TS>

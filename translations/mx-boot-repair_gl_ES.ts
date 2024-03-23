@@ -278,12 +278,12 @@ Estás seguro?</translation>
         <location filename="../mainwindow.cpp" line="603"/>
         <location filename="../mainwindow.cpp" line="628"/>
         <source>No location was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ningunha localización foi seleccionada.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation type="unfinished"></translation>
+        <translation>Por favor, seleccione a partición raíz do sistema que desexa arranxar.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="613"/>
@@ -345,23 +345,23 @@ Estás seguro?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../about.cpp" line="51"/>
+        <location filename="../about.cpp" line="52"/>
         <source>License</source>
         <translation>Licenza</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="52"/>
-        <location filename="../about.cpp" line="62"/>
+        <location filename="../about.cpp" line="53"/>
+        <location filename="../about.cpp" line="63"/>
         <source>Changelog</source>
         <translation>Rexistro dos cambios</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="53"/>
+        <location filename="../about.cpp" line="54"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="72"/>
+        <location filename="../about.cpp" line="73"/>
         <source>&amp;Close</source>
         <translation>&amp;Cerrar</translation>
     </message>
@@ -373,12 +373,12 @@ Estás seguro?</translation>
     <message>
         <location filename="../main.cpp" line="86"/>
         <source>Error</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="87"/>
         <source>You must run this program with admin access.</source>
-        <translation type="unfinished"></translation>
+        <translation>Debes executar este programa con acceso de administrador.</translation>
     </message>
 </context>
 </TS>

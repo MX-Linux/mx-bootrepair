@@ -1,3 +1,9 @@
+mx-bootrepair (24.3) mx; urgency=medium
+
+  * Update translations
+
+ -- Adrian <adrian@mxlinux.org>  Sat, 23 Mar 2024 12:30:11 -0400
+
 mx-bootrepair (23.11.01) mx; urgency=medium
 
   * Fix changelog location

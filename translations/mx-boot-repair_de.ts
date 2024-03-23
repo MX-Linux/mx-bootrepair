@@ -16,7 +16,7 @@
     <message>
         <location filename="../mainwindow.ui" line="58"/>
         <source>What would you like to do?</source>
-        <translation>Was wollen sie tun?</translation>
+        <translation>Was wollen Sie tun?</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="79"/>
@@ -177,7 +177,7 @@
         <source>Could not set up chroot environment.
 Please double-check the selected location.</source>
         <translation>Die chroot-Umgebung konnte nicht eingerichtet werden.
-Bitte nochmals den ausgewählten Ort prüfen.</translation>
+Bitte noch einmal den ausgewählten Ort prüfen.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="215"/>
@@ -211,7 +211,7 @@ Bitte nochmals den ausgewählten Ort prüfen.</translation>
 Are you sure?</source>
         <translation>
 
-Sind sie sicher?</translation>
+Sind Sie sicher?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="341"/>
@@ -221,7 +221,7 @@ Sind sie sicher?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="362"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation>Konnte keine EFI-Systempartition (ESP) auf irgendeinem Laufwerk finden. Bitte erstellen sie eine ESP und versuchen sie es erneut.</translation>
+        <translation>Konnte keine EFI-Systempartition (ESP) auf irgendeinem Laufwerk finden. Bitte erstellen Sie eine ESP und versuchen Sie es erneut.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="405"/>
@@ -282,7 +282,7 @@ Sind sie sicher?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="608"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation>Bitte die root-Partition des Systems auswählen, das sie reparieren möchten.</translation>
+        <translation>Bitte die root-Partition des Systems auswählen, das Sie reparieren möchten.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="613"/>
@@ -344,23 +344,23 @@ Sind sie sicher?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../about.cpp" line="51"/>
+        <location filename="../about.cpp" line="52"/>
         <source>License</source>
         <translation>Lizenz</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="52"/>
-        <location filename="../about.cpp" line="62"/>
+        <location filename="../about.cpp" line="53"/>
+        <location filename="../about.cpp" line="63"/>
         <source>Changelog</source>
         <translation>Änderungsprotokoll</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="53"/>
+        <location filename="../about.cpp" line="54"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../about.cpp" line="72"/>
+        <location filename="../about.cpp" line="73"/>
         <source>&amp;Close</source>
         <translation>&amp;Schließen</translation>
     </message>
@@ -372,12 +372,12 @@ Sind sie sicher?</translation>
     <message>
         <location filename="../main.cpp" line="86"/>
         <source>Error</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="87"/>
         <source>You must run this program with admin access.</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Anwendung muss mit Administratorrechten ausgeführt werden.</translation>
     </message>
 </context>
 </TS>

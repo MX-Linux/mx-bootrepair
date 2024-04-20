@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 
     QApplication::setWindowIcon(QIcon::fromTheme(QApplication::applicationName()));
     QApplication::setApplicationDisplayName(QObject::tr("MX Boot Repair"));
-    QApplication::setOrganizationName(QStringLiteral("MX-Linux"));
+    QApplication::setOrganizationName("MX-Linux");
     QApplication::setApplicationVersion(VERSION);
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
@@ -97,26 +97,26 @@ int main(int argc, char *argv[])
 void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QTextStream term_out(stdout);
-    term_out << msg << QStringLiteral("\n");
+    term_out << msg << '\n';
 
     QTextStream out(&logFile);
-    out << QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd hh:mm:ss.zzz "));
+    out << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz ");
     switch (type) {
     case QtInfoMsg:
-        out << QStringLiteral("INF ");
+        out << "INF ";
         break;
     case QtDebugMsg:
-        out << QStringLiteral("DBG ");
+        out << "DBG ";
         break;
     case QtWarningMsg:
-        out << QStringLiteral("WRN ");
+        out << "WRN ";
         break;
     case QtCriticalMsg:
-        out << QStringLiteral("CRT ");
+        out << "CRT ";
         break;
     case QtFatalMsg:
-        out << QStringLiteral("FTL ");
+        out << "FTL ";
         break;
     }
-    out << context.category << QStringLiteral(": ") << msg << QStringLiteral("\n");
+    out << context.category << ": " << msg << '\n';
 }

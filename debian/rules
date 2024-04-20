@@ -11,7 +11,7 @@ override_dh_auto_clean:
 	rm -f src/translations/*.qm
 
 override_dh_auto_build:
-	lrelease *.pro
+	lrelease translations/*.ts
 	mv version.h version.h~
 	echo "const QString VERSION {\"$(DEB_BUILD_VERSION)\"};" > version.h
 	dh_auto_build -- $(MAKE_OPTS)

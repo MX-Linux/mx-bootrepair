@@ -30,12 +30,6 @@
 #include "about.h"
 #include <chrono>
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
-#define SKIPEMPTYPARTS QString::SkipEmptyParts
-#else
-#define SKIPEMPTYPARTS Qt::SkipEmptyParts
-#endif
-
 using namespace std::chrono_literals;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -501,11 +495,11 @@ bool MainWindow::openLuks(const QString &part, const QString &mapper)
 void MainWindow::addDevToList()
 {
     QString cmd("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
-    ListDisk = shell->getCmdOut(cmd).split('\n', SKIPEMPTYPARTS);
+    ListDisk = shell->getCmdOut(cmd).split('\n', Qt::SkipEmptyParts);
 
     cmd = "lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E "
           "'^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'";
-    ListPart = shell->getCmdOut(cmd).split('\n', SKIPEMPTYPARTS);
+    ListPart = shell->getCmdOut(cmd).split('\n', Qt::SkipEmptyParts);
     ui->rootCombo->clear();
     ui->rootCombo->addItems(ListPart);
 
@@ -667,7 +661,7 @@ bool MainWindow::isMountedTo(const QString &volume, const QString &mount)
     if (!shell->procAsRoot("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points)) {
         shell->procAsRoot("lsblk", {"-nro", "MOUNTPOINT", volume}, &points);
     }
-    return points.split('\n', SKIPEMPTYPARTS).contains(mount);
+    return points.split('\n', Qt::SkipEmptyParts).contains(mount);
 }
 
 bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoint)

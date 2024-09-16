@@ -55,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowFlags(Qt::Window); // for the close, min and max buttons
     refresh();
     addDevToList();
+    ui->radioGrubEsp->setDisabled(!isUefi());
 }
 
 MainWindow::~MainWindow()
@@ -491,6 +492,12 @@ bool MainWindow::openLuks(const QString &part, const QString &mapper)
     return ok;
 }
 
+bool MainWindow::isUefi()
+{
+    QDir dir("/sys/firmware/efi/efivars");
+    return dir.exists() && !dir.entryList(QDir::NoDotAndDotDot | QDir::AllEntries).isEmpty();
+}
+
 // add list of devices to comboLocation
 void MainWindow::addDevToList()
 {
@@ -611,7 +618,7 @@ void MainWindow::buttonApply_clicked()
             }
             repairGRUB();
         }
-    } else if (currentIndex ==  ui->stackedWidget->indexOf(ui->outputPage)) {
+    } else if (currentIndex == ui->stackedWidget->indexOf(ui->outputPage)) {
         refresh();
     } else {
         QApplication::exit(EXIT_SUCCESS);

@@ -63,11 +63,12 @@ private:
     QTemporaryDir tmpdir;
 
     QString luksMapper(const QString &part);
-    bool openLuks(const QString &part, const QString &mapper);
     QString selectPart(const QString &path, const QString &mountpoint);
-    bool isMountedTo(const QString &volume, const QString &mount);
     bool checkAndMountPart(const QString &path, const QString &mountpoint);
+    bool isMountedTo(const QString &volume, const QString &mount);
     bool mountChrootEnv(const QString &path);
+    bool openLuks(const QString &part, const QString &mapper);
+    static bool isUefi();
     void addDevToList();
     void backupBR(const QString &filename);
     void cleanupMountPoints(const QString &path, const QString &luks);

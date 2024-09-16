@@ -46,9 +46,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->buttonApply, &QPushButton::clicked, this, &MainWindow::buttonApply_clicked);
     connect(ui->buttonCancel, &QPushButton::clicked, this, &MainWindow::reject);
     connect(ui->buttonHelp, &QPushButton::clicked, this, &MainWindow::buttonHelp_clicked);
-    connect(ui->grubEspButton, &QPushButton::clicked, this, &MainWindow::targetSelection);
-    connect(ui->grubMbrButton, &QPushButton::clicked, this, &MainWindow::targetSelection);
-    connect(ui->grubRootButton, &QPushButton::clicked, this, &MainWindow::targetSelection);
+    connect(ui->radioGrubEsp, &QPushButton::clicked, this, &MainWindow::targetSelection);
+    connect(ui->radioGrubMbr, &QPushButton::clicked, this, &MainWindow::targetSelection);
+    connect(ui->radioGrubRoot, &QPushButton::clicked, this, &MainWindow::targetSelection);
     connect(shell, &Cmd::outputAvailable, [](const QString &out) { qDebug() << out.trimmed(); });
     connect(shell, &Cmd::errorAvailable, [](const QString &out) { qWarning() << out.trimmed(); });
 
@@ -72,23 +72,23 @@ void MainWindow::refresh()
 {
     disableOutput();
     ui->stackedWidget->setCurrentIndex(0);
-    ui->reinstallRadioButton->setFocus();
-    ui->reinstallRadioButton->setChecked(true);
+    ui->radioReinstall->setFocus();
+    ui->radioReinstall->setChecked(true);
     ui->progressBar->hide();
     ui->progressBar->setValue(0);
     ui->outputBox->clear();
     ui->outputLabel->clear();
     ui->grubInsLabel->show();
-    ui->grubRootButton->show();
-    ui->grubMbrButton->show();
-    ui->grubEspButton->show();
+    ui->radioGrubRoot->show();
+    ui->radioGrubMbr->show();
+    ui->radioGrubEsp->show();
     ui->rootLabel->hide();
-    ui->rootCombo->hide();
+    ui->comboRoot->hide();
     ui->buttonApply->setText(tr("Apply"));
     ui->buttonApply->setIcon(QIcon::fromTheme("dialog-ok"));
     ui->buttonApply->setEnabled(true);
     ui->buttonCancel->setEnabled(true);
-    ui->rootCombo->setDisabled(false);
+    ui->comboRoot->setDisabled(false);
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
@@ -99,9 +99,9 @@ void MainWindow::installGRUB()
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
 
-    const QString location = ui->locationCombo->currentText().section(' ', 0, 0);
+    const QString location = ui->comboLocation->currentText().section(' ', 0, 0);
     const QString text = tr("GRUB is being installed on %1 device.").arg(location);
-    QString root = "/dev/" + ui->rootCombo->currentText().section(' ', 0, 0);
+    QString root = "/dev/" + ui->comboRoot->currentText().section(' ', 0, 0);
 
     const QString &luks = luksMapper(root);
 
@@ -122,7 +122,7 @@ void MainWindow::installGRUB()
     ui->outputLabel->setText(text);
 
     // for grub-install access UEFI NVRAM entries
-    if (ui->grubEspButton->isChecked()) {
+    if (ui->radioGrubEsp->isChecked()) {
         // ... mount efivarfs if not already mounted
         shell->runAsRoot(
             "grep -sq ^efivarfs /proc/self/mounts || "
@@ -155,7 +155,7 @@ void MainWindow::installGRUB(const QString &location, const QString &path, const
 {
     QString cmd
         = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path, location);
-    if (ui->grubEspButton->isChecked()) {
+    if (ui->radioGrubEsp->isChecked()) {
         shell->runAsRoot("test -d " + path + "/boot/efi || mkdir " + path + "/boot/efi");
         if (!checkAndMountPart(path, "/boot/efi")) {
             cleanupMountPoints(path, luks);
@@ -185,7 +185,7 @@ void MainWindow::repairGRUB()
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    QString part = "/dev/" + ui->locationCombo->currentText().section(' ', 0, 0);
+    QString part = "/dev/" + ui->comboLocation->currentText().section(' ', 0, 0);
 
     if (isMountedTo(part, "/")) { // on current root
         displayOutput();
@@ -241,7 +241,7 @@ void MainWindow::backupBR(const QString &filename)
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    const QString location = ui->locationCombo->currentText().section(' ', 0, 0);
+    const QString location = ui->comboLocation->currentText().section(' ', 0, 0);
     const QString text = tr("Backing up MBR or PBR from %1 device.").arg(location);
     ui->outputLabel->setText(text);
     const QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
@@ -270,47 +270,47 @@ void MainWindow::cleanupMountPoints(const QString &path, const QString &luks)
 // try to guess partition to install GRUB
 void MainWindow::guessPartition()
 {
-    if (ui->grubMbrButton->isChecked()) {
+    if (ui->radioGrubMbr->isChecked()) {
         // find first disk with Linux partitions
-        for (int index = 0; index < ui->locationCombo->count(); index++) {
-            QString drive = ui->locationCombo->itemText(index);
+        for (int index = 0; index < ui->comboLocation->count(); index++) {
+            QString drive = ui->comboLocation->itemText(index);
             if (shell->runAsRoot(
                     "lsblk -ln -o PARTTYPE /dev/" + drive.section(' ', 0, 0)
                     + "| grep -qEi "
                       "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
                       "E8CD-4DB1-96E7-FBCAF984B709'")) {
-                ui->locationCombo->setCurrentIndex(index);
+                ui->comboLocation->setCurrentIndex(index);
                 break;
             }
         }
     }
     // find first a partition with rootMX* label
-    for (int index = 0; index < ui->rootCombo->count(); index++) {
-        QString part = ui->rootCombo->itemText(index);
+    for (int index = 0; index < ui->comboRoot->count(); index++) {
+        QString part = ui->comboRoot->itemText(index);
         if (shell->runAsRoot("lsblk -ln -o LABEL /dev/" + part.section(' ', 0, 0) + "| grep -q rootMX")) {
-            ui->rootCombo->setCurrentIndex(index);
+            ui->comboRoot->setCurrentIndex(index);
             // select the same location by default for GRUB and /boot
-            if (ui->grubRootButton->isChecked()) {
-                ui->locationCombo->setCurrentIndex(ui->rootCombo->currentIndex());
+            if (ui->radioGrubRoot->isChecked()) {
+                ui->comboLocation->setCurrentIndex(ui->comboRoot->currentIndex());
             }
             return;
         }
     }
     // it it cannot find rootMX*, look for Linux partitions
-    for (int index = 0; index < ui->rootCombo->count(); index++) {
-        QString part = ui->rootCombo->itemText(index);
+    for (int index = 0; index < ui->comboRoot->count(); index++) {
+        QString part = ui->comboRoot->itemText(index);
         if (shell->runAsRoot(
                 "lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
                 + "| grep -qEi "
                   "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
                   "E8CD-4DB1-96E7-FBCAF984B709'")) {
-            ui->rootCombo->setCurrentIndex(index);
+            ui->comboRoot->setCurrentIndex(index);
             break;
         }
     }
     // use by default the same root and /boot partion for installing on root
-    if (ui->grubRootButton->isChecked()) {
-        ui->locationCombo->setCurrentIndex(ui->rootCombo->currentIndex());
+    if (ui->radioGrubRoot->isChecked()) {
+        ui->comboLocation->setCurrentIndex(ui->comboRoot->currentIndex());
     }
 }
 
@@ -320,7 +320,7 @@ void MainWindow::restoreBR(const QString &filename)
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    const QString location = ui->locationCombo->currentText().section(' ', 0, 0);
+    const QString location = ui->comboLocation->currentText().section(' ', 0, 0);
     const auto ans = QMessageBox::warning(this, tr("Warning"),
                                           tr("You are going to write the content of ") + filename + tr(" to ")
                                               + location + tr("\n\nAre you sure?"),
@@ -340,15 +340,15 @@ void MainWindow::restoreBR(const QString &filename)
 void MainWindow::setEspDefaults()
 {
     // remove non-ESP partitions
-    for (int index = 0; index < ui->locationCombo->count(); index++) {
-        const QString part = ui->locationCombo->itemText(index);
+    for (int index = 0; index < ui->comboLocation->count(); index++) {
+        const QString part = ui->comboLocation->itemText(index);
         if (!shell->runAsRoot("lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
                               + "| grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")) {
-            ui->locationCombo->removeItem(index);
+            ui->comboLocation->removeItem(index);
             index--;
         }
     }
-    if (ui->locationCombo->count() == 0) {
+    if (ui->comboLocation->count() == 0) {
         QMessageBox::critical(this, tr("Error"),
                               tr("Could not find EFI system partition (ESP) "
                                  "on any system disks. Please create an ESP and try again."));
@@ -391,7 +391,7 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 
     QInputDialog dialog;
     QStringList partitions = ListPart;
-    partitions.removeAll(ui->rootCombo->currentText());
+    partitions.removeAll(ui->comboRoot->currentText());
     dialog.setComboBoxItems(partitions);
     dialog.setLabelText(tr("Select %1 location:").arg(mountpoint));
     dialog.setWindowTitle(this->windowTitle());
@@ -491,7 +491,7 @@ bool MainWindow::openLuks(const QString &part, const QString &mapper)
     return ok;
 }
 
-// add list of devices to locationCombo
+// add list of devices to comboLocation
 void MainWindow::addDevToList()
 {
     QString cmd("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
@@ -500,35 +500,35 @@ void MainWindow::addDevToList()
     cmd = "lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E "
           "'^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'";
     ListPart = shell->getCmdOut(cmd).split('\n', Qt::SkipEmptyParts);
-    ui->rootCombo->clear();
-    ui->rootCombo->addItems(ListPart);
+    ui->comboRoot->clear();
+    ui->comboRoot->addItems(ListPart);
 
-    ui->locationCombo->clear();
+    ui->comboLocation->clear();
     // add only disks
-    if (ui->grubMbrButton->isChecked()) {
-        ui->locationCombo->addItems(ListDisk);
+    if (ui->radioGrubMbr->isChecked()) {
+        ui->comboLocation->addItems(ListDisk);
     } else { // add partition
-        ui->locationCombo->addItems(ListPart);
+        ui->comboLocation->addItems(ListPart);
     }
 }
 
 // enabled/disable GUI elements depending on MBR, Root or ESP selection
 void MainWindow::targetSelection()
 {
-    ui->locationCombo->clear();
-    ui->rootCombo->setEnabled(true);
+    ui->comboLocation->clear();
+    ui->comboRoot->setEnabled(true);
     ui->buttonApply->setEnabled(true);
     // add only disks
-    if (ui->grubMbrButton->isChecked()) {
-        ui->locationCombo->addItems(ListDisk);
+    if (ui->radioGrubMbr->isChecked()) {
+        ui->comboLocation->addItems(ListDisk);
         guessPartition();
         // add partitions if select root
-    } else if (ui->grubRootButton->isChecked()) {
-        ui->locationCombo->addItems(ListPart);
+    } else if (ui->radioGrubRoot->isChecked()) {
+        ui->comboLocation->addItems(ListPart);
         guessPartition();
         // if Esp is checked, add partitions to Location combobox
     } else {
-        ui->locationCombo->addItems(ListPart);
+        ui->comboLocation->addItems(ListPart);
         guessPartition();
         setEspDefaults();
     }
@@ -546,83 +546,72 @@ void MainWindow::outputAvailable(const QString &output)
 
 void MainWindow::buttonApply_clicked()
 {
-    // on first page
-    if (ui->stackedWidget->currentIndex() == 0) {
+    const int currentIndex = ui->stackedWidget->currentIndex();
+    if (currentIndex == 0) {
         targetSelection();
-        // Reinstall button selected
-        if (ui->reinstallRadioButton->isChecked()) {
-            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+        ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+
+        if (ui->radioReinstall->isChecked()) {
             ui->bootMethodGroup->setTitle(tr("Select Boot Method"));
             ui->locationLabel->setText(tr("Location:"));
             ui->grubInsLabel->setText(tr("Install on:"));
-            ui->grubRootButton->setText(tr("root"));
+            ui->radioGrubRoot->setText(tr("root"));
             ui->rootLabel->show();
-            ui->rootCombo->show();
-
-            // Repair button selected
-        } else if (ui->repairRadioButton->isChecked()) {
-            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+            ui->comboRoot->show();
+        } else if (ui->raidoRepair->isChecked()) {
             ui->bootMethodGroup->setTitle(tr("Select GRUB location"));
             ui->locationLabel->setText(tr("Select root location:"));
             ui->grubInsLabel->hide();
-            ui->grubRootButton->hide();
-            ui->grubMbrButton->hide();
-            ui->grubEspButton->hide();
-            ui->grubRootButton->setChecked(true);
+            ui->radioGrubRoot->hide();
+            ui->radioGrubMbr->hide();
+            ui->radioGrubEsp->hide();
+            ui->radioGrubRoot->setChecked(true);
             targetSelection();
-
-            // Backup button selected
-        } else if (ui->bakRadioButton->isChecked()) {
-            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+        } else if (ui->radioBak->isChecked()) {
             ui->bootMethodGroup->setTitle(tr("Select Item to Back Up"));
             ui->grubInsLabel->clear();
-            ui->grubRootButton->setText("PBR");
-            ui->grubEspButton->hide();
-            // Restore backup button selected
-        } else if (ui->restoreBakRadioButton->isChecked()) {
-            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+            ui->radioGrubRoot->setText("PBR");
+            ui->radioGrubEsp->hide();
+        } else if (ui->radioRestoreBak->isChecked()) {
             ui->bootMethodGroup->setTitle(tr("Select Item to Restore"));
             ui->grubInsLabel->clear();
-            ui->grubRootButton->setText("PBR");
-            ui->grubEspButton->hide();
+            ui->radioGrubRoot->setText("PBR");
+            ui->radioGrubEsp->hide();
         }
-
-        // on selection page
-    } else if (ui->stackedWidget->currentWidget() == ui->selectionPage) {
-        if (ui->reinstallRadioButton->isChecked()) {
-            if (ui->locationCombo->currentText().isEmpty()) {
+    } else if (currentIndex == ui->stackedWidget->indexOf(ui->selectionPage)) {
+        if (ui->radioReinstall->isChecked()) {
+            if (ui->comboLocation->currentText().isEmpty()) {
                 QMessageBox::critical(this, tr("Error"), tr("No location was selected."));
                 return;
             }
-            if (ui->rootCombo->currentText().isEmpty()) {
+            if (ui->comboRoot->currentText().isEmpty()) {
                 QMessageBox::critical(this, tr("Error"),
                                       tr("Please select the root partition of the system you want to fix."));
                 return;
             }
             installGRUB();
-        } else if (ui->bakRadioButton->isChecked()) {
+        } else if (ui->radioBak->isChecked()) {
             QString filename = QFileDialog::getSaveFileName(this, tr("Select backup file name"));
             if (filename.isEmpty()) {
                 QMessageBox::critical(this, tr("Error"), tr("No file was selected."));
                 return;
             }
             backupBR(filename);
-        } else if (ui->restoreBakRadioButton->isChecked()) {
+        } else if (ui->radioRestoreBak->isChecked()) {
             QString filename = QFileDialog::getOpenFileName(this, tr("Select MBR or PBR backup file"));
             if (filename.isEmpty()) {
                 QMessageBox::critical(this, tr("Error"), tr("No file was selected."));
                 return;
             }
             restoreBR(filename);
-        } else if (ui->repairRadioButton->isChecked()) {
-            if (ui->locationCombo->currentText().isEmpty()) {
+        } else if (ui->raidoRepair->isChecked()) {
+            if (ui->comboLocation->currentText().isEmpty()) {
                 QMessageBox::critical(this, tr("Error"), tr("No location was selected."));
                 return;
             }
             repairGRUB();
         }
-        // on output page
-    } else if (ui->stackedWidget->currentWidget() == ui->outputPage) {
+    } else if (currentIndex ==  ui->stackedWidget->indexOf(ui->outputPage)) {
         refresh();
     } else {
         QApplication::exit(EXIT_SUCCESS);

@@ -1,3 +1,9 @@
+mx-bootrepair (24.4.01) mx; urgency=medium
+
+  * Add regenerate initramfs option
+
+ -- Adrian <adrian@mxlinux.org>  Sun, 13 Apr 2025 22:19:28 -0400
+
 mx-bootrepair (24.4) mx; urgency=medium
 
   * Update translations

@@ -81,8 +81,8 @@ void MainWindow::refresh()
     ui->radioGrubEsp->show();
     ui->rootLabel->hide();
     ui->comboRoot->hide();
-    ui->buttonApply->setText(tr("Apply"));
-    ui->buttonApply->setIcon(QIcon::fromTheme("dialog-ok"));
+    ui->buttonApply->setText(tr("Next"));
+    ui->buttonApply->setIcon(QIcon::fromTheme("go-next"));
     ui->buttonApply->setEnabled(true);
     ui->buttonCancel->setEnabled(true);
     ui->comboRoot->setDisabled(false);
@@ -632,6 +632,8 @@ void MainWindow::buttonApply_clicked()
             ui->radioGrubRoot->setText("PBR");
             ui->radioGrubEsp->hide();
         }
+        ui->buttonApply->setText(tr("Apply"));
+        ui->buttonApply->setIcon(QIcon::fromTheme("dialog-ok"));
     } else if (currentIndex == ui->stackedWidget->indexOf(ui->selectionPage)) {
         if (ui->radioReinstall->isChecked()) {
             if (ui->comboLocation->currentText().isEmpty()) {

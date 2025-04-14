@@ -38,7 +38,6 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug().noquote() << QCoreApplication::applicationName() << "version:" << QCoreApplication::applicationVersion();
 
     ui->setupUi(this);
-    timer = new QTimer(this);
     shell = new Cmd(this);
 
     connect(ui->buttonAbout, &QPushButton::clicked, this, &MainWindow::buttonAbout_clicked);
@@ -74,7 +73,6 @@ void MainWindow::refresh()
     ui->stackedWidget->setCurrentIndex(0);
     ui->radioReinstall->setFocus();
     ui->radioReinstall->setChecked(true);
-    ui->progressBar->setValue(0);
     ui->outputBox->clear();
     ui->outputLabel->clear();
     ui->grubInsLabel->show();
@@ -456,19 +454,13 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 
 void MainWindow::procStart()
 {
-    timer->start(100ms);
     setCursor(QCursor(Qt::BusyCursor));
-}
-
-void MainWindow::progress()
-{
-    ui->progressBar->setValue((ui->progressBar->value() + 1) % ui->progressBar->maximum());
 }
 
 void MainWindow::procDone()
 {
-    timer->stop();
-    ui->progressBar->setValue(ui->progressBar->maximum());
+    ui->progressBar->setRange(0, 100);
+    ui->progressBar->setValue(100);
     setCursor(QCursor(Qt::ArrowCursor));
     ui->buttonCancel->setEnabled(true);
     ui->buttonApply->setEnabled(true);
@@ -478,7 +470,7 @@ void MainWindow::procDone()
 
 void MainWindow::displayOutput()
 {
-    connect(timer, &QTimer::timeout, this, &MainWindow::progress);
+    ui->progressBar->setRange(0, 0);
     connect(shell, &Cmd::started, this, &MainWindow::procStart);
     connect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
     connect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);
@@ -501,7 +493,6 @@ void MainWindow::displayResult(bool success)
 
 void MainWindow::disableOutput()
 {
-    disconnect(timer, &QTimer::timeout, this, &MainWindow::progress);
     disconnect(shell, &Cmd::started, this, &MainWindow::procStart);
     disconnect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
     disconnect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);

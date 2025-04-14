@@ -25,7 +25,6 @@
 
 #include <QMessageBox>
 #include <QTemporaryDir>
-#include <QTimer>
 
 namespace Ui
 {
@@ -47,7 +46,6 @@ public slots:
     void outputAvailable(const QString &output);
     void procDone();
     void procStart();
-    void progress();
 
 private slots:
     void buttonAbout_clicked();
@@ -59,7 +57,6 @@ private:
     Ui::MainWindow *ui;
     QStringList ListDisk;
     QStringList ListPart;
-    QTimer *timer;
     QTemporaryDir tmpdir;
 
     QString luksMapper(const QString &part);

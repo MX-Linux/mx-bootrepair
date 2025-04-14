@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Root level functions requiring password for mx-boot-repair
+
+copy_log() {
+    mv --backup=numbered /var/log/mx-boot-repair.log /var/log/mx-boot-repair.log.old
+    cp /tmp/mx-boot-repair.log /var/log/mx-boot-repair.log
+}
+
+main() {
+case "$1" in 
+    copy_log) 
+        copy_log;;
+esac
+}
+
+main "$@"

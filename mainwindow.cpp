@@ -58,12 +58,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    QString tmpLog = "/tmp/" + QApplication::applicationName() + ".log";
-    if (Cmd().getCmdOut("wc -l " + tmpLog + "| cut -f1 -d' '", true).toInt() > 7) { // only if log is large enough
-        QString log = "/var/log/" + QApplication::applicationName() + ".log";
-        shell->runAsRoot("mv --backup=numbered " + log + ' ' + log + ".old; cp " + tmpLog + ' ' + log, nullptr, nullptr,
-                         true);
-    }
+    Cmd().run("/usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, true, true);
     delete ui;
 }
 
@@ -319,11 +314,10 @@ void MainWindow::guessPartition()
         // find first disk with Linux partitions
         for (int index = 0; index < ui->comboLocation->count(); index++) {
             QString drive = ui->comboLocation->itemText(index);
-            if (shell->run(
-                    "lsblk -ln -o PARTTYPE /dev/" + drive.section(' ', 0, 0)
-                    + "| grep -qEi "
-                      "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
-                      "E8CD-4DB1-96E7-FBCAF984B709'")) {
+            if (shell->run("lsblk -ln -o PARTTYPE /dev/" + drive.section(' ', 0, 0)
+                           + "| grep -qEi "
+                             "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
+                             "E8CD-4DB1-96E7-FBCAF984B709'")) {
                 ui->comboLocation->setCurrentIndex(index);
                 break;
             }
@@ -344,11 +338,10 @@ void MainWindow::guessPartition()
     // it it cannot find rootMX*, look for Linux partitions
     for (int index = 0; index < ui->comboRoot->count(); index++) {
         QString part = ui->comboRoot->itemText(index);
-        if (shell->run(
-                "lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
-                + "| grep -qEi "
-                  "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
-                  "E8CD-4DB1-96E7-FBCAF984B709'")) {
+        if (shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
+                       + "| grep -qEi "
+                         "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
+                         "E8CD-4DB1-96E7-FBCAF984B709'")) {
             ui->comboRoot->setCurrentIndex(index);
             break;
         }
@@ -387,7 +380,7 @@ void MainWindow::setEspDefaults()
     for (int index = 0; index < ui->comboLocation->count(); index++) {
         const QString part = ui->comboLocation->itemText(index);
         if (!shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
-                              + "| grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")) {
+                        + "| grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")) {
             ui->comboLocation->removeItem(index);
             index--;
         }

@@ -75,6 +75,7 @@ private:
     void guessPartition();
     void installGRUB();
     void installGRUB(const QString &location, const QString &path, const QString &luks);
+    void regenerateInitramfs();
     void refresh();
     void repairGRUB();
     void restoreBR(const QString &filename);

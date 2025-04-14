@@ -28,7 +28,6 @@
 #include <QScrollBar>
 
 #include "about.h"
-#include <chrono>
 
 using namespace std::chrono_literals;
 
@@ -226,7 +225,7 @@ void MainWindow::repairGRUB()
         return;
     } else {
         QMessageBox::critical(this, tr("Error"),
-                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+            tr("Could not set up chroot environment.\nPlease double-check the selected location."));
         setCursor(QCursor(Qt::ArrowCursor));
         ui->buttonApply->setEnabled(true);
         ui->buttonCancel->setEnabled(true);
@@ -234,6 +233,62 @@ void MainWindow::repairGRUB()
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
     cleanupMountPoints(tmpdir.path(), luks);
+}
+
+void MainWindow::regenerateInitramfs()
+{
+    ui->progressBar->show();
+    ui->buttonCancel->setEnabled(false);
+    ui->buttonApply->setEnabled(false);
+    ui->stackedWidget->setCurrentWidget(ui->outputPage);
+
+    const QString location = ui->comboLocation->currentText().section(' ', 0, 0);
+    QString root = "/dev/" + ui->comboRoot->currentText().section(' ', 0, 0);
+    ui->outputLabel->setText(tr("Generating initramfs images on: %1").arg(root));
+
+    const QString &luks = luksMapper(root);
+
+    if (isMountedTo(root, "/")) { // on current root
+        displayOutput();
+        const bool ok = shell->procAsRoot("update-initramfs", {"-c", "-v", "-k", "all"});
+        disableOutput();
+        displayResult(ok);
+        return;
+    }
+
+    if (!luks.isEmpty()) {
+        if (!openLuks(root, luks)) {
+            refresh();
+            return;
+        }
+        root = "/dev/mapper/" + luks;
+    }
+
+    if (mountChrootEnv(root)) {
+        if (!checkAndMountPart(tmpdir.path(), "/boot")) {
+            cleanupMountPoints(tmpdir.path(), luks);
+            refresh();
+            return;
+        }
+        if (QFile::exists(tmpdir.path() + "/boot/efi") && !checkAndMountPart(tmpdir.path(), "/boot/efi")) {
+            cleanupMountPoints(tmpdir.path(), luks);
+            refresh();
+            return;
+        }
+        displayOutput();
+        const bool success = shell->procAsRoot("chroot",
+            {tmpdir.path(), "update-initramfs", "-c", "-v", "-k", "all"});
+        disableOutput();
+        cleanupMountPoints(tmpdir.path(), luks);
+        displayResult(success);
+        return;
+    } else {
+        QMessageBox::critical(this, tr("Error"),
+            tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+        setCursor(QCursor(Qt::ArrowCursor));
+    }
+    cleanupMountPoints(tmpdir.path(), luks);
+    refresh();
 }
 
 void MainWindow::backupBR(const QString &filename)
@@ -574,6 +629,16 @@ void MainWindow::buttonApply_clicked()
             ui->radioGrubEsp->hide();
             ui->radioGrubRoot->setChecked(true);
             targetSelection();
+        } else if (ui->radioRegenerateInitramfs->isChecked()) {
+            ui->bootMethodGroup->setTitle(tr("Select initramfs options"));
+            ui->locationLabel->hide();
+            ui->comboLocation->hide();
+            ui->grubInsLabel->hide();
+            ui->radioGrubRoot->hide();
+            ui->radioGrubMbr->hide();
+            ui->radioGrubEsp->hide();
+            ui->rootLabel->show();
+            ui->comboRoot->show();
         } else if (ui->radioBak->isChecked()) {
             ui->bootMethodGroup->setTitle(tr("Select Item to Back Up"));
             ui->grubInsLabel->clear();
@@ -597,6 +662,19 @@ void MainWindow::buttonApply_clicked()
                 return;
             }
             installGRUB();
+        } else if (ui->raidoRepair->isChecked()) {
+            if (ui->comboLocation->currentText().isEmpty()) {
+                QMessageBox::critical(this, tr("Error"), tr("No location was selected."));
+                return;
+            }
+            repairGRUB();
+        } else if (ui->radioRegenerateInitramfs->isChecked()) {
+            if (ui->comboRoot->currentText().isEmpty()) {
+                QMessageBox::critical(this, tr("Error"),
+                    tr("Please select the root partition of the system you want to fix."));
+                return;
+            }
+            regenerateInitramfs();
         } else if (ui->radioBak->isChecked()) {
             QString filename = QFileDialog::getSaveFileName(this, tr("Select backup file name"));
             if (filename.isEmpty()) {
@@ -611,12 +689,6 @@ void MainWindow::buttonApply_clicked()
                 return;
             }
             restoreBR(filename);
-        } else if (ui->raidoRepair->isChecked()) {
-            if (ui->comboLocation->currentText().isEmpty()) {
-                QMessageBox::critical(this, tr("Error"), tr("No location was selected."));
-                return;
-            }
-            repairGRUB();
         }
     } else if (currentIndex == ui->stackedWidget->indexOf(ui->outputPage)) {
         refresh();

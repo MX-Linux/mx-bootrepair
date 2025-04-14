@@ -63,30 +63,8 @@
          <property name="title">
           <string>What would you like to do?</string>
          </property>
-         <layout class="QGridLayout" name="_3">
-          <property name="leftMargin">
-           <number>9</number>
-          </property>
-          <property name="topMargin">
-           <number>9</number>
-          </property>
-          <property name="rightMargin">
-           <number>9</number>
-          </property>
-          <property name="bottomMargin">
-           <number>9</number>
-          </property>
-          <property name="spacing">
-           <number>6</number>
-          </property>
-          <item row="3" column="0">
-           <widget class="QRadioButton" name="radioBak">
-            <property name="text">
-             <string>Backup MBR or PBR (legacy boot only)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
+         <layout class="QVBoxLayout">
+          <item>
            <widget class="QRadioButton" name="radioReinstall">
             <property name="text">
              <string>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</string>
@@ -96,14 +74,28 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item>
            <widget class="QRadioButton" name="raidoRepair">
             <property name="text">
              <string>Repair GRUB configuration file</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
+          <item>
+           <widget class="QRadioButton" name="radioRegenerateInitramfs">
+            <property name="text">
+             <string>Regenerate initramfs images</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioBak">
+            <property name="text">
+             <string>Backup MBR or PBR (legacy boot only)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QRadioButton" name="radioRestoreBak">
             <property name="text">
              <string>Restore MBR or PBR from backup (legacy boot only)</string>
@@ -114,9 +106,9 @@
         </widget>
        </item>
        <item>
-        <spacer name="verticalSpacer_2">
+        <spacer>
          <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
+          <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -129,7 +121,7 @@
       </layout>
      </widget>
      <widget class="QWidget" name="selectionPage">
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QVBoxLayout">
        <item>
         <widget class="QGroupBox" name="bootMethodGroup">
          <property name="sizePolicy">
@@ -230,22 +222,6 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="0" rowspan="4">
-           <spacer>
-            <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Policy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>16</width>
-              <height>71</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="0" column="3">
            <widget class="QRadioButton" name="radioGrubRoot">
             <property name="sizePolicy">
@@ -272,9 +248,9 @@
            </widget>
           </item>
           <item row="3" column="2">
-           <spacer name="verticalSpacer">
+           <spacer>
             <property name="orientation">
-             <enum>Qt::Orientation::Vertical</enum>
+             <enum>Qt::Vertical</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -388,9 +364,9 @@
     </widget>
    </item>
    <item row="1" column="2">
-    <spacer name="horizontalSpacer4">
+    <spacer>
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeType">
       <enum>QSizePolicy::Policy::Fixed</enum>
@@ -452,9 +428,9 @@
       </widget>
      </item>
      <item row="0" column="2">
-      <spacer name="horizontalSpacer1">
+      <spacer>
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -465,9 +441,9 @@
       </spacer>
      </item>
      <item row="0" column="5">
-      <spacer name="horizontalSpacer2">
+      <spacer>
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -586,9 +562,9 @@
     </layout>
    </item>
    <item row="1" column="0">
-    <spacer name="horizontalSpacer3">
+    <spacer>
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeType">
       <enum>QSizePolicy::Policy::Fixed</enum>
@@ -606,6 +582,7 @@
  <tabstops>
   <tabstop>radioReinstall</tabstop>
   <tabstop>raidoRepair</tabstop>
+  <tabstop>radioRegenerateInitramfs</tabstop>
   <tabstop>radioBak</tabstop>
   <tabstop>radioRestoreBak</tabstop>
   <tabstop>buttonAbout</tabstop>

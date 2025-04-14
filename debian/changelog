@@ -1,4 +1,4 @@
-mx-bootrepair (24.4.01) mx; urgency=medium
+mx-bootrepair (25.4) mx; urgency=medium
 
   * Add regenerate initramfs option
 

@@ -234,7 +234,6 @@ void MainWindow::regenerateInitramfs()
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
 
-    const QString location = ui->comboLocation->currentText().section(' ', 0, 0);
     QString root = "/dev/" + ui->comboRoot->currentText().section(' ', 0, 0);
     ui->outputLabel->setText(tr("Generating initramfs images on: %1").arg(root));
 

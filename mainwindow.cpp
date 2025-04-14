@@ -320,7 +320,7 @@ void MainWindow::guessPartition()
         // find first disk with Linux partitions
         for (int index = 0; index < ui->comboLocation->count(); index++) {
             QString drive = ui->comboLocation->itemText(index);
-            if (shell->runAsRoot(
+            if (shell->run(
                     "lsblk -ln -o PARTTYPE /dev/" + drive.section(' ', 0, 0)
                     + "| grep -qEi "
                       "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
@@ -333,7 +333,7 @@ void MainWindow::guessPartition()
     // find first a partition with rootMX* label
     for (int index = 0; index < ui->comboRoot->count(); index++) {
         QString part = ui->comboRoot->itemText(index);
-        if (shell->runAsRoot("lsblk -ln -o LABEL /dev/" + part.section(' ', 0, 0) + "| grep -q rootMX")) {
+        if (shell->run("lsblk -ln -o LABEL /dev/" + part.section(' ', 0, 0) + "| grep -q rootMX")) {
             ui->comboRoot->setCurrentIndex(index);
             // select the same location by default for GRUB and /boot
             if (ui->radioGrubRoot->isChecked()) {
@@ -345,7 +345,7 @@ void MainWindow::guessPartition()
     // it it cannot find rootMX*, look for Linux partitions
     for (int index = 0; index < ui->comboRoot->count(); index++) {
         QString part = ui->comboRoot->itemText(index);
-        if (shell->runAsRoot(
+        if (shell->run(
                 "lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
                 + "| grep -qEi "
                   "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
@@ -387,7 +387,7 @@ void MainWindow::setEspDefaults()
     // remove non-ESP partitions
     for (int index = 0; index < ui->comboLocation->count(); index++) {
         const QString part = ui->comboLocation->itemText(index);
-        if (!shell->runAsRoot("lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
+        if (!shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
                               + "| grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")) {
             ui->comboLocation->removeItem(index);
             index--;
@@ -710,8 +710,8 @@ void MainWindow::buttonHelp_clicked()
 bool MainWindow::isMountedTo(const QString &volume, const QString &mount)
 {
     QString points;
-    if (!shell->procAsRoot("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points)) {
-        shell->procAsRoot("lsblk", {"-nro", "MOUNTPOINT", volume}, &points);
+    if (!shell->proc("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points)) {
+        shell->proc("lsblk", {"-nro", "MOUNTPOINT", volume}, &points);
     }
     return points.split('\n', Qt::SkipEmptyParts).contains(mount);
 }

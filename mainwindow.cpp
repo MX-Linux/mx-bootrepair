@@ -219,7 +219,7 @@ void MainWindow::repairGRUB()
         return;
     } else {
         QMessageBox::critical(this, tr("Error"),
-            tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
         setCursor(QCursor(Qt::ArrowCursor));
         ui->buttonApply->setEnabled(true);
         ui->buttonCancel->setEnabled(true);
@@ -267,15 +267,14 @@ void MainWindow::regenerateInitramfs()
             return;
         }
         displayOutput();
-        const bool success = shell->procAsRoot("chroot",
-            {tmpdir.path(), "update-initramfs", "-c", "-v", "-k", "all"});
+        const bool success = shell->procAsRoot("chroot", {tmpdir.path(), "update-initramfs", "-c", "-v", "-k", "all"});
         disableOutput();
         cleanupMountPoints(tmpdir.path(), luks);
         displayResult(success);
         return;
     } else {
         QMessageBox::critical(this, tr("Error"),
-            tr("Could not set up chroot environment.\nPlease double-check the selected location."));
+                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
         setCursor(QCursor(Qt::ArrowCursor));
     }
     cleanupMountPoints(tmpdir.path(), luks);
@@ -655,7 +654,7 @@ void MainWindow::buttonApply_clicked()
         } else if (ui->radioRegenerateInitramfs->isChecked()) {
             if (ui->comboRoot->currentText().isEmpty()) {
                 QMessageBox::critical(this, tr("Error"),
-                    tr("Please select the root partition of the system you want to fix."));
+                                      tr("Please select the root partition of the system you want to fix."));
                 return;
             }
             regenerateInitramfs();

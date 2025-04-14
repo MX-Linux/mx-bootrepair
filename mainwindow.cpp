@@ -74,7 +74,6 @@ void MainWindow::refresh()
     ui->stackedWidget->setCurrentIndex(0);
     ui->radioReinstall->setFocus();
     ui->radioReinstall->setChecked(true);
-    ui->progressBar->hide();
     ui->progressBar->setValue(0);
     ui->outputBox->clear();
     ui->outputLabel->clear();
@@ -94,7 +93,6 @@ void MainWindow::refresh()
 
 void MainWindow::installGRUB()
 {
-    ui->progressBar->show();
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
@@ -145,7 +143,6 @@ void MainWindow::installGRUB()
         setCursor(QCursor(Qt::ArrowCursor));
         ui->buttonApply->setEnabled(true);
         ui->buttonCancel->setEnabled(true);
-        ui->progressBar->hide();
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
     cleanupMountPoints(tmpdir.path(), luks);
@@ -181,7 +178,6 @@ void MainWindow::installGRUB(const QString &location, const QString &path, const
 
 void MainWindow::repairGRUB()
 {
-    ui->progressBar->show();
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
@@ -229,7 +225,6 @@ void MainWindow::repairGRUB()
         setCursor(QCursor(Qt::ArrowCursor));
         ui->buttonApply->setEnabled(true);
         ui->buttonCancel->setEnabled(true);
-        ui->progressBar->hide();
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
     }
     cleanupMountPoints(tmpdir.path(), luks);
@@ -237,7 +232,6 @@ void MainWindow::repairGRUB()
 
 void MainWindow::regenerateInitramfs()
 {
-    ui->progressBar->show();
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
@@ -293,7 +287,6 @@ void MainWindow::regenerateInitramfs()
 
 void MainWindow::backupBR(const QString &filename)
 {
-    ui->progressBar->show();
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
@@ -372,7 +365,6 @@ void MainWindow::guessPartition()
 
 void MainWindow::restoreBR(const QString &filename)
 {
-    ui->progressBar->show();
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);

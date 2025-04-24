@@ -36,7 +36,7 @@
     <message>
         <location filename="../mainwindow.ui" line="87"/>
         <source>Regenerate initramfs images</source>
-        <translation type="unfinished"></translation>
+        <translation>Regenerar imagens do initramfs</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="101"/>
@@ -153,7 +153,7 @@
         <location filename="../mainwindow.ui" line="521"/>
         <location filename="../mainwindow.cpp" line="79"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Seguinte</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="627"/>
@@ -200,7 +200,7 @@ Verificar novamente a localização seleccionada.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="233"/>
         <source>Generating initramfs images on: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>A gerar imagens initramfs em %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="285"/>
@@ -284,7 +284,7 @@ Seguramente?</translation>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>
         <source>Select initramfs options</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecione as opções do initramfs</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="617"/>

@@ -153,7 +153,7 @@
         <location filename="../mainwindow.ui" line="521"/>
         <location filename="../mainwindow.cpp" line="79"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>ต่อไป</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="627"/>

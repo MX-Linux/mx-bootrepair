@@ -153,7 +153,7 @@
         <location filename="../mainwindow.ui" line="521"/>
         <location filename="../mainwindow.cpp" line="79"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Següent</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="627"/>
@@ -279,7 +279,7 @@ N&apos;esteu segur? </translation>
     <message>
         <location filename="../mainwindow.cpp" line="598"/>
         <source>Select GRUB location</source>
-        <translation>Trieu la ubicació de GRUB </translation>
+        <translation>Trieu la ubicació del GRUB </translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="607"/>

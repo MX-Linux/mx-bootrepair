@@ -1,3 +1,9 @@
+mx-bootrepair (25.4.02) mx; urgency=medium
+
+  * Update to Qt6
+
+ -- Adrian <adrian@mxlinux.org>  Wed, 23 Apr 2025 21:58:52 -0400
+
 mx-bootrepair (25.4.01) mx; urgency=medium
 
   * Remove need for elevation when clicking Next

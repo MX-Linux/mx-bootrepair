@@ -58,7 +58,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    Cmd().run("/usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, true, true);
+    Cmd().run("/usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, true, false);
     delete ui;
 }
 

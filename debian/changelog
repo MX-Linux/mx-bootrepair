@@ -1,3 +1,10 @@
+mx-bootrepair (25.6) mx; urgency=medium
+
+  * Fix copy log command prompt at closing
+  * Update translations
+
+ -- Adrian <adrian@mxlinux.org>  Thu, 19 Jun 2025 22:25:33 -0400
+
 mx-bootrepair (25.4.02) mx; urgency=medium
 
   * Update to Qt6

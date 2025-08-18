@@ -514,7 +514,7 @@ bool MainWindow::openLuks(const QString &part, const QString &mapper)
     if (ok) {
         ok = shell->procAsRoot("cryptsetup", {"luksOpen", part, mapper, "-"}, nullptr, &pass);
     }
-    pass.fill(0xA5);
+    pass.fill(static_cast<char>(0xA5));
     if (!ok) {
         QMessageBox::critical(this, tr("Error"), tr("Sorry, could not open %1 LUKS container").arg(part));
     }

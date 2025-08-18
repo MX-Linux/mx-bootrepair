@@ -1,9 +1,9 @@
 help/*				usr/share/doc/mx-bootrepair
 icons/mx-boot-repair.png	usr/share/icons/hicolor/256x256/apps
 icons/mx-boot-repair.svg	usr/share/icons/hicolor/scalable/apps
-mx-boot-repair			usr/bin
 mx-boot-repair.desktop		usr/share/applications
+obj-*/*.qm			usr/share/mx-bootrepair/locale
+obj-*/mx-boot-repair		usr/bin
 scripts/*.policy		usr/share/polkit-1/actions
 scripts/helper			usr/lib/mx-boot-repair
 scripts/mxbr-lib		usr/lib/mx-boot-repair
-translations/*.qm		usr/share/mx-bootrepair/locale

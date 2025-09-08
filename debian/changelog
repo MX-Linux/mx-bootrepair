@@ -1,3 +1,11 @@
+mx-bootrepair (25.09) mx; urgency=medium
+
+  * Added a -c/--cli option to run the app in the CLI, detect if running
+    headless and start in that mode automatically
+  * Fix log copying to /var/log/
+
+ -- Adrian <adrian@mxlinux.org>  Sun, 07 Sep 2025 20:13:13 -0400
+
 mx-bootrepair (25.6) mx; urgency=medium
 
   * Fix copy log command prompt at closing
@@ -73,7 +81,7 @@ mx-bootrepair (23.7) mx; urgency=medium
 
 mx-bootrepair (23.5.01) mx; urgency=medium
 
-  * Update logo 
+  * Update logo
 
  -- Adrian <adrian@mxlinux.org>  Wed, 17 May 2023 18:21:22 -0400
 
@@ -112,13 +120,13 @@ mx-bootrepair (22.83) mx; urgency=medium
 
 mx-bootrepair (22.82) mx; urgency=medium
 
-  * update translations 
+  * update translations
 
  -- Dolphin Oracle <dolphinoracle@gmail.com>  Wed, 26 Oct 2022 19:57:13 -0400
 
 mx-bootrepair (22.81) mx; urgency=medium
 
-  * Fix: launching documents from Help (fixes a problem in Plasma) 
+  * Fix: launching documents from Help (fixes a problem in Plasma)
 
  -- Adrian <adrian@mxlinux.org>  Mon, 22 Aug 2022 19:13:01 -0400
 
@@ -223,7 +231,7 @@ mx-bootrepair (19.10.01) mx; urgency=medium
 mx-bootrepair (19.10) mx; urgency=medium
 
   * new feature: works on luks encrypted partitions
-  * fix: works when /boot not on root 
+  * fix: works when /boot not on root
   * fix: works when targetting running root system
 
  -- Adrian <adrian@mxlinux.org>  Sat, 19 Oct 2019 19:30:22 -0400
@@ -544,6 +552,6 @@ mx-bootrepair (0.2mx140+1) mx; urgency=low
 
 mx-bootrepair (0.1mx140+1) mx; urgency=low
 
-  * Initial release. 
+  * Initial release.
 
  -- Steven Pusser [stevep@mxlinux.org]  Fri, 04 Apr 2014 21:40:04 -0700

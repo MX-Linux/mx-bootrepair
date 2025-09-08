@@ -1,0 +1,48 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Sun, 07 Sep 2025 20:13:13 -0400
+Source: mx-bootrepair
+Binary: mx-bootrepair
+Architecture: source amd64
+Version: 25.09
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-bootrepair - GUI for repairing boot problems
+Changes:
+ mx-bootrepair (25.09) mx; urgency=medium
+ .
+   * Added a -c/--cli option to run the app in the CLI, detect if running
+     headless and start in that mode automatically
+   * Fix log copying to /var/log/
+Checksums-Sha1:
+ 2fa3856ce692adc04f5377520ef25a16881e51bf 1362 mx-bootrepair_25.09.dsc
+ b42d82276ad950bac40bb85df997842f18d5b8b7 73964 mx-bootrepair_25.09.tar.xz
+ bc2dd8d6e9f76ccc177c3fa41fc60ba80538e36b 11343 mx-bootrepair_25.09_amd64.buildinfo
+ 2a7d1549804bff9fa87247b50f57f34a42f6a86c 75328 mx-bootrepair_25.09_amd64.deb
+Checksums-Sha256:
+ 09449d9b9ea14eb17be5fe7d2dc996b1fbcbadaf19a7af8fc8a8f9dc5b1d5abe 1362 mx-bootrepair_25.09.dsc
+ 00aea84d1842fdf8ce42ef861ad7824f20037b2cfb0db84bad1ed9620e4ce8a1 73964 mx-bootrepair_25.09.tar.xz
+ 22f9423827fccc57adbb8fb202463067477edcbd35ebaae48dd40ddbcc8d7921 11343 mx-bootrepair_25.09_amd64.buildinfo
+ 0df2b6bee86f2c13e8e0d7692068be7313dbf06871fa3895883a2c0bea9bd335 75328 mx-bootrepair_25.09_amd64.deb
+Files:
+ 21d610405bd4e8f58b1c3dec2bae9332 1362 admin optional mx-bootrepair_25.09.dsc
+ 6cc4b61548412f5157d727c3c1aa9e2b 73964 admin optional mx-bootrepair_25.09.tar.xz
+ 481ebd84f752722c67b50e9dcb9cb780 11343 admin optional mx-bootrepair_25.09_amd64.buildinfo
+ 826ae731a436586a88758b126f6c6b14 75328 admin optional mx-bootrepair_25.09_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmi+H/ITHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumGDpB/4qtjkVf8KGmWRXI5NeNv2Fs7AXc2Y7
+i8Fk1rDfRDWydBu+auCkpmCbuoEPVAQPieU+8MR0XXow0nfqy9KZBV1gkhu+N50O
+oYc4wD10gmR0TNOJCePJc5k74Osufye8Rkq7CkhdY1wQAquMKl/S1Xhcmdj27LMV
+CP/h/XuhzSqSa2OjnLQWTw75hJ07j2ay2t/XsArk5+TNWcXhgpJjWrAe0i+Rues3
+qPDsE2F6F0azVJUeafqh/Wrb5ffIiO97xfUyDIQNSjJkZ4x5XgywjBoXqFLIH6JL
+17WeESG0sl54ob5hncVFH95rqFSLVpFEQNaJoe57hZTMMUnix0rpTh9p
+=V5Xa
+-----END PGP SIGNATURE-----

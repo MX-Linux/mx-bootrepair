@@ -1,0 +1,42 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Sun, 07 Sep 2025 20:13:13 -0400
+Source: mx-bootrepair
+Architecture: source
+Version: 25.09
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Changes:
+ mx-bootrepair (25.09) mx; urgency=medium
+ .
+   * Added a -c/--cli option to run the app in the CLI, detect if running
+     headless and start in that mode automatically
+   * Fix log copying to /var/log/
+Checksums-Sha1:
+ 2fa3856ce692adc04f5377520ef25a16881e51bf 1362 mx-bootrepair_25.09.dsc
+ b42d82276ad950bac40bb85df997842f18d5b8b7 73964 mx-bootrepair_25.09.tar.xz
+ bc2dd8d6e9f76ccc177c3fa41fc60ba80538e36b 11343 mx-bootrepair_25.09_amd64.buildinfo
+Checksums-Sha256:
+ 09449d9b9ea14eb17be5fe7d2dc996b1fbcbadaf19a7af8fc8a8f9dc5b1d5abe 1362 mx-bootrepair_25.09.dsc
+ 00aea84d1842fdf8ce42ef861ad7824f20037b2cfb0db84bad1ed9620e4ce8a1 73964 mx-bootrepair_25.09.tar.xz
+ 22f9423827fccc57adbb8fb202463067477edcbd35ebaae48dd40ddbcc8d7921 11343 mx-bootrepair_25.09_amd64.buildinfo
+Files:
+ 21d610405bd4e8f58b1c3dec2bae9332 1362 admin optional mx-bootrepair_25.09.dsc
+ 6cc4b61548412f5157d727c3c1aa9e2b 73964 admin optional mx-bootrepair_25.09.tar.xz
+ 481ebd84f752722c67b50e9dcb9cb780 11343 admin optional mx-bootrepair_25.09_amd64.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmi+H/ITHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumJF9B/4xN1VbwEtBcdjZZq8npydbfPwDIBGk
+k/irnc4p4NAGt+Gt5FlII2gWofV960vMFFyg25r+bQ/ITYSMyhEbW8CapR4rGS3s
+6xaweEsAWFbKkxr4uQmfbN/z8ZB2ydVtb35jozBQ8aEPnhTc0gDSBcUIB6ZwQBuK
++zR9w9iOK7kL5mqFLIz+EbOcDbYpxcS+8vUahvXteGXdbayY/vYFwqZgvm71f1gr
+PLApCrROIncClsoxNGa8g41d64l6shr0Hd4mD4gsawbdLODQYIY5UbKPIy8mWHBc
+k+xXxEWBFb1K8nKOtBoMH64pEpyKRIg4NogTuBNR0d7mgnkvadbAzKtS
+=WTpP
+-----END PGP SIGNATURE-----

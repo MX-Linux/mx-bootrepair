@@ -1,16 +1,23 @@
 #include "cmd.h"
 
-#include <QApplication>
+#include <QCoreApplication>
 #include <QDebug>
 #include <QEventLoop>
 #include <QFile>
+#include <QVariant>
 
 #include <unistd.h>
 
 Cmd::Cmd(QObject *parent)
     : QProcess(parent),
-      asRoot {QFile::exists("/usr/bin/pkexec") ? "/usr/bin/pkexec" : "/usr/bin/gksu"},
-      helper {"/usr/lib/" + QApplication::applicationName() + "/helper"}
+      asRoot(
+          // Prefer sudo in CLI mode; otherwise use pkexec/gksu
+          (QCoreApplication::instance() && QCoreApplication::instance()->property("cliMode").toBool()
+           && QFile::exists("/usr/bin/sudo"))
+              ? QStringLiteral("/usr/bin/sudo")
+              : (QFile::exists("/usr/bin/pkexec") ? QStringLiteral("/usr/bin/pkexec")
+                                                  : QStringLiteral("/usr/bin/gksu"))),
+      helper {"/usr/lib/" + QCoreApplication::applicationName() + "/helper"}
 {
     connect(this, &Cmd::readyReadStandardOutput, [this] { emit outputAvailable(readAllStandardOutput()); });
     connect(this, &Cmd::readyReadStandardError, [this] { emit errorAvailable(readAllStandardError()); });

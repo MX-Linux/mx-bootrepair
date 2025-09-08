@@ -82,43 +82,80 @@ set(CMAKE_AUTORCC ON)
 
 # Define source files
 set(SOURCES
-    src/main.cpp
-    src/mainwindow.cpp
-    src/about.cpp
-    src/cmd.cpp
+    src/gui/main.cpp
+    src/gui/mainwindow.cpp
+    src/gui/about.cpp
 )
 
 set(HEADERS
-    src/common.h
-    src/mainwindow.h
-    src/about.h
-    src/cmd.h
+    src/core/common.h
+    src/gui/mainwindow.h
+    src/gui/about.h
 )
 
 set(UI_FILES
-    src/mainwindow.ui
+    src/gui/mainwindow.ui
 )
 
 set(RESOURCE_FILES
-    images.qrc
+    src/gui/images.qrc
 )
 
 # Get all translation files
 file(GLOB TRANSLATION_FILES "translations/*.ts")
 
 # Create the executable
+add_library(bootrepair-core STATIC
+    src/core/cmd.cpp
+    src/core/bootrepair_engine.cpp
+    src/core/bootrepair_engine.h
+    src/core/app_init.cpp
+    src/core/app_init.h
+)
+
+target_link_libraries(bootrepair-core
+    Qt6::Core
+)
+
+target_include_directories(bootrepair-core PUBLIC
+    ${CMAKE_SOURCE_DIR}/src
+)
+
+target_compile_options(bootrepair-core PRIVATE
+    -Wpedantic
+    -pedantic
+    -Werror=return-type
+    -Werror=switch
+    -Werror=uninitialized
+    -Werror
+)
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR USE_CLANG)
+    target_compile_options(bootrepair-core PRIVATE -Werror=return-stack-address)
+else()
+    target_compile_options(bootrepair-core PRIVATE -Werror=return-local-addr)
+endif()
+
 add_executable(mx-boot-repair
     ${SOURCES}
     ${HEADERS}
     ${UI_FILES}
     ${RESOURCE_FILES}
+    src/cli/controller.cpp
+    src/cli/controller.h
 )
 
 # Link Qt6 libraries
 target_link_libraries(mx-boot-repair
+    bootrepair-core
     Qt6::Core
     Qt6::Gui
     Qt6::Widgets
+)
+
+# Allow GUI sources to include headers from src/ (e.g., core/..., common.h)
+target_include_directories(mx-boot-repair PUBLIC
+    ${CMAKE_SOURCE_DIR}/src
 )
 
 # Set compiler flags
@@ -170,6 +207,29 @@ qt6_add_translations(mx-boot-repair
 # Set target properties
 set_target_properties(mx-boot-repair PROPERTIES
     OUTPUT_NAME "mx-boot-repair"
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
+)
+
+# CLI target (QtCore-only)
+add_executable(mx-boot-repair-cli
+    src/cli/main.cpp
+    src/cli/controller.cpp
+    src/cli/controller.h
+)
+
+target_link_libraries(mx-boot-repair-cli
+    bootrepair-core
+    Qt6::Core
+)
+
+target_compile_definitions(mx-boot-repair-cli PRIVATE
+    QT_DEPRECATED_WARNINGS
+    QT_DISABLE_DEPRECATED_BEFORE=0x060000
+    VERSION="${PROJECT_VERSION}"
+)
+
+set_target_properties(mx-boot-repair-cli PROPERTIES
+    OUTPUT_NAME "mx-boot-repair-cli"
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 

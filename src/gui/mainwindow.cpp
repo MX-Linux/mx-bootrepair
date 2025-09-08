@@ -1,7 +1,7 @@
 /*****************************************************************************
  * mainwindow.cpp
  *****************************************************************************
- * Copyright (C) 2014 MX Authors
+ * Copyright (C) 2014-2025 MX Authors
  *
  * Authors: Adrian
  *          MX Linux <http://mxlinux.org>
@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug().noquote() << QCoreApplication::applicationName() << "version:" << QCoreApplication::applicationVersion();
 
     ui->setupUi(this);
-    shell = new Cmd(this);
+    engine = new BootRepairEngine(this);
 
     connect(ui->buttonAbout, &QPushButton::clicked, this, &MainWindow::buttonAbout_clicked);
     connect(ui->buttonApply, &QPushButton::clicked, this, &MainWindow::buttonApply_clicked);
@@ -47,8 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->radioGrubEsp, &QPushButton::clicked, this, &MainWindow::targetSelection);
     connect(ui->radioGrubMbr, &QPushButton::clicked, this, &MainWindow::targetSelection);
     connect(ui->radioGrubRoot, &QPushButton::clicked, this, &MainWindow::targetSelection);
-    connect(shell, &Cmd::outputAvailable, [](const QString &out) { qDebug() << out.trimmed(); });
-    connect(shell, &Cmd::errorAvailable, [](const QString &out) { qWarning() << out.trimmed(); });
+    // Cmd logging is handled via BootRepairEngine::log when displaying output
 
     setWindowFlags(Qt::Window); // for the close, min and max buttons
     refresh();
@@ -58,7 +57,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    Cmd().run("/usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, true, false);
+    Cmd().runAsRoot("/usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, true);
     delete ui;
 }
 
@@ -90,137 +89,74 @@ void MainWindow::installGRUB()
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
 
-    const QString location = ui->comboLocation->currentText().section(' ', 0, 0);
-    const QString text = tr("GRUB is being installed on %1 device.").arg(location);
-    QString root = "/dev/" + ui->comboRoot->currentText().section(' ', 0, 0);
+    BootRepairOptions opt;
+    opt.location = ui->comboLocation->currentText().section(' ', 0, 0);
+    opt.root = "/dev/" + ui->comboRoot->currentText().section(' ', 0, 0);
+    opt.target = ui->radioGrubEsp->isChecked() ? GrubTarget::Esp
+                                               : (ui->radioGrubRoot->isChecked() ? GrubTarget::Root : GrubTarget::Mbr);
 
-    const QString &luks = luksMapper(root);
+    ui->outputLabel->setText(tr("GRUB is being installed on %1 device.").arg(opt.location));
 
-    if (isMountedTo(root, "/")) { // on current root
-        ui->outputLabel->setText(text);
-        installGRUB(location, "/", luks);
-        return;
-    }
-
-    if (!luks.isEmpty()) {
-        if (!openLuks(root, luks)) {
-            refresh();
-            return;
+    if (!engine->isMounted(opt.root, "/")) {
+        if (engine->isLuks(opt.root)) {
+            bool ok = false;
+            const QByteArray pass
+                = QInputDialog::getText(this, this->windowTitle(),
+                                        tr("Enter password to unlock %1 encrypted partition:").arg(opt.root),
+                                        QLineEdit::Password, QString(), &ok)
+                      .toUtf8();
+            if (!ok) {
+                refresh();
+                return;
+            }
+            opt.luksPassword = pass;
         }
-        root = "/dev/mapper/" + luks;
+        const QString bootDev = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
+        opt.bootDevice = !bootDev.isEmpty() ? bootDev : selectPartFromList("/boot");
+        if (opt.target == GrubTarget::Esp) {
+            const QString espDev = engine->resolveFstabDevice(opt.root, "/boot/efi", opt.luksPassword);
+            opt.espDevice = !espDev.isEmpty() ? espDev : selectPartFromList("/boot/efi");
+        }
     }
 
-    ui->outputLabel->setText(text);
-
-    // for grub-install access UEFI NVRAM entries
-    if (ui->radioGrubEsp->isChecked()) {
-        // ... mount efivarfs if not already mounted
-        shell->runAsRoot(
-            "grep -sq ^efivarfs /proc/self/mounts || "
-            "{ test -d /sys/firmware/efi/efivars && mount -t efivarfs efivarfs /sys/firmware/efi/efivars; }");
-        // ...  remove dump-entries if exist to avoid "No space left on device" error
-        shell->runAsRoot("ls -1 /sys/firmware/efi/efivars | grep -sq ^dump && rm /sys/firmware/efi/efivars/dump*");
-    }
-    if (mountChrootEnv(root)) {
-        if (!checkAndMountPart(tmpdir.path(), "/boot")) {
-            cleanupMountPoints(tmpdir.path(), luks);
-            refresh();
-            return;
-        }
-        installGRUB(location, tmpdir.path(), luks);
-        return;
-    } else {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Could not set up chroot environment.\n"
-                                 "Please double-check the selected location."));
-        setCursor(QCursor(Qt::ArrowCursor));
-        ui->buttonApply->setEnabled(true);
-        ui->buttonCancel->setEnabled(true);
-        ui->stackedWidget->setCurrentWidget(ui->selectionPage);
-    }
-    cleanupMountPoints(tmpdir.path(), luks);
-}
-
-void MainWindow::installGRUB(const QString &location, const QString &path, const QString &luks)
-{
-    QString cmd
-        = QStringLiteral("chroot %1 grub-install --target=i386-pc --recheck --force /dev/%2").arg(path, location);
-    if (ui->radioGrubEsp->isChecked()) {
-        shell->runAsRoot("test -d " + path + "/boot/efi || mkdir " + path + "/boot/efi");
-        if (!checkAndMountPart(path, "/boot/efi")) {
-            cleanupMountPoints(path, luks);
-            refresh();
-            return;
-        }
-        QString arch = shell->getCmdOut("arch");
-        if (arch == "i686") { // rename arch to match grub-install target
-            arch = "i386";
-        }
-        QString release
-            = shell->getCmdOut(QStringLiteral("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release")).left(2);
-        cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi "
-                             "--bootloader-id=MX%3 --force-extra-removable --recheck")
-                  .arg(path, arch, release);
-    }
     displayOutput();
-    bool success = shell->runAsRoot(cmd);
+    const bool success = engine->installGrub(opt);
     disableOutput();
-    cleanupMountPoints(path, luks);
     displayResult(success);
 }
+
+// legacy installGRUB helper removed; engine handles execution
 
 void MainWindow::repairGRUB()
 {
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
-    QString part = "/dev/" + ui->comboLocation->currentText().section(' ', 0, 0);
-
-    if (isMountedTo(part, "/")) { // on current root
-        displayOutput();
-        bool ok = shell->runAsRoot("update-grub");
-        disableOutput();
-        displayResult(ok);
-        refresh();
-        return;
-    }
-
-    const QString &luks = luksMapper(part);
-    if (!luks.isEmpty()) {
-        if (!openLuks(part, luks)) {
-            refresh();
-            return;
-        }
-        part = "/dev/mapper/" + luks;
-    }
-
+    const QString root = "/dev/" + ui->comboLocation->currentText().section(' ', 0, 0);
     ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
-    if (mountChrootEnv(part)) {
-        if (!checkAndMountPart(tmpdir.path(), "/boot")) {
-            cleanupMountPoints(tmpdir.path(), luks);
-            refresh();
-            return;
+    BootRepairOptions opt;
+    opt.root = root;
+    if (!engine->isMounted(opt.root, "/")) {
+        if (engine->isLuks(opt.root)) {
+            bool ok = false;
+            const QByteArray pass
+                = QInputDialog::getText(this, this->windowTitle(),
+                                        tr("Enter password to unlock %1 encrypted partition:").arg(opt.root),
+                                        QLineEdit::Password, QString(), &ok)
+                      .toUtf8();
+            if (!ok) {
+                refresh();
+                return;
+            }
+            opt.luksPassword = pass;
         }
-        if (QFile::exists(tmpdir.path() + "/boot/efi") && !checkAndMountPart(tmpdir.path(), "/boot/efi")) {
-            cleanupMountPoints(tmpdir.path(), luks);
-            refresh();
-            return;
-        }
-        displayOutput();
-        bool success = shell->runAsRoot(QStringLiteral("chroot %1 update-grub").arg(tmpdir.path()));
-        disableOutput();
-        cleanupMountPoints(tmpdir.path(), luks);
-        displayResult(success);
-        return;
-    } else {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
-        setCursor(QCursor(Qt::ArrowCursor));
-        ui->buttonApply->setEnabled(true);
-        ui->buttonCancel->setEnabled(true);
-        ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+        opt.bootDevice = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
+        opt.espDevice = engine->resolveFstabDevice(opt.root, "/boot/efi", opt.luksPassword);
     }
-    cleanupMountPoints(tmpdir.path(), luks);
+    displayOutput();
+    const bool success = engine->repairGrub(opt);
+    disableOutput();
+    displayResult(success);
 }
 
 void MainWindow::regenerateInitramfs()
@@ -229,51 +165,29 @@ void MainWindow::regenerateInitramfs()
     ui->buttonApply->setEnabled(false);
     ui->stackedWidget->setCurrentWidget(ui->outputPage);
 
-    QString root = "/dev/" + ui->comboRoot->currentText().section(' ', 0, 0);
-    ui->outputLabel->setText(tr("Generating initramfs images on: %1").arg(root));
-
-    const QString &luks = luksMapper(root);
-
-    if (isMountedTo(root, "/")) { // on current root
-        displayOutput();
-        const bool ok = shell->procAsRoot("update-initramfs", {"-c", "-v", "-k", "all"});
-        disableOutput();
-        displayResult(ok);
-        return;
-    }
-
-    if (!luks.isEmpty()) {
-        if (!openLuks(root, luks)) {
-            refresh();
-            return;
+    BootRepairOptions opt;
+    opt.root = "/dev/" + ui->comboRoot->currentText().section(' ', 0, 0);
+    ui->outputLabel->setText(tr("Generating initramfs images on: %1").arg(opt.root));
+    if (!engine->isMounted(opt.root, "/")) {
+        if (engine->isLuks(opt.root)) {
+            bool ok = false;
+            const QByteArray pass
+                = QInputDialog::getText(this, this->windowTitle(),
+                                        tr("Enter password to unlock %1 encrypted partition:").arg(opt.root),
+                                        QLineEdit::Password, QString(), &ok)
+                      .toUtf8();
+            if (!ok) {
+                refresh();
+                return;
+            }
+            opt.luksPassword = pass;
         }
-        root = "/dev/mapper/" + luks;
+        opt.bootDevice = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
     }
-
-    if (mountChrootEnv(root)) {
-        if (!checkAndMountPart(tmpdir.path(), "/boot")) {
-            cleanupMountPoints(tmpdir.path(), luks);
-            refresh();
-            return;
-        }
-        if (QFile::exists(tmpdir.path() + "/boot/efi") && !checkAndMountPart(tmpdir.path(), "/boot/efi")) {
-            cleanupMountPoints(tmpdir.path(), luks);
-            refresh();
-            return;
-        }
-        displayOutput();
-        const bool success = shell->procAsRoot("chroot", {tmpdir.path(), "update-initramfs", "-c", "-v", "-k", "all"});
-        disableOutput();
-        cleanupMountPoints(tmpdir.path(), luks);
-        displayResult(success);
-        return;
-    } else {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Could not set up chroot environment.\nPlease double-check the selected location."));
-        setCursor(QCursor(Qt::ArrowCursor));
-    }
-    cleanupMountPoints(tmpdir.path(), luks);
-    refresh();
+    displayOutput();
+    const bool success = engine->regenerateInitramfs(opt);
+    disableOutput();
+    displayResult(success);
 }
 
 void MainWindow::backupBR(const QString &filename)
@@ -284,27 +198,13 @@ void MainWindow::backupBR(const QString &filename)
     const QString location = ui->comboLocation->currentText().section(' ', 0, 0);
     const QString text = tr("Backing up MBR or PBR from %1 device.").arg(location);
     ui->outputLabel->setText(text);
-    const QString cmd = "dd if=/dev/" + location + " of=" + filename + " bs=446 count=1";
     displayOutput();
-    displayResult(shell->runAsRoot(cmd));
-}
-
-// umount and clean temp folder
-void MainWindow::cleanupMountPoints(const QString &path, const QString &luks)
-{
-    if (path == "/") {
-        return;
-    }
-    shell->runAsRoot("mountpoint -q " + path + "/boot/efi && umount " + path + "/boot/efi");
-    shell->runAsRoot("mountpoint -q " + path + "/boot && umount -R " + path + "/boot");
-    const QString cmd
-        = QStringLiteral("mountpoint -q %1 && /bin/umount -R %1/run && /bin/umount -R"
-                         " %1/proc && /bin/umount -R %1/sys && /bin/umount -R %1/dev && umount %1 && rmdir %1")
-              .arg(path);
-    shell->runAsRoot(cmd);
-    if (!luks.isEmpty()) {
-        shell->procAsRoot("cryptsetup", {"luksClose", luks});
-    }
+    BootRepairOptions opt;
+    opt.location = location;
+    opt.backupPath = filename;
+    const bool ok = engine->backup(opt);
+    disableOutput();
+    displayResult(ok);
 }
 
 // try to guess partition to install GRUB
@@ -314,10 +214,7 @@ void MainWindow::guessPartition()
         // find first disk with Linux partitions
         for (int index = 0; index < ui->comboLocation->count(); index++) {
             QString drive = ui->comboLocation->itemText(index);
-            if (shell->run("lsblk -ln -o PARTTYPE /dev/" + drive.section(' ', 0, 0)
-                           + "| grep -qEi "
-                             "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
-                             "E8CD-4DB1-96E7-FBCAF984B709'")) {
+            if (engine->isLinuxPartitionType(drive.section(' ', 0, 0))) {
                 ui->comboLocation->setCurrentIndex(index);
                 break;
             }
@@ -326,7 +223,7 @@ void MainWindow::guessPartition()
     // find first a partition with rootMX* label
     for (int index = 0; index < ui->comboRoot->count(); index++) {
         QString part = ui->comboRoot->itemText(index);
-        if (shell->run("lsblk -ln -o LABEL /dev/" + part.section(' ', 0, 0) + "| grep -q rootMX")) {
+        if (engine->labelContains(part.section(' ', 0, 0), "rootMX")) {
             ui->comboRoot->setCurrentIndex(index);
             // select the same location by default for GRUB and /boot
             if (ui->radioGrubRoot->isChecked()) {
@@ -338,10 +235,7 @@ void MainWindow::guessPartition()
     // it it cannot find rootMX*, look for Linux partitions
     for (int index = 0; index < ui->comboRoot->count(); index++) {
         QString part = ui->comboRoot->itemText(index);
-        if (shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
-                       + "| grep -qEi "
-                         "'0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-"
-                         "E8CD-4DB1-96E7-FBCAF984B709'")) {
+        if (engine->isLinuxPartitionType(part.section(' ', 0, 0))) {
             ui->comboRoot->setCurrentIndex(index);
             break;
         }
@@ -368,9 +262,13 @@ void MainWindow::restoreBR(const QString &filename)
     }
     const QString text = tr("Restoring MBR/PBR from backup to %1 device.").arg(location);
     ui->outputLabel->setText(text);
-    const QString cmd = "dd if=" + filename + " of=/dev/" + location + " bs=446 count=1";
     displayOutput();
-    displayResult(shell->runAsRoot(cmd));
+    BootRepairOptions opt;
+    opt.location = location;
+    opt.backupPath = filename;
+    const bool ok = engine->restore(opt);
+    disableOutput();
+    displayResult(ok);
 }
 
 // select ESP GUI items
@@ -379,8 +277,7 @@ void MainWindow::setEspDefaults()
     // remove non-ESP partitions
     for (int index = 0; index < ui->comboLocation->count(); index++) {
         const QString part = ui->comboLocation->itemText(index);
-        if (!shell->run("lsblk -ln -o PARTTYPE /dev/" + part.section(' ', 0, 0)
-                        + "| grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")) {
+        if (!engine->isEspPartition(part.section(' ', 0, 0))) {
             ui->comboLocation->removeItem(index);
             index--;
         }
@@ -393,39 +290,8 @@ void MainWindow::setEspDefaults()
     }
 }
 
-QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
+QString MainWindow::selectPartFromList(const QString &mountpoint)
 {
-    // read /etc/fstab on mounted path
-    QFile file(path + "/etc/fstab");
-    if (!file.open(QIODevice::ReadOnly)) {
-        qDebug() << "Count not find /etc/fstab file on specified root partition";
-    }
-
-    while (!file.atEnd()) {
-        const QString &line = file.readLine().simplified();
-        if (line.isEmpty() || line.startsWith('#')) {
-            continue; // Empty line or comment
-        }
-
-        const QStringList &fields = line.split(' ');
-        if (fields.count() < 2) {
-            continue;
-        }
-        // return device for /boot mount point
-        if (fields.at(1) == mountpoint) {
-            const QString &device = fields.at(0);
-            QString cmd = "readlink -e \"$(echo " + device
-                          + " | sed -r 's:((PART)?(UUID|LABEL))=:\\L/dev/disk/by-\\1/:g; s:[\\\"]::g;')\"";
-            if (shell->runAsRoot(cmd)) {
-                qDebug() << "Found partition:" << device;
-                return device;
-            } else {
-                qDebug() << "Unknown partition:" << device;
-            }
-        }
-    }
-    file.close();
-
     QInputDialog dialog;
     QStringList partitions = ListPart;
     partitions.removeAll(ui->comboRoot->currentText());
@@ -435,9 +301,7 @@ QString MainWindow::selectPart(const QString &path, const QString &mountpoint)
 
     if (dialog.exec() == QDialog::Accepted) {
         const QString &selected = dialog.textValue().simplified();
-        qDebug() << "Selected entry: " << selected;
         const QString partition = "/dev/" + selected.split(' ').at(0);
-        qDebug() << "Selected partition: " << partition;
         return partition;
     }
     return {};
@@ -462,10 +326,9 @@ void MainWindow::procDone()
 void MainWindow::displayOutput()
 {
     ui->progressBar->setRange(0, 0);
-    connect(shell, &Cmd::started, this, &MainWindow::procStart);
-    connect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
-    connect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);
-    connect(shell, &Cmd::done, this, &MainWindow::procDone);
+    connect(engine, &BootRepairEngine::log, this, &MainWindow::outputAvailable);
+    connect(engine, &BootRepairEngine::finished, this, &MainWindow::procDone);
+    procStart();
 }
 
 void MainWindow::displayResult(bool success)
@@ -484,42 +347,11 @@ void MainWindow::displayResult(bool success)
 
 void MainWindow::disableOutput()
 {
-    disconnect(shell, &Cmd::started, this, &MainWindow::procStart);
-    disconnect(shell, &Cmd::outputAvailable, this, &MainWindow::outputAvailable);
-    disconnect(shell, &Cmd::errorAvailable, this, &MainWindow::outputAvailable);
-    disconnect(shell, &Cmd::done, this, &MainWindow::procDone);
+    disconnect(engine, &BootRepairEngine::log, this, &MainWindow::outputAvailable);
+    disconnect(engine, &BootRepairEngine::finished, this, &MainWindow::procDone);
 }
 
-QString MainWindow::luksMapper(const QString &part)
-{
-    QString mapper;
-    if (!shell->procAsRoot("cryptsetup", {"isLuks", part})) {
-        return {};
-    }
-    if (!shell->procAsRoot("cryptsetup", {"luksUUID", part}, &mapper)) {
-        return {};
-    }
-    return "luks-" + mapper;
-}
-bool MainWindow::openLuks(const QString &part, const QString &mapper)
-{
-    bool ok = false;
-    QByteArray &&pass = QInputDialog::getText(this, this->windowTitle(),
-                                              tr("Enter password to unlock %1 encrypted partition:").arg(part),
-                                              QLineEdit::Password, QString(), &ok)
-                            .toUtf8();
-    if (ok) {
-        ok = !pass.isEmpty();
-    }
-    if (ok) {
-        ok = shell->procAsRoot("cryptsetup", {"luksOpen", part, mapper, "-"}, nullptr, &pass);
-    }
-    pass.fill(static_cast<char>(0xA5));
-    if (!ok) {
-        QMessageBox::critical(this, tr("Error"), tr("Sorry, could not open %1 LUKS container").arg(part));
-    }
-    return ok;
-}
+// luks helpers now handled in engine
 
 bool MainWindow::isUefi()
 {
@@ -530,12 +362,8 @@ bool MainWindow::isUefi()
 // add list of devices to comboLocation
 void MainWindow::addDevToList()
 {
-    QString cmd("lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
-    ListDisk = shell->getCmdOut(cmd).split('\n', Qt::SkipEmptyParts);
-
-    cmd = "lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E "
-          "'^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'";
-    ListPart = shell->getCmdOut(cmd).split('\n', Qt::SkipEmptyParts);
+    ListDisk = engine->listDisks();
+    ListPart = engine->listPartitions();
     ui->comboRoot->clear();
     ui->comboRoot->addItems(ListPart);
 
@@ -572,11 +400,11 @@ void MainWindow::targetSelection()
 
 void MainWindow::outputAvailable(const QString &output)
 {
-    //    if (output.contains('\r')) {
-    //        ui->outputBox->moveCursor(QTextCursor::Up, QTextCursor::KeepAnchor);
-    //        ui->outputBox->moveCursor(QTextCursor::EndOfLine, QTextCursor::KeepAnchor);
-    //    }
-    ui->outputBox->insertPlainText(output);
+    // echo to terminal/log via Qt's message handler
+    qInfo().noquote() << output;
+    // ensure visible with newlines in the GUI
+    const bool endsNl = !output.isEmpty() && (output.endsWith('\n') || output.endsWith("\r\n"));
+    ui->outputBox->insertPlainText(endsNl ? output : output + '\n');
     ui->outputBox->verticalScrollBar()->setValue(ui->outputBox->verticalScrollBar()->maximum());
 }
 
@@ -701,42 +529,7 @@ void MainWindow::buttonHelp_clicked()
 
 bool MainWindow::isMountedTo(const QString &volume, const QString &mount)
 {
-    QString points;
-    if (!shell->proc("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points)) {
-        shell->proc("lsblk", {"-nro", "MOUNTPOINT", volume}, &points);
-    }
-    return points.split('\n', Qt::SkipEmptyParts).contains(mount);
+    return engine->isMounted(volume, mount);
 }
 
-bool MainWindow::checkAndMountPart(const QString &path, const QString &mountpoint)
-{
-    if (!shell->runAsRoot("test -n \"$(ls -A " + path + mountpoint + ")\"")) {
-        const QString part = selectPart(path, mountpoint);
-        if (!shell->runAsRoot("mount " + part + ' ' + path + mountpoint)) {
-            QMessageBox::critical(this, tr("Error"), tr("Sorry, could not mount %1 partition").arg(mountpoint));
-            return false;
-        }
-    }
-    return true;
-}
-
-bool MainWindow::mountChrootEnv(const QString &path)
-{
-    // create a temp folder and mount dev sys proc
-    if (!tmpdir.isValid()) {
-        QMessageBox::critical(this, tr("Error"), tr("Could not create a temporary folder"));
-        return false;
-    }
-    // create a temp folder and mount dev sys proc; mount run as tmpfs
-    if (!QFile::exists(tmpdir.path())) {
-        shell->runAsRoot(QStringLiteral("mkdir -p %1").arg(tmpdir.path()));
-    }
-
-    QString cmd = QStringLiteral("/bin/mount %1 %2 && /bin/mount --rbind --make-rslave /dev %2/dev && "
-                                 "/bin/mount --rbind --make-rslave /sys %2/sys && /bin/mount --rbind /proc %2/proc && "
-                                 "/bin/mount -t tmpfs -o "
-                                 "size=100m,nodev,mode=755 tmpfs %2/run && /bin/mkdir %2/run/udev && "
-                                 "/bin/mount --rbind /run/udev %2/run/udev")
-                      .arg(path, tmpdir.path());
-    return shell->runAsRoot(cmd);
-}
+// chroot mounting now handled in engine

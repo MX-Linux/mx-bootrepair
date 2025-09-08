@@ -1,7 +1,7 @@
 /*****************************************************************************
  * mainwindow.h
  *****************************************************************************
- * Copyright (C) 2014 MX Authors
+ * Copyright (C) 2014-2025 MX Authors
  *
  * Authors: Adrian
  *          MX Linux <http://mxlinux.org>
@@ -21,10 +21,9 @@
  **********************************************************************/
 #pragma once
 
-#include "cmd.h"
+#include "core/bootrepair_engine.h"
 
 #include <QMessageBox>
-#include <QTemporaryDir>
 
 namespace Ui
 {
@@ -53,25 +52,17 @@ private slots:
     void buttonHelp_clicked();
 
 private:
-    Cmd *shell;
+    BootRepairEngine *engine;
     Ui::MainWindow *ui;
     QStringList ListDisk;
     QStringList ListPart;
-    QTemporaryDir tmpdir;
-
-    QString luksMapper(const QString &part);
-    QString selectPart(const QString &path, const QString &mountpoint);
-    bool checkAndMountPart(const QString &path, const QString &mountpoint);
+    QString selectPartFromList(const QString &mountpoint);
     bool isMountedTo(const QString &volume, const QString &mount);
-    bool mountChrootEnv(const QString &path);
-    bool openLuks(const QString &part, const QString &mapper);
     static bool isUefi();
     void addDevToList();
     void backupBR(const QString &filename);
-    void cleanupMountPoints(const QString &path, const QString &luks);
     void guessPartition();
     void installGRUB();
-    void installGRUB(const QString &location, const QString &path, const QString &luks);
     void regenerateInitramfs();
     void refresh();
     void repairGRUB();

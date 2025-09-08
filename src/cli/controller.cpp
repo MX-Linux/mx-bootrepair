@@ -145,7 +145,10 @@ int CliController::run()
         }
     }
 
+    bool first = true;
     for (;;) {
+        if (!first) { out << '\n'; out.flush(); }
+        first = false;
         out << "MX Boot Repair (CLI)\n";
         out << "0) Exit\n1) Install GRUB\n2) Repair GRUB (update-grub)\n3) Regenerate initramfs\n4) Backup MBR/PBR\n5) Restore MBR/PBR\n";
         const int action = askInt(0, 5, "Select action", in, out);
@@ -185,7 +188,8 @@ int CliController::run()
         opt.dryRun = parser.isSet(dryRunOpt);
 
             const bool ok = engine.installGrub(opt);
-            return ok ? 0 : 1;
+            Q_UNUSED(ok);
+            continue;
         }
         if (action == 2) {
         const QStringList parts = engine.listPartitions();
@@ -196,7 +200,8 @@ int CliController::run()
         opt.root = "/dev/" + parts.at(rootIdx).split(' ').first();
         opt.dryRun = parser.isSet(dryRunOpt);
         const bool ok = engine.repairGrub(opt);
-        return ok ? 0 : 1;
+        Q_UNUSED(ok);
+        continue;
         }
         if (action == 3) {
         const QStringList parts = engine.listPartitions();
@@ -207,7 +212,8 @@ int CliController::run()
         opt.root = "/dev/" + parts.at(rootIdx).split(' ').first();
         opt.dryRun = parser.isSet(dryRunOpt);
         const bool ok = engine.regenerateInitramfs(opt);
-        return ok ? 0 : 1;
+        Q_UNUSED(ok);
+        continue;
         }
         if (action == 4) {
         const QStringList disks = engine.listDisks();
@@ -222,7 +228,8 @@ int CliController::run()
         opt.backupPath = outPath;
         opt.dryRun = parser.isSet(dryRunOpt);
         const bool ok = engine.backup(opt);
-        return ok ? 0 : 1;
+        Q_UNUSED(ok);
+        continue;
         }
         if (action == 5) {
         const QStringList disks = engine.listDisks();
@@ -238,13 +245,14 @@ int CliController::run()
         out << "WARNING: This will overwrite the first 446 bytes of /dev/" << opt.location << ". Continue? [y/N]: "
             << Qt::flush;
         const QString ans = in.readLine().trimmed().toLower();
-        if (ans != "y" && ans != "yes") return 1;
+        if (ans != "y" && ans != "yes") { out << "Cancelled.\n"; continue; }
         opt.dryRun = parser.isSet(dryRunOpt);
         const bool ok = engine.restore(opt);
-        return ok ? 0 : 1;
+        Q_UNUSED(ok);
+        continue;
         }
 
         out << "Unknown selection\n";
-        return 1;
+        continue;
     }
 }

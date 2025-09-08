@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="ro">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>MX Reparare Boot</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="45"/>
@@ -16,7 +16,7 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="64"/>
         <source>What would you like to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce comandă doriți să executați?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="94"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="80"/>
         <source>Repair GRUB configuration file</source>
-        <translation type="unfinished"></translation>
+        <translation>Repară configurare GRUB</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="87"/>
@@ -47,39 +47,39 @@
         <location filename="../src/gui/mainwindow.ui" line="134"/>
         <location filename="../src/gui/mainwindow.cpp" line="419"/>
         <source>Select Boot Method</source>
-        <translation type="unfinished"></translation>
+        <translation>Alege metoda de bootare</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="152"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"></translation>
+        <translation>Master Boot Record</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="155"/>
         <source>MBR</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="158"/>
         <location filename="../src/gui/mainwindow.ui" line="398"/>
         <source>Alt+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+B</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
         <location filename="../src/gui/mainwindow.cpp" line="420"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Locație:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="218"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Partiție de sistem EFI</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="221"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="240"/>
@@ -90,7 +90,7 @@
         <location filename="../src/gui/mainwindow.ui" line="243"/>
         <location filename="../src/gui/mainwindow.cpp" line="422"/>
         <source>root</source>
-        <translation type="unfinished"></translation>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="278"/>
@@ -102,63 +102,63 @@
         <location filename="../src/gui/mainwindow.ui" line="300"/>
         <location filename="../src/gui/mainwindow.cpp" line="421"/>
         <source>Install on:</source>
-        <translation type="unfinished"></translation>
+        <translation>Instaleaza pe:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="389"/>
         <source>About this application</source>
-        <translation type="unfinished"></translation>
+        <translation>Informații despre program</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="392"/>
         <source>About...</source>
-        <translation type="unfinished"></translation>
+        <translation>Despre...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="440"/>
         <source>Display help </source>
-        <translation type="unfinished"></translation>
+        <translation>Afișează ajutor</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="443"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajutor</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="449"/>
         <source>Alt+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+H</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="490"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Anulează toate schimbările și închide programul</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="493"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Anulează</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="499"/>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+N</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="518"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplică toate schimbările</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="521"/>
         <location filename="../src/gui/mainwindow.cpp" line="78"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Următor</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="455"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplică</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="98"/>
@@ -175,7 +175,7 @@
         <location filename="../src/gui/mainwindow.cpp" line="485"/>
         <location filename="../src/gui/mainwindow.cpp" line="492"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Eroare</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="136"/>
@@ -195,7 +195,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="255"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Avertizare</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="256"/>
@@ -232,22 +232,22 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="322"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Înapoi</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>Succes</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Proces finalizat cu succes.&lt;p&gt;&lt;b&gt;Doriți să ieșiți?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="344"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>Actiune terminată. Au fost detectate erori. </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="105"/>
@@ -255,6 +255,10 @@ Are you sure?</source>
         <location filename="../src/gui/mainwindow.cpp" line="176"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sorry, could not open %1 LUKS container</source>
+        <translation type="vanished">Ne pare rău, nu s-a putut deschide contanerul LUKS %1 </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="426"/>
@@ -312,7 +316,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="510"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>Versiune:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="511"/>
@@ -322,7 +326,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="513"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
@@ -340,33 +344,33 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="52"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Licență</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="53"/>
         <location filename="../src/gui/about.cpp" line="63"/>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation>Changelog</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="54"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Anulează</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="73"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Închide</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="74"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>MX Reparare Boot</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="82"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Eroare</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="83"/>

@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>MX 启动修复工具</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="45"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation type="unfinished"></translation>
+        <translation>MX 启动修复工具是一个实用程序，可用于在 ESP（EFI 系统分区）、MBR（主引导记录）或根分区上重新安装 GRUB 引导加载程序。它提供了重建 GRUB 配置文件以及备份和恢复 MBR 或 PBR（根目录）的选项。</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="64"/>
         <source>What would you like to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>你想要做什么？</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="94"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>备份 MBR 或 PBR（仅legacy启动）</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="70"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation type="unfinished"></translation>
+        <translation>在ESP，MBR或PBR上重新安装 GRUB 引导程序(root)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="80"/>
         <source>Repair GRUB configuration file</source>
-        <translation type="unfinished"></translation>
+        <translation>修复  GRUB 配置文件</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="87"/>
@@ -41,29 +41,29 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="101"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>从备份恢复 MBR 或 PBR（仅 legacy 启动）</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="134"/>
         <location filename="../src/gui/mainwindow.cpp" line="419"/>
         <source>Select Boot Method</source>
-        <translation type="unfinished"></translation>
+        <translation>选择启动类型</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="152"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"></translation>
+        <translation>管理启动记录</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="155"/>
         <source>MBR</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="158"/>
         <location filename="../src/gui/mainwindow.ui" line="398"/>
         <source>Alt+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+B</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
@@ -79,7 +79,7 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="221"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation>ESP分区</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="240"/>
@@ -107,58 +107,58 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="389"/>
         <source>About this application</source>
-        <translation type="unfinished"></translation>
+        <translation>关于此软件</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="392"/>
         <source>About...</source>
-        <translation type="unfinished"></translation>
+        <translation>关于…</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="440"/>
         <source>Display help </source>
-        <translation type="unfinished"></translation>
+        <translation>显示帮助</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="443"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>帮助(_H)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="449"/>
         <source>Alt+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+H</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="490"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"></translation>
+        <translation>取消并退出</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="493"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="499"/>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+N</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="518"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"></translation>
+        <translation>应用所有更改</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="521"/>
         <location filename="../src/gui/mainwindow.cpp" line="78"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>下一页</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="455"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>应用</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="98"/>
@@ -175,7 +175,7 @@
         <location filename="../src/gui/mainwindow.cpp" line="485"/>
         <location filename="../src/gui/mainwindow.cpp" line="492"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="136"/>
@@ -195,7 +195,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="255"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="256"/>
@@ -212,7 +212,9 @@
         <source>
 
 Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+你确定吗?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="263"/>
@@ -232,12 +234,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="322"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>后退</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>成功</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
@@ -259,7 +261,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="426"/>
         <source>Select GRUB location</source>
-        <translation type="unfinished"></translation>
+        <translation>选择GRUB位置</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="435"/>
@@ -291,28 +293,28 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="483"/>
         <source>Select backup file name</source>
-        <translation type="unfinished"></translation>
+        <translation>选择备份文件名称</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="485"/>
         <location filename="../src/gui/mainwindow.cpp" line="492"/>
         <source>No file was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有选中的文件</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="490"/>
         <source>Select MBR or PBR backup file</source>
-        <translation type="unfinished"></translation>
+        <translation>选择MBR/PBR备份文件</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="508"/>
         <source>About %1</source>
-        <translation type="unfinished"></translation>
+        <translation>关于 %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="510"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>版本:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="511"/>
@@ -322,17 +324,17 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="513"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"></translation>
+        <translation>版权所有(c) MX Linux</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>%1 License</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 许可证</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="527"/>
         <source>%1 Help</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 帮助</translation>
     </message>
 </context>
 <context>
@@ -340,38 +342,38 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="52"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>许可证</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="53"/>
         <location filename="../src/gui/about.cpp" line="63"/>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation>更新日志</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="54"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="73"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭(&amp;C)</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="74"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>MX 启动修复工具</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="82"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="83"/>
         <source>You must run this program with admin access.</source>
-        <translation type="unfinished"></translation>
+        <translation>您必须以管理员权限运行此程序。</translation>
     </message>
 </context>
 </TS>

@@ -210,28 +210,31 @@ set_target_properties(mx-boot-repair PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 
-# CLI target (QtCore-only)
-add_executable(mx-boot-repair-cli
-    src/cli/main.cpp
-    src/cli/controller.cpp
-    src/cli/controller.h
-)
+# CLI target (QtCore-only) — disabled by default
+option(BUILD_CLI "Build standalone CLI target" OFF)
+if(BUILD_CLI)
+    add_executable(mx-boot-repair-cli
+        src/cli/main.cpp
+        src/cli/controller.cpp
+        src/cli/controller.h
+    )
 
-target_link_libraries(mx-boot-repair-cli
-    bootrepair-core
-    Qt6::Core
-)
+    target_link_libraries(mx-boot-repair-cli
+        bootrepair-core
+        Qt6::Core
+    )
 
-target_compile_definitions(mx-boot-repair-cli PRIVATE
-    QT_DEPRECATED_WARNINGS
-    QT_DISABLE_DEPRECATED_BEFORE=0x060000
-    VERSION="${PROJECT_VERSION}"
-)
+    target_compile_definitions(mx-boot-repair-cli PRIVATE
+        QT_DEPRECATED_WARNINGS
+        QT_DISABLE_DEPRECATED_BEFORE=0x060000
+        VERSION="${PROJECT_VERSION}"
+    )
 
-set_target_properties(mx-boot-repair-cli PROPERTIES
-    OUTPUT_NAME "mx-boot-repair-cli"
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
-)
+    set_target_properties(mx-boot-repair-cli PROPERTIES
+        OUTPUT_NAME "mx-boot-repair-cli"
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
+    )
+endif()
 
 # Install target (required by Debian build system)
 # Other files are handled by debian/install

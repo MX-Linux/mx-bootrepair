@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="he_IL">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>תיקון האתחול של MX</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="45"/>
@@ -16,7 +16,7 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="64"/>
         <source>What would you like to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>מה ברצונך לעשות?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="94"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="80"/>
         <source>Repair GRUB configuration file</source>
-        <translation type="unfinished"></translation>
+        <translation>תיקון קובץ ההגדרות של GRUB</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="87"/>
@@ -47,7 +47,7 @@
         <location filename="../src/gui/mainwindow.ui" line="134"/>
         <location filename="../src/gui/mainwindow.cpp" line="419"/>
         <source>Select Boot Method</source>
-        <translation type="unfinished"></translation>
+        <translation>בחירת שיטת אתחול</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="152"/>
@@ -57,29 +57,29 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="155"/>
         <source>MBR</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="158"/>
         <location filename="../src/gui/mainwindow.ui" line="398"/>
         <source>Alt+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+B</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
         <location filename="../src/gui/mainwindow.cpp" line="420"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>מיקום:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="218"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>מחיצת מערכת EFI</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="221"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="240"/>
@@ -96,74 +96,74 @@
         <location filename="../src/gui/mainwindow.ui" line="278"/>
         <location filename="../src/gui/mainwindow.cpp" line="427"/>
         <source>Select root location:</source>
-        <translation type="unfinished"></translation>
+        <translation>בחירת מיקום תיקיית העל:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="300"/>
         <location filename="../src/gui/mainwindow.cpp" line="421"/>
         <source>Install on:</source>
-        <translation type="unfinished"></translation>
+        <translation>התקנה על:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="389"/>
         <source>About this application</source>
-        <translation type="unfinished"></translation>
+        <translation>על אודות יישום זה</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="392"/>
         <source>About...</source>
-        <translation type="unfinished"></translation>
+        <translation>על אודות...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="440"/>
         <source>Display help </source>
-        <translation type="unfinished"></translation>
+        <translation>הצגת עזרה</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="443"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>עזרה</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="449"/>
         <source>Alt+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+H</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="490"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"></translation>
+        <translation>לבטל את כל השינויים ואז לצאת</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="493"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>ביטול</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="499"/>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+N</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="518"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"></translation>
+        <translation>החלת כל השינויים</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="521"/>
         <location filename="../src/gui/mainwindow.cpp" line="78"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>קדימה</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="455"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>החלה</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="98"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation>GRUB מותקן על ההתקן %1.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="286"/>
@@ -175,12 +175,18 @@
         <location filename="../src/gui/mainwindow.cpp" line="485"/>
         <location filename="../src/gui/mainwindow.cpp" line="492"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>שגיאה</translation>
+    </message>
+    <message>
+        <source>Could not set up chroot environment.
+Please double-check the selected location.</source>
+        <translation type="vanished">לא ניתן להקים סביבת chroot.
+נא לבחור פעמיים את המיקום הנבחר.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="136"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation type="unfinished"></translation>
+        <translation>קובץ ההגדרות של GRUB‏ (grub.cfg) נבנה מחדש.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="170"/>
@@ -195,24 +201,26 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="255"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>אזהרה</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="256"/>
         <source>You are going to write the content of </source>
-        <translation type="unfinished"></translation>
+        <translation>פעולה זו תכתוב את התוכן של</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="256"/>
         <source> to </source>
-        <translation type="unfinished"></translation>
+        <translation>אל</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="257"/>
         <source>
 
 Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+אכן ברצונך לעשות זאת?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="263"/>
@@ -232,12 +240,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="322"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>אחורה</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>הצלחה</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
@@ -247,7 +255,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="344"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>התהליך הסתיים. התרחשו שגיאות.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="105"/>
@@ -259,7 +267,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="426"/>
         <source>Select GRUB location</source>
-        <translation type="unfinished"></translation>
+        <translation>בחירת מיקום GRUB</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="435"/>
@@ -269,12 +277,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="445"/>
         <source>Select Item to Back Up</source>
-        <translation type="unfinished"></translation>
+        <translation>נא לבחור פריט לגיבוי</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="450"/>
         <source>Select Item to Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>נא לבחור פריט לשחזור</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="460"/>
@@ -291,13 +299,13 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="483"/>
         <source>Select backup file name</source>
-        <translation type="unfinished"></translation>
+        <translation>נא לבחור את שם קובץ הגיבוי</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="485"/>
         <location filename="../src/gui/mainwindow.cpp" line="492"/>
         <source>No file was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>לא נבחרו קבצים.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="490"/>
@@ -307,12 +315,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="508"/>
         <source>About %1</source>
-        <translation type="unfinished"></translation>
+        <translation>על אודות %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="510"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>גירסה:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="511"/>
@@ -322,17 +330,25 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="513"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"></translation>
+        <translation>זכויות היוצרים (c) שמורות ל־MX Linux</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>%1 License</source>
-        <translation type="unfinished"></translation>
+        <translation>רישיון %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="527"/>
         <source>%1 Help</source>
-        <translation type="unfinished"></translation>
+        <translation>עזרה עבור %1</translation>
+    </message>
+    <message>
+        <source>Sorry, could not mount %1 partition</source>
+        <translation type="vanished">לא ניתן לעגן את המחיצה %1, עמך הסליחה</translation>
+    </message>
+    <message>
+        <source>Could not create a temporary folder</source>
+        <translation type="vanished">לא ניתן ליצור תיקיית זמניים</translation>
     </message>
 </context>
 <context>
@@ -340,33 +356,33 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="52"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>רישיון</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="53"/>
         <location filename="../src/gui/about.cpp" line="63"/>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation>יומן שינויים</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="54"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>ביטול</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="73"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;סגירה</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="74"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>תיקון האתחול של MX</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="82"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>שגיאה</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="83"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="uk">
 <context>
     <name>MainWindow</name>
     <message>
@@ -52,18 +52,18 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="152"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"></translation>
+        <translation>Основний завантажувальний запис</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="155"/>
         <source>MBR</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="158"/>
         <location filename="../src/gui/mainwindow.ui" line="398"/>
         <source>Alt+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+B</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
@@ -74,12 +74,12 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="218"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Системний розділ EFI</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="221"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="240"/>
@@ -90,7 +90,7 @@
         <location filename="../src/gui/mainwindow.ui" line="243"/>
         <location filename="../src/gui/mainwindow.cpp" line="422"/>
         <source>root</source>
-        <translation type="unfinished"></translation>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="278"/>
@@ -102,63 +102,63 @@
         <location filename="../src/gui/mainwindow.ui" line="300"/>
         <location filename="../src/gui/mainwindow.cpp" line="421"/>
         <source>Install on:</source>
-        <translation type="unfinished"></translation>
+        <translation>Встановити на:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="389"/>
         <source>About this application</source>
-        <translation type="unfinished"></translation>
+        <translation>Про цю програму</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="392"/>
         <source>About...</source>
-        <translation type="unfinished"></translation>
+        <translation>Про...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="440"/>
         <source>Display help </source>
-        <translation type="unfinished"></translation>
+        <translation>Показати довідку</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="443"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Довідка</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="449"/>
         <source>Alt+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+H</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="490"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Скасувати зміни та вийти</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="493"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Скасувати</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="499"/>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+N</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="518"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Застосувати всі зміни</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="521"/>
         <location filename="../src/gui/mainwindow.cpp" line="78"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Наступний</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="455"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Застосувати</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="98"/>
@@ -175,7 +175,7 @@
         <location filename="../src/gui/mainwindow.cpp" line="485"/>
         <location filename="../src/gui/mainwindow.cpp" line="492"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Помилка</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="136"/>
@@ -195,7 +195,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="255"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Попередження</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="256"/>
@@ -232,7 +232,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="322"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Назад</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
@@ -307,12 +307,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="508"/>
         <source>About %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Про %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="510"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>Версія:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="511"/>
@@ -322,17 +322,17 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="513"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>%1 License</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Ліцензія</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="527"/>
         <source>%1 Help</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Довідка</translation>
     </message>
 </context>
 <context>
@@ -340,23 +340,23 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="52"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Ліцензія</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="53"/>
         <location filename="../src/gui/about.cpp" line="63"/>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation>Список змін</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="54"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Скасувати</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="73"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Закрити</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="74"/>
@@ -366,12 +366,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/main.cpp" line="82"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Помилка</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="83"/>
         <source>You must run this program with admin access.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вам потрібно запустити цю програму з доступом адміністратора</translation>
     </message>
 </context>
 </TS>

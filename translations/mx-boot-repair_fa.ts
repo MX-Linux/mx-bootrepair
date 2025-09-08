@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="fa">
 <context>
     <name>MainWindow</name>
     <message>
@@ -63,7 +63,7 @@
         <location filename="../src/gui/mainwindow.ui" line="158"/>
         <location filename="../src/gui/mainwindow.ui" line="398"/>
         <source>Alt+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+B</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
@@ -107,47 +107,47 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="389"/>
         <source>About this application</source>
-        <translation type="unfinished"></translation>
+        <translation>درباره این نرم افزار</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="392"/>
         <source>About...</source>
-        <translation type="unfinished"></translation>
+        <translation>درباره...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="440"/>
         <source>Display help </source>
-        <translation type="unfinished"></translation>
+        <translation>نمایش راهنما</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="443"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>راهنما </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="449"/>
         <source>Alt+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+H</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="490"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"></translation>
+        <translation>همه تغییرات را نادیده بگیر و خارج شو</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="493"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>لغو</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="499"/>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+N</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="518"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"></translation>
+        <translation>اعمال تغییرت</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="521"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="455"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>اعمال</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="98"/>
@@ -195,7 +195,7 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="255"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>اخطار</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="256"/>
@@ -307,12 +307,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="508"/>
         <source>About %1</source>
-        <translation type="unfinished"></translation>
+        <translation>درباره 1%</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="510"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>نسخه:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="511"/>
@@ -322,17 +322,17 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="513"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>%1 License</source>
-        <translation type="unfinished"></translation>
+        <translation>مجوز 1%</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="527"/>
         <source>%1 Help</source>
-        <translation type="unfinished"></translation>
+        <translation>راهنمای 1%</translation>
     </message>
 </context>
 <context>
@@ -340,23 +340,23 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="52"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>لایسنس</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="53"/>
         <location filename="../src/gui/about.cpp" line="63"/>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation>لیست موارد بهبود یافته</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="54"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>لغو</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="73"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>و بستن</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="74"/>

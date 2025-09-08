@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="fil_PH">
 <context>
     <name>MainWindow</name>
     <message>
@@ -16,22 +16,22 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="64"/>
         <source>What would you like to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ano ang gusto mong gawin?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="94"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>I-backup ang MBR o PBR (pang legacy boot lang)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="70"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation type="unfinished"></translation>
+        <translation>Muling i-install ang GRUB bootloader sa ESP, MBR o PBR (root)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="80"/>
         <source>Repair GRUB configuration file</source>
-        <translation type="unfinished"></translation>
+        <translation>Kumupunihin ang  configuration ng file ng GRUB</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="87"/>
@@ -41,129 +41,129 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="101"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>Isauli ang MBR o PBR mula sa backup (pang legacy boot lang)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="134"/>
         <location filename="../src/gui/mainwindow.cpp" line="419"/>
         <source>Select Boot Method</source>
-        <translation type="unfinished"></translation>
+        <translation>Pumili ng paraan ng pag Boot</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="152"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"></translation>
+        <translation>Pangunahing Record ng Boot</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="155"/>
         <source>MBR</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="158"/>
         <location filename="../src/gui/mainwindow.ui" line="398"/>
         <source>Alt+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+B</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
         <location filename="../src/gui/mainwindow.cpp" line="420"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lugar:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="218"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"></translation>
+        <translation> Sistema ng Partition ng EFI</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="221"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="240"/>
         <source>Root (Partition Boot Record)</source>
-        <translation type="unfinished"></translation>
+        <translation>Root (Pagkakahati ng Record ng Boot)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="243"/>
         <location filename="../src/gui/mainwindow.cpp" line="422"/>
         <source>root</source>
-        <translation type="unfinished"></translation>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="278"/>
         <location filename="../src/gui/mainwindow.cpp" line="427"/>
         <source>Select root location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pumili ng lugar ng root:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="300"/>
         <location filename="../src/gui/mainwindow.cpp" line="421"/>
         <source>Install on:</source>
-        <translation type="unfinished"></translation>
+        <translation>I-install sa:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="389"/>
         <source>About this application</source>
-        <translation type="unfinished"></translation>
+        <translation>Patungkol sa application na ito</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="392"/>
         <source>About...</source>
-        <translation type="unfinished"></translation>
+        <translation>Patungkol sa...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="440"/>
         <source>Display help </source>
-        <translation type="unfinished"></translation>
+        <translation>Maghanap ng tulong</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="443"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Tulong</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="449"/>
         <source>Alt+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+H</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="490"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Huwag tanggapin ang mga binago at lumabas na</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="493"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Huwag ituloy</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="499"/>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+N</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="518"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tanggapin ang alinmang binago</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="521"/>
         <location filename="../src/gui/mainwindow.cpp" line="78"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Kasunod</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="455"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Tanggapin</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="98"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ang GRUB ay kasalukuyang ini-install sa  device na %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="286"/>
@@ -175,12 +175,18 @@
         <location filename="../src/gui/mainwindow.cpp" line="485"/>
         <location filename="../src/gui/mainwindow.cpp" line="492"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>May error</translation>
+    </message>
+    <message>
+        <source>Could not set up chroot environment.
+Please double-check the selected location.</source>
+        <translation type="vanished">Hindi maaring mai-setuṕ ang paligid ng chroot
+Suriing muli ang lugar na paglalagyan.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="136"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ang configuration ng file ng GRUB  (grub.cfg) ay muling binubuo.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="170"/>
@@ -190,54 +196,56 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="199"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ginagawan ng backup MBR o PBR mula sa device na %1 </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="255"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Babala</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="256"/>
         <source>You are going to write the content of </source>
-        <translation type="unfinished"></translation>
+        <translation>Susulatan mo ang laman ng </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="256"/>
         <source> to </source>
-        <translation type="unfinished"></translation>
+        <translation>sa</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="257"/>
         <source>
 
 Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Nakakatiyak ka ba?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="263"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Isinasauli ang MBR/PBR mula sa backup papuntang device na %1 </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="287"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Di maaring matagpuan ang pagkakahati ng sistema ng EFI  (ESP) sa alinman mga disk. Dapat gumawa ng ESP at subuking muli</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="299"/>
         <source>Select %1 location:</source>
-        <translation type="unfinished"></translation>
+        <translation>Piliin ang lugar na %1 :</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="322"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Magbalik</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>Tagumpay</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
@@ -247,19 +255,23 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="344"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>Natapos na  ang proseso. May mga errors na lumitaw.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="105"/>
         <location filename="../src/gui/mainwindow.cpp" line="144"/>
         <location filename="../src/gui/mainwindow.cpp" line="176"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ipasok ang password para maalis ang trangka ng encrypted partition %1 :</translation>
+    </message>
+    <message>
+        <source>Sorry, could not open %1 LUKS container</source>
+        <translation type="vanished">Paumanhin, Di maaring mabuksan ang %1 LUKS container</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="426"/>
         <source>Select GRUB location</source>
-        <translation type="unfinished"></translation>
+        <translation>Pumili ng paglalagyan ng GRUB</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="435"/>
@@ -269,12 +281,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="445"/>
         <source>Select Item to Back Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Piliin ang item na gusto mong gawan ng backup</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="450"/>
         <source>Select Item to Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>Piliin ang item na isasauli</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="460"/>
@@ -291,28 +303,28 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="483"/>
         <source>Select backup file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Pumili ng pangalan ng backup</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="485"/>
         <location filename="../src/gui/mainwindow.cpp" line="492"/>
         <source>No file was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Walang file na napili.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="490"/>
         <source>Select MBR or PBR backup file</source>
-        <translation type="unfinished"></translation>
+        <translation>Piliin ang MBR o PBR file na backup</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="508"/>
         <source>About %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Patungkol sa %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="510"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>Bersyon: </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="511"/>
@@ -322,17 +334,21 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="513"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"></translation>
+        <translation>Karapatan (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>%1 License</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Pahintulot</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="527"/>
         <source>%1 Help</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Tulong</translation>
+    </message>
+    <message>
+        <source>Sorry, could not mount %1 partition</source>
+        <translation type="vanished">Paumanhin, di maaring maimount ang partition na %1 </translation>
     </message>
 </context>
 <context>
@@ -340,23 +356,23 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="52"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisensya</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="53"/>
         <location filename="../src/gui/about.cpp" line="63"/>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation>Ulat na mga pagbabago</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="54"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Huwag ituloy</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="73"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Isara</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="74"/>
@@ -366,7 +382,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/main.cpp" line="82"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>May error</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="83"/>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="am">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>MX ማስነሻ መጠገኛ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="45"/>
@@ -16,12 +16,12 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="64"/>
         <source>What would you like to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>እርስዎ ምን መስራት ነው የሚፈልጉት?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="94"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>Backup MBR or PBR (legacy boot only)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="70"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="80"/>
         <source>Repair GRUB configuration file</source>
-        <translation type="unfinished"></translation>
+        <translation>የ GRUB ማሰናጃ ፋይል መጠገኛ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="87"/>
@@ -41,56 +41,56 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="101"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation type="unfinished"></translation>
+        <translation>እንደ ነበር መመሻ MBR ወይንም PBR ከ ተተኪ ውስጥ (legacy boot only)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="134"/>
         <location filename="../src/gui/mainwindow.cpp" line="419"/>
         <source>Select Boot Method</source>
-        <translation type="unfinished"></translation>
+        <translation>የ ማስነሻ ዘዴ ይምረጡ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="152"/>
         <source>Master Boot Record</source>
-        <translation type="unfinished"></translation>
+        <translation>ዋናው የ ማስነሻ መዝገብ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="155"/>
         <source>MBR</source>
-        <translation type="unfinished"></translation>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="158"/>
         <location filename="../src/gui/mainwindow.ui" line="398"/>
         <source>Alt+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+B</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
         <location filename="../src/gui/mainwindow.cpp" line="420"/>
         <source>Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>አካባቢ:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="218"/>
         <source>EFI System Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>EFI System Partition</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="221"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation>ESP</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="240"/>
         <source>Root (Partition Boot Record)</source>
-        <translation type="unfinished"></translation>
+        <translation>Root (ክፍልፋይ የ ማስነሻ መዝገብ)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="243"/>
         <location filename="../src/gui/mainwindow.cpp" line="422"/>
         <source>root</source>
-        <translation type="unfinished"></translation>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="278"/>
@@ -102,63 +102,63 @@
         <location filename="../src/gui/mainwindow.ui" line="300"/>
         <location filename="../src/gui/mainwindow.cpp" line="421"/>
         <source>Install on:</source>
-        <translation type="unfinished"></translation>
+        <translation>መግጠሚያ በ:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="389"/>
         <source>About this application</source>
-        <translation type="unfinished"></translation>
+        <translation>ስለዚህ መተግበሪያ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="392"/>
         <source>About...</source>
-        <translation type="unfinished"></translation>
+        <translation>ስለ...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="440"/>
         <source>Display help </source>
-        <translation type="unfinished"></translation>
+        <translation>እርዳታ ማሳያ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="443"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>እርዳታ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="449"/>
         <source>Alt+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+H</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="490"/>
         <source>Cancel any changes then quit</source>
-        <translation type="unfinished"></translation>
+        <translation>ማንኛውንም ለውጥ መሰረዣ እና ማጥፊያ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="493"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>መሰረዣ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="499"/>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+N</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="518"/>
         <source>Apply any changes</source>
-        <translation type="unfinished"></translation>
+        <translation>ማንኛውንም ለውጥ መፈጸሚያ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="521"/>
         <location filename="../src/gui/mainwindow.cpp" line="78"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>ይቀጥሉ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="455"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>መፈጸሚያ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="98"/>
@@ -175,7 +175,13 @@
         <location filename="../src/gui/mainwindow.cpp" line="485"/>
         <location filename="../src/gui/mainwindow.cpp" line="492"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>ስህተት</translation>
+    </message>
+    <message>
+        <source>Could not set up chroot environment.
+Please double-check the selected location.</source>
+        <translation type="vanished">የ chroot አካባቢ ማሰናዳት አልተቻለም
+እባከዎን በ ድጋሚ-ይመርምሩ የ ተመረጠውን አካባቢ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="136"/>
@@ -195,24 +201,26 @@
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="255"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>ማስጠንቀቂያ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="256"/>
         <source>You are going to write the content of </source>
-        <translation type="unfinished"></translation>
+        <translation>እርስዎ ይዞታውን ሊጽፉ ነው የ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="256"/>
         <source> to </source>
-        <translation type="unfinished"></translation>
+        <translation>ለ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="257"/>
         <source>
 
 Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+እርስዎ እርግጠኛ ነዎት?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="263"/>
@@ -232,12 +240,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="322"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>ወደ ኋላ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>ተሳክቷል</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="338"/>
@@ -247,7 +255,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="344"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>ሂደቱ ተፈጽሟል: ስህተት ተፈጥሯል</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="105"/>
@@ -291,18 +299,18 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="483"/>
         <source>Select backup file name</source>
-        <translation type="unfinished"></translation>
+        <translation>የ ተተኪ ፋይል ስም ይምረጡ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="485"/>
         <location filename="../src/gui/mainwindow.cpp" line="492"/>
         <source>No file was selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>ምንም ፋይል አልተመረጠም:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="490"/>
         <source>Select MBR or PBR backup file</source>
-        <translation type="unfinished"></translation>
+        <translation>የ MBR ወይንም PBR ተተኪ ፋይል ይምረጡ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="508"/>
@@ -312,7 +320,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="510"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>እትም</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="511"/>
@@ -322,7 +330,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="513"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"></translation>
+        <translation>የ ቅጂ መብት (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
@@ -340,7 +348,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="52"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>ፍቃድ</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="53"/>
@@ -351,22 +359,22 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="54"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>መሰረዣ</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="73"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;መዝጊያ</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="74"/>
         <source>MX Boot Repair</source>
-        <translation type="unfinished"></translation>
+        <translation>MX ማስነሻ መጠገኛ</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="82"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>ስህተት</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="83"/>

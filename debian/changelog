@@ -3,6 +3,7 @@ mx-bootrepair (25.09) mx; urgency=medium
   * Added a -c/--cli option to run the app in the CLI, detect if running
     headless and start in that mode automatically
   * Fix log copying to /var/log/
+  * Fix translation
 
  -- Adrian <adrian@mxlinux.org>  Sun, 07 Sep 2025 20:13:13 -0400
 

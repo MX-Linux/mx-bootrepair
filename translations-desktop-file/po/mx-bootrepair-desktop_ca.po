@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Eduard Selma <selma@tinet.cat>, 2022
+# Eduard Selma <eduard@selma.cat>, 2022
 # Dolphin Oracle <dolphinoracle@gmail.com>, 2022
 # 
 #, fuzzy

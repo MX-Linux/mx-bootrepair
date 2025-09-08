@@ -3,10 +3,12 @@
 #include <QCoreApplication>
 #include <QTextStream>
 #include <QCommandLineParser>
+#include <limits>
 
 #include "core/bootrepair_engine.h"
 
 namespace {
+// Returns index >= 0, -1 for back, -2 for quit
 int askIndex(const QStringList& items, const QString& prompt, QTextStream& in, QTextStream& out, bool allowBack)
 {
     for (int i = 0; i < items.size(); ++i) {
@@ -21,12 +23,14 @@ int askIndex(const QStringList& items, const QString& prompt, QTextStream& in, Q
         bool ok = false;
         const QString line = in.readLine().trimmed();
         if (allowBack && (line.compare("b", Qt::CaseInsensitive) == 0)) { out << '\n'; return -1; }
+        if (line.compare("q", Qt::CaseInsensitive) == 0) { out << '\n'; return -2; }
         const int idx = line.toInt(&ok);
         if (ok && idx >= 0 && idx < items.size()) { out << '\n'; return idx; }
         out << "Invalid index. Try again: " << Qt::flush;
     }
 }
 
+// Returns in [min,max], min-1 for back (if allowBack), or INT_MIN for quit
 int askInt(int min, int max, const QString& prompt, QTextStream& in, QTextStream& out, bool allowBack = false)
 {
     if (allowBack) {
@@ -38,6 +42,7 @@ int askInt(int min, int max, const QString& prompt, QTextStream& in, QTextStream
         bool ok = false;
         const QString line = in.readLine().trimmed();
         if (allowBack && (line.compare("b", Qt::CaseInsensitive) == 0)) { out << '\n'; return min - 1; } // back
+        if (line.compare("q", Qt::CaseInsensitive) == 0) { out << '\n'; return std::numeric_limits<int>::min(); } // quit
         const int val = line.toInt(&ok);
         if (ok && val >= min && val <= max) { out << '\n'; return val; }
         out << "Invalid selection. Enter a number " << min << "-" << max << ": " << Qt::flush;
@@ -150,14 +155,22 @@ int CliController::run()
         if (!first) { out << '\n'; out.flush(); }
         first = false;
         out << "MX Boot Repair (CLI)\n";
-        out << "0) Exit\n1) Install GRUB\n2) Repair GRUB (update-grub)\n3) Regenerate initramfs\n4) Backup MBR/PBR\n5) Restore MBR/PBR\n";
-        const int action = askInt(0, 5, "Select action", in, out);
-        if (action == 0) return 0;
+        out << "1) Install GRUB\n2) Repair GRUB (update-grub)\n3) Regenerate initramfs\n4) Backup MBR/PBR\n5) Restore MBR/PBR\nq) Quit\n";
+        out << "Select action [1-5 or 'q' to quit]: " << Qt::flush;
+        const QString actionStr = in.readLine().trimmed();
+        if (actionStr.compare("q", Qt::CaseInsensitive) == 0) return 0;
+        bool okAction = false;
+        const int action = actionStr.toInt(&okAction);
+        if (!okAction || action < 1 || action > 5) {
+            out << "Invalid selection. Enter 1-5 or 'q' to quit.\n";
+            continue;
+        }
 
         if (action == 1) {
-            out << "Target: 0) MBR  1) ESP  2) Root  3) Back\n";
-            const int target = askInt(0, 3, "Select target", in, out);
-            if (target == 3) continue; // back to main menu
+            out << "Target: 0) MBR  1) ESP  2) Root\n";
+            const int target = askInt(0, 2, "Select target", in, out, /*allowBack*/ true);
+            if (target == std::numeric_limits<int>::min()) return 0; // 'q' to quit
+            if (target < 0) continue; // 'b' to go back
         const QStringList disks = engine.listDisks();
         const QStringList parts = engine.listPartitions();
         if (parts.isEmpty()) {
@@ -171,14 +184,17 @@ int CliController::run()
         int locIdx = -1;
         if (target == 0) {
             locIdx = askIndex(disks, "Select disk for MBR (e.g., sda)", in, out, /*allowBack*/ true);
-            if (locIdx == -1) continue;
+            if (locIdx == -2) return 0; // quit
+            if (locIdx == -1) continue; // back
         } else {
             locIdx = askIndex(parts, "Select partition for GRUB (e.g., sda1)", in, out, /*allowBack*/ true);
-            if (locIdx == -1) continue;
+            if (locIdx == -2) return 0; // quit
+            if (locIdx == -1) continue; // back
         }
         const QString location = (target == 0 ? disks.at(locIdx) : parts.at(locIdx)).split(' ').first();
         const int rootIdx = askIndex(parts, "Select root partition of installed system", in, out, /*allowBack*/ true);
-        if (rootIdx == -1) continue;
+        if (rootIdx == -2) return 0; // quit
+        if (rootIdx == -1) continue; // back
         const QString root = "/dev/" + parts.at(rootIdx).split(' ').first();
 
         BootRepairOptions opt;
@@ -195,7 +211,8 @@ int CliController::run()
         const QStringList parts = engine.listPartitions();
             if (parts.isEmpty()) { out << "No partitions found. Returning to main menu.\n"; continue; }
             const int rootIdx = askIndex(parts, "Select root partition to repair", in, out, /*allowBack*/ true);
-            if (rootIdx == -1) continue;
+            if (rootIdx == -2) return 0; // quit
+            if (rootIdx == -1) continue; // back
         BootRepairOptions opt;
         opt.root = "/dev/" + parts.at(rootIdx).split(' ').first();
         opt.dryRun = parser.isSet(dryRunOpt);
@@ -207,7 +224,8 @@ int CliController::run()
         const QStringList parts = engine.listPartitions();
             if (parts.isEmpty()) { out << "No partitions found. Returning to main menu.\n"; continue; }
             const int rootIdx = askIndex(parts, "Select root partition to regenerate initramfs", in, out, /*allowBack*/ true);
-            if (rootIdx == -1) continue;
+            if (rootIdx == -2) return 0; // quit
+            if (rootIdx == -1) continue; // back
         BootRepairOptions opt;
         opt.root = "/dev/" + parts.at(rootIdx).split(' ').first();
         opt.dryRun = parser.isSet(dryRunOpt);
@@ -219,10 +237,12 @@ int CliController::run()
         const QStringList disks = engine.listDisks();
             if (disks.isEmpty()) { out << "No disks found. Returning to main menu.\n"; continue; }
             const int diskIdx = askIndex(disks, "Select disk to back up MBR/PBR from", in, out, /*allowBack*/ true);
-            if (diskIdx == -1) continue;
-            out << "Output file path (leave empty to go back): " << Qt::flush;
+            if (diskIdx == -2) return 0; // quit
+            if (diskIdx == -1) continue; // back
+            out << "Output file path (or 'b' to go back, 'q' to quit): " << Qt::flush;
             const QString outPath = in.readLine().trimmed();
-            if (outPath.isEmpty()) continue;
+            if (outPath.compare("q", Qt::CaseInsensitive) == 0) return 0;
+            if (outPath.compare("b", Qt::CaseInsensitive) == 0) continue;
         BootRepairOptions opt;
         opt.location = disks.at(diskIdx).split(' ').first();
         opt.backupPath = outPath;
@@ -235,10 +255,12 @@ int CliController::run()
         const QStringList disks = engine.listDisks();
             if (disks.isEmpty()) { out << "No disks found. Returning to main menu.\n"; continue; }
             const int diskIdx = askIndex(disks, "Select disk to restore MBR/PBR to", in, out, /*allowBack*/ true);
-            if (diskIdx == -1) continue;
-            out << "Input backup file path (leave empty to go back): " << Qt::flush;
+            if (diskIdx == -2) return 0; // quit
+            if (diskIdx == -1) continue; // back
+            out << "Input backup file path (or 'b' to go back, 'q' to quit): " << Qt::flush;
             const QString inPath = in.readLine().trimmed();
-            if (inPath.isEmpty()) continue;
+            if (inPath.compare("q", Qt::CaseInsensitive) == 0) return 0;
+            if (inPath.compare("b", Qt::CaseInsensitive) == 0) continue;
         BootRepairOptions opt;
         opt.location = disks.at(diskIdx).split(' ').first();
         opt.backupPath = inPath;

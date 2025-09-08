@@ -15,20 +15,20 @@ Build-Depends: debhelper-compat (= 13), cmake (>= 3.16), ninja-build, qt6-base-d
 Package-List:
  mx-bootrepair deb admin optional arch=any
 Checksums-Sha1:
- b42d82276ad950bac40bb85df997842f18d5b8b7 73964 mx-bootrepair_25.09.tar.xz
+ 6b019c99d36befba69070ea7d94314a4419cf938 74016 mx-bootrepair_25.09.tar.xz
 Checksums-Sha256:
- 00aea84d1842fdf8ce42ef861ad7824f20037b2cfb0db84bad1ed9620e4ce8a1 73964 mx-bootrepair_25.09.tar.xz
+ 42b59dc21e84d0f67ec27e8703117d3fe86955f3be4b29101323748bbb717fad 74016 mx-bootrepair_25.09.tar.xz
 Files:
- 6cc4b61548412f5157d727c3c1aa9e2b 73964 mx-bootrepair_25.09.tar.xz
+ 26fc6527599c39bf2a4d91909a34bfd7 74016 mx-bootrepair_25.09.tar.xz
 
 -----BEGIN PGP SIGNATURE-----
 
-iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmi+H/ITHGFkcmlhbkBt
-eGxpbnV4Lm9yZwAKCRBwk4x4BnnumH6EB/43Vpd2yvAiwYsQCFyVWpu14wbpaZGo
-ehbIO5auhxpB/qesDSeMj4CPFqIFSRdiN4IXlGEmgbw/k+Mccp3FOR88M4gxeROn
-4C8qHc0uSKKr2l+KnR2c3zB69b3qaAreSCbf2eEK0jnmIP8sJe+WPeA0ytWDpwqg
-DEpdvNlfpfN5XWAQwLqFuAVJxRvS91DlUoHgNub+QDBDTnrsUaSudSdHuj14GvoU
-K2bkhP0/PgO9ugWQA+ijKJUrMxSrick88k203OSH2H665Bxd/iOBMv8IaX+bwVUJ
-pso3agp0hbpPSSvjTrUDstWhARgEjUzFSa15Jalll1KiOpu1GFKdqcCU
-=04fS
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmi+KiATHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumPGWB/sF3hZkB+bBpqIxdsJ+t6y/dV3mXqgo
+pp9w/bnUmiri2O96NmnbspoTJ6Zhr4c6tPKDG1fLt3Xh2C2i+D2zjfYsGScjFi3A
+LJKnvs6aKhBxHpUDuhHVlyGY/zEoT6sFU8BKNOiDB+pp+IhsWAOSwqxdwimw6qXU
+CvNoJjIRRh+bgflvsv0lhm+1e7rAUXoaz/y1ydm8OmTW5mowCYoW5gsOOf0UGghD
+IJL8JjheaiKt9cseJwduWWQkrpApSi0QcBxPoSQei7Js7lgADYdAp7skp0BYaJbE
+slI8nwVdLVkEMHMaXgNRE5vTT/NOoPuhhCYUBqy+vRHawnlL1vueolFn
+=1CWC
 -----END PGP SIGNATURE-----

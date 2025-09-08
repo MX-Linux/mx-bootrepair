@@ -20,29 +20,29 @@ Changes:
      headless and start in that mode automatically
    * Fix log copying to /var/log/
 Checksums-Sha1:
- 2fa3856ce692adc04f5377520ef25a16881e51bf 1362 mx-bootrepair_25.09.dsc
- b42d82276ad950bac40bb85df997842f18d5b8b7 73964 mx-bootrepair_25.09.tar.xz
- bc2dd8d6e9f76ccc177c3fa41fc60ba80538e36b 11343 mx-bootrepair_25.09_amd64.buildinfo
- 2a7d1549804bff9fa87247b50f57f34a42f6a86c 75328 mx-bootrepair_25.09_amd64.deb
+ 87ca47866b9d28c23ec36f4ecf4f76e6d3f5f393 1362 mx-bootrepair_25.09.dsc
+ 6b019c99d36befba69070ea7d94314a4419cf938 74016 mx-bootrepair_25.09.tar.xz
+ 6fda6b4140a9da8f156a21cafe34380b0df3ef8a 11343 mx-bootrepair_25.09_amd64.buildinfo
+ d937899d7f38796a43bb12009653c3906eb98b06 75360 mx-bootrepair_25.09_amd64.deb
 Checksums-Sha256:
- 09449d9b9ea14eb17be5fe7d2dc996b1fbcbadaf19a7af8fc8a8f9dc5b1d5abe 1362 mx-bootrepair_25.09.dsc
- 00aea84d1842fdf8ce42ef861ad7824f20037b2cfb0db84bad1ed9620e4ce8a1 73964 mx-bootrepair_25.09.tar.xz
- 22f9423827fccc57adbb8fb202463067477edcbd35ebaae48dd40ddbcc8d7921 11343 mx-bootrepair_25.09_amd64.buildinfo
- 0df2b6bee86f2c13e8e0d7692068be7313dbf06871fa3895883a2c0bea9bd335 75328 mx-bootrepair_25.09_amd64.deb
+ b31e2cd2e8762d58069aa77b29770b32f6e7676e373e3de3a44525011d8eed26 1362 mx-bootrepair_25.09.dsc
+ 42b59dc21e84d0f67ec27e8703117d3fe86955f3be4b29101323748bbb717fad 74016 mx-bootrepair_25.09.tar.xz
+ a08cae45e4e68f5fc73a4e1180f1d97351defb662b9075a4babd325a4f83378f 11343 mx-bootrepair_25.09_amd64.buildinfo
+ 08d0380cd67fe21275c40e6012a24e50853dd2f65c0069ada9c8ee8c2cca4143 75360 mx-bootrepair_25.09_amd64.deb
 Files:
- 21d610405bd4e8f58b1c3dec2bae9332 1362 admin optional mx-bootrepair_25.09.dsc
- 6cc4b61548412f5157d727c3c1aa9e2b 73964 admin optional mx-bootrepair_25.09.tar.xz
- 481ebd84f752722c67b50e9dcb9cb780 11343 admin optional mx-bootrepair_25.09_amd64.buildinfo
- 826ae731a436586a88758b126f6c6b14 75328 admin optional mx-bootrepair_25.09_amd64.deb
+ 5b4f585d1f199141c3c6ecc031c4b7bd 1362 admin optional mx-bootrepair_25.09.dsc
+ 26fc6527599c39bf2a4d91909a34bfd7 74016 admin optional mx-bootrepair_25.09.tar.xz
+ 0ad661a4459dfd1c918a49b638c4fa9b 11343 admin optional mx-bootrepair_25.09_amd64.buildinfo
+ c9fe14ba15365377e7bd297fb5b0fdc6 75360 admin optional mx-bootrepair_25.09_amd64.deb
 
 -----BEGIN PGP SIGNATURE-----
 
-iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmi+H/ITHGFkcmlhbkBt
-eGxpbnV4Lm9yZwAKCRBwk4x4BnnumGDpB/4qtjkVf8KGmWRXI5NeNv2Fs7AXc2Y7
-i8Fk1rDfRDWydBu+auCkpmCbuoEPVAQPieU+8MR0XXow0nfqy9KZBV1gkhu+N50O
-oYc4wD10gmR0TNOJCePJc5k74Osufye8Rkq7CkhdY1wQAquMKl/S1Xhcmdj27LMV
-CP/h/XuhzSqSa2OjnLQWTw75hJ07j2ay2t/XsArk5+TNWcXhgpJjWrAe0i+Rues3
-qPDsE2F6F0azVJUeafqh/Wrb5ffIiO97xfUyDIQNSjJkZ4x5XgywjBoXqFLIH6JL
-17WeESG0sl54ob5hncVFH95rqFSLVpFEQNaJoe57hZTMMUnix0rpTh9p
-=V5Xa
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmi+KiATHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumEu+CADOjmijpjOn7yDhhPlB64jMktr59UQ5
+9yVRMF9U8ruAiAtOIVGY9kC2ltUzNpqULM2KN1d+/1/6I3HZ64tDidnGpo/nOuUr
+7voVIvg5kLvZTVXuEMhVt6pJQnZc9ZUPkqNLtGYC9FswGr4vuQB1DKSdQSu8tSvv
+KKca+nt4erRyAJripR7A2iRDMJsZzWo/bYD68WOGR0P4cZ8EiCM/4xqtY/eMCdoT
+LVDwDc8NyttTwkoznQiwdm4ClxIBND+JQEFebbOfRBAaclilGPibgr5ohE7RRZdz
+wRyvuV+OouneqrphUjQLFCD82ewCFRq72VQe2+eusF/uB4IKqrKhipQ7
+=quHu
 -----END PGP SIGNATURE-----

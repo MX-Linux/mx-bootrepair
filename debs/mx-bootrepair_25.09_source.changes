@@ -17,26 +17,26 @@ Changes:
      headless and start in that mode automatically
    * Fix log copying to /var/log/
 Checksums-Sha1:
- 2fa3856ce692adc04f5377520ef25a16881e51bf 1362 mx-bootrepair_25.09.dsc
- b42d82276ad950bac40bb85df997842f18d5b8b7 73964 mx-bootrepair_25.09.tar.xz
- bc2dd8d6e9f76ccc177c3fa41fc60ba80538e36b 11343 mx-bootrepair_25.09_amd64.buildinfo
+ 87ca47866b9d28c23ec36f4ecf4f76e6d3f5f393 1362 mx-bootrepair_25.09.dsc
+ 6b019c99d36befba69070ea7d94314a4419cf938 74016 mx-bootrepair_25.09.tar.xz
+ 6fda6b4140a9da8f156a21cafe34380b0df3ef8a 11343 mx-bootrepair_25.09_amd64.buildinfo
 Checksums-Sha256:
- 09449d9b9ea14eb17be5fe7d2dc996b1fbcbadaf19a7af8fc8a8f9dc5b1d5abe 1362 mx-bootrepair_25.09.dsc
- 00aea84d1842fdf8ce42ef861ad7824f20037b2cfb0db84bad1ed9620e4ce8a1 73964 mx-bootrepair_25.09.tar.xz
- 22f9423827fccc57adbb8fb202463067477edcbd35ebaae48dd40ddbcc8d7921 11343 mx-bootrepair_25.09_amd64.buildinfo
+ b31e2cd2e8762d58069aa77b29770b32f6e7676e373e3de3a44525011d8eed26 1362 mx-bootrepair_25.09.dsc
+ 42b59dc21e84d0f67ec27e8703117d3fe86955f3be4b29101323748bbb717fad 74016 mx-bootrepair_25.09.tar.xz
+ a08cae45e4e68f5fc73a4e1180f1d97351defb662b9075a4babd325a4f83378f 11343 mx-bootrepair_25.09_amd64.buildinfo
 Files:
- 21d610405bd4e8f58b1c3dec2bae9332 1362 admin optional mx-bootrepair_25.09.dsc
- 6cc4b61548412f5157d727c3c1aa9e2b 73964 admin optional mx-bootrepair_25.09.tar.xz
- 481ebd84f752722c67b50e9dcb9cb780 11343 admin optional mx-bootrepair_25.09_amd64.buildinfo
+ 5b4f585d1f199141c3c6ecc031c4b7bd 1362 admin optional mx-bootrepair_25.09.dsc
+ 26fc6527599c39bf2a4d91909a34bfd7 74016 admin optional mx-bootrepair_25.09.tar.xz
+ 0ad661a4459dfd1c918a49b638c4fa9b 11343 admin optional mx-bootrepair_25.09_amd64.buildinfo
 
 -----BEGIN PGP SIGNATURE-----
 
-iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmi+H/ITHGFkcmlhbkBt
-eGxpbnV4Lm9yZwAKCRBwk4x4BnnumJF9B/4xN1VbwEtBcdjZZq8npydbfPwDIBGk
-k/irnc4p4NAGt+Gt5FlII2gWofV960vMFFyg25r+bQ/ITYSMyhEbW8CapR4rGS3s
-6xaweEsAWFbKkxr4uQmfbN/z8ZB2ydVtb35jozBQ8aEPnhTc0gDSBcUIB6ZwQBuK
-+zR9w9iOK7kL5mqFLIz+EbOcDbYpxcS+8vUahvXteGXdbayY/vYFwqZgvm71f1gr
-PLApCrROIncClsoxNGa8g41d64l6shr0Hd4mD4gsawbdLODQYIY5UbKPIy8mWHBc
-k+xXxEWBFb1K8nKOtBoMH64pEpyKRIg4NogTuBNR0d7mgnkvadbAzKtS
-=WTpP
+iQFHBAEBCgAxFiEE8ndToY6S45N+YzXncJOMeAZ57pgFAmi+KiETHGFkcmlhbkBt
+eGxpbnV4Lm9yZwAKCRBwk4x4BnnumBUrB/0XQYUi57F0AXlPLrqbfJE4T+Gxs3gi
+2bu3egzrsUybPO39VBogSASw2WnoEeSu6A4nItbTVxAoDBTgmSgxp5h3xHeGUzzi
+uLpyBwz3GQrGG7aXg29T30lUlyuga/7rbLSDqMsA2srinIOImCS2FCT+REErKjj1
+fW/ds/k7DIxzXvLbEYh4esQ6ApZH5/IXba3PB18/hU4SoFJDFMbjXYZYUGlZkbIL
+e4SeBUuB42ox7uonGkRGUk+up8xnU9GcSA7q6O7WM604W1p2Q9H6tVgVLUptzNaA
+ErLbNcIPAy7fraithmKrvWZUIzCPZPH/EPAujykFz4k5L2X738R+r9xY
+=8VRH
 -----END PGP SIGNATURE-----

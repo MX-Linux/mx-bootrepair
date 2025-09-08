@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
         AppInit::setupLogging();
         CliController controller;
         const int code = controller.run();
-        Cmd().runAsRoot("/usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, true);
+        Cmd().runAsRoot("/usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, QuietMode::Yes);
         return code;
     }
 

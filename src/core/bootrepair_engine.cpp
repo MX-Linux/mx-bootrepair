@@ -22,7 +22,7 @@ bool BootRepairEngine::execRunAsRoot(const QString& cmd, QString* output, const 
     if (quiet) {
         emit log(QStringLiteral("# %1").arg(cmd));
     }
-    return shell->runAsRoot(cmd, output, input, quiet);
+    return shell->runAsRoot(cmd, output, input, quiet ? QuietMode::Yes : QuietMode::No);
 }
 
 bool BootRepairEngine::execProcAsRoot(const QString& cmd, const QStringList& args, QString* output, const QByteArray* input, bool quiet)
@@ -35,7 +35,7 @@ bool BootRepairEngine::execProcAsRoot(const QString& cmd, const QStringList& arg
     if (quiet) {
         emit log(QStringLiteral("# %1 %2").arg(cmd, args.join(' ')));
     }
-    return shell->procAsRoot(cmd, args, output, input, quiet);
+    return shell->procAsRoot(cmd, args, output, input, quiet ? QuietMode::Yes : QuietMode::No);
 }
 
 QStringList BootRepairEngine::listDisks() const
@@ -44,7 +44,7 @@ QStringList BootRepairEngine::listDisks() const
         "lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
     emit const_cast<BootRepairEngine*>(this)->log(QStringLiteral("$ %1").arg(cmd));
     const QSignalBlocker blocker(const_cast<BootRepairEngine*>(this)); // suppress engine::log emissions
-    return shell->getCmdOut(cmd, /*quiet*/ true).split('\n', Qt::SkipEmptyParts);
+    return shell->getCmdOut(cmd, QuietMode::Yes).split('\n', Qt::SkipEmptyParts);
 }
 
 QStringList BootRepairEngine::listPartitions() const
@@ -54,7 +54,7 @@ QStringList BootRepairEngine::listPartitions() const
         "'^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
     emit const_cast<BootRepairEngine*>(this)->log(QStringLiteral("$ %1").arg(cmd));
     const QSignalBlocker blocker(const_cast<BootRepairEngine*>(this)); // suppress engine::log emissions
-    return shell->getCmdOut(cmd, /*quiet*/ true).split('\n', Qt::SkipEmptyParts);
+    return shell->getCmdOut(cmd, QuietMode::Yes).split('\n', Qt::SkipEmptyParts);
 }
 
 bool BootRepairEngine::isUefi()
@@ -71,8 +71,8 @@ bool BootRepairEngine::isMounted(const QString& volume, const QString& mount) co
 bool BootRepairEngine::isMountedTo(const QString& volume, const QString& mount) const
 {
     QString points;
-    if (!shell->proc("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points, nullptr, true)) {
-        shell->proc("lsblk", {"-nro", "MOUNTPOINT", volume}, &points, nullptr, true);
+    if (!shell->proc("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points, nullptr, QuietMode::Yes)) {
+        shell->proc("lsblk", {"-nro", "MOUNTPOINT", volume}, &points, nullptr, QuietMode::Yes);
     }
     return points.split('\n', Qt::SkipEmptyParts).contains(mount);
 }
@@ -80,10 +80,10 @@ bool BootRepairEngine::isMountedTo(const QString& volume, const QString& mount) 
 QString BootRepairEngine::luksMapper(const QString& part) const
 {
     QString mapper;
-    if (!shell->procAsRoot("cryptsetup", {"isLuks", part}, nullptr, nullptr, true)) {
+    if (!shell->procAsRoot("cryptsetup", {"isLuks", part}, nullptr, nullptr, QuietMode::Yes)) {
         return {};
     }
-    if (!shell->procAsRoot("cryptsetup", {"luksUUID", part}, &mapper, nullptr, true)) {
+    if (!shell->procAsRoot("cryptsetup", {"luksUUID", part}, &mapper, nullptr, QuietMode::Yes)) {
         return {};
     }
     return QStringLiteral("luks-") + mapper.trimmed();
@@ -92,7 +92,7 @@ QString BootRepairEngine::luksMapper(const QString& part) const
 bool BootRepairEngine::isLuks(const QString& device) const
 {
     const QString dev = device.startsWith("/dev/") ? device : ("/dev/" + device);
-    return shell->procAsRoot("cryptsetup", {"isLuks", dev}, nullptr, nullptr, true);
+    return shell->procAsRoot("cryptsetup", {"isLuks", dev}, nullptr, nullptr, QuietMode::Yes);
 }
 
 static inline QString normalizeDev(const QString& device)
@@ -106,7 +106,7 @@ bool BootRepairEngine::isEspPartition(const QString& device) const
     const QString cmd = QStringLiteral("lsblk -ln -o PARTTYPE %1 | grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")
                             .arg(dev);
     emit const_cast<BootRepairEngine*>(this)->log(QStringLiteral("$ %1").arg(cmd));
-    return shell->run(cmd, nullptr, nullptr, true);
+    return shell->run(cmd, nullptr, nullptr, QuietMode::Yes);
 }
 
 bool BootRepairEngine::isLinuxPartitionType(const QString& device) const
@@ -115,7 +115,7 @@ bool BootRepairEngine::isLinuxPartitionType(const QString& device) const
     const QString cmd = QStringLiteral("lsblk -ln -o PARTTYPE %1 | grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")
                             .arg(dev);
     emit const_cast<BootRepairEngine*>(this)->log(QStringLiteral("$ %1").arg(cmd));
-    return shell->run(cmd, nullptr, nullptr, true);
+    return shell->run(cmd, nullptr, nullptr, QuietMode::Yes);
 }
 
 bool BootRepairEngine::labelContains(const QString& device, const QString& needle) const
@@ -123,7 +123,7 @@ bool BootRepairEngine::labelContains(const QString& device, const QString& needl
     const QString dev = normalizeDev(device);
     const QString cmd = QStringLiteral("lsblk -ln -o LABEL %1 | grep -q %2").arg(dev, needle);
     emit const_cast<BootRepairEngine*>(this)->log(QStringLiteral("$ %1").arg(cmd));
-    return shell->run(cmd, nullptr, nullptr, true);
+    return shell->run(cmd, nullptr, nullptr, QuietMode::Yes);
 }
 
 bool BootRepairEngine::openLuks(const QString& part, const QString& mapper, const QByteArray& pass)
@@ -204,11 +204,11 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
         QString cmd = QStringLiteral("grub-install --target=i386-pc --recheck --force /dev/%1").arg(opt.location);
         if (opt.target == GrubTarget::Esp) {
             emit log(QStringLiteral("$ arch"));
-            QString arch = shell->getCmdOut("arch", true).trimmed();
+            QString arch = shell->getCmdOut("arch", QuietMode::Yes).trimmed();
             if (arch == "i686") arch = "i386";
             const QString grepRel = QStringLiteral("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
             emit log(QStringLiteral("$ %1").arg(grepRel));
-            const QString release = shell->getCmdOut(grepRel, true).left(2);
+            const QString release = shell->getCmdOut(grepRel, QuietMode::Yes).left(2);
             cmd = QStringLiteral(
                       "grub-install --target=%1-efi --efi-directory=/boot/efi --bootloader-id=MX%2 --force-extra-removable --recheck")
                       .arg(arch, release);
@@ -255,11 +255,11 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
             return false;
         }
         emit log(QStringLiteral("$ arch"));
-        QString arch = shell->getCmdOut("arch", true).trimmed();
+        QString arch = shell->getCmdOut("arch", QuietMode::Yes).trimmed();
         if (arch == "i686") arch = "i386";
         const QString grepRel2 = QStringLiteral("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
         emit log(QStringLiteral("$ %1").arg(grepRel2));
-        const QString release = shell->getCmdOut(grepRel2, true).left(2);
+        const QString release = shell->getCmdOut(grepRel2, QuietMode::Yes).left(2);
         cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --force-extra-removable --recheck")
                   .arg(tmpdir.path(), arch, release);
     }
@@ -364,7 +364,7 @@ QString BootRepairEngine::resolveFstabDevice(const QString& root, const QString&
         opened = true;
     }
     if (!mountChrootEnv(part)) {
-        if (opened) shell->procAsRoot("cryptsetup", {"luksClose", mapper}, nullptr, nullptr, true);
+        if (opened) shell->procAsRoot("cryptsetup", {"luksClose", mapper}, nullptr, nullptr, QuietMode::Yes);
         return {};
     }
     QFile file(tmpdir.path() + "/etc/fstab");
@@ -385,7 +385,7 @@ QString BootRepairEngine::resolveFstabDevice(const QString& root, const QString&
     if (!device.isEmpty()) {
         const QString cmd = "readlink -e \"$(echo " + device
                            + " | sed -r 's:((PART)?(UUID|LABEL))=:\\L/dev/disk/by-\\1/:g; s:[\\\"]::g;')\"";
-        if (shell->runAsRoot(cmd, &resolved, nullptr, true)) {
+        if (shell->runAsRoot(cmd, &resolved, nullptr, QuietMode::Yes)) {
             resolved = resolved.trimmed();
         }
     }

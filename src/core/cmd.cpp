@@ -77,6 +77,12 @@ bool Cmd::run(const QString &cmd, QString *output, const QByteArray *input, Quie
     }
     const bool doElevate = (elevate == Elevation::Yes);
     if (doElevate && getuid() != 0) {
+        const QString mxbrLib = "/usr/lib/" + QCoreApplication::applicationName() + "/mxbr-lib";
+        if (cmd.startsWith(mxbrLib)) {
+            QString arg = cmd.mid(mxbrLib.size()).trimmed();
+            QStringList argsList; if (!arg.isEmpty()) argsList << arg;
+            return proc(asRoot, QStringList() << mxbrLib << argsList, output, input, QuietMode::Yes);
+        }
         return proc(asRoot, {helper, cmd}, output, input, QuietMode::Yes);
     } else {
         return proc("/bin/bash", {"-c", cmd}, output, input, QuietMode::Yes);

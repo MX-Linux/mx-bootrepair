@@ -3,7 +3,7 @@
 # Get script directory and determine app name
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-APPNAME="$(basename "$PROJECT_DIR")"
+APPNAME="mx-boot-repair"
 
 echodo() {
   echo "${@}"

@@ -9,7 +9,7 @@ override_dh_auto_configure:
 
 override_dh_auto_clean:
 	dh_auto_clean
-	rm -rf build/
+	rm -rf build/ obs-*/
 	rm -f translations/*.qm
 
 override_dh_shlibdeps:

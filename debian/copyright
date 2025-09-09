@@ -1,81 +1,28 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: mx-bootrepair
-Source: git://github.com/AdrianTM/mx-bootrepair
+Source: https://github.com/AdrianTM/mx-bootrepair
 
-#----------------------------------------------------------------------------
-Copyright: 2014 MX Authors
-Files: ./mainwindow.cpp
-	./mainwindow.h
-	./main.cpp
-# licensecheck(1): ./mainwindow.cpp: LGPL (v3 or later)
-License:
-  Authors: Adrian
- MX Linux <http://mxlinux.org>
- .
- This program is free software; you can redistribute it and/or modify it
- under the terms of the GNU Lesser General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
+Files: *
+Copyright: 2014-2025 MX Authors
+License: GPL-3+
+
+Files: debian/*
+Copyright: 2014-2025 MX Authors
+License: GPL-3+
+
+License: GPL-3+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
  .
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- GNU Lesser General Public License for more details.
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
  .
- You should have received a copy of the GNU Lesser General Public License
- along with this program; if not, write to the Free Software Foundation,
- Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
-
-#----------------------------------------------------------------------------
-Copyright: 51-2110 # * Copyright (C) MX Authors # * # * Authors: Adrian # *          MX Linux  <http://mxlinux.org> # * # * This program is free software; you can redistribute it and/or modify it # * under the terms of the GNU Lesser General Public License as published by # * the Free Software Foundation; either version 3 of the License, or # * (at your option) any later version. # * # * This program is distributed in the hope that it will be useful, # * but WITHOUT ANY WARRANTY; without even the implied warranty of # * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the # * GNU Lesser General Public License for more details. # * # * You should have received a copy of the GNU Lesser General Public License # * along with this program; if not, write to the Free Software Foundation, # * Inc., Franklin Street, Fifth Floor, Boston MA USA.
-Files: ./mx-bootrepair.pro
-# licensecheck(1): ./mx-bootrepair.pro: LGPL (v3 or later)
-License: NO_LICENSE_TEXT_FOUND
-
-#----------------------------------------------------------------------------
-Copyright: NO_COPYRIGHT_INFO_FOUND
-Files: ./mxbootrepair.ui
-	./translations/mx-bootrepair_pl.ts
-	./translations/mx-bootrepair_el.ts
-	./translations/mx-bootrepair_ro.ts
-	./translations/mx-bootrepair_ca.ts
-	./translations/mx-bootrepair_zh_CN.ts
-	./translations/mx-bootrepair_de.ts
-	./translations/mx-bootrepair_fr.ts
-	./translations/mx-bootrepair_ja.ts
-	./translations/mx-bootrepair_pt.ts
-	./translations/mx-bootrepair_hi.ts
-	./translations/mx-bootrepair_zh_TW.ts
-	./translations/mx-bootrepair_pt_BR.ts
-	./translations/mx-bootrepair_nl.ts
-	./translations/mx-bootrepair_ko.ts
-	./translations/mx-bootrepair_ar.ts
-	./translations/mx-bootrepair_it.ts
-	./translations/mx-bootrepair_es.ts
-	./debian/control
-# licensecheck(1): ./mxbootrepair.ui: *No copyright* UNKNOWN
-License: NO_LICENSE_TEXT_FOUND
-
-#----------------------------------------------------------------------------
-# Binary files (skipped):
-# ./mx-bootrepair.png
-# ./icons/gnome-help.png
-# ./icons/accessories-text-editor.png
-# ./icons/dialog-ok.png
-# ./icons/mxfcelogo.png
-# ./icons/gtk-cancel.png
-
-#----------------------------------------------------------------------------
-# This is meant only as a template example.
-#
-# Edit this accordinng to the "Machine-readable debian/copyright file" as
-# http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/ .
-#
-# Generate typical license templates with the "debmake -c" to STDOUT
-# and merge them into here as needed.  See "man 8 debmake" for more.
-#
-# licensecheck(1) from the devscripts package is used here to determin
-# the name of the license that applies.
-#
-# Please avoid to pick license terms that are more restrictive than the
-# packaged work, as it may make Debian's contributions unacceptable upstream.
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".

@@ -40,7 +40,7 @@ echo "Original Name is " $ORIGINALNAME
 					echo $val >> errorcheck.txt
 				fi
 				flag=true
-			fi 
+			fi
 	    fi
 	    if [ "$flag" = "true" ]; then
 	    	echo ${RESOURCE}_${val}.po >> uploadlist.txt

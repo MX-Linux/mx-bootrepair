@@ -1,6 +1,8 @@
 mx-bootrepair (25.09.4) mx; urgency=medium
 
   * Avoid asking for elevation when exiting CLI
+  * Add argument validation
+  * Update translations
 
  -- Adrian <adrian@mxlinux.org>  Fri, 12 Sep 2025 23:26:28 -0400
 

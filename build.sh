@@ -75,7 +75,7 @@ if [ "$DEBIAN_BUILD" = true ]; then
     echo "Creating debs directory and moving debian artifacts..."
     mkdir -p debs
     mv ../*.deb debs/ 2>/dev/null || true
-    mv ../*.changes debs/ 2>/dev/null || true  
+    mv ../*.changes debs/ 2>/dev/null || true
     mv ../*.dsc debs/ 2>/dev/null || true
     mv ../*.tar.* debs/ 2>/dev/null || true
     mv ../*.buildinfo debs/ 2>/dev/null || true

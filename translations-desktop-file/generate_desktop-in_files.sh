@@ -10,7 +10,7 @@ TARGET_FOLDER="desktop-in/"
 
 for file in $LIST; do
     cp $file ${TARGET_FOLDER}$(basename $file).in
-	
+
 done
 
 sed -i '/^Name\[/d' ${TARGET_FOLDER}*.desktop.in

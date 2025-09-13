@@ -86,12 +86,20 @@ int CliController::run()
     QCommandLineOption espDevOpt("esp-device", "Partition to mount at /boot/efi in chroot", "dev");
     QCommandLineOption pathOpt("backup-path", "Path for backup/restore image", "path");
     QCommandLineOption forceOpt({"f", "force"}, "Skip confirmations (for restore)");
+    QCommandLineOption verboseOpt("verbose", "Enable verbose output");
+    QCommandLineOption quietOpt({"q", "quiet"}, "Suppress non-error output");
 
-    parser.addOptions({dryRunOpt, nonIntOpt, actionOpt, targetOpt, locationOpt, rootOpt, bootDevOpt, espDevOpt, pathOpt, forceOpt});
+    parser.addOptions({dryRunOpt, nonIntOpt, actionOpt, targetOpt, locationOpt, rootOpt, bootDevOpt, espDevOpt, pathOpt, forceOpt, verboseOpt, quietOpt});
     QStringList args = QCoreApplication::arguments();
     // Strip launcher-only flags handled by the GUI entry point
     args.erase(std::remove_if(args.begin(), args.end(), [](const QString& a){ return a == "-c" || a == "--cli"; }), args.end());
     parser.process(args);
+
+    // Validate conflicting options
+    if (parser.isSet(verboseOpt) && parser.isSet(quietOpt)) {
+        out << "Error: --verbose and --quiet options are mutually exclusive\n";
+        return 2;
+    }
 
     auto normalizeDev = [](const QString& dev, bool requireDevPrefix) -> QString {
         if (dev.isEmpty()) return dev;
@@ -102,10 +110,36 @@ int CliController::run()
         }
     };
 
+    auto validateDevicePath = [&out](const QString& dev, const QString& name) -> bool {
+        if (dev.isEmpty()) return true; // Empty is valid (optional)
+        if (dev.startsWith("/dev/")) {
+            // Check if it looks like a valid device path
+            const QString devName = dev.mid(5);
+            if (devName.isEmpty() || devName.contains('/')) {
+                out << "Error: Invalid " << name << " device path: " << dev << "\n";
+                return false;
+            }
+        } else {
+            // Check if it looks like a valid device name
+            if (dev.contains('/') || dev.isEmpty()) {
+                out << "Error: Invalid " << name << " device name: " << dev << "\n";
+                return false;
+            }
+        }
+        return true;
+    };
+
     const bool nonInteractive = parser.isSet(nonIntOpt) || parser.isSet(actionOpt);
     if (nonInteractive) {
         const QString action = parser.value(actionOpt).toLower();
         if (action.isEmpty()) { out << "Error: --action is required in non-interactive mode\n"; return 2; }
+
+        // Validate action
+        const QStringList validActions = {"install", "repair", "initramfs", "backup", "restore", "update-grub", "regenerate-initramfs"};
+        if (!validActions.contains(action)) {
+            out << "Error: Invalid action '" << action << "'. Valid actions: " << validActions.join(", ") << "\n";
+            return 2;
+        }
 
         BootRepairOptions opt;
         opt.dryRun = parser.isSet(dryRunOpt);
@@ -116,10 +150,27 @@ int CliController::run()
             else if (target == "root") opt.target = GrubTarget::Root;
             else { out << "Error: --target must be mbr|esp|root for install\n"; return 2; }
 
+            // Validate target-specific requirements
+            if (target == "mbr" && parser.value(locationOpt).isEmpty()) {
+                out << "Error: --location is required for MBR target\n"; return 2;
+            }
+            if ((target == "esp" || target == "root") && parser.value(locationOpt).isEmpty()) {
+                out << "Error: --location is required for ESP/Root target\n"; return 2;
+            }
+
             opt.location = normalizeDev(parser.value(locationOpt), /*requireDevPrefix*/ false);
             opt.root = normalizeDev(parser.value(rootOpt), /*requireDevPrefix*/ true);
             opt.bootDevice = normalizeDev(parser.value(bootDevOpt), /*requireDevPrefix*/ true);
             opt.espDevice = normalizeDev(parser.value(espDevOpt), /*requireDevPrefix*/ true);
+
+            // Validate device paths
+            if (!validateDevicePath(opt.location, "location") ||
+                !validateDevicePath(opt.root, "root") ||
+                !validateDevicePath(opt.bootDevice, "boot-device") ||
+                !validateDevicePath(opt.espDevice, "esp-device")) {
+                return 2;
+            }
+
             if (opt.location.isEmpty() || opt.root.isEmpty()) {
                 out << "Error: --location and --root are required for install\n"; return 2;
             }
@@ -128,20 +179,46 @@ int CliController::run()
             opt.root = normalizeDev(parser.value(rootOpt), /*requireDevPrefix*/ true);
             opt.bootDevice = normalizeDev(parser.value(bootDevOpt), /*requireDevPrefix*/ true);
             opt.espDevice = normalizeDev(parser.value(espDevOpt), /*requireDevPrefix*/ true);
+
+            // Validate device paths
+            if (!validateDevicePath(opt.root, "root") ||
+                !validateDevicePath(opt.bootDevice, "boot-device") ||
+                !validateDevicePath(opt.espDevice, "esp-device")) {
+                return 2;
+            }
+
             if (opt.root.isEmpty()) { out << "Error: --root is required for repair\n"; return 2; }
             const bool ok = engine.repairGrub(opt); return ok ? 0 : 1;
         } else if (action == "initramfs" || action == "regenerate-initramfs") {
             opt.root = normalizeDev(parser.value(rootOpt), /*requireDevPrefix*/ true);
+
+            // Validate device path
+            if (!validateDevicePath(opt.root, "root")) {
+                return 2;
+            }
+
             if (opt.root.isEmpty()) { out << "Error: --root is required for initramfs\n"; return 2; }
             const bool ok = engine.regenerateInitramfs(opt); return ok ? 0 : 1;
         } else if (action == "backup") {
             opt.location = normalizeDev(parser.value(locationOpt), /*requireDevPrefix*/ false);
             opt.backupPath = parser.value(pathOpt);
+
+            // Validate device path
+            if (!validateDevicePath(opt.location, "location")) {
+                return 2;
+            }
+
             if (opt.location.isEmpty() || opt.backupPath.isEmpty()) { out << "Error: --location and --backup-path required for backup\n"; return 2; }
             const bool ok = engine.backup(opt); return ok ? 0 : 1;
         } else if (action == "restore") {
             opt.location = normalizeDev(parser.value(locationOpt), /*requireDevPrefix*/ false);
             opt.backupPath = parser.value(pathOpt);
+
+            // Validate device path
+            if (!validateDevicePath(opt.location, "location")) {
+                return 2;
+            }
+
             if (opt.location.isEmpty() || opt.backupPath.isEmpty()) { out << "Error: --location and --backup-path required for restore\n"; return 2; }
             if (!parser.isSet(forceOpt)) { out << "Refusing to restore without --force confirmation.\n"; return 2; }
             const bool ok = engine.restore(opt); return ok ? 0 : 1;

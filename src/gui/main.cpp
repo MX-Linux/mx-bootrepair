@@ -24,6 +24,8 @@
 #include <QCoreApplication>
 #include <QIcon>
 #include <QMessageBox>
+#include <QCommandLineParser>
+#include <QTextStream>
 
 #include "cli/controller.h"
 #include "core/app_init.h"
@@ -37,8 +39,11 @@
 
 int main(int argc, char *argv[])
 {
-    // Detect CLI flag or headless first
+    // Check for CLI mode or headless environment first (simple check)
     bool forceCli = false;
+    bool headless = qEnvironmentVariableIsEmpty("DISPLAY") && qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY");
+
+    // Quick check for CLI flag
     for (int i = 1; i < argc; ++i) {
         const QString arg = QString::fromLocal8Bit(argv[i]);
         if (arg == "-c" || arg == "--cli") {
@@ -46,7 +51,6 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    const bool headless = qEnvironmentVariableIsEmpty("DISPLAY") && qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY");
 
     if (forceCli || headless) {
         QCoreApplication app(argc, argv);
@@ -58,6 +62,7 @@ int main(int argc, char *argv[])
         AppInit::setupRootEnv();
         AppInit::installTranslations();
         AppInit::setupLogging();
+
         CliController controller;
         const int code = controller.run();
         if (QFile::exists("/usr/bin/pkexec")) {
@@ -83,6 +88,39 @@ int main(int argc, char *argv[])
     QApplication::setApplicationVersion(VERSION);
     AppInit::installTranslations();
     AppInit::setupLogging();
+
+    // Parse command line arguments for GUI mode
+    QCommandLineParser parser;
+    parser.setApplicationDescription(QObject::tr("MX Boot Repair - GUI and CLI tool for repairing GRUB bootloader"));
+    parser.addHelpOption();
+    parser.addVersionOption();
+
+    // Define command line options
+    QCommandLineOption cliOpt({"c", "cli"}, QObject::tr("Force CLI mode"));
+    QCommandLineOption dryRunOpt({"d", "dry-run"}, QObject::tr("Print actions without executing"));
+    QCommandLineOption nonIntOpt({"n", "non-interactive"}, QObject::tr("Do not prompt; require flags"));
+    QCommandLineOption actionOpt("action", QObject::tr("Action: install, repair, initramfs, backup, restore"), "name");
+    QCommandLineOption targetOpt("target", QObject::tr("Target for install: mbr, esp, root"), "name");
+    QCommandLineOption locationOpt("location", QObject::tr("Device for target (e.g., sda, sda1)"), "dev");
+    QCommandLineOption rootOpt("root", QObject::tr("Root partition (e.g., /dev/sda2)"), "dev");
+    QCommandLineOption bootDevOpt("boot-device", QObject::tr("Partition to mount at /boot in chroot"), "dev");
+    QCommandLineOption espDevOpt("esp-device", QObject::tr("Partition to mount at /boot/efi in chroot"), "dev");
+    QCommandLineOption pathOpt("backup-path", QObject::tr("Path for backup/restore image"), "path");
+    QCommandLineOption forceOpt({"f", "force"}, QObject::tr("Skip confirmations (for restore)"));
+    QCommandLineOption verboseOpt("verbose", QObject::tr("Enable verbose output"));
+    QCommandLineOption quietOpt({"q", "quiet"}, QObject::tr("Suppress non-error output"));
+
+    parser.addOptions({cliOpt, dryRunOpt, nonIntOpt, actionOpt, targetOpt, locationOpt, rootOpt, bootDevOpt, espDevOpt, pathOpt, forceOpt, verboseOpt, quietOpt});
+
+    // Process arguments
+    parser.process(QCoreApplication::arguments());
+
+    // Validate conflicting options
+    if (parser.isSet(verboseOpt) && parser.isSet(quietOpt)) {
+        QTextStream out(stderr);
+        out << QObject::tr("Error: --verbose and --quiet options are mutually exclusive\n");
+        return 2;
+    }
 
     if (getuid() != 0) {
         if (!QFile::exists("/usr/bin/pkexec") && !QFile::exists("/usr/bin/gksu")) {

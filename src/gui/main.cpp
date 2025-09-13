@@ -25,14 +25,14 @@
 #include <QIcon>
 #include <QMessageBox>
 
-#include "core/app_init.h"
 #include "cli/controller.h"
+#include "core/app_init.h"
 #include "core/cmd.h"
 #include "mainwindow.h"
 #include <unistd.h>
 
 #ifndef VERSION
-    #define VERSION "?.?.?.?"
+#define VERSION "?.?.?.?"
 #endif
 
 int main(int argc, char *argv[])
@@ -41,7 +41,10 @@ int main(int argc, char *argv[])
     bool forceCli = false;
     for (int i = 1; i < argc; ++i) {
         const QString arg = QString::fromLocal8Bit(argv[i]);
-        if (arg == "-c" || arg == "--cli") { forceCli = true; break; }
+        if (arg == "-c" || arg == "--cli") {
+            forceCli = true;
+            break;
+        }
     }
     const bool headless = qEnvironmentVariableIsEmpty("DISPLAY") && qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY");
 
@@ -57,7 +60,11 @@ int main(int argc, char *argv[])
         AppInit::setupLogging();
         CliController controller;
         const int code = controller.run();
-        Cmd().runAsRoot("/usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, QuietMode::Yes);
+        if (QFile::exists("/usr/bin/pkexec")) {
+            Cmd().run("pkexec /usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, QuietMode::Yes);
+        } else {
+            Cmd().runAsRoot("/usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, QuietMode::Yes);
+        }
         return code;
     }
 

@@ -84,7 +84,9 @@ void setupLogging()
         QFile::rename(log_name, log_name + ".old");
     }
     logFile.setFileName(log_name);
-    logFile.open(QFile::Append | QFile::Text);
+    if (!logFile.open(QFile::Append | QFile::Text)) {
+        qWarning() << "Failed to open log file:" << log_name;
+    }
     qInstallMessageHandler(messageHandler);
 }
 

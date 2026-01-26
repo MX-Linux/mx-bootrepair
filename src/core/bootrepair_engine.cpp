@@ -4,6 +4,140 @@
 #include <QSignalBlocker>
 #include <QDir>
 #include <QFile>
+#include <QRegularExpression>
+#include <QSysInfo>
+
+namespace {
+QString stripQuotes(QString value)
+{
+    value = value.trimmed();
+    if (value.size() >= 2 && value.startsWith('"') && value.endsWith('"')) {
+        value = value.mid(1, value.size() - 2).trimmed();
+    }
+    return value;
+}
+
+QString normalizeArch(QString arch)
+{
+    arch = arch.trimmed();
+    if (arch == "i686") {
+        arch = "i386";
+    }
+    return arch;
+}
+
+QString detectArch(Cmd* shell)
+{
+    const QString cmd = QStringLiteral("uname -m");
+    QString arch = shell->getCmdOut(cmd, QuietMode::Yes).trimmed();
+    if (arch.contains("not found", Qt::CaseInsensitive)) {
+        arch.clear();
+    }
+    if (arch.isEmpty()) {
+        arch = QSysInfo::currentCpuArchitecture();
+    }
+    arch = normalizeArch(arch);
+    if (arch.isEmpty()) {
+        arch = QStringLiteral("x86_64");
+    }
+    return arch;
+}
+
+QString mxReleaseFromRoot(const QString& rootPath)
+{
+    const QString lsbPath = rootPath.isEmpty() ? QStringLiteral("/etc/lsb-release")
+                                               : QDir(rootPath).filePath("etc/lsb-release");
+    QFile file(lsbPath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return {};
+    }
+    QString distribId;
+    QString distribRelease;
+    while (!file.atEnd()) {
+        const QString line = QString::fromUtf8(file.readLine()).trimmed();
+        if (line.startsWith("DISTRIB_ID=")) {
+            distribId = line.mid(QStringLiteral("DISTRIB_ID=").size());
+        } else if (line.startsWith("DISTRIB_RELEASE=")) {
+            distribRelease = line.mid(QStringLiteral("DISTRIB_RELEASE=").size());
+        }
+    }
+    distribId = stripQuotes(distribId);
+    distribRelease = stripQuotes(distribRelease);
+    if (!distribId.toLower().startsWith("mx")) {
+        return {};
+    }
+    distribRelease.remove(QRegularExpression("[^A-Za-z0-9]"));
+    return distribRelease.left(2);
+}
+
+bool grubSupportsForceExtraRemovable(Cmd* shell, const QString& helpCmd, Elevation elevate)
+{
+    const bool wasSuppressed = shell->outputSuppressed();
+    shell->setOutputSuppressed(true);
+    const QString helpText = shell->getCmdOut(helpCmd, QuietMode::Yes, elevate);
+    shell->setOutputSuppressed(wasSuppressed);
+    return helpText.contains("--force-extra-removable");
+}
+
+QString grubInstallCmd(const QString& baseCmd, const QString& arch, const QString& bootloaderId, bool forceExtraRemovable)
+{
+    const QString extra = forceExtraRemovable ? QStringLiteral(" --force-extra-removable") : QString();
+    return QStringLiteral("%1 --target=%2-efi --efi-directory=/boot/efi --bootloader-id=%3%4 --recheck")
+        .arg(baseCmd, arch, bootloaderId, extra);
+}
+
+QString detectInitramfsCmd(const QString& rootPath)
+{
+    const QStringList updateInitramfs = {"/usr/sbin/update-initramfs", "/usr/bin/update-initramfs"};
+    const QStringList mkinitcpio = {"/usr/bin/mkinitcpio"};
+    const QStringList dracut = {"/usr/bin/dracut", "/usr/sbin/dracut"};
+    auto existsInRoot = [&rootPath](const QString& path) {
+        if (rootPath.isEmpty()) {
+            return QFile::exists(path);
+        }
+        return QFile::exists(QDir(rootPath).filePath(path.mid(1)));
+    };
+    for (const auto& path : updateInitramfs) {
+        if (existsInRoot(path)) {
+            return QStringLiteral("update-initramfs");
+        }
+    }
+    for (const auto& path : mkinitcpio) {
+        if (existsInRoot(path)) {
+            return QStringLiteral("mkinitcpio");
+        }
+    }
+    for (const auto& path : dracut) {
+        if (existsInRoot(path)) {
+            return QStringLiteral("dracut");
+        }
+    }
+    return {};
+}
+
+QString detectUpdateGrubCmd(const QString& rootPath)
+{
+    const QStringList updateGrub = {"/usr/sbin/update-grub", "/usr/bin/update-grub"};
+    const QStringList grubMkconfig = {"/usr/bin/grub-mkconfig", "/usr/sbin/grub-mkconfig"};
+    auto existsInRoot = [&rootPath](const QString& path) {
+        if (rootPath.isEmpty()) {
+            return QFile::exists(path);
+        }
+        return QFile::exists(QDir(rootPath).filePath(path.mid(1)));
+    };
+    for (const auto& path : updateGrub) {
+        if (existsInRoot(path)) {
+            return QStringLiteral("update-grub");
+        }
+    }
+    for (const auto& path : grubMkconfig) {
+        if (existsInRoot(path)) {
+            return QStringLiteral("grub-mkconfig");
+        }
+    }
+    return {};
+}
+} // namespace
 
 BootRepairEngine::BootRepairEngine(QObject* parent)
     : QObject(parent), shell(new Cmd(this))
@@ -70,10 +204,13 @@ bool BootRepairEngine::isMounted(const QString& volume, const QString& mount) co
 
 bool BootRepairEngine::isMountedTo(const QString& volume, const QString& mount) const
 {
+    const bool wasSuppressed = shell->outputSuppressed();
+    shell->setOutputSuppressed(true);
     QString points;
     if (!shell->proc("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points, nullptr, QuietMode::Yes)) {
         shell->proc("lsblk", {"-nro", "MOUNTPOINT", volume}, &points, nullptr, QuietMode::Yes);
     }
+    shell->setOutputSuppressed(wasSuppressed);
     return points.split('\n', Qt::SkipEmptyParts).contains(mount);
 }
 
@@ -203,15 +340,14 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
     if (isMountedTo(root, "/")) {
         QString cmd = QStringLiteral("grub-install --target=i386-pc --recheck --force /dev/%1").arg(opt.location);
         if (opt.target == GrubTarget::Esp) {
-            emit log(QStringLiteral("$ arch"));
-            QString arch = shell->getCmdOut("arch", QuietMode::Yes).trimmed();
-            if (arch == "i686") arch = "i386";
-            const QString grepRel = QStringLiteral("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
-            emit log(QStringLiteral("$ %1").arg(grepRel));
-            const QString release = shell->getCmdOut(grepRel, QuietMode::Yes).left(2);
-            cmd = QStringLiteral(
-                      "grub-install --target=%1-efi --efi-directory=/boot/efi --bootloader-id=MX%2 --force-extra-removable --recheck")
-                      .arg(arch, release);
+            emit log(QStringLiteral("$ uname -m"));
+            const QString arch = detectArch(shell);
+            const QString release = mxReleaseFromRoot({});
+            const QString bootloaderId = release.isEmpty() ? QStringLiteral("MX")
+                                                           : QStringLiteral("MX%1").arg(release);
+            const QString helpCmd = QStringLiteral("grub-install --help");
+            const bool forceExtraRemovable = grubSupportsForceExtraRemovable(shell, helpCmd, Elevation::No);
+            cmd = grubInstallCmd(QStringLiteral("grub-install"), arch, bootloaderId, forceExtraRemovable);
         }
         const bool ok = (opt.target == GrubTarget::Esp)
                              ? execRunAsRoot("test -d /boot/efi || mkdir /boot/efi", nullptr, nullptr, true) &&
@@ -254,14 +390,14 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
             currentDryRun_ = false;
             return false;
         }
-        emit log(QStringLiteral("$ arch"));
-        QString arch = shell->getCmdOut("arch", QuietMode::Yes).trimmed();
-        if (arch == "i686") arch = "i386";
-        const QString grepRel2 = QStringLiteral("grep -oP '(?<=DISTRIB_RELEASE=).*' /etc/lsb-release");
-        emit log(QStringLiteral("$ %1").arg(grepRel2));
-        const QString release = shell->getCmdOut(grepRel2, QuietMode::Yes).left(2);
-        cmd = QStringLiteral("chroot %1 grub-install --target=%2-efi --efi-directory=/boot/efi --bootloader-id=MX%3 --force-extra-removable --recheck")
-                  .arg(tmpdir.path(), arch, release);
+        emit log(QStringLiteral("$ uname -m"));
+        const QString arch = detectArch(shell);
+        const QString release = mxReleaseFromRoot(tmpdir.path());
+        const QString bootloaderId = release.isEmpty() ? QStringLiteral("MX")
+                                                       : QStringLiteral("MX%1").arg(release);
+        const QString helpCmd = QStringLiteral("chroot %1 grub-install --help").arg(tmpdir.path());
+        const bool forceExtraRemovable = grubSupportsForceExtraRemovable(shell, helpCmd, Elevation::Yes);
+        cmd = grubInstallCmd(QStringLiteral("chroot %1 grub-install").arg(tmpdir.path()), arch, bootloaderId, forceExtraRemovable);
     }
 
     const bool ok = execRunAsRoot(cmd, nullptr, nullptr, true);
@@ -286,7 +422,18 @@ bool BootRepairEngine::repairGrub(const BootRepairOptions& opt)
     }
 
     if (isMountedTo(root, "/")) {
-        const bool ok = execRunAsRoot("update-grub", nullptr, nullptr, true);
+        const QString tool = detectUpdateGrubCmd({});
+        bool ok = false;
+        if (tool == "update-grub") {
+            ok = execRunAsRoot("update-grub", nullptr, nullptr, true);
+        } else if (tool == "grub-mkconfig") {
+            ok = execRunAsRoot("grub-mkconfig -o /boot/grub/grub.cfg", nullptr, nullptr, true);
+        } else {
+            emit log(QStringLiteral("No GRUB config tool found (update-grub/grub-mkconfig)."));
+            emit finished(false);
+            currentDryRun_ = false;
+            return false;
+        }
         emit finished(ok);
         currentDryRun_ = false;
         return ok;
@@ -306,7 +453,20 @@ bool BootRepairEngine::repairGrub(const BootRepairOptions& opt)
     if (QFile::exists(tmpdir.path() + "/boot/efi")) {
         ensureMountFor(tmpdir.path(), "/boot/efi", opt.espDevice);
     }
-    const bool ok = execRunAsRoot(QStringLiteral("chroot %1 update-grub").arg(tmpdir.path()), nullptr, nullptr, true);
+    const QString tool = detectUpdateGrubCmd(tmpdir.path());
+    bool ok = false;
+    if (tool == "update-grub") {
+        ok = execRunAsRoot(QStringLiteral("chroot %1 update-grub").arg(tmpdir.path()), nullptr, nullptr, true);
+    } else if (tool == "grub-mkconfig") {
+        ok = execRunAsRoot(QStringLiteral("chroot %1 grub-mkconfig -o /boot/grub/grub.cfg").arg(tmpdir.path()),
+                           nullptr, nullptr, true);
+    } else {
+        emit log(QStringLiteral("No GRUB config tool found in target root (update-grub/grub-mkconfig)."));
+        cleanupMounts(tmpdir.path(), mapper);
+        emit finished(false);
+        currentDryRun_ = false;
+        return false;
+    }
     cleanupMounts(tmpdir.path(), mapper);
     emit finished(ok);
     currentDryRun_ = false;
@@ -328,7 +488,20 @@ bool BootRepairEngine::regenerateInitramfs(const BootRepairOptions& opt)
     }
 
     if (isMountedTo(root, "/")) {
-        const bool ok = execProcAsRoot("update-initramfs", {"-c", "-v", "-k", "all"}, nullptr, nullptr, true);
+        const QString tool = detectInitramfsCmd({});
+        bool ok = false;
+        if (tool == "update-initramfs") {
+            ok = execProcAsRoot("update-initramfs", {"-c", "-v", "-k", "all"}, nullptr, nullptr, true);
+        } else if (tool == "mkinitcpio") {
+            ok = execProcAsRoot("mkinitcpio", {"-P"}, nullptr, nullptr, true);
+        } else if (tool == "dracut") {
+            ok = execProcAsRoot("dracut", {"--regenerate-all", "--force"}, nullptr, nullptr, true);
+        } else {
+            emit log(QStringLiteral("No initramfs generator found (update-initramfs/mkinitcpio/dracut)."));
+            emit finished(false);
+            currentDryRun_ = false;
+            return false;
+        }
         emit finished(ok);
         currentDryRun_ = false;
         return ok;
@@ -344,7 +517,21 @@ bool BootRepairEngine::regenerateInitramfs(const BootRepairOptions& opt)
         emit finished(false);
         return false;
     }
-    const bool ok = execProcAsRoot("chroot", {tmpdir.path(), "update-initramfs", "-c", "-v", "-k", "all"}, nullptr, nullptr, true);
+    const QString tool = detectInitramfsCmd(tmpdir.path());
+    bool ok = false;
+    if (tool == "update-initramfs") {
+        ok = execProcAsRoot("chroot", {tmpdir.path(), "update-initramfs", "-c", "-v", "-k", "all"}, nullptr, nullptr, true);
+    } else if (tool == "mkinitcpio") {
+        ok = execProcAsRoot("chroot", {tmpdir.path(), "mkinitcpio", "-P"}, nullptr, nullptr, true);
+    } else if (tool == "dracut") {
+        ok = execProcAsRoot("chroot", {tmpdir.path(), "dracut", "--regenerate-all", "--force"}, nullptr, nullptr, true);
+    } else {
+        emit log(QStringLiteral("No initramfs generator found in target root (update-initramfs/mkinitcpio/dracut)."));
+        cleanupMounts(tmpdir.path(), mapper);
+        emit finished(false);
+        currentDryRun_ = false;
+        return false;
+    }
     cleanupMounts(tmpdir.path(), mapper);
     emit finished(ok);
     currentDryRun_ = false;

@@ -19,10 +19,16 @@ Cmd::Cmd(QObject *parent)
                                                   : QStringLiteral("/usr/bin/gksu"))),
       helper {"/usr/lib/" + QCoreApplication::applicationName() + "/helper"}
 {
-    connect(this, &Cmd::readyReadStandardOutput, [this] { emit outputAvailable(readAllStandardOutput()); });
-    connect(this, &Cmd::readyReadStandardError, [this] { emit errorAvailable(readAllStandardError()); });
-    connect(this, &Cmd::outputAvailable, [this](const QString &out) { out_buffer += out; });
-    connect(this, &Cmd::errorAvailable, [this](const QString &out) { out_buffer += out; });
+    connect(this, &Cmd::readyReadStandardOutput, [this] {
+        const QString out = readAllStandardOutput();
+        out_buffer += out;
+        if (!suppressOutput) emit outputAvailable(out);
+    });
+    connect(this, &Cmd::readyReadStandardError, [this] {
+        const QString out = readAllStandardError();
+        out_buffer += out;
+        if (!suppressOutput) emit errorAvailable(out);
+    });
 }
 
 QString Cmd::getCmdOut(const QString &cmd, QuietMode quiet, Elevation elevate)
@@ -92,4 +98,14 @@ bool Cmd::run(const QString &cmd, QString *output, const QByteArray *input, Quie
 bool Cmd::runAsRoot(const QString &cmd, QString *output, const QByteArray *input, QuietMode quiet)
 {
     return run(cmd, output, input, quiet, Elevation::Yes);
+}
+
+void Cmd::setOutputSuppressed(bool suppressed)
+{
+    suppressOutput = suppressed;
+}
+
+bool Cmd::outputSuppressed() const
+{
+    return suppressOutput;
 }

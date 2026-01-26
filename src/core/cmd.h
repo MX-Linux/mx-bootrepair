@@ -22,6 +22,8 @@ public:
                    QuietMode quiet = QuietMode::No);
     [[nodiscard]] QString getCmdOut(const QString &cmd, QuietMode quiet = QuietMode::No,
                                     Elevation elevate = Elevation::No);
+    void setOutputSuppressed(bool suppressed);
+    [[nodiscard]] bool outputSuppressed() const;
 
 signals:
     void done();
@@ -32,4 +34,5 @@ private:
     QString out_buffer;
     QString asRoot;
     QString helper;
+    bool suppressOutput = false;
 };

@@ -25,8 +25,10 @@ cmake_minimum_required(VERSION 3.16)
 set(PROJECT_VERSION_FROM_CHANGELOG "")
 
 if(DEFINED PROJECT_VERSION_OVERRIDE AND NOT "${PROJECT_VERSION_OVERRIDE}" STREQUAL "")
-    set(PROJECT_VERSION_FROM_CHANGELOG "${PROJECT_VERSION_OVERRIDE}")
-    message(STATUS "Using version override: ${PROJECT_VERSION_FROM_CHANGELOG}")
+    set(PROJECT_VERSION_FULL "${PROJECT_VERSION_OVERRIDE}")
+    # Strip non-numeric suffix (e.g. "26.01arch" -> "26.01") for CMake VERSION compatibility
+    string(REGEX REPLACE "[^0-9.].*$" "" PROJECT_VERSION_FROM_CHANGELOG "${PROJECT_VERSION_FULL}")
+    message(STATUS "Using version override: ${PROJECT_VERSION_FULL} (CMake version: ${PROJECT_VERSION_FROM_CHANGELOG})")
 else()
     # Try dpkg-parsechangelog first (Debian/Ubuntu)
     execute_process(
@@ -58,6 +60,13 @@ project(mx-boot-repair
     DESCRIPTION "MX Boot Repair - GUI for repairing boot problems"
     LANGUAGES CXX
 )
+
+# Use the full version string (with suffix like "arch") if available, otherwise use CMake's numeric version
+if(DEFINED PROJECT_VERSION_FULL)
+    set(PROJECT_DISPLAY_VERSION "${PROJECT_VERSION_FULL}")
+else()
+    set(PROJECT_DISPLAY_VERSION "${PROJECT_VERSION}")
+endif()
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 20)
@@ -197,7 +206,7 @@ endif()
 target_compile_definitions(mx-boot-repair PRIVATE
     QT_DEPRECATED_WARNINGS
     QT_DISABLE_DEPRECATED_BEFORE=0x060000
-    VERSION="${PROJECT_VERSION}"
+    VERSION="${PROJECT_DISPLAY_VERSION}"
 )
 
 # Release-specific optimizations
@@ -245,7 +254,7 @@ if(BUILD_CLI)
     target_compile_definitions(mx-boot-repair-cli PRIVATE
         QT_DEPRECATED_WARNINGS
         QT_DISABLE_DEPRECATED_BEFORE=0x060000
-        VERSION="${PROJECT_VERSION}"
+        VERSION="${PROJECT_DISPLAY_VERSION}"
     )
 
     set_target_properties(mx-boot-repair-cli PROPERTIES

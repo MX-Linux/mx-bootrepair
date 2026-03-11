@@ -24,6 +24,7 @@
 #include "core/bootrepair_engine.h"
 
 #include <QMessageBox>
+#include <QTimer>
 
 namespace Ui
 {
@@ -53,6 +54,7 @@ private slots:
 
 private:
     BootRepairEngine *engine;
+    QTimer *progressTimer;
     Ui::MainWindow *ui;
     QStringList ListDisk;
     QStringList ListPart;

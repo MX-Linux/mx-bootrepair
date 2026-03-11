@@ -31,6 +31,7 @@ public:
     static bool isUefi();
     bool isMounted(const QString& volume, const QString& mount) const; // public wrapper
     bool isLuks(const QString& device) const;                          // /dev/...
+    bool canUnlockLuks(const QString& device, const QByteArray& pass);
     bool isEspPartition(const QString& device) const;                  // sda1 or /dev/sda1
     QString mountSource(const QString& mountpoint) const;              // findmnt SOURCE
     bool isLinuxPartitionType(const QString& device) const;            // sdaX or /dev/sdaX

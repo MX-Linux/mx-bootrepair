@@ -22,7 +22,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QApplication>
 #include <QDebug>
+#include <QEventLoop>
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QScrollBar>
@@ -32,14 +34,47 @@
 
 using namespace std::chrono_literals;
 
+namespace
+{
+void setBusyCursor()
+{
+    if (QApplication::overrideCursor()) {
+        QApplication::changeOverrideCursor(QCursor(Qt::BusyCursor));
+    } else {
+        QApplication::setOverrideCursor(QCursor(Qt::BusyCursor));
+    }
+    QApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+}
+
+void clearBusyCursor()
+{
+    while (QApplication::overrideCursor()) {
+        QApplication::restoreOverrideCursor();
+    }
+}
+} // namespace
+
 MainWindow::MainWindow(QWidget *parent)
     : QDialog(parent),
+      progressTimer(new QTimer(this)),
       ui(new Ui::MainWindow)
 {
     qDebug().noquote() << QCoreApplication::applicationName() << "version:" << QCoreApplication::applicationVersion();
 
     ui->setupUi(this);
     engine = new BootRepairEngine(this);
+    progressTimer->setInterval(250);
+
+    connect(progressTimer, &QTimer::timeout, this, [this] {
+        const int currentValue = ui->progressBar->value();
+        if (currentValue >= 90) {
+            return;
+        }
+
+        const int increment = qMax(1, (95 - currentValue) / 10);
+        ui->progressBar->setValue(qMin(90, currentValue + increment));
+        ui->progressBar->repaint();
+    });
 
     connect(ui->buttonAbout, &QPushButton::clicked, this, &MainWindow::buttonAbout_clicked);
     connect(ui->buttonApply, &QPushButton::clicked, this, &MainWindow::buttonApply_clicked);
@@ -72,11 +107,14 @@ MainWindow::~MainWindow()
 void MainWindow::refresh()
 {
     disableOutput();
+    progressTimer->stop();
     ui->stackedWidget->setCurrentIndex(0);
     ui->radioReinstall->setFocus();
     ui->radioReinstall->setChecked(true);
     ui->outputBox->clear();
     ui->outputLabel->clear();
+    ui->progressBar->setRange(0, 100);
+    ui->progressBar->setValue(0);
     ui->grubInsLabel->show();
     ui->radioGrubRoot->show();
     ui->radioGrubMbr->show();
@@ -88,22 +126,17 @@ void MainWindow::refresh()
     ui->buttonApply->setEnabled(true);
     ui->buttonCancel->setEnabled(true);
     ui->comboRoot->setDisabled(false);
+    clearBusyCursor();
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
 void MainWindow::installGRUB()
 {
-    ui->buttonCancel->setEnabled(false);
-    ui->buttonApply->setEnabled(false);
-    ui->stackedWidget->setCurrentWidget(ui->outputPage);
-
     BootRepairOptions opt;
     opt.location = ui->comboLocation->currentText().section(' ', 0, 0);
     opt.root = "/dev/" + ui->comboRoot->currentText().section(' ', 0, 0);
     opt.target = ui->radioGrubEsp->isChecked() ? GrubTarget::Esp
                                                : (ui->radioGrubRoot->isChecked() ? GrubTarget::Root : GrubTarget::Mbr);
-
-    ui->outputLabel->setText(tr("GRUB is being installed on %1 device.").arg(opt.location));
 
     if (!engine->isMounted(opt.root, "/")) {
         if (engine->isLuks(opt.root)) {
@@ -114,7 +147,14 @@ void MainWindow::installGRUB()
                                         QLineEdit::Password, QString(), &ok)
                       .toUtf8();
             if (!ok) {
-                refresh();
+                return;
+            }
+            setBusyCursor();
+            if (!engine->canUnlockLuks(opt.root, pass)) {
+                clearBusyCursor();
+                QMessageBox::critical(this, tr("Error"),
+                                      tr("Could not unlock %1. Please check the password and try again.")
+                                          .arg(opt.root));
                 return;
             }
             opt.luksPassword = pass;
@@ -128,6 +168,12 @@ void MainWindow::installGRUB()
         opt.espDevice = "/dev/" + opt.location;
     }
 
+    ui->buttonCancel->setEnabled(false);
+    ui->buttonApply->setEnabled(false);
+    ui->stackedWidget->setCurrentWidget(ui->outputPage);
+    ui->outputLabel->setText(tr("GRUB is being installed on %1 device.").arg(opt.location));
+    QApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+
     displayOutput();
     const bool success = engine->installGrub(opt);
     disableOutput();
@@ -138,11 +184,7 @@ void MainWindow::installGRUB()
 
 void MainWindow::repairGRUB()
 {
-    ui->buttonCancel->setEnabled(false);
-    ui->buttonApply->setEnabled(false);
-    ui->stackedWidget->setCurrentWidget(ui->outputPage);
     const QString root = "/dev/" + ui->comboLocation->currentText().section(' ', 0, 0);
-    ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
     BootRepairOptions opt;
     opt.root = root;
     if (!engine->isMounted(opt.root, "/")) {
@@ -154,7 +196,14 @@ void MainWindow::repairGRUB()
                                         QLineEdit::Password, QString(), &ok)
                       .toUtf8();
             if (!ok) {
-                refresh();
+                return;
+            }
+            setBusyCursor();
+            if (!engine->canUnlockLuks(opt.root, pass)) {
+                clearBusyCursor();
+                QMessageBox::critical(this, tr("Error"),
+                                      tr("Could not unlock %1. Please check the password and try again.")
+                                          .arg(opt.root));
                 return;
             }
             opt.luksPassword = pass;
@@ -162,6 +211,11 @@ void MainWindow::repairGRUB()
         opt.bootDevice = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
         opt.espDevice = engine->resolveFstabDevice(opt.root, "/boot/efi", opt.luksPassword);
     }
+    ui->buttonCancel->setEnabled(false);
+    ui->buttonApply->setEnabled(false);
+    ui->stackedWidget->setCurrentWidget(ui->outputPage);
+    ui->outputLabel->setText(tr("The GRUB configuration file (grub.cfg) is being rebuilt."));
+    QApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
     displayOutput();
     const bool success = engine->repairGrub(opt);
     disableOutput();
@@ -170,13 +224,8 @@ void MainWindow::repairGRUB()
 
 void MainWindow::regenerateInitramfs()
 {
-    ui->buttonCancel->setEnabled(false);
-    ui->buttonApply->setEnabled(false);
-    ui->stackedWidget->setCurrentWidget(ui->outputPage);
-
     BootRepairOptions opt;
     opt.root = "/dev/" + ui->comboRoot->currentText().section(' ', 0, 0);
-    ui->outputLabel->setText(tr("Generating initramfs images on: %1").arg(opt.root));
     if (!engine->isMounted(opt.root, "/")) {
         if (engine->isLuks(opt.root)) {
             bool ok = false;
@@ -186,13 +235,25 @@ void MainWindow::regenerateInitramfs()
                                         QLineEdit::Password, QString(), &ok)
                       .toUtf8();
             if (!ok) {
-                refresh();
+                return;
+            }
+            setBusyCursor();
+            if (!engine->canUnlockLuks(opt.root, pass)) {
+                clearBusyCursor();
+                QMessageBox::critical(this, tr("Error"),
+                                      tr("Could not unlock %1. Please check the password and try again.")
+                                          .arg(opt.root));
                 return;
             }
             opt.luksPassword = pass;
         }
         opt.bootDevice = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
     }
+    ui->buttonCancel->setEnabled(false);
+    ui->buttonApply->setEnabled(false);
+    ui->stackedWidget->setCurrentWidget(ui->outputPage);
+    ui->outputLabel->setText(tr("Generating initramfs images on: %1").arg(opt.root));
+    QApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
     displayOutput();
     const bool success = engine->regenerateInitramfs(opt);
     disableOutput();
@@ -207,6 +268,7 @@ void MainWindow::backupBR(const QString &filename)
     const QString location = ui->comboLocation->currentText().section(' ', 0, 0);
     const QString text = tr("Backing up MBR or PBR from %1 device.").arg(location);
     ui->outputLabel->setText(text);
+    QApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
     displayOutput();
     BootRepairOptions opt;
     opt.location = location;
@@ -271,6 +333,7 @@ void MainWindow::restoreBR(const QString &filename)
     }
     const QString text = tr("Restoring MBR/PBR from backup to %1 device.").arg(location);
     ui->outputLabel->setText(text);
+    QApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
     displayOutput();
     BootRepairOptions opt;
     opt.location = location;
@@ -330,13 +393,17 @@ QString MainWindow::selectPartFromList(const QString &mountpoint)
 
 void MainWindow::procStart()
 {
-    setCursor(QCursor(Qt::BusyCursor));
+    progressTimer->start();
+    setBusyCursor();
 }
 
 void MainWindow::procDone()
 {
+    progressTimer->stop();
     ui->progressBar->setRange(0, 100);
     ui->progressBar->setValue(100);
+    ui->progressBar->repaint();
+    clearBusyCursor();
     setCursor(QCursor(Qt::ArrowCursor));
     ui->buttonCancel->setEnabled(true);
     ui->buttonApply->setEnabled(true);
@@ -346,7 +413,9 @@ void MainWindow::procDone()
 
 void MainWindow::displayOutput()
 {
-    ui->progressBar->setRange(0, 0);
+    ui->progressBar->setRange(0, 100);
+    ui->progressBar->setValue(5);
+    ui->progressBar->repaint();
     connect(engine, &BootRepairEngine::log, this, &MainWindow::outputAvailable);
     connect(engine, &BootRepairEngine::finished, this, &MainWindow::procDone);
     procStart();
@@ -368,6 +437,7 @@ void MainWindow::displayResult(bool success)
 
 void MainWindow::disableOutput()
 {
+    progressTimer->stop();
     disconnect(engine, &BootRepairEngine::log, this, &MainWindow::outputAvailable);
     disconnect(engine, &BootRepairEngine::finished, this, &MainWindow::procDone);
 }
@@ -427,6 +497,12 @@ void MainWindow::outputAvailable(const QString &output)
     const bool endsNl = !output.isEmpty() && (output.endsWith('\n') || output.endsWith("\r\n"));
     ui->outputBox->insertPlainText(endsNl ? output : output + '\n');
     ui->outputBox->verticalScrollBar()->setValue(ui->outputBox->verticalScrollBar()->maximum());
+
+    const int lineCount = qMax(1, output.count('\n'));
+    const int increment = qMin(12, qMax(4, lineCount * 2));
+    const int nextValue = qMin(95, ui->progressBar->value() + increment);
+    ui->progressBar->setValue(nextValue);
+    ui->progressBar->repaint();
 }
 
 void MainWindow::buttonApply_clicked()

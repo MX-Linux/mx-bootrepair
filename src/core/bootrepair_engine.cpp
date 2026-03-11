@@ -1,9 +1,11 @@
 #include "core/bootrepair_engine.h"
 
+#include <QCoreApplication>
 #include <QSignalBlocker>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QRandomGenerator>
 #include <QSysInfo>
 
 namespace {
@@ -337,6 +339,23 @@ bool BootRepairEngine::isLuks(const QString& device) const
 {
     const QString dev = device.startsWith("/dev/") ? device : ("/dev/" + device);
     return shell->procAsRoot("cryptsetup", {"isLuks", dev}, nullptr, nullptr, QuietMode::Yes);
+}
+
+bool BootRepairEngine::canUnlockLuks(const QString& device, const QByteArray& pass)
+{
+    const QString dev = device.startsWith("/dev/") ? device : ("/dev/" + device);
+    if (!isLuks(dev)) {
+        return true;
+    }
+
+    const QString probeMapper = QStringLiteral("mxbr-probe-%1-%2")
+                                    .arg(QCoreApplication::applicationPid())
+                                    .arg(QString::number(QRandomGenerator::global()->generate64(), 16));
+    if (!openLuks(dev, probeMapper, pass)) {
+        return false;
+    }
+    execProcAsRoot("cryptsetup", {"luksClose", probeMapper}, nullptr, nullptr, true);
+    return true;
 }
 
 static inline QString normalizeDev(const QString& device)

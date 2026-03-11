@@ -328,6 +328,18 @@
      <widget class="QWidget" name="outputPage">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
+        <widget class="QLabel" name="outputTitleLabel">
+         <property name="text">
+          <string>Output</string>
+         </property>
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QTextBrowser" name="outputBox"/>
        </item>
        <item>

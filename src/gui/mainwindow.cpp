@@ -28,6 +28,7 @@
 #include <QScrollBar>
 
 #include "about.h"
+#include "core/app_init.h"
 
 using namespace std::chrono_literals;
 
@@ -62,7 +63,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    Cmd().copyLogAsRoot(QuietMode::Yes);
+    if (AppInit::shouldPersistLog()) {
+        Cmd().copyLogAsRoot(QuietMode::Yes);
+    }
     delete ui;
 }
 

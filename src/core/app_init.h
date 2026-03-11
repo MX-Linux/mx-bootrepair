@@ -12,5 +12,7 @@ void installTranslations();
 // Install a Qt message handler that logs to /tmp/<appname>.log and echoes to stdout
 void setupLogging();
 
-}
+// True when the current temp log contains enough content to be worth persisting.
+bool shouldPersistLog();
 
+}

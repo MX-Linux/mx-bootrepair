@@ -65,7 +65,9 @@ int main(int argc, char *argv[])
 
         CliController controller;
         const int code = controller.run();
-        Cmd().copyLogAsRoot(QuietMode::Yes);
+        if (AppInit::shouldPersistLog()) {
+            Cmd().copyLogAsRoot(QuietMode::Yes);
+        }
         return code;
     }
 

@@ -14,6 +14,7 @@
 
 namespace {
 static QFile logFile; // persists for process lifetime
+constexpr qint64 MIN_PERSISTED_LOG_SIZE = 256;
 
 void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -88,6 +89,21 @@ void setupLogging()
         qWarning() << "Failed to open log file:" << log_name;
     }
     qInstallMessageHandler(messageHandler);
+}
+
+bool shouldPersistLog()
+{
+    if (logFile.isOpen()) {
+        logFile.flush();
+    }
+
+    const QString logPath = logFile.fileName();
+    if (logPath.isEmpty()) {
+        return false;
+    }
+
+    const QFileInfo info(logPath);
+    return info.exists() && info.isFile() && info.size() >= MIN_PERSISTED_LOG_SIZE;
 }
 
 } // namespace AppInit

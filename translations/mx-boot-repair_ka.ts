@@ -1,56 +1,56 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr_BE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ka">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation>MX Réparation d’amorçage - MX Boot Repair</translation>
+        <translation>MX Boot Repair</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="45"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>MX Réparation d’amorçage est un utilitaire qui peut être utilisé pour réinstaller GRUB, chargeur d’amorçage, sur l’ESP (EFI Système Partition), le MBR (Master Boot Record) ou sur la partition racine. Il offre la possibilité de reconstruire le fichier de configuration de GRUB et de sauvegarder et restaurer le MBR ou PBR (root).</translation>
+        <translation>MX Boot Repair პროგრამაა, რომელიც GRUB ჩამტვირთავის თავიდან დასაყენებლად გამოიყენება ESP-ზე (EFI-ის სისტემური დანაყოფი), MBR-ზე (Master Boot Record), ან ძირითად დანაყოფზე. მას აქვს არჩევანი, თავიდან ააგოს GRUB-ის კონფიგურაციის ფაილი და დამარქაფოს და აღადგინოს MBR/PBR.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="64"/>
         <source>What would you like to do?</source>
-        <translation>Que souhaitez-vous faire?</translation>
+        <translation>რისი გაკეთება გნებავთ?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="94"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation>Sauvegarder le MBR ou le PBR (démarrage en mode hérité - legacy uniquement)</translation>
+        <translation>MBR-ის, ან PBR-ის მარქაფი (მხოლოდ, მოძველებული ჩატვირთვა)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="70"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation>Réinstaller le chargeur d’amorçage GRUB sur l’ESP, le MBR ou le PRB (root - racine)</translation>
+        <translation>ჩამტვირთავის GRUB თავიდან დაყენება ESP-ზე, MBR-ზე, ან PBR-ზე (root)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="80"/>
         <source>Repair GRUB configuration file</source>
-        <translation>Réparer le fichier de configuration de GRUB</translation>
+        <translation>GRUB-ის კონფიგურაციის ფაილის შეკეთება</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="87"/>
         <source>Regenerate initramfs images</source>
-        <translation>Régénérer les images d’initramfs</translation>
+        <translation>initramfs ასლის ფაილის თავიდან გენერაცია</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="101"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation>Restaurer le MBR ou le PBR depuis la sauvegarde (démarrage en mode hérité - legacy uniquement)</translation>
+        <translation>MBR-ის, ან PBR-ის აღდგენა (მხოლოდ, მოძველებული ჩატვირთვა)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="134"/>
         <location filename="../src/gui/mainwindow.cpp" line="441"/>
         <source>Select Boot Method</source>
-        <translation>Sélectionner la méthode d’amorçage</translation>
+        <translation>აირჩიეთ ჩატვირთვის მეთოდი</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="152"/>
         <source>Master Boot Record</source>
-        <translation>Master Boot Record (MBR)</translation>
+        <translation>MBR</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="155"/>
@@ -67,12 +67,12 @@
         <location filename="../src/gui/mainwindow.ui" line="193"/>
         <location filename="../src/gui/mainwindow.cpp" line="442"/>
         <source>Location:</source>
-        <translation>Emplacement:</translation>
+        <translation>მდებარეობა:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="218"/>
         <source>EFI System Partition</source>
-        <translation>Partition système EFI</translation>
+        <translation>EFI-ის სისტემური დანაყოფი</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="221"/>
@@ -82,45 +82,45 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="240"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Racine - Root (Partition Boot Record - PBR)</translation>
+        <translation>ძირითადი (დანაყოფის ჩატვირთვის ჩანაწერი)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="243"/>
         <location filename="../src/gui/mainwindow.cpp" line="444"/>
         <source>root</source>
-        <translation>racine - root</translation>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="278"/>
         <location filename="../src/gui/mainwindow.cpp" line="449"/>
         <source>Select root location:</source>
-        <translation>Sélectionner l’emplacement de la racine - root:</translation>
+        <translation>აირჩიეთ ძირითადი საქაღალდის მდებარეობა:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="300"/>
         <location filename="../src/gui/mainwindow.cpp" line="443"/>
         <source>Install on:</source>
-        <translation>Installer sur:</translation>
+        <translation>დაყენება რაზე:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="389"/>
         <source>About this application</source>
-        <translation>À propos de cette application</translation>
+        <translation>ამ აპლიკაციის შესახებ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="392"/>
         <source>About...</source>
-        <translation>À propos …</translation>
+        <translation>შესახებ...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="440"/>
         <source>Display help </source>
-        <translation>Afficher l’aide </translation>
+        <translation>დახმარების ჩვენება </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="443"/>
         <source>Help</source>
-        <translation>Aide</translation>
+        <translation>დახმარება</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="449"/>
@@ -130,12 +130,12 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="490"/>
         <source>Cancel any changes then quit</source>
-        <translation>Annuler toutes les modifications puis quitter</translation>
+        <translation>ყველა ცვლილების გაუქმება და გასვლა</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="493"/>
         <source>Cancel</source>
-        <translation>Annuler</translation>
+        <translation>გაუქმება</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="499"/>
@@ -145,23 +145,23 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="518"/>
         <source>Apply any changes</source>
-        <translation>Appliquer les changements</translation>
+        <translation>ცვლილებების გადატარება</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="521"/>
         <location filename="../src/gui/mainwindow.cpp" line="87"/>
         <source>Next</source>
-        <translation>Suivant</translation>
+        <translation>შემდეგი</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="477"/>
         <source>Apply</source>
-        <translation>Appliquer</translation>
+        <translation>გადატარება</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="107"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation>GRUB est en cours d’installation sur le périphérique %1.</translation>
+        <translation>მიმდინარეობს GRUB-ის დაყენება მოწყობილობაზე %1.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="296"/>
@@ -173,37 +173,37 @@
         <location filename="../src/gui/mainwindow.cpp" line="507"/>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>Error</source>
-        <translation>Erreur</translation>
+        <translation>შეცდომა</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="146"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation>Le fichier de configuration de GRUB (grub.cfg) est en cours de reconstruction.</translation>
+        <translation>მიმდინარეობს GRUB-ის კონფიგურაციის ფაილის (grub.cfg) თავიდან აგება.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="180"/>
         <source>Generating initramfs images on: %1</source>
-        <translation>Génération des images d’initramfs sur: %1</translation>
+        <translation>Initramfs-ის გენერაცია: %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="209"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation>Sauvegarde du MBR ou du PBR à partir du périphérique %1.</translation>
+        <translation>MBR/PBR-ის მარქაფი %1 მოწყობილობიდან.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="265"/>
         <source>Warning</source>
-        <translation>Attention</translation>
+        <translation>გაფრთხილება</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="266"/>
         <source>You are going to write the content of </source>
-        <translation>Vous allez écrire le contenu de </translation>
+        <translation>თქვენ აპირებთ, ჩაწეროთ შემცველობა ფაილის </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="266"/>
         <source> to </source>
-        <translation> sur </translation>
+        <translation> სადამდე </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="267"/>
@@ -212,127 +212,127 @@
 Are you sure?</source>
         <translation>
 
-Êtes-vous sûr•e?</translation>
+დარწმუნებული ბრძანდებით?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="273"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation>Restauration du MBR/PBR depuis la sauvegarde vers le périphérique %1.</translation>
+        <translation>MBR/PBR-ის აღდგენა მარქაფიდან მოწყობილობაზე %1.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="297"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation>Impossible de trouver une partition système EFI (ESP) sur les disques du système. Veuillez créer une partition ESP et réessayer.</translation>
+        <translation>სისტემურ დისკებზე EFI-ის სისტემური დანაყოფი (ESP) აღმოჩენილი არაა. შექმენით ESP და თავიდან სცადეთ.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="321"/>
         <source>Select %1 location:</source>
-        <translation>Sélectionner l’emplacement %1:</translation>
+        <translation>აირჩიეთ %1-ის მდებარეობა:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="344"/>
         <source>Back</source>
-        <translation>Retour</translation>
+        <translation>უკან</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="360"/>
         <source>Success</source>
-        <translation>Installation réussie</translation>
+        <translation>წარმატება</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="360"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Le processus s’est achevé avec succès. &lt;p&gt;&lt;b&gt; Voulez-vous quitter MX Réparation d’amorçage?&lt;/b&gt;</translation>
+        <translation>პროცესი წარმატებით დასრულდა.&lt;p&gt;&lt;b&gt;გნებავთ MX Boot Repair-დან გასვლა?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="366"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation>Processus terminé. Des erreurs se sont produites.</translation>
+        <translation>პროცესი დასრულდა. აღმოჩენილია რამდენიმე შეცდომა.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="114"/>
         <location filename="../src/gui/mainwindow.cpp" line="154"/>
         <location filename="../src/gui/mainwindow.cpp" line="186"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation>Entrer le mot de passe pour déverrouiller la partition chiffrée %1:</translation>
+        <translation>შეიყვანეთ პაროლი დაშიფრული დანაყოფის %1 განბლოკვისთვის:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="448"/>
         <source>Select GRUB location</source>
-        <translation>Sélectionner l’emplacement de GRUB</translation>
+        <translation>აირჩიეთ GRUB-ის მდებარეობა</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="457"/>
         <source>Select initramfs options</source>
-        <translation>Sélectionner les options d’initramfs</translation>
+        <translation>აირჩიეთ initramfs-ის პარამეტრები</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="467"/>
         <source>Select Item to Back Up</source>
-        <translation>Sélectionnez l’élément à sauvegarder</translation>
+        <translation>აირჩიეთ ელემენტი დასამარქაფებლად</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="472"/>
         <source>Select Item to Restore</source>
-        <translation>Sélectionnez l’élément à restaurer</translation>
+        <translation>აირჩიეთ ელემენტი აღსადგენად</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="482"/>
         <location filename="../src/gui/mainwindow.cpp" line="493"/>
         <source>No location was selected.</source>
-        <translation>Aucun emplacement sélectionné.</translation>
+        <translation>მდებარეობა არჩეული არაა.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="487"/>
         <location filename="../src/gui/mainwindow.cpp" line="500"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation>Veuillez sélectionner la partition racine « root » du système que vous souhaitez réparer.</translation>
+        <translation>აირჩიეთ ძირითადი დანაყოფი სისტემის, რომლის გასწორებაც გსურთ.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="505"/>
         <source>Select backup file name</source>
-        <translation>Sélectionnez le nom du fichier de sauvegarde</translation>
+        <translation>აირჩიეთ მარქაფის ფაილის სახელი</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="507"/>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>No file was selected.</source>
-        <translation>Aucun fichier n’a été sélectionné.</translation>
+        <translation>ფაილი არჩეული არაა.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="512"/>
         <source>Select MBR or PBR backup file</source>
-        <translation>Sélectionner le fichier de sauvegarde du MBR ou du PBR</translation>
+        <translation>აირჩიეთ MBR/PBR მარქაფის ფაილი</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="530"/>
         <source>About %1</source>
-        <translation>À propos %1</translation>
+        <translation>%1-ის შესახებ</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="532"/>
         <source>Version: </source>
-        <translation>Version: </translation>
+        <translation>ვერსია: </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="533"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>Simple programme de réparation d’amorçage pour MX Linux </translation>
+        <translation>მარტივი ჩატვირთვის შეკეთების პროგრამა MX Linux-ისთვის</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="535"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>Copyright (c) MX Linux</translation>
+        <translation>(c) MX Linux საავტორო ფულებები დაცულია</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="536"/>
         <source>%1 License</source>
-        <translation>%1 Licence</translation>
+        <translation>ლიცენზია %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="549"/>
         <source>%1 Help</source>
-        <translation>%1 Aide</translation>
+        <translation>%1-ის დახმარება</translation>
     </message>
 </context>
 <context>
@@ -340,281 +340,281 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="52"/>
         <source>License</source>
-        <translation>Licence</translation>
+        <translation>ლიცენზია</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="53"/>
         <location filename="../src/gui/about.cpp" line="63"/>
         <source>Changelog</source>
-        <translation>Journal des modifications</translation>
+        <translation>ცვლილებების ჟურნალი</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="54"/>
         <source>Cancel</source>
-        <translation>Annuler</translation>
+        <translation>გაუქმება</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="73"/>
         <source>&amp;Close</source>
-        <translation>&amp;Quitter</translation>
+        <translation>&amp;დახურვა</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="86"/>
         <source>MX Boot Repair</source>
-        <translation>MX Réparation d’amorçage - MX Boot Repair</translation>
+        <translation>MX Boot Repair</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="94"/>
         <source>MX Boot Repair - GUI and CLI tool for repairing GRUB bootloader</source>
-        <translation>MX Réparateur d’amorçage (MX Boot Repair) - Outil GUI et CLI pour réparer le chargeur d’amorçage GRUB</translation>
+        <translation>MX Boot Repair - GUI და CLI პროგრამა GRUB ჩამტვირთავის შესაკეთებლად</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="99"/>
         <source>Force CLI mode</source>
-        <translation>Forcer le mode CLI</translation>
+        <translation>ნაძალადევი CLI რეჟიმი</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="100"/>
         <source>Print actions without executing</source>
-        <translation>Afficher les actions sans les exécuter</translation>
+        <translation>ქმედებების გამოტანა გაშვების გარეშე</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="101"/>
         <source>Do not prompt; require flags</source>
-        <translation>Ne pas poser de questions; exiger des options</translation>
+        <translation>კითხვების დასმის გარეშე. სჭირდება ალმები</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="102"/>
         <source>Action: install, repair, initramfs, backup, restore</source>
-        <translation>Action: installer, réparer, initramfs, sauvegarder, restaurer</translation>
+        <translation>ქმედება: დაყენება, შეკეთება, initramfs, მარქაფი, აღდგენა</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="103"/>
         <source>Target for install: mbr, esp, root</source>
-        <translation>Cible pour l’installation: mbr, esp, root</translation>
+        <translation>დასაყენებელი სამიზნე: mbr, esp, root</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="104"/>
         <source>Device for target (e.g., sda, sda1)</source>
-        <translation>Périphérique pour la cible (par exemple, sda, sda1)</translation>
+        <translation>მოწყობილობა სამიზნისთვის (მაგ: sda, sda1)</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="105"/>
         <source>Root partition (e.g., /dev/sda2)</source>
-        <translation>Partition root (par exemple, /dev/sda2)</translation>
+        <translation>ძირითადი დანაყოფი (მაგ: /dev/sda2)</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="106"/>
         <source>Partition to mount at /boot in chroot</source>
-        <translation>Partition à monter dans /boot dans le chroot</translation>
+        <translation>დანაყოფი chroot-ში /boot-ზე მისამაგრებლად</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="107"/>
         <source>Partition to mount at /boot/efi in chroot</source>
-        <translation>Partition à monter dans /boot/efi dans le chroot</translation>
+        <translation>დანაყოფი chroot-ში /boot/efi-ზე მისამაგრებლად</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="108"/>
         <source>Path for backup/restore image</source>
-        <translation>Chemin d’accès à l’image de sauvegarde/restauration</translation>
+        <translation>ბილიკი აღდგენის/მარქაფის ასლის ფაილამდე</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="109"/>
         <source>Skip confirmations (for restore)</source>
-        <translation>Ignorer les confirmations (pour la restauration)</translation>
+        <translation>დადასტურებების გამოტოვება (აღდგენისთვის)</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="110"/>
         <source>Enable verbose output</source>
-        <translation>Activer la sortie détaillée (verbose output)</translation>
+        <translation>უფრო მეტის ჩვენება</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="111"/>
         <source>Suppress non-error output</source>
-        <translation>Supprimer la sortie non liée aux erreurs</translation>
+        <translation>არა-შეცდომის შეტყობინებების დამალვა</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="121"/>
         <source>Error: --verbose and --quiet options are mutually exclusive
 </source>
-        <translation>Erreur: les options --verbose et --quiet s’excluent mutuellement
+        <translation>შეცდომა: პარამეტრები --verbose და --quiet ურთიერთგამომრიცხავია
 </translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="127"/>
         <source>Error</source>
-        <translation>Erreur</translation>
+        <translation>შეცდომა</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="128"/>
         <source>You must run this program with admin access.</source>
-        <translation>Vous devez exécuter ce programme avec un accès administrateur•rice.</translation>
+        <translation>ეს პროგრამა ადმინისტრატორის წვდომით უნდა გაუშვათ</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="29"/>
         <source>Invalid index. Try again: </source>
-        <translation>Index erroné. Réessayez: </translation>
+        <translation>არასწორი ინდექსი. სცადეთ თავიდან: </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="48"/>
         <source>Invalid selection. Enter a number </source>
-        <translation>Sélection erronée. Entrez un chiffre </translation>
+        <translation>არასწორი არჩევანი. შეიყვანეთ რიცხვი </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="234"/>
         <source>MX Boot Repair (CLI)</source>
-        <translation>MX Réparation d’amorçage (Interface en ligne de commande) - MX Boot Repair (CLI)</translation>
+        <translation>MX Boot Repair (CLI)</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="235"/>
         <source>1) Install GRUB</source>
-        <translation>1) Installer GRUB</translation>
+        <translation>1) GRUB-ის დაყენება</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="236"/>
         <source>2) Repair GRUB (update-grub)</source>
-        <translation>2) Réparer GRUB (update-grub)</translation>
+        <translation>2) GRUB-ის შეკეთება (update-grub)</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="237"/>
         <source>3) Regenerate initramfs</source>
-        <translation>3) Régénérer initramfs</translation>
+        <translation>3) initramfs-ის თავიდან გენერაცია</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="238"/>
         <source>4) Backup MBR/PBR</source>
-        <translation>4) Sauvegarder le MBR/PBR</translation>
+        <translation>4) MBR/PBR-ის მარქაფი</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="239"/>
         <source>5) Restore MBR/PBR</source>
-        <translation>5) Restaurer le MBR/PBR</translation>
+        <translation>5) MBR/PBR-ის აღდგენა</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="240"/>
         <source>q) Quit</source>
-        <translation>q) Quitter</translation>
+        <translation>q) გასვლა</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="241"/>
         <source>Select action [1-5 or &apos;q&apos; to quit]: </source>
-        <translation>Sélectionnez l’action [1 à 5 ou « q » pour quitter]: </translation>
+        <translation>აირჩიეთ ქმედება [1-5 ან &apos;q&apos; გასასვლელად]: </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="247"/>
         <source>Invalid selection. Enter 1-5 or &apos;q&apos; to quit.</source>
-        <translation>Sélection erronée. Entrez 1 à 5 ou « q » pour quitter.</translation>
+        <translation>არასწორი არჩევანი. შეიყვანეთ 1-5 ან &apos;q&apos; გასასვლელად.</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="253"/>
         <source>Target: 0) MBR  1) ESP  2) Root</source>
-        <translation>Cible: 0) MBR 1) ESP 2) Root</translation>
+        <translation>სამიზნე: 0) MBR  1) ESP  2) Root</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="254"/>
         <source>  [detected: UEFI]</source>
-        <translation>  [détecté: UEFI]</translation>
+        <translation>  [აღმოჩენილია: UEFI]</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="254"/>
         <source>  [detected: Legacy BIOS]</source>
-        <translation>  [détecté: BIOS hérité - Legacy BIOS]</translation>
+        <translation>  [აღმოჩენილია: მოძველებული BIOS]</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="255"/>
         <source>Select target</source>
-        <translation>Sélectionner la cible</translation>
+        <translation>აირჩიეთ სამიზნე</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="261"/>
         <location filename="../src/cli/controller.cpp" line="299"/>
         <location filename="../src/cli/controller.cpp" line="312"/>
         <source>No partitions found. Returning to main menu.</source>
-        <translation>Aucune partition trouvée. Retour au menu principal.</translation>
+        <translation>დანაყოფები აღმოჩენილი არაა. ვბრუნდები მთავარ მენიუში.</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="265"/>
         <location filename="../src/cli/controller.cpp" line="325"/>
         <location filename="../src/cli/controller.cpp" line="343"/>
         <source>No disks found. Returning to main menu.</source>
-        <translation>Aucun disque trouvé. Retour au menu principal.</translation>
+        <translation>დისკები აღმოჩენილი არაა. ვბრუნდები მთავარ მენიუში.</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="270"/>
         <source>Select disk for MBR (e.g., sda)</source>
-        <translation>Sélectionner le disque pour le MBR (par exemple, sda)</translation>
+        <translation>აირჩიეთ დისკი MBR-ისთვის (მაგ: sda)</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="274"/>
         <source>Select partition for GRUB (e.g., sda1)</source>
-        <translation>Sélectionner la partition pour GRUB (par exemple, sda1)</translation>
+        <translation>აირჩიეთ დანაყოფი GRUB-ისთვის (მაგ: sda1)</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="279"/>
         <source>Select root partition of installed system</source>
-        <translation>Sélectionner la partition root du système installé</translation>
+        <translation>აირჩიეთ დაყენებული სისტემის ძირითადი დანაყოფი</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="300"/>
         <source>Select root partition to repair</source>
-        <translation>Sélectionner la partition root à réparer</translation>
+        <translation>აირჩიეთ ძირითადი დანაყოფი შესაკეთებლად</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="313"/>
         <source>Select root partition to regenerate initramfs</source>
-        <translation>Sélectionner la partition root pour régénérer initramfs</translation>
+        <translation>აირჩიეთ ძირითადი დანაყოფი initramfs-ის თავიდან გენერაციისთვის</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="326"/>
         <source>Select disk to back up MBR/PBR from</source>
-        <translation>Sélectionner le disque à partir duquel sauvegarder le MBR/PBR</translation>
+        <translation>აირჩიეთ დისკი, რომლიდანაც MBR/PBR-ის მარქაფი მოხდება</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="329"/>
         <source>Output file path (or &apos;b&apos; to go back, &apos;q&apos; to quit): </source>
-        <translation>Chemin d’accès du fichier de sortie (ou soit « b » pour revenir en arrière, soit « q » pour quitter): </translation>
+        <translation>გამოტანის ფაილის ბილიკი (ან &apos;b&apos; უკან გადასასვლელად, &apos;q&apos; გასასვლელად): </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="344"/>
         <source>Select disk to restore MBR/PBR to</source>
-        <translation>Sélectionner le disque vers lequel restaurer le MBR/PBR</translation>
+        <translation>აირჩიეთ დისკი, სადაც MBR/PBR-ის აღდგენა მოხდება</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="347"/>
         <source>Input backup file path (or &apos;b&apos; to go back, &apos;q&apos; to quit): </source>
-        <translation>Entrer le chemin d’accès du fichier de sauvegarde (ou soit « b » pour revenir en arrière, soit « q » pour quitter): </translation>
+        <translation>შეიყვანეთ მარქაფის ფაილის ბილიკი (ან &apos;b&apos; უკან გადასასვლელად, &apos;q&apos; გასასვლელად): </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="354"/>
         <source>WARNING: This will overwrite the first 446 bytes of /dev/</source>
-        <translation>AVERTISSEMENT: cela écrasera les 446 premiers octets de /dev/</translation>
+        <translation>გაფრთხილება: ეს გადააწერს პირველ 446 ბაიტს მოწყობილობაზე /dev/</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="354"/>
         <source>. Continue? [y/N]: </source>
-        <translation>. Continuer? [o/N]: </translation>
+        <translation>. გავაგრძელო? [y/N]: </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="357"/>
         <source>yes</source>
         <comment>confirmation input: full word</comment>
-        <translation>oui</translation>
+        <translation>დიახ</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="358"/>
         <source>y</source>
         <comment>confirmation input: single-letter yes</comment>
-        <translation>o</translation>
+        <translation>y (დიახ)</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="362"/>
         <source>Cancelled.</source>
-        <translation>Annulé.</translation>
+        <translation>გაუქმდა.</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="369"/>
         <source>Unknown selection</source>
-        <translation>Sélection inconnue</translation>
+        <translation>უცნობი მონიშნული</translation>
     </message>
 </context>
 </TS>

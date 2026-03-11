@@ -1,3 +1,14 @@
+mx-bootrepair (26.03) mx; urgency=medium
+
+  * Use a dedicated binary helper for privileged operations
+  * Display help and license in an internal Qt window
+  * Avoid elevation prompt on exit when the log is nearly empty
+  * Unlock LUKS partitions before starting repair operations
+  * Avoid auto-selecting exfat or "boot" partitions as root
+  * Return to the initial screen when elevation is canceled
+
+ -- Adrian <adrian@mxlinux.org>  Wed, 11 Mar 2026 17:08:42 -0400
+
 mx-bootrepair (26.02.7) mx; urgency=medium
 
   * Improve UEFI target defaults and ESP detection

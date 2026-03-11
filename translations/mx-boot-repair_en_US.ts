@@ -1,56 +1,56 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr_BE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="en_US">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="20"/>
         <source>MX Boot Repair</source>
-        <translation>MX Réparation d’amorçage - MX Boot Repair</translation>
+        <translation>MX Boot Repair</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="45"/>
         <source>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</source>
-        <translation>MX Réparation d’amorçage est un utilitaire qui peut être utilisé pour réinstaller GRUB, chargeur d’amorçage, sur l’ESP (EFI Système Partition), le MBR (Master Boot Record) ou sur la partition racine. Il offre la possibilité de reconstruire le fichier de configuration de GRUB et de sauvegarder et restaurer le MBR ou PBR (root).</translation>
+        <translation>MX Boot Repair is a utility that can be used to reinstall GRUB bootloader on the ESP (EFI System Partition), MBR (Master Boot Record) or root partition. It provides the option to reconstruct the GRUB configuration file and to back up and restore MBR or PBR (root).</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="64"/>
         <source>What would you like to do?</source>
-        <translation>Que souhaitez-vous faire?</translation>
+        <translation>What would you like to do?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="94"/>
         <source>Backup MBR or PBR (legacy boot only)</source>
-        <translation>Sauvegarder le MBR ou le PBR (démarrage en mode hérité - legacy uniquement)</translation>
+        <translation>Backup MBR or PBR (legacy boot only)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="70"/>
         <source>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</source>
-        <translation>Réinstaller le chargeur d’amorçage GRUB sur l’ESP, le MBR ou le PRB (root - racine)</translation>
+        <translation>Reinstall GRUB bootloader on ESP, MBR or PBR (root)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="80"/>
         <source>Repair GRUB configuration file</source>
-        <translation>Réparer le fichier de configuration de GRUB</translation>
+        <translation>Repair GRUB configuration file</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="87"/>
         <source>Regenerate initramfs images</source>
-        <translation>Régénérer les images d’initramfs</translation>
+        <translation>Regenerate initramfs images</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="101"/>
         <source>Restore MBR or PBR from backup (legacy boot only)</source>
-        <translation>Restaurer le MBR ou le PBR depuis la sauvegarde (démarrage en mode hérité - legacy uniquement)</translation>
+        <translation>Restore MBR or PBR from backup (legacy boot only)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="134"/>
         <location filename="../src/gui/mainwindow.cpp" line="441"/>
         <source>Select Boot Method</source>
-        <translation>Sélectionner la méthode d’amorçage</translation>
+        <translation>Select Boot Method</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="152"/>
         <source>Master Boot Record</source>
-        <translation>Master Boot Record (MBR)</translation>
+        <translation>Master Boot Record</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="155"/>
@@ -67,12 +67,12 @@
         <location filename="../src/gui/mainwindow.ui" line="193"/>
         <location filename="../src/gui/mainwindow.cpp" line="442"/>
         <source>Location:</source>
-        <translation>Emplacement:</translation>
+        <translation>Location:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="218"/>
         <source>EFI System Partition</source>
-        <translation>Partition système EFI</translation>
+        <translation>EFI System Partition</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="221"/>
@@ -82,45 +82,45 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="240"/>
         <source>Root (Partition Boot Record)</source>
-        <translation>Racine - Root (Partition Boot Record - PBR)</translation>
+        <translation>Root (Partition Boot Record)</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="243"/>
         <location filename="../src/gui/mainwindow.cpp" line="444"/>
         <source>root</source>
-        <translation>racine - root</translation>
+        <translation>root</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="278"/>
         <location filename="../src/gui/mainwindow.cpp" line="449"/>
         <source>Select root location:</source>
-        <translation>Sélectionner l’emplacement de la racine - root:</translation>
+        <translation>Select root location:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="300"/>
         <location filename="../src/gui/mainwindow.cpp" line="443"/>
         <source>Install on:</source>
-        <translation>Installer sur:</translation>
+        <translation>Install on:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="389"/>
         <source>About this application</source>
-        <translation>À propos de cette application</translation>
+        <translation>About this application</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="392"/>
         <source>About...</source>
-        <translation>À propos …</translation>
+        <translation>About...</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="440"/>
         <source>Display help </source>
-        <translation>Afficher l’aide </translation>
+        <translation>Display help </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="443"/>
         <source>Help</source>
-        <translation>Aide</translation>
+        <translation>Help</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="449"/>
@@ -130,12 +130,12 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="490"/>
         <source>Cancel any changes then quit</source>
-        <translation>Annuler toutes les modifications puis quitter</translation>
+        <translation>Cancel any changes then quit</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="493"/>
         <source>Cancel</source>
-        <translation>Annuler</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="499"/>
@@ -145,23 +145,23 @@
     <message>
         <location filename="../src/gui/mainwindow.ui" line="518"/>
         <source>Apply any changes</source>
-        <translation>Appliquer les changements</translation>
+        <translation>Apply any changes</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="521"/>
         <location filename="../src/gui/mainwindow.cpp" line="87"/>
         <source>Next</source>
-        <translation>Suivant</translation>
+        <translation>Next</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="477"/>
         <source>Apply</source>
-        <translation>Appliquer</translation>
+        <translation>Apply</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="107"/>
         <source>GRUB is being installed on %1 device.</source>
-        <translation>GRUB est en cours d’installation sur le périphérique %1.</translation>
+        <translation>GRUB is being installed on %1 device.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="296"/>
@@ -173,37 +173,37 @@
         <location filename="../src/gui/mainwindow.cpp" line="507"/>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>Error</source>
-        <translation>Erreur</translation>
+        <translation>Current kernel doesn&apos;t support selected compression algorithm, please edit the configuration file and select a different algorithm.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="146"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
-        <translation>Le fichier de configuration de GRUB (grub.cfg) est en cours de reconstruction.</translation>
+        <translation>The GRUB configuration file (grub.cfg) is being rebuilt.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="180"/>
         <source>Generating initramfs images on: %1</source>
-        <translation>Génération des images d’initramfs sur: %1</translation>
+        <translation>Generating initramfs images on: %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="209"/>
         <source>Backing up MBR or PBR from %1 device.</source>
-        <translation>Sauvegarde du MBR ou du PBR à partir du périphérique %1.</translation>
+        <translation>Backing up MBR or PBR from %1 device.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="265"/>
         <source>Warning</source>
-        <translation>Attention</translation>
+        <translation>Warning</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="266"/>
         <source>You are going to write the content of </source>
-        <translation>Vous allez écrire le contenu de </translation>
+        <translation>You are going to write the content of </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="266"/>
         <source> to </source>
-        <translation> sur </translation>
+        <translation> to </translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="267"/>
@@ -212,102 +212,102 @@
 Are you sure?</source>
         <translation>
 
-Êtes-vous sûr•e?</translation>
+Are you sure?</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="273"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
-        <translation>Restauration du MBR/PBR depuis la sauvegarde vers le périphérique %1.</translation>
+        <translation>Restoring MBR/PBR from backup to %1 device.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="297"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
-        <translation>Impossible de trouver une partition système EFI (ESP) sur les disques du système. Veuillez créer une partition ESP et réessayer.</translation>
+        <translation>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="321"/>
         <source>Select %1 location:</source>
-        <translation>Sélectionner l’emplacement %1:</translation>
+        <translation>Select %1 location:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="344"/>
         <source>Back</source>
-        <translation>Retour</translation>
+        <translation>Back</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="360"/>
         <source>Success</source>
-        <translation>Installation réussie</translation>
+        <translation>Success</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="360"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
-        <translation>Le processus s’est achevé avec succès. &lt;p&gt;&lt;b&gt; Voulez-vous quitter MX Réparation d’amorçage?&lt;/b&gt;</translation>
+        <translation>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="366"/>
         <source>Process finished. Errors have occurred.</source>
-        <translation>Processus terminé. Des erreurs se sont produites.</translation>
+        <translation>Process finished. Errors have occurred.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="114"/>
         <location filename="../src/gui/mainwindow.cpp" line="154"/>
         <location filename="../src/gui/mainwindow.cpp" line="186"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
-        <translation>Entrer le mot de passe pour déverrouiller la partition chiffrée %1:</translation>
+        <translation>Enter password to unlock %1 encrypted partition:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="448"/>
         <source>Select GRUB location</source>
-        <translation>Sélectionner l’emplacement de GRUB</translation>
+        <translation>Select GRUB location</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="457"/>
         <source>Select initramfs options</source>
-        <translation>Sélectionner les options d’initramfs</translation>
+        <translation>Select initramfs options</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="467"/>
         <source>Select Item to Back Up</source>
-        <translation>Sélectionnez l’élément à sauvegarder</translation>
+        <translation>Select Item to Back Up</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="472"/>
         <source>Select Item to Restore</source>
-        <translation>Sélectionnez l’élément à restaurer</translation>
+        <translation>Select Item to Restore</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="482"/>
         <location filename="../src/gui/mainwindow.cpp" line="493"/>
         <source>No location was selected.</source>
-        <translation>Aucun emplacement sélectionné.</translation>
+        <translation>No location was selected.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="487"/>
         <location filename="../src/gui/mainwindow.cpp" line="500"/>
         <source>Please select the root partition of the system you want to fix.</source>
-        <translation>Veuillez sélectionner la partition racine « root » du système que vous souhaitez réparer.</translation>
+        <translation>Please select the root partition of the system you want to fix.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="505"/>
         <source>Select backup file name</source>
-        <translation>Sélectionnez le nom du fichier de sauvegarde</translation>
+        <translation>Select backup file name</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="507"/>
         <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>No file was selected.</source>
-        <translation>Aucun fichier n’a été sélectionné.</translation>
+        <translation>No file was selected.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="512"/>
         <source>Select MBR or PBR backup file</source>
-        <translation>Sélectionner le fichier de sauvegarde du MBR ou du PBR</translation>
+        <translation>Select MBR or PBR backup file</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="530"/>
         <source>About %1</source>
-        <translation>À propos %1</translation>
+        <translation>About %1</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="532"/>
@@ -317,7 +317,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="533"/>
         <source>Simple boot repair program for MX Linux</source>
-        <translation>Simple programme de réparation d’amorçage pour MX Linux </translation>
+        <translation>Simple boot repair program for MX Linux</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="535"/>
@@ -327,12 +327,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="536"/>
         <source>%1 License</source>
-        <translation>%1 Licence</translation>
+        <translation>%1 License</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="549"/>
         <source>%1 Help</source>
-        <translation>%1 Aide</translation>
+        <translation>%1 Help</translation>
     </message>
 </context>
 <context>
@@ -340,281 +340,281 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="52"/>
         <source>License</source>
-        <translation>Licence</translation>
+        <translation>License</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="53"/>
         <location filename="../src/gui/about.cpp" line="63"/>
         <source>Changelog</source>
-        <translation>Journal des modifications</translation>
+        <translation>Changelog</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="54"/>
         <source>Cancel</source>
-        <translation>Annuler</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="73"/>
         <source>&amp;Close</source>
-        <translation>&amp;Quitter</translation>
+        <translation>&amp;Close</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="86"/>
         <source>MX Boot Repair</source>
-        <translation>MX Réparation d’amorçage - MX Boot Repair</translation>
+        <translation>MX Boot Repair</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="94"/>
         <source>MX Boot Repair - GUI and CLI tool for repairing GRUB bootloader</source>
-        <translation>MX Réparateur d’amorçage (MX Boot Repair) - Outil GUI et CLI pour réparer le chargeur d’amorçage GRUB</translation>
+        <translation>MX Boot Repair - GUI and CLI tool for repairing GRUB bootloader</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="99"/>
         <source>Force CLI mode</source>
-        <translation>Forcer le mode CLI</translation>
+        <translation>Force CLI mode</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="100"/>
         <source>Print actions without executing</source>
-        <translation>Afficher les actions sans les exécuter</translation>
+        <translation>Print actions without executing</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="101"/>
         <source>Do not prompt; require flags</source>
-        <translation>Ne pas poser de questions; exiger des options</translation>
+        <translation>Do not prompt; require flags</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="102"/>
         <source>Action: install, repair, initramfs, backup, restore</source>
-        <translation>Action: installer, réparer, initramfs, sauvegarder, restaurer</translation>
+        <translation>Action: install, repair, initramfs, backup, restore</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="103"/>
         <source>Target for install: mbr, esp, root</source>
-        <translation>Cible pour l’installation: mbr, esp, root</translation>
+        <translation>Target for install: mbr, esp, root</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="104"/>
         <source>Device for target (e.g., sda, sda1)</source>
-        <translation>Périphérique pour la cible (par exemple, sda, sda1)</translation>
+        <translation>Device for target (e.g., sda, sda1)</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="105"/>
         <source>Root partition (e.g., /dev/sda2)</source>
-        <translation>Partition root (par exemple, /dev/sda2)</translation>
+        <translation>Root partition (e.g., /dev/sda2)</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="106"/>
         <source>Partition to mount at /boot in chroot</source>
-        <translation>Partition à monter dans /boot dans le chroot</translation>
+        <translation>Partition to mount at /boot in chroot</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="107"/>
         <source>Partition to mount at /boot/efi in chroot</source>
-        <translation>Partition à monter dans /boot/efi dans le chroot</translation>
+        <translation>Partition to mount at /boot/efi in chroot</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="108"/>
         <source>Path for backup/restore image</source>
-        <translation>Chemin d’accès à l’image de sauvegarde/restauration</translation>
+        <translation>Path for backup/restore image</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="109"/>
         <source>Skip confirmations (for restore)</source>
-        <translation>Ignorer les confirmations (pour la restauration)</translation>
+        <translation>Skip confirmations (for restore)</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="110"/>
         <source>Enable verbose output</source>
-        <translation>Activer la sortie détaillée (verbose output)</translation>
+        <translation>Enable verbose output</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="111"/>
         <source>Suppress non-error output</source>
-        <translation>Supprimer la sortie non liée aux erreurs</translation>
+        <translation>Suppress non-error output</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="121"/>
         <source>Error: --verbose and --quiet options are mutually exclusive
 </source>
-        <translation>Erreur: les options --verbose et --quiet s’excluent mutuellement
+        <translation>Error: --verbose and --quiet options are mutually exclusive
 </translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="127"/>
         <source>Error</source>
-        <translation>Erreur</translation>
+        <translation>Current kernel doesn&apos;t support selected compression algorithm, please edit the configuration file and select a different algorithm.</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="128"/>
         <source>You must run this program with admin access.</source>
-        <translation>Vous devez exécuter ce programme avec un accès administrateur•rice.</translation>
+        <translation>You must run this program with admin access.</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="29"/>
         <source>Invalid index. Try again: </source>
-        <translation>Index erroné. Réessayez: </translation>
+        <translation>Invalid index. Try again: </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="48"/>
         <source>Invalid selection. Enter a number </source>
-        <translation>Sélection erronée. Entrez un chiffre </translation>
+        <translation>Invalid selection. Enter a number </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="234"/>
         <source>MX Boot Repair (CLI)</source>
-        <translation>MX Réparation d’amorçage (Interface en ligne de commande) - MX Boot Repair (CLI)</translation>
+        <translation>MX Boot Repair (CLI)</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="235"/>
         <source>1) Install GRUB</source>
-        <translation>1) Installer GRUB</translation>
+        <translation>1) Install GRUB</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="236"/>
         <source>2) Repair GRUB (update-grub)</source>
-        <translation>2) Réparer GRUB (update-grub)</translation>
+        <translation>2) Repair GRUB (update-grub)</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="237"/>
         <source>3) Regenerate initramfs</source>
-        <translation>3) Régénérer initramfs</translation>
+        <translation>3) Regenerate initramfs</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="238"/>
         <source>4) Backup MBR/PBR</source>
-        <translation>4) Sauvegarder le MBR/PBR</translation>
+        <translation>4) Backup MBR/PBR</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="239"/>
         <source>5) Restore MBR/PBR</source>
-        <translation>5) Restaurer le MBR/PBR</translation>
+        <translation>5) Restore MBR/PBR</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="240"/>
         <source>q) Quit</source>
-        <translation>q) Quitter</translation>
+        <translation>q) Quit</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="241"/>
         <source>Select action [1-5 or &apos;q&apos; to quit]: </source>
-        <translation>Sélectionnez l’action [1 à 5 ou « q » pour quitter]: </translation>
+        <translation>Select action [1-5 or &apos;q&apos; to quit]: </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="247"/>
         <source>Invalid selection. Enter 1-5 or &apos;q&apos; to quit.</source>
-        <translation>Sélection erronée. Entrez 1 à 5 ou « q » pour quitter.</translation>
+        <translation>Invalid selection. Enter 1-5 or &apos;q&apos; to quit.</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="253"/>
         <source>Target: 0) MBR  1) ESP  2) Root</source>
-        <translation>Cible: 0) MBR 1) ESP 2) Root</translation>
+        <translation>Target: 0) MBR  1) ESP  2) Root</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="254"/>
         <source>  [detected: UEFI]</source>
-        <translation>  [détecté: UEFI]</translation>
+        <translation>  [detected: UEFI]</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="254"/>
         <source>  [detected: Legacy BIOS]</source>
-        <translation>  [détecté: BIOS hérité - Legacy BIOS]</translation>
+        <translation>  [detected: Legacy BIOS]</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="255"/>
         <source>Select target</source>
-        <translation>Sélectionner la cible</translation>
+        <translation>Select target</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="261"/>
         <location filename="../src/cli/controller.cpp" line="299"/>
         <location filename="../src/cli/controller.cpp" line="312"/>
         <source>No partitions found. Returning to main menu.</source>
-        <translation>Aucune partition trouvée. Retour au menu principal.</translation>
+        <translation>No partitions found. Returning to main menu.</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="265"/>
         <location filename="../src/cli/controller.cpp" line="325"/>
         <location filename="../src/cli/controller.cpp" line="343"/>
         <source>No disks found. Returning to main menu.</source>
-        <translation>Aucun disque trouvé. Retour au menu principal.</translation>
+        <translation>No disks found. Returning to main menu.</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="270"/>
         <source>Select disk for MBR (e.g., sda)</source>
-        <translation>Sélectionner le disque pour le MBR (par exemple, sda)</translation>
+        <translation>Select disk for MBR (e.g., sda)</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="274"/>
         <source>Select partition for GRUB (e.g., sda1)</source>
-        <translation>Sélectionner la partition pour GRUB (par exemple, sda1)</translation>
+        <translation>Select partition for GRUB (e.g., sda1)</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="279"/>
         <source>Select root partition of installed system</source>
-        <translation>Sélectionner la partition root du système installé</translation>
+        <translation>Select root partition of installed system</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="300"/>
         <source>Select root partition to repair</source>
-        <translation>Sélectionner la partition root à réparer</translation>
+        <translation>Select root partition to repair</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="313"/>
         <source>Select root partition to regenerate initramfs</source>
-        <translation>Sélectionner la partition root pour régénérer initramfs</translation>
+        <translation>Select root partition to regenerate initramfs</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="326"/>
         <source>Select disk to back up MBR/PBR from</source>
-        <translation>Sélectionner le disque à partir duquel sauvegarder le MBR/PBR</translation>
+        <translation>Select disk to back up MBR/PBR from</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="329"/>
         <source>Output file path (or &apos;b&apos; to go back, &apos;q&apos; to quit): </source>
-        <translation>Chemin d’accès du fichier de sortie (ou soit « b » pour revenir en arrière, soit « q » pour quitter): </translation>
+        <translation>Output file path (or &apos;b&apos; to go back, &apos;q&apos; to quit): </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="344"/>
         <source>Select disk to restore MBR/PBR to</source>
-        <translation>Sélectionner le disque vers lequel restaurer le MBR/PBR</translation>
+        <translation>Select disk to restore MBR/PBR to</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="347"/>
         <source>Input backup file path (or &apos;b&apos; to go back, &apos;q&apos; to quit): </source>
-        <translation>Entrer le chemin d’accès du fichier de sauvegarde (ou soit « b » pour revenir en arrière, soit « q » pour quitter): </translation>
+        <translation>Input backup file path (or &apos;b&apos; to go back, &apos;q&apos; to quit): </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="354"/>
         <source>WARNING: This will overwrite the first 446 bytes of /dev/</source>
-        <translation>AVERTISSEMENT: cela écrasera les 446 premiers octets de /dev/</translation>
+        <translation>WARNING: This will overwrite the first 446 bytes of /dev/</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="354"/>
         <source>. Continue? [y/N]: </source>
-        <translation>. Continuer? [o/N]: </translation>
+        <translation>. Continue? [y/N]: </translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="357"/>
         <source>yes</source>
         <comment>confirmation input: full word</comment>
-        <translation>oui</translation>
+        <translation>yes</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="358"/>
         <source>y</source>
         <comment>confirmation input: single-letter yes</comment>
-        <translation>o</translation>
+        <translation>y</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="362"/>
         <source>Cancelled.</source>
-        <translation>Annulé.</translation>
+        <translation>Cancelled.</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="369"/>
         <source>Unknown selection</source>
-        <translation>Sélection inconnue</translation>
+        <translation>Unknown selection</translation>
     </message>
 </context>
 </TS>

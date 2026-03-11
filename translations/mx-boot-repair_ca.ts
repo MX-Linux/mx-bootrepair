@@ -43,7 +43,7 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="134"/>
-        <location filename="../src/gui/mainwindow.cpp" line="425"/>
+        <location filename="../src/gui/mainwindow.cpp" line="441"/>
         <source>Select Boot Method</source>
         <translation>Trieu el mètode d&apos;arrencada</translation>
     </message>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
-        <location filename="../src/gui/mainwindow.cpp" line="426"/>
+        <location filename="../src/gui/mainwindow.cpp" line="442"/>
         <source>Location:</source>
         <translation>Ubicació: </translation>
     </message>
@@ -86,19 +86,19 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="243"/>
-        <location filename="../src/gui/mainwindow.cpp" line="428"/>
+        <location filename="../src/gui/mainwindow.cpp" line="444"/>
         <source>root</source>
         <translation>Arrel</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="278"/>
-        <location filename="../src/gui/mainwindow.cpp" line="433"/>
+        <location filename="../src/gui/mainwindow.cpp" line="449"/>
         <source>Select root location:</source>
         <translation>Trieu la ubicació de l&apos;arrel:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="300"/>
-        <location filename="../src/gui/mainwindow.cpp" line="427"/>
+        <location filename="../src/gui/mainwindow.cpp" line="443"/>
         <source>Install on:</source>
         <translation>Instal·la a: </translation>
     </message>
@@ -149,64 +149,64 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="521"/>
-        <location filename="../src/gui/mainwindow.cpp" line="82"/>
+        <location filename="../src/gui/mainwindow.cpp" line="87"/>
         <source>Next</source>
         <translation>Següent</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="461"/>
+        <location filename="../src/gui/mainwindow.cpp" line="477"/>
         <source>Apply</source>
         <translation>Aplica</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="102"/>
+        <location filename="../src/gui/mainwindow.cpp" line="107"/>
         <source>GRUB is being installed on %1 device.</source>
         <translation>S&apos;instal·la el GRUB al dispositiu %1 .</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="292"/>
-        <location filename="../src/gui/mainwindow.cpp" line="350"/>
-        <location filename="../src/gui/mainwindow.cpp" line="466"/>
-        <location filename="../src/gui/mainwindow.cpp" line="470"/>
-        <location filename="../src/gui/mainwindow.cpp" line="477"/>
-        <location filename="../src/gui/mainwindow.cpp" line="483"/>
-        <location filename="../src/gui/mainwindow.cpp" line="491"/>
-        <location filename="../src/gui/mainwindow.cpp" line="498"/>
+        <location filename="../src/gui/mainwindow.cpp" line="296"/>
+        <location filename="../src/gui/mainwindow.cpp" line="366"/>
+        <location filename="../src/gui/mainwindow.cpp" line="482"/>
+        <location filename="../src/gui/mainwindow.cpp" line="486"/>
+        <location filename="../src/gui/mainwindow.cpp" line="493"/>
+        <location filename="../src/gui/mainwindow.cpp" line="499"/>
+        <location filename="../src/gui/mainwindow.cpp" line="507"/>
+        <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="142"/>
+        <location filename="../src/gui/mainwindow.cpp" line="146"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
         <translation>Es reconstrueix el fitxer de configuració del GRUB (grub.cfg).</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="176"/>
+        <location filename="../src/gui/mainwindow.cpp" line="180"/>
         <source>Generating initramfs images on: %1</source>
         <translation>Generant les imatges d&apos;initramfs a: %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="205"/>
+        <location filename="../src/gui/mainwindow.cpp" line="209"/>
         <source>Backing up MBR or PBR from %1 device.</source>
         <translation>Fent còpia de seguretat del MBR o PBR del dispositiu %1 .</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="261"/>
+        <location filename="../src/gui/mainwindow.cpp" line="265"/>
         <source>Warning</source>
         <translation>Atenció </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="262"/>
+        <location filename="../src/gui/mainwindow.cpp" line="266"/>
         <source>You are going to write the content of </source>
         <translation>Ara s&apos;enregistrarà el contingut de </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="262"/>
+        <location filename="../src/gui/mainwindow.cpp" line="266"/>
         <source> to </source>
         <translation>a</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="263"/>
+        <location filename="../src/gui/mainwindow.cpp" line="267"/>
         <source>
 
 Are you sure?</source>
@@ -215,122 +215,122 @@ Are you sure?</source>
 N&apos;esteu segur? </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="269"/>
+        <location filename="../src/gui/mainwindow.cpp" line="273"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
         <translation>Restaurant el MBR/PBR de la còpia de seguretat al dispositiu %1 .</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="293"/>
+        <location filename="../src/gui/mainwindow.cpp" line="297"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation>No trobo la partició EFI de sistema (ESP) a cap disc del sistema. Si us plau, creeu una ESP i torneu a provar-ho.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="305"/>
+        <location filename="../src/gui/mainwindow.cpp" line="321"/>
         <source>Select %1 location:</source>
         <translation>Trieu la ubicació de %1 :</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="328"/>
+        <location filename="../src/gui/mainwindow.cpp" line="344"/>
         <source>Back</source>
         <translation>Enrere</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="344"/>
+        <location filename="../src/gui/mainwindow.cpp" line="360"/>
         <source>Success</source>
         <translation>Èxit</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="344"/>
+        <location filename="../src/gui/mainwindow.cpp" line="360"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation>S&apos;ha acabat el procés amb èxit. &lt;p&gt;&lt;b&gt;Voleu sortir de MX Boot Repair?&lt;/b&gt; </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="350"/>
+        <location filename="../src/gui/mainwindow.cpp" line="366"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>El procés ha acabat. Hi ha hagut errors.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="109"/>
-        <location filename="../src/gui/mainwindow.cpp" line="150"/>
-        <location filename="../src/gui/mainwindow.cpp" line="182"/>
+        <location filename="../src/gui/mainwindow.cpp" line="114"/>
+        <location filename="../src/gui/mainwindow.cpp" line="154"/>
+        <location filename="../src/gui/mainwindow.cpp" line="186"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
         <translation>Entreu la contrasenya per desblocar la partició encriptada %1:</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="432"/>
+        <location filename="../src/gui/mainwindow.cpp" line="448"/>
         <source>Select GRUB location</source>
         <translation>Trieu la ubicació del GRUB </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="441"/>
+        <location filename="../src/gui/mainwindow.cpp" line="457"/>
         <source>Select initramfs options</source>
         <translation>Trieu les opcions d&apos;initramfs</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="451"/>
+        <location filename="../src/gui/mainwindow.cpp" line="467"/>
         <source>Select Item to Back Up</source>
         <translation>Trieu l&apos;element per fer còpia de seguretat</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="456"/>
+        <location filename="../src/gui/mainwindow.cpp" line="472"/>
         <source>Select Item to Restore</source>
         <translation>Trieu l&apos;element a restaurar</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="466"/>
-        <location filename="../src/gui/mainwindow.cpp" line="477"/>
+        <location filename="../src/gui/mainwindow.cpp" line="482"/>
+        <location filename="../src/gui/mainwindow.cpp" line="493"/>
         <source>No location was selected.</source>
         <translation>No s&apos;ha seleccionat cap ubicació.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="471"/>
-        <location filename="../src/gui/mainwindow.cpp" line="484"/>
+        <location filename="../src/gui/mainwindow.cpp" line="487"/>
+        <location filename="../src/gui/mainwindow.cpp" line="500"/>
         <source>Please select the root partition of the system you want to fix.</source>
         <translation>Si us plau, seleccioneu la partició arrel que voleu esmenar.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="489"/>
+        <location filename="../src/gui/mainwindow.cpp" line="505"/>
         <source>Select backup file name</source>
         <translation>Trieu el nom del fitxer de còpia de seguretat </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="491"/>
-        <location filename="../src/gui/mainwindow.cpp" line="498"/>
+        <location filename="../src/gui/mainwindow.cpp" line="507"/>
+        <location filename="../src/gui/mainwindow.cpp" line="514"/>
         <source>No file was selected.</source>
         <translation>No s&apos;ha triat cap fitxer. </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="496"/>
+        <location filename="../src/gui/mainwindow.cpp" line="512"/>
         <source>Select MBR or PBR backup file</source>
         <translation>Trieu un fitxer de còpia de seguretat de MBR o PBR </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="514"/>
+        <location filename="../src/gui/mainwindow.cpp" line="530"/>
         <source>About %1</source>
         <translation>Quant a %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="516"/>
+        <location filename="../src/gui/mainwindow.cpp" line="532"/>
         <source>Version: </source>
         <translation>Versió: </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="517"/>
+        <location filename="../src/gui/mainwindow.cpp" line="533"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Programa senzill de reparació d&apos;arrencada per MX Linux</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="519"/>
+        <location filename="../src/gui/mainwindow.cpp" line="535"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="520"/>
+        <location filename="../src/gui/mainwindow.cpp" line="536"/>
         <source>%1 License</source>
         <translation>Llicència de %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="533"/>
+        <location filename="../src/gui/mainwindow.cpp" line="549"/>
         <source>%1 Help</source>
         <translation>Ajuda de %1</translation>
     </message>
@@ -506,103 +506,113 @@ N&apos;esteu segur? </translation>
         <translation>Selecció no vàlida. Introduïu 1-5 o &apos;q&apos; per sortir.</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="252"/>
+        <location filename="../src/cli/controller.cpp" line="253"/>
         <source>Target: 0) MBR  1) ESP  2) Root</source>
         <translation>Destinació: 0) MBR 1) ESP 2) Root</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="253"/>
+        <location filename="../src/cli/controller.cpp" line="254"/>
+        <source>  [detected: UEFI]</source>
+        <translation>  [detectat: UEFI]</translation>
+    </message>
+    <message>
+        <location filename="../src/cli/controller.cpp" line="254"/>
+        <source>  [detected: Legacy BIOS]</source>
+        <translation>  [detectat: BIOS tradicional]</translation>
+    </message>
+    <message>
+        <location filename="../src/cli/controller.cpp" line="255"/>
         <source>Select target</source>
         <translation>Seleccioneu la destinació</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="259"/>
-        <location filename="../src/cli/controller.cpp" line="297"/>
-        <location filename="../src/cli/controller.cpp" line="310"/>
+        <location filename="../src/cli/controller.cpp" line="261"/>
+        <location filename="../src/cli/controller.cpp" line="299"/>
+        <location filename="../src/cli/controller.cpp" line="312"/>
         <source>No partitions found. Returning to main menu.</source>
         <translation>No s&apos;ha trobat cap partició. Es torna al menú principal.</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="263"/>
-        <location filename="../src/cli/controller.cpp" line="323"/>
-        <location filename="../src/cli/controller.cpp" line="341"/>
+        <location filename="../src/cli/controller.cpp" line="265"/>
+        <location filename="../src/cli/controller.cpp" line="325"/>
+        <location filename="../src/cli/controller.cpp" line="343"/>
         <source>No disks found. Returning to main menu.</source>
         <translation>No s&apos;ha trobat cap disc. Es torna al menú principal.</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="268"/>
+        <location filename="../src/cli/controller.cpp" line="270"/>
         <source>Select disk for MBR (e.g., sda)</source>
         <translation>Seleccioneu el disc per a l&apos;MBR (per exemple, sda)</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="272"/>
+        <location filename="../src/cli/controller.cpp" line="274"/>
         <source>Select partition for GRUB (e.g., sda1)</source>
         <translation>Seleccioneu la partició per al GRUB (per exemple, sda1)</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="277"/>
+        <location filename="../src/cli/controller.cpp" line="279"/>
         <source>Select root partition of installed system</source>
         <translation>Seleccioneu la partició d&apos;arrel del sistema instal·lat.</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="298"/>
+        <location filename="../src/cli/controller.cpp" line="300"/>
         <source>Select root partition to repair</source>
         <translation>Seleccioneu la partició d&apos;arrel per reparar.</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="311"/>
+        <location filename="../src/cli/controller.cpp" line="313"/>
         <source>Select root partition to regenerate initramfs</source>
         <translation>Seleccioneu la partició d&apos;arrel per regenerar l&apos;initramfs.</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="324"/>
+        <location filename="../src/cli/controller.cpp" line="326"/>
         <source>Select disk to back up MBR/PBR from</source>
         <translation>Seleccioneu el disc des del qual voleu fer una còpia de seguretat de l&apos;MBR/PBR.</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="327"/>
+        <location filename="../src/cli/controller.cpp" line="329"/>
         <source>Output file path (or &apos;b&apos; to go back, &apos;q&apos; to quit): </source>
         <translation>Camí del fitxer de sortida (o &apos;b&apos; per tornar enrere, &apos;q&apos; per sortir):</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="342"/>
+        <location filename="../src/cli/controller.cpp" line="344"/>
         <source>Select disk to restore MBR/PBR to</source>
         <translation>Seleccioneu el disc on restaurar l&apos;MBR/PBR</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="345"/>
+        <location filename="../src/cli/controller.cpp" line="347"/>
         <source>Input backup file path (or &apos;b&apos; to go back, &apos;q&apos; to quit): </source>
         <translation>Introduïu el camí del fitxer de còpia de seguretat (o &apos;b&apos; per tornar enrere, &apos;q&apos; per sortir): </translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="352"/>
+        <location filename="../src/cli/controller.cpp" line="354"/>
         <source>WARNING: This will overwrite the first 446 bytes of /dev/</source>
         <translation>AVÍS: això sobreescriurà els primers 446 bytes de /dev/</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="352"/>
+        <location filename="../src/cli/controller.cpp" line="354"/>
         <source>. Continue? [y/N]: </source>
         <translation>. Continuo? [s/N]: </translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="355"/>
+        <location filename="../src/cli/controller.cpp" line="357"/>
         <source>yes</source>
         <comment>confirmation input: full word</comment>
         <translation>sí</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="356"/>
+        <location filename="../src/cli/controller.cpp" line="358"/>
         <source>y</source>
         <comment>confirmation input: single-letter yes</comment>
         <translation>s</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="360"/>
+        <location filename="../src/cli/controller.cpp" line="362"/>
         <source>Cancelled.</source>
         <translation>Cancel·lat.</translation>
     </message>
     <message>
-        <location filename="../src/cli/controller.cpp" line="367"/>
+        <location filename="../src/cli/controller.cpp" line="369"/>
         <source>Unknown selection</source>
         <translation>Selecció desconeguda</translation>
     </message>

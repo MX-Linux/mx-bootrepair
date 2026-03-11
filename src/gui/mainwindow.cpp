@@ -146,6 +146,17 @@ void MainWindow::refresh()
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
+bool MainWindow::handleElevationFailure()
+{
+    if (!engine->lastFailureWasElevation()) {
+        return false;
+    }
+
+    QMessageBox::critical(this, tr("Authorization Failed"), tr("Could not obtain administrator privileges."));
+    refresh();
+    return true;
+}
+
 void MainWindow::installGRUB()
 {
     BootRepairOptions opt;
@@ -155,7 +166,11 @@ void MainWindow::installGRUB()
                                                : (ui->radioGrubRoot->isChecked() ? GrubTarget::Root : GrubTarget::Mbr);
 
     if (!engine->isMounted(opt.root, "/")) {
-        if (engine->isLuks(opt.root)) {
+        const bool isLuks = engine->isLuks(opt.root);
+        if (handleElevationFailure()) {
+            return;
+        }
+        if (isLuks) {
             bool ok = false;
             const QByteArray pass
                 = QInputDialog::getText(this, this->windowTitle(),
@@ -167,6 +182,9 @@ void MainWindow::installGRUB()
             }
             setBusyCursor();
             if (!engine->canUnlockLuks(opt.root, pass)) {
+                if (handleElevationFailure()) {
+                    return;
+                }
                 clearBusyCursor();
                 QMessageBox::critical(this, tr("Error"),
                                       tr("Could not unlock %1. Please check the password and try again.")
@@ -176,8 +194,14 @@ void MainWindow::installGRUB()
             opt.luksPassword = pass;
         }
         opt.bootDevice = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
+        if (handleElevationFailure()) {
+            return;
+        }
         if (opt.target == GrubTarget::Esp) {
             const QString espDev = engine->resolveFstabDevice(opt.root, "/boot/efi", opt.luksPassword);
+            if (handleElevationFailure()) {
+                return;
+            }
             opt.espDevice = !espDev.isEmpty() ? espDev : "/dev/" + opt.location;
         }
     } else if (opt.target == GrubTarget::Esp) {
@@ -204,7 +228,11 @@ void MainWindow::repairGRUB()
     BootRepairOptions opt;
     opt.root = root;
     if (!engine->isMounted(opt.root, "/")) {
-        if (engine->isLuks(opt.root)) {
+        const bool isLuks = engine->isLuks(opt.root);
+        if (handleElevationFailure()) {
+            return;
+        }
+        if (isLuks) {
             bool ok = false;
             const QByteArray pass
                 = QInputDialog::getText(this, this->windowTitle(),
@@ -216,6 +244,9 @@ void MainWindow::repairGRUB()
             }
             setBusyCursor();
             if (!engine->canUnlockLuks(opt.root, pass)) {
+                if (handleElevationFailure()) {
+                    return;
+                }
                 clearBusyCursor();
                 QMessageBox::critical(this, tr("Error"),
                                       tr("Could not unlock %1. Please check the password and try again.")
@@ -225,7 +256,13 @@ void MainWindow::repairGRUB()
             opt.luksPassword = pass;
         }
         opt.bootDevice = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
+        if (handleElevationFailure()) {
+            return;
+        }
         opt.espDevice = engine->resolveFstabDevice(opt.root, "/boot/efi", opt.luksPassword);
+        if (handleElevationFailure()) {
+            return;
+        }
     }
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
@@ -243,7 +280,11 @@ void MainWindow::regenerateInitramfs()
     BootRepairOptions opt;
     opt.root = "/dev/" + ui->comboRoot->currentText().section(' ', 0, 0);
     if (!engine->isMounted(opt.root, "/")) {
-        if (engine->isLuks(opt.root)) {
+        const bool isLuks = engine->isLuks(opt.root);
+        if (handleElevationFailure()) {
+            return;
+        }
+        if (isLuks) {
             bool ok = false;
             const QByteArray pass
                 = QInputDialog::getText(this, this->windowTitle(),
@@ -255,6 +296,9 @@ void MainWindow::regenerateInitramfs()
             }
             setBusyCursor();
             if (!engine->canUnlockLuks(opt.root, pass)) {
+                if (handleElevationFailure()) {
+                    return;
+                }
                 clearBusyCursor();
                 QMessageBox::critical(this, tr("Error"),
                                       tr("Could not unlock %1. Please check the password and try again.")
@@ -264,6 +308,9 @@ void MainWindow::regenerateInitramfs()
             opt.luksPassword = pass;
         }
         opt.bootDevice = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
+        if (handleElevationFailure()) {
+            return;
+        }
     }
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
@@ -447,6 +494,12 @@ void MainWindow::displayResult(bool success)
             QApplication::exit(EXIT_SUCCESS);
         }
     } else {
+        if (engine->lastFailureWasElevation()) {
+            QMessageBox::critical(this, tr("Authorization Failed"),
+                                  tr("Could not obtain administrator privileges."));
+            refresh();
+            return;
+        }
         QMessageBox::critical(this, tr("Error"), tr("Process finished. Errors have occurred."));
     }
 }

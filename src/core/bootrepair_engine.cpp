@@ -833,6 +833,11 @@ QString BootRepairEngine::resolveFstabDevice(const QString& root, const QString&
     return resolveDeviceSpec(device);
 }
 
+bool BootRepairEngine::lastFailureWasElevation() const
+{
+    return shell->lastElevationFailed();
+}
+
 bool BootRepairEngine::backup(const BootRepairOptions& opt)
 {
     currentDryRun_ = opt.dryRun;

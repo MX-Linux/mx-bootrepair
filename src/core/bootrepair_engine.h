@@ -48,6 +48,7 @@ public:
 
     // Utilities
     QString resolveFstabDevice(const QString& root, const QString& mountpoint, const QByteArray& luksPass = {});
+    [[nodiscard]] bool lastFailureWasElevation() const;
 
 signals:
     void log(const QString& line);

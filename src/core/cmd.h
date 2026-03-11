@@ -43,6 +43,7 @@ public:
                                    QuietMode quiet = QuietMode::No, const QString &rootPath = {});
     void setOutputSuppressed(bool suppressed);
     [[nodiscard]] bool outputSuppressed() const;
+    [[nodiscard]] bool lastElevationFailed() const;
 
 signals:
     void done();
@@ -54,6 +55,7 @@ private:
     QString asRoot;
     QString helper;
     bool suppressOutput = false;
+    bool lastElevationFailed_ = false;
 
     bool helperProc(const QStringList &helperArgs, QString *output = nullptr, const QByteArray *input = nullptr,
                     QuietMode quiet = QuietMode::No);

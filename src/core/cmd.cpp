@@ -4,10 +4,41 @@
 #include <QDebug>
 #include <QEventLoop>
 #include <QFile>
+#include <QFileInfo>
 #include <QStringList>
 #include <QVariant>
 
 #include <unistd.h>
+
+namespace
+{
+bool indicatesElevationFailure(const QString &wrapperProgram, const QString &output, int exitCode)
+{
+    const QString program = QFileInfo(wrapperProgram).fileName().toLower();
+    const QString text = output.toLower();
+
+    if (program == QLatin1String("pkexec")) {
+        return exitCode == 126 || text.contains(QStringLiteral("not authorized"))
+            || text.contains(QStringLiteral("authentication dialog was dismissed"))
+            || text.contains(QStringLiteral("no authentication agent found"))
+            || text.contains(QStringLiteral("error executing command as another user"));
+    }
+
+    if (program == QLatin1String("sudo")) {
+        return text.contains(QStringLiteral("no password was provided"))
+            || text.contains(QStringLiteral("a password is required"))
+            || text.contains(QStringLiteral("incorrect password attempts"))
+            || text.contains(QStringLiteral("sorry, try again"));
+    }
+
+    if (program == QLatin1String("gksu")) {
+        return text.contains(QStringLiteral("not authorized")) || text.contains(QStringLiteral("denied"))
+            || text.contains(QStringLiteral("cancelled")) || text.contains(QStringLiteral("canceled"));
+    }
+
+    return false;
+}
+} // namespace
 
 Cmd::Cmd(QObject *parent)
     : QProcess(parent),
@@ -54,8 +85,11 @@ QStringList Cmd::helperExecArgs(const QString &cmd, const QStringList &args, con
 
 bool Cmd::helperProc(const QStringList &helperArgs, QString *output, const QByteArray *input, QuietMode quiet)
 {
+    lastElevationFailed_ = false;
+
     if (getuid() != 0 && asRoot.isEmpty()) {
         qWarning() << "No elevation helper available";
+        lastElevationFailed_ = true;
         return false;
     }
 
@@ -65,7 +99,13 @@ bool Cmd::helperProc(const QStringList &helperArgs, QString *output, const QByte
         programArgs.prepend(helper);
     }
 
-    return proc(program, programArgs, output, input, quiet);
+    const bool ok = proc(program, programArgs, output, input, quiet);
+    if (getuid() != 0 && !ok && exitStatus() == QProcess::NormalExit
+        && indicatesElevationFailure(program, out_buffer, exitCode())) {
+        lastElevationFailed_ = true;
+    }
+
+    return ok;
 }
 
 QString Cmd::getCmdOut(const QString &cmd, QuietMode quiet)
@@ -228,4 +268,9 @@ void Cmd::setOutputSuppressed(bool suppressed)
 bool Cmd::outputSuppressed() const
 {
     return suppressOutput;
+}
+
+bool Cmd::lastElevationFailed() const
+{
+    return lastElevationFailed_;
 }

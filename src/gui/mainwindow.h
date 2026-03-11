@@ -64,6 +64,7 @@ private:
     void addDevToList();
     void backupBR(const QString &filename);
     void guessPartition();
+    bool handleElevationFailure();
     void installGRUB();
     void regenerateInitramfs();
     void refresh();

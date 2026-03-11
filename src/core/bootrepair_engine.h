@@ -36,6 +36,8 @@ public:
     QString mountSource(const QString& mountpoint) const;              // findmnt SOURCE
     bool isLinuxPartitionType(const QString& device) const;            // sdaX or /dev/sdaX
     bool labelContains(const QString& device, const QString& needle) const; // sdaX or /dev/sdaX
+    QString filesystemType(const QString& device) const;               // sdaX or /dev/sdaX
+    QString partitionLabel(const QString& device) const;               // sdaX or /dev/sdaX
 
     // Operations (return true on success)
     bool installGrub(const BootRepairOptions& opt);

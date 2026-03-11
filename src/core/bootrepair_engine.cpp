@@ -396,6 +396,20 @@ bool BootRepairEngine::labelContains(const QString& device, const QString& needl
     return shell->run(cmd, nullptr, nullptr, QuietMode::Yes);
 }
 
+QString BootRepairEngine::filesystemType(const QString& device) const
+{
+    QString output;
+    shell->proc("lsblk", {"-ln", "-o", "FSTYPE", normalizeDev(device)}, &output, nullptr, QuietMode::Yes);
+    return output.trimmed();
+}
+
+QString BootRepairEngine::partitionLabel(const QString& device) const
+{
+    QString output;
+    shell->proc("lsblk", {"-ln", "-o", "LABEL", normalizeDev(device)}, &output, nullptr, QuietMode::Yes);
+    return output.trimmed();
+}
+
 bool BootRepairEngine::openLuks(const QString& part, const QString& mapper, const QByteArray& pass)
 {
     if (pass.isEmpty()) {

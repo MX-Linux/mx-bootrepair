@@ -535,14 +535,14 @@ void MainWindow::buttonAbout_clicked()
 
 void MainWindow::buttonHelp_clicked()
 {
-    QLocale locale;
-    const QString lang = locale.bcp47Name();
-
-    QString url("/usr/share/doc/mx-bootrepair/mx-boot-repair.html");
-    if (lang.startsWith(QLatin1String("fr"))) {
-        url = "https://mxlinux.org/wiki/help-files/help-r%C3%A9paration-d%E2%80%99amor%C3%A7age";
+    QString onlineHelpUrl;
+    if (qEnvironmentVariable("LANG").startsWith(QLatin1String("fr"))) {
+        onlineHelpUrl = QStringLiteral(
+            "https://mxlinux.org/french-wiki/help-files-fr/help-reparation-damorcage/");
     }
-    displayDoc(url, tr("%1 Help").arg(this->windowTitle()));
+
+    displayHelpDoc(QStringLiteral("/usr/share/doc/mx-bootrepair/mx-boot-repair.html"),
+                   tr("%1 Help").arg(this->windowTitle()), onlineHelpUrl);
 }
 
 bool MainWindow::isMountedTo(const QString &volume, const QString &mount)

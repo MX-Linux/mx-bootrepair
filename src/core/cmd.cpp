@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QEventLoop>
 #include <QFile>
+#include <QStringList>
 #include <QVariant>
 
 #include <unistd.h>
@@ -11,59 +12,187 @@
 Cmd::Cmd(QObject *parent)
     : QProcess(parent),
       asRoot(
-          // Prefer sudo in CLI mode; otherwise use pkexec/gksu
           (QCoreApplication::instance() && QCoreApplication::instance()->property("cliMode").toBool()
            && QFile::exists("/usr/bin/sudo"))
               ? QStringLiteral("/usr/bin/sudo")
               : (QFile::exists("/usr/bin/pkexec") ? QStringLiteral("/usr/bin/pkexec")
                                                   : QStringLiteral("/usr/bin/gksu"))),
-      helper {"/usr/lib/" + QCoreApplication::applicationName() + "/helper"}
+      helper(QStringLiteral("/usr/lib/%1/helper").arg(QCoreApplication::applicationName()))
 {
     connect(this, &Cmd::readyReadStandardOutput, [this] {
         const QString out = readAllStandardOutput();
         out_buffer += out;
-        if (!suppressOutput) emit outputAvailable(out);
+        if (!suppressOutput) {
+            emit outputAvailable(out);
+        }
     });
     connect(this, &Cmd::readyReadStandardError, [this] {
         const QString out = readAllStandardError();
         out_buffer += out;
-        if (!suppressOutput) emit errorAvailable(out);
+        if (!suppressOutput) {
+            emit errorAvailable(out);
+        }
     });
 }
 
-QString Cmd::getCmdOut(const QString &cmd, QuietMode quiet, Elevation elevate)
+QStringList Cmd::helperRootArgs(const QString &rootPath)
+{
+    if (rootPath.isEmpty()) {
+        return {};
+    }
+    return {QStringLiteral("--root"), rootPath};
+}
+
+QStringList Cmd::helperExecArgs(const QString &cmd, const QStringList &args, const QString &rootPath) const
+{
+    QStringList helperArgs {QStringLiteral("exec")};
+    helperArgs += helperRootArgs(rootPath);
+    helperArgs << cmd;
+    helperArgs += args;
+    return helperArgs;
+}
+
+bool Cmd::helperProc(const QStringList &helperArgs, QString *output, const QByteArray *input, QuietMode quiet)
+{
+    if (getuid() != 0 && asRoot.isEmpty()) {
+        qWarning() << "No elevation helper available";
+        return false;
+    }
+
+    const QString program = (getuid() == 0) ? helper : asRoot;
+    QStringList programArgs = helperArgs;
+    if (getuid() != 0) {
+        programArgs.prepend(helper);
+    }
+
+    return proc(program, programArgs, output, input, quiet);
+}
+
+QString Cmd::getCmdOut(const QString &cmd, QuietMode quiet)
 {
     QString output;
-    run(cmd, &output, nullptr, quiet, elevate);
+    run(cmd, &output, nullptr, quiet);
     return output;
 }
 
+QString Cmd::getOutAsRoot(const QString &cmd, const QStringList &args, QuietMode quiet)
+{
+    QString output;
+    procAsRoot(cmd, args, &output, nullptr, quiet);
+    return output;
+}
+
+QString Cmd::getOutAsRootInTarget(const QString &rootPath, const QString &cmd, const QStringList &args,
+                                  QuietMode quiet)
+{
+    QString output;
+    procAsRootInTarget(rootPath, cmd, args, &output, nullptr, quiet);
+    return output;
+}
+
+QString Cmd::readFileAsRoot(const QString &path, QuietMode quiet, const QString &rootPath)
+{
+    QString output;
+    QStringList helperArgs {QStringLiteral("read-file")};
+    helperArgs += helperRootArgs(rootPath);
+    helperArgs << path;
+    helperProc(helperArgs, &output, nullptr, quiet);
+    return output;
+}
+
+QStringList Cmd::listDirAsRoot(const QString &path, QuietMode quiet, const QString &rootPath)
+{
+    QString output;
+    QStringList helperArgs {QStringLiteral("list-dir")};
+    helperArgs += helperRootArgs(rootPath);
+    helperArgs << path;
+    if (!helperProc(helperArgs, &output, nullptr, quiet)) {
+        return {};
+    }
+    return output.split('\n', Qt::SkipEmptyParts);
+}
+
+bool Cmd::pathCheckAsRoot(const QString &path, PathCheck check, QuietMode quiet, const QString &rootPath)
+{
+    QStringList helperArgs {QStringLiteral("path-check")};
+    helperArgs += helperRootArgs(rootPath);
+
+    QString mode = QStringLiteral("exists");
+    if (check == PathCheck::Directory) {
+        mode = QStringLiteral("dir");
+    } else if (check == PathCheck::Executable) {
+        mode = QStringLiteral("exec");
+    }
+
+    helperArgs << mode << path;
+    return helperProc(helperArgs, nullptr, nullptr, quiet);
+}
+
+bool Cmd::dirHasEntriesAsRoot(const QString &path, QuietMode quiet, const QString &rootPath)
+{
+    QStringList helperArgs {QStringLiteral("dir-has-entries")};
+    helperArgs += helperRootArgs(rootPath);
+    helperArgs << path;
+    return helperProc(helperArgs, nullptr, nullptr, quiet);
+}
+
+bool Cmd::copyLogAsRoot(QuietMode quiet)
+{
+    return helperProc({QStringLiteral("copy-log")}, nullptr, nullptr, quiet);
+}
+
+bool Cmd::mountChrootEnvAsRoot(const QString &source, const QString &target, QuietMode quiet)
+{
+    return helperProc({QStringLiteral("mount-chroot-env"), source, target}, nullptr, nullptr, quiet);
+}
+
+bool Cmd::cleanupChrootEnvAsRoot(const QString &target, QuietMode quiet)
+{
+    return helperProc({QStringLiteral("cleanup-chroot-env"), target}, nullptr, nullptr, quiet);
+}
+
+bool Cmd::ensureEfivarfsAsRoot(QuietMode quiet)
+{
+    return helperProc({QStringLiteral("ensure-efivarfs")}, nullptr, nullptr, quiet);
+}
+
+bool Cmd::removeEfiDumpVarsAsRoot(QuietMode quiet)
+{
+    return helperProc({QStringLiteral("remove-efi-dump")}, nullptr, nullptr, quiet);
+}
+
+bool Cmd::grubMkstandaloneEfiAsRoot(const QString &arch, const QString &bootloaderId, bool useHostBinary,
+                                    QuietMode quiet, const QString &rootPath)
+{
+    QStringList helperArgs {QStringLiteral("grub-mkstandalone-efi")};
+    helperArgs += helperRootArgs(rootPath);
+    helperArgs << arch << bootloaderId << (useHostBinary ? QStringLiteral("1") : QStringLiteral("0"));
+    return helperProc(helperArgs, nullptr, nullptr, quiet);
+}
+
 bool Cmd::proc(const QString &cmd, const QStringList &args, QString *output, const QByteArray *input,
-               QuietMode quiet, Elevation elevate)
+               QuietMode quiet)
 {
     out_buffer.clear();
     connect(this, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &Cmd::done);
-    if (this->state() != QProcess::NotRunning) {
-        qDebug() << "Process already running:" << this->program() << this->arguments();
+    if (state() != QProcess::NotRunning) {
+        qDebug() << "Process already running:" << program() << arguments();
         return false;
     }
+
     if (quiet == QuietMode::No) {
         qDebug() << cmd << args;
     }
+
     QEventLoop loop;
     connect(this, &Cmd::done, &loop, &QEventLoop::quit);
-    const bool doElevate = (elevate == Elevation::Yes);
-    if (doElevate && getuid() != 0) {
-        QStringList cmdAndArgs = QStringList() << helper << cmd << args;
-        start(asRoot, {cmdAndArgs});
-    } else {
-        start(cmd, args);
-    }
-    if (input) {
+    start(cmd, args);
+    if (input && !input->isEmpty()) {
         write(*input);
     }
     closeWriteChannel();
     loop.exec();
+
     if (output) {
         *output = out_buffer.trimmed();
     }
@@ -73,31 +202,22 @@ bool Cmd::proc(const QString &cmd, const QStringList &args, QString *output, con
 bool Cmd::procAsRoot(const QString &cmd, const QStringList &args, QString *output, const QByteArray *input,
                      QuietMode quiet)
 {
-    return proc(cmd, args, output, input, quiet, Elevation::Yes);
+    return helperProc(helperExecArgs(cmd, args), output, input, quiet);
 }
 
-bool Cmd::run(const QString &cmd, QString *output, const QByteArray *input, QuietMode quiet, Elevation elevate)
+bool Cmd::procAsRootInTarget(const QString &rootPath, const QString &cmd, const QStringList &args, QString *output,
+                             const QByteArray *input, QuietMode quiet)
+{
+    return helperProc(helperExecArgs(cmd, args, rootPath), output, input, quiet);
+}
+
+bool Cmd::run(const QString &cmd, QString *output, const QByteArray *input, QuietMode quiet)
 {
     if (quiet == QuietMode::No) {
         qDebug().noquote() << cmd;
     }
-    const bool doElevate = (elevate == Elevation::Yes);
-    if (doElevate && getuid() != 0) {
-        const QString mxbrLib = "/usr/lib/" + QCoreApplication::applicationName() + "/mxbr-lib";
-        if (cmd.startsWith(mxbrLib)) {
-            QString arg = cmd.mid(mxbrLib.size()).trimmed();
-            QStringList argsList; if (!arg.isEmpty()) argsList << arg;
-            return proc(asRoot, QStringList() << mxbrLib << argsList, output, input, QuietMode::Yes);
-        }
-        return proc(asRoot, {helper, cmd}, output, input, QuietMode::Yes);
-    } else {
-        return proc("/bin/bash", {"-c", cmd}, output, input, QuietMode::Yes);
-    }
-}
 
-bool Cmd::runAsRoot(const QString &cmd, QString *output, const QByteArray *input, QuietMode quiet)
-{
-    return run(cmd, output, input, quiet, Elevation::Yes);
+    return proc(QStringLiteral("/bin/bash"), {QStringLiteral("-c"), cmd}, output, input, QuietMode::Yes);
 }
 
 void Cmd::setOutputSuppressed(bool suppressed)

@@ -51,9 +51,9 @@ signals:
     void finished(bool ok);
 
 private:
-    // dry-run aware execution helpers
-    bool execRunAsRoot(const QString& cmd, QString* output = nullptr, const QByteArray* input = nullptr, bool quiet = true);
     bool execProcAsRoot(const QString& cmd, const QStringList& args, QString* output = nullptr, const QByteArray* input = nullptr, bool quiet = true);
+    bool execProcAsRootInTarget(const QString& rootPath, const QString& cmd, const QStringList& args,
+                                QString* output = nullptr, const QByteArray* input = nullptr, bool quiet = true);
 
     // helpers
     bool isMountedTo(const QString& volume, const QString& mount) const;

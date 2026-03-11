@@ -65,11 +65,7 @@ int main(int argc, char *argv[])
 
         CliController controller;
         const int code = controller.run();
-        if (QFile::exists("/usr/bin/pkexec")) {
-            Cmd().run("pkexec /usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, QuietMode::Yes);
-        } else {
-            Cmd().runAsRoot("/usr/lib/mx-boot-repair/mxbr-lib copy_log", nullptr, nullptr, QuietMode::Yes);
-        }
+        Cmd().copyLogAsRoot(QuietMode::Yes);
         return code;
     }
 

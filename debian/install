@@ -3,7 +3,6 @@ icons/mx-boot-repair.png	usr/share/icons/hicolor/256x256/apps
 icons/mx-boot-repair.svg	usr/share/icons/hicolor/scalable/apps
 mx-boot-repair.desktop		usr/share/applications
 obj-*/*.qm			usr/share/mx-bootrepair/locale
+obj-*/helper			usr/lib/mx-boot-repair
 obj-*/mx-boot-repair		usr/bin
 scripts/*.policy		usr/share/polkit-1/actions
-scripts/helper			usr/lib/mx-boot-repair
-scripts/mxbr-lib		usr/lib/mx-boot-repair

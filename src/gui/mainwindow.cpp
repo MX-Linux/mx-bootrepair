@@ -683,14 +683,12 @@ void MainWindow::buttonAbout_clicked()
 
 void MainWindow::buttonHelp_clicked()
 {
-    QString onlineHelpUrl;
+    QString helpPath = QStringLiteral("/usr/share/doc/mx-bootrepair/mx-boot-repair.html");
     if (qEnvironmentVariable("LANG").startsWith(QLatin1String("fr"))) {
-        onlineHelpUrl = QStringLiteral(
-            "https://mxlinux.org/french-wiki/help-files-fr/help-reparation-damorcage/");
+        helpPath = QStringLiteral("/usr/share/doc/mx-bootrepair/mx-boot-repair-fr.html");
     }
 
-    displayHelpDoc(QStringLiteral("/usr/share/doc/mx-bootrepair/mx-boot-repair.html"),
-                   tr("%1 Help").arg(this->windowTitle()), onlineHelpUrl);
+    displayHelpDoc(helpPath, tr("%1 Help").arg(this->windowTitle()));
 }
 
 bool MainWindow::isMountedTo(const QString &volume, const QString &mount)

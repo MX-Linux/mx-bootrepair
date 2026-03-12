@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>AIDE : Réparation d’amorçage MX</title>
+</head>
+<body>
+<h1>AIDE : Réparation d’amorçage MX</h1>
+<h2>Procédure</h2>
+<ul>
+        <li>Amorcer le LiveMedium et cliquer sur Menu démarrer ≻ Système ≻ MX Réparation d’amorçage, puis sélectionner l’option appropriée.</li>
+        <li>GRUB
+                <ul>
+                        <li>Réinstaller un nouveau chargeur d’amorçage.</li>
+                        <li>Réparer le chargeur d’amorçage en régénérant le fichier de configuration de GRUB (<code>grub.cfg</code>). C’est l’utilisation la plus courante de cette application, lorsqu’il est impossible de démarrer une partition depuis laquelle l’utilisateur pourrait lancer <code>update-grub</code>.</li>
+                </ul>
+        </li>
+        <li>Bloc d’initialisation : ATTENTION, uniquement pour les systèmes démarrant en mode hérité (legacy) qui s’appuient sur le BIOS plutôt que sur l’UEFI.
+                <ul>
+                        <li>Sauvegarder le bloc d’initialisation, soit le bloc maître (MBR), soit le bloc de partition (PBR).</li>
+                        <li>Restaurer un bloc d’initialisation sauvegardé auparavant.</li>
+                </ul>
+        </li>
+</ul>
+
+<p>Historique du développement : Adrian</p>
+
+<p>Licence : <a href="https://mxlinux.org/wiki/licenses/license-mx-boot-repair">ici</a>.</p>
+
+<p>v. 20150603 (v. fr. 20170530)</p>
+</body>
+</html>

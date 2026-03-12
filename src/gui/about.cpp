@@ -67,15 +67,9 @@ void displayDoc(const QString &url, const QString &title, bool largeWindow)
     showHtmlDoc(url, title, largeWindow);
 }
 
-void displayHelpDoc(const QString &path, const QString &title, const QString &onlineUrl)
+void displayHelpDoc(const QString &path, const QString &title)
 {
-    QString prefixHtml;
-    if (!onlineUrl.isEmpty()) {
-        prefixHtml = QStringLiteral(
-                         "<p><strong>%1</strong> <a href=\"%2\">%2</a></p><hr />")
-                         .arg(QStringLiteral("En français :"), onlineUrl.toHtmlEscaped());
-    }
-    showHtmlDoc(path, title, true, prefixHtml);
+    showHtmlDoc(path, title, true);
 }
 
 void displayAboutMsgBox(const QString &title, const QString &message, const QString &licenceUrl,

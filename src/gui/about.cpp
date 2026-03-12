@@ -73,7 +73,7 @@ void displayHelpDoc(const QString &path, const QString &title, const QString &on
     if (!onlineUrl.isEmpty()) {
         prefixHtml = QStringLiteral(
                          "<p><strong>%1</strong> <a href=\"%2\">%2</a></p><hr />")
-                         .arg(QObject::tr("En français :"), onlineUrl.toHtmlEscaped());
+                         .arg(QStringLiteral("En français :"), onlineUrl.toHtmlEscaped());
     }
     showHtmlDoc(path, title, true, prefixHtml);
 }

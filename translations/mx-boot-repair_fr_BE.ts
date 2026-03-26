@@ -172,13 +172,13 @@
         <location filename="../src/gui/mainwindow.cpp" line="155"/>
         <location filename="../src/gui/mainwindow.cpp" line="498"/>
         <source>Authorization Failed</source>
-        <translation type="unfinished"/>
+        <translation>L’autorisation a échoué</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="155"/>
         <location filename="../src/gui/mainwindow.cpp" line="499"/>
         <source>Could not obtain administrator privileges.</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d’obtenir les privilèges administrateur•rice.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="189"/>
@@ -200,7 +200,7 @@
         <location filename="../src/gui/mainwindow.cpp" line="252"/>
         <location filename="../src/gui/mainwindow.cpp" line="304"/>
         <source>Could not unlock %1. Please check the password and try again.</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de déverrouiller %1. Veuillez vérifier le mot de passe et réessayer.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="270"/>
@@ -368,12 +368,7 @@ Are you sure?</source>
         <location filename="../src/gui/about.cpp" line="53"/>
         <location filename="../src/gui/about.cpp" line="58"/>
         <source>Could not load %1</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/gui/about.cpp" line="76"/>
-        <source>En français :</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de charger %1</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="87"/>
@@ -394,7 +389,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="110"/>
         <source>Could not load changelog.</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de charger le journal des modifications.</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="30"/>

@@ -371,11 +371,6 @@ Você tem certeza?</translation>
         <translation>Não foi possível carregar o %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="76"/>
-        <source>En français :</source>
-        <translation>Em português:</translation>
-    </message>
-    <message>
         <location filename="../src/gui/about.cpp" line="87"/>
         <source>License</source>
         <translation>Licença</translation>

@@ -371,11 +371,6 @@ Are you sure?</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="76"/>
-        <source>En français :</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../src/gui/about.cpp" line="87"/>
         <source>License</source>
         <translation>License</translation>

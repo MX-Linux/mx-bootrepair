@@ -371,11 +371,6 @@ N&apos;esteu segur? </translation>
         <translation>No s&apos;ha pogut carregar %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="76"/>
-        <source>En français :</source>
-        <translation>En francès:</translation>
-    </message>
-    <message>
         <location filename="../src/gui/about.cpp" line="87"/>
         <source>License</source>
         <translation>Llicència</translation>

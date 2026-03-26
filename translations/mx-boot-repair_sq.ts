@@ -371,11 +371,6 @@ Jeni i sigurt?</translation>
         <translation>S’u ngarkua dot %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="76"/>
-        <source>En français :</source>
-        <translation>En français :</translation>
-    </message>
-    <message>
         <location filename="../src/gui/about.cpp" line="87"/>
         <source>License</source>
         <translation>Licencë</translation>

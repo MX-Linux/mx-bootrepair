@@ -368,12 +368,7 @@ Are you sure?</source>
         <location filename="../src/gui/about.cpp" line="53"/>
         <location filename="../src/gui/about.cpp" line="58"/>
         <source>Could not load %1</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/gui/about.cpp" line="76"/>
-        <source>En français :</source>
-        <translation type="unfinished"/>
+        <translation>Δεν ήταν δυνατή η φόρτωση του %1</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="87"/>
@@ -394,7 +389,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/about.cpp" line="110"/>
         <source>Could not load changelog.</source>
-        <translation type="unfinished"/>
+        <translation>Δεν ήταν δυνατή η φόρτωση του αρχείου αλλαγών.</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="30"/>

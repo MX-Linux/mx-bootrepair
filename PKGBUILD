@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-boot-repair
-pkgver=${PKGVER:-25.09.4}
+pkgver=${PKGVER:-26.03}
 pkgrel=1
 pkgdesc="GUI tool for repairing GRUB bootloader"
 arch=('x86_64' 'i686')
@@ -38,10 +38,9 @@ package() {
     install -dm755 "${pkgdir}/usr/share/mx-bootrepair/locale"
     install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-bootrepair/locale/" 2>/dev/null || true
 
-    # Install helper scripts
+    # Install helper components
     install -dm755 "${pkgdir}/usr/lib/mx-boot-repair"
-    install -Dm755 scripts/helper "${pkgdir}/usr/lib/mx-boot-repair/helper"
-    install -Dm755 scripts/mxbr-lib "${pkgdir}/usr/lib/mx-boot-repair/mxbr-lib"
+    install -Dm755 build/helper "${pkgdir}/usr/lib/mx-boot-repair/helper"
 
     # Install PolicyKit policy
     install -Dm644 scripts/org.mxlinux.pkexec.mxbr-helper.policy \

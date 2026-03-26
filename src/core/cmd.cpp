@@ -201,6 +201,13 @@ bool Cmd::removeEfiDumpVarsAsRoot(QuietMode quiet)
     return helperProc({QStringLiteral("remove-efi-dump")}, nullptr, nullptr, quiet);
 }
 
+bool Cmd::copyGrubLocalesAsRoot(QuietMode quiet, const QString &rootPath)
+{
+    QStringList helperArgs {QStringLiteral("copy-grub-locales")};
+    helperArgs += helperRootArgs(rootPath);
+    return helperProc(helperArgs, nullptr, nullptr, quiet);
+}
+
 bool Cmd::grubMkstandaloneEfiAsRoot(const QString &arch, const QString &bootloaderId, bool useHostBinary,
                                     QuietMode quiet, const QString &rootPath)
 {

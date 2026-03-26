@@ -66,6 +66,7 @@ private:
     bool mountChrootEnv(const QString& path);
     void cleanupMounts(const QString& path, const QString& luks);
     bool ensureMountFor(const QString& path, const QString& mountpoint, const QString& device);
+    bool copyGrubLocales(const QString& rootPath = {});
 
     Cmd* shell;
     QTemporaryDir tmpdir;

@@ -39,6 +39,7 @@ public:
     bool cleanupChrootEnvAsRoot(const QString &target, QuietMode quiet = QuietMode::No);
     bool ensureEfivarfsAsRoot(QuietMode quiet = QuietMode::No);
     bool removeEfiDumpVarsAsRoot(QuietMode quiet = QuietMode::No);
+    bool copyGrubLocalesAsRoot(QuietMode quiet = QuietMode::No, const QString &rootPath = {});
     bool grubMkstandaloneEfiAsRoot(const QString &arch, const QString &bootloaderId, bool useHostBinary,
                                    QuietMode quiet = QuietMode::No, const QString &rootPath = {});
     void setOutputSuppressed(bool suppressed);

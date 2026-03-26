@@ -475,6 +475,26 @@ bool BootRepairEngine::ensureMountFor(const QString& path, const QString& mountp
     return true;
 }
 
+bool BootRepairEngine::copyGrubLocales(const QString& rootPath)
+{
+    if (currentDryRun_) {
+        if (rootPath.isEmpty()) {
+            emit log(QStringLiteral("[dry-run] copy-grub-locales"));
+        } else {
+            emit log(QStringLiteral("[dry-run] copy-grub-locales --root %1").arg(rootPath));
+        }
+        return true;
+    }
+
+    if (rootPath.isEmpty()) {
+        emit log(QStringLiteral("# copy-grub-locales"));
+        return shell->copyGrubLocalesAsRoot(QuietMode::Yes);
+    }
+
+    emit log(QStringLiteral("# copy-grub-locales --root %1").arg(rootPath));
+    return shell->copyGrubLocalesAsRoot(QuietMode::Yes, rootPath);
+}
+
 bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
 {
     currentDryRun_ = opt.dryRun;
@@ -528,8 +548,11 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
                 if (grubSupportsForceExtraRemovable(shell)) {
                     args << QStringLiteral("--force-extra-removable");
                 }
-                args << QStringLiteral("--recheck");
+                args << QStringLiteral("--recheck") << QStringLiteral("--locales=");
                 ok = execProcAsRoot("grub-install", args, nullptr, nullptr, true);
+                if (ok) {
+                    ok = copyGrubLocales();
+                }
             } else if (grubTool == "grub-mkstandalone") {
                 if (currentDryRun_) {
                     emit log(QStringLiteral("[dry-run] grub-mkstandalone-efi %1 %2").arg(arch, bootloaderId));
@@ -555,8 +578,12 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
             if (grubTool == "grub-install") {
                 ok = execProcAsRoot("grub-install",
                                     {QStringLiteral("--target=i386-pc"), QStringLiteral("--recheck"),
-                                     QStringLiteral("--force"), QStringLiteral("/dev/%1").arg(opt.location)},
+                                     QStringLiteral("--force"), QStringLiteral("--locales="),
+                                     QStringLiteral("/dev/%1").arg(opt.location)},
                                     nullptr, nullptr, true);
+                if (ok) {
+                    ok = copyGrubLocales();
+                }
             } else {
                 emit log(QStringLiteral("grub-install is required for MBR/Root target but was not found."));
                 emit finished(false);
@@ -622,8 +649,11 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
             if (grubSupportsForceExtraRemovable(shell, tmpdir.path())) {
                 args << QStringLiteral("--force-extra-removable");
             }
-            args << QStringLiteral("--recheck");
+            args << QStringLiteral("--recheck") << QStringLiteral("--locales=");
             ok = execProcAsRootInTarget(tmpdir.path(), "grub-install", args, nullptr, nullptr, true);
+            if (ok) {
+                ok = copyGrubLocales(tmpdir.path());
+            }
         } else if (grubTool == "grub-mkstandalone") {
             const bool hostHasMkstandalone = QFile::exists("/usr/bin/grub-mkstandalone")
                 || QFile::exists("/usr/sbin/grub-mkstandalone");
@@ -649,8 +679,12 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
         if (grubTool == "grub-install") {
             ok = execProcAsRootInTarget(tmpdir.path(), "grub-install",
                                         {QStringLiteral("--target=i386-pc"), QStringLiteral("--recheck"),
-                                         QStringLiteral("--force"), QStringLiteral("/dev/%1").arg(opt.location)},
+                                         QStringLiteral("--force"), QStringLiteral("--locales="),
+                                         QStringLiteral("/dev/%1").arg(opt.location)},
                                         nullptr, nullptr, true);
+            if (ok) {
+                ok = copyGrubLocales(tmpdir.path());
+            }
         } else {
             emit log(QStringLiteral("grub-install is required for MBR/Root target but was not found in target root."));
             cleanupMounts(tmpdir.path(), mapper);

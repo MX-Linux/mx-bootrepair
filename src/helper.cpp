@@ -639,6 +639,40 @@ void printError(const QString &message)
 
     return relayResult(runProcess(cpBinary, {source, target}));
 }
+
+[[nodiscard]] int handleCopyGrubLocales(const QString &rootPath)
+{
+    const QString localeRoot = joinTargetPath(rootPath, QStringLiteral("/usr/share/locale"));
+    const QString grubLocaleDir = joinTargetPath(rootPath, QStringLiteral("/boot/grub/locale"));
+    if (!QDir().mkpath(grubLocaleDir)) {
+        printError(QStringLiteral("Unable to create %1").arg(grubLocaleDir));
+        return 1;
+    }
+
+    const QDir localeDir(localeRoot);
+    const QStringList localeNames =
+        localeDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot | QDir::Readable, QDir::Name);
+    for (const QString &localeName : localeNames) {
+        const QString sourcePath =
+            localeDir.filePath(QStringLiteral("%1/LC_MESSAGES/grub.mo").arg(localeName));
+        const QFileInfo sourceInfo(sourcePath);
+        if (!sourceInfo.exists() || !sourceInfo.isFile()) {
+            continue;
+        }
+
+        const QString targetPath = QDir(grubLocaleDir).filePath(localeName + QStringLiteral(".mo"));
+        QFile::remove(targetPath);
+        if (!QFile::copy(sourcePath, targetPath)) {
+            printError(QStringLiteral("Unable to copy %1 to %2").arg(sourcePath, targetPath));
+            return 1;
+        }
+        QFile targetFile(targetPath);
+        targetFile.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner | QFileDevice::ReadGroup
+                                  | QFileDevice::ReadOther);
+    }
+
+    return 0;
+}
 } // namespace
 
 int main(int argc, char *argv[])
@@ -680,6 +714,9 @@ int main(int argc, char *argv[])
             return 1;
         }
         return handleCopyLog();
+    }
+    if (action == QLatin1String("copy-grub-locales")) {
+        return handleCopyGrubLocales(rootPath);
     }
     if (action == QLatin1String("dir-has-entries")) {
         return handleDirHasEntries(rootPath, arguments);

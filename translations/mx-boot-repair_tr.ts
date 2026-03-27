@@ -357,7 +357,7 @@ Emin misiniz?</translation>
         <translation>%1 Telif Hakkı</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="693"/>
+        <location filename="../src/gui/mainwindow.cpp" line="691"/>
         <source>%1 Help</source>
         <translation>%1 Yardım</translation>
     </message>
@@ -371,29 +371,29 @@ Emin misiniz?</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="87"/>
+        <location filename="../src/gui/about.cpp" line="81"/>
         <source>License</source>
         <translation>Lisans</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="88"/>
-        <location filename="../src/gui/about.cpp" line="98"/>
+        <location filename="../src/gui/about.cpp" line="82"/>
+        <location filename="../src/gui/about.cpp" line="92"/>
         <source>Changelog</source>
         <translation>Değişim günlüğü</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="89"/>
+        <location filename="../src/gui/about.cpp" line="83"/>
         <source>Cancel</source>
         <translation>İptal</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="110"/>
+        <location filename="../src/gui/about.cpp" line="104"/>
         <source>Could not load changelog.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="30"/>
-        <location filename="../src/gui/about.cpp" line="113"/>
+        <location filename="../src/gui/about.cpp" line="107"/>
         <source>&amp;Close</source>
         <translation>&amp;Kapat</translation>
     </message>

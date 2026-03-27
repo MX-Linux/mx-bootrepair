@@ -357,7 +357,7 @@ N&apos;esteu segur? </translation>
         <translation>Llicència de %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="693"/>
+        <location filename="../src/gui/mainwindow.cpp" line="691"/>
         <source>%1 Help</source>
         <translation>Ajuda de %1</translation>
     </message>
@@ -371,29 +371,29 @@ N&apos;esteu segur? </translation>
         <translation>No s&apos;ha pogut carregar %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="87"/>
+        <location filename="../src/gui/about.cpp" line="81"/>
         <source>License</source>
         <translation>Llicència</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="88"/>
-        <location filename="../src/gui/about.cpp" line="98"/>
+        <location filename="../src/gui/about.cpp" line="82"/>
+        <location filename="../src/gui/about.cpp" line="92"/>
         <source>Changelog</source>
         <translation>Registre de canvis</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="89"/>
+        <location filename="../src/gui/about.cpp" line="83"/>
         <source>Cancel</source>
         <translation>Cancel·la</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="110"/>
+        <location filename="../src/gui/about.cpp" line="104"/>
         <source>Could not load changelog.</source>
         <translation>No s&apos;ha pogut carregar el registre de canvis.</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="30"/>
-        <location filename="../src/gui/about.cpp" line="113"/>
+        <location filename="../src/gui/about.cpp" line="107"/>
         <source>&amp;Close</source>
         <translation>Tan&amp;ca </translation>
     </message>

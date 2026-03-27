@@ -357,7 +357,7 @@ Sind Sie sicher?</translation>
         <translation>%1 Lizenz</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="693"/>
+        <location filename="../src/gui/mainwindow.cpp" line="691"/>
         <source>%1 Help</source>
         <translation>%1 Hilfe</translation>
     </message>
@@ -371,29 +371,29 @@ Sind Sie sicher?</translation>
         <translation>%1 konnte nicht geladen werden.</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="87"/>
+        <location filename="../src/gui/about.cpp" line="81"/>
         <source>License</source>
         <translation>Lizenz</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="88"/>
-        <location filename="../src/gui/about.cpp" line="98"/>
+        <location filename="../src/gui/about.cpp" line="82"/>
+        <location filename="../src/gui/about.cpp" line="92"/>
         <source>Changelog</source>
         <translation>Änderungsprotokoll</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="89"/>
+        <location filename="../src/gui/about.cpp" line="83"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="110"/>
+        <location filename="../src/gui/about.cpp" line="104"/>
         <source>Could not load changelog.</source>
         <translation>Änderungsprotokoll konnte nicht geladen werden.</translation>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="30"/>
-        <location filename="../src/gui/about.cpp" line="113"/>
+        <location filename="../src/gui/about.cpp" line="107"/>
         <source>&amp;Close</source>
         <translation>&amp;Schließen</translation>
     </message>

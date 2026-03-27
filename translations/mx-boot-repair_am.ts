@@ -357,7 +357,7 @@ Are you sure?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="693"/>
+        <location filename="../src/gui/mainwindow.cpp" line="691"/>
         <source>%1 Help</source>
         <translation type="unfinished"/>
     </message>
@@ -371,29 +371,29 @@ Are you sure?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="87"/>
+        <location filename="../src/gui/about.cpp" line="81"/>
         <source>License</source>
         <translation>ፍቃድ</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="88"/>
-        <location filename="../src/gui/about.cpp" line="98"/>
+        <location filename="../src/gui/about.cpp" line="82"/>
+        <location filename="../src/gui/about.cpp" line="92"/>
         <source>Changelog</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="89"/>
+        <location filename="../src/gui/about.cpp" line="83"/>
         <source>Cancel</source>
         <translation>መሰረዣ</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="110"/>
+        <location filename="../src/gui/about.cpp" line="104"/>
         <source>Could not load changelog.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/gui/about.cpp" line="30"/>
-        <location filename="../src/gui/about.cpp" line="113"/>
+        <location filename="../src/gui/about.cpp" line="107"/>
         <source>&amp;Close</source>
         <translation>&amp;መዝጊያ</translation>
     </message>

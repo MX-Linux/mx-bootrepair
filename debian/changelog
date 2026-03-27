@@ -1,3 +1,9 @@
+mx-bootrepair (26.03.2) mx; urgency=medium
+
+  * Fix changelog dialog lookup for installed package docs
+
+ -- Adrian <adrian@mxlinux.org>  Thu, 26 Mar 2026 14:20:00 -0400
+
 mx-bootrepair (26.03.1) mx; urgency=medium
 
   * Work around grub-install locale copy failures

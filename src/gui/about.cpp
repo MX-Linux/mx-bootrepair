@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QProcess>
 #include <QPushButton>
+#include <QStringList>
 #include <QTextDocument>
 #include <QTextBrowser>
 #include <QTextEdit>
@@ -60,6 +61,40 @@ void showHtmlDoc(const QString &url, const QString &title, bool largeWindow, con
 
     dialog.exec();
 }
+
+QString loadChangelogText()
+{
+    const QString appName = QFileInfo(QCoreApplication::applicationFilePath()).fileName();
+    const QStringList changelogPaths = {
+        QStringLiteral("/usr/share/doc/mx-bootrepair/changelog.gz"),
+        QStringLiteral("/usr/share/doc/mx-bootrepair/changelog"),
+        QStringLiteral("/usr/share/doc/%1/changelog.gz").arg(appName),
+        QStringLiteral("/usr/share/doc/%1/changelog").arg(appName),
+    };
+
+    for (const QString &path : changelogPaths) {
+        if (!QFileInfo::exists(path)) {
+            continue;
+        }
+
+        if (path.endsWith(QStringLiteral(".gz"))) {
+            QProcess proc;
+            proc.start(QStringLiteral("zcat"), {path}, QIODevice::ReadOnly);
+            if (proc.waitForStarted(3000) && proc.waitForFinished(3000) && proc.exitStatus() == QProcess::NormalExit
+                && proc.exitCode() == 0) {
+                return QString::fromUtf8(proc.readAllStandardOutput());
+            }
+            continue;
+        }
+
+        QFile file(path);
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            return QString::fromUtf8(file.readAll());
+        }
+    }
+
+    return QObject::tr("Could not load changelog.");
+}
 } // namespace
 
 void displayDoc(const QString &url, const QString &title, bool largeWindow)
@@ -94,15 +129,7 @@ void displayAboutMsgBox(const QString &title, const QString &message, const QStr
 
         auto *text = new QTextEdit(&changelog);
         text->setReadOnly(true);
-        QProcess proc;
-        const QString appName = QFileInfo(QCoreApplication::applicationFilePath()).fileName();
-        const QString changelogPath = QStringLiteral("/usr/share/doc/%1/changelog.gz").arg(appName);
-        proc.start(QStringLiteral("zcat"), {changelogPath}, QIODevice::ReadOnly);
-        if (proc.waitForStarted(3000) && proc.waitForFinished(3000)) {
-            text->setText(QString::fromUtf8(proc.readAllStandardOutput()));
-        } else {
-            text->setText(QObject::tr("Could not load changelog."));
-        }
+        text->setText(loadChangelogText());
 
         auto *btnClose = new QPushButton(QObject::tr("&Close"), &changelog);
         btnClose->setIcon(QIcon::fromTheme(QStringLiteral("window-close")));

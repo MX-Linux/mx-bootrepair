@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QRandomGenerator>
+#include <QRegularExpression>
 #include <QSysInfo>
 
 namespace {
@@ -283,21 +284,40 @@ bool BootRepairEngine::execProcAsRootInTarget(const QString& rootPath, const QSt
 
 QStringList BootRepairEngine::listDisks() const
 {
-    const QString cmd = QStringLiteral(
-        "lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME | grep -E '^x?[h,s,v].[a-z]|^mmcblk|^nvme'");
-    emit const_cast<BootRepairEngine*>(this)->log(QStringLiteral("$ %1").arg(cmd));
-    const QSignalBlocker blocker(const_cast<BootRepairEngine*>(this)); // suppress engine::log emissions
-    return shell->getCmdOut(cmd, QuietMode::Yes).split('\n', Qt::SkipEmptyParts);
+    emit const_cast<BootRepairEngine*>(this)->log(
+        QStringLiteral("$ lsblk -ln -o NAME,SIZE,LABEL,MODEL -d -e 2,11 -x NAME"));
+    const QSignalBlocker blocker(const_cast<BootRepairEngine*>(this));
+    QString output;
+    shell->proc("lsblk", {"-ln", "-o", "NAME,SIZE,LABEL,MODEL", "-d", "-e", "2,11", "-x", "NAME"},
+                &output, nullptr, QuietMode::Yes);
+    static const QRegularExpression diskRx(
+        QStringLiteral(R"(^(x?[hsv]d[a-z]+|mmcblk[0-9]+|nvme[0-9]+n[0-9]+)\b)"));
+    QStringList result;
+    for (const auto &line : output.split('\n', Qt::SkipEmptyParts)) {
+        if (diskRx.match(line).hasMatch()) {
+            result << line;
+        }
+    }
+    return result;
 }
 
 QStringList BootRepairEngine::listPartitions() const
 {
-    const QString cmd = QStringLiteral(
-        "lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME | grep -E "
-        "'^x?[h,s,v].[a-z][0-9]|^mmcblk[0-9]+p|^nvme[0-9]+n[0-9]+p'");
-    emit const_cast<BootRepairEngine*>(this)->log(QStringLiteral("$ %1").arg(cmd));
-    const QSignalBlocker blocker(const_cast<BootRepairEngine*>(this)); // suppress engine::log emissions
-    return shell->getCmdOut(cmd, QuietMode::Yes).split('\n', Qt::SkipEmptyParts);
+    emit const_cast<BootRepairEngine*>(this)->log(
+        QStringLiteral("$ lsblk -ln -o NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL -e 2,11 -x NAME"));
+    const QSignalBlocker blocker(const_cast<BootRepairEngine*>(this));
+    QString output;
+    shell->proc("lsblk", {"-ln", "-o", "NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL", "-e", "2,11", "-x", "NAME"},
+                &output, nullptr, QuietMode::Yes);
+    static const QRegularExpression partRx(
+        QStringLiteral(R"(^(x?[hsv]d[a-z]+[0-9]+|mmcblk[0-9]+p[0-9]+|nvme[0-9]+n[0-9]+p[0-9]+)\b)"));
+    QStringList result;
+    for (const auto &line : output.split('\n', Qt::SkipEmptyParts)) {
+        if (partRx.match(line).hasMatch()) {
+            result << line;
+        }
+    }
+    return result;
 }
 
 bool BootRepairEngine::isUefi()
@@ -373,27 +393,37 @@ QString BootRepairEngine::mountSource(const QString& mountpoint) const
 bool BootRepairEngine::isEspPartition(const QString& device) const
 {
     const QString dev = normalizeDev(device);
-    const QString cmd = QStringLiteral("lsblk -ln -o PARTTYPE %1 | grep -qiE 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef'")
-                            .arg(dev);
-    emit const_cast<BootRepairEngine*>(this)->log(QStringLiteral("$ %1").arg(cmd));
-    return shell->run(cmd, nullptr, nullptr, QuietMode::Yes);
+    emit const_cast<BootRepairEngine*>(this)->log(
+        QStringLiteral("$ lsblk -ln -o PARTTYPE %1").arg(dev));
+    QString output;
+    shell->proc("lsblk", {"-ln", "-o", "PARTTYPE", dev}, &output, nullptr, QuietMode::Yes);
+    static const QRegularExpression rx(QStringLiteral("c12a7328-f81f-11d2-ba4b-00a0c93ec93b|0xef"),
+                                        QRegularExpression::CaseInsensitiveOption);
+    return rx.match(output).hasMatch();
 }
 
 bool BootRepairEngine::isLinuxPartitionType(const QString& device) const
 {
     const QString dev = normalizeDev(device);
-    const QString cmd = QStringLiteral("lsblk -ln -o PARTTYPE %1 | grep -qEi '0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709'")
-                            .arg(dev);
-    emit const_cast<BootRepairEngine*>(this)->log(QStringLiteral("$ %1").arg(cmd));
-    return shell->run(cmd, nullptr, nullptr, QuietMode::Yes);
+    emit const_cast<BootRepairEngine*>(this)->log(
+        QStringLiteral("$ lsblk -ln -o PARTTYPE %1").arg(dev));
+    QString output;
+    shell->proc("lsblk", {"-ln", "-o", "PARTTYPE", dev}, &output, nullptr, QuietMode::Yes);
+    static const QRegularExpression rx(
+        QStringLiteral("0x83|0fc63daf-8483-4772-8e79-3d69d8477de4|"
+                       "44479540-F297-41B2-9AF7-D131D5F0458A|4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709"),
+        QRegularExpression::CaseInsensitiveOption);
+    return rx.match(output).hasMatch();
 }
 
 bool BootRepairEngine::labelContains(const QString& device, const QString& needle) const
 {
     const QString dev = normalizeDev(device);
-    const QString cmd = QStringLiteral("lsblk -ln -o LABEL %1 | grep -q %2").arg(dev, needle);
-    emit const_cast<BootRepairEngine*>(this)->log(QStringLiteral("$ %1").arg(cmd));
-    return shell->run(cmd, nullptr, nullptr, QuietMode::Yes);
+    emit const_cast<BootRepairEngine*>(this)->log(
+        QStringLiteral("$ lsblk -ln -o LABEL %1").arg(dev));
+    QString output;
+    shell->proc("lsblk", {"-ln", "-o", "LABEL", dev}, &output, nullptr, QuietMode::Yes);
+    return output.contains(needle);
 }
 
 QString BootRepairEngine::filesystemType(const QString& device) const

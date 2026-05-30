@@ -9,10 +9,10 @@ void setupRootEnv();
 // Install Qt and app translations (persistent for process lifetime)
 void installTranslations();
 
-// Install a Qt message handler that logs to /tmp/<appname>.log and echoes to stdout
+// Install a Qt message handler that writes the session log and echoes to stdout.
 void setupLogging();
 
-// True when the current temp log contains enough content to be worth persisting.
+// True when the current session log contains enough content to be worth persisting.
 bool shouldPersistLog();
 
 }

@@ -21,6 +21,7 @@
  * along with this package. If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
 
+#include <QByteArray>
 #include <QCoreApplication>
 #include <QDir>
 #include <QFile>
@@ -31,6 +32,10 @@
 #include <QStringList>
 
 #include <cstdio>
+
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 namespace
 {
@@ -612,24 +617,138 @@ void printError(const QString &message)
     return exitCode;
 }
 
+[[nodiscard]] bool pathExistsNoFollow(const QString &path)
+{
+    struct stat st {};
+    const QByteArray encodedPath = QFile::encodeName(path);
+    return ::lstat(encodedPath.constData(), &st) == 0;
+}
+
+[[nodiscard]] bool isRegularFileNoFollow(const QString &path)
+{
+    struct stat st {};
+    const QByteArray encodedPath = QFile::encodeName(path);
+    return ::lstat(encodedPath.constData(), &st) == 0 && S_ISREG(st.st_mode);
+}
+
+[[nodiscard]] int copyRegularFileNoFollow(const QString &source, const QString &target)
+{
+    const QByteArray encodedSource = QFile::encodeName(source);
+    const int sourceFd = ::open(encodedSource.constData(), O_RDONLY | O_NOFOLLOW | O_CLOEXEC);
+    if (sourceFd < 0) {
+        printError(QStringLiteral("Unable to open log source: %1").arg(source));
+        return 1;
+    }
+
+    struct stat sourceStat {};
+    if (::fstat(sourceFd, &sourceStat) != 0 || !S_ISREG(sourceStat.st_mode)) {
+        ::close(sourceFd);
+        printError(QStringLiteral("Log source is not a regular file: %1").arg(source));
+        return 1;
+    }
+
+    QFile sourceFile;
+    if (!sourceFile.open(sourceFd, QFile::ReadOnly, QFileDevice::AutoCloseHandle)) {
+        ::close(sourceFd);
+        printError(QStringLiteral("Unable to read log source: %1").arg(source));
+        return 1;
+    }
+
+    const QByteArray encodedTarget = QFile::encodeName(target);
+    const int targetFd = ::open(encodedTarget.constData(), O_WRONLY | O_CREAT | O_EXCL | O_CLOEXEC, 0600);
+    if (targetFd < 0) {
+        printError(QStringLiteral("Unable to create log target: %1").arg(target));
+        return 1;
+    }
+
+    QFile targetFile;
+    if (!targetFile.open(targetFd, QFile::WriteOnly, QFileDevice::AutoCloseHandle)) {
+        ::close(targetFd);
+        QFile::remove(target);
+        printError(QStringLiteral("Unable to write log target: %1").arg(target));
+        return 1;
+    }
+
+    QByteArray buffer(64 * 1024, Qt::Uninitialized);
+    while (true) {
+        const qint64 bytesRead = sourceFile.read(buffer.data(), buffer.size());
+        if (bytesRead < 0) {
+            targetFile.close();
+            QFile::remove(target);
+            printError(QStringLiteral("Unable to read log source: %1").arg(source));
+            return 1;
+        }
+        if (bytesRead == 0) {
+            break;
+        }
+
+        qint64 bytesWritten = 0;
+        while (bytesWritten < bytesRead) {
+            const qint64 chunkWritten = targetFile.write(buffer.constData() + bytesWritten, bytesRead - bytesWritten);
+            if (chunkWritten <= 0) {
+                targetFile.close();
+                QFile::remove(target);
+                printError(QStringLiteral("Unable to write log target: %1").arg(target));
+                return 1;
+            }
+            bytesWritten += chunkWritten;
+        }
+    }
+
+    if (!targetFile.flush()) {
+        targetFile.close();
+        QFile::remove(target);
+        printError(QStringLiteral("Unable to flush log target: %1").arg(target));
+        return 1;
+    }
+    return 0;
+}
+
 [[nodiscard]] int handleCopyLog()
 {
-    const QString source = QStringLiteral("/tmp/mx-boot-repair.log");
-    const QString target = QStringLiteral("/var/log/mx-boot-repair.log");
-    const QString backup = QStringLiteral("/var/log/mx-boot-repair.log.old");
+    const QString name = QStringLiteral("mx-boot-repair.log");
+    const QString target = QStringLiteral("/var/log/") + name;
+    const QString backup = QStringLiteral("/var/log/") + name + QStringLiteral(".old");
+
+    // Where the app wrote its log (see app_init sessionLogPath): a GUI run logs
+    // to the caller's private runtime dir (/run/user/<uid>); a root CLI run logs
+    // to /run. Both are non-world-writable, unlike the legacy /tmp fallback. The
+    // caller's uid may come from pkexec or sudo.
+    QStringList searchDirs;
+    bool uidOk = false;
+    uint uid = qEnvironmentVariable("PKEXEC_UID").toUInt(&uidOk);
+    if (!uidOk || uid == 0) {
+        uid = qEnvironmentVariable("SUDO_UID").toUInt(&uidOk);
+    }
+    if (uidOk && uid != 0) {
+        searchDirs << QStringLiteral("/run/user/%1").arg(uid);
+    }
+    searchDirs << QStringLiteral("/run") << QStringLiteral("/tmp");
+
+    QString source;
+    for (const QString &dir : searchDirs) {
+        const QString candidate = dir + QLatin1Char('/') + name;
+        // Only copy a real regular file, never a symlink (lstat + S_ISREG), so
+        // the source cannot be redirected at a root-owned file.
+        if (isRegularFileNoFollow(candidate)) {
+            source = candidate;
+            break;
+        }
+    }
+    if (source.isEmpty()) {
+        return 0; // no log to copy
+    }
 
     // copy-log is a dedicated helper action, not generic command dispatch, so
-    // it resolves and runs the two required host binaries directly here.
+    // it resolves and runs the required host binary directly here.
     const QString mvBinary =
         resolveHostBinary({QStringLiteral("/usr/bin/mv"), QStringLiteral("/bin/mv")});
-    const QString cpBinary =
-        resolveHostBinary({QStringLiteral("/usr/bin/cp"), QStringLiteral("/bin/cp")});
-    if (mvBinary.isEmpty() || cpBinary.isEmpty()) {
-        printError(QStringLiteral("Unable to find cp/mv"));
+    if (mvBinary.isEmpty()) {
+        printError(QStringLiteral("Unable to find mv"));
         return 127;
     }
 
-    if (QFile::exists(target)) {
+    if (pathExistsNoFollow(target)) {
         const int exitCode =
             relayResult(runProcess(mvBinary, {QStringLiteral("--backup=numbered"), target, backup}));
         if (exitCode != 0) {
@@ -637,7 +756,7 @@ void printError(const QString &message)
         }
     }
 
-    return relayResult(runProcess(cpBinary, {source, target}));
+    return copyRegularFileNoFollow(source, target);
 }
 
 [[nodiscard]] int handleCopyGrubLocales(const QString &rootPath)

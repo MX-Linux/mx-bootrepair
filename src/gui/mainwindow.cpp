@@ -404,7 +404,7 @@ void MainWindow::guessPartition()
             break;
         }
     }
-    // use by default the same root and /boot partion for installing on root
+    // use by default the same root and /boot partition for installing on root
     if (ui->radioGrubRoot->isChecked()) {
         ui->comboLocation->setCurrentIndex(ui->comboRoot->currentIndex());
     }

@@ -36,6 +36,27 @@ using namespace std::chrono_literals;
 
 namespace
 {
+
+// RAII wrapper that zeroes sensitive data on scope exit
+struct SecureBuffer
+{
+    QByteArray *data;
+
+    explicit SecureBuffer(QByteArray *d)
+        : data(d) {}
+
+    SecureBuffer(const SecureBuffer &) = delete;
+    SecureBuffer &operator=(const SecureBuffer &) = delete;
+
+    ~SecureBuffer()
+    {
+        if (data && !data->isEmpty()) {
+            data->fill(static_cast<char>(0));
+            data->clear();
+        }
+    }
+};
+
 void setBusyCursor()
 {
     if (QApplication::overrideCursor()) {
@@ -172,11 +193,12 @@ void MainWindow::installGRUB()
         }
         if (isLuks) {
             bool ok = false;
-            const QByteArray pass
+            QByteArray pass
                 = QInputDialog::getText(this, this->windowTitle(),
                                         tr("Enter password to unlock %1 encrypted partition:").arg(opt.root),
                                         QLineEdit::Password, QString(), &ok)
                       .toUtf8();
+            SecureBuffer _scrub(&pass);
             if (!ok) {
                 return;
             }
@@ -217,6 +239,8 @@ void MainWindow::installGRUB()
     displayOutput();
     const bool success = engine->installGrub(opt);
     disableOutput();
+    opt.luksPassword.fill(0);
+    opt.luksPassword.clear();
     displayResult(success);
 }
 
@@ -234,11 +258,12 @@ void MainWindow::repairGRUB()
         }
         if (isLuks) {
             bool ok = false;
-            const QByteArray pass
+            QByteArray pass
                 = QInputDialog::getText(this, this->windowTitle(),
                                         tr("Enter password to unlock %1 encrypted partition:").arg(opt.root),
                                         QLineEdit::Password, QString(), &ok)
                       .toUtf8();
+            SecureBuffer _scrub(&pass);
             if (!ok) {
                 return;
             }
@@ -272,6 +297,8 @@ void MainWindow::repairGRUB()
     displayOutput();
     const bool success = engine->repairGrub(opt);
     disableOutput();
+    opt.luksPassword.fill(0);
+    opt.luksPassword.clear();
     displayResult(success);
 }
 
@@ -286,11 +313,12 @@ void MainWindow::regenerateInitramfs()
         }
         if (isLuks) {
             bool ok = false;
-            const QByteArray pass
+            QByteArray pass
                 = QInputDialog::getText(this, this->windowTitle(),
                                         tr("Enter password to unlock %1 encrypted partition:").arg(opt.root),
                                         QLineEdit::Password, QString(), &ok)
                       .toUtf8();
+            SecureBuffer _scrub(&pass);
             if (!ok) {
                 return;
             }
@@ -320,6 +348,8 @@ void MainWindow::regenerateInitramfs()
     displayOutput();
     const bool success = engine->regenerateInitramfs(opt);
     disableOutput();
+    opt.luksPassword.fill(0);
+    opt.luksPassword.clear();
     displayResult(success);
 }
 

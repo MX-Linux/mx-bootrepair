@@ -446,7 +446,7 @@ bool BootRepairEngine::openLuks(const QString& part, const QString& mapper, cons
         emit log(QStringLiteral("LUKS device requires a password for %1").arg(part));
         return false;
     }
-    return execProcAsRoot("cryptsetup", {"luksOpen", part, mapper, "-"}, nullptr, &const_cast<QByteArray&>(pass), true);
+    return execProcAsRoot("cryptsetup", {"luksOpen", part, mapper, "-"}, nullptr, &pass, true);
 }
 
 bool BootRepairEngine::mountChrootEnv(const QString& path)

@@ -1,6 +1,7 @@
 #include "core/bootrepair_engine.h"
 
 #include <QCoreApplication>
+#include <QDebug>
 #include <QSignalBlocker>
 #include <QDir>
 #include <QFile>
@@ -66,8 +67,9 @@ QString toRootRelativePath(const QString& path, const QString& rootPath)
 
 QString detectArch(Cmd* shell)
 {
-    const QString cmd = QStringLiteral("uname -m");
-    QString arch = shell->getCmdOut(cmd, QuietMode::Yes).trimmed();
+    QString arch;
+    shell->proc("uname", {"-m"}, &arch, nullptr, QuietMode::Yes);
+    arch = arch.trimmed();
     if (arch.contains("not found", Qt::CaseInsensitive)) {
         arch.clear();
     }
@@ -336,10 +338,15 @@ bool BootRepairEngine::isMountedTo(const QString& volume, const QString& mount) 
     const bool wasSuppressed = shell->outputSuppressed();
     shell->setOutputSuppressed(true);
     QString points;
-    if (!shell->proc("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points, nullptr, QuietMode::Yes)) {
-        shell->proc("lsblk", {"-nro", "MOUNTPOINT", volume}, &points, nullptr, QuietMode::Yes);
+    bool queried = shell->proc("lsblk", {"-nro", "MOUNTPOINTS", volume}, &points, nullptr, QuietMode::Yes);
+    if (!queried) {
+        queried = shell->proc("lsblk", {"-nro", "MOUNTPOINT", volume}, &points, nullptr, QuietMode::Yes);
     }
     shell->setOutputSuppressed(wasSuppressed);
+    if (!queried) {
+        // Empty output is normal for an unmounted device; only warn when lsblk itself failed.
+        qWarning().noquote() << "isMountedTo: lsblk failed to query mount points for" << volume;
+    }
     return points.split('\n', Qt::SkipEmptyParts).contains(mount);
 }
 

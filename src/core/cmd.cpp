@@ -5,6 +5,7 @@
 #include <QEventLoop>
 #include <QFile>
 #include <QFileInfo>
+#include <QStandardPaths>
 #include <QStringList>
 #include <QVariant>
 
@@ -42,14 +43,20 @@ bool indicatesElevationFailure(const QString &wrapperProgram, const QString &out
 
 Cmd::Cmd(QObject *parent)
     : QProcess(parent),
-      asRoot(
-          (QCoreApplication::instance() && QCoreApplication::instance()->property("cliMode").toBool()
-           && QFile::exists("/usr/bin/sudo"))
-              ? QStringLiteral("/usr/bin/sudo")
-              : (QFile::exists("/usr/bin/pkexec") ? QStringLiteral("/usr/bin/pkexec")
-                                                  : QStringLiteral("/usr/bin/gksu"))),
       helper(QStringLiteral("/usr/lib/%1/helper").arg(QCoreApplication::applicationName()))
 {
+    // Resolve elevation tool via PATH lookup so non-standard install paths work
+    const bool cliMode = QCoreApplication::instance()
+                         && QCoreApplication::instance()->property("cliMode").toBool();
+    if (cliMode) {
+        asRoot = QStandardPaths::findExecutable(QStringLiteral("sudo"));
+    }
+    if (asRoot.isEmpty()) {
+        asRoot = QStandardPaths::findExecutable(QStringLiteral("pkexec"));
+    }
+    if (asRoot.isEmpty()) {
+        asRoot = QStandardPaths::findExecutable(QStringLiteral("gksu"));
+    }
     connect(this, &Cmd::readyReadStandardOutput, [this] {
         const QString out = readAllStandardOutput();
         out_buffer += out;
@@ -221,6 +228,8 @@ bool Cmd::proc(const QString &cmd, const QStringList &args, QString *output, con
                QuietMode quiet)
 {
     out_buffer.clear();
+    // Disconnect any previous relay to avoid accumulating duplicate connections
+    disconnect(this, &QProcess::finished, this, &Cmd::done);
     connect(this, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &Cmd::done);
     if (state() != QProcess::NotRunning) {
         qDebug() << "Process already running:" << program() << arguments();

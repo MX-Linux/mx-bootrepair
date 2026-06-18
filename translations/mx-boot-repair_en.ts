@@ -45,7 +45,7 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="134"/>
-        <location filename="../src/gui/mainwindow.cpp" line="615"/>
+        <location filename="../src/gui/mainwindow.cpp" line="631"/>
         <source>Select Boot Method</source>
         <translation type="unfinished"></translation>
     </message>
@@ -67,7 +67,7 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
-        <location filename="../src/gui/mainwindow.cpp" line="616"/>
+        <location filename="../src/gui/mainwindow.cpp" line="632"/>
         <source>Location:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -88,19 +88,19 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="243"/>
-        <location filename="../src/gui/mainwindow.cpp" line="618"/>
+        <location filename="../src/gui/mainwindow.cpp" line="634"/>
         <source>root</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="278"/>
-        <location filename="../src/gui/mainwindow.cpp" line="623"/>
+        <location filename="../src/gui/mainwindow.cpp" line="639"/>
         <source>Select root location:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="300"/>
-        <location filename="../src/gui/mainwindow.cpp" line="617"/>
+        <location filename="../src/gui/mainwindow.cpp" line="633"/>
         <source>Install on:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -161,7 +161,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="651"/>
+        <location filename="../src/gui/mainwindow.cpp" line="667"/>
         <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
@@ -187,13 +187,12 @@
         <location filename="../src/gui/mainwindow.cpp" line="276"/>
         <location filename="../src/gui/mainwindow.cpp" line="331"/>
         <location filename="../src/gui/mainwindow.cpp" line="451"/>
-        <location filename="../src/gui/mainwindow.cpp" line="533"/>
-        <location filename="../src/gui/mainwindow.cpp" line="656"/>
-        <location filename="../src/gui/mainwindow.cpp" line="660"/>
-        <location filename="../src/gui/mainwindow.cpp" line="667"/>
-        <location filename="../src/gui/mainwindow.cpp" line="673"/>
-        <location filename="../src/gui/mainwindow.cpp" line="681"/>
-        <location filename="../src/gui/mainwindow.cpp" line="688"/>
+        <location filename="../src/gui/mainwindow.cpp" line="672"/>
+        <location filename="../src/gui/mainwindow.cpp" line="676"/>
+        <location filename="../src/gui/mainwindow.cpp" line="683"/>
+        <location filename="../src/gui/mainwindow.cpp" line="689"/>
+        <location filename="../src/gui/mainwindow.cpp" line="697"/>
+        <location filename="../src/gui/mainwindow.cpp" line="704"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -272,7 +271,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="533"/>
+        <location filename="../src/gui/mainwindow.cpp" line="546"/>
         <source>Process finished. Errors have occurred.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -284,80 +283,85 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="622"/>
+        <location filename="../src/gui/mainwindow.cpp" line="548"/>
+        <source>Unknown error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/mainwindow.cpp" line="638"/>
         <source>Select GRUB location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="631"/>
+        <location filename="../src/gui/mainwindow.cpp" line="647"/>
         <source>Select initramfs options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="641"/>
+        <location filename="../src/gui/mainwindow.cpp" line="657"/>
         <source>Select Item to Back Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="646"/>
+        <location filename="../src/gui/mainwindow.cpp" line="662"/>
         <source>Select Item to Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="656"/>
-        <location filename="../src/gui/mainwindow.cpp" line="667"/>
+        <location filename="../src/gui/mainwindow.cpp" line="672"/>
+        <location filename="../src/gui/mainwindow.cpp" line="683"/>
         <source>No location was selected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="661"/>
-        <location filename="../src/gui/mainwindow.cpp" line="674"/>
+        <location filename="../src/gui/mainwindow.cpp" line="677"/>
+        <location filename="../src/gui/mainwindow.cpp" line="690"/>
         <source>Please select the root partition of the system you want to fix.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="679"/>
+        <location filename="../src/gui/mainwindow.cpp" line="695"/>
         <source>Select backup file name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="681"/>
-        <location filename="../src/gui/mainwindow.cpp" line="688"/>
+        <location filename="../src/gui/mainwindow.cpp" line="697"/>
+        <location filename="../src/gui/mainwindow.cpp" line="704"/>
         <source>No file was selected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="686"/>
+        <location filename="../src/gui/mainwindow.cpp" line="702"/>
         <source>Select MBR or PBR backup file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="704"/>
+        <location filename="../src/gui/mainwindow.cpp" line="720"/>
         <source>About %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="706"/>
+        <location filename="../src/gui/mainwindow.cpp" line="722"/>
         <source>Version: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="707"/>
+        <location filename="../src/gui/mainwindow.cpp" line="723"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="709"/>
+        <location filename="../src/gui/mainwindow.cpp" line="725"/>
         <source>Copyright (c) MX Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="710"/>
+        <location filename="../src/gui/mainwindow.cpp" line="726"/>
         <source>%1 License</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="721"/>
+        <location filename="../src/gui/mainwindow.cpp" line="737"/>
         <source>%1 Help</source>
         <translation type="unfinished"></translation>
     </message>

@@ -172,13 +172,13 @@
         <location filename="../src/gui/mainwindow.cpp" line="155"/>
         <location filename="../src/gui/mainwindow.cpp" line="498"/>
         <source>Authorization Failed</source>
-        <translation type="unfinished"/>
+        <translation>La autentificación falló</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="155"/>
         <location filename="../src/gui/mainwindow.cpp" line="499"/>
         <source>Could not obtain administrator privileges.</source>
-        <translation type="unfinished"/>
+        <translation>No se pudo obtener privilegios de administrador.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="189"/>
@@ -200,7 +200,7 @@
         <location filename="../src/gui/mainwindow.cpp" line="252"/>
         <location filename="../src/gui/mainwindow.cpp" line="304"/>
         <source>Could not unlock %1. Please check the password and try again.</source>
-        <translation type="unfinished"/>
+        <translation>No se pudo desbloquear %1. Compruebe la contraseña e inténtelo de nuevo.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="270"/>
@@ -365,35 +365,35 @@ Are you sure?</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/gui/about.cpp" line="53"/>
-        <location filename="../src/gui/about.cpp" line="58"/>
+        <location filename="../src/gui/about.cpp" line="54"/>
+        <location filename="../src/gui/about.cpp" line="59"/>
         <source>Could not load %1</source>
-        <translation type="unfinished"/>
+        <translation>No se pudo cargar %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="81"/>
+        <location filename="../src/gui/about.cpp" line="116"/>
         <source>License</source>
         <translation>Licencia</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="82"/>
-        <location filename="../src/gui/about.cpp" line="92"/>
+        <location filename="../src/gui/about.cpp" line="117"/>
+        <location filename="../src/gui/about.cpp" line="127"/>
         <source>Changelog</source>
         <translation>Registro de cambios</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="83"/>
+        <location filename="../src/gui/about.cpp" line="118"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="104"/>
+        <location filename="../src/gui/about.cpp" line="96"/>
         <source>Could not load changelog.</source>
-        <translation type="unfinished"/>
+        <translation>No se pudo cargar el registro de cambios.</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="30"/>
-        <location filename="../src/gui/about.cpp" line="107"/>
+        <location filename="../src/gui/about.cpp" line="31"/>
+        <location filename="../src/gui/about.cpp" line="134"/>
         <source>&amp;Close</source>
         <translation>&amp;Cerrar</translation>
     </message>

@@ -365,35 +365,35 @@ Určite?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/gui/about.cpp" line="53"/>
-        <location filename="../src/gui/about.cpp" line="58"/>
+        <location filename="../src/gui/about.cpp" line="54"/>
+        <location filename="../src/gui/about.cpp" line="59"/>
         <source>Could not load %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="81"/>
+        <location filename="../src/gui/about.cpp" line="116"/>
         <source>License</source>
         <translation>Licencia</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="82"/>
-        <location filename="../src/gui/about.cpp" line="92"/>
+        <location filename="../src/gui/about.cpp" line="117"/>
+        <location filename="../src/gui/about.cpp" line="127"/>
         <source>Changelog</source>
         <translation>História zmien</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="83"/>
+        <location filename="../src/gui/about.cpp" line="118"/>
         <source>Cancel</source>
         <translation>Zrušiť</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="104"/>
+        <location filename="../src/gui/about.cpp" line="96"/>
         <source>Could not load changelog.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="30"/>
-        <location filename="../src/gui/about.cpp" line="107"/>
+        <location filename="../src/gui/about.cpp" line="31"/>
+        <location filename="../src/gui/about.cpp" line="134"/>
         <source>&amp;Close</source>
         <translation>&amp;Zatvoriť</translation>
     </message>

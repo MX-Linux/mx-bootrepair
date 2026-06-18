@@ -172,13 +172,13 @@
         <location filename="../src/gui/mainwindow.cpp" line="155"/>
         <location filename="../src/gui/mainwindow.cpp" line="498"/>
         <source>Authorization Failed</source>
-        <translation type="unfinished"/>
+        <translation>Авторизация не удалась</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="155"/>
         <location filename="../src/gui/mainwindow.cpp" line="499"/>
         <source>Could not obtain administrator privileges.</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось получить права администратора.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="189"/>
@@ -200,7 +200,7 @@
         <location filename="../src/gui/mainwindow.cpp" line="252"/>
         <location filename="../src/gui/mainwindow.cpp" line="304"/>
         <source>Could not unlock %1. Please check the password and try again.</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось разблокировать %1. Пожалуйста, проверьте пароль и попробуйте снова.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="270"/>
@@ -291,7 +291,7 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="601"/>
         <source>Select initramfs options</source>
-        <translation type="unfinished"/>
+        <translation>Выберите параметры initramfs</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="611"/>
@@ -365,35 +365,35 @@ Are you sure?</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/gui/about.cpp" line="53"/>
-        <location filename="../src/gui/about.cpp" line="58"/>
+        <location filename="../src/gui/about.cpp" line="54"/>
+        <location filename="../src/gui/about.cpp" line="59"/>
         <source>Could not load %1</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось загрузить %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="81"/>
+        <location filename="../src/gui/about.cpp" line="116"/>
         <source>License</source>
         <translation>Лицензия</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="82"/>
-        <location filename="../src/gui/about.cpp" line="92"/>
+        <location filename="../src/gui/about.cpp" line="117"/>
+        <location filename="../src/gui/about.cpp" line="127"/>
         <source>Changelog</source>
         <translation>Список изменений</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="83"/>
+        <location filename="../src/gui/about.cpp" line="118"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="104"/>
+        <location filename="../src/gui/about.cpp" line="96"/>
         <source>Could not load changelog.</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось загрузить список изменений.</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="30"/>
-        <location filename="../src/gui/about.cpp" line="107"/>
+        <location filename="../src/gui/about.cpp" line="31"/>
+        <location filename="../src/gui/about.cpp" line="134"/>
         <source>&amp;Close</source>
         <translation>&amp;Закрыть</translation>
     </message>
@@ -405,27 +405,27 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/main.cpp" line="92"/>
         <source>MX Boot Repair - GUI and CLI tool for repairing GRUB bootloader</source>
-        <translation type="unfinished"/>
+        <translation>MX Boot Repair — графический и командный интерфейс для восстановления загрузчика GRUB</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="97"/>
         <source>Force CLI mode</source>
-        <translation type="unfinished"/>
+        <translation>Принудительный режим CLI</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="98"/>
         <source>Print actions without executing</source>
-        <translation type="unfinished"/>
+        <translation>Набор действий без выполнения</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="99"/>
         <source>Do not prompt; require flags</source>
-        <translation type="unfinished"/>
+        <translation>Не запрашивать; требуются флаги</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="100"/>
         <source>Action: install, repair, initramfs, backup, restore</source>
-        <translation type="unfinished"/>
+        <translation>Действие: установка, восстановление, initramfs, резервное копирование, восстановление</translation>
     </message>
     <message>
         <location filename="../src/gui/main.cpp" line="101"/>

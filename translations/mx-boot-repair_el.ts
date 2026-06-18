@@ -67,7 +67,7 @@
         <location filename="../src/gui/mainwindow.ui" line="193"/>
         <location filename="../src/gui/mainwindow.cpp" line="586"/>
         <source>Location:</source>
-        <translation>Θέση:</translation>
+        <translation>Τοποθεσία:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="218"/>
@@ -94,13 +94,13 @@
         <location filename="../src/gui/mainwindow.ui" line="278"/>
         <location filename="../src/gui/mainwindow.cpp" line="593"/>
         <source>Select root location:</source>
-        <translation>Επιλογή διαμερίσματος root:</translation>
+        <translation>Τοποθεσία root:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="300"/>
         <location filename="../src/gui/mainwindow.cpp" line="587"/>
         <source>Install on:</source>
-        <translation>Εγκατάσταση στο:</translation>
+        <translation>Εγκατάσταση σε:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="333"/>
@@ -172,13 +172,13 @@
         <location filename="../src/gui/mainwindow.cpp" line="155"/>
         <location filename="../src/gui/mainwindow.cpp" line="498"/>
         <source>Authorization Failed</source>
-        <translation type="unfinished"/>
+        <translation>Απέτυχε η πιστοποίηση</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="155"/>
         <location filename="../src/gui/mainwindow.cpp" line="499"/>
         <source>Could not obtain administrator privileges.</source>
-        <translation type="unfinished"/>
+        <translation>Δεν ήταν δυνατή η απόκτηση δικαιωμάτων διαχειριστή.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="189"/>
@@ -200,7 +200,7 @@
         <location filename="../src/gui/mainwindow.cpp" line="252"/>
         <location filename="../src/gui/mainwindow.cpp" line="304"/>
         <source>Could not unlock %1. Please check the password and try again.</source>
-        <translation type="unfinished"/>
+        <translation>Δεν μπόρεσε να ανοίξει το %1. Παρακαλώ να ελέγξετε το κωδικό και να δοκιμάστε ξανά.</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="270"/>
@@ -286,17 +286,17 @@ Are you sure?</source>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="592"/>
         <source>Select GRUB location</source>
-        <translation>Επιλογή τοποθέτησης του GRUB</translation>
+        <translation>Επιλογή GRUB</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="601"/>
         <source>Select initramfs options</source>
-        <translation>Επιλογή ρυθμίσεων του initramfs</translation>
+        <translation>Επιλογές initramfs</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="611"/>
         <source>Select Item to Back Up</source>
-        <translation>Επιλογή στοιχείου για τη  δημιουργία αντιγράφου ασφαλείας</translation>
+        <translation>Επιλογή στοιχείου για τη δημιουργία αντιγράφου ασφαλείας</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.cpp" line="616"/>
@@ -365,35 +365,35 @@ Are you sure?</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/gui/about.cpp" line="53"/>
-        <location filename="../src/gui/about.cpp" line="58"/>
+        <location filename="../src/gui/about.cpp" line="54"/>
+        <location filename="../src/gui/about.cpp" line="59"/>
         <source>Could not load %1</source>
         <translation>Δεν ήταν δυνατή η φόρτωση του %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="81"/>
+        <location filename="../src/gui/about.cpp" line="116"/>
         <source>License</source>
         <translation>Άδεια</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="82"/>
-        <location filename="../src/gui/about.cpp" line="92"/>
+        <location filename="../src/gui/about.cpp" line="117"/>
+        <location filename="../src/gui/about.cpp" line="127"/>
         <source>Changelog</source>
         <translation>Αρχείο αλλαγών</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="83"/>
+        <location filename="../src/gui/about.cpp" line="118"/>
         <source>Cancel</source>
         <translation>Άκυρο</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="104"/>
+        <location filename="../src/gui/about.cpp" line="96"/>
         <source>Could not load changelog.</source>
         <translation>Δεν ήταν δυνατή η φόρτωση του αρχείου αλλαγών.</translation>
     </message>
     <message>
-        <location filename="../src/gui/about.cpp" line="30"/>
-        <location filename="../src/gui/about.cpp" line="107"/>
+        <location filename="../src/gui/about.cpp" line="31"/>
+        <location filename="../src/gui/about.cpp" line="134"/>
         <source>&amp;Close</source>
         <translation>&amp;Κλείσιμο</translation>
     </message>
@@ -552,12 +552,12 @@ Are you sure?</source>
     <message>
         <location filename="../src/cli/controller.cpp" line="254"/>
         <source>  [detected: UEFI]</source>
-        <translation type="unfinished"/>
+        <translation>  [εντοπίστηκε: UEFI]</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="254"/>
         <source>  [detected: Legacy BIOS]</source>
-        <translation type="unfinished"/>
+        <translation>  [εντοπίστηκε: Legacy BIOS]</translation>
     </message>
     <message>
         <location filename="../src/cli/controller.cpp" line="255"/>

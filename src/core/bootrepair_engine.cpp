@@ -537,14 +537,19 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
     currentDryRun_ = opt.dryRun;
     // Handle LUKS if needed
     QString root = opt.root;
-    const QString mapper = luksMapper(root);
-    if (!mapper.isEmpty() && !root.startsWith("/dev/mapper/")) {
-        if (!openLuks(root, mapper, opt.luksPassword)) {
-            emit finished(false);
-            currentDryRun_ = false;
-            return false;
+    QString mapper;
+
+    // If already mounted, no need to unlock LUKS
+    if (!isMountedTo(root, "/")) {
+        mapper = luksMapper(root);
+        if (!mapper.isEmpty() && !root.startsWith("/dev/mapper/")) {
+            if (!openLuks(root, mapper, opt.luksPassword)) {
+                emit finished(false);
+                currentDryRun_ = false;
+                return false;
+            }
+            root = "/dev/mapper/" + mapper;
         }
-        root = "/dev/mapper/" + mapper;
     }
 
     // If installing on current root
@@ -585,7 +590,7 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
                 if (grubSupportsForceExtraRemovable(shell)) {
                     args << QStringLiteral("--force-extra-removable");
                 }
-                args << QStringLiteral("--recheck") << QStringLiteral("--locales=");
+                args << QStringLiteral("--recheck") << QStringLiteral("--compress=gz") << QStringLiteral("--locales=");
                 ok = execProcAsRoot("grub-install", args, nullptr, nullptr, true);
                 if (ok) {
                     ok = copyGrubLocales();
@@ -615,7 +620,7 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
             if (grubTool == "grub-install") {
                 ok = execProcAsRoot("grub-install",
                                     {QStringLiteral("--target=i386-pc"), QStringLiteral("--recheck"),
-                                     QStringLiteral("--force"), QStringLiteral("--locales="),
+                                     QStringLiteral("--force"), QStringLiteral("--compress=gz"), QStringLiteral("--locales="),
                                      QStringLiteral("/dev/%1").arg(opt.location)},
                                     nullptr, nullptr, true);
                 if (ok) {
@@ -686,7 +691,7 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
             if (grubSupportsForceExtraRemovable(shell, tmpdir.path())) {
                 args << QStringLiteral("--force-extra-removable");
             }
-            args << QStringLiteral("--recheck") << QStringLiteral("--locales=");
+            args << QStringLiteral("--recheck") << QStringLiteral("--compress=gz") << QStringLiteral("--locales=");
             ok = execProcAsRootInTarget(tmpdir.path(), "grub-install", args, nullptr, nullptr, true);
             if (ok) {
                 ok = copyGrubLocales(tmpdir.path());
@@ -716,7 +721,7 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
         if (grubTool == "grub-install") {
             ok = execProcAsRootInTarget(tmpdir.path(), "grub-install",
                                         {QStringLiteral("--target=i386-pc"), QStringLiteral("--recheck"),
-                                         QStringLiteral("--force"), QStringLiteral("--locales="),
+                                         QStringLiteral("--force"), QStringLiteral("--compress=gz"), QStringLiteral("--locales="),
                                          QStringLiteral("/dev/%1").arg(opt.location)},
                                         nullptr, nullptr, true);
             if (ok) {
@@ -741,14 +746,19 @@ bool BootRepairEngine::repairGrub(const BootRepairOptions& opt)
 {
     currentDryRun_ = opt.dryRun;
     QString root = opt.root;
-    const QString mapper = luksMapper(root);
-    if (!mapper.isEmpty() && !root.startsWith("/dev/mapper/")) {
-        if (!openLuks(root, mapper, opt.luksPassword)) {
-            emit finished(false);
-            currentDryRun_ = false;
-            return false;
+    QString mapper;
+
+    // If already mounted, no need to unlock LUKS
+    if (!isMountedTo(root, "/")) {
+        mapper = luksMapper(root);
+        if (!mapper.isEmpty() && !root.startsWith("/dev/mapper/")) {
+            if (!openLuks(root, mapper, opt.luksPassword)) {
+                emit finished(false);
+                currentDryRun_ = false;
+                return false;
+            }
+            root = "/dev/mapper/" + mapper;
         }
-        root = "/dev/mapper/" + mapper;
     }
 
     if (isMountedTo(root, "/")) {
@@ -807,14 +817,19 @@ bool BootRepairEngine::regenerateInitramfs(const BootRepairOptions& opt)
 {
     currentDryRun_ = opt.dryRun;
     QString root = opt.root;
-    const QString mapper = luksMapper(root);
-    if (!mapper.isEmpty() && !root.startsWith("/dev/mapper/")) {
-        if (!openLuks(root, mapper, opt.luksPassword)) {
-            emit finished(false);
-            currentDryRun_ = false;
-            return false;
+    QString mapper;
+
+    // If already mounted, no need to unlock LUKS
+    if (!isMountedTo(root, "/")) {
+        mapper = luksMapper(root);
+        if (!mapper.isEmpty() && !root.startsWith("/dev/mapper/")) {
+            if (!openLuks(root, mapper, opt.luksPassword)) {
+                emit finished(false);
+                currentDryRun_ = false;
+                return false;
+            }
+            root = "/dev/mapper/" + mapper;
         }
-        root = "/dev/mapper/" + mapper;
     }
 
     if (isMountedTo(root, "/")) {

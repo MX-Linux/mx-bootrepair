@@ -530,7 +530,23 @@ void MainWindow::displayResult(bool success)
             refresh();
             return;
         }
-        QMessageBox::critical(this, tr("Error"), tr("Process finished. Errors have occurred."));
+        // Extract the last error line from the output log for a meaningful error message
+        const QString logText = ui->outputBox->toPlainText();
+        const QStringList logLines = logText.split('\n', Qt::SkipEmptyParts);
+        QString lastError;
+        for (int i = logLines.size() - 1; i >= 0; --i) {
+            const QString line = logLines.at(i).trimmed();
+            if (!line.isEmpty() && !line.startsWith('#') && !line.startsWith('$')) {
+                lastError = line;
+                break;
+            }
+        }
+        QMessageBox msgBox(this);
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setWindowTitle(tr("Process finished. Errors have occurred."));
+        msgBox.setTextFormat(Qt::PlainText);
+        msgBox.setText(lastError.isEmpty() ? tr("Unknown error.") : lastError);
+        msgBox.exec();
     }
 }
 

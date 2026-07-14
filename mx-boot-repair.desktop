@@ -148,5 +148,5 @@ Comment=Simple Boot Repair
 Exec=mx-boot-repair
 Icon=mx-boot-repair
 NoDisplay=false
-Categories=System;MX-Maintenance;
+Categories=System;X-MX-Maintenance;
 Type=Application

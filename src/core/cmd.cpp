@@ -43,7 +43,7 @@ bool indicatesElevationFailure(const QString &wrapperProgram, const QString &out
 
 Cmd::Cmd(QObject *parent)
     : QProcess(parent),
-      helper(QStringLiteral("/usr/lib/%1/helper").arg(QCoreApplication::applicationName()))
+      helper(QStringLiteral(HELPER_PATH))
 {
     // Resolve elevation tool via PATH lookup so non-standard install paths work
     const bool cliMode = QCoreApplication::instance()

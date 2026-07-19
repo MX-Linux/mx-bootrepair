@@ -22,6 +22,7 @@ build() {
         -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DHELPER_INSTALL_DIR=/usr/lib/mx-boot-repair \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
     # Build
@@ -43,7 +44,7 @@ package() {
     install -Dm755 build/helper "${pkgdir}/usr/lib/mx-boot-repair/helper"
 
     # Install PolicyKit policy
-    install -Dm644 scripts/org.mxlinux.pkexec.mxbr-helper.policy \
+    install -Dm644 build/org.mxlinux.pkexec.mxbr-helper.policy \
         "${pkgdir}/usr/share/polkit-1/actions/org.mxlinux.pkexec.mxbr-helper.policy"
 
     # Install desktop file

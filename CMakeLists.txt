@@ -109,6 +109,22 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
+# Absolute directory where the privileged helper binary is installed. The path is
+# baked into the application and the polkit policy, so packagers can override it
+# to match distro conventions (e.g. -DHELPER_INSTALL_DIR=/usr/lib/mx-boot-repair)
+set(HELPER_INSTALL_DIR "/usr/libexec/mx-boot-repair" CACHE PATH
+    "Absolute install directory for the privileged helper binary")
+if(NOT IS_ABSOLUTE "${HELPER_INSTALL_DIR}")
+    message(FATAL_ERROR "HELPER_INSTALL_DIR must be an absolute path, got: ${HELPER_INSTALL_DIR}")
+endif()
+set(HELPER_PATH "${HELPER_INSTALL_DIR}/helper")
+
+configure_file(
+    scripts/org.mxlinux.pkexec.mxbr-helper.policy.in
+    ${CMAKE_BINARY_DIR}/org.mxlinux.pkexec.mxbr-helper.policy
+    @ONLY
+)
+
 # Define source files
 set(SOURCES
     src/gui/main.cpp
@@ -152,6 +168,10 @@ target_link_libraries(bootrepair-core
 
 target_include_directories(bootrepair-core PUBLIC
     ${CMAKE_SOURCE_DIR}/src
+)
+
+target_compile_definitions(bootrepair-core PRIVATE
+    HELPER_PATH="${HELPER_PATH}"
 )
 
 target_compile_options(bootrepair-core PRIVATE
@@ -315,5 +335,5 @@ install(TARGETS mx-boot-repair
 )
 
 install(TARGETS helper
-    RUNTIME DESTINATION lib/mx-boot-repair
+    RUNTIME DESTINATION ${HELPER_INSTALL_DIR}
 )

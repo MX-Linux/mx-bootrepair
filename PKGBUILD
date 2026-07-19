@@ -51,7 +51,7 @@ package() {
     install -Dm644 mx-boot-repair.desktop "${pkgdir}/usr/share/applications/mx-boot-repair.desktop"
 
     # Install icons
-    install -Dm644 icons/mx-boot-repair.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/mx-boot-repair.png"
+    install -Dm644 icons/mx-boot-repair.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/mx-boot-repair.png"
     install -Dm644 icons/mx-boot-repair.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mx-boot-repair.svg"
 
     # Install documentation

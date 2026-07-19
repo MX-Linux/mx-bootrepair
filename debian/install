@@ -1,5 +1,5 @@
 help/*				usr/share/doc/mx-bootrepair
-icons/mx-boot-repair.png	usr/share/icons/hicolor/256x256/apps
+icons/mx-boot-repair.png	usr/share/icons/hicolor/64x64/apps
 icons/mx-boot-repair.svg	usr/share/icons/hicolor/scalable/apps
 mx-boot-repair.desktop		usr/share/applications
 obj-*/*.qm			usr/share/mx-bootrepair/locale

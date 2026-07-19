@@ -54,6 +54,9 @@ package() {
     install -Dm644 icons/mx-boot-repair.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/mx-boot-repair.png"
     install -Dm644 icons/mx-boot-repair.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mx-boot-repair.svg"
 
+    # Install man page
+    install -Dm644 man/mx-boot-repair.1 "${pkgdir}/usr/share/man/man1/mx-boot-repair.1"
+
     # Install documentation
     install -dm755 "${pkgdir}/usr/share/doc/mx-bootrepair"
     if [ -d help ]; then

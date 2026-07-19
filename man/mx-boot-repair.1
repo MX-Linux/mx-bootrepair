@@ -1,0 +1,204 @@
+.TH MX-BOOT-REPAIR 1 "July 2026" "mx-boot-repair" "MX Linux"
+.SH NAME
+mx-boot-repair \- install and repair the GRUB bootloader
+.SH SYNOPSIS
+.B mx-boot-repair
+.RI [ OPTIONS ]
+.br
+.B mx-boot-repair
+.B \-\-action
+.I ACTION
+.RI [ OPTIONS ]
+.SH DESCRIPTION
+.B mx-boot-repair
+is a tool for re-installing and repairing the GRUB bootloader on MX Linux
+systems. It can install GRUB to the Master Boot Record (MBR), an EFI System
+Partition (ESP) or a root partition, regenerate the GRUB configuration file
+(grub.cfg), rebuild the initramfs, and back up or restore boot records
+(MBR/PBR). It is typically run from a live medium to repair a system that no
+longer boots.
+.PP
+When started without options in a graphical session, a Qt GUI is shown. If no
+windowing environment is detected, or if
+.B \-\-cli
+is given, an interactive text-mode interface is used instead. Passing
+.B \-\-action
+selects non-interactive operation suitable for scripting.
+.PP
+The program requires root privileges and will attempt to elevate itself via
+.BR pkexec (1)
+when started as a regular user.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Display help text and exit.
+.TP
+.BR \-v ", " \-\-version
+Display version information and exit.
+.TP
+.BR \-c ", " \-\-cli
+Force CLI mode even when a windowing environment is available.
+.TP
+.BR \-d ", " \-\-dry\-run
+Print the actions that would be performed without executing them.
+.TP
+.BR \-n ", " \-\-non\-interactive
+Do not prompt for input; all required values must be supplied through
+options. Implied when
+.B \-\-action
+is given.
+.TP
+.BI \-\-action " name"
+Action to perform:
+.BR install ,
+.BR repair " (alias " update\-grub ),
+.BR initramfs " (alias " regenerate\-initramfs ),
+.B backup
+or
+.BR restore .
+See
+.B ACTIONS
+below for the options each action requires.
+.TP
+.BI \-\-target " name"
+Installation target for the
+.B install
+action:
+.BR mbr ,
+.B esp
+or
+.BR root .
+.TP
+.BI \-\-location " dev"
+Device the target refers to, e.g.
+.B sda
+for an MBR install or
+.B sda1
+for an ESP or root install. Also selects the device for
+.B backup
+and
+.BR restore .
+.TP
+.BI \-\-root " dev"
+Root partition of the system to repair, e.g.
+.BR /dev/sda2 .
+.TP
+.BI \-\-boot\-device " dev"
+Partition to mount at
+.I /boot
+inside the chroot, for systems with a separate boot partition.
+.TP
+.BI \-\-esp\-device " dev"
+Partition to mount at
+.I /boot/efi
+inside the chroot.
+.TP
+.BI \-\-backup\-path " path"
+File to write the boot record backup to, or to restore it from.
+.TP
+.BR \-f ", " \-\-force
+Skip confirmations; required for the
+.B restore
+action.
+.TP
+.B \-\-verbose
+Enable verbose output.
+.TP
+.BR \-q ", " \-\-quiet
+Suppress non-error output.
+.SH ACTIONS
+.TP
+.B install
+Install a new GRUB bootloader. Requires
+.BR \-\-target ,
+.B \-\-location
+and
+.BR \-\-root .
+Installing to a root partition is only useful when chainloaded from another
+bootloader; do not use that target unless you know what it means.
+.TP
+.BR repair ", " update\-grub
+Regenerate the GRUB configuration file (grub.cfg) from within a chroot of the
+target system. This is the most common operation, used when it is not
+possible to boot into any partition to run
+.BR update\-grub (8)
+directly. Requires
+.BR \-\-root ;
+.B \-\-boot\-device
+and
+.B \-\-esp\-device
+may be given for systems with separate boot or EFI partitions.
+.TP
+.BR initramfs ", " regenerate\-initramfs
+Rebuild the initramfs of the target system. Requires
+.BR \-\-root .
+.TP
+.B backup
+Back up a boot block, either the master boot record (MBR) of a disk or the
+partition boot record (PBR) of a partition. Only meaningful on legacy BIOS
+systems, not UEFI. Requires
+.B \-\-location
+and
+.BR \-\-backup\-path .
+.TP
+.B restore
+Restore a previously backed up boot block. Only meaningful on legacy BIOS
+systems, not UEFI. Requires
+.BR \-\-location ,
+.B \-\-backup\-path
+and
+.BR \-\-force .
+.SH EXIT STATUS
+.TP
+.B 0
+Operation completed successfully.
+.TP
+.B 1
+Operation failed.
+.TP
+.B 2
+Usage error: invalid action, or a required option was missing or invalid.
+.SH FILES
+.TP
+.I /tmp/mx\-boot\-repair.log
+Log of the current run. The previous log is kept as
+.IR /tmp/mx\-boot\-repair.log.old .
+.SH EXAMPLES
+Start the interactive text-mode interface:
+.PP
+.nf
+    mx-boot-repair --cli
+.fi
+.PP
+Regenerate the GRUB configuration of the system on /dev/sda2:
+.PP
+.nf
+    mx-boot-repair --action repair --root /dev/sda2
+.fi
+.PP
+Reinstall GRUB to the EFI System Partition sda1 for the system on /dev/sda2:
+.PP
+.nf
+    mx-boot-repair --action install --target esp --location sda1 --root /dev/sda2
+.fi
+.PP
+Back up the MBR of sda, then restore it:
+.PP
+.nf
+    mx-boot-repair --action backup --location sda --backup-path /root/mbr.img
+    mx-boot-repair --action restore --location sda --backup-path /root/mbr.img --force
+.fi
+.SH SEE ALSO
+.BR grub\-install (8),
+.BR update\-grub (8),
+.BR update\-initramfs (8),
+.BR dracut (8)
+.PP
+Full documentation is available in
+.IR /usr/share/doc/mx\-bootrepair/mx\-boot\-repair.html .
+.SH AUTHOR
+Written by Adrian for MX Linux <https://mxlinux.org>.
+.PP
+Report bugs at
+.UR https://github.com/mxlinux/mx\-bootrepair/issues
+.UE .

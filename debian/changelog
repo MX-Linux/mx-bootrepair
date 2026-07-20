@@ -1,3 +1,11 @@
+mx-bootrepair (26.07) mx; urgency=medium
+
+  * Add a manual page documenting graphical, command-line, and scripting
+    options, actions, exit codes, and log files.
+  * Use standard location for helper script
+
+ -- Adrian <adrian@mxlinux.org>  Mon, 20 Jul 2026 17:35:13 -0400
+
 mx-bootrepair (26.06.1) mx; urgency=medium
 
   * Clear encrypted (LUKS) partition passwords from memory after use.

@@ -43,7 +43,7 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="134"/>
-        <location filename="../src/gui/mainwindow.cpp" line="585"/>
+        <location filename="../src/gui/mainwindow.cpp" line="631"/>
         <source>Select Boot Method</source>
         <translation>Določi zagonski način</translation>
     </message>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
-        <location filename="../src/gui/mainwindow.cpp" line="586"/>
+        <location filename="../src/gui/mainwindow.cpp" line="632"/>
         <source>Location:</source>
         <translation>Lokacija:</translation>
     </message>
@@ -86,19 +86,19 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="243"/>
-        <location filename="../src/gui/mainwindow.cpp" line="588"/>
+        <location filename="../src/gui/mainwindow.cpp" line="634"/>
         <source>root</source>
         <translation>koren</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="278"/>
-        <location filename="../src/gui/mainwindow.cpp" line="593"/>
+        <location filename="../src/gui/mainwindow.cpp" line="639"/>
         <source>Select root location:</source>
         <translation>Izberite lokacijo za koren:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="300"/>
-        <location filename="../src/gui/mainwindow.cpp" line="587"/>
+        <location filename="../src/gui/mainwindow.cpp" line="633"/>
         <source>Install on:</source>
         <translation>Namesti na:</translation>
     </message>
@@ -154,86 +154,85 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="533"/>
-        <location filename="../src/gui/mainwindow.cpp" line="140"/>
+        <location filename="../src/gui/mainwindow.cpp" line="161"/>
         <source>Next</source>
         <translation>Naprej</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="621"/>
+        <location filename="../src/gui/mainwindow.cpp" line="667"/>
         <source>Apply</source>
         <translation>Uveljavi</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="214"/>
+        <location filename="../src/gui/mainwindow.cpp" line="236"/>
         <source>GRUB is being installed on %1 device.</source>
         <translation>GRUB se namešča na napravo %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="155"/>
-        <location filename="../src/gui/mainwindow.cpp" line="498"/>
+        <location filename="../src/gui/mainwindow.cpp" line="176"/>
+        <location filename="../src/gui/mainwindow.cpp" line="528"/>
         <source>Authorization Failed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="155"/>
-        <location filename="../src/gui/mainwindow.cpp" line="499"/>
+        <location filename="../src/gui/mainwindow.cpp" line="176"/>
+        <location filename="../src/gui/mainwindow.cpp" line="529"/>
         <source>Could not obtain administrator privileges.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="189"/>
-        <location filename="../src/gui/mainwindow.cpp" line="251"/>
-        <location filename="../src/gui/mainwindow.cpp" line="303"/>
-        <location filename="../src/gui/mainwindow.cpp" line="421"/>
-        <location filename="../src/gui/mainwindow.cpp" line="503"/>
-        <location filename="../src/gui/mainwindow.cpp" line="626"/>
-        <location filename="../src/gui/mainwindow.cpp" line="630"/>
-        <location filename="../src/gui/mainwindow.cpp" line="637"/>
-        <location filename="../src/gui/mainwindow.cpp" line="643"/>
-        <location filename="../src/gui/mainwindow.cpp" line="651"/>
-        <location filename="../src/gui/mainwindow.cpp" line="658"/>
+        <location filename="../src/gui/mainwindow.cpp" line="211"/>
+        <location filename="../src/gui/mainwindow.cpp" line="276"/>
+        <location filename="../src/gui/mainwindow.cpp" line="331"/>
+        <location filename="../src/gui/mainwindow.cpp" line="451"/>
+        <location filename="../src/gui/mainwindow.cpp" line="672"/>
+        <location filename="../src/gui/mainwindow.cpp" line="676"/>
+        <location filename="../src/gui/mainwindow.cpp" line="683"/>
+        <location filename="../src/gui/mainwindow.cpp" line="689"/>
+        <location filename="../src/gui/mainwindow.cpp" line="697"/>
+        <location filename="../src/gui/mainwindow.cpp" line="704"/>
         <source>Error</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="190"/>
-        <location filename="../src/gui/mainwindow.cpp" line="252"/>
-        <location filename="../src/gui/mainwindow.cpp" line="304"/>
+        <location filename="../src/gui/mainwindow.cpp" line="212"/>
+        <location filename="../src/gui/mainwindow.cpp" line="277"/>
+        <location filename="../src/gui/mainwindow.cpp" line="332"/>
         <source>Could not unlock %1. Please check the password and try again.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="270"/>
+        <location filename="../src/gui/mainwindow.cpp" line="295"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
         <translation>Konfiguracijska datoteka za GRUB (grub.cfg) se ponovno gradi.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="318"/>
+        <location filename="../src/gui/mainwindow.cpp" line="346"/>
         <source>Generating initramfs images on: %1</source>
         <translation>Ustvarjanje initramfs posnetkov na: %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="332"/>
+        <location filename="../src/gui/mainwindow.cpp" line="362"/>
         <source>Backing up MBR or PBR from %1 device.</source>
         <translation>Varnostno kopiranje MBR ali PBR iz naprave %1.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="389"/>
+        <location filename="../src/gui/mainwindow.cpp" line="419"/>
         <source>Warning</source>
         <translation>Opozorilo</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="390"/>
+        <location filename="../src/gui/mainwindow.cpp" line="420"/>
         <source>You are going to write the content of </source>
         <translation>Zapisali boste vsebino iz </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="390"/>
+        <location filename="../src/gui/mainwindow.cpp" line="420"/>
         <source> to </source>
         <translation>na</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="391"/>
+        <location filename="../src/gui/mainwindow.cpp" line="421"/>
         <source>
 
 Are you sure?</source>
@@ -242,122 +241,127 @@ Are you sure?</source>
 Ali ste prepričani?</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="397"/>
+        <location filename="../src/gui/mainwindow.cpp" line="427"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
         <translation>Obnova MBR/PBR iz varnostne kopije na napravo %1.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="422"/>
+        <location filename="../src/gui/mainwindow.cpp" line="452"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation>Nisem uspel najti EFI sistemskega razdelka (ESP) ali drug sistemski disk. Prosimo, ustvarite ESP in poskusite znova. </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="446"/>
+        <location filename="../src/gui/mainwindow.cpp" line="476"/>
         <source>Select %1 location:</source>
         <translation>Izberite lokacijo %1:</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="473"/>
+        <location filename="../src/gui/mainwindow.cpp" line="503"/>
         <source>Back</source>
         <translation>Nazaj</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="491"/>
+        <location filename="../src/gui/mainwindow.cpp" line="521"/>
         <source>Success</source>
         <translation>Uspešno</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="491"/>
+        <location filename="../src/gui/mainwindow.cpp" line="521"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation>Proces se je uspešno zaključil.&lt;p&gt;&lt;b&gt;Ali želite zapustiti MX popravilo zagona?&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="503"/>
+        <location filename="../src/gui/mainwindow.cpp" line="546"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>Postopek je končan. Pojavile so se napake.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="177"/>
-        <location filename="../src/gui/mainwindow.cpp" line="239"/>
-        <location filename="../src/gui/mainwindow.cpp" line="291"/>
+        <location filename="../src/gui/mainwindow.cpp" line="198"/>
+        <location filename="../src/gui/mainwindow.cpp" line="263"/>
+        <location filename="../src/gui/mainwindow.cpp" line="318"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
         <translation>Vnesite geslo za odklep šifriranega razdelka %1:</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="592"/>
+        <location filename="../src/gui/mainwindow.cpp" line="548"/>
+        <source>Unknown error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/mainwindow.cpp" line="638"/>
         <source>Select GRUB location</source>
         <translation>Določi lokacijo za GRUB</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="601"/>
+        <location filename="../src/gui/mainwindow.cpp" line="647"/>
         <source>Select initramfs options</source>
         <translation>Izberite initramfs možnosti</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="611"/>
+        <location filename="../src/gui/mainwindow.cpp" line="657"/>
         <source>Select Item to Back Up</source>
         <translation>Izberite predmet za varnostno kopiranje</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="616"/>
+        <location filename="../src/gui/mainwindow.cpp" line="662"/>
         <source>Select Item to Restore</source>
         <translation>Izberite predmet, ki naj se obnovi</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="626"/>
-        <location filename="../src/gui/mainwindow.cpp" line="637"/>
+        <location filename="../src/gui/mainwindow.cpp" line="672"/>
+        <location filename="../src/gui/mainwindow.cpp" line="683"/>
         <source>No location was selected.</source>
         <translation>Nobena lokacija ni bila izbrana.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="631"/>
-        <location filename="../src/gui/mainwindow.cpp" line="644"/>
+        <location filename="../src/gui/mainwindow.cpp" line="677"/>
+        <location filename="../src/gui/mainwindow.cpp" line="690"/>
         <source>Please select the root partition of the system you want to fix.</source>
         <translation>Izberite korenski (root) razdelek sistema, ki bi ga radi popravili.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="649"/>
+        <location filename="../src/gui/mainwindow.cpp" line="695"/>
         <source>Select backup file name</source>
         <translation>Določite ime varostne kopije</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="651"/>
-        <location filename="../src/gui/mainwindow.cpp" line="658"/>
+        <location filename="../src/gui/mainwindow.cpp" line="697"/>
+        <location filename="../src/gui/mainwindow.cpp" line="704"/>
         <source>No file was selected.</source>
         <translation>Nobena datoteka ni bila izbrana.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="656"/>
+        <location filename="../src/gui/mainwindow.cpp" line="702"/>
         <source>Select MBR or PBR backup file</source>
         <translation>Izberite MBR ali PBR varnostno kopijo</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="674"/>
+        <location filename="../src/gui/mainwindow.cpp" line="720"/>
         <source>About %1</source>
         <translation>O %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="676"/>
+        <location filename="../src/gui/mainwindow.cpp" line="722"/>
         <source>Version: </source>
         <translation>Različica:</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="677"/>
+        <location filename="../src/gui/mainwindow.cpp" line="723"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Preprost program za popravilo zagona v MX Linux</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="679"/>
+        <location filename="../src/gui/mainwindow.cpp" line="725"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="680"/>
+        <location filename="../src/gui/mainwindow.cpp" line="726"/>
         <source>%1 License</source>
         <translation>%1 licenca</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="691"/>
+        <location filename="../src/gui/mainwindow.cpp" line="737"/>
         <source>%1 Help</source>
         <translation>%1 pomoč</translation>
     </message>

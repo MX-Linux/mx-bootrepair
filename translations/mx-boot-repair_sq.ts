@@ -43,7 +43,7 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="134"/>
-        <location filename="../src/gui/mainwindow.cpp" line="585"/>
+        <location filename="../src/gui/mainwindow.cpp" line="631"/>
         <source>Select Boot Method</source>
         <translation>Përzgjidhni Metodë Nisjeje</translation>
     </message>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="193"/>
-        <location filename="../src/gui/mainwindow.cpp" line="586"/>
+        <location filename="../src/gui/mainwindow.cpp" line="632"/>
         <source>Location:</source>
         <translation>Vend:</translation>
     </message>
@@ -86,19 +86,19 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="243"/>
-        <location filename="../src/gui/mainwindow.cpp" line="588"/>
+        <location filename="../src/gui/mainwindow.cpp" line="634"/>
         <source>root</source>
         <translation>rrënjë</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="278"/>
-        <location filename="../src/gui/mainwindow.cpp" line="593"/>
+        <location filename="../src/gui/mainwindow.cpp" line="639"/>
         <source>Select root location:</source>
         <translation>Përzgjidhni vendndodhje rrënje:</translation>
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="300"/>
-        <location filename="../src/gui/mainwindow.cpp" line="587"/>
+        <location filename="../src/gui/mainwindow.cpp" line="633"/>
         <source>Install on:</source>
         <translation>Instaloje në:</translation>
     </message>
@@ -154,86 +154,85 @@
     </message>
     <message>
         <location filename="../src/gui/mainwindow.ui" line="533"/>
-        <location filename="../src/gui/mainwindow.cpp" line="140"/>
+        <location filename="../src/gui/mainwindow.cpp" line="161"/>
         <source>Next</source>
         <translation>Pasuesi</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="621"/>
+        <location filename="../src/gui/mainwindow.cpp" line="667"/>
         <source>Apply</source>
         <translation>Aplikoji</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="214"/>
+        <location filename="../src/gui/mainwindow.cpp" line="236"/>
         <source>GRUB is being installed on %1 device.</source>
         <translation>Grub-i po instalohet në pajisjen %1.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="155"/>
-        <location filename="../src/gui/mainwindow.cpp" line="498"/>
+        <location filename="../src/gui/mainwindow.cpp" line="176"/>
+        <location filename="../src/gui/mainwindow.cpp" line="528"/>
         <source>Authorization Failed</source>
         <translation>Autorizimi Dështoi</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="155"/>
-        <location filename="../src/gui/mainwindow.cpp" line="499"/>
+        <location filename="../src/gui/mainwindow.cpp" line="176"/>
+        <location filename="../src/gui/mainwindow.cpp" line="529"/>
         <source>Could not obtain administrator privileges.</source>
         <translation>S’u morën dot privilegje përgjegjësi.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="189"/>
-        <location filename="../src/gui/mainwindow.cpp" line="251"/>
-        <location filename="../src/gui/mainwindow.cpp" line="303"/>
-        <location filename="../src/gui/mainwindow.cpp" line="421"/>
-        <location filename="../src/gui/mainwindow.cpp" line="503"/>
-        <location filename="../src/gui/mainwindow.cpp" line="626"/>
-        <location filename="../src/gui/mainwindow.cpp" line="630"/>
-        <location filename="../src/gui/mainwindow.cpp" line="637"/>
-        <location filename="../src/gui/mainwindow.cpp" line="643"/>
-        <location filename="../src/gui/mainwindow.cpp" line="651"/>
-        <location filename="../src/gui/mainwindow.cpp" line="658"/>
+        <location filename="../src/gui/mainwindow.cpp" line="211"/>
+        <location filename="../src/gui/mainwindow.cpp" line="276"/>
+        <location filename="../src/gui/mainwindow.cpp" line="331"/>
+        <location filename="../src/gui/mainwindow.cpp" line="451"/>
+        <location filename="../src/gui/mainwindow.cpp" line="672"/>
+        <location filename="../src/gui/mainwindow.cpp" line="676"/>
+        <location filename="../src/gui/mainwindow.cpp" line="683"/>
+        <location filename="../src/gui/mainwindow.cpp" line="689"/>
+        <location filename="../src/gui/mainwindow.cpp" line="697"/>
+        <location filename="../src/gui/mainwindow.cpp" line="704"/>
         <source>Error</source>
         <translation>Gabim</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="190"/>
-        <location filename="../src/gui/mainwindow.cpp" line="252"/>
-        <location filename="../src/gui/mainwindow.cpp" line="304"/>
+        <location filename="../src/gui/mainwindow.cpp" line="212"/>
+        <location filename="../src/gui/mainwindow.cpp" line="277"/>
+        <location filename="../src/gui/mainwindow.cpp" line="332"/>
         <source>Could not unlock %1. Please check the password and try again.</source>
         <translation>S’u shkyç dot %1. Ju lutemi, kontrolloni fjalëkalimin dhe riprovoni.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="270"/>
+        <location filename="../src/gui/mainwindow.cpp" line="295"/>
         <source>The GRUB configuration file (grub.cfg) is being rebuilt.</source>
         <translation>Kartela e formësimit GRUB (grub.cfg) po rikrijohet.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="318"/>
+        <location filename="../src/gui/mainwindow.cpp" line="346"/>
         <source>Generating initramfs images on: %1</source>
         <translation>Po prodhohen pamje initramfs te: %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="332"/>
+        <location filename="../src/gui/mainwindow.cpp" line="362"/>
         <source>Backing up MBR or PBR from %1 device.</source>
         <translation>Po kopjeruhet MBR apo PBR që nga pajisja %1.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="389"/>
+        <location filename="../src/gui/mainwindow.cpp" line="419"/>
         <source>Warning</source>
         <translation>Kujdes</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="390"/>
+        <location filename="../src/gui/mainwindow.cpp" line="420"/>
         <source>You are going to write the content of </source>
         <translation>Do të shkruani lëndën e </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="390"/>
+        <location filename="../src/gui/mainwindow.cpp" line="420"/>
         <source> to </source>
         <translation> te </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="391"/>
+        <location filename="../src/gui/mainwindow.cpp" line="421"/>
         <source>
 
 Are you sure?</source>
@@ -242,122 +241,127 @@ Are you sure?</source>
 Jeni i sigurt?</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="397"/>
+        <location filename="../src/gui/mainwindow.cpp" line="427"/>
         <source>Restoring MBR/PBR from backup to %1 device.</source>
         <translation>Po rikthehet MBR/PBR prej kopjeruajtje te pajisja %1.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="422"/>
+        <location filename="../src/gui/mainwindow.cpp" line="452"/>
         <source>Could not find EFI system partition (ESP) on any system disks. Please create an ESP and try again.</source>
         <translation>S’u gjet dot pjesë sistemi EFIn (ESP) në ndonjë nga disqet. Ju lutemi, krijoni një ESP dhe riprovoni.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="446"/>
+        <location filename="../src/gui/mainwindow.cpp" line="476"/>
         <source>Select %1 location:</source>
         <translation>Përzgjidhni vendndodhje %1:</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="473"/>
+        <location filename="../src/gui/mainwindow.cpp" line="503"/>
         <source>Back</source>
         <translation>Mbrapsht</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="491"/>
+        <location filename="../src/gui/mainwindow.cpp" line="521"/>
         <source>Success</source>
         <translation>Sukses</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="491"/>
+        <location filename="../src/gui/mainwindow.cpp" line="521"/>
         <source>Process finished with success.&lt;p&gt;&lt;b&gt;Do you want to exit MX Boot Repair?&lt;/b&gt;</source>
         <translation>Procesi përfundoi me sukses.&lt;p&gt;&lt;b&gt;Doni të dilet nga Riparim Nisjesh MX?&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="503"/>
+        <location filename="../src/gui/mainwindow.cpp" line="546"/>
         <source>Process finished. Errors have occurred.</source>
         <translation>Procesi përfundoi. Ndodhën gabime.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="177"/>
-        <location filename="../src/gui/mainwindow.cpp" line="239"/>
-        <location filename="../src/gui/mainwindow.cpp" line="291"/>
+        <location filename="../src/gui/mainwindow.cpp" line="198"/>
+        <location filename="../src/gui/mainwindow.cpp" line="263"/>
+        <location filename="../src/gui/mainwindow.cpp" line="318"/>
         <source>Enter password to unlock %1 encrypted partition:</source>
         <translation>Jepni fjalëkalimin për të shkyçur pjesën e fshehtëzuar %1:</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="592"/>
+        <location filename="../src/gui/mainwindow.cpp" line="548"/>
+        <source>Unknown error.</source>
+        <translation>Gabim i panjohur.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/mainwindow.cpp" line="638"/>
         <source>Select GRUB location</source>
         <translation>Përzgjidhni vendndodhje Grub-i</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="601"/>
+        <location filename="../src/gui/mainwindow.cpp" line="647"/>
         <source>Select initramfs options</source>
         <translation>Përzgjidhni mundësi për initramfs</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="611"/>
+        <location filename="../src/gui/mainwindow.cpp" line="657"/>
         <source>Select Item to Back Up</source>
         <translation>Përzgjidhni Objektin për Kopjeruajtje</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="616"/>
+        <location filename="../src/gui/mainwindow.cpp" line="662"/>
         <source>Select Item to Restore</source>
         <translation>Përzgjidhni Objektin për Rikthim</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="626"/>
-        <location filename="../src/gui/mainwindow.cpp" line="637"/>
+        <location filename="../src/gui/mainwindow.cpp" line="672"/>
+        <location filename="../src/gui/mainwindow.cpp" line="683"/>
         <source>No location was selected.</source>
         <translation>S’u përzgjodh vendndodhje.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="631"/>
-        <location filename="../src/gui/mainwindow.cpp" line="644"/>
+        <location filename="../src/gui/mainwindow.cpp" line="677"/>
+        <location filename="../src/gui/mainwindow.cpp" line="690"/>
         <source>Please select the root partition of the system you want to fix.</source>
         <translation>Ju lutemi, përzgjidhni pjesën rrënjë të sistemit që doni të ndreqet.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="649"/>
+        <location filename="../src/gui/mainwindow.cpp" line="695"/>
         <source>Select backup file name</source>
         <translation>Përzgjidhni emër kartele kopjeruajtje</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="651"/>
-        <location filename="../src/gui/mainwindow.cpp" line="658"/>
+        <location filename="../src/gui/mainwindow.cpp" line="697"/>
+        <location filename="../src/gui/mainwindow.cpp" line="704"/>
         <source>No file was selected.</source>
         <translation>S’u përzgjodh kartelë.</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="656"/>
+        <location filename="../src/gui/mainwindow.cpp" line="702"/>
         <source>Select MBR or PBR backup file</source>
         <translation>Përzgjidhni kartelë kopjeruajtje MBR-i ose PBR-i</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="674"/>
+        <location filename="../src/gui/mainwindow.cpp" line="720"/>
         <source>About %1</source>
         <translation>Mbi %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="676"/>
+        <location filename="../src/gui/mainwindow.cpp" line="722"/>
         <source>Version: </source>
         <translation>Version: </translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="677"/>
+        <location filename="../src/gui/mainwindow.cpp" line="723"/>
         <source>Simple boot repair program for MX Linux</source>
         <translation>Program i thjeshtë riparimi nisjesh për MX Linux</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="679"/>
+        <location filename="../src/gui/mainwindow.cpp" line="725"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Të drejta kopjimi (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="680"/>
+        <location filename="../src/gui/mainwindow.cpp" line="726"/>
         <source>%1 License</source>
         <translation>Licencë %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/mainwindow.cpp" line="691"/>
+        <location filename="../src/gui/mainwindow.cpp" line="737"/>
         <source>%1 Help</source>
         <translation>Ndihmë për %1</translation>
     </message>

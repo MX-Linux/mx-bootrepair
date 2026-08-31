@@ -156,6 +156,7 @@ set(RESOURCE_FILES
 
 # Get all translation files
 file(GLOB TRANSLATION_FILES "translations/*.ts")
+list(FILTER TRANSLATION_FILES EXCLUDE REGEX "/mx-boot-repair_en_US\\.ts$")
 
 # Create the executable
 add_library(bootrepair-core STATIC

@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-boot-repair
-pkgver=${PKGVER:-26.03}
+pkgver=${PKGVER:-26.07}
 pkgrel=1
 pkgdesc="GUI tool for repairing GRUB bootloader"
 arch=('x86_64' 'i686')

@@ -14,7 +14,7 @@
 # the AUR package rather than installing alongside it.
 pkgname=mx-boot-repair
 pkgver=26.07
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI tool for repairing GRUB bootloader"
 arch=('x86_64')
 url="https://mxlinux.org"

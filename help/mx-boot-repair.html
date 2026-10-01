@@ -1,52 +1,189 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
         <title>HELP: MX Boot Repair</title>
-</head>
-<body>
-<h1>HELP: MX Boot Repair</h1>
-<h2>Procedure</h2>
+      
+    </head>
+    <body>
+  
+<h1 align="center">HELP: MX Boot Repair</h1>
+
+<p align="center">MX Boot Repair is a GUI app that can be used to recover from boot failure.</p>
+
+<h3><strong>Some definitions:</strong></h3>
+
 <ul>
-        <li>Boot to the LiveMedium and click Start Menu ≻ System ≻ MX Boot Repair and select the appropriate option.</li>
-        <li> GRUB
-                <ul>
-                        <li> Reinstall a new bootloader.</li>
-                        <li> Repair the bootloader by regenerating the GRUB configuration file (grub.cfg). This is the most common use of this application, turned to when it is not possible to boot into any partition where the user could run:</li>
-                        <li> update-grub</li>
-                </ul>
-        </li>
-        <li> Boot block: WARNING: for legacy boot systems that rely on Bios instead of UEFI only!
-                <ul>
-                        <li> Backup the boot block, either master (MBR) or partition (PBR).</li>
-                        <li> Restore a boot block previously backed up.</li>
-                </ul>
-        </li>
+   	<li><strong>MBR</strong>: Installation in the hard drive’s Master Boot Record.<br></li>
+   	<li><strong>PBR</strong>: Installation in the partition’s boot sector (partition level).<br></li>
+    <li><strong>ESP</strong>: Installation on the EFI system partition (UEFI only).<br></li>
 </ul>
 
-<h2>Notes</h2>
+<p>This app’s selection for “Install on” (see below) in the “Reinstall GRUB bootloader on ESP, MBR or PBR (root)” is not to be assumed as automatically correct at all times.</p>
+
+<p>At times, with a very complex PC configuration there may need to be change(s) made to better match the PC under repair.</p>
+
+<div align="center"><img src="Select-boot-method-ESP.png" width="582" height="190" alt="Select-boot-method-ESP.png"></div>
+
+<p>The best starting point is to live-boot from a recent USB, and select “Repair GRUB configuration file”.</p>
+
+
+<h3><b>NOTES</b></h3>
+
+<p>Repair Grub configuration file is the most common use of this app. It should always be attempted <span style="text-decoration: underline;">first</span>. Running just the “Repair GRUB configuration file” assumes that Grub is fully and properly installed in the expected location. Sometimes running a “Reinstall Grub bootloader” is needed to be done <span style="text-decoration: underline;">first</span>, before Repair Grub configuration file.</p>
+
+<p>When done reinstalling Grub do NOT “exit”, but go back and select “Repair GRUB configuration file” afterwards/again.</p>
+
+
+<h3>Booting the PC</h3>
+
+<p>Example at below of a One Time Boot Menu. Choose the option ▸UEFI Boot Sources or Legacy Boot Sources depending on how Linux was installed. If you know that the PC’s Linux installation was in Legacy mode then pick “Legacy Boot Sources”. Other PCs screens<i> may</i> vary.</p>
+
+<div align="center"><img src="BootRepair02.jpg" width="321" height="212" alt="BootRepair02.jpg"></div>
+
+
+<h3>Dual Boot with Windows 10 and Windows 11</h3>
+
+<p>Windows Update has been shown to displace the MX/MX 25 boot entry by moving “Windows Boot Manager” to the first position in the UEFI Boot Order. Running <b>UEFI Manager</b> to correct this/verify it is NOT the cause is part of the first actions <strong>BEFORE</strong> running and repairs with this app. Removing extra/old Linuxes can be helpful in reducing visual clutter.</p>
+
+
+<h4>Partition labels</h4>
+
+<p>It is always good to have your partitions labeled. This allows better recognition for where the ESP (EFI System Partition) is located. Some Linux distro’s install do not label the ESP nor the /root.</p>
+
+<p><b>TIP:</b> you can open GParted and right click on partitions in order to give them labels e,g like “EFI-SYSTEM” or just “ESP” (without ” “). Labeling partitions is best done from a Live USB, as these partitions needs to be unmounted for GParted to set a label on the partition(s).</p>
+
+
+<h4>Why does all this matter?</h4>
+
+<p>Recently in the forum there was confusion between a “Windows C drive” and the “MX Linux /root” partitions on a user’s dual boot PC. There was just a slim 1 MiB difference in these partitions sizes. Mistakes were made due to assumptions that were ‘aided’ by the lack of partition labels. Much re-installation was needed unfortunately.</p>
+
+
+<h4>Windows partitions</h4>
+
+<p>Below is a view of a Windows hard disk layout prior to any partitions being labeled.</p>
+
+<div align="center"><img src="Before-Choose-Partitions.jpg" width="457" height="203" alt="Before-Choose-Partitions.jpg"><br>Typical GParted view of a Windows 11 hard disk layout.</div>
+
+<p><strong>Partitions above explained</strong>:</p>
+
+<p><strong>sda1</strong> – EFI aka ESP. Can be FAT32 or Vfat. Size ranges from 25-300 MiB. MX default is 256 MiB.</p>
+<p><strong>sda2</strong> – “Windows Resources” Normally hidden in Windows File Manager. No format is normal.</p>
+<p><strong>sda3</strong> – Windows “C Drive”.</p>
+<p><strong>sda4</strong> – The new partition that was created for MX Linux. The MX Installer re-labels it rootMX25.</p>
+<p><strong>sda5</strong> – “Windows Recovery” Normally hidden in Windows File Manager.</p>
+
+
+<h4 style="margin-top: 1.5em;">After running boot repair</h4>
+
+<p>It is preferred to power OFF the PC, and then power on the PC back ON. This is because with a normal reboot will not clear all EFI stuff from RAM. Sometimes the MX Installer misses generating entries for other previously installed OS’s, so run in terminal:</p>
+
+<div align="center" style="clear: both"><code>sudo update-grub</code></div>
+
+<p>This is a good check, to see anything was missed.</p>
+
+<br><hr>
+
+<h2>Repair GRUB configuration file</h2>
+
 <ul>
-        <li><b>Installed on</b> refers to the “type” of bootloader:
-                <ul>
-                            <li> BIOS (legacy) boot mode will “boot from” MBR (Master Boot Record)</li>
-                            <li> “Root” will install GRUB to the root partition instead of the MBR or ESP and it will boot from there <b>only if you chainload it from another bootloader</b>. Don't use this option unless you know what it means.</li>
-                            <li> UEFI-boot mode will “boot from” ESP (EFI System Partition)</li>
-                </ul>
-        </li>
-        <li> <b>Location</b> refers to the “point” the first part of the bootloader is located on:
-                <ul>
-                            <li> Either the boot-drive where the MBR is loaded</li>
-                            <li> Or the partition where the ESP is setup. Note you can have multiple ESP’s on a drive not only one.</li>
-                </ul>
-        </li>
-        <li><b>Select root location</b> refers to the partition which contains the “/” (root filesystem).</li>
+    <li>Boot with a MX Linux 25 USB.<br></li>
+    <li>Click Start Menu ≻ MX Tools ≻ MX Boot Repair.</li>
 </ul>
 
-<p>Development history: Adrian</p>
+<p><b>Note:</b> in the image below shows “MX25Xfce”. This is a partition label the app displays as a hint for your choice.</p>
 
-<p>License: <a href="https://mxlinux.org/wiki/licenses/license-mx-boot-repair">here</a>.</p>
+<p>1. Boot MX Linux USB. Run MX Boot Repair.</p>
+<p>2. Select: ◉ Repair GRUB configuration file. Click ‘→ Next’.</p>
+<p> 3. On the ‘Select GRUB location‘ screen in ‘Select root location:’ choose the MX Linux / root partition.</p>
 
-<p>v. 20230320</p>
-</body>
+<div align="center"><img src="Select-Grub-Location01.png" width="580" height="129" alt="Select-Grub-Location01.png"></div>
+
+<p>4. Click ‘✔Apply’.</p>
+<p>5. In the ‘Authenticate‘ pop-up enter ‘demo’ for the ‘Password:’ prompt and click ‘Authenticate’.</p>
+<p>6. A pop-up appears: ‘The GRUB configuration file (grub.cfg) is being rebuilt’.</p>
+<p>7. When ‘Success‘ popup asks: ‘Do you want to exit MX Boot Repair?’ click ‘✔Yes’.</p>
+
+<div style="clear:both; line-height: 0.5;">
+
+<br><hr>
+
+<h2>UEFI PC boot repair</h2>
+
+<p><b>You MUST be booted in UEFI mode to repair a UEFI installation with this app</b>.</p>
+
+<h3 style="margin-top: 2em;">To reinstall GRUB bootloader:</h3>
+
+<p><b>Note</b>: in the image below “EFI-SYSTEM” and “MX25Xfce” are partition labels are displayed as hints for your choices.</p>
+
+<div align="center"><img src="Select-boot-method-ESP.png" width="582" height="190" alt="Select-boot-method-ESP.png"></div>
+
+<p>1. Boot MX Linux USB in UEFI mode. Run MX Boot Repair.</p> 
+<p> 2. Select: ‘◉ Reinstall GRUB bootloader on ESP, MBR or PBR (root)’. Click ‘→ Next’.</p> 
+<p> 3. On the Select Boot Method:</p>
+<ul>
+    <li>For ‘Install on:‘ choose ‘◉ ESP’.</li>
+    <li>Set ‘Location:’ to the ESP aka EFI partition.</li>
+    <li>Set ‘Select root location:’ to the partition where MX Linux is installed.</li>
+</ul>
+<p>4. Click ‘✔Apply’.</p> 
+<p>5. In the Authenticate pop-up enter ‘demo’ for the ‘Password:’ prompt and click ‘Authenticate’.</p> 
+<p>6. A pop-up ‘Select /boot location:’ asks you to choose: If no encryption is in use, choose the ESP / EFI and then click ‘✔OK’.</p>
+<p>7. Select the ESP aka EFI partition (if encryption is not in use) with the arrow and then click ‘✔OK’.</p>
+<p>8. MX Boot Repair runs: ‘GRUB is being installed on <device> drive’.</p>
+<p>9. When ‘Success‘ asks: ‘Do you want to exit MX Boot Repair?’ click ‘✔Yes’.</p>
+
+<br><hr>
+
+<h2>Legacy/MBR PC repairs</h2>
+
+<p><b>You MUST be booted in Legacy/MBR mode to repair a Legacy installation with this app.</b></p>
+
+<p>Repairing the bootloader by regenerating the GRUB configuration file is the most common use of this application and should be attempted <u>first</u>.</p>
+
+
+<h3 style="margin-top: 2em;">Reinstall GRUB bootloader:</h3>
+
+<p><b>Note</b>: in the image below “Lexar 126GB SSD” is the physical “sda” device and “MX25Xfce” is a partition label. The app displays these as hints for your choices.</p>
+
+<div align="center"><img src="Select-boot-method-MBR.png" width="582" height="199" alt="Select-boot-method-MBR.png"></div>
+
+<p>1. Boot MX Linux USB in Legacy mode. Run MX Boot Repair.</p>
+<p>2. Leave selected: ‘◉ Reinstall GRUB bootloader’ on MBR. Click ‘→ Next’.</p>
+<p>3. On <b>Select Boot Method</b>:</p>
+<p>4. For ‘<b>Install on:</b>’ choose ‘◉ MBR’.</p>
+<p>5. Set ‘<b>Location:</b>’ to the drive.</p>
+<p>6. For ‘Select root location:’ select the / root drive partition that MX is installed on.</p>
+<p>7. Click ‘✔Apply’.</p>
+<p>8. In the ‘Authenticate‘ pop-up enter ‘demo’ for the ‘Password:’ prompt and click ‘Authenticate’.</p>
+<p>9. A pop-up ‘Select /boot location:’ asks you to choose. Click ‘OK’. If a MBR type Partition Table is in use, click ‘Cancel’.</p>
+<p>10. When ‘Success’ asks: ‘Do you want to exit MX Boot Repair?’ click ‘✔Yes’.</p>
+
+<br><hr>
+
+<h2>Regenerate initramfs images</h2>
+
+<p>Use this option to repair corrupt or missing initramfs image files in /boot.</p>
+
+<ul>
+    <li>Select ‘Regenerate initramfs images’ and click → Next.<br></li>
+    <li>In the ‘Select initramfs options’ set the ‘Select root location’ to the device being repaired.<br></li>
+    <li>Click ✔Apply.<br></li>
+    <li>In the ‘Authenticate‘ pop-up enter ‘demo’ for the ‘Password:’ prompt and click ‘Authenticate’.<br></li>
+</ul>
+
+<p><b>The files will take some time to be regenerated, especially on a slower PC</b> .</p>
+
+<p>From the man update-initramfs:</p>
+
+<code>The update-initramfs script manages your initramfs images on your lo‐cal box. It keeps track of the existing initramfs archives in  /boot. There are three modes of operation create, update or delete. You must at least specify one of those modes.
+The initramfs is a gzipped cpio archive. At boot time, the kernel unpacks that archive into RAM disk, mounts and uses it as initial root file system. All finding of the root device happens in this early userspace.</code>
+
+<br>
+
+<p><b>Development history</b>: Adrian</p>
+
+<p><b>License</b>: <a href="https://mxlinux.org/wiki/licenses/license-mx-boot-repair">here</a>.</p>
+      
+    </body>
 </html>

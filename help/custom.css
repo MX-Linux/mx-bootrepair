@@ -1,5 +1,9 @@
 body {
     font-family: sans-serif;
+    line-height: 1.5;
+    margin: 2rem auto;
+    padding: 0 1.25rem 2rem;
+    color: #202124;
     }
 
 h1,
@@ -17,12 +21,18 @@ code {
     padding: 0.1rem 0.3rem;
 }
 
-div {
-	pading: 5em;
+img {
+    display: block;
+    margin: auto;
+	padding: 15px 0; /* Adds space between each */
 }
 
 p {
 	margin: .2em;
+}
+
+. center {
+			text-align:center;
 }
 
 .footer {

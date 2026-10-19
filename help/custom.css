@@ -24,12 +24,15 @@ code {
 img {
     display: block;
     margin: auto;
-    width: 50%;
 	padding: 15px 0; /* Adds space between each */
 }
 
 p {
 	margin: .2em;
+}
+
+. center {
+			text-align:center;
 }
 
 .footer {

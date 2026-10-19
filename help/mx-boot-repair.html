@@ -38,7 +38,7 @@
 
 <p>Example at below of a One Time Boot Menu. Choose the option ▸UEFI Boot Sources or Legacy Boot Sources depending on how Linux was installed. If you know that the PC’s Linux installation was in Legacy mode then pick “Legacy Boot Sources”. Other PCs screens<em> may</em> vary.</p>
 
-<img src="BootRepair02.jpg" width="640" height="423" alt="BootRepair02.jpg">
+<img src="BootRepair02.jpg" width="384" height="254" alt="BootRepair02">
 
 
 <h3>Dual Boot with Windows 10 and Windows 11</h3>
@@ -49,6 +49,8 @@
 <h4>Partition labels</h4>
 
 <p>It is always good to have your partitions labeled. This allows better recognition for where the ESP (EFI System Partition) is located. Some Linux distro’s install do not label the ESP nor the /root.</p>
+
+<br>
 
 <p><b>TIP:</b> you can open GParted and right click on partitions in order to give them labels e,g like “EFI-SYSTEM” or just “ESP” (without ” “). Labeling partitions is best done from a Live USB, as these partitions needs to be unmounted for GParted to set a label on the partition(s).</p>
 
@@ -63,7 +65,7 @@
 <p>Below is a view of a Windows hard disk layout prior to any partitions being labeled.</p>
 
 <img src="Before-Choose-Partitions.jpg" width="457" height="203" alt="Before Choose Partitions">
-<div align="center"><caption>Typical GParted view of a Windows 11 hard disk layout.</caption></div>
+<div style="text-align:center;"><caption>Typical GParted view of a Windows 11 hard disk layout.</caption></div>
 
 <h4><strong>Partitions above explained</strong>:</h4>
 
@@ -97,7 +99,7 @@
 <p>2. Select: ◉ Repair GRUB configuration file. Click ‘→ Next’.</p>
 <p> 3. On the ‘Select GRUB location‘ screen in ‘Select root location:’ choose the MX Linux / root partition.</p>
 
-<img src="Select-Grub-Location01.png" width="580" height="129" alt="Select-Grub-Location01.png">
+<img src="Select-Grub-Location01.png" width="580" height="129" alt="Select-Grub-Location01">
 
 <p>4. Click ‘✔Apply’.</p>
 <p>5. In the ‘Authenticate‘ pop-up enter ‘demo’ for the ‘Password:’ prompt and click ‘Authenticate’.</p>

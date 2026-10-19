@@ -1,13 +1,15 @@
 body {
     font-family: sans-serif;
     line-height: 1.5;
+    max-width: 50rem;
     margin: 2rem auto;
     padding: 0 1.25rem 2rem;
     color: #202124;
-    }
+    background: #ffffff;
+}
 
 h1,
-h2{
+h2 {
     color: #103c6b;
 }
 
@@ -23,16 +25,30 @@ code {
 
 img {
     display: block;
+    max-width: 100%;
+    height: auto;
     margin: auto;
-	padding: 15px 0; /* Adds space between each */
+    padding: 15px 0;
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    text-align: center;
+}
+
+hr {
+    margin: 1.5em 0;
 }
 
 p {
-	margin: .2em;
+    margin: 0.5em 0;
 }
 
-. center {
-			text-align:center;
+.center {
+    text-align: center;
 }
 
 .footer {

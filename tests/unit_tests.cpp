@@ -28,6 +28,10 @@ void testCmd()
           "Cmd should report a successful process");
     check(output == "hello", "Cmd should capture standard output");
 
+    check(!command.proc("/mxbr-test-missing/program", {}, &output, nullptr, QuietMode::Yes),
+          "Cmd should return failure when an executable cannot start");
+    check(output.contains("/mxbr-test-missing/program"), "startup errors should identify the executable");
+
     const QByteArray input("input-data\n");
     check(command.proc("/bin/cat", {}, &output, &input, QuietMode::Yes),
           "Cmd should write process input");

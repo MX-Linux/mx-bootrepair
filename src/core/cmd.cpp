@@ -252,17 +252,25 @@ bool Cmd::proc(const QString &cmd, const QStringList &args, QString *output, con
 
     QEventLoop loop;
     connect(this, &Cmd::done, &loop, &QEventLoop::quit);
+    bool failedToStart = false;
+    connect(this, &QProcess::errorOccurred, &loop, [&](QProcess::ProcessError error) {
+        if (error != QProcess::FailedToStart) return;
+        failedToStart = true;
+        out_buffer = tr("Could not start %1: %2").arg(cmd, errorString());
+        if (!suppressOutput) emit errorAvailable(out_buffer);
+        loop.quit();
+    });
     start(cmd, args);
     if (input && !input->isEmpty()) {
         write(*input);
     }
     closeWriteChannel();
-    loop.exec();
+    if (!failedToStart && state() != QProcess::NotRunning) loop.exec();
 
     if (output) {
         *output = out_buffer.trimmed();
     }
-    return (exitStatus() == QProcess::NormalExit && exitCode() == 0);
+    return !failedToStart && exitStatus() == QProcess::NormalExit && exitCode() == 0;
 }
 
 bool Cmd::procAsRoot(const QString &cmd, const QStringList &args, QString *output, const QByteArray *input,

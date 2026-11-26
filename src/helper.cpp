@@ -367,16 +367,14 @@ void printError(const QString &message)
 {
     QFile mounts(QStringLiteral("/proc/self/mounts"));
     if (mounts.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        const QString content = QString::fromUtf8(mounts.readAll());
-        if (content.contains(QStringLiteral(" efivarfs "))) {
-            return 0;
+        for (const QByteArray &line : mounts.readAll().split('\n')) {
+            const auto fields = line.split(' ');
+            if (fields.size() > 2 && fields.at(1) == "/sys/firmware/efi/efivars" && fields.at(2) == "efivarfs")
+                return 0;
         }
     }
 
-    if (!QDir(QStringLiteral("/sys/firmware/efi/efivars")).exists()) {
-        return 0;
-    }
-
+    if (!QDir(QStringLiteral("/sys/firmware/efi/efivars")).exists()) return 1;
     return runAllowedCommand(QStringLiteral("mount"),
                              {QStringLiteral("-t"), QStringLiteral("efivarfs"), QStringLiteral("efivarfs"),
                               QStringLiteral("/sys/firmware/efi/efivars")});

@@ -368,8 +368,7 @@ QStringList BootRepairEngine::listPartitions() const
 
 bool BootRepairEngine::isUefi()
 {
-    QDir dir("/sys/firmware/efi/efivars");
-    return dir.exists() && !dir.entryList(QDir::NoDotAndDotDot | QDir::AllEntries).isEmpty();
+    return QDir(QStringLiteral("/sys/firmware/efi")).exists();
 }
 
 MountState BootRepairEngine::isMounted(const QString& volume, const QString& mount) const
@@ -728,6 +727,13 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
         }
     }
 
+    if (opt.target == GrubTarget::Esp && isUefi() && !currentDryRun_) {
+        emit log(QStringLiteral("# ensure-efivarfs"));
+        if (!shell->ensureEfivarfsAsRoot(QuietMode::Yes)) {
+            emit log(tr("Warning: EFI variables are unavailable. Firmware boot entries may not be updated."));
+        }
+    }
+
     // If installing on current root
     const MountState rootState = opt.dryRun ? initialRootState : isMountedTo(root, "/");
     if (rootState == MountState::QueryFailed) {
@@ -820,8 +826,6 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
             emit log(QStringLiteral("[dry-run] ensure-efivarfs"));
             emit log(QStringLiteral("[dry-run] remove-efi-dump"));
         } else {
-            emit log(QStringLiteral("# ensure-efivarfs"));
-            shell->ensureEfivarfsAsRoot(QuietMode::Yes);
             emit log(QStringLiteral("# remove-efi-dump"));
             shell->removeEfiDumpVarsAsRoot(QuietMode::Yes);
         }

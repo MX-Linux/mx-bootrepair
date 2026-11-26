@@ -121,11 +121,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     setWindowFlags(Qt::Window); // for the close, min and max buttons
     refresh();
-    if (isUefi()) {
+    const bool uefi = BootRepairEngine::isUefi();
+    if (uefi) {
         ui->radioGrubEsp->setChecked(true);
         ui->radioGrubMbr->setChecked(false);
     }
-    ui->radioGrubEsp->setDisabled(!isUefi());
+    ui->radioGrubEsp->setDisabled(!uefi);
     addDevToList();
     guessPartition();
 }
@@ -559,12 +560,6 @@ void MainWindow::disableOutput()
 }
 
 // luks helpers now handled in engine
-
-bool MainWindow::isUefi()
-{
-    QDir dir("/sys/firmware/efi/efivars");
-    return dir.exists() && !dir.entryList(QDir::NoDotAndDotDot | QDir::AllEntries).isEmpty();
-}
 
 // add list of devices to comboLocation
 void MainWindow::addDevToList()

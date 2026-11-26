@@ -131,6 +131,14 @@ void testCliParser()
               QStringLiteral("CLI output should contain: %1").arg(QString::fromUtf8(expectedText)));
     };
 
+    for (const QByteArray &input : {QByteArray(), QByteArray("1\n")}) {
+        QProcess interactive;
+        interactive.start(QStringLiteral(TEST_CLI_PATH), QStringList{});
+        interactive.write(input);
+        interactive.closeWriteChannel();
+        check(interactive.waitForFinished(2000) && interactive.exitCode() == 0, "EOF should leave interactive prompts");
+    }
+
     run({"--non-interactive", "--action", "unknown"}, "Invalid action");
     run({"--non-interactive", "--action", "repair", "--root", "/dev/sda/2"}, "Invalid root device path");
     run({"--action", "install", "--target", "esp", "--location", "sda1", "--root", "sda2",

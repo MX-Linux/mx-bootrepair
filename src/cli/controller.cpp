@@ -9,6 +9,12 @@
 #include "core/bootrepair_engine.h"
 
 namespace {
+QString readAnswer(QTextStream& in)
+{
+    const QString line = in.readLine();
+    return line.isNull() ? QStringLiteral("q") : line.trimmed();
+}
+
 // Returns index >= 0, -1 for back, -2 for quit
 int askIndex(const QStringList& items, const QString& prompt, QTextStream& in, QTextStream& out, bool allowBack)
 {
@@ -22,7 +28,7 @@ int askIndex(const QStringList& items, const QString& prompt, QTextStream& in, Q
     }
     for (;;) {
         bool ok = false;
-        const QString line = in.readLine().trimmed();
+        const QString line = readAnswer(in);
         if (allowBack && (line.compare("b", Qt::CaseInsensitive) == 0)) { out << '\n'; return -1; }
         if (line.compare("q", Qt::CaseInsensitive) == 0) { out << '\n'; return -2; }
         const int idx = line.toInt(&ok);
@@ -41,7 +47,7 @@ int askInt(int min, int max, const QString& prompt, QTextStream& in, QTextStream
     }
     for (;;) {
         bool ok = false;
-        const QString line = in.readLine().trimmed();
+        const QString line = readAnswer(in);
         if (allowBack && (line.compare("b", Qt::CaseInsensitive) == 0)) { out << '\n'; return min - 1; } // back
         if (line.compare("q", Qt::CaseInsensitive) == 0) { out << '\n'; return std::numeric_limits<int>::min(); } // quit
         const int val = line.toInt(&ok);
@@ -230,7 +236,7 @@ int CliController::run()
             << QObject::tr("5) Restore MBR/PBR") << '\n'
             << QObject::tr("q) Quit") << '\n';
         out << QObject::tr("Select action [1-5 or 'q' to quit]: ") << Qt::flush;
-        const QString actionStr = in.readLine().trimmed();
+        const QString actionStr = readAnswer(in);
         if (actionStr.compare("q", Qt::CaseInsensitive) == 0) return 0;
         bool okAction = false;
         const int action = actionStr.toInt(&okAction);
@@ -318,7 +324,7 @@ int CliController::run()
             if (diskIdx == -2) return 0; // quit
             if (diskIdx == -1) continue; // back
             out << QObject::tr("Output file path (or 'b' to go back, 'q' to quit): ") << Qt::flush;
-            const QString outPath = in.readLine().trimmed();
+            const QString outPath = readAnswer(in);
             if (outPath.compare("q", Qt::CaseInsensitive) == 0) return 0;
             if (outPath.compare("b", Qt::CaseInsensitive) == 0) continue;
         BootRepairOptions opt;
@@ -336,7 +342,7 @@ int CliController::run()
             if (diskIdx == -2) return 0; // quit
             if (diskIdx == -1) continue; // back
             out << QObject::tr("Input backup file path (or 'b' to go back, 'q' to quit): ") << Qt::flush;
-            const QString inPath = in.readLine().trimmed();
+            const QString inPath = readAnswer(in);
             if (inPath.compare("q", Qt::CaseInsensitive) == 0) return 0;
             if (inPath.compare("b", Qt::CaseInsensitive) == 0) continue;
         BootRepairOptions opt;
@@ -344,7 +350,8 @@ int CliController::run()
         opt.backupPath = inPath;
         out << QObject::tr("WARNING: This will overwrite the first 446 bytes of /dev/") << opt.location << QObject::tr(". Continue? [y/N]: ")
             << Qt::flush;
-        const QString ans = in.readLine().trimmed().toLower();
+        const QString ans = readAnswer(in).toLower();
+        if (ans == "q") return 0;
         const QString yWord = QObject::tr("yes", "confirmation input: full word").trimmed().toLower();
         const QString yLetter = QObject::tr("y", "confirmation input: single-letter yes").trimmed().toLower();
         const bool isYes = (ans == QStringLiteral("y") || ans == QStringLiteral("yes")

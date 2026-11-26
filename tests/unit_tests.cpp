@@ -4,6 +4,7 @@
 #include "helper/path_validation.h"
 
 #include <QCoreApplication>
+#include <fcntl.h>
 #include <QProcess>
 #include <QTemporaryDir>
 #include <QTextStream>
@@ -107,20 +108,22 @@ void testHelperPaths()
 {
     QTemporaryDir root;
     check(root.isValid(), "temporary helper root should be created");
-    check(HelperPath::isValidRootPath(root.path()), "an existing absolute helper root should be valid");
-    check(!HelperPath::isValidRootPath("relative"), "a relative helper root should be rejected");
+    HelperPath::TargetRoot target(root.path());
     check(HelperPath::isValidAbsolutePath("/etc/fstab"), "an absolute path should be valid");
-    check(!HelperPath::isValidAbsolutePath("/etc/fstab\nother"), "paths containing newlines should be rejected");
-    check(HelperPath::isSafeChildPath(root.path(), "/etc/fstab"),
-          "a target-root-relative path should remain below the root");
-    check(!HelperPath::isSafeChildPath(root.path(), "/../../etc/passwd"),
-          "path traversal outside the target root should be rejected");
-    check(!HelperPath::isSafeChildPath(QStringLiteral("/mxbr-test-root-that-does-not-exist"), "/etc/fstab"),
-          "a root path that doesn't resolve to a canonical path must fail closed, not be treated as unrestricted");
-    check(HelperPath::isSafeChildPath(QString(), "/etc/fstab"),
-          "an empty root (no chroot) should allow any absolute path");
-    check(!HelperPath::isSafeChildPath(QString(), "relative/path"),
-          "an empty root (no chroot) should still reject a non-absolute path");
+    check(!HelperPath::isValidAbsolutePath("/etc/fstab\nother"), "newlines should be rejected");
+    check(!target.open("relative", O_RDONLY), "relative target paths should be rejected");
+    check(static_cast<bool>(target.directory("/subdir/data", true)), "nested target directories should be created");
+    QFile marker(root.filePath("subdir/data/marker"));
+    check(marker.open(QIODevice::WriteOnly) && marker.write("target") == 6, "create target marker");
+    marker.close();
+    check(QFile::link("/subdir/data", root.filePath("link")), "create absolute target symlink");
+    const auto file = target.open("/link/marker", O_RDONLY);
+    QFile resolved(file.procPath());
+    check(file && resolved.open(QIODevice::ReadOnly) && resolved.readAll() == "target",
+          "absolute symlinks should resolve within the target root");
+    check(!target.open("/../../etc/passwd", O_RDONLY), "parent traversal stays inside the target");
+    check(!HelperPath::TargetRoot("/mxbr-missing-root").open("/etc/fstab", O_RDONLY), "missing root should fail");
+
 }
 
 void testCliParser()

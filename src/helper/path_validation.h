@@ -4,8 +4,32 @@
 
 namespace HelperPath
 {
-QString joinTargetPath(const QString &rootPath, const QString &path);
-bool isValidRootPath(const QString &rootPath);
 bool isValidAbsolutePath(const QString &path);
-bool isSafeChildPath(const QString &rootPath, const QString &requestedPath);
+
+class Descriptor
+{
+public:
+    explicit Descriptor(int fd = -1) : fd_(fd) {}
+    ~Descriptor();
+    Descriptor(const Descriptor &) = delete;
+    Descriptor &operator=(const Descriptor &) = delete;
+    explicit operator bool() const { return fd_ >= 0; }
+    int get() const { return fd_; }
+    QString procPath() const;
+
+private:
+    int fd_;
+};
+
+class TargetRoot
+{
+public:
+    explicit TargetRoot(const QString &path);
+    Descriptor open(const QString &path, int flags) const;
+    Descriptor directory(const QString &path, bool create = false) const;
+    bool enter() const;
+
+private:
+    Descriptor root_;
+};
 }

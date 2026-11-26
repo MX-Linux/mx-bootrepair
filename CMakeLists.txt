@@ -160,6 +160,7 @@ list(FILTER TRANSLATION_FILES EXCLUDE REGEX "/mx-boot-repair_en_US\\.ts$")
 
 # Create the executable
 add_library(bootrepair-core STATIC
+    src/helper/path_validation.cpp
     src/core/cmd.cpp
     src/core/bootrepair_engine.cpp
     src/core/bootrepair_engine.h
@@ -367,8 +368,6 @@ if(BUILD_TESTING)
         tests/unit_tests.cpp
         src/cli/validation.cpp
         src/cli/validation.h
-        src/helper/path_validation.cpp
-        src/helper/path_validation.h
     )
     target_link_libraries(mxbr-unit-tests
         bootrepair-core

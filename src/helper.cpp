@@ -30,22 +30,24 @@
 #include <QProcess>
 #include <QRegularExpression>
 #include <QScopeGuard>
+#include <QTemporaryDir>
+#include <QSaveFile>
 #include <QStringList>
 
 #include <cstdio>
 
 #include <fcntl.h>
 #include <sys/stat.h>
+#include <sys/mount.h>
+#include <cerrno>
 #include <unistd.h>
 
 #include "helper/path_validation.h"
 
 namespace
 {
-using HelperPath::isSafeChildPath;
+using HelperPath::TargetRoot;
 using HelperPath::isValidAbsolutePath;
-using HelperPath::isValidRootPath;
-using HelperPath::joinTargetPath;
 
 struct ProcessResult
 {
@@ -105,28 +107,12 @@ void printError(const QString &message)
     return commands;
 }
 
-[[nodiscard]] QString resolveBinary(const QStringList &candidates, const QString &rootPath = {})
-{
-    for (const QString &candidate : candidates) {
-        const QString fullPath = rootPath.isEmpty() ? candidate : joinTargetPath(rootPath, candidate);
-        const QFileInfo info(fullPath);
-        if (info.exists() && info.isExecutable()) {
-            return candidate;
-        }
-    }
-    return {};
-}
-
 [[nodiscard]] QString resolveHostBinary(const QStringList &candidates)
 {
-    return resolveBinary(candidates);
-}
-
-[[nodiscard]] QString resolveChrootBinary()
-{
-    static const QStringList candidates {QStringLiteral("/usr/sbin/chroot"), QStringLiteral("/usr/bin/chroot"),
-                                         QStringLiteral("/sbin/chroot"), QStringLiteral("/bin/chroot")};
-    return resolveHostBinary(candidates);
+    for (const QString &path : candidates) {
+        if (QFileInfo(path).isExecutable()) return path;
+    }
+    return {};
 }
 
 [[nodiscard]] ProcessResult runProcess(const QString &program, const QStringList &args, const QByteArray &input = {})
@@ -174,7 +160,7 @@ void printError(const QString &message)
     return input.readAll();
 }
 
-[[nodiscard]] int runAllowedCommand(const QString &rootPath, const QString &command, const QStringList &commandArgs,
+[[nodiscard]] int runAllowedCommand(const QString &command, const QStringList &commandArgs,
                                     const QByteArray &input = {})
 {
     const auto it = allowedCommands().constFind(command);
@@ -183,37 +169,25 @@ void printError(const QString &message)
         return 127;
     }
 
-    const QString resolvedCommand = resolveBinary(it.value(), rootPath);
+    const QString resolvedCommand = resolveHostBinary(it.value());
     if (resolvedCommand.isEmpty()) {
         printError(QStringLiteral("Command is not available: %1").arg(command));
         return 127;
     }
 
-    if (rootPath.isEmpty()) {
-        return relayResult(runProcess(resolvedCommand, commandArgs, input));
-    }
-
-    const QString chrootBinary = resolveChrootBinary();
-    if (chrootBinary.isEmpty()) {
-        printError(QStringLiteral("Unable to find chroot executable"));
-        return 127;
-    }
-
-    QStringList chrootArgs {rootPath, resolvedCommand};
-    chrootArgs += commandArgs;
-    return relayResult(runProcess(chrootBinary, chrootArgs, input));
+    return relayResult(runProcess(resolvedCommand, commandArgs, input));
 }
 
-[[nodiscard]] int handleExec(const QString &rootPath, const QStringList &args)
+[[nodiscard]] int handleExec(const QStringList &args)
 {
     if (args.isEmpty()) {
         printError(QStringLiteral("exec requires a command name"));
         return 1;
     }
-    return runAllowedCommand(rootPath, args.constFirst(), args.mid(1), readHelperInput());
+    return runAllowedCommand(args.constFirst(), args.mid(1), readHelperInput());
 }
 
-[[nodiscard]] int handleReadFile(const QString &rootPath, const QStringList &args)
+[[nodiscard]] int handleReadFile(const QStringList &args)
 {
     if (args.size() != 1) {
         printError(QStringLiteral("read-file requires exactly one path"));
@@ -221,12 +195,12 @@ void printError(const QString &message)
     }
 
     const QString path = args.constFirst();
-    if (!isValidAbsolutePath(path) || !isSafeChildPath(rootPath, path)) {
+    if (!isValidAbsolutePath(path)) {
         printError(QStringLiteral("Invalid read-file path: %1").arg(path));
         return 1;
     }
 
-    QFile file(joinTargetPath(rootPath, path));
+    QFile file(path);
     if (!file.open(QIODevice::ReadOnly)) {
         printError(QStringLiteral("Unable to read %1").arg(path));
         return 1;
@@ -236,7 +210,7 @@ void printError(const QString &message)
     return 0;
 }
 
-[[nodiscard]] int handleListDir(const QString &rootPath, const QStringList &args)
+[[nodiscard]] int handleListDir(const QStringList &args)
 {
     if (args.size() != 1) {
         printError(QStringLiteral("list-dir requires exactly one path"));
@@ -244,12 +218,12 @@ void printError(const QString &message)
     }
 
     const QString path = args.constFirst();
-    if (!isValidAbsolutePath(path) || !isSafeChildPath(rootPath, path)) {
+    if (!isValidAbsolutePath(path)) {
         printError(QStringLiteral("Invalid list-dir path: %1").arg(path));
         return 1;
     }
 
-    const QDir dir(joinTargetPath(rootPath, path));
+    const QDir dir(path);
     if (!dir.exists()) {
         printError(QStringLiteral("Directory does not exist: %1").arg(path));
         return 1;
@@ -260,7 +234,7 @@ void printError(const QString &message)
     return 0;
 }
 
-[[nodiscard]] int handlePathCheck(const QString &rootPath, const QStringList &args)
+[[nodiscard]] int handlePathCheck(const QStringList &args)
 {
     if (args.size() != 2) {
         printError(QStringLiteral("path-check requires mode and path"));
@@ -269,12 +243,12 @@ void printError(const QString &message)
 
     const QString mode = args.at(0);
     const QString path = args.at(1);
-    if (!isValidAbsolutePath(path) || !isSafeChildPath(rootPath, path)) {
+    if (!isValidAbsolutePath(path)) {
         printError(QStringLiteral("Invalid path-check path: %1").arg(path));
         return 1;
     }
 
-    const QFileInfo info(joinTargetPath(rootPath, path));
+    const QFileInfo info(path);
     if (mode == QLatin1String("exists")) {
         return info.exists() ? 0 : 1;
     }
@@ -289,7 +263,7 @@ void printError(const QString &message)
     return 1;
 }
 
-[[nodiscard]] int handleDirHasEntries(const QString &rootPath, const QStringList &args)
+[[nodiscard]] int handleDirHasEntries(const QStringList &args)
 {
     if (args.size() != 1) {
         printError(QStringLiteral("dir-has-entries requires exactly one path"));
@@ -297,12 +271,12 @@ void printError(const QString &message)
     }
 
     const QString path = args.constFirst();
-    if (!isValidAbsolutePath(path) || !isSafeChildPath(rootPath, path)) {
+    if (!isValidAbsolutePath(path)) {
         printError(QStringLiteral("Invalid dir-has-entries path: %1").arg(path));
         return 1;
     }
 
-    const QDir dir(joinTargetPath(rootPath, path));
+    const QDir dir(path);
     if (!dir.exists()) {
         return 1;
     }
@@ -312,7 +286,7 @@ void printError(const QString &message)
 
 [[nodiscard]] bool isMountpoint(const QString &path)
 {
-    return runAllowedCommand({}, QStringLiteral("mountpoint"), {QStringLiteral("-q"), path}) == 0;
+    return runAllowedCommand(QStringLiteral("mountpoint"), {QStringLiteral("-q"), path}) == 0;
 }
 
 [[nodiscard]] int handleMountChrootEnv(const QStringList &args)
@@ -334,59 +308,38 @@ void printError(const QString &message)
         return 1;
     }
 
-    int exitCode = runAllowedCommand({}, QStringLiteral("mount"), {source, target});
+    int exitCode = runAllowedCommand(QStringLiteral("mount"), {source, target});
     if (exitCode != 0) {
         return exitCode;
     }
 
     auto rollback = qScopeGuard([&] {
-        if (runAllowedCommand({}, QStringLiteral("umount"), {QStringLiteral("-R"), target}) != 0) {
+        if (runAllowedCommand(QStringLiteral("umount"), {QStringLiteral("-R"), target}) != 0) {
             printError(QStringLiteral("Failed to roll back mounts at %1").arg(target));
         }
     });
 
-    exitCode = runAllowedCommand(
-        {}, QStringLiteral("mount"),
-        {QStringLiteral("--rbind"), QStringLiteral("--make-rslave"), QStringLiteral("/dev"), target + "/dev"});
-    if (exitCode != 0) {
-        return exitCode;
+    const TargetRoot root(target);
+    const auto bind = [&](const QString &path, bool optional, bool create = false) {
+        const auto destination = root.directory(path, create);
+        if (!destination) return optional && errno == ENOENT;
+        return ::mount(QFile::encodeName(path).constData(), QFile::encodeName(destination.procPath()).constData(),
+                       nullptr, MS_BIND | MS_REC, nullptr) == 0;
+    };
+    if (!bind("/dev", false) || !bind("/sys", true) || !bind("/proc", true)) {
+        printError(QStringLiteral("Failed to bind system directories in the repair root"));
+        return 1;
     }
-
-    if (QDir(target + "/sys").exists()) {
-        exitCode = runAllowedCommand(
-            {}, QStringLiteral("mount"),
-            {QStringLiteral("--rbind"), QStringLiteral("--make-rslave"), QStringLiteral("/sys"), target + "/sys"});
-        if (exitCode != 0) {
-            return exitCode;
+    const auto run = root.directory("/run");
+    if (run) {
+        if (::mount("tmpfs", QFile::encodeName(run.procPath()).constData(), "tmpfs", MS_NODEV, "size=100m,mode=755") != 0
+            || (QDir("/run/udev").exists() && !bind("/run/udev", false, true))) {
+            printError(QStringLiteral("Failed to prepare /run in the repair root"));
+            return 1;
         }
-    }
-
-    if (QDir(target + "/proc").exists()) {
-        exitCode =
-            runAllowedCommand({}, QStringLiteral("mount"), {QStringLiteral("--rbind"), QStringLiteral("/proc"), target + "/proc"});
-        if (exitCode != 0) {
-            return exitCode;
-        }
-    }
-
-    if (QDir(target + "/run").exists()) {
-        exitCode = runAllowedCommand({}, QStringLiteral("mount"),
-                                     {QStringLiteral("-t"), QStringLiteral("tmpfs"), QStringLiteral("-o"),
-                                      QStringLiteral("size=100m,nodev,mode=755"), QStringLiteral("tmpfs"),
-                                      target + "/run"});
-        if (exitCode != 0) {
-            return exitCode;
-        }
-
-        if (QDir(QStringLiteral("/run/udev")).exists()) {
-            QDir().mkpath(target + "/run/udev");
-            exitCode = runAllowedCommand({}, QStringLiteral("mount"),
-                                         {QStringLiteral("--rbind"), QStringLiteral("/run/udev"),
-                                          target + "/run/udev"});
-            if (exitCode != 0) {
-                return exitCode;
-            }
-        }
+    } else if (errno != ENOENT) {
+        printError(QStringLiteral("Could not open /run in the repair root"));
+        return 1;
     }
 
     rollback.dismiss();
@@ -406,7 +359,7 @@ void printError(const QString &message)
         return 1;
     }
 
-    return runAllowedCommand({}, QStringLiteral("umount"), {QStringLiteral("-R"), target});
+    return runAllowedCommand(QStringLiteral("umount"), {QStringLiteral("-R"), target});
 }
 
 [[nodiscard]] int handleEnsureEfivarfs()
@@ -423,7 +376,7 @@ void printError(const QString &message)
         return 0;
     }
 
-    return runAllowedCommand({}, QStringLiteral("mount"),
+    return runAllowedCommand(QStringLiteral("mount"),
                              {QStringLiteral("-t"), QStringLiteral("efivarfs"), QStringLiteral("efivarfs"),
                               QStringLiteral("/sys/firmware/efi/efivars")});
 }
@@ -482,79 +435,66 @@ void printError(const QString &message)
     const QString upperSuffix = suffix.toUpper();
     const QString efiTarget = QStringLiteral("%1-efi").arg(arch);
 
-    const QString runDir = joinTargetPath(rootPath, QStringLiteral("/run"));
-    const QString efiDir = joinTargetPath(rootPath, QStringLiteral("/boot/efi/EFI/%1").arg(bootloaderId));
-    const QString fallbackDir = joinTargetPath(rootPath, QStringLiteral("/boot/efi/EFI/BOOT"));
-    const QString earlyCfgPath = joinTargetPath(rootPath, QStringLiteral("/run/grub-early.cfg"));
-    const QString outPath =
-        joinTargetPath(rootPath, QStringLiteral("/boot/efi/EFI/%1/grub%2.efi").arg(bootloaderId, suffix));
-    const QString fallbackPath =
-        joinTargetPath(rootPath, QStringLiteral("/boot/efi/EFI/BOOT/BOOT%1.EFI").arg(upperSuffix));
+    const bool hostBuild = !rootPath.isEmpty() && useHostBinary;
+    const TargetRoot root(rootPath);
+    if (!rootPath.isEmpty() && !hostBuild && !root.enter()) return 1;
+    if (!QDir().mkpath("/run")) return 1;
+    QTemporaryDir work("/run/mxbr-grub-XXXXXX");
+    if (!work.isValid()) return 1;
 
-    if (!QDir().mkpath(runDir) || !QDir().mkpath(efiDir) || !QDir().mkpath(fallbackDir)) {
-        printError(QStringLiteral("Unable to prepare EFI output directories"));
-        return 1;
+    QStringList processArgs;
+    if (hostBuild) {
+        // The host binary needs the target's modules. Snapshot the flat module files so
+        // symlinks inside that directory are also resolved against the installation.
+        const QString modulePath = "/usr/lib/grub/" + efiTarget;
+        const auto moduleDir = root.directory(modulePath);
+        const QString snapshot = work.filePath("modules");
+        if (!moduleDir || !QDir().mkdir(snapshot)) return 1;
+        const auto entries = QDir(moduleDir.procPath()).entryList(QDir::AllEntries | QDir::System | QDir::NoDotAndDotDot);
+        for (const QString &name : entries) {
+            const auto file = root.open(modulePath + '/' + name, O_RDONLY | O_NONBLOCK);
+            struct stat info {};
+            if (!file || fstat(file.get(), &info) != 0) return 1;
+            if (S_ISDIR(info.st_mode)) continue;
+            if (!S_ISREG(info.st_mode) || !QFile::copy(file.procPath(), snapshot + '/' + name)) return 1;
+        }
+        processArgs << "--directory=" + snapshot;
     }
-
-    QFile earlyCfg(earlyCfgPath);
-    if (!earlyCfg.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text)) {
-        printError(QStringLiteral("Unable to create %1").arg(earlyCfgPath));
-        return 1;
-    }
-
-    const QByteArray earlyCfgContent =
+    QFile earlyCfg(work.filePath("early.cfg"));
+    const QByteArray config =
         "search --no-floppy --file /boot/grub/grub.cfg --set=root\n"
         "set prefix=($root)/boot/grub\n"
         "configfile $prefix/grub.cfg\n";
-    earlyCfg.write(earlyCfgContent);
+    if (!earlyCfg.open(QIODevice::WriteOnly) || earlyCfg.write(config) != config.size() || !earlyCfg.flush()) return 1;
     earlyCfg.close();
 
-    int exitCode = 1;
-    const QString standaloneBinary = (rootPath.isEmpty() || !useHostBinary)
-        ? resolveBinary(allowedCommands().value(QStringLiteral("grub-mkstandalone")), rootPath)
-        : resolveHostBinary(allowedCommands().value(QStringLiteral("grub-mkstandalone")));
-    if (standaloneBinary.isEmpty()) {
-        printError(QStringLiteral("grub-mkstandalone is not available"));
-        QFile::remove(earlyCfgPath);
-        return 127;
+    QFile image(work.filePath("grub.efi"));
+    processArgs << "-O" << efiTarget << "-o" << image.fileName() << "boot/grub/grub.cfg=" + earlyCfg.fileName();
+    const int result = runAllowedCommand("grub-mkstandalone", processArgs);
+    if (result != 0) return result;
+    if (!image.open(QIODevice::ReadOnly)) return 1;
+    // Keep the finished image open across chroot. Remove the host staging files first.
+    if (!work.remove()) return 1;
+    work.setAutoRemove(false);
+    if (hostBuild && !root.enter()) return 1;
+    const QString efiDir = "/boot/efi/EFI/" + bootloaderId;
+    const QString fallbackDir = "/boot/efi/EFI/BOOT";
+    if (!QDir().mkpath(efiDir) || !QDir().mkpath(fallbackDir)) return 1;
+    const QString outPath = efiDir + "/grub" + suffix + ".efi";
+    QSaveFile loader(outPath);
+    if (!loader.open(QIODevice::WriteOnly)) return 1;
+    while (!image.atEnd()) {
+        const QByteArray chunk = image.read(64 * 1024);
+        if (chunk.isEmpty() || loader.write(chunk) != chunk.size()) return 1;
     }
-
-    if (rootPath.isEmpty() || useHostBinary) {
-        QStringList processArgs;
-        if (!rootPath.isEmpty()) {
-            processArgs << QStringLiteral("--directory=%1").arg(joinTargetPath(rootPath, QStringLiteral("/usr/lib/grub/%1"))
-                                                                    .arg(efiTarget));
-        }
-        processArgs << QStringLiteral("-O") << efiTarget << QStringLiteral("-o") << outPath
-                    << QStringLiteral("boot/grub/grub.cfg=%1").arg(earlyCfgPath);
-        exitCode = relayResult(runProcess(standaloneBinary, processArgs));
-    } else {
-        const QString chrootBinary = resolveChrootBinary();
-        if (chrootBinary.isEmpty()) {
-            printError(QStringLiteral("Unable to find chroot executable"));
-            QFile::remove(earlyCfgPath);
-            return 127;
-        }
-
-        const QString targetOutPath =
-            QStringLiteral("/boot/efi/EFI/%1/grub%2.efi").arg(bootloaderId, suffix);
-        const QString targetCfgPath = QStringLiteral("/run/grub-early.cfg");
-        const QStringList processArgs {rootPath, standaloneBinary, QStringLiteral("-O"), efiTarget,
-                                       QStringLiteral("-o"), targetOutPath,
-                                       QStringLiteral("boot/grub/grub.cfg=%1").arg(targetCfgPath)};
-        exitCode = relayResult(runProcess(chrootBinary, processArgs));
+    if (!loader.commit()) return 1;
+    const QString fallbackPath = fallbackDir + "/BOOT" + upperSuffix + ".EFI";
+    QFile::remove(fallbackPath);
+    if (!QFile::copy(outPath, fallbackPath)) {
+        printError(QStringLiteral("Unable to copy %1 to %2").arg(outPath, fallbackPath));
+        return 1;
     }
-
-    if (exitCode == 0) {
-        QFile::remove(fallbackPath);
-        if (!QFile::copy(outPath, fallbackPath)) {
-            printError(QStringLiteral("Unable to copy %1 to %2").arg(outPath, fallbackPath));
-            exitCode = 1;
-        }
-    }
-
-    QFile::remove(earlyCfgPath);
-    return exitCode;
+    return 0;
 }
 
 [[nodiscard]] bool pathExistsNoFollow(const QString &path)
@@ -699,10 +639,10 @@ void printError(const QString &message)
     return copyRegularFileNoFollow(source, target);
 }
 
-[[nodiscard]] int handleCopyGrubLocales(const QString &rootPath)
+[[nodiscard]] int handleCopyGrubLocales()
 {
-    const QString localeRoot = joinTargetPath(rootPath, QStringLiteral("/usr/share/locale"));
-    const QString grubLocaleDir = joinTargetPath(rootPath, QStringLiteral("/boot/grub/locale"));
+    const QString localeRoot = QStringLiteral("/usr/share/locale");
+    const QString grubLocaleDir = QStringLiteral("/boot/grub/locale");
     if (!QDir().mkpath(grubLocaleDir)) {
         printError(QStringLiteral("Unable to create %1").arg(grubLocaleDir));
         return 1;
@@ -756,9 +696,13 @@ int main(int argc, char *argv[])
         arguments = arguments.mid(2);
     }
 
-    if (!isValidRootPath(rootPath)) {
-        printError(QStringLiteral("Invalid root path: %1").arg(rootPath));
-        return 1;
+    if (!rootPath.isEmpty() && action != "grub-mkstandalone-efi") {
+        const QStringList rootedActions {"exec", "read-file", "list-dir", "path-check", "dir-has-entries",
+                                         "copy-grub-locales"};
+        if (!rootedActions.contains(action) || !TargetRoot(rootPath).enter()) {
+            printError(QStringLiteral("Could not enter the repair root for %1").arg(action));
+            return 1;
+        }
     }
 
     if (action == QLatin1String("cleanup-chroot-env")) {
@@ -776,10 +720,10 @@ int main(int argc, char *argv[])
         return handleCopyLog();
     }
     if (action == QLatin1String("copy-grub-locales")) {
-        return handleCopyGrubLocales(rootPath);
+        return handleCopyGrubLocales();
     }
     if (action == QLatin1String("dir-has-entries")) {
-        return handleDirHasEntries(rootPath, arguments);
+        return handleDirHasEntries(arguments);
     }
     if (action == QLatin1String("ensure-efivarfs")) {
         if (!rootPath.isEmpty()) {
@@ -789,13 +733,13 @@ int main(int argc, char *argv[])
         return handleEnsureEfivarfs();
     }
     if (action == QLatin1String("exec")) {
-        return handleExec(rootPath, arguments);
+        return handleExec(arguments);
     }
     if (action == QLatin1String("grub-mkstandalone-efi")) {
         return handleGrubMkstandaloneEfi(rootPath, arguments);
     }
     if (action == QLatin1String("list-dir")) {
-        return handleListDir(rootPath, arguments);
+        return handleListDir(arguments);
     }
     if (action == QLatin1String("mount-chroot-env")) {
         if (!rootPath.isEmpty()) {
@@ -805,10 +749,10 @@ int main(int argc, char *argv[])
         return handleMountChrootEnv(arguments);
     }
     if (action == QLatin1String("path-check")) {
-        return handlePathCheck(rootPath, arguments);
+        return handlePathCheck(arguments);
     }
     if (action == QLatin1String("read-file")) {
-        return handleReadFile(rootPath, arguments);
+        return handleReadFile(arguments);
     }
     if (action == QLatin1String("remove-efi-dump")) {
         if (!rootPath.isEmpty()) {

@@ -6,6 +6,7 @@
 #include <QScopeGuard>
 #include <QSaveFile>
 #include "helper/device.h"
+#include "helper/path_validation.h"
 
 #include <mntent.h>
 #include <optional>
@@ -622,7 +623,13 @@ bool BootRepairEngine::ensureMountFor(const QString& path, const QString& mountp
         emit log(tr("Invalid boot device: %1").arg(expected));
         return false;
     }
-    const auto mounted = exactMountSource(target);
+    const HelperPath::TargetRoot root(path);
+    const auto directory = root.directory(mountpoint, true);
+    if (!directory) {
+        emit log(tr("Could not open the target mount directory %1").arg(mountpoint));
+        return false;
+    }
+    const auto mounted = exactMountSource(QFileInfo(directory.procPath()).canonicalFilePath());
     if (!mounted) {
         emit log(tr("Could not read the mount table for %1").arg(target));
         return false;
@@ -633,8 +640,7 @@ bool BootRepairEngine::ensureMountFor(const QString& path, const QString& mountp
         emit log(tr("%1 is mounted from %2, expected %3").arg(target, *mounted, expected));
         return false;
     }
-    return execProcAsRoot("mkdir", {"-p", target})
-        && execProcAsRoot("mount", {expected, target});
+    return execProcAsRoot("mount", {"--no-canonicalize", expected, directory.procPath()});
 }
 
 bool BootRepairEngine::copyGrubLocales(const QString& rootPath)

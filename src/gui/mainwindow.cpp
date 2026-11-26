@@ -637,6 +637,9 @@ void MainWindow::buttonApply_clicked()
 {
     const int currentIndex = ui->stackedWidget->currentIndex();
     if (currentIndex == 0) {
+        const bool showLocation = !ui->radioRegenerateInitramfs->isChecked();
+        ui->comboLocation->setVisible(showLocation);
+        ui->locationLabel->setVisible(showLocation);
         targetSelection();
         ui->stackedWidget->setCurrentWidget(ui->selectionPage);
 
@@ -658,8 +661,6 @@ void MainWindow::buttonApply_clicked()
             targetSelection();
         } else if (ui->radioRegenerateInitramfs->isChecked()) {
             ui->bootMethodGroup->setTitle(tr("Select initramfs options"));
-            ui->locationLabel->hide();
-            ui->comboLocation->hide();
             ui->grubInsLabel->hide();
             ui->radioGrubRoot->hide();
             ui->radioGrubMbr->hide();

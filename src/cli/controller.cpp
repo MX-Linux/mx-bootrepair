@@ -64,19 +64,6 @@ int CliController::run()
     QTextStream out(stdout);
     QTextStream in(stdin);
 
-    BootRepairEngine engine;
-    // Log everything to file via Qt logging, but only print command OUTPUT to terminal (not the command lines)
-    QObject::connect(&engine, &BootRepairEngine::log, &engine, [&](const QString& s) {
-        qInfo().noquote() << s; // always to log file
-        if (!(s.startsWith("$ ") || s.startsWith("# ") || s.startsWith("[dry-run]"))) {
-            out << s; if (!s.endsWith('\n')) out << '\n'; out.flush();
-        }
-    });
-    QObject::connect(&engine, &BootRepairEngine::finished, &engine, [&](bool ok) {
-        out << (ok ? "Command completed successfully." : "Command failed.") << '\n';
-        out.flush();
-    });
-
     // Non-interactive mode via flags
     QCommandLineParser parser;
     parser.setApplicationDescription("MX Boot Repair CLI");
@@ -105,6 +92,30 @@ int CliController::run()
         out << "Error: --verbose and --quiet options are mutually exclusive\n";
         return 2;
     }
+
+    const bool verbose = parser.isSet(verboseOpt);
+    const bool quiet = parser.isSet(quietOpt);
+    QTextStream errors(stderr);
+    QString lastDiagnostic;
+    BootRepairEngine engine;
+    QObject::connect(&engine, &BootRepairEngine::log, &engine, [&](const QString& message) {
+        qInfo().noquote() << message;
+        for (const QString& line : message.split('\n', Qt::SkipEmptyParts)) {
+            const bool command = line.startsWith("$ ") || line.startsWith("# ");
+            if (!command && !line.startsWith("[dry-run]")) lastDiagnostic = line;
+            if (!quiet && (verbose || !command)) out << line << '\n';
+        }
+        out.flush();
+    });
+    QObject::connect(&engine, &BootRepairEngine::finished, &engine, [&](bool ok) {
+        if (!ok) {
+            if (quiet && !lastDiagnostic.isEmpty()) errors << lastDiagnostic << '\n';
+            errors << "Command failed.\n" << Qt::flush;
+        } else if (!quiet) {
+            out << "Command completed successfully.\n" << Qt::flush;
+        }
+        lastDiagnostic.clear();
+    });
 
     auto validateDevicePath = [&out](const QString& dev, const QString& name) -> bool {
         if (CliValidation::isValidDevice(dev)) {

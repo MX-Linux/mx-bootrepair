@@ -505,18 +505,24 @@ void printError(const QString &message)
     const QString fallbackDir = "/boot/efi/EFI/BOOT";
     if (!QDir().mkpath(efiDir) || !QDir().mkpath(fallbackDir)) return 1;
     const QString outPath = efiDir + "/grub" + suffix + ".efi";
-    QSaveFile loader(outPath);
-    if (!loader.open(QIODevice::WriteOnly)) return 1;
-    while (!image.atEnd()) {
-        const QByteArray chunk = image.read(64 * 1024);
-        if (chunk.isEmpty() || loader.write(chunk) != chunk.size()) return 1;
-    }
-    if (!loader.commit()) return 1;
     const QString fallbackPath = fallbackDir + "/BOOT" + upperSuffix + ".EFI";
-    QFile::remove(fallbackPath);
-    if (!QFile::copy(outPath, fallbackPath)) {
-        printError(QStringLiteral("Unable to copy %1 to %2").arg(outPath, fallbackPath));
-        return 1;
+    for (const QString &destination : {outPath, fallbackPath}) {
+        QSaveFile loader(destination);
+        if (!image.seek(0) || !loader.open(QIODevice::WriteOnly)) {
+            printError(QStringLiteral("Unable to prepare %1").arg(destination));
+            return 1;
+        }
+        while (!image.atEnd()) {
+            const QByteArray chunk = image.read(64 * 1024);
+            if (chunk.isEmpty() || loader.write(chunk) != chunk.size()) {
+                printError(QStringLiteral("Unable to write %1").arg(destination));
+                return 1;
+            }
+        }
+        if (!loader.commit()) {
+            printError(QStringLiteral("Unable to replace %1: %2").arg(destination, loader.errorString()));
+            return 1;
+        }
     }
     return 0;
 }

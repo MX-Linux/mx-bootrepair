@@ -29,6 +29,7 @@
 #include <QHash>
 #include <QProcess>
 #include <QRegularExpression>
+#include <QScopeGuard>
 #include <QStringList>
 
 #include <cstdio>
@@ -328,12 +329,21 @@ void printError(const QString &message)
         return 1;
     }
 
-    QDir().mkpath(target);
+    if (!QDir(target).exists() || isMountpoint(target)) {
+        printError(QStringLiteral("Mount directory is unavailable or already mounted: %1").arg(target));
+        return 1;
+    }
 
     int exitCode = runAllowedCommand({}, QStringLiteral("mount"), {source, target});
     if (exitCode != 0) {
         return exitCode;
     }
+
+    auto rollback = qScopeGuard([&] {
+        if (runAllowedCommand({}, QStringLiteral("umount"), {QStringLiteral("-R"), target}) != 0) {
+            printError(QStringLiteral("Failed to roll back mounts at %1").arg(target));
+        }
+    });
 
     exitCode = runAllowedCommand(
         {}, QStringLiteral("mount"),
@@ -379,6 +389,7 @@ void printError(const QString &message)
         }
     }
 
+    rollback.dismiss();
     return 0;
 }
 
@@ -395,52 +406,7 @@ void printError(const QString &message)
         return 1;
     }
 
-    if (isMountpoint(target + "/boot/efi")) {
-        const int exitCode = runAllowedCommand({}, QStringLiteral("umount"), {target + "/boot/efi"});
-        if (exitCode != 0) {
-            return exitCode;
-        }
-    }
-
-    if (isMountpoint(target + "/boot")) {
-        const int exitCode = runAllowedCommand({}, QStringLiteral("umount"), {QStringLiteral("-R"), target + "/boot"});
-        if (exitCode != 0) {
-            return exitCode;
-        }
-    }
-
-    if (isMountpoint(target + "/run")) {
-        const int exitCode = runAllowedCommand({}, QStringLiteral("umount"), {QStringLiteral("-R"), target + "/run"});
-        if (exitCode != 0) {
-            return exitCode;
-        }
-    }
-    if (isMountpoint(target + "/proc")) {
-        const int exitCode = runAllowedCommand({}, QStringLiteral("umount"), {QStringLiteral("-R"), target + "/proc"});
-        if (exitCode != 0) {
-            return exitCode;
-        }
-    }
-    if (isMountpoint(target + "/sys")) {
-        const int exitCode = runAllowedCommand({}, QStringLiteral("umount"), {QStringLiteral("-R"), target + "/sys"});
-        if (exitCode != 0) {
-            return exitCode;
-        }
-    }
-    if (isMountpoint(target + "/dev")) {
-        const int exitCode = runAllowedCommand({}, QStringLiteral("umount"), {QStringLiteral("-R"), target + "/dev"});
-        if (exitCode != 0) {
-            return exitCode;
-        }
-    }
-    if (isMountpoint(target)) {
-        const int exitCode = runAllowedCommand({}, QStringLiteral("umount"), {target});
-        if (exitCode != 0) {
-            return exitCode;
-        }
-    }
-
-    return runAllowedCommand({}, QStringLiteral("rmdir"), {target});
+    return runAllowedCommand({}, QStringLiteral("umount"), {QStringLiteral("-R"), target});
 }
 
 [[nodiscard]] int handleEnsureEfivarfs()

@@ -253,8 +253,17 @@ QString resolveDeviceSpec(QString spec)
 BootRepairEngine::BootRepairEngine(QObject* parent)
     : QObject(parent), shell(new Cmd(this))
 {
+    tmpdir.setAutoRemove(false);
     connect(shell, &Cmd::outputAvailable, this, [this](const QString& s) { emit log(s); });
     connect(shell, &Cmd::errorAvailable, this, [this](const QString& s) { emit log(s); });
+}
+
+BootRepairEngine::~BootRepairEngine()
+{
+    // rmdir only removes an empty, unmounted directory, even after a failed repair.
+    if (tmpdir.isValid() && !QDir().rmdir(tmpdir.path())) {
+        qWarning() << "Could not remove repair mount directory:" << tmpdir.path();
+    }
 }
 
 bool BootRepairEngine::execProcAsRoot(const QString& cmd, const QStringList& args, QString* output, const QByteArray* input, bool quiet)
@@ -382,8 +391,7 @@ bool BootRepairEngine::canUnlockLuks(const QString& device, const QByteArray& pa
     if (!openLuks(dev, probeMapper, pass)) {
         return false;
     }
-    execProcAsRoot("cryptsetup", {"luksClose", probeMapper}, nullptr, nullptr, true);
-    return true;
+    return closeLuksMapper(probeMapper);
 }
 
 static inline QString normalizeDev(const QString& device)
@@ -523,26 +531,24 @@ bool BootRepairEngine::mountChrootEnv(const QString& path)
     return shell->mountChrootEnvAsRoot(path, tmpdir.path(), QuietMode::Yes);
 }
 
-void BootRepairEngine::cleanupMounts(const QString& path, const QString& luks)
+bool BootRepairEngine::cleanupMounts(const QString& path, const QString& luks)
 {
+    bool ok = true;
     if (path != "/") {
         if (currentDryRun_) {
             emit log(QStringLiteral("[dry-run] cleanup-chroot-env %1").arg(path));
         } else {
             emit log(QStringLiteral("# cleanup-chroot-env %1").arg(path));
-            shell->cleanupChrootEnvAsRoot(path, QuietMode::Yes);
+            ok = shell->cleanupChrootEnvAsRoot(path, QuietMode::Yes);
+            if (!ok) emit log(tr("Failed to unmount %1").arg(path));
         }
     }
-    if (!luks.isEmpty()) {
-        execProcAsRoot("cryptsetup", {"luksClose", luks}, nullptr, nullptr, true);
-    }
+    return closeLuksMapper(luks) && ok;
 }
 
-void BootRepairEngine::closeLuksMapper(const QString& mapper)
+bool BootRepairEngine::closeLuksMapper(const QString& mapper)
 {
-    if (!mapper.isEmpty()) {
-        execProcAsRoot("cryptsetup", {"luksClose", mapper}, nullptr, nullptr, true);
-    }
+    return mapper.isEmpty() || execProcAsRoot("cryptsetup", {"luksClose", mapper}, nullptr, nullptr, true);
 }
 
 bool BootRepairEngine::ensureMountFor(const QString& path, const QString& mountpoint, const QString& device)
@@ -749,6 +755,7 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
     }
 
     if (!mountChrootEnv(root)) {
+        closeLuksMapper(mapper);
         emit log(QStringLiteral("Failed to set up chroot"));
         emit finished(false);
         currentDryRun_ = false;
@@ -827,7 +834,7 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
         }
     }
 
-    cleanupMounts(tmpdir.path(), mapper);
+    ok = cleanupMounts(tmpdir.path(), mapper) && ok;
     emit finished(ok);
     currentDryRun_ = false;
     return ok;
@@ -892,6 +899,7 @@ bool BootRepairEngine::repairGrub(const BootRepairOptions& opt)
     }
 
     if (!mountChrootEnv(root)) {
+        closeLuksMapper(mapper);
         emit finished(false);
         currentDryRun_ = false;
         return false;
@@ -919,7 +927,7 @@ bool BootRepairEngine::repairGrub(const BootRepairOptions& opt)
         currentDryRun_ = false;
         return false;
     }
-    cleanupMounts(tmpdir.path(), mapper);
+    ok = cleanupMounts(tmpdir.path(), mapper) && ok;
     emit finished(ok);
     currentDryRun_ = false;
     return ok;
@@ -986,6 +994,7 @@ bool BootRepairEngine::regenerateInitramfs(const BootRepairOptions& opt)
     }
 
     if (!mountChrootEnv(root)) {
+        closeLuksMapper(mapper);
         emit finished(false);
         currentDryRun_ = false;
         return false;
@@ -1012,7 +1021,7 @@ bool BootRepairEngine::regenerateInitramfs(const BootRepairOptions& opt)
         currentDryRun_ = false;
         return false;
     }
-    cleanupMounts(tmpdir.path(), mapper);
+    ok = cleanupMounts(tmpdir.path(), mapper) && ok;
     emit finished(ok);
     currentDryRun_ = false;
     return ok;
@@ -1048,7 +1057,7 @@ QString BootRepairEngine::resolveFstabDevice(const QString& root, const QString&
             break;
         }
     }
-    cleanupMounts(tmpdir.path(), opened ? mapper : QString());
+    if (!cleanupMounts(tmpdir.path(), opened ? mapper : QString())) return {};
     return resolveDeviceSpec(device);
 }
 

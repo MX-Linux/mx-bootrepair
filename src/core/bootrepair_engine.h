@@ -32,6 +32,8 @@ class BootRepairEngine : public QObject {
 public:
     explicit BootRepairEngine(QObject* parent = nullptr);
 
+    ~BootRepairEngine() override;
+
     // Discovery
     QStringList listDisks() const;      // pretty strings from lsblk
     QStringList listPartitions() const; // pretty strings from lsblk
@@ -79,8 +81,8 @@ private:
     QString luksMapper(const QString& part) const; // returns mapper name or empty
     bool openLuks(const QString& part, const QString& mapper, const QByteArray& pass);
     bool mountChrootEnv(const QString& path);
-    void cleanupMounts(const QString& path, const QString& luks);
-    void closeLuksMapper(const QString& mapper); // no-op if mapper is empty
+    bool cleanupMounts(const QString& path, const QString& luks);
+    bool closeLuksMapper(const QString& mapper); // no-op if mapper is empty
     bool ensureMountFor(const QString& path, const QString& mountpoint, const QString& device);
     bool copyGrubLocales(const QString& rootPath = {});
 

@@ -42,7 +42,7 @@ public:
     bool isLuks(const QString& device) const;                          // /dev/...
     bool canUnlockLuks(const QString& device, const QByteArray& pass);
     bool isEspPartition(const QString& device) const;                  // sda1 or /dev/sda1
-    QString mountSource(const QString& mountpoint) const;              // findmnt SOURCE
+    QString mountSource(const QString& mountpoint) const;              // exact mountpoint source
     bool isLinuxPartitionType(const QString& device) const;            // sdaX or /dev/sdaX
     bool labelContains(const QString& device, const QString& needle) const; // sdaX or /dev/sdaX
     QString filesystemType(const QString& device) const;               // sdaX or /dev/sdaX

@@ -435,9 +435,7 @@ static inline QString normalizeDev(const QString& device)
 
 QString BootRepairEngine::mountSource(const QString& mountpoint) const
 {
-    QString output;
-    shell->proc("findmnt", {"-n", "-o", "SOURCE", "--target", mountpoint}, &output, nullptr, QuietMode::Yes);
-    return output.trimmed();
+    return exactMountSource(mountpoint).value_or(QString());
 }
 
 bool BootRepairEngine::matchesEspPartitionType(const QString& partType)
@@ -692,40 +690,28 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
     }
     if (rootState == MountState::Mounted) {
         bool ok = false;
-        QString prevEsp; // track original ESP mount so we can restore it
+        bool mountedEsp = false;
         if (opt.target == GrubTarget::Esp) {
-            if (!shell->pathCheckAsRoot("/boot/efi", PathCheck::Directory, QuietMode::Yes)) {
-                execProcAsRoot("mkdir", {"-p", "/boot/efi"}, nullptr, nullptr, true);
+            const auto original = exactMountSource("/boot/efi");
+            const QString selected = opt.espDevice;
+            if (!original || selected.isEmpty()) {
+                emit log(tr("Could not determine the EFI mount source or destination."));
+                emit finished(false);
+                currentDryRun_ = false;
+                return false;
             }
-            MountState espState = MountState::NotMounted;
-            if (!opt.espDevice.isEmpty()) {
-                espState = isMountedTo(opt.espDevice, "/boot/efi");
-                if (espState == MountState::QueryFailed) {
-                    emit log(QStringLiteral("Could not determine whether %1 is mounted; aborting.").arg(opt.espDevice));
+            const QString selectedPath = QFileInfo(selected).canonicalFilePath();
+            if (original->isEmpty() || selectedPath.isEmpty()
+                || QFileInfo(*original).canonicalFilePath() != selectedPath) {
+                // Mount over the previous filesystem so its options and submounts survive intact.
+                if (!execProcAsRoot("mkdir", {"-p", "/boot/efi"})
+                    || !execProcAsRoot("mount", {selected, "/boot/efi"})) {
+                    emit log(tr("Failed to mount %1 on /boot/efi").arg(selected));
                     emit finished(false);
                     currentDryRun_ = false;
                     return false;
                 }
-            }
-            if (!opt.espDevice.isEmpty() && espState == MountState::NotMounted) {
-                prevEsp = mountSource("/boot/efi");
-                if (shell->procAsRoot("mountpoint", {"-q", "/boot/efi"}, nullptr, nullptr, QuietMode::Yes)
-                    && !execProcAsRoot("umount", {"/boot/efi"}, nullptr, nullptr, true)) {
-                    emit log(QStringLiteral("Failed to unmount /boot/efi (device may be busy)"));
-                    emit finished(false);
-                    currentDryRun_ = false;
-                    return false;
-                }
-                if (!execProcAsRoot("mount", {opt.espDevice, "/boot/efi"}, nullptr, nullptr, true)) {
-                    emit log(QStringLiteral("Failed to mount %1 on /boot/efi").arg(opt.espDevice));
-                    if (!prevEsp.isEmpty()
-                        && !execProcAsRoot("mount", {prevEsp, "/boot/efi"}, nullptr, nullptr, true)) {
-                        emit log(QStringLiteral("Warning: could not restore %1 on /boot/efi; please remount manually").arg(prevEsp));
-                    }
-                    emit finished(false);
-                    currentDryRun_ = false;
-                    return false;
-                }
+                mountedEsp = true;
             }
             emit log(QStringLiteral("$ uname -m"));
             const QString arch = detectArch(shell);
@@ -752,15 +738,6 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
                 }
             } else {
                 emit log(QStringLiteral("No GRUB installation tool found (grub-install/grub-mkstandalone)."));
-                if (!prevEsp.isEmpty()) {
-                    if (!execProcAsRoot("umount", {"/boot/efi"}, nullptr, nullptr, true)
-                        || !execProcAsRoot("mount", {prevEsp, "/boot/efi"}, nullptr, nullptr, true)) {
-                        emit log(QStringLiteral("Warning: could not restore %1 on /boot/efi; please remount manually").arg(prevEsp));
-                    }
-                }
-                emit finished(false);
-                currentDryRun_ = false;
-                return false;
             }
         } else {
             const QString grubTool = detectGrubInstallCmd({});
@@ -780,11 +757,9 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
                 return false;
             }
         }
-        if (!prevEsp.isEmpty()) {
-            if (!execProcAsRoot("umount", {"/boot/efi"}, nullptr, nullptr, true)
-                || !execProcAsRoot("mount", {prevEsp, "/boot/efi"}, nullptr, nullptr, true)) {
-                emit log(QStringLiteral("Warning: could not restore %1 on /boot/efi; please remount manually").arg(prevEsp));
-            }
+        if (mountedEsp && !execProcAsRoot("umount", {"/boot/efi"})) {
+            emit log(tr("Failed to unmount the temporary EFI mount at /boot/efi."));
+            ok = false;
         }
         emit finished(ok);
         currentDryRun_ = false;

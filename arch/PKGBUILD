@@ -74,11 +74,7 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/man/man1/" man/*.1
 
     install -dm755 "${pkgdir}/usr/share/doc/mx-bootrepair"
-    for help_file in help/*.html; do
-        [ -f "$help_file" ] || continue
-        install -Dm644 "$help_file" \
-            "${pkgdir}/usr/share/doc/mx-bootrepair/$(basename "$help_file")"
-    done
+    install -Dm644 -t "${pkgdir}/usr/share/doc/mx-bootrepair/" help/*
 
     if [ -f debian/changelog ]; then
         gzip -c debian/changelog > "${pkgdir}/usr/share/doc/mx-bootrepair/changelog.gz"

@@ -2,6 +2,7 @@
 #include "core/bootrepair_engine.h"
 #include "core/cmd.h"
 #include "helper/path_validation.h"
+#include "helper/grub_config.h"
 
 #include <QCoreApplication>
 #include <fcntl.h>
@@ -106,6 +107,14 @@ void testCliValidation()
 
 void testHelperPaths()
 {
+    const auto separateBoot = standaloneGrubConfig("1234-ABCD", "/grub");
+    check(separateBoot.contains("--fs-uuid --set=root 1234-ABCD") && separateBoot.contains("($root)/grub\""),
+          "standalone GRUB should use the selected boot filesystem and its relative prefix");
+    check(standaloneGrubConfig("12-34", "/@/boot/grub").contains("($root)/@/boot/grub"),
+          "standalone GRUB should preserve a subvolume prefix");
+    check(standaloneGrubConfig("12-34", "/boot/$test").contains("\\$test"), "quote literal variables in GRUB paths");
+    check(standaloneGrubConfig("12\n34", "/grub").isEmpty(), "reject ambiguous filesystem identifiers");
+
     QTemporaryDir root;
     check(root.isValid(), "temporary helper root should be created");
     HelperPath::TargetRoot target(root.path());

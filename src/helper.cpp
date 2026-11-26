@@ -43,6 +43,7 @@
 #include <unistd.h>
 
 #include "helper/path_validation.h"
+#include "helper/grub_config.h"
 
 namespace
 {
@@ -460,11 +461,34 @@ void printError(const QString &message)
         }
         processArgs << "--directory=" + snapshot;
     }
+    const auto grubDirectory = hostBuild ? root.directory("/boot/grub", true) : HelperPath::Descriptor();
+    if ((hostBuild && !grubDirectory) || (!hostBuild && !QDir().mkpath("/boot/grub"))) {
+        printError("Could not open the GRUB configuration directory");
+        return 1;
+    }
+    const QString grubPath = hostBuild ? grubDirectory.procPath() : QStringLiteral("/boot/grub");
+    const QString probe = resolveHostBinary({"/usr/sbin/grub-probe", "/usr/bin/grub-probe", "/sbin/grub-probe"});
+    const QString relpath = resolveHostBinary({"/usr/bin/grub-mkrelpath", "/bin/grub-mkrelpath"});
+    if (probe.isEmpty() || relpath.isEmpty()) {
+        printError("grub-probe and grub-mkrelpath are required to identify the boot filesystem");
+        return 1;
+    }
+    const ProcessResult uuid = runProcess(probe, {"--target=fs_uuid", grubPath});
+    const ProcessResult path = runProcess(relpath, {grubPath});
+    if (!uuid.started || uuid.exitStatus != QProcess::NormalExit || uuid.exitCode != 0
+        || !path.started || path.exitStatus != QProcess::NormalExit || path.exitCode != 0) {
+        writeAndFlush(stderr, uuid.standardError + path.standardError);
+        printError("Could not identify the filesystem and GRUB path for /boot/grub");
+        return 1;
+    }
+    QByteArray prefix = path.standardOutput;
+    if (prefix.endsWith('\n')) prefix.chop(1);
+    const QByteArray config = standaloneGrubConfig(uuid.standardOutput.trimmed(), prefix);
+    if (config.isEmpty()) {
+        printError("Invalid GRUB filesystem UUID or path");
+        return 1;
+    }
     QFile earlyCfg(work.filePath("early.cfg"));
-    const QByteArray config =
-        "search --no-floppy --file /boot/grub/grub.cfg --set=root\n"
-        "set prefix=($root)/boot/grub\n"
-        "configfile $prefix/grub.cfg\n";
     if (!earlyCfg.open(QIODevice::WriteOnly) || earlyCfg.write(config) != config.size() || !earlyCfg.flush()) return 1;
     earlyCfg.close();
 

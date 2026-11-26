@@ -73,6 +73,15 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Debian artifact filenames omit the version epoch.
+debian_artifact_prefix() {
+    local package version rest
+    read -r package version rest < debian/changelog
+    version=${version#(}
+    version=${version%)}
+    printf '../%s_%s' "$package" "${version#*:}"
+}
+
 # Build Debian package
 if [ "$DEBIAN_BUILD" = true ]; then
     echo "Building Debian package..."
@@ -80,19 +89,18 @@ if [ "$DEBIAN_BUILD" = true ]; then
 
     echo "Creating debs directory and moving debian artifacts..."
     mkdir -p debs
-    mv ../*.deb debs/ 2>/dev/null || true
-    mv ../*.changes debs/ 2>/dev/null || true
-    mv ../*.dsc debs/ 2>/dev/null || true
-    mv ../*.tar.* debs/ 2>/dev/null || true
-    mv ../*.buildinfo debs/ 2>/dev/null || true
-    mv ../*build* debs/ 2>/dev/null || true
+    artifact_prefix=$(debian_artifact_prefix)
+    for artifact in "$artifact_prefix".dsc "$artifact_prefix".tar.{gz,bz2,lzma,xz,zst} \
+                    "$artifact_prefix"_*.{deb,changes,buildinfo,build}; do
+        [[ -f "$artifact" && ! -L "$artifact" ]] || continue
+        mv -- "$artifact" debs/
+    done
 
     echo "Cleaning build directory and debian artifacts..."
     rm -rf "$BUILD_DIR"
     rm -f debian/*.debhelper.log debian/*.substvars debian/files
     rm -rf debian/.debhelper/ debian/mx-bootrepair/ obj-*/
     rm -f translations/*.qm version.h
-    rm -f ../*build* ../*.buildinfo 2>/dev/null || true
 
     echo "Debian package build completed!"
     echo "Debian artifacts moved to debs/ directory"
@@ -150,7 +158,11 @@ if [ "$CLEAN" = true ]; then
     rm -f debian/*.debhelper.log debian/*.substvars debian/files
     rm -rf debian/.debhelper/ debian/mx-bootrepair/ obj-*/
     rm -f translations/*.qm version.h
-    rm -f ../*build* ../*.buildinfo 2>/dev/null || true
+    artifact_prefix=$(debian_artifact_prefix)
+    for artifact in "$artifact_prefix"_*.{build,buildinfo}; do
+        [[ -f "$artifact" && ! -L "$artifact" ]] || continue
+        rm -f -- "$artifact"
+    done
 fi
 
 # Create build directory

@@ -135,6 +135,7 @@ void testCliParser()
     run({"--non-interactive", "--action", "repair", "--root", "/dev/sda/2"}, "Invalid root device path");
     run({"--action", "install", "--target", "esp", "--location", "sda1", "--root", "sda2",
          "--esp-device", "/dev/sdb1"}, "conflicts");
+    run({"--action", "initramfs", "--root", "sda2", "--boot-device", "/dev/sda/1"}, "Invalid boot-device");
     run({"--non-interactive", "--verbose", "--quiet"}, "mutually exclusive");
 }
 }

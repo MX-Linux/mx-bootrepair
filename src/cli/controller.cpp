@@ -181,8 +181,10 @@ int CliController::run()
         } else if (action == "initramfs" || action == "regenerate-initramfs") {
             opt.root = CliValidation::normalizeDevice(parser.value(rootOpt), /*requireDevPrefix*/ true);
 
-            // Validate device path
-            if (!validateDevicePath(opt.root, "root")) {
+            opt.bootDevice = CliValidation::normalizeDevice(parser.value(bootDevOpt), true);
+
+            // Validate device paths
+            if (!validateDevicePath(opt.root, "root") || !validateDevicePath(opt.bootDevice, "boot-device")) {
                 return 2;
             }
 

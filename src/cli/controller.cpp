@@ -328,51 +328,46 @@ int CliController::run()
         Q_UNUSED(ok);
         continue;
         }
-        if (action == 4) {
-        const QStringList disks = engine.listDisks();
-            if (disks.isEmpty()) { out << QObject::tr("No disks found. Returning to main menu.") << '\n'; continue; }
-            const int diskIdx = askIndex(disks, QObject::tr("Select disk to back up MBR/PBR from"), in, out, /*allowBack*/ true);
-            if (diskIdx == -2) return 0; // quit
-            if (diskIdx == -1) continue; // back
-            out << QObject::tr("Output file path (or 'b' to go back, 'q' to quit): ") << Qt::flush;
-            const QString outPath = readAnswer(in);
-            if (outPath.compare("q", Qt::CaseInsensitive) == 0) return 0;
-            if (outPath.compare("b", Qt::CaseInsensitive) == 0) continue;
-        BootRepairOptions opt;
-        opt.location = disks.at(diskIdx).split(' ').first();
-        opt.backupPath = outPath;
-        opt.dryRun = parser.isSet(dryRunOpt);
-        const bool ok = engine.backup(opt);
-        Q_UNUSED(ok);
-        continue;
-        }
-        if (action == 5) {
-        const QStringList disks = engine.listDisks();
-            if (disks.isEmpty()) { out << QObject::tr("No disks found. Returning to main menu.") << '\n'; continue; }
-            const int diskIdx = askIndex(disks, QObject::tr("Select disk to restore MBR/PBR to"), in, out, /*allowBack*/ true);
-            if (diskIdx == -2) return 0; // quit
-            if (diskIdx == -1) continue; // back
-            out << QObject::tr("Input backup file path (or 'b' to go back, 'q' to quit): ") << Qt::flush;
-            const QString inPath = readAnswer(in);
-            if (inPath.compare("q", Qt::CaseInsensitive) == 0) return 0;
-            if (inPath.compare("b", Qt::CaseInsensitive) == 0) continue;
-        BootRepairOptions opt;
-        opt.location = disks.at(diskIdx).split(' ').first();
-        opt.backupPath = inPath;
-        out << QObject::tr("WARNING: This will overwrite the first 446 bytes of /dev/") << opt.location << QObject::tr(". Continue? [y/N]: ")
-            << Qt::flush;
-        const QString ans = readAnswer(in).toLower();
-        if (ans == "q") return 0;
-        const QString yWord = QObject::tr("yes", "confirmation input: full word").trimmed().toLower();
-        const QString yLetter = QObject::tr("y", "confirmation input: single-letter yes").trimmed().toLower();
-        const bool isYes = (ans == QStringLiteral("y") || ans == QStringLiteral("yes")
-                            || (!yLetter.isEmpty() && ans == yLetter)
-                            || (!yWord.isEmpty() && ans == yWord));
-        if (!isYes) { out << QObject::tr("Cancelled.") << '\n'; continue; }
-        opt.dryRun = parser.isSet(dryRunOpt);
-        const bool ok = engine.restore(opt);
-        Q_UNUSED(ok);
-        continue;
+        if (action == 4 || action == 5) {
+            const bool restoring = action == 5;
+            const QStringList disks = engine.listDisks();
+            const QStringList parts = engine.listPartitions();
+            QStringList choices;
+            for (const QString& disk : disks) choices << QObject::tr("Disk MBR — %1").arg(disk);
+            for (const QString& part : parts) choices << QObject::tr("Partition PBR — %1").arg(part);
+            if (choices.isEmpty()) {
+                out << QObject::tr("No disks or partitions found. Returning to main menu.") << '\n';
+                continue;
+            }
+            const int index = askIndex(choices, QObject::tr("Select a boot record"), in, out, true);
+            if (index == -2) return 0;
+            if (index < 0) continue;
+
+            out << (restoring ? QObject::tr("Input backup file path (or 'b' to go back, 'q' to quit): ")
+                              : QObject::tr("Output file path (or 'b' to go back, 'q' to quit): ")) << Qt::flush;
+            const QString path = readAnswer(in);
+            if (path.compare("q", Qt::CaseInsensitive) == 0) return 0;
+            if (path.compare("b", Qt::CaseInsensitive) == 0) continue;
+            const QString device = index < disks.size() ? disks.at(index) : parts.at(index - disks.size());
+            BootRepairOptions opt;
+            opt.location = device.section(' ', 0, 0);
+            opt.backupPath = path;
+            opt.dryRun = parser.isSet(dryRunOpt);
+            if (restoring) {
+                out << QObject::tr("Overwrite the first 446 bytes of %1? [y/N] ").arg(choices.at(index)) << Qt::flush;
+                const QString ans = readAnswer(in).toLower();
+                if (ans == "q") return 0;
+                const QString yWord = QObject::tr("yes", "confirmation input: full word").trimmed().toLower();
+                const QString yLetter = QObject::tr("y", "confirmation input: single-letter yes").trimmed().toLower();
+                if (ans.isEmpty() || (ans != "y" && ans != "yes" && ans != yWord && ans != yLetter)) {
+                    out << QObject::tr("Cancelled.") << '\n';
+                    continue;
+                }
+                engine.restore(opt);
+            } else {
+                engine.backup(opt);
+            }
+            continue;
         }
 
         out << QObject::tr("Unknown selection") << '\n';

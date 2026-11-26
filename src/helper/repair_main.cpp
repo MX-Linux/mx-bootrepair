@@ -8,6 +8,7 @@
 #include <QScopeGuard>
 #include <QTextStream>
 
+#include <fcntl.h>
 #include <sched.h>
 #include <sys/mount.h>
 #include <unistd.h>
@@ -31,8 +32,16 @@ int transferRecord(const QString &action, const QString &device, QFile &input)
     }
     const QByteArray record = input.read(447);
     if (record.isEmpty() || record.size() > 446) return fail("Invalid boot record length");
-    if (!disk.open(QIODevice::WriteOnly | QIODevice::ExistingOnly)
-        || disk.write(record) != record.size() || !disk.flush()) return fail(disk.errorString());
+    // Open without O_CREAT or O_TRUNC. Validate the same descriptor we will write.
+    const int fd = ::open(QFile::encodeName(device).constData(), O_WRONLY | O_NOFOLLOW | O_CLOEXEC | O_NONBLOCK);
+    if (fd < 0) return fail("Could not open the existing restore destination");
+    const auto close = qScopeGuard([fd] { ::close(fd); });
+    struct stat info {};
+    if (::fstat(fd, &info) != 0 || !S_ISBLK(info.st_mode)) return fail("Restore destination must be a block device");
+    QFile destination;
+    if (!destination.open(fd, QIODevice::WriteOnly, QFileDevice::DontCloseHandle)
+        || destination.write(record) != record.size() || !destination.flush()) return fail(destination.errorString());
+    if (::fsync(fd) != 0) return fail("Could not sync the restored boot record to disk");
     return 0;
 }
 }

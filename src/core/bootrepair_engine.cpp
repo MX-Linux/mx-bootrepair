@@ -1138,8 +1138,12 @@ bool BootRepairEngine::restore(const BootRepairOptions& opt)
         return false;
     }
     const QByteArray record = image.read(446);
-    const bool ok = image.error() == QFileDevice::NoError
-        && shell->repairAction({"write-record", normalizeDev(opt.location)}, nullptr, &record);
+    if (record.size() != 446 || image.error() != QFileDevice::NoError) {
+        emit log(tr("The backup does not contain a complete 446-byte boot record."));
+        emit finished(false);
+        return false;
+    }
+    const bool ok = shell->repairAction({"write-record", normalizeDev(opt.location)}, nullptr, &record);
     emit finished(ok);
     return ok;
 }

@@ -31,7 +31,7 @@ int transferRecord(const QString &action, const QString &device, QFile &input)
         return 0;
     }
     const QByteArray record = input.read(447);
-    if (record.isEmpty() || record.size() > 446) return fail("Invalid boot record length");
+    if (record.size() != 446) return fail("Restore requires a complete 446-byte boot record");
     // Open without O_CREAT or O_TRUNC. Validate the same descriptor we will write.
     const int fd = ::open(QFile::encodeName(device).constData(), O_WRONLY | O_NOFOLLOW | O_CLOEXEC | O_NONBLOCK);
     if (fd < 0) return fail("Could not open the existing restore destination");

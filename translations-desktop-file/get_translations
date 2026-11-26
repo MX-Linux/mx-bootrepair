@@ -1,16 +1,31 @@
 #!/bin/bash
+set -e
 
-APPNAME="mx-bootrepair-desktop"
+APPNAME=mx-bootrepair-desktop
+cd -- "$(dirname -- "$0")"
+if ! command -v tx >/dev/null; then
+    echo "Transifex client (tx) is required to download translations." >&2
+    exit 1
+fi
 
-echodo() {
-  echo "${@}"
-  ${@}
+stage=$(mktemp -d .translations.XXXXXXXX)
+cleanup() {
+    if [[ -d "$stage/previous" && ! -e po ]]; then
+        if ! mv -T -- "$stage/previous" po; then
+            echo "Previous translations are available in $stage/previous." >&2
+            return
+        fi
+    fi
+    rm -rf -- "$stage"
 }
+trap cleanup EXIT
+trap 'exit 1' HUP INT TERM
 
-# prepare transifex 
-if [ ! -s  .tx/config ]; then
-   mkdir -p .tx
-   cat <<EOF > .tx/config
+mkdir -p "$stage/.tx" "$stage/po"
+if [[ -s .tx/config ]]; then
+    cp -- .tx/config "$stage/.tx/config"
+else
+    cat > "$stage/.tx/config" <<EOF
 [main]
 host = https://www.transifex.com
 
@@ -20,14 +35,31 @@ source_file = ${APPNAME}.pot
 source_lang = en
 type = po
 EOF
-fi    
-
-
-#remove existing translations
-rm po/*
-
-# get all translations
-if command -v tx >/dev/null; then
-   echodo tx pull -r antix-development.$APPNAME  --all
 fi
+if [[ -f "$APPNAME.pot" ]]; then
+    cp -- "$APPNAME.pot" "$stage/"
+else
+    cp -- "pot/$APPNAME.pot" "$stage/"
+fi
+(cd -- "$stage" && tx pull -r "antix-development.$APPNAME" --all)
 
+shopt -s nullglob
+catalogs=("$stage/po/${APPNAME}_"*.po)
+if (( ${#catalogs[@]} == 0 )); then
+    echo "Transifex returned no catalogs." >&2
+    exit 1
+fi
+for catalog in "${catalogs[@]}"; do
+    if [[ ! -f "$catalog" || ! -s "$catalog" ]]; then
+        echo "Incomplete translation catalog: $catalog" >&2
+        exit 1
+    fi
+done
+
+# Serialize the directory swap and any rollback with other pulls.
+exec 9<.
+flock -x 9
+if [[ -d po ]]; then
+    mv -T -- po "$stage/previous"
+fi
+mv -T -- "$stage/po" po

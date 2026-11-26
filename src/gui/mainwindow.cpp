@@ -291,10 +291,6 @@ void MainWindow::repairGRUB()
         if (handleElevationFailure()) {
             return;
         }
-        opt.espDevice = engine->resolveFstabDevice(opt.root, "/boot/efi", opt.luksPassword);
-        if (handleElevationFailure()) {
-            return;
-        }
     }
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);

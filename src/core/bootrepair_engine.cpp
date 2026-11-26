@@ -3,6 +3,10 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <QSignalBlocker>
+#include <QScopeGuard>
+
+#include <mntent.h>
+#include <optional>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -247,6 +251,36 @@ QString resolveDeviceSpec(QString spec)
 
     const QFileInfo info(byPath);
     return info.exists() ? info.canonicalFilePath() : QString();
+}
+QString fstabSpec(const QString& fstabContent, const QString& mountpoint)
+{
+    const QStringList lines = fstabContent.split('\n', Qt::SkipEmptyParts);
+    for (const auto& rawLine : lines) {
+        const QString line = rawLine.simplified();
+        if (line.isEmpty() || line.startsWith('#')) {
+            continue;
+        }
+        const QStringList fields = line.split(' ');
+        if (fields.size() >= 2 && fields.at(1) == mountpoint) {
+            return fields.at(0);
+        }
+    }
+    return {};
+}
+
+// An empty source means this directory is part of its parent filesystem.
+std::optional<QString> exactMountSource(const QString& target)
+{
+    FILE* table = setmntent("/proc/self/mounts", "r");
+    if (!table) return std::nullopt;
+    const auto close = qScopeGuard([table] { endmntent(table); });
+    const QByteArray path = QFile::encodeName(target);
+    QString source;
+    while (const mntent* entry = getmntent(table)) {
+        if (path == entry->mnt_dir) source = QFile::decodeName(entry->mnt_fsname);
+    }
+    if (ferror(table)) return std::nullopt;
+    return source;
 }
 } // namespace
 
@@ -564,18 +598,34 @@ bool BootRepairEngine::ensureMountFor(const QString& path, const QString& mountp
         return true;
     }
 
-    execProcAsRoot("mkdir", {"-p", target}, nullptr, nullptr, true);
-    if (!shell->dirHasEntriesAsRoot(target, QuietMode::Yes)) {
-        if (device.isEmpty()) {
-            emit log(QStringLiteral("No device provided for %1; please mount manually").arg(mountpoint));
+    QString expected = device;
+    if (expected.isEmpty()) {
+        QString fstab;
+        if (!shell->readFileAsRoot("/etc/fstab", &fstab, QuietMode::Yes, path)) {
+            emit log(tr("Could not read the target fstab to identify %1").arg(mountpoint));
             return false;
         }
-        if (!execProcAsRoot("mount", {device, target}, nullptr, nullptr, true)) {
-            emit log(QStringLiteral("Failed to mount %1 on %2").arg(device, target));
+        const QString spec = fstabSpec(fstab, mountpoint);
+        if (spec.isEmpty()) return true;
+        expected = resolveDeviceSpec(spec);
+        if (expected.isEmpty()) {
+            emit log(tr("Could not resolve %1 for %2").arg(spec, mountpoint));
             return false;
         }
     }
-    return true;
+    const auto mounted = exactMountSource(target);
+    if (!mounted) {
+        emit log(tr("Could not read the mount table for %1").arg(target));
+        return false;
+    }
+    if (!mounted->isEmpty()) {
+        const QString realDevice = QFileInfo(expected).canonicalFilePath();
+        if (!realDevice.isEmpty() && realDevice == QFileInfo(*mounted).canonicalFilePath()) return true;
+        emit log(tr("%1 is mounted from %2, expected %3").arg(target, *mounted, expected));
+        return false;
+    }
+    return execProcAsRoot("mkdir", {"-p", target})
+        && execProcAsRoot("mount", {expected, target});
 }
 
 bool BootRepairEngine::copyGrubLocales(const QString& rootPath)
@@ -770,9 +820,6 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
 
     bool ok = false;
     if (opt.target == GrubTarget::Esp) {
-        if (!shell->pathCheckAsRoot("/boot/efi", PathCheck::Directory, QuietMode::Yes, tmpdir.path())) {
-            execProcAsRoot("mkdir", {"-p", tmpdir.path() + "/boot/efi"}, nullptr, nullptr, true);
-        }
         if (!ensureMountFor(tmpdir.path(), "/boot/efi", opt.espDevice)) {
             cleanupMounts(tmpdir.path(), mapper);
             emit finished(false);
@@ -910,8 +957,15 @@ bool BootRepairEngine::repairGrub(const BootRepairOptions& opt)
         emit finished(false);
         return false;
     }
-    if (shell->pathCheckAsRoot("/boot/efi", PathCheck::Directory, QuietMode::Yes, tmpdir.path())) {
-        ensureMountFor(tmpdir.path(), "/boot/efi", opt.espDevice);
+    if ((!currentDryRun_ || !opt.espDevice.isEmpty())
+        && !ensureMountFor(tmpdir.path(), "/boot/efi", opt.espDevice)) {
+        if (!opt.espDevice.isEmpty() || lastFailureWasElevation()) {
+            cleanupMounts(tmpdir.path(), mapper);
+            emit finished(false);
+            currentDryRun_ = false;
+            return false;
+        }
+        emit log(tr("Warning: the configured ESP is unavailable. Continuing with GRUB configuration on /boot."));
     }
     const QString tool = detectUpdateGrubCmd(tmpdir.path(), shell);
     bool ok = false;
@@ -1043,22 +1097,11 @@ QString BootRepairEngine::resolveFstabDevice(const QString& root, const QString&
         if (opened) shell->procAsRoot("cryptsetup", {"luksClose", mapper}, nullptr, nullptr, QuietMode::Yes);
         return {};
     }
-    QString device;
-    const QString fstabContent = shell->readFileAsRoot("/etc/fstab", QuietMode::Yes, tmpdir.path());
-    const QStringList lines = fstabContent.split('\n', Qt::SkipEmptyParts);
-    for (const auto& rawLine : lines) {
-        const QString line = rawLine.simplified();
-        if (line.isEmpty() || line.startsWith('#')) {
-            continue;
-        }
-        const QStringList fields = line.split(' ');
-        if (fields.size() >= 2 && fields.at(1) == mountpoint) {
-            device = fields.at(0);
-            break;
-        }
-    }
-    if (!cleanupMounts(tmpdir.path(), opened ? mapper : QString())) return {};
-    return resolveDeviceSpec(device);
+    QString fstabContent;
+    const bool readOk = shell->readFileAsRoot("/etc/fstab", &fstabContent, QuietMode::Yes, tmpdir.path());
+    if (!cleanupMounts(tmpdir.path(), opened ? mapper : QString()) || !readOk) return {};
+    return resolveDeviceSpec(fstabSpec(fstabContent, mountpoint));
+
 }
 
 bool BootRepairEngine::lastFailureWasElevation() const

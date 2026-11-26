@@ -26,7 +26,7 @@ public:
     [[nodiscard]] QString getOutAsRootInTarget(const QString &rootPath, const QString &cmd,
                                                const QStringList &args = {},
                                                QuietMode quiet = QuietMode::No);
-    [[nodiscard]] QString readFileAsRoot(const QString &path, QuietMode quiet = QuietMode::No,
+    [[nodiscard]] bool readFileAsRoot(const QString &path, QString *output, QuietMode quiet = QuietMode::No,
                                          const QString &rootPath = {});
     [[nodiscard]] QStringList listDirAsRoot(const QString &path, QuietMode quiet = QuietMode::No,
                                             const QString &rootPath = {});

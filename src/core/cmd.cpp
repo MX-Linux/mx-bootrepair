@@ -137,14 +137,12 @@ QString Cmd::getOutAsRootInTarget(const QString &rootPath, const QString &cmd, c
     return output;
 }
 
-QString Cmd::readFileAsRoot(const QString &path, QuietMode quiet, const QString &rootPath)
+bool Cmd::readFileAsRoot(const QString &path, QString *output, QuietMode quiet, const QString &rootPath)
 {
-    QString output;
     QStringList helperArgs {QStringLiteral("read-file")};
     helperArgs += helperRootArgs(rootPath);
     helperArgs << path;
-    helperProc(helperArgs, &output, nullptr, quiet);
-    return output;
+    return helperProc(helperArgs, output, nullptr, quiet);
 }
 
 QStringList Cmd::listDirAsRoot(const QString &path, QuietMode quiet, const QString &rootPath)

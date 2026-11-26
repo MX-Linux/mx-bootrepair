@@ -155,6 +155,14 @@ int CliController::run()
             if (opt.location.isEmpty() || opt.root.isEmpty()) {
                 out << "Error: --location and --root are required for install\n"; return 2;
             }
+            if (opt.target == GrubTarget::Esp) {
+                const QString selected = "/dev/" + opt.location;
+                if (!opt.espDevice.isEmpty() && opt.espDevice != selected) {
+                    out << "Error: --esp-device conflicts with the selected --location\n";
+                    return 2;
+                }
+                opt.espDevice = selected;
+            }
             const bool ok = engine.installGrub(opt); return ok ? 0 : 1;
         } else if (action == "repair" || action == "update-grub") {
             opt.root = CliValidation::normalizeDevice(parser.value(rootOpt), /*requireDevPrefix*/ true);

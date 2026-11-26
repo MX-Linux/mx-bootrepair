@@ -224,14 +224,8 @@ void MainWindow::installGRUB()
         if (handleElevationFailure()) {
             return;
         }
-        if (opt.target == GrubTarget::Esp) {
-            const QString espDev = engine->resolveFstabDevice(opt.root, "/boot/efi", opt.luksPassword);
-            if (handleElevationFailure()) {
-                return;
-            }
-            opt.espDevice = !espDev.isEmpty() ? espDev : "/dev/" + opt.location;
-        }
-    } else if (opt.target == GrubTarget::Esp) {
+    }
+    if (opt.target == GrubTarget::Esp) {
         opt.espDevice = "/dev/" + opt.location;
     }
 

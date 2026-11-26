@@ -663,6 +663,32 @@ bool BootRepairEngine::copyGrubLocales(const QString& rootPath)
     return shell->copyGrubLocalesAsRoot(QuietMode::Yes, rootPath);
 }
 
+bool BootRepairEngine::planOfflineRepair(const QString& action, const BootRepairOptions& opt)
+{
+    const auto plan = [this](const QString& step) { emit log("[dry-run] " + step); };
+    plan(tr("Unlock %1 if encrypted and mount the root filesystem at <target>").arg(opt.root));
+    plan(tr("Prepare /dev, /proc, /sys and /run inside <target>"));
+    if (opt.bootDevice.isEmpty()) plan(tr("Mount /boot from the target fstab if configured"));
+    else plan(tr("Mount %1 at <target>/boot").arg(opt.bootDevice));
+    if (action == "install" && opt.target == GrubTarget::Esp) {
+        plan(tr("Mount %1 at <target>/boot/efi").arg(opt.espDevice));
+        plan(tr("Run grub-install --target=%1-efi --efi-directory=/boot/efi in <target> using the detected bootloader ID, or grub-mkstandalone if required").arg(detectEfiPlatform()));
+    } else if (action == "install") {
+        plan(tr("Run grub-install --target=i386-pc --recheck --force --compress=gz --locales= %1 in <target>").arg(normalizeDev(opt.location)));
+    } else if (action == "repair") {
+        if (opt.espDevice.isEmpty()) plan(tr("Mount /boot/efi from the target fstab if configured"));
+        else plan(tr("Mount %1 at <target>/boot/efi").arg(opt.espDevice));
+        plan(tr("Run update-grub or grub-mkconfig -o /boot/grub/grub.cfg in <target>"));
+    } else {
+        plan(tr("Run the installed initramfs generator in <target> using update-initramfs -c -v -k all, mkinitcpio -P, or dracut --regenerate-all --force"));
+    }
+    if (action == "install") plan(tr("Copy GRUB locales after a successful grub-install"));
+    plan(tr("Unmount <target> and close any mapping opened for the repair"));
+    currentDryRun_ = false;
+    emit finished(true);
+    return true;
+}
+
 bool BootRepairEngine::delegateRepair(const QStringList& args, const BootRepairOptions& opt)
 {
     const bool ok = shell->repairAction(args, nullptr, &opt.luksPassword);
@@ -689,7 +715,7 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
         currentDryRun_ = false;
         return false;
     }
-    bool simulatedLuksOpen = false;
+    if (opt.dryRun && initialRootState == MountState::NotMounted) return planOfflineRepair("install", opt);
     if (initialRootState == MountState::NotMounted) {
         mapper = luksMapper(root);
         if (!mapper.isEmpty() && !root.startsWith("/dev/mapper/")) {
@@ -699,16 +725,11 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
                 return false;
             }
             root = "/dev/mapper/" + mapper;
-            // In dry-run, openLuks() only simulates success; the mapper device
-            // was never actually created, so querying its mount state for real
-            // would spuriously report failure. Treat it as freshly unlocked
-            // (not yet mounted), matching what a real run would produce.
-            simulatedLuksOpen = currentDryRun_;
         }
     }
 
     // If installing on current root
-    const MountState rootState = simulatedLuksOpen ? MountState::NotMounted : isMountedTo(root, "/");
+    const MountState rootState = opt.dryRun ? initialRootState : isMountedTo(root, "/");
     if (rootState == MountState::QueryFailed) {
         closeLuksMapper(mapper);
         emit log(QStringLiteral("Could not determine whether %1 is mounted; aborting.").arg(root));
@@ -905,7 +926,7 @@ bool BootRepairEngine::repairGrub(const BootRepairOptions& opt)
         currentDryRun_ = false;
         return false;
     }
-    bool simulatedLuksOpen = false;
+    if (opt.dryRun && initialRootState == MountState::NotMounted) return planOfflineRepair("repair", opt);
     if (initialRootState == MountState::NotMounted) {
         mapper = luksMapper(root);
         if (!mapper.isEmpty() && !root.startsWith("/dev/mapper/")) {
@@ -915,15 +936,10 @@ bool BootRepairEngine::repairGrub(const BootRepairOptions& opt)
                 return false;
             }
             root = "/dev/mapper/" + mapper;
-            // In dry-run, openLuks() only simulates success; the mapper device
-            // was never actually created, so querying its mount state for real
-            // would spuriously report failure. Treat it as freshly unlocked
-            // (not yet mounted), matching what a real run would produce.
-            simulatedLuksOpen = currentDryRun_;
         }
     }
 
-    const MountState rootState = simulatedLuksOpen ? MountState::NotMounted : isMountedTo(root, "/");
+    const MountState rootState = opt.dryRun ? initialRootState : isMountedTo(root, "/");
     if (rootState == MountState::QueryFailed) {
         closeLuksMapper(mapper);
         emit log(QStringLiteral("Could not determine whether %1 is mounted; aborting.").arg(root));
@@ -1008,7 +1024,7 @@ bool BootRepairEngine::regenerateInitramfs(const BootRepairOptions& opt)
         currentDryRun_ = false;
         return false;
     }
-    bool simulatedLuksOpen = false;
+    if (opt.dryRun && initialRootState == MountState::NotMounted) return planOfflineRepair("initramfs", opt);
     if (initialRootState == MountState::NotMounted) {
         mapper = luksMapper(root);
         if (!mapper.isEmpty() && !root.startsWith("/dev/mapper/")) {
@@ -1018,15 +1034,10 @@ bool BootRepairEngine::regenerateInitramfs(const BootRepairOptions& opt)
                 return false;
             }
             root = "/dev/mapper/" + mapper;
-            // In dry-run, openLuks() only simulates success; the mapper device
-            // was never actually created, so querying its mount state for real
-            // would spuriously report failure. Treat it as freshly unlocked
-            // (not yet mounted), matching what a real run would produce.
-            simulatedLuksOpen = currentDryRun_;
         }
     }
 
-    const MountState rootState = simulatedLuksOpen ? MountState::NotMounted : isMountedTo(root, "/");
+    const MountState rootState = opt.dryRun ? initialRootState : isMountedTo(root, "/");
     if (rootState == MountState::QueryFailed) {
         closeLuksMapper(mapper);
         emit log(QStringLiteral("Could not determine whether %1 is mounted; aborting.").arg(root));

@@ -87,6 +87,7 @@ private:
     bool ensureMountFor(const QString& path, const QString& mountpoint, const QString& device);
     bool copyGrubLocales(const QString& rootPath = {});
 
+    bool planOfflineRepair(const QString& action, const BootRepairOptions& opt);
     bool delegateRepair(const QStringList& args, const BootRepairOptions& opt);
     Execution execution;
     Cmd* shell;

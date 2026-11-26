@@ -126,6 +126,24 @@ void testHelperPaths()
 
 }
 
+void testOfflinePlan()
+{
+    QTemporaryDir tools;
+    QFile lsblk(tools.filePath("lsblk"));
+    check(lsblk.open(QIODevice::WriteOnly) && lsblk.write("#!/bin/sh\nexit 0\n") > 0, "create offline mount query");
+    lsblk.close();
+    lsblk.setPermissions(QFileDevice::ReadOwner | QFileDevice::ExeOwner);
+    QProcess process;
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    env.insert("PATH", tools.path());
+    process.setProcessEnvironment(env);
+    process.start(QStringLiteral(TEST_CLI_PATH), {"--action", "initramfs", "--dry-run", "--root", "sda2"});
+    check(process.waitForFinished(3000) && process.exitCode() == 0, "offline plan should complete without mounting");
+    const auto plan = process.readAllStandardOutput();
+    check(plan.contains("/dev/sda2") && plan.contains("fstab") && plan.contains("update-initramfs"),
+          "plan should identify the target, optional boot filesystem and target tools");
+}
+
 void testCliParser()
 {
     auto run = [](const QStringList &arguments, const QByteArray &expectedText) {
@@ -163,6 +181,7 @@ int main(int argc, char *argv[])
     testPartitionInfoParsing();
     testCliValidation();
     testHelperPaths();
+    testOfflinePlan();
     testCliParser();
 
     if (failures == 0) {

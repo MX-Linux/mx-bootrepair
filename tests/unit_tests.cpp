@@ -38,6 +38,10 @@ void testCmd()
 
 void testBootRepairEngine()
 {
+    check(BootRepairEngine::efiPlatform("x86_64", 32) == "i386", "32-bit x86 firmware selects IA32 GRUB");
+    check(BootRepairEngine::efiPlatform("i686", 64) == "x86_64", "64-bit x86 firmware selects x64 GRUB");
+    check(BootRepairEngine::efiPlatform("i386", 0) == "i386", "missing firmware size uses the kernel family");
+    check(BootRepairEngine::efiPlatform("aarch64", 64) == "arm64", "ARM64 uses the GRUB platform spelling");
     check(BootRepairEngine::matchesEspPartitionType("c12a7328-f81f-11d2-ba4b-00a0c93ec93b"),
           "GPT ESP type should match");
     check(BootRepairEngine::matchesEspPartitionType("0xEF"), "MBR ESP type should match case-insensitively");

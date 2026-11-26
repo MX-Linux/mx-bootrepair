@@ -38,6 +38,7 @@ public:
     QStringList listDisks() const;      // pretty strings from lsblk
     QStringList listPartitions() const; // pretty strings from lsblk
     static bool isUefi();
+    static QString efiPlatform(const QString& machine, int firmwareBits);
     MountState isMounted(const QString& volume, const QString& mount) const; // public wrapper
     bool isLuks(const QString& device) const;                          // /dev/...
     bool canUnlockLuks(const QString& device, const QByteArray& pass);

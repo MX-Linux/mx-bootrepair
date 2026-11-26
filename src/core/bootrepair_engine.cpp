@@ -14,16 +14,23 @@
 #include <QRegularExpression>
 #include <QSysInfo>
 
-namespace {
-QString normalizeArch(QString arch)
+QString BootRepairEngine::efiPlatform(const QString& machine, int firmwareBits)
 {
-    arch = arch.trimmed();
-    if (arch == "i686") {
-        arch = "i386";
+    static const QRegularExpression x86(QStringLiteral("^(i[3-6]86|x86|x86_64|amd64)$"));
+    if (x86.match(machine).hasMatch()) {
+        if (firmwareBits == 32) return QStringLiteral("i386");
+        if (firmwareBits == 64) return QStringLiteral("x86_64");
+        return machine == "x86_64" || machine == "amd64" ? QStringLiteral("x86_64") : QStringLiteral("i386");
     }
-    return arch;
+    if (machine == "aarch64" || machine.startsWith("arm")) {
+        if (firmwareBits == 32) return QStringLiteral("arm");
+        if (firmwareBits == 64 || machine == "arm64" || machine == "aarch64") return QStringLiteral("arm64");
+        return QStringLiteral("arm");
+    }
+    return machine;
 }
 
+namespace {
 bool pathExistsInRoot(const QString& rootPath, const QString& path, PathCheck check, Cmd* shell = nullptr)
 {
     if (shell && !rootPath.isEmpty()) {
@@ -69,22 +76,11 @@ QString toRootRelativePath(const QString& path, const QString& rootPath)
     return relativePath;
 }
 
-QString detectArch(Cmd* shell)
+QString detectEfiPlatform()
 {
-    QString arch;
-    shell->proc("uname", {"-m"}, &arch, nullptr, QuietMode::Yes);
-    arch = arch.trimmed();
-    if (arch.contains("not found", Qt::CaseInsensitive)) {
-        arch.clear();
-    }
-    if (arch.isEmpty()) {
-        arch = QSysInfo::currentCpuArchitecture();
-    }
-    arch = normalizeArch(arch);
-    if (arch.isEmpty()) {
-        arch = QStringLiteral("x86_64");
-    }
-    return arch;
+    QFile sizeFile(QStringLiteral("/sys/firmware/efi/fw_platform_size"));
+    const int bits = sizeFile.open(QIODevice::ReadOnly) ? sizeFile.readAll().trimmed().toInt() : 0;
+    return BootRepairEngine::efiPlatform(QSysInfo::currentCpuArchitecture(), bits);
 }
 
 bool isArchBuild(const QString& rootPath, Cmd* shell = nullptr)
@@ -713,8 +709,7 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
                 }
                 mountedEsp = true;
             }
-            emit log(QStringLiteral("$ uname -m"));
-            const QString arch = detectArch(shell);
+            const QString arch = detectEfiPlatform();
             const QString bootloaderId = detectBootloaderId(QStringLiteral("/boot/efi"), {});
             const QString grubTool = detectGrubInstallCmd({});
             if (grubTool == "grub-install") {
@@ -801,8 +796,7 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
             currentDryRun_ = false;
             return false;
         }
-        emit log(QStringLiteral("$ uname -m"));
-        const QString arch = detectArch(shell);
+        const QString arch = detectEfiPlatform();
         const QString bootloaderId = detectBootloaderId(tmpdir.path() + "/boot/efi", tmpdir.path(), shell);
         const QString grubTool = detectGrubInstallCmd(tmpdir.path(), shell);
         if (grubTool == "grub-install") {

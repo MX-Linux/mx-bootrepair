@@ -457,7 +457,7 @@ void printError(const QString &message)
     if (arch == QLatin1String("aarch64") || arch == QLatin1String("arm64")) {
         return QStringLiteral("aa64");
     }
-    return QStringLiteral("x64");
+    return arch;
 }
 
 [[nodiscard]] int handleGrubMkstandaloneEfi(const QString &rootPath, const QStringList &args)

@@ -30,7 +30,8 @@ struct BootRepairOptions {
 class BootRepairEngine : public QObject {
     Q_OBJECT
 public:
-    explicit BootRepairEngine(QObject* parent = nullptr);
+    enum class Execution { Frontend, PrivilegedHelper };
+    explicit BootRepairEngine(QObject* parent = nullptr, Execution execution = Execution::Frontend);
 
     ~BootRepairEngine() override;
 
@@ -65,7 +66,6 @@ public:
     bool restore(const BootRepairOptions& opt);
 
     // Utilities
-    QString resolveFstabDevice(const QString& root, const QString& mountpoint, const QByteArray& luksPass = {});
     [[nodiscard]] bool lastFailureWasElevation() const;
 
 signals:
@@ -87,6 +87,8 @@ private:
     bool ensureMountFor(const QString& path, const QString& mountpoint, const QString& device);
     bool copyGrubLocales(const QString& rootPath = {});
 
+    bool delegateRepair(const QStringList& args, const BootRepairOptions& opt);
+    Execution execution;
     Cmd* shell;
     QTemporaryDir tmpdir;
     bool currentDryRun_ {false};

@@ -7,13 +7,13 @@
   <vendor>MX Linux</vendor>
   <vendor_url>https://mxlinux.org</vendor_url>
   <action id="org.mxlinux.pkexec.mxbr-helper">
-    <message gettext-domain="mx-launcher-l10n">MX Boot Repair</message>
+    <message gettext-domain="mx-launcher-l10n">Authorize this MX Boot Repair operation: $(command_line)</message>
     <description>Run MX Boot Repair</description>
     <icon_name>mx-boot-repair</icon_name>
     <defaults>
       <allow_any>no</allow_any>
       <allow_inactive>no</allow_inactive>
-      <allow_active>auth_admin_keep</allow_active>
+      <allow_active>auth_admin</allow_active>
     </defaults>
     <annotate key="org.freedesktop.policykit.exec.path">@HELPER_PATH@</annotate>
   </action>

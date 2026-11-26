@@ -736,6 +736,7 @@ void printError(const QString &message)
 
 int main(int argc, char *argv[])
 {
+    if (geteuid() != 0) return 1;
     QCoreApplication app(argc, argv);
     QStringList arguments = app.arguments().mid(1);
     if (arguments.isEmpty()) {

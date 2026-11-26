@@ -185,8 +185,8 @@ Reinstall GRUB to the EFI System Partition sda1 for the system on /dev/sda2:
 Back up the MBR of sda, then restore it:
 .PP
 .nf
-    mx-boot-repair --action backup --location sda --backup-path /root/mbr.img
-    mx-boot-repair --action restore --location sda --backup-path /root/mbr.img --force
+    mx-boot-repair --action backup --location sda --backup-path mbr.img
+    mx-boot-repair --action restore --location sda --backup-path mbr.img --force
 .fi
 .SH SEE ALSO
 .BR grub\-install (8),

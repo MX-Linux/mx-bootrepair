@@ -204,9 +204,11 @@ add_executable(mx-boot-repair
     src/cli/validation.h
 )
 
-add_executable(helper
-    ${HELPER_SOURCES}
-)
+add_executable(helper src/helper/repair_main.cpp)
+add_executable(repair-backend ${HELPER_SOURCES})
+target_include_directories(repair-backend PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_link_libraries(repair-backend PRIVATE Qt6::Core)
+target_compile_options(repair-backend PRIVATE -Wpedantic -Werror)
 
 # Link Qt6 libraries
 target_link_libraries(mx-boot-repair
@@ -217,7 +219,7 @@ target_link_libraries(mx-boot-repair
 )
 
 target_link_libraries(helper
-    Qt6::Core
+    bootrepair-core Qt6::Core
 )
 
 # Allow GUI sources to include headers from src/ (e.g., core/..., common.h)
@@ -397,6 +399,11 @@ endif()
 # Other files are handled by debian/install
 install(TARGETS mx-boot-repair
     RUNTIME DESTINATION bin
+)
+
+install(TARGETS repair-backend
+    RUNTIME DESTINATION ${HELPER_INSTALL_DIR}
+    PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
 )
 
 install(TARGETS helper

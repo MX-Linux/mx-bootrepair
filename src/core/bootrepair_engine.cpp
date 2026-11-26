@@ -4,6 +4,8 @@
 #include <QDebug>
 #include <QSignalBlocker>
 #include <QScopeGuard>
+#include <QSaveFile>
+#include "helper/device.h"
 
 #include <mntent.h>
 #include <optional>
@@ -280,8 +282,10 @@ std::optional<QString> exactMountSource(const QString& target)
 }
 } // namespace
 
-BootRepairEngine::BootRepairEngine(QObject* parent)
-    : QObject(parent), shell(new Cmd(this))
+BootRepairEngine::BootRepairEngine(QObject* parent, Execution mode)
+    : QObject(parent), execution(mode), shell(new Cmd(this)),
+      tmpdir((mode == Execution::PrivilegedHelper ? QStringLiteral("/run") : QDir::tempPath())
+             + QStringLiteral("/mx-boot-repair-XXXXXX"))
 {
     tmpdir.setAutoRemove(false);
     connect(shell, &Cmd::outputAvailable, this, [this](const QString& s) { emit log(s); });
@@ -405,12 +409,19 @@ QString BootRepairEngine::luksMapper(const QString& part) const
 bool BootRepairEngine::isLuks(const QString& device) const
 {
     const QString dev = device.startsWith("/dev/") ? device : ("/dev/" + device);
+    if (execution == Execution::Frontend) {
+        QString fsType;
+        if (shell->proc("lsblk", {"-dnro", "FSTYPE", dev}, &fsType, nullptr, QuietMode::Yes)
+            && !fsType.isEmpty()) return fsType == "crypto_LUKS";
+        return shell->repairAction({"is-luks", dev});
+    }
     return shell->procAsRoot("cryptsetup", {"isLuks", dev}, nullptr, nullptr, QuietMode::Yes);
 }
 
 bool BootRepairEngine::canUnlockLuks(const QString& device, const QByteArray& pass)
 {
     const QString dev = device.startsWith("/dev/") ? device : ("/dev/" + device);
+    if (execution == Execution::Frontend) return shell->repairAction({"check-passphrase", dev}, nullptr, &pass);
     if (!isLuks(dev)) {
         return true;
     }
@@ -607,6 +618,10 @@ bool BootRepairEngine::ensureMountFor(const QString& path, const QString& mountp
             return false;
         }
     }
+    if (RepairDevice::canonicalBlock(expected).isEmpty()) {
+        emit log(tr("Invalid boot device: %1").arg(expected));
+        return false;
+    }
     const auto mounted = exactMountSource(target);
     if (!mounted) {
         emit log(tr("Could not read the mount table for %1").arg(target));
@@ -642,8 +657,19 @@ bool BootRepairEngine::copyGrubLocales(const QString& rootPath)
     return shell->copyGrubLocalesAsRoot(QuietMode::Yes, rootPath);
 }
 
+bool BootRepairEngine::delegateRepair(const QStringList& args, const BootRepairOptions& opt)
+{
+    const bool ok = shell->repairAction(args, nullptr, &opt.luksPassword);
+    emit finished(ok);
+    return ok;
+}
+
 bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
 {
+    if (execution == Execution::Frontend && !opt.dryRun) {
+        const QString target = opt.target == GrubTarget::Esp ? "esp" : (opt.target == GrubTarget::Mbr ? "mbr" : "root");
+        return delegateRepair({"install", opt.root, target, normalizeDev(opt.location), opt.bootDevice, opt.espDevice}, opt);
+    }
     currentDryRun_ = opt.dryRun;
     // Handle LUKS if needed
     QString root = opt.root;
@@ -858,6 +884,9 @@ bool BootRepairEngine::installGrub(const BootRepairOptions& opt)
 
 bool BootRepairEngine::repairGrub(const BootRepairOptions& opt)
 {
+    if (execution == Execution::Frontend && !opt.dryRun) {
+        return delegateRepair({"repair", opt.root, opt.bootDevice, opt.espDevice}, opt);
+    }
     currentDryRun_ = opt.dryRun;
     QString root = opt.root;
     QString mapper;
@@ -958,6 +987,9 @@ bool BootRepairEngine::repairGrub(const BootRepairOptions& opt)
 
 bool BootRepairEngine::regenerateInitramfs(const BootRepairOptions& opt)
 {
+    if (execution == Execution::Frontend && !opt.dryRun) {
+        return delegateRepair({"initramfs", opt.root, opt.bootDevice}, opt);
+    }
     currentDryRun_ = opt.dryRun;
     QString root = opt.root;
     QString mapper;
@@ -1050,29 +1082,6 @@ bool BootRepairEngine::regenerateInitramfs(const BootRepairOptions& opt)
     return ok;
 }
 
-QString BootRepairEngine::resolveFstabDevice(const QString& root, const QString& mountpoint, const QByteArray& luksPass)
-{
-    QString part = root;
-    const QString mapper = luksMapper(part);
-    bool opened = false;
-    if (!mapper.isEmpty() && !part.startsWith("/dev/mapper/")) {
-        if (!openLuks(part, mapper, luksPass)) {
-            return {};
-        }
-        part = "/dev/mapper/" + mapper;
-        opened = true;
-    }
-    if (!mountChrootEnv(part)) {
-        if (opened) shell->procAsRoot("cryptsetup", {"luksClose", mapper}, nullptr, nullptr, QuietMode::Yes);
-        return {};
-    }
-    QString fstabContent;
-    const bool readOk = shell->readFileAsRoot("/etc/fstab", &fstabContent, QuietMode::Yes, tmpdir.path());
-    if (!cleanupMounts(tmpdir.path(), opened ? mapper : QString()) || !readOk) return {};
-    return resolveDeviceSpec(fstabSpec(fstabContent, mountpoint));
-
-}
-
 bool BootRepairEngine::lastFailureWasElevation() const
 {
     return shell->lastElevationFailed();
@@ -1080,28 +1089,40 @@ bool BootRepairEngine::lastFailureWasElevation() const
 
 bool BootRepairEngine::backup(const BootRepairOptions& opt)
 {
-    currentDryRun_ = opt.dryRun;
-    if (opt.location.isEmpty() || opt.backupPath.isEmpty()) return false;
-    const bool ok = execProcAsRoot("dd",
-                                   {QStringLiteral("if=/dev/%1").arg(opt.location),
-                                    QStringLiteral("of=%1").arg(opt.backupPath), QStringLiteral("bs=446"),
-                                    QStringLiteral("count=1")},
-                                   nullptr, nullptr, true);
+    if (opt.dryRun) {
+        emit log(QStringLiteral("[dry-run] backup %1 to %2").arg(normalizeDev(opt.location), opt.backupPath));
+        emit finished(true);
+        return true;
+    }
+    QString encoded;
+    shell->setOutputSuppressed(true);
+    const bool readOk = shell->repairAction({"read-record", normalizeDev(opt.location)}, &encoded);
+    shell->setOutputSuppressed(false);
+    const QByteArray record = QByteArray::fromBase64(encoded.toLatin1(), QByteArray::AbortOnBase64DecodingErrors);
+    QSaveFile file(opt.backupPath);
+    const bool ok = readOk && record.size() == 446 && file.open(QIODevice::WriteOnly)
+        && file.write(record) == record.size() && file.commit();
+    if (!ok) emit log(tr("Could not back up the boot record to %1").arg(opt.backupPath));
     emit finished(ok);
-    currentDryRun_ = false;
     return ok;
 }
 
 bool BootRepairEngine::restore(const BootRepairOptions& opt)
 {
-    currentDryRun_ = opt.dryRun;
-    if (opt.location.isEmpty() || opt.backupPath.isEmpty()) return false;
-    const bool ok = execProcAsRoot("dd",
-                                   {QStringLiteral("if=%1").arg(opt.backupPath),
-                                    QStringLiteral("of=/dev/%1").arg(opt.location), QStringLiteral("bs=446"),
-                                    QStringLiteral("count=1")},
-                                   nullptr, nullptr, true);
+    if (opt.dryRun) {
+        emit log(QStringLiteral("[dry-run] restore %1 to %2").arg(opt.backupPath, normalizeDev(opt.location)));
+        emit finished(true);
+        return true;
+    }
+    QFile image(opt.backupPath);
+    if (!image.open(QIODevice::ReadOnly)) {
+        emit log(image.errorString());
+        emit finished(false);
+        return false;
+    }
+    const QByteArray record = image.read(446);
+    const bool ok = image.error() == QFileDevice::NoError
+        && shell->repairAction({"write-record", normalizeDev(opt.location)}, nullptr, &record);
     emit finished(ok);
-    currentDryRun_ = false;
     return ok;
 }

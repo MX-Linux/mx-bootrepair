@@ -220,10 +220,6 @@ void MainWindow::installGRUB()
             }
             opt.luksPassword = pass;
         }
-        opt.bootDevice = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
-        if (handleElevationFailure()) {
-            return;
-        }
     }
     if (opt.target == GrubTarget::Esp) {
         opt.espDevice = "/dev/" + opt.location;
@@ -287,10 +283,6 @@ void MainWindow::repairGRUB()
             }
             opt.luksPassword = pass;
         }
-        opt.bootDevice = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
-        if (handleElevationFailure()) {
-            return;
-        }
     }
     ui->buttonCancel->setEnabled(false);
     ui->buttonApply->setEnabled(false);
@@ -345,10 +337,6 @@ void MainWindow::regenerateInitramfs()
                 return;
             }
             opt.luksPassword = pass;
-        }
-        opt.bootDevice = engine->resolveFstabDevice(opt.root, "/boot", opt.luksPassword);
-        if (handleElevationFailure()) {
-            return;
         }
     }
     ui->buttonCancel->setEnabled(false);

@@ -13,6 +13,8 @@ public:
     explicit Cmd(QObject *parent = nullptr);
     bool proc(const QString &cmd, const QStringList &args = {}, QString *output = nullptr,
               const QByteArray *input = nullptr, QuietMode quiet = QuietMode::No);
+    bool repairAction(const QStringList &args, QString *output = nullptr, const QByteArray *input = nullptr,
+                      QuietMode quiet = QuietMode::Yes);
     bool procAsRoot(const QString &cmd, const QStringList &args = {}, QString *output = nullptr,
                     const QByteArray *input = nullptr, QuietMode quiet = QuietMode::No);
     bool procAsRootInTarget(const QString &rootPath, const QString &cmd, const QStringList &args = {},
@@ -53,6 +55,7 @@ signals:
 
 private:
     QString out_buffer;
+    QString standardOutput;
     QString asRoot;
     QString helper;
     bool suppressOutput = false;

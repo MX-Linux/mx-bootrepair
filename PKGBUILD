@@ -41,6 +41,7 @@ package() {
 
     # Install helper components
     install -dm755 "${pkgdir}/usr/lib/mx-boot-repair"
+    install -Dm700 build/repair-backend "${pkgdir}/usr/lib/mx-boot-repair/repair-backend"
     install -Dm755 build/helper "${pkgdir}/usr/lib/mx-boot-repair/helper"
 
     # Install PolicyKit policy

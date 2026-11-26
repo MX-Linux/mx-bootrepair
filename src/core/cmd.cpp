@@ -2,6 +2,7 @@
 
 #include <QCoreApplication>
 #include <QDebug>
+#include <QDir>
 #include <QEventLoop>
 #include <QFile>
 #include <QFileInfo>
@@ -59,6 +60,7 @@ Cmd::Cmd(QObject *parent)
     }
     connect(this, &Cmd::readyReadStandardOutput, [this] {
         const QString out = readAllStandardOutput();
+        standardOutput += out;
         out_buffer += out;
         if (!suppressOutput) {
             emit outputAvailable(out);
@@ -92,6 +94,13 @@ QStringList Cmd::helperExecArgs(const QString &cmd, const QStringList &args, con
 
 bool Cmd::helperProc(const QStringList &helperArgs, QString *output, const QByteArray *input, QuietMode quiet)
 {
+    if (geteuid() != 0) return false;
+    const QString backend = QFileInfo(helper).dir().filePath(QStringLiteral("repair-backend"));
+    return proc(backend, helperArgs, output, input, quiet);
+}
+
+bool Cmd::repairAction(const QStringList &helperArgs, QString *output, const QByteArray *input, QuietMode quiet)
+{
     lastElevationFailed_ = false;
 
     if (getuid() != 0 && asRoot.isEmpty()) {
@@ -106,7 +115,8 @@ bool Cmd::helperProc(const QStringList &helperArgs, QString *output, const QByte
         programArgs.prepend(helper);
     }
 
-    const bool ok = proc(program, programArgs, output, input, quiet);
+    const bool ok = proc(program, programArgs, nullptr, input, quiet);
+    if (output) *output = standardOutput.trimmed();
     if (getuid() != 0 && !ok && exitStatus() == QProcess::NormalExit
         && indicatesElevationFailure(program, out_buffer, exitCode())) {
         lastElevationFailed_ = true;
@@ -183,7 +193,8 @@ bool Cmd::dirHasEntriesAsRoot(const QString &path, QuietMode quiet, const QStrin
 
 bool Cmd::copyLogAsRoot(QuietMode quiet)
 {
-    return helperProc({QStringLiteral("copy-log")}, nullptr, nullptr, quiet);
+    if (geteuid() == 0) return helperProc({QStringLiteral("copy-log")}, nullptr, nullptr, quiet);
+    return repairAction({QStringLiteral("copy-log")}, nullptr, nullptr, quiet);
 }
 
 bool Cmd::mountChrootEnvAsRoot(const QString &source, const QString &target, QuietMode quiet)
@@ -226,6 +237,7 @@ bool Cmd::proc(const QString &cmd, const QStringList &args, QString *output, con
                QuietMode quiet)
 {
     out_buffer.clear();
+    standardOutput.clear();
     // Disconnect any previous relay to avoid accumulating duplicate connections
     disconnect(this, &QProcess::finished, this, &Cmd::done);
     connect(this, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &Cmd::done);

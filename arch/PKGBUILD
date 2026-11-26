@@ -52,6 +52,7 @@ package() {
     cd "${srcdir}/${_srcdir}"
 
     install -Dm755 build/mx-boot-repair "${pkgdir}/usr/bin/mx-boot-repair"
+    install -Dm700 build/repair-backend "${pkgdir}/usr/lib/mx-boot-repair/repair-backend"
     install -Dm755 build/helper "${pkgdir}/usr/lib/mx-boot-repair/helper"
 
     # app_init.cpp loads from /usr/share/mx-bootrepair/locale - the repository

@@ -26,6 +26,7 @@
 #include <QMessageBox>
 #include <QCommandLineParser>
 #include <QTextStream>
+#include <QRegularExpression>
 
 #include "cli/controller.h"
 #include "core/app_init.h"
@@ -43,10 +44,14 @@ int main(int argc, char *argv[])
     bool forceCli = false;
     bool headless = qEnvironmentVariableIsEmpty("DISPLAY") && qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY");
 
-    // Quick check for CLI flag
+    // Recognize bundled short options before constructing a display-dependent QApplication.
+    const QRegularExpression shortCliOptions(QStringLiteral("^-[cdnhqvf]*[cdn][cdnhqvf]*$"));
     for (int i = 1; i < argc; ++i) {
         const QString arg = QString::fromLocal8Bit(argv[i]);
-        if (arg == "-c" || arg == "--cli") {
+        if (arg == "--") break;
+        const QString option = arg.section('=', 0, 0);
+        if (option == "--cli" || option == "--action" || option == "--dry-run"
+            || option == "--non-interactive" || shortCliOptions.match(option).hasMatch()) {
             forceCli = true;
             break;
         }

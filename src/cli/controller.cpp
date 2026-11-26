@@ -91,10 +91,8 @@ int CliController::run()
     QCommandLineOption quietOpt({"q", "quiet"}, "Suppress non-error output");
 
     parser.addOptions({dryRunOpt, nonIntOpt, actionOpt, targetOpt, locationOpt, rootOpt, bootDevOpt, espDevOpt, pathOpt, forceOpt, verboseOpt, quietOpt});
-    QStringList args = QCoreApplication::arguments();
-    // Strip launcher-only flags handled by the GUI entry point
-    args.erase(std::remove_if(args.begin(), args.end(), [](const QString& a){ return a == "-c" || a == "--cli"; }), args.end());
-    parser.process(args);
+    parser.addOption(QCommandLineOption({"c", "cli"}, "Force CLI mode"));
+    parser.process(QCoreApplication::arguments());
 
     // Validate conflicting options
     if (parser.isSet(verboseOpt) && parser.isSet(quietOpt)) {

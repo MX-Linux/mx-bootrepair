@@ -1,3 +1,5 @@
+#include "core/apppaths.h"
+
 #include "about.h"
 
 #include <QCoreApplication>
@@ -66,10 +68,10 @@ QString loadChangelogText()
 {
     const QString appName = QFileInfo(QCoreApplication::applicationFilePath()).fileName();
     const QStringList changelogPaths = {
-        QStringLiteral("/usr/share/doc/mx-bootrepair/changelog.gz"),
-        QStringLiteral("/usr/share/doc/mx-bootrepair/changelog"),
-        QStringLiteral("/usr/share/doc/%1/changelog.gz").arg(appName),
-        QStringLiteral("/usr/share/doc/%1/changelog").arg(appName),
+        sharePath(QStringLiteral("doc/mx-bootrepair/changelog.gz")),
+        sharePath(QStringLiteral("doc/mx-bootrepair/changelog")),
+        sharePath(QStringLiteral("doc/%1/changelog.gz")).arg(appName),
+        sharePath(QStringLiteral("doc/%1/changelog")).arg(appName),
     };
 
     for (const QString &path : changelogPaths) {

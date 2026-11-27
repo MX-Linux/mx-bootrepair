@@ -46,6 +46,14 @@ Cmd::Cmd(QObject *parent)
     : QProcess(parent),
       helper(QStringLiteral(HELPER_PATH))
 {
+#ifdef APPIMAGE_BUILD
+    // The privileged entry point lives next to its private repair backend.
+    if (QFileInfo(QCoreApplication::applicationFilePath()).fileName() == QStringLiteral("helper")) {
+        helper = QCoreApplication::applicationFilePath();
+    } else {
+        helper = QCoreApplication::applicationDirPath() + QStringLiteral("/../libexec/mx-boot-repair/helper");
+    }
+#endif
     // Resolve elevation tool via PATH lookup so non-standard install paths work
     const bool cliMode = QCoreApplication::instance()
                          && QCoreApplication::instance()->property("cliMode").toBool();
@@ -112,7 +120,12 @@ bool Cmd::repairAction(const QStringList &helperArgs, QString *output, const QBy
     const QString program = (getuid() == 0) ? helper : asRoot;
     QStringList programArgs = helperArgs;
     if (getuid() != 0) {
+#ifdef APPIMAGE_BUILD
+        programArgs.prepend(QStringLiteral("--run-helper"));
+        programArgs.prepend(qEnvironmentVariable("APPIMAGE"));
+#else
         programArgs.prepend(helper);
+#endif
     }
 
     const bool ok = proc(program, programArgs, nullptr, input, quiet);

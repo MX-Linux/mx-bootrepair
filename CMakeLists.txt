@@ -176,6 +176,11 @@ target_include_directories(bootrepair-core PUBLIC
     ${CMAKE_SOURCE_DIR}/src
 )
 
+option(APPIMAGE_BUILD "Build the relocatable AppImage" OFF)
+if(APPIMAGE_BUILD)
+    target_compile_definitions(bootrepair-core PUBLIC APPIMAGE_BUILD)
+endif()
+
 target_compile_definitions(bootrepair-core PRIVATE
     HELPER_PATH="${HELPER_PATH}"
 )

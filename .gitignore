@@ -41,4 +41,4 @@ Makefile*
 .tx/
 
 mx-boot-repair
-
+/build-appimage/

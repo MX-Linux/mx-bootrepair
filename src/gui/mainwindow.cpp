@@ -19,6 +19,8 @@
  * You should have received a copy of the GNU General Public License
  * along with MX Boot Repair.  If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
+#include "core/apppaths.h"
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -720,15 +722,15 @@ void MainWindow::buttonAbout_clicked()
             + tr("Simple boot repair program for MX Linux")
             + R"(</h3></p><p align="center"><a href="http://mxlinux.org">http://mxlinux.org</a><br /></p><p align="center">)"
             + tr("Copyright (c) MX Linux") + "<br /><br /></p>",
-        "/usr/share/doc/mx-bootrepair/license.html", tr("%1 License").arg(QApplication::applicationDisplayName()));
+        sharePath(QStringLiteral("doc/mx-bootrepair/license.html")), tr("%1 License").arg(QApplication::applicationDisplayName()));
     this->show();
 }
 
 void MainWindow::buttonHelp_clicked()
 {
-    QString helpPath = QStringLiteral("/usr/share/doc/mx-bootrepair/mx-boot-repair.html");
+    QString helpPath = sharePath(QStringLiteral("doc/mx-bootrepair/mx-boot-repair.html"));
     if (qEnvironmentVariable("LANG").startsWith(QLatin1String("fr"))) {
-        helpPath = QStringLiteral("/usr/share/doc/mx-bootrepair/mx-boot-repair-fr.html");
+        helpPath = sharePath(QStringLiteral("doc/mx-bootrepair/mx-boot-repair-fr.html"));
     }
 
     displayHelpDoc(helpPath, tr("%1 Help").arg(this->windowTitle()));

@@ -1,4 +1,6 @@
 // Shared application initialization helpers (QtCore-only)
+#include "core/apppaths.h"
+
 #include "core/app_init.h"
 
 #include <QByteArray>
@@ -92,7 +94,7 @@ void installTranslations()
 
     const QString appName = QCoreApplication::applicationName();
     if (!appName.isEmpty() && appTran.isEmpty()) {
-        const bool ok = appTran.load(QLocale::system(), appName, "_", "/usr/share/mx-bootrepair/locale");
+        const bool ok = appTran.load(QLocale::system(), appName, "_", sharePath(QStringLiteral("mx-bootrepair/locale")));
         if (ok) QCoreApplication::installTranslator(&appTran);
     }
 }
